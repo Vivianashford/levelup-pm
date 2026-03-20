@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jean Hardy — Daily Command Center</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
+
+  .dashboard { max-width:700px; margin:0 auto; padding:20px; }
+
+  .header { padding:20px 0 16px; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:20px; }
+  .header h1 { font-family:'Playfair Display',serif; font-size:22px; color:#c9a84c; }
+  .header .date { font-size:14px; color:#9a9590; margin-top:4px; }
+  .header .updated { font-size:11px; color:#4a4540; margin-top:6px; }
+
+  /* FOCUS BLOCK */
+  .focus { background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02)); border:1px solid rgba(201,168,76,.25); border-radius:12px; padding:20px; margin-bottom:24px; }
+  .focus-label { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:6px; }
+  .focus-task { font-family:'Playfair Display',serif; font-size:20px; color:#f0ebe3; line-height:1.4; }
+  .focus-sub { font-size:13px; color:#6b655e; margin-top:6px; }
+
+  /* SECTION */
+  .section { margin-bottom:24px; }
+  .section-head { display:flex; align-items:center; gap:8px; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid rgba(255,255,255,.04); }
+  .section-dot { width:8px; height:8px; border-radius:50%; }
+  .section-title { font-size:12px; text-transform:uppercase; letter-spacing:2px; font-weight:600; }
+
+  .dot-arena { background:#c9a84c; }
+  .dot-levelup { background:#6a9fd8; }
+  .dot-tofc { background:#d87a6a; }
+  .dot-personal { background:#8b7fd8; }
+  .dot-ops { background:#4a8c5c; }
+
+  .title-arena { color:#c9a84c; }
+  .title-levelup { color:#6a9fd8; }
+  .title-tofc { color:#d87a6a; }
+  .title-personal { color:#8b7fd8; }
+  .title-ops { color:#4a8c5c; }
+
+  /* TODO ITEMS */
+  .todo { display:flex; align-items:flex-start; gap:10px; padding:8px 10px; border-radius:8px; margin-bottom:4px; cursor:pointer; transition:background .15s; }
+  .todo:hover { background:rgba(255,255,255,.03); }
+  .todo-check { width:18px; height:18px; border:2px solid #3a3a3a; border-radius:4px; flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+  .todo.done .todo-check { background:#4a8c5c; border-color:#4a8c5c; }
+  .todo.done .todo-check::after { content:'✓'; color:#fff; font-size:11px; font-weight:700; }
+  .todo.done .todo-text { text-decoration:line-through; color:#4a4540; }
+  .todo-content { flex:1; }
+  .todo-text { font-size:14px; color:#d4cfc8; line-height:1.4; }
+  .todo-meta { font-size:11px; color:#4a4540; margin-top:2px; }
+  .todo-priority { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; padding:1px 6px; border-radius:3px; margin-left:6px; }
+  .p-high { background:rgba(184,60,48,.15); color:#b83c30; }
+  .p-med { background:rgba(201,168,76,.12); color:#c9a84c; }
+  .p-low { background:rgba(100,100,120,.1); color:#6b655e; }
+
+  /* DONE SECTION */
+  .done-section { margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,.04); }
+  .done-header { font-size:11px; color:#4a4540; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; cursor:pointer; }
+  .done-header:hover { color:#6b655e; }
+
+  /* STATS BAR */
+  .stats-bar { display:flex; gap:16px; margin-bottom:20px; }
+  .stats-bar .sb { font-size:12px; color:#6b655e; }
+  .stats-bar .sb strong { color:#f0ebe3; }
+
+  /* MOBILE */
+  @media(max-width:600px) {
+    .dashboard { padding:14px; }
+    .focus-task { font-size:17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <div class="header">
+    <h1>Daily Command Center</h1>
+    <div class="date" id="today-date"></div>
+    <div class="updated" id="last-updated"></div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar" id="stats-bar"></div>
+
+  <!-- FLOW BLOCK FOCUS -->
+  <div class="focus" id="focus-block"></div>
+
+  <!-- TODO SECTIONS -->
+  <div id="todo-sections"></div>
+
+  <!-- COMPLETED -->
+  <div class="done-section" id="done-section">
+    <div class="done-header" onclick="toggleDone()">✓ Completed (<span id="done-count">0</span>) ▾</div>
+    <div id="done-list" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA — Vivian updates this daily
+// ============================================================
+var DATA = {
+  lastUpdated: "March 20, 2026 — 7:15 AM CDT",
+  
+  focus: {
+    task: "Grant follow-up: Data room + one-sheet + Zoom link",
+    sub: "Flow Block 1 · While the energy is hot"
+  },
+
+  todos: [
+    // ARENA
+    { text: "Send Grant the data room + one-sheet", project: "arena", priority: "high", done: false, meta: "Validated fee structure yesterday. He wants to 'blow this thing up'" },
+    { text: "Set up Zoom link for Grant deep-dive", project: "arena", priority: "high", done: false, meta: "He said 'even if it's 2 AM, I'll be there'" },
+    { text: "Rewrite funnel copy with pride-based messaging", project: "arena", priority: "med", done: false, meta: "John Cameron insight: pride > fear. House analogy." },
+    { text: "Send George the one-sheet for feedback", project: "arena", priority: "med", done: false, meta: "george@georgedecurvecommunications.com" },
+    { text: "Record VSL video (placeholder still live)", project: "arena", priority: "med", done: false, meta: "Deck v2 is ready with new messaging" },
+    { text: "Re-auth Google OAuth (gog auth login)", project: "ops", priority: "med", done: false, meta: "Can't see email or calendar until this is done" },
+
+    // LEVEL UP
+    { text: "Write tonight's PR article (9 PM)", project: "levelup", priority: "med", done: false, meta: "Rotate platform. Strong SEO → levelupwithanna.com" },
+    { text: "Get Logan's article spreadsheet and sync to dashboard", project: "levelup", priority: "low", done: false, meta: "https://vivianashford.github.io/levelup-pm/" },
+    { text: "Collect bank statements for Asim (accounting)", project: "levelup", priority: "med", done: false, meta: "$432, 14-day delivery. Needs all statements from business start" },
+
+    // TOFC
+    { text: "Switch TOFC bot to Claude API (replace ManyChat)", project: "tofc", priority: "low", done: false, meta: "Current chatbot timing out. Need more human-like responses" },
+    { text: "Post inventory to Instagram + run ads from posts", project: "tofc", priority: "low", done: false, meta: "Property-specific ads with addresses and photos" },
+
+    // PERSONAL / OPS
+    { text: "Follow up with Ken/Saud on PE role", project: "personal", priority: "low", done: false, meta: "Salary ceiling $98-100K. Cracking Capital competing offer." },
+  ]
+};
+
+// ============================================================
+// RENDER
+// ============================================================
+var projectConfig = {
+  arena: { label: "The Arena", dot: "dot-arena", title: "title-arena" },
+  levelup: { label: "Level Up With Anna", dot: "dot-levelup", title: "title-levelup" },
+  tofc: { label: "TOFC", dot: "dot-tofc", title: "title-tofc" },
+  personal: { label: "Personal", dot: "dot-personal", title: "title-personal" },
+  ops: { label: "Operations", dot: "dot-ops", title: "title-ops" }
+};
+
+function render() {
+  // Date
+  var now = new Date();
+  var opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', opts);
+  document.getElementById('last-updated').textContent = 'Updated by Vivian: ' + DATA.lastUpdated;
+
+  // Focus
+  document.getElementById('focus-block').innerHTML =
+    '<div class="focus-label">⚡ Flow Block 1 Priority</div>' +
+    '<div class="focus-task">' + DATA.focus.task + '</div>' +
+    '<div class="focus-sub">' + DATA.focus.sub + '</div>';
+
+  // Stats
+  var total = DATA.todos.length;
+  var doneCount = DATA.todos.filter(function(t){return t.done}).length;
+  var highOpen = DATA.todos.filter(function(t){return !t.done && t.priority==='high'}).length;
+  document.getElementById('stats-bar').innerHTML =
+    '<div class="sb"><strong>' + (total-doneCount) + '</strong> open</div>' +
+    '<div class="sb"><strong>' + doneCount + '</strong> done</div>' +
+    '<div class="sb"><strong>' + highOpen + '</strong> urgent</div>';
+
+  // Group by project (only open items)
+  var groups = {};
+  var doneItems = [];
+  DATA.todos.forEach(function(t,i) {
+    t._idx = i;
+    if (t.done) { doneItems.push(t); return; }
+    if (!groups[t.project]) groups[t.project] = [];
+    groups[t.project].push(t);
+  });
+
+  // Render sections in order
+  var order = ['arena','levelup','tofc','ops','personal'];
+  var sectionsHTML = '';
+  order.forEach(function(proj) {
+    if (!groups[proj] || groups[proj].length === 0) return;
+    var cfg = projectConfig[proj];
+    sectionsHTML += '<div class="section">';
+    sectionsHTML += '<div class="section-head"><div class="section-dot '+cfg.dot+'"></div><span class="section-title '+cfg.title+'">'+cfg.label+'</span></div>';
+    // Sort by priority within section
+    var pOrder = {high:0, med:1, low:2};
+    groups[proj].sort(function(a,b){ return (pOrder[a.priority]||9) - (pOrder[b.priority]||9); });
+    groups[proj].forEach(function(t) {
+      sectionsHTML += renderTodo(t);
+    });
+    sectionsHTML += '</div>';
+  });
+  document.getElementById('todo-sections').innerHTML = sectionsHTML;
+
+  // Done items
+  document.getElementById('done-count').textContent = doneItems.length;
+  var doneHTML = '';
+  doneItems.forEach(function(t) { doneHTML += renderTodo(t); });
+  document.getElementById('done-list').innerHTML = doneHTML;
+}
+
+function renderTodo(t) {
+  var cls = t.done ? 'todo done' : 'todo';
+  var pBadge = '';
+  if (t.priority === 'high') pBadge = '<span class="todo-priority p-high">urgent</span>';
+  else if (t.priority === 'med') pBadge = '<span class="todo-priority p-med">today</span>';
+  var html = '<div class="'+cls+'" onclick="toggleTodo('+t._idx+')">';
+  html += '<div class="todo-check"></div>';
+  html += '<div class="todo-content">';
+  html += '<div class="todo-text">' + t.text + pBadge + '</div>';
+  if (t.meta) html += '<div class="todo-meta">' + t.meta + '</div>';
+  html += '</div></div>';
+  return html;
+}
+
+function toggleTodo(idx) {
+  DATA.todos[idx].done = !DATA.todos[idx].done;
+  render();
+}
+
+function toggleDone() {
+  var el = document.getElementById('done-list');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+render();
+</script>
+</body>
+</html>
