@@ -106,30 +106,53 @@ var DATA = {
   lastUpdated: "March 20, 2026 — 7:15 AM CDT",
   
   focus: {
-    task: "Grant follow-up: Data room + one-sheet + Zoom link",
-    sub: "Flow Block 1 · While the energy is hot"
+    task: "Grant + George follow-ups: Data room, one-sheets, Zoom link",
+    sub: "Flow Block 1 · 4 action items due TODAY from yesterday's calls"
   },
 
   todos: [
-    // ARENA
-    { text: "Send Grant the data room + one-sheet", project: "arena", priority: "high", done: false, meta: "Validated fee structure yesterday. He wants to 'blow this thing up'" },
-    { text: "Set up Zoom link for Grant deep-dive", project: "arena", priority: "high", done: false, meta: "He said 'even if it's 2 AM, I'll be there'" },
-    { text: "Rewrite funnel copy with pride-based messaging", project: "arena", priority: "med", done: false, meta: "John Cameron insight: pride > fear. House analogy." },
-    { text: "Send George the one-sheet for feedback", project: "arena", priority: "med", done: false, meta: "george@georgedecurvecommunications.com" },
-    { text: "Record VSL video (placeholder still live)", project: "arena", priority: "med", done: false, meta: "Deck v2 is ready with new messaging" },
-    { text: "Re-auth Google OAuth (gog auth login)", project: "ops", priority: "med", done: false, meta: "Can't see email or calendar until this is done" },
+    // ===== ARENA =====
+    // From Grant call (March 19) - HIGH PRIORITY
+    { text: "Send Grant the data room + one-sheet", project: "arena", priority: "high", done: false, meta: "📞 From Grant call. He wants to 'blow this thing up.' KPMG family office contacts (400 clients, $25M+ each)" },
+    { text: "Set up Zoom link for Grant deep-dive", project: "arena", priority: "high", done: false, meta: "📞 From Grant call. 'Even if it's 2 AM, I'll be there.' Discuss roles + South Korea expansion" },
+    { text: "Email Grant: exit strategy partnership next steps", project: "arena", priority: "high", done: false, meta: "📞 Pocket action item. Include vision, 1.5x lift thesis, fee structure (retainer + 14.8% lift + 3-5% exit)" },
+    
+    // From George call (March 19)
+    { text: "Email George the one-sheet for feedback", project: "arena", priority: "high", done: false, meta: "📞 From George call. george@georgedecurvecommunications.com — He's at 67 clients, wants to exit in 24 months" },
+    { text: "Schedule coffee with George next time in Vancouver", project: "arena", priority: "low", done: false, meta: "📞 Pocket action item. He's open to connecting in person" },
 
-    // LEVEL UP
+    // From John Cameron call (March 19)
+    { text: "Refine VTM workshop framing for sellers (pride-based)", project: "arena", priority: "med", done: false, meta: "📞 From John Cameron. 'You've done a great job. Button it up.' Target the SELLER, not the buyer" },
+    
+    // From John/TOFC call - Eden
+    { text: "Draft Vision Traction Workshop pitch for Eden (Daniel + Jonah)", project: "arena", priority: "med", done: false, meta: "📞 Pocket action item. 3-day intensive. Cover travel + lodging only. Founders misaligned (Adam wants to stay, Josh wants out)" },
+    { text: "Text Brandon re: Grant's regards", project: "arena", priority: "low", done: false, meta: "📞 Pocket action item. Grant asked to pass along his best" },
+
+    // Ongoing Arena
+    { text: "Rewrite funnel copy with pride-based messaging", project: "arena", priority: "med", done: false, meta: "VSL deck v2 done. Now align landing page copy to match" },
+    { text: "Record VSL video (placeholder still live)", project: "arena", priority: "med", done: false, meta: "Deck v2 ready with new messaging. Need actual recording" },
+    { text: "Build training materials framework (document client #1)", project: "arena", priority: "med", done: false, meta: "First client closed. Document everything for replication" },
+
+    // ===== LEVEL UP =====
     { text: "Write tonight's PR article (9 PM)", project: "levelup", priority: "med", done: false, meta: "Rotate platform. Strong SEO → levelupwithanna.com" },
     { text: "Get Logan's article spreadsheet and sync to dashboard", project: "levelup", priority: "low", done: false, meta: "https://vivianashford.github.io/levelup-pm/" },
     { text: "Collect bank statements for Asim (accounting)", project: "levelup", priority: "med", done: false, meta: "$432, 14-day delivery. Needs all statements from business start" },
 
-    // TOFC
-    { text: "Switch TOFC bot to Claude API (replace ManyChat)", project: "tofc", priority: "low", done: false, meta: "Current chatbot timing out. Need more human-like responses" },
-    { text: "Post inventory to Instagram + run ads from posts", project: "tofc", priority: "low", done: false, meta: "Property-specific ads with addresses and photos" },
+    // ===== TOFC =====
+    { text: "Request inventory email blast from Marie (3,000 contacts)", project: "tofc", priority: "high", done: false, meta: "📞 Pocket action item. Include property links, mention taking all offers" },
+    { text: "Update inventory sheet with bottom-line prices + concessions", project: "tofc", priority: "high", done: false, meta: "📞 Pocket action item. Needed for new ads. Was due yesterday" },
+    { text: "Switch TOFC bot to Claude API (replace ManyChat)", project: "tofc", priority: "med", done: false, meta: "📞 From TOFC call. Current chatbot timing out. Need API connection" },
+    { text: "Post inventory to Instagram + run ads from posts", project: "tofc", priority: "med", done: false, meta: "📞 From TOFC call. Property-specific ads with addresses and photos. Sydney to post, Jean runs ads" },
+    { text: "Email TOFC team Claude API requirements", project: "tofc", priority: "med", done: false, meta: "📞 From TOFC call. They need to get Claude access. Send specs" },
 
-    // PERSONAL / OPS
-    { text: "Follow up with Ken/Saud on PE role", project: "personal", priority: "low", done: false, meta: "Salary ceiling $98-100K. Cracking Capital competing offer." },
+    // ===== OPS =====
+    { text: "Re-auth Google OAuth (gog auth login)", project: "ops", priority: "med", done: false, meta: "Can't see email or calendar until this is done" },
+    { text: "Document OpenClaw/Claude agent setup for team scaling", project: "ops", priority: "low", done: false, meta: "📞 Pocket action item. Due Mar 22. Secure and document the agent persona" },
+    { text: "Send Vivian Fireflies.ai API key", project: "ops", priority: "low", done: false, meta: "Needed to auto-pull meeting action items. Settings → Developer API" },
+
+    // ===== PERSONAL =====
+    { text: "Confirm status of Operating Partner role with Track One / Cracking Capital", project: "personal", priority: "low", done: false, meta: "📞 Pocket action item. Due Mar 23. Restaurants, RV parks, daycares" },
+    { text: "Follow up with Ken/Saud on PE role", project: "personal", priority: "low", done: false, meta: "Salary ceiling $98-100K vs your $110K target" },
   ]
 };
 
