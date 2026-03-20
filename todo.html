@@ -85,6 +85,15 @@
   <!-- STATS BAR -->
   <div class="stats-bar" id="stats-bar"></div>
 
+  <!-- DAILY ROUTINE -->
+  <div class="section" id="routine-section" style="margin-bottom:20px;">
+    <div class="section-head" style="cursor:pointer;" onclick="toggleRoutine()">
+      <span class="section-title" style="color:#8b7fd8;">Daily Routine</span>
+      <span class="section-count" id="routine-toggle">▾</span>
+    </div>
+    <div id="routine-list"></div>
+  </div>
+
   <!-- FLOW BLOCK FOCUS -->
   <div class="focus" id="focus-block"></div>
 
@@ -109,6 +118,20 @@ var DATA = {
     task: "Grant + George follow-ups: Data room, one-sheets, Zoom link",
     sub: "Flow Block 1 · 4 action items due TODAY from yesterday's calls"
   },
+
+  // DAILY ROUTINE (non-negotiable)
+  dailyRoutine: [
+    { time: "6:00 AM", task: "Prayer (1 hour)", icon: "🙏" },
+    { time: "7:15 AM", task: "Morning kickoff + review priorities", icon: "☀️" },
+    { time: "7:15 AM", task: "Flow Block 1 (90-120 min)", icon: "⚡" },
+    { time: "9:15 AM", task: "Recovery break", icon: "🚶" },
+    { time: "9:30 AM", task: "Flow Block 2 (90-120 min)", icon: "⚡" },
+    { time: "11:30 AM", task: "Communication batch", icon: "📧" },
+    { time: "12:00 PM", task: "Lunch + movement", icon: "🍽️" },
+    { time: "1:00 PM", task: "Meetings + calls", icon: "📞" },
+    { time: "3:00 PM", task: "Admin + delegation", icon: "📋" },
+    { time: "4:00 PM", task: "EOD review", icon: "📊" },
+  ],
 
   todos: [
     // ===== ARENA =====
@@ -174,6 +197,24 @@ function render() {
   var opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
   document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', opts);
   document.getElementById('last-updated').textContent = 'Updated by Vivian: ' + DATA.lastUpdated;
+
+  // Routine
+  if (DATA.dailyRoutine) {
+    var rHTML = '';
+    var nowHr = new Date().getHours();
+    DATA.dailyRoutine.forEach(function(r) {
+      var hr = parseInt(r.time);
+      var isPM = r.time.includes('PM') && !r.time.includes('12');
+      if (isPM) hr += 12;
+      var active = (nowHr >= hr && nowHr < hr + 2) ? 'border-color:rgba(139,127,216,.4);background:rgba(139,127,216,.06);' : '';
+      rHTML += '<div style="display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:8px;margin-bottom:3px;border:1px solid rgba(255,255,255,.03);'+active+'">';
+      rHTML += '<span style="font-size:18px;">'+r.icon+'</span>';
+      rHTML += '<span style="font-size:12px;color:#6b655e;min-width:70px;">'+r.time+'</span>';
+      rHTML += '<span style="font-size:13px;color:#9a9590;">'+r.task+'</span>';
+      rHTML += '</div>';
+    });
+    document.getElementById('routine-list').innerHTML = rHTML;
+  }
 
   // Focus
   document.getElementById('focus-block').innerHTML =
@@ -246,6 +287,11 @@ function toggleTodo(idx) {
 
 function toggleDone() {
   var el = document.getElementById('done-list');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleRoutine() {
+  var el = document.getElementById('routine-list');
   el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
