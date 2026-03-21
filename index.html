@@ -9,14 +9,69 @@
 
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
-
-  .cc { max-width:1200px; margin:0 auto; padding:16px; }
+  .cc { max-width:900px; margin:0 auto; padding:16px; }
 
   /* HEADER */
-  .cc-header { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:16px; }
+  .cc-header { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:20px; }
   .cc-header h1 { font-family:'Playfair Display',serif; font-size:24px; color:#c9a84c; }
   .cc-header .date { font-size:13px; color:#6b655e; }
-  .cc-header .time { font-size:20px; color:#f0ebe3; font-weight:600; font-variant-numeric:tabular-nums; }
+  .cc-header .time { font-size:22px; color:#f0ebe3; font-weight:600; font-variant-numeric:tabular-nums; }
+
+  /* SAM QUOTE */
+  .sam-quote { background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02)); border:1px solid rgba(201,168,76,.2); border-radius:12px; padding:24px; margin-bottom:20px; position:relative; }
+  .sam-quote::before { content:'"'; font-family:'Playfair Display',serif; font-size:60px; color:rgba(201,168,76,.2); position:absolute; top:8px; left:16px; line-height:1; }
+  .sam-quote-text { font-family:'Playfair Display',serif; font-size:18px; color:#f0ebe3; line-height:1.5; padding-left:36px; }
+  .sam-quote-context { font-size:11px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; margin-top:10px; padding-left:36px; }
+  .sam-quote-author { font-size:12px; color:#6b655e; padding-left:36px; margin-top:2px; }
+
+  /* DIRECTIVE */
+  .directive { background:#111; border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:20px; margin-bottom:20px; }
+  .dir-label { font-size:10px; color:#d87a6a; text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:8px; }
+  .dir-focus { font-size:17px; color:#f0ebe3; font-weight:600; line-height:1.4; margin-bottom:10px; }
+  .dir-action { font-size:14px; color:#d4cfc8; line-height:1.6; padding:12px 16px; background:rgba(255,255,255,.02); border-radius:8px; border-left:3px solid #d87a6a; }
+  .dir-metric { font-size:12px; color:#6b655e; margin-top:10px; font-style:italic; }
+
+  /* PHASE TRACKER */
+  .phases { display:flex; gap:4px; margin-bottom:20px; overflow-x:auto; }
+  .phase { flex:1; min-width:0; padding:10px 8px; border-radius:8px; text-align:center; border:1px solid rgba(255,255,255,.06); background:#111; transition:all .2s; }
+  .phase-num { font-size:18px; font-weight:700; }
+  .phase-name { font-size:9px; text-transform:uppercase; letter-spacing:1px; margin-top:2px; line-height:1.3; }
+  .phase.done { border-color:rgba(74,140,92,.3); }
+  .phase.done .phase-num { color:#4a8c5c; }
+  .phase.done .phase-name { color:#4a8c5c; }
+  .phase.current { border-color:rgba(201,168,76,.4); background:rgba(201,168,76,.06); }
+  .phase.current .phase-num { color:#c9a84c; }
+  .phase.current .phase-name { color:#c9a84c; font-weight:700; }
+  .phase.active { border-color:rgba(106,159,216,.3); }
+  .phase.active .phase-num { color:#6a9fd8; }
+  .phase.active .phase-name { color:#6a9fd8; }
+  .phase.locked { opacity:.35; }
+  .phase.locked .phase-num { color:#3a3a3a; }
+  .phase.locked .phase-name { color:#3a3a3a; }
+
+  /* NON-NEGOTIABLES */
+  .nn-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+  .nn-pill { display:flex; align-items:center; gap:6px; padding:8px 14px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:20px; cursor:pointer; transition:all .15s; font-size:13px; }
+  .nn-pill.checked { border-color:rgba(74,140,92,.4); background:rgba(74,140,92,.08); }
+  .nn-pill .nn-icon { font-size:16px; }
+  .nn-pill .nn-label { color:#9a9590; }
+  .nn-pill.checked .nn-label { color:#4a8c5c; text-decoration:line-through; }
+  .nn-pill .nn-dot { width:12px; height:12px; border:2px solid #3a3a3a; border-radius:3px; }
+  .nn-pill.checked .nn-dot { background:#4a8c5c; border-color:#4a8c5c; }
+
+  /* PRIORITY RULES */
+  .pri-rules { background:#111; border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:16px 20px; margin-bottom:20px; }
+  .pri-rules-title { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:10px; }
+  .pri-rule { font-size:13px; color:#d4cfc8; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.03); line-height:1.5; }
+  .pri-rule:last-child { border:none; }
+  .pri-rule strong { color:#f0ebe3; }
+  .pri-rule .num { color:#c9a84c; font-weight:700; margin-right:4px; }
+
+  /* STATS */
+  .stats-row { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .stat-card { flex:1; min-width:80px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:14px 12px; text-align:center; }
+  .stat-num { font-size:26px; font-weight:700; color:#f0ebe3; }
+  .stat-label { font-size:9px; text-transform:uppercase; letter-spacing:1.5px; color:#6b655e; margin-top:2px; }
 
   /* GRID */
   .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -28,13 +83,7 @@
   .card-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; font-weight:700; }
   .card-body { padding:12px 16px 16px; }
 
-  .t-gold { color:#c9a84c; }
-  .t-blue { color:#6a9fd8; }
-  .t-green { color:#4a8c5c; }
-  .t-red { color:#d87a6a; }
-  .t-purple { color:#8b7fd8; }
-
-  /* QUICK LINKS */
+  /* LINKS */
   .links-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
   .qlink { display:flex; align-items:center; gap:8px; padding:10px 12px; background:rgba(255,255,255,.03); border-radius:8px; text-decoration:none; color:#d4cfc8; font-size:13px; transition:all .15s; border:1px solid transparent; }
   .qlink:hover { background:rgba(201,168,76,.08); border-color:rgba(201,168,76,.2); color:#f0ebe3; }
@@ -42,18 +91,13 @@
   .qlink .label { line-height:1.3; }
   .qlink .sub { font-size:10px; color:#4a4540; display:block; }
 
-  /* CAMERA */
-  .cam-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .cam-slot { background:#0a0a0a; border-radius:8px; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-direction:column; border:1px dashed rgba(255,255,255,.08); position:relative; overflow:hidden; }
-  .cam-slot img { width:100%; height:100%; object-fit:cover; border-radius:8px; }
-  .cam-slot .cam-label { position:absolute; bottom:6px; left:8px; font-size:10px; color:#c9a84c; background:rgba(0,0,0,.7); padding:2px 8px; border-radius:4px; }
-  .cam-placeholder { font-size:11px; color:#3a3a3a; text-align:center; }
-  .cam-placeholder span { font-size:28px; display:block; margin-bottom:4px; }
-  .cam-refresh { font-size:11px; color:#4a4540; cursor:pointer; padding:4px 10px; border:1px solid rgba(255,255,255,.06); border-radius:6px; background:none; }
-  .cam-refresh:hover { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+  /* TAB NAV */
+  .tab-nav { display:flex; gap:4px; margin-bottom:12px; flex-wrap:wrap; }
+  .tab-btn { padding:6px 12px; font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:600; border:1px solid rgba(255,255,255,.06); border-radius:6px; background:none; color:#6b655e; cursor:pointer; transition:all .15s; }
+  .tab-btn.active { background:rgba(201,168,76,.1); border-color:rgba(201,168,76,.3); color:#c9a84c; }
 
-  /* TODO MINI */
-  .todo-mini { max-height:400px; overflow-y:auto; }
+  /* TODO */
+  .todo-mini { max-height:420px; overflow-y:auto; }
   .todo-mini::-webkit-scrollbar { width:4px; }
   .todo-mini::-webkit-scrollbar-thumb { background:#2a2a2a; border-radius:4px; }
   .tm-item { display:flex; align-items:flex-start; gap:8px; padding:7px 8px; border-radius:6px; cursor:pointer; transition:background .15s; }
@@ -66,47 +110,11 @@
   .tm-badge { font-size:9px; font-weight:700; text-transform:uppercase; padding:1px 5px; border-radius:3px; margin-left:4px; vertical-align:middle; }
   .b-high { background:rgba(184,60,48,.15); color:#b83c30; }
   .b-med { background:rgba(201,168,76,.12); color:#c9a84c; }
-  .tm-section { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; padding:8px 8px 4px; }
-  .tm-count { font-size:11px; color:#4a4540; }
   .view-all { display:block; text-align:center; padding:10px; font-size:12px; color:#c9a84c; text-decoration:none; border-top:1px solid rgba(255,255,255,.04); margin-top:8px; }
   .view-all:hover { color:#f0ebe3; }
 
-  /* STATS ROW */
-  .stats-row { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-  .stat-card { flex:1; min-width:100px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:14px 16px; text-align:center; }
-  .stat-num { font-size:28px; font-weight:700; color:#f0ebe3; }
-  .stat-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:#6b655e; margin-top:2px; }
-
-  /* FOCUS */
-  .focus-banner { background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03)); border:1px solid rgba(201,168,76,.2); border-radius:12px; padding:16px 20px; margin-bottom:16px; }
-  .focus-label { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; font-weight:700; }
-  .focus-text { font-family:'Playfair Display',serif; font-size:18px; color:#f0ebe3; margin-top:4px; line-height:1.4; }
-  .focus-sub { font-size:12px; color:#6b655e; margin-top:4px; }
-
-  /* NON-NEGOTIABLES MINI */
-  .nn-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
-  .nn-pill { display:flex; align-items:center; gap:6px; padding:8px 14px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:20px; cursor:pointer; transition:all .15s; font-size:13px; }
-  .nn-pill.checked { border-color:rgba(74,140,92,.4); background:rgba(74,140,92,.08); }
-  .nn-pill .nn-icon { font-size:16px; }
-  .nn-pill .nn-label { color:#9a9590; }
-  .nn-pill.checked .nn-label { color:#4a8c5c; text-decoration:line-through; }
-  .nn-pill .nn-dot { width:12px; height:12px; border:2px solid #3a3a3a; border-radius:3px; }
-  .nn-pill.checked .nn-dot { background:#4a8c5c; border-color:#4a8c5c; }
-
-  /* FULL WIDTH CARD */
+  /* FULL WIDTH */
   .full-width { grid-column: 1 / -1; }
-
-  /* ACTIVITY FEED */
-  .feed-item { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.03); }
-  .feed-item:last-child { border:none; }
-  .feed-dot { width:8px; height:8px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-  .feed-text { font-size:13px; color:#d4cfc8; line-height:1.4; }
-  .feed-time { font-size:11px; color:#4a4540; }
-
-  /* TAB NAV */
-  .tab-nav { display:flex; gap:4px; margin-bottom:12px; }
-  .tab-btn { padding:6px 14px; font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:600; border:1px solid rgba(255,255,255,.06); border-radius:6px; background:none; color:#6b655e; cursor:pointer; transition:all .15s; }
-  .tab-btn.active { background:rgba(201,168,76,.1); border-color:rgba(201,168,76,.3); color:#c9a84c; }
 </style>
 </head>
 <body>
@@ -124,69 +132,44 @@
     </div>
   </div>
 
+  <!-- SAM'S DAILY QUOTE -->
+  <div class="sam-quote">
+    <div class="sam-quote-text" id="sam-quote"></div>
+    <div class="sam-quote-context" id="sam-context"></div>
+    <div class="sam-quote-author">- Sam Ovens, Consulting.com</div>
+  </div>
+
+  <!-- PHASE TRACKER -->
+  <div class="phases" id="phase-tracker"></div>
+
   <!-- NON-NEGOTIABLES -->
   <div class="nn-row" id="nn-row"></div>
 
-  <!-- FOCUS BANNER -->
-  <div class="focus-banner">
-    <div class="focus-label">⚡ Flow Block Priority</div>
-    <div class="focus-text" id="focus-text">Grant + George follow-ups: Data room, one-sheets, Zoom link</div>
-    <div class="focus-sub" id="focus-sub">4 action items due TODAY from yesterday's calls</div>
+  <!-- SAM'S DAILY DIRECTIVE -->
+  <div class="directive">
+    <div class="dir-label">🎯 Sam's Question for Today</div>
+    <div class="dir-focus" id="dir-focus"></div>
+    <div class="dir-action" id="dir-action"></div>
+    <div class="dir-metric" id="dir-metric"></div>
   </div>
 
-  <!-- STATS ROW -->
+  <!-- PRIORITY HIERARCHY -->
+  <div class="pri-rules">
+    <div class="pri-rules-title">📐 Sam's Priority Hierarchy — What to Work on First</div>
+    <div id="pri-rules-list"></div>
+  </div>
+
+  <!-- STATS -->
   <div class="stats-row" id="stats-row"></div>
 
-  <!-- MAIN GRID -->
+  <!-- GRID -->
   <div class="grid">
-
-    <!-- QUICK LINKS -->
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title t-gold">🔗 Quick Links</span>
-        <span class="card-title t-gold" style="font-size:9px;opacity:.5;">ARENA + OPS</span>
-      </div>
-      <div class="card-body">
-        <div class="tab-nav" id="link-tabs">
-          <button class="tab-btn active" onclick="showLinkTab('arena')">Arena</button>
-          <button class="tab-btn" onclick="showLinkTab('tools')">Tools</button>
-          <button class="tab-btn" onclick="showLinkTab('clients')">Clients</button>
-          <button class="tab-btn" onclick="showLinkTab('personal')">Personal</button>
-        </div>
-        <div class="links-grid" id="links-container"></div>
-      </div>
-    </div>
-
-    <!-- CAMERAS -->
-    <div class="card">
-      <div class="card-head">
-        <span class="card-title t-blue">📷 Cameras</span>
-        <button class="cam-refresh" onclick="refreshCams()">Refresh</button>
-      </div>
-      <div class="card-body">
-        <div class="cam-grid" id="cam-grid">
-          <div class="cam-slot">
-            <div class="cam-placeholder"><span>📷</span>Camera 1<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
-          </div>
-          <div class="cam-slot">
-            <div class="cam-placeholder"><span>📷</span>Camera 2<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
-          </div>
-          <div class="cam-slot">
-            <div class="cam-placeholder"><span>📷</span>Camera 3<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
-          </div>
-          <div class="cam-slot">
-            <div class="cam-placeholder"><span>📷</span>Camera 4<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
-          </div>
-        </div>
-        <p style="font-size:11px;color:#3a3530;margin-top:10px;text-align:center;">Send Vivian your camera IPs or RTSP URLs to connect</p>
-      </div>
-    </div>
 
     <!-- TODO LIST -->
     <div class="card full-width">
       <div class="card-head">
-        <span class="card-title t-green">✅ Action Items</span>
-        <div style="display:flex;gap:6px;">
+        <span class="card-title" style="color:#4a8c5c;">✅ Action Items</span>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;">
           <button class="tab-btn active" onclick="filterTodos('all')" id="ft-all">All</button>
           <button class="tab-btn" onclick="filterTodos('high')" id="ft-high">Urgent</button>
           <button class="tab-btn" onclick="filterTodos('arena')" id="ft-arena">Arena</button>
@@ -200,9 +183,61 @@
       </div>
     </div>
 
+    <!-- QUICK LINKS -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title" style="color:#c9a84c;">🔗 Quick Links</span>
+      </div>
+      <div class="card-body">
+        <div class="tab-nav" id="link-tabs">
+          <button class="tab-btn active" onclick="showLinkTab('arena',this)">Arena</button>
+          <button class="tab-btn" onclick="showLinkTab('tools',this)">Tools</button>
+          <button class="tab-btn" onclick="showLinkTab('clients',this)">Clients</button>
+          <button class="tab-btn" onclick="showLinkTab('personal',this)">Personal</button>
+        </div>
+        <div class="links-grid" id="links-container"></div>
+      </div>
+    </div>
+
+    <!-- SAM'S FRAMEWORK -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title" style="color:#c9a84c;">📐 The Equation</span>
+      </div>
+      <div class="card-body">
+        <div style="text-align:center;padding:16px 0;">
+          <div style="font-family:'Playfair Display',serif;font-size:20px;color:#c9a84c;margin-bottom:16px;">Niche × Offer × Traffic = Revenue</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            <div style="background:rgba(74,140,92,.1);border:1px solid rgba(74,140,92,.3);border-radius:8px;padding:10px 16px;text-align:center;">
+              <div style="font-size:10px;color:#4a8c5c;text-transform:uppercase;letter-spacing:1px;">Niche</div>
+              <div style="font-size:13px;color:#f0ebe3;margin-top:4px;">55+ Trades Owners</div>
+              <div style="font-size:11px;color:#4a8c5c;">✓ Locked</div>
+            </div>
+            <div style="background:rgba(74,140,92,.1);border:1px solid rgba(74,140,92,.3);border-radius:8px;padding:10px 16px;text-align:center;">
+              <div style="font-size:10px;color:#4a8c5c;text-transform:uppercase;letter-spacing:1px;">Offer</div>
+              <div style="font-size:13px;color:#f0ebe3;margin-top:4px;">Transferable Exit System</div>
+              <div style="font-size:11px;color:#4a8c5c;">✓ Built</div>
+            </div>
+            <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:10px 16px;text-align:center;">
+              <div style="font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;">Traffic</div>
+              <div style="font-size:13px;color:#f0ebe3;margin-top:4px;">Organic Outreach</div>
+              <div style="font-size:11px;color:#c9a84c;">⚡ Focus Here</div>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.04);padding-top:12px;margin-top:8px;">
+          <div style="font-size:11px;color:#6b655e;text-align:center;line-height:1.6;">
+            Your niche is set. Your offer is built. Your funnel is live.<br>
+            <strong style="color:#c9a84c;">The ONLY bottleneck is conversations.</strong><br>
+            Everything else is procrastination disguised as productivity.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<script src="sam-system.js"></script>
 <script>
 // ============================================================
 // CLOCK
@@ -214,6 +249,45 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+
+// ============================================================
+// SAM'S QUOTE
+// ============================================================
+var quote = SAM.getDailyQuote();
+document.getElementById('sam-quote').textContent = quote.text;
+document.getElementById('sam-context').textContent = quote.context;
+
+// ============================================================
+// SAM'S DIRECTIVE
+// ============================================================
+var directive = SAM.getDailyDirective();
+document.getElementById('dir-focus').textContent = directive.focus;
+document.getElementById('dir-action').textContent = directive.action;
+document.getElementById('dir-metric').textContent = directive.metric;
+
+// ============================================================
+// PHASE TRACKER
+// ============================================================
+var phaseHTML = '';
+SAM.phases.forEach(function(p) {
+  phaseHTML += '<div class="phase '+p.status+'" title="'+p.description+'">';
+  phaseHTML += '<div class="phase-num">'+p.id+'</div>';
+  phaseHTML += '<div class="phase-name">'+p.name+'</div>';
+  phaseHTML += '</div>';
+});
+document.getElementById('phase-tracker').innerHTML = phaseHTML;
+
+// ============================================================
+// PRIORITY RULES
+// ============================================================
+var priHTML = '';
+SAM.priorityRules.forEach(function(r) {
+  var parts = r.split(' - ');
+  priHTML += '<div class="pri-rule"><span class="num">' + parts[0].replace(/^\d+\.\s*/, function(m){ return m; }) + '</span>';
+  if (parts[1]) priHTML += ' - ' + parts[1];
+  priHTML += '</div>';
+});
+document.getElementById('pri-rules-list').innerHTML = priHTML;
 
 // ============================================================
 // NON-NEGOTIABLES
@@ -230,7 +304,6 @@ function renderNN() {
   var today = new Date().toDateString();
   var state = JSON.parse(localStorage.getItem('cc-nn') || '{}');
   if (state.date !== today) state = { date:today, done:{} };
-  
   var html = '';
   NN.forEach(function(n) {
     var done = state.done[n.id] || false;
@@ -251,7 +324,6 @@ function toggleCCNN(id) {
   localStorage.setItem('cc-nn', JSON.stringify(state));
   renderNN();
 }
-
 renderNN();
 
 // ============================================================
@@ -265,52 +337,49 @@ var LINKS = {
     { icon:'📊', label:'Exit Assessment', sub:'Risk scoring tool', url:'https://thearenapartners.com/assessment.html' },
     { icon:'📋', label:'Dashboard', sub:'Metrics + pipeline', url:'https://thearenapartners.com/dashboard.html' },
     { icon:'🔒', label:'NDA Signing', sub:'Mutual NDA e-sign', url:'https://thearenapartners.com/nda.html' },
-    { icon:'🏢', label:'Company Info Form', sub:'Client intake', url:'https://thearenapartners.com/company-info.html' },
+    { icon:'🏢', label:'Company Info', sub:'Client intake form', url:'https://thearenapartners.com/company-info.html' },
     { icon:'📤', label:'Upload Portal', sub:'Secure data room', url:'https://thearenapartners.com/upload.html' },
     { icon:'📅', label:'Book a Call', sub:'Diagnostic calendar', url:'https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod' },
-    { icon:'💳', label:'Stripe Dashboard', sub:'Payments', url:'https://dashboard.stripe.com' },
+    { icon:'💳', label:'Stripe', sub:'Payments', url:'https://dashboard.stripe.com' },
   ],
   tools: [
     { icon:'⚙️', label:'GHL CRM', sub:'GoHighLevel', url:'https://app.gohighlevel.com' },
     { icon:'📧', label:'Gmail', sub:'jean@eng2.ca', url:'https://mail.google.com' },
-    { icon:'📅', label:'Google Calendar', sub:'Schedule', url:'https://calendar.google.com' },
+    { icon:'📅', label:'Calendar', sub:'Schedule', url:'https://calendar.google.com' },
     { icon:'💬', label:'Slack', sub:'Team comms', url:'https://app.slack.com' },
     { icon:'📹', label:'Zoom', sub:'Video calls', url:'https://zoom.us/meeting' },
-    { icon:'🎙️', label:'Fireflies.ai', sub:'Meeting transcripts', url:'https://app.fireflies.ai' },
-    { icon:'🎤', label:'Pocket', sub:'Voice recordings', url:'https://app.heypocketai.com' },
-    { icon:'🐙', label:'GitHub', sub:'Code repos', url:'https://github.com/Vivianashford' },
+    { icon:'🎙️', label:'Fireflies', sub:'Transcripts', url:'https://app.fireflies.ai' },
+    { icon:'🎤', label:'Pocket', sub:'Voice notes', url:'https://app.heypocketai.com' },
+    { icon:'🐙', label:'GitHub', sub:'Code', url:'https://github.com/Vivianashford' },
     { icon:'📝', label:'Canva', sub:'Design', url:'https://www.canva.com' },
     { icon:'👑', label:'Monarch', sub:'Finances', url:'https://app.monarchmoney.com' },
   ],
   clients: [
-    { icon:'🏗️', label:'Grant', sub:'Data room + one-sheet due', url:'#' },
-    { icon:'📣', label:'George', sub:'George de Curve Communications', url:'#' },
-    { icon:'🏦', label:'Eddie Gant', sub:'Jet Lending - $4K deposit', url:'#' },
+    { icon:'🏗️', label:'Grant', sub:'Data room + one-sheet', url:'#' },
+    { icon:'📣', label:'George', sub:'de Curve Communications', url:'#' },
+    { icon:'🏦', label:'Eddie Gant', sub:'Jet Lending', url:'#' },
     { icon:'🔧', label:'TOFC', sub:'Inventory + Claude bot', url:'#' },
     { icon:'🪟', label:'SSC Glass', sub:'Michael + partner', url:'#' },
-    { icon:'📈', label:'Dennis', sub:'90-day vs 12-month one-sheet', url:'#' },
+    { icon:'📈', label:'Dennis', sub:'90-day vs 12-month', url:'#' },
     { icon:'🏗️', label:'Sebastian', sub:'PNC financing', url:'#' },
-    { icon:'🌿', label:'Eden (Daniel + Jonah)', sub:'VTM workshop pitch', url:'#' },
+    { icon:'🌿', label:'Eden', sub:'Daniel + Jonah - VTM', url:'#' },
+    { icon:'💼', label:'Stephanie', sub:'Jet Lending CFO', url:'#' },
   ],
   personal: [
-    { icon:'📰', label:'Level Up PM', sub:'Todo + articles', url:'https://vivianashford.github.io/levelup-pm/todo.html' },
-    { icon:'🐦', label:'Twitter/X', sub:'@jeanhardy', url:'https://x.com' },
+    { icon:'📰', label:'Level Up PM', sub:'Articles + dashboard', url:'https://vivianashford.github.io/levelup-pm/todo.html' },
+    { icon:'🐦', label:'Twitter/X', sub:'Content', url:'https://x.com' },
     { icon:'📸', label:'Instagram', sub:'Content', url:'https://instagram.com' },
     { icon:'💼', label:'LinkedIn', sub:'Network', url:'https://linkedin.com' },
-    { icon:'🏦', label:'Track One / Cracking Capital', sub:'Operating Partner role', url:'#' },
-    { icon:'✈️', label:'Visa Application', sub:'Get Paul to sign', url:'#' },
   ]
 };
 
 var currentLinkTab = 'arena';
-
-function showLinkTab(tab) {
+function showLinkTab(tab, btn) {
   currentLinkTab = tab;
   document.querySelectorAll('#link-tabs .tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  event.target.classList.add('active');
+  btn.classList.add('active');
   renderLinks();
 }
-
 function renderLinks() {
   var items = LINKS[currentLinkTab] || [];
   var html = '';
@@ -325,41 +394,41 @@ function renderLinks() {
 renderLinks();
 
 // ============================================================
-// TODOS (same data as todo.html)
+// TODOS
 // ============================================================
 var TODOS = [
-  { text:"Send Grant the data room + one-sheet", project:"arena", priority:"high", done:false },
-  { text:"Set up Zoom link for Grant deep-dive", project:"arena", priority:"high", done:false },
-  { text:"Email Grant: exit strategy partnership next steps", project:"arena", priority:"high", done:false },
-  { text:"Email George the one-sheet for feedback", project:"arena", priority:"high", done:false },
-  { text:"Request inventory email blast from Marie (3,000 contacts)", project:"tofc", priority:"high", done:false },
-  { text:"Update inventory sheet with bottom-line prices", project:"tofc", priority:"high", done:false },
-  { text:"Send intro email to Stephanie (Jet Lending)", project:"arena", priority:"high", done:false },
-  { text:"Sign up for ClickUp", project:"ops", priority:"high", done:false },
-  { text:"Get Paul to sign visa application", project:"personal", priority:"high", done:false },
-  { text:"Clear Nikil's invoices", project:"ops", priority:"high", done:false },
-  { text:"Confirm AJ (famous.ai) — 900+ press releases", project:"levelup", priority:"high", done:false },
-  { text:"Set up data center", project:"ops", priority:"high", done:false },
-  { text:"Invite Michael (SSC Glass) + partner to Tuesday event", project:"arena", priority:"high", done:false },
-  { text:"Refine VTM workshop framing (pride-based)", project:"arena", priority:"med", done:false },
-  { text:"Draft Vision Traction Workshop pitch for Eden", project:"arena", priority:"med", done:false },
-  { text:"Record VSL video (deck v2 ready as teleprompter)", project:"arena", priority:"med", done:false },
-  { text:"Build training materials framework", project:"arena", priority:"med", done:false },
-  { text:"Switch TOFC bot to Claude API", project:"tofc", priority:"med", done:false },
-  { text:"Follow up with Eddie Gant on marked-up document", project:"arena", priority:"med", done:false },
-  { text:"Create one-sheet: 90-day vs 12-month for Dennis", project:"arena", priority:"med", done:false },
-  { text:"Re-auth Google OAuth (gog auth login)", project:"ops", priority:"med", done:false },
-  { text:"Collect bank statements for Asim (accounting)", project:"levelup", priority:"med", done:false },
-  { text:"Share data room materials with Mallika, Selena, James", project:"arena", priority:"med", done:false },
-  { text:"Rewrite funnel landing page copy (pride-based)", project:"arena", priority:"med", done:false },
-  { text:"Text Brandon re: Grant's regards", project:"arena", priority:"low", done:false },
-  { text:"Schedule coffee with George (next Vancouver trip)", project:"arena", priority:"low", done:false },
-  { text:"Coordinate PNC + Max financing docs (Sebastian)", project:"arena", priority:"low", done:false },
-  { text:"Document OpenClaw agent setup for team scaling", project:"ops", priority:"low", done:false },
-  { text:"Send Vivian Fireflies.ai API key", project:"ops", priority:"low", done:false },
-  { text:"Confirm Operating Partner role (Track One)", project:"personal", priority:"low", done:false },
-  { text:"Follow up with Ken/Saud on PE role", project:"personal", priority:"low", done:false },
+  { text:"Send Grant the data room + one-sheet", project:"arena", priority:"high" },
+  { text:"Set up Zoom link for Grant deep-dive", project:"arena", priority:"high" },
+  { text:"Email Grant: exit strategy partnership next steps", project:"arena", priority:"high" },
+  { text:"Email George the one-sheet for feedback", project:"arena", priority:"high" },
+  { text:"Request inventory email blast from Marie (3,000 contacts)", project:"tofc", priority:"high" },
+  { text:"Update inventory sheet with bottom-line prices", project:"tofc", priority:"high" },
+  { text:"Send intro email to Stephanie (Jet Lending)", project:"arena", priority:"high" },
+  { text:"Sign up for ClickUp", project:"ops", priority:"high" },
+  { text:"Get Paul to sign visa application", project:"personal", priority:"high" },
+  { text:"Clear Nikil's invoices", project:"ops", priority:"high" },
+  { text:"Confirm AJ (famous.ai) - 900+ press releases", project:"levelup", priority:"high" },
+  { text:"Set up data center", project:"ops", priority:"high" },
+  { text:"Invite Michael (SSC Glass) + partner to Tuesday event", project:"arena", priority:"high" },
+  { text:"Refine VTM workshop framing (pride-based)", project:"arena", priority:"med" },
+  { text:"Draft Vision Traction Workshop pitch for Eden", project:"arena", priority:"med" },
+  { text:"Record VSL video (deck v2 ready)", project:"arena", priority:"med" },
+  { text:"Build training materials framework", project:"arena", priority:"med" },
+  { text:"Switch TOFC bot to Claude API", project:"tofc", priority:"med" },
+  { text:"Follow up with Eddie Gant on marked-up document", project:"arena", priority:"med" },
+  { text:"Create one-sheet: 90-day vs 12-month for Dennis", project:"arena", priority:"med" },
+  { text:"Re-auth Google OAuth", project:"ops", priority:"med" },
+  { text:"Collect bank statements for Asim", project:"levelup", priority:"med" },
+  { text:"Share data room with Mallika, Selena, James", project:"arena", priority:"med" },
+  { text:"Text Brandon re: Grant's regards", project:"arena", priority:"low" },
+  { text:"Schedule coffee with George (Vancouver)", project:"arena", priority:"low" },
+  { text:"Coordinate PNC + Max docs (Sebastian)", project:"arena", priority:"low" },
+  { text:"Document agent setup for team scaling", project:"ops", priority:"low" },
+  { text:"Send Vivian Fireflies API key", project:"ops", priority:"low" },
+  { text:"Confirm Operating Partner role (Track One)", project:"personal", priority:"low" },
+  { text:"Follow up with Ken/Saud on PE role", project:"personal", priority:"low" },
 ];
+TODOS.forEach(function(t){ t.done = false; });
 
 var currentFilter = 'all';
 
@@ -369,27 +438,23 @@ function loadCCTodos() {
     if (TODOS[parseInt(i)]) TODOS[parseInt(i)].done = state[i];
   });
 }
-
 function saveCCTodos() {
   var state = {};
   TODOS.forEach(function(t,i) { if(t.done) state[i] = true; });
   localStorage.setItem('cc-todo-state', JSON.stringify(state));
 }
-
 function toggleCCTodo(idx) {
   TODOS[idx].done = !TODOS[idx].done;
   saveCCTodos();
   renderTodos();
   renderStats();
 }
-
 function filterTodos(f) {
   currentFilter = f;
   document.querySelectorAll('[id^="ft-"]').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById('ft-'+f).classList.add('active');
   renderTodos();
 }
-
 function renderTodos() {
   var filtered = TODOS.filter(function(t,i) {
     t._idx = i;
@@ -398,42 +463,31 @@ function renderTodos() {
     if (currentFilter === 'high') return t.priority === 'high';
     return t.project === currentFilter;
   });
-
-  // Sort: high first
   var pOrder = {high:0, med:1, low:2};
   filtered.sort(function(a,b){ return (pOrder[a.priority]||9) - (pOrder[b.priority]||9); });
-
   var projColors = { arena:'#c9a84c', tofc:'#d87a6a', ops:'#4a8c5c', levelup:'#6a9fd8', personal:'#8b7fd8' };
-
   var html = '';
   filtered.forEach(function(t) {
     var badge = '';
     if (t.priority === 'high') badge = '<span class="tm-badge b-high">urgent</span>';
     else if (t.priority === 'med') badge = '<span class="tm-badge b-med">today</span>';
-    
     html += '<div class="tm-item" onclick="toggleCCTodo('+t._idx+')">';
     html += '<div class="tm-check"></div>';
     html += '<div class="tm-text"><span style="color:'+(projColors[t.project]||'#666')+';font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">'+t.project+'</span> '+t.text+badge+'</div>';
     html += '</div>';
   });
-
   if (!html) html = '<p style="text-align:center;color:#3a3a3a;padding:20px;font-size:13px;">Nothing here. Nice work. 🏆</p>';
   document.getElementById('todo-list').innerHTML = html;
 }
-
 loadCCTodos();
 renderTodos();
 
-// ============================================================
-// STATS
-// ============================================================
 function renderStats() {
   var total = TODOS.length;
   var done = TODOS.filter(function(t){return t.done}).length;
   var open = total - done;
   var urgent = TODOS.filter(function(t){return !t.done && t.priority==='high'}).length;
   var pct = total > 0 ? Math.round((done/total)*100) : 0;
-
   document.getElementById('stats-row').innerHTML =
     '<div class="stat-card"><div class="stat-num" style="color:#d87a6a;">'+urgent+'</div><div class="stat-label">Urgent</div></div>' +
     '<div class="stat-card"><div class="stat-num">'+open+'</div><div class="stat-label">Open</div></div>' +
@@ -441,14 +495,6 @@ function renderStats() {
     '<div class="stat-card"><div class="stat-num" style="color:#c9a84c;">'+pct+'%</div><div class="stat-label">Progress</div></div>';
 }
 renderStats();
-
-// ============================================================
-// CAMERAS (placeholder - will wire when IPs available)
-// ============================================================
-function refreshCams() {
-  // Future: fetch snapshots from camsnap API
-  alert('No cameras configured yet. Send Vivian your camera IPs or RTSP stream URLs.');
-}
 </script>
 </body>
 </html>
