@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Ovens Methodology — The Arena</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
+  .page { max-width:800px; margin:0 auto; padding:20px; }
+  .back { display:inline-flex; align-items:center; gap:6px; color:#6b655e; text-decoration:none; font-size:13px; margin-bottom:20px; }
+  .back:hover { color:#c9a84c; }
+  h1 { font-family:'Playfair Display',serif; font-size:28px; color:#c9a84c; margin-bottom:8px; }
+  .subtitle { font-size:14px; color:#6b655e; margin-bottom:32px; }
+  .section { margin-bottom:36px; }
+  .section-title { font-size:14px; color:#c9a84c; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid rgba(201,168,76,.15); }
+  .content { font-size:15px; color:#d4cfc8; line-height:1.8; }
+  .content p { margin-bottom:12px; }
+  .content ul { padding-left:20px; margin-bottom:12px; }
+  .content li { margin-bottom:6px; }
+  .content strong { color:#f0ebe3; }
+  .callout { background:rgba(201,168,76,.06); border-left:3px solid #c9a84c; padding:14px 18px; border-radius:0 8px 8px 0; margin:16px 0; font-style:italic; color:#f0ebe3; }
+  .compare { display:flex; gap:12px; flex-wrap:wrap; margin:16px 0; }
+  .compare > div { flex:1; min-width:220px; border-radius:8px; padding:16px; }
+  .compare .wrong { background:rgba(184,60,48,.06); border:1px solid rgba(184,60,48,.15); }
+  .compare .right { background:rgba(74,140,92,.06); border:1px solid rgba(74,140,92,.15); }
+  .compare .tag { font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px; }
+  .compare .wrong .tag { color:#d87a6a; }
+  .compare .right .tag { color:#4a8c5c; }
+  .compare .ex { font-size:14px; font-style:italic; line-height:1.5; }
+  .compare .wrong .ex { color:#6b655e; }
+  .compare .right .ex { color:#f0ebe3; }
+  .cycle { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:20px 0; align-items:center; }
+  .cycle-step { background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.25); border-radius:10px; padding:14px 18px; text-align:center; }
+  .cycle-step .step-title { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .cycle-step .step-desc { font-size:13px; color:#d4cfc8; margin-top:4px; }
+  .cycle-arrow { color:#c9a84c; font-size:20px; }
+  .gap-visual { display:flex; gap:12px; flex-wrap:wrap; margin:20px 0; align-items:center; }
+  .gap-visual > div { flex:1; min-width:200px; border-radius:10px; padding:16px; }
+  .gap-current { background:rgba(184,60,48,.08); border:1px solid rgba(184,60,48,.2); }
+  .gap-dream { background:rgba(74,140,92,.08); border:1px solid rgba(74,140,92,.2); }
+  .gap-arrow { color:#c9a84c; font-size:28px; text-align:center; }
+  .layer { padding:8px 0; border-bottom:1px solid rgba(255,255,255,.03); }
+  .layer:last-child { border:none; }
+  .layer strong { color:#c9a84c; }
+  .principle { padding:8px 0; border-bottom:1px solid rgba(255,255,255,.03); }
+  .principle:last-child { border:none; }
+  .principle strong { color:#f0ebe3; }
+</style>
+</head>
+<body>
+<div class="page">
+  <a href="index.html" class="back">← Command Center</a>
+  <h1>Sam Ovens' Complete Methodology</h1>
+  <p class="subtitle">Consulting.com - The Operating System for Building a Consulting Business</p>
+
+  <!-- 1. AVATAR -->
+  <div class="section">
+    <div class="section-title">1. The Avatar - Get Specific Until It Hurts</div>
+    <div class="content">
+      <p>Don't say "business owners." Say "Mike, 58, owns a plumbing company doing $12M, has 85 employees, hasn't taken a real vacation in 6 years, his wife is pushing him to slow down, he got a call from a PE firm last month and didn't know what to say."</p>
+      <div class="callout">"Can you describe your ideal client so specifically that if they walked into a coffee shop, you'd recognize them?"</div>
+      <p>Your avatar isn't a demographic. It's a person with a specific pain at a specific moment in their life.</p>
+      <p><strong>Key questions to define your avatar:</strong></p>
+      <ul>
+        <li>What keeps them up at 2 AM?</li>
+        <li>What have they already tried that didn't work?</li>
+        <li>What would they pay almost anything to solve?</li>
+        <li>Where do they hang out (online and offline)?</li>
+        <li>What triggered them to start looking for help NOW?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. OFFER -->
+  <div class="section">
+    <div class="section-title">2. The Offer - Solve the Gap, Not the Symptom</div>
+    <div class="content">
+      <p>The offer isn't "exit advisory." The offer is the BRIDGE between where they are and where they want to be.</p>
+      <div class="gap-visual">
+        <div class="gap-current">
+          <div style="font-size:10px;color:#d87a6a;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Current State</div>
+          <div style="font-size:14px;color:#d4cfc8;margin-top:8px;line-height:1.5;">Working 60 hours. Can't take a week off. Worried about valuation. Business dies without them.</div>
+        </div>
+        <div class="gap-arrow">→</div>
+        <div class="gap-dream">
+          <div style="font-size:10px;color:#4a8c5c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Dream State</div>
+          <div style="font-size:14px;color:#d4cfc8;margin-top:8px;line-height:1.5;">90 days off. Business grows without them. Sell for 6-8x not 3x. Legacy protected.</div>
+        </div>
+      </div>
+      <div class="callout">The GAP between current and dream - THAT is what you're selling. Price is never the objection when the gap is clear. A $200K fee against a $3M valuation increase? No-brainer.</div>
+      <p><strong>Your offer must answer:</strong></p>
+      <ul>
+        <li>What specific result do they get?</li>
+        <li>In what timeframe?</li>
+        <li>What's included?</li>
+        <li>What makes it different from everything else they've seen?</li>
+        <li>Why should they trust YOU to deliver?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. ITERATION -->
+  <div class="section">
+    <div class="section-title">3. The Iteration Cycle - Scientific Method of Consulting</div>
+    <div class="content">
+      <p>No awesome offer was created on the first guess. It's ALL iterations.</p>
+      <div class="cycle">
+        <div class="cycle-step"><div class="step-title">Hypothesize</div><div class="step-desc">"I think X wants Y"</div></div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step"><div class="step-title">Test</div><div class="step-desc">Get on 10 calls</div></div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step"><div class="step-title">Feedback</div><div class="step-desc">What did THEY say?</div></div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step"><div class="step-title">Iterate</div><div class="step-desc">Adjust + repeat</div></div>
+      </div>
+      <p><strong>Diagnostic questions (don't sell - DIAGNOSE):</strong></p>
+      <ul>
+        <li>"What made you take this call today?"</li>
+        <li>"What have you tried before?"</li>
+        <li>"If we could wave a magic wand, what would your business look like in 18 months?"</li>
+        <li>"What's stopping you from getting there yourself?"</li>
+        <li>"What would solving this be worth to you?"</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. MESSAGING -->
+  <div class="section">
+    <div class="section-title">4. The Message - Mirror, Don't Manufacture</div>
+    <div class="content">
+      <p>Your marketing should sound like your client talking to their spouse at 11 PM.</p>
+      <div class="compare">
+        <div class="wrong"><div class="tag">❌ Wrong</div><div class="ex">"We provide comprehensive exit advisory services leveraging proven methodologies."</div></div>
+        <div class="right"><div class="tag">✓ Right</div><div class="ex">"You built this thing from nothing. You deserve to walk away on your terms, knowing it's in good hands and you got what it's worth."</div></div>
+      </div>
+      <div class="callout">The best copy is stolen - from your prospect's mouth. Every sales call, write down their exact phrases. Those become your ads, your emails, your VSL.</div>
+    </div>
+  </div>
+
+  <!-- 5. MVO -->
+  <div class="section">
+    <div class="section-title">5. Minimum Viable Offer - Pre-Sell Before You Build</div>
+    <div class="content">
+      <p>Don't build the full 18-month program and THEN sell it. Pre-sell the outcome, deliver the first phase, use that feedback to build the rest.</p>
+      <p><strong>For The Arena:</strong> Phase 1 (Align) is the minimum viable offer. Charge for it. Deliver it. Use Jet Lending's experience to refine Phases 2-4 before selling the full system to client #2.</p>
+      <div class="callout">Every single data point from Jet Lending is worth more than 100 hours of planning. Document everything. What worked. What they pushed back on. What made Eddie's eyes light up. That IS your product refinement.</div>
+      <p><strong>Provide as little of you and your time as possible.</strong> That's not lazy - that's scalable. Package the transformation, not the hours.</p>
+    </div>
+  </div>
+
+  <!-- 6. FIVE LAYERS -->
+  <div class="section">
+    <div class="section-title">6. The 5 Layers of Business</div>
+    <div class="content">
+      <div class="layer"><strong>Layer 1 - Awareness:</strong> Can you see your patterns, beliefs, and feedback loops clearly?</div>
+      <div class="layer"><strong>Layer 2 - Cognition:</strong> How do you think? Focus, prioritization, first principles.</div>
+      <div class="layer"><strong>Layer 3 - Principles:</strong> Rules of operation. One niche, one offer, pre-sell, market feedback over theory.</div>
+      <div class="layer"><strong>Layer 4 - Disciplines:</strong> Full-stack: product, marketing, sales, delivery, operations.</div>
+      <div class="layer"><strong>Layer 5 - Processes:</strong> Tools and workflows. Only after the foundation is solid.</div>
+    </div>
+  </div>
+
+  <!-- 7. FIRST PRINCIPLES -->
+  <div class="section">
+    <div class="section-title">7. First Principles - The Bedrock</div>
+    <div class="content">
+      <div class="principle"><strong>Market is the only lab.</strong> Your mind, friends, family are fiction when it comes to testing ideas. Only the market tells truth.</div>
+      <div class="principle"><strong>Foundation leverage.</strong> One small improvement in foundations = massive downstream impact.</div>
+      <div class="principle"><strong>Simplify to the equation.</strong> Everything boils down to math. Find the formula, optimize variables.</div>
+      <div class="principle"><strong>Data beats opinions.</strong> You can't scale what you can't measure. Track everything.</div>
+      <div class="principle"><strong>Week one before Facebook ads.</strong> Foundations before tactics. Always.</div>
+    </div>
+  </div>
+
+  <!-- 8. PRIORITY HIERARCHY -->
+  <div class="section">
+    <div class="section-title">8. Sam's Priority Hierarchy</div>
+    <div class="content">
+      <div class="principle"><strong style="color:#4a8c5c;">1. CLOSE DEALS</strong> - Anyone waiting on a proposal, follow-up, or decision? That's #1.</div>
+      <div class="principle"><strong style="color:#4a8c5c;">2. SALES CALLS</strong> - Anyone booked or ready to book? Get on the phone.</div>
+      <div class="principle"><strong style="color:#c9a84c;">3. OUTREACH</strong> - No deals in pipeline? 100 conversations is the only fix.</div>
+      <div class="principle"><strong style="color:#6b655e;">4. OFFER REFINEMENT</strong> - Getting on calls but not closing? Fix the offer.</div>
+      <div class="principle"><strong style="color:#6b655e;">5. CONTENT / SYSTEMS</strong> - Only after 1-4 are handled. Never first.</div>
+    </div>
+  </div>
+
+  <!-- 9. THE 6 PHASES -->
+  <div class="section">
+    <div class="section-title">9. Sam's 6 Phases</div>
+    <div class="content">
+      <div class="principle"><strong>Phase 1 - Mindset & Foundations:</strong> Clear vision, first principles, daily structure. ✓ Done</div>
+      <div class="principle"><strong>Phase 2 - Niche Selection:</strong> 55+ service business owners, $5-50M, ready to exit. ✓ Done</div>
+      <div class="principle"><strong>Phase 3 - Offer Creation:</strong> Transferable Exit System - $150-200K + success fee. ✓ Done</div>
+      <div class="principle"><strong style="color:#c9a84c;">Phase 4 - Organic Outreach:</strong> Direct conversations with qualified owners. Target: 100 conversations. ⚡ NOW</div>
+      <div class="principle"><strong style="color:#6a9fd8;">Phase 5 - Sales & Closing:</strong> Diagnostic calls, NDA, company info, close. Two-call system. Active</div>
+      <div class="principle"><strong style="color:#3a3a3a;">Phase 6 - Scale with Paid Traffic:</strong> Only after organic converts consistently. 🔒 Locked</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
