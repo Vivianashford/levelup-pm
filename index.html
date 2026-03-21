@@ -304,6 +304,7 @@ document.getElementById('pri-rules-list').innerHTML = priHTML;
 // NON-NEGOTIABLES
 // ============================================================
 var NN = [
+  { id:'bookofself', icon:'📖', label:'Book of Self', link:'book-of-self.html' },
   { id:'prayer', icon:'🙏', label:'Prayer' },
   { id:'abs', icon:'💪', label:'Abs' },
   { id:'back', icon:'💪', label:'Back' },
@@ -318,7 +319,7 @@ function renderNN() {
   var html = '';
   NN.forEach(function(n) {
     var done = state.done[n.id] || false;
-    html += '<div class="nn-pill '+(done?'checked':'')+'" onclick="toggleCCNN(\''+n.id+'\')">';
+    html += '<div class="nn-pill '+(done?'checked':'')+'" onclick="'+(n.link ? 'window.open(\''+n.link+'\',\'_blank\');' : '')+'toggleCCNN(\''+n.id+'\')">';
     html += '<div class="nn-dot"></div>';
     html += '<span class="nn-icon">'+n.icon+'</span>';
     html += '<span class="nn-label">'+n.label+'</span>';
