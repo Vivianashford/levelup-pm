@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alchemy of Self — Jean Louis Hardy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
+
+  .book { max-width:750px; margin:0 auto; padding:24px 20px 60px; }
+
+  /* HEADER */
+  .book-header { text-align:center; padding:40px 0 30px; border-bottom:2px solid #c9a84c; margin-bottom:32px; }
+  .book-header h1 { font-family:'Playfair Display',serif; font-size:36px; color:#c9a84c; letter-spacing:2px; }
+  .book-header .subtitle { font-size:13px; color:#6b655e; text-transform:uppercase; letter-spacing:4px; margin-top:8px; }
+  .book-header .instruction { font-size:14px; color:#9a9590; margin-top:16px; line-height:1.6; font-style:italic; max-width:500px; margin-left:auto; margin-right:auto; }
+
+  /* SECTIONS */
+  .section { margin-bottom:36px; }
+  .section-number { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:3px; font-weight:700; }
+  .section-title { font-family:'Playfair Display',serif; font-size:24px; color:#f0ebe3; margin:4px 0 16px; }
+  .section-body { font-size:15px; color:#d4cfc8; line-height:1.8; }
+  .section-body p { margin-bottom:14px; }
+
+  /* DIVIDER */
+  .divider { text-align:center; margin:40px 0; color:#c9a84c; font-size:18px; letter-spacing:8px; }
+
+  /* QUOTE BLOCK */
+  .quote-block { background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02)); border-left:3px solid #c9a84c; padding:20px 24px; margin:20px 0; border-radius:0 8px 8px 0; }
+  .quote-block p { font-family:'Playfair Display',serif; font-size:17px; color:#f0ebe3; line-height:1.6; font-style:italic; }
+
+  /* TRAIT */
+  .trait { padding:10px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+  .trait-name { font-weight:700; color:#c9a84c; font-size:14px; }
+  .trait-desc { font-size:14px; color:#d4cfc8; line-height:1.6; margin-top:2px; }
+
+  /* GOAL */
+  .goal { display:flex; align-items:flex-start; gap:10px; padding:8px 0; }
+  .goal-check { color:#c9a84c; font-size:16px; flex-shrink:0; margin-top:2px; }
+  .goal-text { font-size:15px; color:#d4cfc8; line-height:1.5; }
+
+  /* AFFIRMATION */
+  .affirmation { font-size:16px; color:#f0ebe3; line-height:1.8; margin-bottom:12px; padding-left:16px; border-left:2px solid rgba(201,168,76,.3); }
+
+  /* TIMELINE */
+  .timeline-item { display:flex; gap:16px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+  .timeline-marker { width:3px; background:linear-gradient(to bottom, #c9a84c, rgba(201,168,76,.2)); border-radius:2px; flex-shrink:0; }
+  .timeline-content { flex:1; }
+  .timeline-label { font-size:11px; color:#c9a84c; text-transform:uppercase; letter-spacing:1.5px; font-weight:600; }
+  .timeline-text { font-size:14px; color:#d4cfc8; line-height:1.5; margin-top:2px; }
+
+  /* DAILY ROUTINE */
+  .routine-step { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+  .routine-time { font-size:13px; color:#c9a84c; font-weight:600; min-width:70px; flex-shrink:0; }
+  .routine-action { font-size:14px; color:#d4cfc8; line-height:1.5; }
+
+  /* BELIEF CYCLE */
+  .cycle { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:20px 0; }
+  .cycle-node { background:rgba(201,168,76,.08); border:1px solid rgba(201,168,76,.25); border-radius:10px; padding:14px 20px; text-align:center; min-width:120px; }
+  .cycle-node .c-label { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; }
+  .cycle-node .c-text { font-size:13px; color:#d4cfc8; margin-top:4px; }
+  .cycle-arrow { display:flex; align-items:center; color:#c9a84c; font-size:20px; }
+
+  /* FOOTER */
+  .book-footer { text-align:center; padding:40px 0 20px; border-top:2px solid #c9a84c; margin-top:40px; }
+  .book-footer p { font-family:'Playfair Display',serif; font-size:16px; color:#c9a84c; }
+  .book-footer .small { font-size:12px; color:#4a4540; margin-top:8px; }
+
+  /* BACK LINK */
+  .back-link { display:inline-block; padding:8px 16px; font-size:12px; color:#6b655e; text-decoration:none; border:1px solid rgba(255,255,255,.06); border-radius:6px; margin-bottom:20px; }
+  .back-link:hover { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+
+  @media(max-width:600px) {
+    .book { padding:16px 14px 40px; }
+    .book-header h1 { font-size:28px; }
+    .section-title { font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="book">
+
+<a href="index.html" class="back-link">← Command Center</a>
+
+<!-- HEADER -->
+<div class="book-header">
+  <h1>Alchemy of Self</h1>
+  <div class="subtitle">The Book of Jean Louis Hardy</div>
+  <div class="instruction">First thing in the morning, as soon as you wake up, read this from start to finish. Remind yourself of what you will achieve with your life, who you are becoming, and the legacy you have already begun to leave. You are powerful beyond measure - Christ in you.</div>
+</div>
+
+<!-- I. IDENTITY -->
+<div class="section">
+  <div class="section-number">Chapter I</div>
+  <div class="section-title">The Jean Hardy Identity</div>
+  <div class="section-body">
+    <div class="quote-block">
+      <p>Multi-Millionaire, disciplined, relentless, Family Man, High Performance, Genius, Son of God, Theologian.</p>
+    </div>
+    <p><em>Thank God for the qualities and things.</em></p>
+  </div>
+</div>
+
+<!-- II. MANIFESTO -->
+<div class="section">
+  <div class="section-number">Chapter II</div>
+  <div class="section-title">Manifesto - Who is Jean Hardy?</div>
+  <div class="section-body">
+    <p>Jean Louis Hardy is a Multimillionaire entrepreneur. He is quiet and ever growing in unthinkable ways. He teaches those around him to have high self standards while being encouraging and bringing God glory.</p>
+    <p>He determines what needs, mindset, and culture you must have to succeed in the toughest times. His paradigm of business attracts the right people who are looking for growth both internally and externally. The name Jean Hardy is synonymous with highly profitable companies that flock for his advice on how to be successful in any market.</p>
+    <p>He had a prophetic dream that he would be rich beyond measure while a massive number of people were running toward air-planes that dropped 5 large towers and banks - and he drew strength from it.</p>
+    <p>He has mastered the art of growth, mergers and acquisitions, and negotiation. With this knowledge he has been consulting hundreds of thousands of people through online programs and in-person events, giving people the power to overcome at an accelerated pace as never seen before in their lives.</p>
+    <p>He lives in North Vancouver, drives an Audi R8 as his daily vehicle. His company ENG2 thrives. He is a father who teaches his kids about the importance of a strong relationship with God.</p>
+    <p>He is a founder, a leader with limitless potential. He opens doors and helps others find their proper value. He is headquartered in Burnaby, Canada, makes $100,000+ a year in sales profit. His private net worth exceeds $1 Billion USD.</p>
+    <p>He is on the front page of Fortune and Time magazine with multiple viral interviews, YouTube, and social networks. No one will stop him from achieving his goals. He believes in what he was told - to be like a lamb but military when needed.</p>
+    <p>He has two New York Times bestselling books on topics of building and loving God, management, as well as self-improvement. His world-class education in wealth creates GLORY.</p>
+    <p>He works harder than everybody else. He has a laser-led focus that works in comprehensive, connected studies - teachers, mentors, businessmen, philosophers, theologians, revolutionaries, performers, and the disciplined. He is smarter and greater. He follows through until the opportunity comes and seizes them.</p>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- III. THE STORY -->
+<div class="section">
+  <div class="section-number">Chapter III</div>
+  <div class="section-title">The Unfinished Story</div>
+  <div class="section-body">
+    <p><em>From broke in his parents' house to world leading Consultant, leading into a new way of building companies, reforming mindsets, beliefs, and changing an entire civilization's view on how to make money. The unfinished story of Jean Louis Hardy.</em></p>
+
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-label">The Beginning</div>
+        <div class="timeline-text">Started as a carpenter. Overcame homelessness.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-label">First Business</div>
+        <div class="timeline-text">Apex 2nd best in 1st year. Built a $2.69 million dollar business. Learned hard work.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-label">Growth</div>
+        <div class="timeline-text">Owned a marketing agency, grew the trade in sales Canada wide. Built systems. ENG2 office - Consulting, Marketing, Training, Forex. Metro Tower #3.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-label">More Growth</div>
+        <div class="timeline-text">Closed a deal - 220+ units. Over 2.4x increase. $336,000 salary. Moved to North Vancouver/Houston.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-label">The Next Chapters</div>
+        <div class="timeline-text">Value of $200+ million. Currency trading floor expanded for private investors only. The next chapters come soon...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- IV. THE MASTER ALGORITHM -->
+<div class="section">
+  <div class="section-number">Chapter IV</div>
+  <div class="section-title">The Master Algorithm of Growth</div>
+  <div class="section-body">
+    <p>Truth matters. What is true you must believe most, because with faith you will achieve. Your thoughts create your reality.</p>
+    <p>The universal theory of everything and the master algorithm of growth is:</p>
+
+    <div class="cycle">
+      <div class="cycle-node">
+        <div class="c-label">Beliefs</div>
+        <div class="c-text">Who am I becoming?</div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-node">
+        <div class="c-label">Actions</div>
+        <div class="c-text">Take massive action</div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-node">
+        <div class="c-label">Results</div>
+        <div class="c-text">Experience new reality</div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-node">
+        <div class="c-label">Feedback</div>
+        <div class="c-text">Listen and iterate</div>
+      </div>
+    </div>
+
+    <p>You must intercept at the beliefs stage, take massive action, line up with GOD, experience results, listen to feedback, and iterate again - each time perfecting the process in God's grace.</p>
+    <p>Where you are in life - your current situation - it is all what you're choosing. You built yourself and you're solely responsible for where you are right now and your future. There is no external force, no son of Adam, that defines you so no one can be blamed. It's your choice to follow or not.</p>
+    <p>Understand: you are designed to achieve your dreams but you must fight like heck to break towards them. If you want your heart's goals, turn actions into irrefutable beliefs. Be constantly aware. As humans there is conflict between the flesh and spirit - two forces at war like a waveform.</p>
+    <p>Most people's flesh is so strong it defines the role, pulling strings. But the spirit is exactly who God designed you to be - made in Christ's image, designed for precious decisions of righteousness. Change is always possible. Use mistakes to help refine you.</p>
+
+    <div class="quote-block">
+      <p>Important to remember: Intervene at the beliefs stage by changing your thoughts and beliefs. Take massive action in confidence with your new beliefs. Experience your new reality becoming. Experience feedback and adjust beliefs and actions accordingly.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- V. CHARACTER TRAITS -->
+<div class="section">
+  <div class="section-number">Chapter V</div>
+  <div class="section-title">Character Traits</div>
+  <div class="section-body">
+    <div class="trait">
+      <div class="trait-name">Awake</div>
+      <div class="trait-desc">Jean wakes up at 6:30 AM each day, works till 7 PM and is in bed by 10 PM.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Relentless</div>
+      <div class="trait-desc">Will stop at nothing to win and achieve his goals.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Fearless</div>
+      <div class="trait-desc">Not afraid of anything and has a pain tolerance like nobody else.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Punctual</div>
+      <div class="trait-desc">Jean is early to every appointment and is known for it. He always makes a good first impression and follows through.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Genius</div>
+      <div class="trait-desc">Extremely smart. Strives to be the smartest person in the world.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Powerful</div>
+      <div class="trait-desc">Carries confidence and presence. His enemies fear him.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Classy</div>
+      <div class="trait-desc">Presents himself well. Has impeccable style.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Consistent</div>
+      <div class="trait-desc">Continues until he gets the results he wants.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Focused</div>
+      <div class="trait-desc">Has zero distractions and is relentless in pursuit.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Disciplined</div>
+      <div class="trait-desc">Has full unshakable control at all times. Self-disciplined. Reformed the way business is done, set a new standard.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VI. TYPE & STYLE -->
+<div class="section">
+  <div class="section-number">Chapter VI</div>
+  <div class="section-title">Type and Style</div>
+  <div class="section-body">
+    <div class="trait">
+      <div class="trait-name">Haircut</div>
+      <div class="trait-desc">Short sides fade, long top finger length.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Dress</div>
+      <div class="trait-desc">2-3 piece suit, high-end. Looks like a million dollars.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Accessories</div>
+      <div class="trait-desc">Gold bracelet, ring, Oura ring.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Body</div>
+      <div class="trait-desc">81.6kg, built with wide shoulders, fit and healthy.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Grooming</div>
+      <div class="trait-desc">Clean cut with stubble. Cool, conquered.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-name">Brand</div>
+      <div class="trait-desc">Jean Louis Hardy: Black, white, helpful, unstoppable, credible, associated with excellence.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- VII. GOALS -->
+<div class="section">
+  <div class="section-number">Chapter VII</div>
+  <div class="section-title">Accumulated Wealth Goals</div>
+  <div class="section-body">
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">House in North Vancouver</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Owns a black and white Audi R8</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">$150,000 clear a month in pocket</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Net worth over $15 million as an individual</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Known as the best at internal and external growth and making money for self</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Everything is organized and simple, works like clockwork</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Have passionate, confident people around me who see the future of where we are going</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Accumulate a net worth of $700M+</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Publish two New York Times bestselling books on theology and building culture</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Front covers of Fortune and Forbes</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Friends with Sam Ovens</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Speaking engagements that change lives</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Mentor: Paul Getty (Pastor)</span></div>
+    <div class="goal"><span class="goal-check">◆</span><span class="goal-text">Give $200,000+ to God's work in 2022</span></div>
+  </div>
+</div>
+
+<!-- VIII. HEALTH & FITNESS -->
+<div class="section">
+  <div class="section-number">Chapter VIII</div>
+  <div class="section-title">Health and Fitness</div>
+  <div class="section-body">
+    <p>90.6kg, powerful looking body with abs and muscle definition. Glowing with natural energy and determination that is able to be turned on like a button.</p>
+    <p>Mental focus and clarity that is unrivaled by anyone else on earth, all day every day.</p>
+    <p>Free from unhealthy foods, habits, drinks, snacks, and behaviors. Drinks green smoothies daily.</p>
+    <p>Gym for 60+ minutes daily - builds body efficiently. Stretches, abs, legs, or run.</p>
+    <p>No alcohol, minimal sugar, lots of vegetables. Balanced diet with supplements.</p>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- IX. DAILY PROTOCOL -->
+<div class="section">
+  <div class="section-number">Chapter IX</div>
+  <div class="section-title">The Daily Protocol</div>
+  <div class="section-body">
+    <div class="routine-step">
+      <div class="routine-time">6:30 AM</div>
+      <div class="routine-action">Wake up. Remove blankets as a trigger. Send wife a text about something you're honored about her. Write one thing to your kids.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">Morning</div>
+      <div class="routine-action">Drink green smoothie. Feet touch the floor, put on headphones, listen to music. Take a shower.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">Prayer</div>
+      <div class="routine-action">Pray in the spirit for 1 hour. Read a chapter of the Bible. Read a page of a business book.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">Affirm</div>
+      <div class="routine-action">Say affirmations and visualize. In point form - whatever comes to mind, say them out loud. Pre-read reminders of goals.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">30 Min</div>
+      <div class="routine-action">Intense workout inside. Stretches, abs, legs, or run.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">Plan</div>
+      <div class="routine-action">Review Google and Apple calendar, what needs to be done. Map everything over to planner. Fill in the dates and Core 4.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">All Day</div>
+      <div class="routine-action">Take massive violent action all day long. Execute like you want it. Be ready to look fear and procrastination in the eyes. Make it a race, a dance - feel no pain. Do it.</div>
+    </div>
+    <div class="routine-step">
+      <div class="routine-time">10:00 PM</div>
+      <div class="routine-action">Lying in bed, complete notes on tasks. What did you do? What do you need to work on? W/L examination. Sleep time, mood, and what you learned - write it down. How you felt (anger, happy, other).</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- X. AFFIRMATIONS -->
+<div class="section">
+  <div class="section-number">Chapter X</div>
+  <div class="section-title">Jean Hardy's Affirmations</div>
+  <div class="section-body">
+    <div class="affirmation">I always think and act today. I feel heroic, confident, and exhilarated knowing my actions today will create momentum tomorrow and the next day until I am unstoppable.</div>
+    <div class="affirmation">I am free of all fear. Rejection is a necessary thing to achieve success. Without it I am nothing - strong-minded and energized.</div>
+    <div class="affirmation">I am good enough. I am smart, helpful, and worthy of taking up anybody's time. I am who I am. Nothing makes me uncomfortable.</div>
+    <div class="affirmation">I am an optimist. Failures are exciting and heroic. I am very proud of being judged. I never compare myself to other people.</div>
+    <div class="affirmation">I am happy and I imagine the deepest, greatest things about myself. This is not untrue - this is unleashed.</div>
+    <div class="affirmation">I love calling prospects and customers on the phone. Each call is a new opportunity to build a relationship and help someone out. Every day I start at an incredible level of positive expectation.</div>
+    <div class="affirmation">Right now, where I am in my life, is getting better and more prosperous because I am producing more service. I am destined to close every deal.</div>
+    <div class="affirmation">When a door closes one way, I find another choice - a well-spoken one. No money was wasted. I am courageous. I am extremely wealthy.</div>
+    <div class="affirmation">I find it easy. I am constantly improving personally and professionally - goal setting, business, finances, and exercise. I am in perfect health and have an amazing body. Gym, sauna - I feel the benefits.</div>
+    <div class="affirmation">Income and abundance flow to me naturally. I can't wait to wake up. Success is guaranteed for the way I look and operate. It is overwhelmingly abundant - inevitable.</div>
+    <div class="affirmation">My thirst for being first - as soon as I open my eyes I have discipline, composure, and I have made the best of the hour. In the spirit of Christ I am powerful and so fulfilled in Jesus' name.</div>
+    <div class="affirmation">I get internal growth and skills in 6 weeks. God gives me a spirit of wisdom, revelation, and knowledge of Him. I am wise, the most efficient. I keep my own space neat and tidy.</div>
+    <div class="affirmation">I manage my time daily with an unwavering routine. I plan and enjoy. I manage months, weeks, days, and hours deliberately. I am relentless, disciplined, hitting $150,000 a month.</div>
+    <div class="affirmation">Gratitude is in my heart - for large and small things in my life. I am like a child in my inability to feel sorry for myself. I get back up. I learn. I am determined.</div>
+    <div class="affirmation">I am a leader, a CEO. I am transparent.</div>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- XI. PERSONAL STANDARDS -->
+<div class="section">
+  <div class="section-number">Chapter XI</div>
+  <div class="section-title">Personal Standards</div>
+  <div class="section-body">
+    <p>Fearless. Not afraid of any man or situation in the world. Truly unshakable.</p>
+    <p>Lives in tight compartments - only focused on now.</p>
+    <p>Consistent action towards goals, unceasing. Not an hour goes by without momentum.</p>
+    <p>Punctual. Never misses a deadline or appointment. Never loses a battle or gives in.</p>
+    <p>Responsible. Watches every dollar made. Makes sure he is always financially solid.</p>
+    <p>Wake up at 6:30 AM. Start work at 10 AM, laser-focused, violent action till 7 PM. Then bed by 10 PM.</p>
+    <p>Today. Living in the present, only the now.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="book-footer">
+  <p>Jean Louis Hardy</p>
+  <div class="small">Read this every morning. Become this every day.</div>
+  <div class="small" style="margin-top:16px;color:#3a3530;">Originally created as "Book of Self Workbook" in Keynote, March 2020</div>
+</div>
+
+</div>
+
+</body>
+</html>
