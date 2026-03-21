@@ -3,202 +3,452 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level Up With Anna — Project Dashboard</title>
+<title>Command Center — Jean Hardy</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
 
-  .header { padding:30px 24px 20px; border-bottom:1px solid rgba(201,168,76,.15); }
-  .header h1 { font-family:'Playfair Display',serif; font-size:24px; color:#c9a84c; }
-  .header .sub { font-size:13px; color:#6b655e; margin-top:4px; }
-  .header .updated { font-size:11px; color:#4a4540; margin-top:8px; }
+  .cc { max-width:1200px; margin:0 auto; padding:16px; }
 
-  .dashboard { max-width:900px; margin:0 auto; padding:20px; }
+  /* HEADER */
+  .cc-header { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:16px; }
+  .cc-header h1 { font-family:'Playfair Display',serif; font-size:24px; color:#c9a84c; }
+  .cc-header .date { font-size:13px; color:#6b655e; }
+  .cc-header .time { font-size:20px; color:#f0ebe3; font-weight:600; font-variant-numeric:tabular-nums; }
+
+  /* GRID */
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:800px) { .grid { grid-template-columns:1fr; } }
+
+  /* CARDS */
+  .card { background:#111; border:1px solid rgba(255,255,255,.06); border-radius:12px; overflow:hidden; }
+  .card-head { display:flex; align-items:center; justify-content:space-between; padding:14px 16px 10px; border-bottom:1px solid rgba(255,255,255,.04); }
+  .card-title { font-size:11px; text-transform:uppercase; letter-spacing:2px; font-weight:700; }
+  .card-body { padding:12px 16px 16px; }
+
+  .t-gold { color:#c9a84c; }
+  .t-blue { color:#6a9fd8; }
+  .t-green { color:#4a8c5c; }
+  .t-red { color:#d87a6a; }
+  .t-purple { color:#8b7fd8; }
+
+  /* QUICK LINKS */
+  .links-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .qlink { display:flex; align-items:center; gap:8px; padding:10px 12px; background:rgba(255,255,255,.03); border-radius:8px; text-decoration:none; color:#d4cfc8; font-size:13px; transition:all .15s; border:1px solid transparent; }
+  .qlink:hover { background:rgba(201,168,76,.08); border-color:rgba(201,168,76,.2); color:#f0ebe3; }
+  .qlink .icon { font-size:16px; width:24px; text-align:center; flex-shrink:0; }
+  .qlink .label { line-height:1.3; }
+  .qlink .sub { font-size:10px; color:#4a4540; display:block; }
+
+  /* CAMERA */
+  .cam-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .cam-slot { background:#0a0a0a; border-radius:8px; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; flex-direction:column; border:1px dashed rgba(255,255,255,.08); position:relative; overflow:hidden; }
+  .cam-slot img { width:100%; height:100%; object-fit:cover; border-radius:8px; }
+  .cam-slot .cam-label { position:absolute; bottom:6px; left:8px; font-size:10px; color:#c9a84c; background:rgba(0,0,0,.7); padding:2px 8px; border-radius:4px; }
+  .cam-placeholder { font-size:11px; color:#3a3a3a; text-align:center; }
+  .cam-placeholder span { font-size:28px; display:block; margin-bottom:4px; }
+  .cam-refresh { font-size:11px; color:#4a4540; cursor:pointer; padding:4px 10px; border:1px solid rgba(255,255,255,.06); border-radius:6px; background:none; }
+  .cam-refresh:hover { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+
+  /* TODO MINI */
+  .todo-mini { max-height:400px; overflow-y:auto; }
+  .todo-mini::-webkit-scrollbar { width:4px; }
+  .todo-mini::-webkit-scrollbar-thumb { background:#2a2a2a; border-radius:4px; }
+  .tm-item { display:flex; align-items:flex-start; gap:8px; padding:7px 8px; border-radius:6px; cursor:pointer; transition:background .15s; }
+  .tm-item:hover { background:rgba(255,255,255,.03); }
+  .tm-check { width:16px; height:16px; border:2px solid #3a3a3a; border-radius:3px; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+  .tm-item.done .tm-check { background:#4a8c5c; border-color:#4a8c5c; }
+  .tm-item.done .tm-check::after { content:'✓'; color:#fff; font-size:9px; font-weight:700; }
+  .tm-item.done .tm-text { text-decoration:line-through; color:#3a3a3a; }
+  .tm-text { font-size:13px; color:#d4cfc8; line-height:1.3; }
+  .tm-badge { font-size:9px; font-weight:700; text-transform:uppercase; padding:1px 5px; border-radius:3px; margin-left:4px; vertical-align:middle; }
+  .b-high { background:rgba(184,60,48,.15); color:#b83c30; }
+  .b-med { background:rgba(201,168,76,.12); color:#c9a84c; }
+  .tm-section { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; padding:8px 8px 4px; }
+  .tm-count { font-size:11px; color:#4a4540; }
+  .view-all { display:block; text-align:center; padding:10px; font-size:12px; color:#c9a84c; text-decoration:none; border-top:1px solid rgba(255,255,255,.04); margin-top:8px; }
+  .view-all:hover { color:#f0ebe3; }
 
   /* STATS ROW */
-  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:28px; }
-  .stat-card { background:#141414; border:1px solid rgba(201,168,76,.12); border-radius:10px; padding:16px; text-align:center; }
-  .stat-num { font-family:'Playfair Display',serif; font-size:32px; color:#c9a84c; }
-  .stat-label { font-size:11px; color:#6b655e; text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+  .stats-row { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+  .stat-card { flex:1; min-width:100px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:14px 16px; text-align:center; }
+  .stat-num { font-size:28px; font-weight:700; color:#f0ebe3; }
+  .stat-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:#6b655e; margin-top:2px; }
 
-  /* SECTION */
-  .section { margin-bottom:28px; }
-  .section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(201,168,76,.1); }
-  .section-title { font-size:13px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; font-weight:600; }
-  .section-count { font-size:12px; color:#6b655e; }
+  /* FOCUS */
+  .focus-banner { background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03)); border:1px solid rgba(201,168,76,.2); border-radius:12px; padding:16px 20px; margin-bottom:16px; }
+  .focus-label { font-size:10px; color:#c9a84c; text-transform:uppercase; letter-spacing:2px; font-weight:700; }
+  .focus-text { font-family:'Playfair Display',serif; font-size:18px; color:#f0ebe3; margin-top:4px; line-height:1.4; }
+  .focus-sub { font-size:12px; color:#6b655e; margin-top:4px; }
 
-  /* EXPENSE TABLE */
-  .expense-row { display:grid; grid-template-columns:1fr 100px 100px 90px; gap:8px; padding:10px 12px; background:#141414; border:1px solid rgba(255,255,255,.04); border-radius:8px; margin-bottom:6px; align-items:center; font-size:13px; }
-  .expense-row:hover { border-color:rgba(201,168,76,.2); }
-  .expense-name { color:#f0ebe3; font-weight:500; }
-  .expense-amount { color:#c9a84c; font-weight:600; text-align:right; }
-  .expense-date { color:#9a9590; text-align:right; }
-  .expense-status { text-align:center; }
-  .expense-header { color:#6b655e; font-weight:600; text-transform:uppercase; font-size:10px; letter-spacing:1px; background:transparent; border:none; }
+  /* NON-NEGOTIABLES MINI */
+  .nn-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  .nn-pill { display:flex; align-items:center; gap:6px; padding:8px 14px; background:#111; border:1px solid rgba(255,255,255,.06); border-radius:20px; cursor:pointer; transition:all .15s; font-size:13px; }
+  .nn-pill.checked { border-color:rgba(74,140,92,.4); background:rgba(74,140,92,.08); }
+  .nn-pill .nn-icon { font-size:16px; }
+  .nn-pill .nn-label { color:#9a9590; }
+  .nn-pill.checked .nn-label { color:#4a8c5c; text-decoration:line-through; }
+  .nn-pill .nn-dot { width:12px; height:12px; border:2px solid #3a3a3a; border-radius:3px; }
+  .nn-pill.checked .nn-dot { background:#4a8c5c; border-color:#4a8c5c; }
 
-  /* STATUS BADGES */
-  .badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
-  .badge-due { background:rgba(201,168,76,.15); color:#c9a84c; }
-  .badge-paid { background:rgba(74,140,92,.15); color:#4a8c5c; }
-  .badge-overdue { background:rgba(184,60,48,.15); color:#b83c30; }
-  .badge-upcoming { background:rgba(100,100,120,.15); color:#8888aa; }
+  /* FULL WIDTH CARD */
+  .full-width { grid-column: 1 / -1; }
 
-  /* ARTICLE TABLE */
-  .article-row { display:grid; grid-template-columns:1fr 90px 90px; gap:8px; padding:10px 12px; background:#141414; border:1px solid rgba(255,255,255,.04); border-radius:8px; margin-bottom:6px; align-items:center; font-size:13px; }
-  .article-row:hover { border-color:rgba(201,168,76,.2); }
-  .article-title { color:#f0ebe3; font-weight:500; }
-  .article-title a { color:#f0ebe3; text-decoration:none; }
-  .article-title a:hover { color:#c9a84c; text-decoration:underline; }
-  .article-platform { color:#6b655e; font-size:11px; }
-  .article-header { color:#6b655e; font-weight:600; text-transform:uppercase; font-size:10px; letter-spacing:1px; background:transparent; border:none; }
+  /* ACTIVITY FEED */
+  .feed-item { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.03); }
+  .feed-item:last-child { border:none; }
+  .feed-dot { width:8px; height:8px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .feed-text { font-size:13px; color:#d4cfc8; line-height:1.4; }
+  .feed-time { font-size:11px; color:#4a4540; }
 
-  .badge-published { background:rgba(74,140,92,.15); color:#4a8c5c; }
-  .badge-draft { background:rgba(201,168,76,.15); color:#c9a84c; }
-  .badge-writing { background:rgba(100,140,200,.15); color:#6a9fd8; }
-  .badge-idea { background:rgba(100,100,120,.15); color:#8888aa; }
-
-  /* MOBILE */
-  @media(max-width:600px) {
-    .expense-row { grid-template-columns:1fr 80px; }
-    .expense-date, .expense-status { display:none; }
-    .article-row { grid-template-columns:1fr 80px; }
-    .stat-card { padding:12px 8px; }
-    .stat-num { font-size:26px; }
-  }
+  /* TAB NAV */
+  .tab-nav { display:flex; gap:4px; margin-bottom:12px; }
+  .tab-btn { padding:6px 14px; font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:600; border:1px solid rgba(255,255,255,.06); border-radius:6px; background:none; color:#6b655e; cursor:pointer; transition:all .15s; }
+  .tab-btn.active { background:rgba(201,168,76,.1); border-color:rgba(201,168,76,.3); color:#c9a84c; }
 </style>
 </head>
 <body>
 
-<div class="dashboard">
-  <div class="header">
-    <h1>Level Up With Anna</h1>
-    <div class="sub">Project Dashboard</div>
-    <div class="updated" id="last-updated"></div>
+<div class="cc">
+  <!-- HEADER -->
+  <div class="cc-header">
+    <div>
+      <h1>Command Center</h1>
+      <div class="date" id="cc-date"></div>
+    </div>
+    <div style="text-align:right;">
+      <div class="time" id="cc-time"></div>
+      <div class="date">Houston, TX</div>
+    </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats" id="stats-row"></div>
+  <!-- NON-NEGOTIABLES -->
+  <div class="nn-row" id="nn-row"></div>
 
-  <!-- UPCOMING EXPENSES -->
-  <div class="section" id="expenses-section">
-    <div class="section-head">
-      <span class="section-title">Upcoming Expenses</span>
-      <span class="section-count" id="expense-count"></span>
-    </div>
-    <div class="expense-row expense-header">
-      <span>Description</span>
-      <span style="text-align:right">Amount</span>
-      <span style="text-align:right">Due</span>
-      <span style="text-align:center">Status</span>
-    </div>
-    <div id="expense-list"></div>
+  <!-- FOCUS BANNER -->
+  <div class="focus-banner">
+    <div class="focus-label">⚡ Flow Block Priority</div>
+    <div class="focus-text" id="focus-text">Grant + George follow-ups: Data room, one-sheets, Zoom link</div>
+    <div class="focus-sub" id="focus-sub">4 action items due TODAY from yesterday's calls</div>
   </div>
 
-  <!-- ARTICLES -->
-  <div class="section" id="articles-section">
-    <div class="section-head">
-      <span class="section-title">Content Tracker</span>
-      <span class="section-count" id="article-count"></span>
+  <!-- STATS ROW -->
+  <div class="stats-row" id="stats-row"></div>
+
+  <!-- MAIN GRID -->
+  <div class="grid">
+
+    <!-- QUICK LINKS -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title t-gold">🔗 Quick Links</span>
+        <span class="card-title t-gold" style="font-size:9px;opacity:.5;">ARENA + OPS</span>
+      </div>
+      <div class="card-body">
+        <div class="tab-nav" id="link-tabs">
+          <button class="tab-btn active" onclick="showLinkTab('arena')">Arena</button>
+          <button class="tab-btn" onclick="showLinkTab('tools')">Tools</button>
+          <button class="tab-btn" onclick="showLinkTab('clients')">Clients</button>
+          <button class="tab-btn" onclick="showLinkTab('personal')">Personal</button>
+        </div>
+        <div class="links-grid" id="links-container"></div>
+      </div>
     </div>
-    <div class="article-row article-header">
-      <span>Title</span>
-      <span style="text-align:center">Status</span>
-      <span style="text-align:center">Platform</span>
+
+    <!-- CAMERAS -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title t-blue">📷 Cameras</span>
+        <button class="cam-refresh" onclick="refreshCams()">Refresh</button>
+      </div>
+      <div class="card-body">
+        <div class="cam-grid" id="cam-grid">
+          <div class="cam-slot">
+            <div class="cam-placeholder"><span>📷</span>Camera 1<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
+          </div>
+          <div class="cam-slot">
+            <div class="cam-placeholder"><span>📷</span>Camera 2<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
+          </div>
+          <div class="cam-slot">
+            <div class="cam-placeholder"><span>📷</span>Camera 3<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
+          </div>
+          <div class="cam-slot">
+            <div class="cam-placeholder"><span>📷</span>Camera 4<br><span style="font-size:9px;color:#2a2a2a;">Not configured</span></div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:#3a3530;margin-top:10px;text-align:center;">Send Vivian your camera IPs or RTSP URLs to connect</p>
+      </div>
     </div>
-    <div id="article-list"></div>
+
+    <!-- TODO LIST -->
+    <div class="card full-width">
+      <div class="card-head">
+        <span class="card-title t-green">✅ Action Items</span>
+        <div style="display:flex;gap:6px;">
+          <button class="tab-btn active" onclick="filterTodos('all')" id="ft-all">All</button>
+          <button class="tab-btn" onclick="filterTodos('high')" id="ft-high">Urgent</button>
+          <button class="tab-btn" onclick="filterTodos('arena')" id="ft-arena">Arena</button>
+          <button class="tab-btn" onclick="filterTodos('tofc')" id="ft-tofc">TOFC</button>
+          <button class="tab-btn" onclick="filterTodos('ops')" id="ft-ops">Ops</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="todo-mini" id="todo-list"></div>
+        <a href="todo.html" class="view-all">Open Full Todo List →</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <script>
 // ============================================================
-// DATA — Edit this section to update the dashboard
+// CLOCK
 // ============================================================
-var DATA = {
-  lastUpdated: "March 20, 2026 — 6:30 AM CDT",
+function updateClock() {
+  var now = new Date();
+  document.getElementById('cc-time').textContent = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true });
+  document.getElementById('cc-date').textContent = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+}
+updateClock();
+setInterval(updateClock, 1000);
 
-  expenses: [
-    { name: "Asim Zahoor — Accounting/Reconciliation", amount: 432, due: "2026-04-03", status: "upcoming" },
+// ============================================================
+// NON-NEGOTIABLES
+// ============================================================
+var NN = [
+  { id:'prayer', icon:'🙏', label:'Prayer' },
+  { id:'abs', icon:'💪', label:'Abs' },
+  { id:'back', icon:'💪', label:'Back' },
+  { id:'legs', icon:'🦵', label:'Legs' },
+  { id:'pullups', icon:'💪', label:'Pull-ups' }
+];
+
+function renderNN() {
+  var today = new Date().toDateString();
+  var state = JSON.parse(localStorage.getItem('cc-nn') || '{}');
+  if (state.date !== today) state = { date:today, done:{} };
+  
+  var html = '';
+  NN.forEach(function(n) {
+    var done = state.done[n.id] || false;
+    html += '<div class="nn-pill '+(done?'checked':'')+'" onclick="toggleCCNN(\''+n.id+'\')">';
+    html += '<div class="nn-dot"></div>';
+    html += '<span class="nn-icon">'+n.icon+'</span>';
+    html += '<span class="nn-label">'+n.label+'</span>';
+    html += '</div>';
+  });
+  document.getElementById('nn-row').innerHTML = html;
+}
+
+function toggleCCNN(id) {
+  var today = new Date().toDateString();
+  var state = JSON.parse(localStorage.getItem('cc-nn') || '{}');
+  if (state.date !== today) state = { date:today, done:{} };
+  state.done[id] = !state.done[id];
+  localStorage.setItem('cc-nn', JSON.stringify(state));
+  renderNN();
+}
+
+renderNN();
+
+// ============================================================
+// QUICK LINKS
+// ============================================================
+var LINKS = {
+  arena: [
+    { icon:'🌐', label:'Landing Page', sub:'thearenapartners.com', url:'https://thearenapartners.com' },
+    { icon:'📖', label:'The Last Chapter', sub:'Book reader', url:'https://thearenapartners.com/book.html' },
+    { icon:'🎬', label:'VSL Watch Page', sub:'Video sales letter', url:'https://thearenapartners.com/watch.html' },
+    { icon:'📊', label:'Exit Assessment', sub:'Risk scoring tool', url:'https://thearenapartners.com/assessment.html' },
+    { icon:'📋', label:'Dashboard', sub:'Metrics + pipeline', url:'https://thearenapartners.com/dashboard.html' },
+    { icon:'🔒', label:'NDA Signing', sub:'Mutual NDA e-sign', url:'https://thearenapartners.com/nda.html' },
+    { icon:'🏢', label:'Company Info Form', sub:'Client intake', url:'https://thearenapartners.com/company-info.html' },
+    { icon:'📤', label:'Upload Portal', sub:'Secure data room', url:'https://thearenapartners.com/upload.html' },
+    { icon:'📅', label:'Book a Call', sub:'Diagnostic calendar', url:'https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod' },
+    { icon:'💳', label:'Stripe Dashboard', sub:'Payments', url:'https://dashboard.stripe.com' },
   ],
-
-  articles: [
-    // STATUS: published | draft | writing | idea
-    { title: "The Google Test: What Prospects Find When They Search Your Name", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/the-google-test-what-prospects-find.html", date: "2026-03-17" },
-    { title: "How PR Builds Trust Before the First Meeting", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/how-pr-builds-trust-before-the-first-meeting.html", date: "2026-03-17" },
-    { title: "The Crisis Management Playbook", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/crisis-management-playbook.html", date: "2026-03-18" },
-    { title: "The Ripple Effect: How One Media Mention Can Transform Your Business", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/the-ripple-effect-media-mentions.html", date: "2026-03-18" },
-    { title: "How to Choose the Right PR Package for Your Business", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/how-to-choose-the-right-pr-package.html", date: "2026-03-18" },
-    { title: "Why Your Business Needs PR Before It Needs More Revenue", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/why-your-business-needs-pr-before-revenue.html", date: "2026-03-19" },
-    { title: "Why Personal Branding Is the New Business Card", status: "published", platform: "GitHub Pages", link: "https://vivianashford.github.io/levelup-anna-blog/why-personal-branding-is-the-new-business-card.html", date: "2026-03-19" },
+  tools: [
+    { icon:'⚙️', label:'GHL CRM', sub:'GoHighLevel', url:'https://app.gohighlevel.com' },
+    { icon:'📧', label:'Gmail', sub:'jean@eng2.ca', url:'https://mail.google.com' },
+    { icon:'📅', label:'Google Calendar', sub:'Schedule', url:'https://calendar.google.com' },
+    { icon:'💬', label:'Slack', sub:'Team comms', url:'https://app.slack.com' },
+    { icon:'📹', label:'Zoom', sub:'Video calls', url:'https://zoom.us/meeting' },
+    { icon:'🎙️', label:'Fireflies.ai', sub:'Meeting transcripts', url:'https://app.fireflies.ai' },
+    { icon:'🎤', label:'Pocket', sub:'Voice recordings', url:'https://app.heypocketai.com' },
+    { icon:'🐙', label:'GitHub', sub:'Code repos', url:'https://github.com/Vivianashford' },
+    { icon:'📝', label:'Canva', sub:'Design', url:'https://www.canva.com' },
+    { icon:'👑', label:'Monarch', sub:'Finances', url:'https://app.monarchmoney.com' },
+  ],
+  clients: [
+    { icon:'🏗️', label:'Grant', sub:'Data room + one-sheet due', url:'#' },
+    { icon:'📣', label:'George', sub:'George de Curve Communications', url:'#' },
+    { icon:'🏦', label:'Eddie Gant', sub:'Jet Lending - $4K deposit', url:'#' },
+    { icon:'🔧', label:'TOFC', sub:'Inventory + Claude bot', url:'#' },
+    { icon:'🪟', label:'SSC Glass', sub:'Michael + partner', url:'#' },
+    { icon:'📈', label:'Dennis', sub:'90-day vs 12-month one-sheet', url:'#' },
+    { icon:'🏗️', label:'Sebastian', sub:'PNC financing', url:'#' },
+    { icon:'🌿', label:'Eden (Daniel + Jonah)', sub:'VTM workshop pitch', url:'#' },
+  ],
+  personal: [
+    { icon:'📰', label:'Level Up PM', sub:'Todo + articles', url:'https://vivianashford.github.io/levelup-pm/todo.html' },
+    { icon:'🐦', label:'Twitter/X', sub:'@jeanhardy', url:'https://x.com' },
+    { icon:'📸', label:'Instagram', sub:'Content', url:'https://instagram.com' },
+    { icon:'💼', label:'LinkedIn', sub:'Network', url:'https://linkedin.com' },
+    { icon:'🏦', label:'Track One / Cracking Capital', sub:'Operating Partner role', url:'#' },
+    { icon:'✈️', label:'Visa Application', sub:'Get Paul to sign', url:'#' },
   ]
 };
 
-// ============================================================
-// RENDER
-// ============================================================
-function render() {
-  // Last updated
-  document.getElementById('last-updated').textContent = 'Last updated: ' + DATA.lastUpdated;
+var currentLinkTab = 'arena';
 
-  // Stats
-  var published = DATA.articles.filter(function(a){return a.status==='published'}).length;
-  var draft = DATA.articles.filter(function(a){return a.status==='draft'}).length;
-  var writing = DATA.articles.filter(function(a){return a.status==='writing'}).length;
-  var ideas = DATA.articles.filter(function(a){return a.status==='idea'}).length;
-  var totalExpenses = DATA.expenses.reduce(function(s,e){return s+e.amount},0);
-
-  var statsHTML = '';
-  statsHTML += '<div class="stat-card"><div class="stat-num">'+DATA.articles.length+'</div><div class="stat-label">Total Articles</div></div>';
-  statsHTML += '<div class="stat-card"><div class="stat-num">'+published+'</div><div class="stat-label">Published</div></div>';
-  statsHTML += '<div class="stat-card"><div class="stat-num">'+writing+'</div><div class="stat-label">In Progress</div></div>';
-  statsHTML += '<div class="stat-card"><div class="stat-num">'+draft+'</div><div class="stat-label">Drafts</div></div>';
-  statsHTML += '<div class="stat-card"><div class="stat-num">$'+totalExpenses.toLocaleString()+'</div><div class="stat-label">Expenses</div></div>';
-  document.getElementById('stats-row').innerHTML = statsHTML;
-
-  // Expenses
-  document.getElementById('expense-count').textContent = DATA.expenses.length + ' items';
-  var expHTML = '';
-  DATA.expenses.forEach(function(e) {
-    var badgeClass = 'badge-' + e.status;
-    var dueDate = new Date(e.due+'T00:00:00');
-    var now = new Date();
-    if (e.status !== 'paid' && dueDate < now) badgeClass = 'badge-overdue';
-    var dateStr = dueDate.toLocaleDateString('en-US', {month:'short',day:'numeric'});
-    expHTML += '<div class="expense-row">';
-    expHTML += '<span class="expense-name">'+e.name+'</span>';
-    expHTML += '<span class="expense-amount">$'+e.amount.toLocaleString()+'</span>';
-    expHTML += '<span class="expense-date">'+dateStr+'</span>';
-    expHTML += '<span class="expense-status"><span class="badge '+badgeClass+'">'+e.status+'</span></span>';
-    expHTML += '</div>';
-  });
-  document.getElementById('expense-list').innerHTML = expHTML;
-
-  // Articles - sort: writing first, then draft, then published (newest first)
-  var sorted = DATA.articles.slice().sort(function(a,b) {
-    var order = {writing:0, draft:1, idea:2, published:3};
-    var oa = order[a.status]||9, ob = order[b.status]||9;
-    if (oa !== ob) return oa - ob;
-    return (b.date||'').localeCompare(a.date||'');
-  });
-
-  document.getElementById('article-count').textContent = published+' published · '+writing+' in progress · '+draft+' drafts · '+ideas+' ideas';
-  var artHTML = '';
-  sorted.forEach(function(a) {
-    artHTML += '<div class="article-row">';
-    if (a.link) {
-      artHTML += '<span class="article-title"><a href="'+a.link+'" target="_blank">'+a.title+'</a></span>';
-    } else {
-      artHTML += '<span class="article-title">'+a.title+'</span>';
-    }
-    artHTML += '<span style="text-align:center"><span class="badge badge-'+a.status+'">'+a.status+'</span></span>';
-    artHTML += '<span class="article-platform" style="text-align:center">'+a.platform+'</span>';
-    artHTML += '</div>';
-  });
-  document.getElementById('article-list').innerHTML = artHTML;
+function showLinkTab(tab) {
+  currentLinkTab = tab;
+  document.querySelectorAll('#link-tabs .tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  event.target.classList.add('active');
+  renderLinks();
 }
 
-render();
+function renderLinks() {
+  var items = LINKS[currentLinkTab] || [];
+  var html = '';
+  items.forEach(function(l) {
+    html += '<a class="qlink" href="'+l.url+'" target="_blank">';
+    html += '<span class="icon">'+l.icon+'</span>';
+    html += '<span class="label">'+l.label+'<span class="sub">'+l.sub+'</span></span>';
+    html += '</a>';
+  });
+  document.getElementById('links-container').innerHTML = html;
+}
+renderLinks();
+
+// ============================================================
+// TODOS (same data as todo.html)
+// ============================================================
+var TODOS = [
+  { text:"Send Grant the data room + one-sheet", project:"arena", priority:"high", done:false },
+  { text:"Set up Zoom link for Grant deep-dive", project:"arena", priority:"high", done:false },
+  { text:"Email Grant: exit strategy partnership next steps", project:"arena", priority:"high", done:false },
+  { text:"Email George the one-sheet for feedback", project:"arena", priority:"high", done:false },
+  { text:"Request inventory email blast from Marie (3,000 contacts)", project:"tofc", priority:"high", done:false },
+  { text:"Update inventory sheet with bottom-line prices", project:"tofc", priority:"high", done:false },
+  { text:"Send intro email to Stephanie (Jet Lending)", project:"arena", priority:"high", done:false },
+  { text:"Sign up for ClickUp", project:"ops", priority:"high", done:false },
+  { text:"Get Paul to sign visa application", project:"personal", priority:"high", done:false },
+  { text:"Clear Nikil's invoices", project:"ops", priority:"high", done:false },
+  { text:"Confirm AJ (famous.ai) — 900+ press releases", project:"levelup", priority:"high", done:false },
+  { text:"Set up data center", project:"ops", priority:"high", done:false },
+  { text:"Invite Michael (SSC Glass) + partner to Tuesday event", project:"arena", priority:"high", done:false },
+  { text:"Refine VTM workshop framing (pride-based)", project:"arena", priority:"med", done:false },
+  { text:"Draft Vision Traction Workshop pitch for Eden", project:"arena", priority:"med", done:false },
+  { text:"Record VSL video (deck v2 ready as teleprompter)", project:"arena", priority:"med", done:false },
+  { text:"Build training materials framework", project:"arena", priority:"med", done:false },
+  { text:"Switch TOFC bot to Claude API", project:"tofc", priority:"med", done:false },
+  { text:"Follow up with Eddie Gant on marked-up document", project:"arena", priority:"med", done:false },
+  { text:"Create one-sheet: 90-day vs 12-month for Dennis", project:"arena", priority:"med", done:false },
+  { text:"Re-auth Google OAuth (gog auth login)", project:"ops", priority:"med", done:false },
+  { text:"Collect bank statements for Asim (accounting)", project:"levelup", priority:"med", done:false },
+  { text:"Share data room materials with Mallika, Selena, James", project:"arena", priority:"med", done:false },
+  { text:"Rewrite funnel landing page copy (pride-based)", project:"arena", priority:"med", done:false },
+  { text:"Text Brandon re: Grant's regards", project:"arena", priority:"low", done:false },
+  { text:"Schedule coffee with George (next Vancouver trip)", project:"arena", priority:"low", done:false },
+  { text:"Coordinate PNC + Max financing docs (Sebastian)", project:"arena", priority:"low", done:false },
+  { text:"Document OpenClaw agent setup for team scaling", project:"ops", priority:"low", done:false },
+  { text:"Send Vivian Fireflies.ai API key", project:"ops", priority:"low", done:false },
+  { text:"Confirm Operating Partner role (Track One)", project:"personal", priority:"low", done:false },
+  { text:"Follow up with Ken/Saud on PE role", project:"personal", priority:"low", done:false },
+];
+
+var currentFilter = 'all';
+
+function loadCCTodos() {
+  var state = JSON.parse(localStorage.getItem('cc-todo-state') || '{}');
+  Object.keys(state).forEach(function(i) {
+    if (TODOS[parseInt(i)]) TODOS[parseInt(i)].done = state[i];
+  });
+}
+
+function saveCCTodos() {
+  var state = {};
+  TODOS.forEach(function(t,i) { if(t.done) state[i] = true; });
+  localStorage.setItem('cc-todo-state', JSON.stringify(state));
+}
+
+function toggleCCTodo(idx) {
+  TODOS[idx].done = !TODOS[idx].done;
+  saveCCTodos();
+  renderTodos();
+  renderStats();
+}
+
+function filterTodos(f) {
+  currentFilter = f;
+  document.querySelectorAll('[id^="ft-"]').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('ft-'+f).classList.add('active');
+  renderTodos();
+}
+
+function renderTodos() {
+  var filtered = TODOS.filter(function(t,i) {
+    t._idx = i;
+    if (t.done) return false;
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'high') return t.priority === 'high';
+    return t.project === currentFilter;
+  });
+
+  // Sort: high first
+  var pOrder = {high:0, med:1, low:2};
+  filtered.sort(function(a,b){ return (pOrder[a.priority]||9) - (pOrder[b.priority]||9); });
+
+  var projColors = { arena:'#c9a84c', tofc:'#d87a6a', ops:'#4a8c5c', levelup:'#6a9fd8', personal:'#8b7fd8' };
+
+  var html = '';
+  filtered.forEach(function(t) {
+    var badge = '';
+    if (t.priority === 'high') badge = '<span class="tm-badge b-high">urgent</span>';
+    else if (t.priority === 'med') badge = '<span class="tm-badge b-med">today</span>';
+    
+    html += '<div class="tm-item" onclick="toggleCCTodo('+t._idx+')">';
+    html += '<div class="tm-check"></div>';
+    html += '<div class="tm-text"><span style="color:'+(projColors[t.project]||'#666')+';font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">'+t.project+'</span> '+t.text+badge+'</div>';
+    html += '</div>';
+  });
+
+  if (!html) html = '<p style="text-align:center;color:#3a3a3a;padding:20px;font-size:13px;">Nothing here. Nice work. 🏆</p>';
+  document.getElementById('todo-list').innerHTML = html;
+}
+
+loadCCTodos();
+renderTodos();
+
+// ============================================================
+// STATS
+// ============================================================
+function renderStats() {
+  var total = TODOS.length;
+  var done = TODOS.filter(function(t){return t.done}).length;
+  var open = total - done;
+  var urgent = TODOS.filter(function(t){return !t.done && t.priority==='high'}).length;
+  var pct = total > 0 ? Math.round((done/total)*100) : 0;
+
+  document.getElementById('stats-row').innerHTML =
+    '<div class="stat-card"><div class="stat-num" style="color:#d87a6a;">'+urgent+'</div><div class="stat-label">Urgent</div></div>' +
+    '<div class="stat-card"><div class="stat-num">'+open+'</div><div class="stat-label">Open</div></div>' +
+    '<div class="stat-card"><div class="stat-num" style="color:#4a8c5c;">'+done+'</div><div class="stat-label">Done</div></div>' +
+    '<div class="stat-card"><div class="stat-num" style="color:#c9a84c;">'+pct+'%</div><div class="stat-label">Progress</div></div>';
+}
+renderStats();
+
+// ============================================================
+// CAMERAS (placeholder - will wire when IPs available)
+// ============================================================
+function refreshCams() {
+  // Future: fetch snapshots from camsnap API
+  alert('No cameras configured yet. Send Vivian your camera IPs or RTSP stream URLs.');
+}
 </script>
 </body>
 </html>
