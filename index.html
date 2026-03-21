@@ -239,6 +239,48 @@
 
 <script src="sam-system.js"></script>
 <script>
+// LOAD LIVE DATA FROM data.json
+fetch('data.json?t='+Date.now())
+  .then(function(r){return r.json()})
+  .then(function(d){
+    // Scoreboard
+    if(d.scoreboard){
+      document.getElementById('sc-convos').textContent=d.scoreboard.conversations||0;
+      document.getElementById('sc-calls').textContent=d.scoreboard.calls_booked||0;
+      document.getElementById('sc-pipeline').textContent=d.scoreboard.pipeline||0;
+      var rev=d.scoreboard.revenue||0;
+      document.getElementById('sc-closed').textContent=rev>=1000?'$'+Math.round(rev/1000)+'K':'$'+rev;
+    }
+    // Pipeline stages
+    if(d.arena_pipeline){
+      var ap=d.arena_pipeline;
+      var stageMap={leads:ap.new_lead||0,contacted:ap.contacted||0,call:ap.proposal||0,proposal:ap.proposal||0,closed:ap.closed||0};
+      ['leads','contacted','call','proposal','closed'].forEach(function(st){
+        var el=document.getElementById('ps-'+st);
+        var num=stageMap[st]||0;
+        el.querySelector('.pipe-num').textContent=num;
+        if(num>0)el.classList.add(st==='closed'?'closed':'has');
+      });
+    }
+    // Funnel stats - add to scoreboard subtitle
+    if(d.funnel){
+      var vslLeads=d.funnel['vsl-lead']||0;
+      var ndaSigned=d.funnel['nda-signed']||0;
+      if(vslLeads>0){
+        var el=document.getElementById('sc-pipeline');
+        el.parentNode.querySelector('.score-sub').textContent=vslLeads+' VSL leads';
+      }
+    }
+    // Show last updated
+    if(d.updated_local){
+      var updEl=document.createElement('div');
+      updEl.style.cssText='text-align:center;font-size:10px;color:#3a3a3a;margin-bottom:12px;';
+      updEl.textContent='Live data: '+d.updated_local;
+      document.querySelector('.score-row').insertAdjacentElement('afterend',updEl);
+    }
+  })
+  .catch(function(e){console.log('data.json not loaded:',e)});
+
 // CLOCK
 function tick(){
   var n=new Date();
