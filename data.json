@@ -1,0 +1,45 @@
+{
+  "updated": "2026-03-21T21:37:05.389170+00:00",
+  "updated_local": "2026-03-21 04:37 PM",
+  "scoreboard": {
+    "conversations": 0,
+    "calls_booked": 0,
+    "pipeline": 0,
+    "revenue": 0
+  },
+  "arena_pipeline": {
+    "new_lead": 0,
+    "contacted": 0,
+    "proposal": 0,
+    "closed": 0,
+    "no_show": 0,
+    "nurture": 0,
+    "total": 0,
+    "total_value": 0
+  },
+  "book_pipeline": {
+    "opt_in": 0,
+    "hot_leads": 0,
+    "appointment_booked": 0,
+    "showed": 0,
+    "no_show": 0,
+    "total": 0
+  },
+  "funnel": {
+    "vsl-lead": 0,
+    "vsl-watched-25": 0,
+    "vsl-watched-50": 0,
+    "vsl-watched-75": 0,
+    "vsl-watched-100": 0,
+    "vsl-booked": 0,
+    "nda-signed": 0,
+    "company-info-submitted": 0
+  },
+  "contacts": {
+    "total": 0,
+    "real": 0
+  },
+  "appointments": {
+    "upcoming": 0
+  }
+}
