@@ -468,6 +468,19 @@ function toggleFB(id) {
 }
 
 renderFeedback();
+
+// Methodology toggle
+function toggleMethodology() {
+  var el = document.getElementById('methodology-body');
+  var tog = document.getElementById('method-toggle');
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+    tog.textContent = '▴ Collapse';
+  } else {
+    el.style.display = 'none';
+    tog.textContent = '▾ Expand';
+  }
+}
 </script>
 
 <!-- SAM'S FEEDBACK STATION -->
@@ -549,6 +562,164 @@ renderFeedback();
         <div style="font-size:16px;font-weight:700;color:#3a3a3a;">6</div>
         <div style="font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#3a3a3a;margin-top:2px;">Scale</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAM'S COMPLETE METHODOLOGY -->
+<div class="dashboard" style="margin-top:24px;">
+  <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden;margin-bottom:16px;">
+    <div style="padding:14px 16px 10px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;" onclick="toggleMethodology()">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#c9a84c;">🧠 Sam Ovens' Complete Methodology - Consulting.com</span>
+      <span style="float:right;color:#6b655e;font-size:12px;" id="method-toggle">▾ Expand</span>
+    </div>
+    <div id="methodology-body" style="display:none;padding:16px 20px 24px;">
+
+      <!-- 1. AVATAR -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">1. The Avatar - Get Specific Until It Hurts</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <p style="margin-bottom:10px;">Don't say "business owners." Say "Mike, 58, owns a plumbing company doing $12M, has 85 employees, hasn't taken a real vacation in 6 years, his wife is pushing him to slow down, he got a call from a PE firm last month and didn't know what to say."</p>
+          <div style="background:rgba(201,168,76,.06);border-left:3px solid #c9a84c;padding:12px 16px;border-radius:0 6px 6px 0;margin:12px 0;">
+            <p style="margin:0;font-style:italic;color:#f0ebe3;">"Can you describe your ideal client so specifically that if they walked into a coffee shop, you'd recognize them?"</p>
+          </div>
+          <p style="margin-top:10px;">Your avatar isn't a demographic. It's a person with a specific pain at a specific moment in their life.</p>
+          <p style="margin-top:10px;"><strong style="color:#f0ebe3;">Key questions to define your avatar:</strong></p>
+          <ul style="padding-left:20px;margin-top:6px;">
+            <li>What keeps them up at 2 AM?</li>
+            <li>What have they already tried that didn't work?</li>
+            <li>What would they pay almost anything to solve?</li>
+            <li>Where do they hang out (online and offline)?</li>
+            <li>What triggered them to start looking for help NOW?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. OFFER -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">2. The Offer - Solve the Gap, Not the Symptom</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <p style="margin-bottom:10px;">The offer isn't "exit advisory." The offer is the BRIDGE between where they are and where they want to be.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;">
+            <div style="flex:1;min-width:200px;background:rgba(184,60,48,.08);border:1px solid rgba(184,60,48,.2);border-radius:8px;padding:14px;">
+              <div style="font-size:10px;color:#d87a6a;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Current State</div>
+              <div style="font-size:13px;color:#d4cfc8;margin-top:6px;line-height:1.5;">Working 60 hours. Can't take a week off. Worried about valuation. Business dies without them.</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#c9a84c;font-size:24px;padding:0 4px;">→</div>
+            <div style="flex:1;min-width:200px;background:rgba(74,140,92,.08);border:1px solid rgba(74,140,92,.2);border-radius:8px;padding:14px;">
+              <div style="font-size:10px;color:#4a8c5c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Dream State</div>
+              <div style="font-size:13px;color:#d4cfc8;margin-top:6px;line-height:1.5;">90 days off. Business grows without them. Sell for 6-8x not 3x. Legacy protected.</div>
+            </div>
+          </div>
+          <div style="background:rgba(201,168,76,.06);border-left:3px solid #c9a84c;padding:12px 16px;border-radius:0 6px 6px 0;margin:12px 0;">
+            <p style="margin:0;font-style:italic;color:#f0ebe3;">The GAP between current and dream - THAT is what you're selling. Price is never the objection when the gap is clear. A $200K fee against a $3M valuation increase? No-brainer.</p>
+          </div>
+          <p style="margin-top:10px;"><strong style="color:#f0ebe3;">Your offer must answer:</strong></p>
+          <ul style="padding-left:20px;margin-top:6px;">
+            <li>What specific result do they get?</li>
+            <li>In what timeframe?</li>
+            <li>What's included?</li>
+            <li>What makes it different from everything else they've seen?</li>
+            <li>Why should they trust YOU to deliver?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. ITERATION -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">3. The Iteration Cycle - Scientific Method of Consulting</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <p style="margin-bottom:10px;">No awesome offer was created on the first guess. It's ALL iterations.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center;">
+            <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px 16px;text-align:center;">
+              <div style="font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Hypothesize</div>
+              <div style="font-size:12px;color:#d4cfc8;margin-top:4px;">"I think X wants Y"</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#c9a84c;">→</div>
+            <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px 16px;text-align:center;">
+              <div style="font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Test</div>
+              <div style="font-size:12px;color:#d4cfc8;margin-top:4px;">Get on 10 calls</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#c9a84c;">→</div>
+            <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px 16px;text-align:center;">
+              <div style="font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Feedback</div>
+              <div style="font-size:12px;color:#d4cfc8;margin-top:4px;">What did THEY say?</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#c9a84c;">→</div>
+            <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px 16px;text-align:center;">
+              <div style="font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;font-weight:700;">Iterate</div>
+              <div style="font-size:12px;color:#d4cfc8;margin-top:4px;">Adjust + repeat</div>
+            </div>
+          </div>
+          <p style="margin-top:10px;"><strong style="color:#f0ebe3;">Diagnostic questions (don't sell - DIAGNOSE):</strong></p>
+          <ul style="padding-left:20px;margin-top:6px;">
+            <li>"What made you take this call today?"</li>
+            <li>"What have you tried before?"</li>
+            <li>"If we could wave a magic wand, what would your business look like in 18 months?"</li>
+            <li>"What's stopping you from getting there yourself?"</li>
+            <li>"What would solving this be worth to you?"</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. MESSAGING -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">4. The Message - Mirror, Don't Manufacture</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <p style="margin-bottom:10px;">Your marketing should sound like your client talking to their spouse at 11 PM.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;">
+            <div style="flex:1;min-width:200px;background:rgba(184,60,48,.06);border:1px solid rgba(184,60,48,.15);border-radius:8px;padding:14px;">
+              <div style="font-size:10px;color:#d87a6a;text-transform:uppercase;letter-spacing:1px;font-weight:700;">❌ Wrong</div>
+              <div style="font-size:13px;color:#6b655e;margin-top:6px;font-style:italic;">"We provide comprehensive exit advisory services leveraging proven methodologies."</div>
+            </div>
+            <div style="flex:1;min-width:200px;background:rgba(74,140,92,.06);border:1px solid rgba(74,140,92,.15);border-radius:8px;padding:14px;">
+              <div style="font-size:10px;color:#4a8c5c;text-transform:uppercase;letter-spacing:1px;font-weight:700;">✓ Right</div>
+              <div style="font-size:13px;color:#f0ebe3;margin-top:6px;font-style:italic;">"You built this thing from nothing. You deserve to walk away on your terms, knowing it's in good hands and you got what it's worth."</div>
+            </div>
+          </div>
+          <div style="background:rgba(201,168,76,.06);border-left:3px solid #c9a84c;padding:12px 16px;border-radius:0 6px 6px 0;margin:12px 0;">
+            <p style="margin:0;font-style:italic;color:#f0ebe3;">The best copy is stolen - from your prospect's mouth. Every sales call, write down their exact phrases. Those become your ads, your emails, your VSL.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. MINIMUM VIABLE OFFER -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">5. Minimum Viable Offer - Pre-Sell Before You Build</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <p style="margin-bottom:10px;">Don't build the full 18-month program and THEN sell it. Pre-sell the outcome, deliver the first phase, use that feedback to build the rest.</p>
+          <p><strong style="color:#f0ebe3;">For The Arena:</strong> Phase 1 (Align) is the minimum viable offer. Charge for it. Deliver it. Use Jet Lending's experience to refine Phases 2-4 before selling the full system to client #2.</p>
+          <div style="background:rgba(201,168,76,.06);border-left:3px solid #c9a84c;padding:12px 16px;border-radius:0 6px 6px 0;margin:12px 0;">
+            <p style="margin:0;font-style:italic;color:#f0ebe3;">Every single data point from Jet Lending is worth more than 100 hours of planning. Document everything. What worked. What they pushed back on. What made Eddie's eyes light up. That IS your product refinement.</p>
+          </div>
+          <p style="margin-top:10px;"><strong style="color:#f0ebe3;">Provide as little of you and your time as possible.</strong> That's not lazy - that's scalable. Package the transformation, not the hours.</p>
+        </div>
+      </div>
+
+      <!-- 6. FIVE LAYERS -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">6. The 5 Layers of Business</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#c9a84c;">Layer 1 - Awareness:</strong> Can you see your patterns, beliefs, and feedback loops clearly?</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#c9a84c;">Layer 2 - Cognition:</strong> How do you think? Focus, prioritization, first principles.</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#c9a84c;">Layer 3 - Principles:</strong> Rules of operation. One niche, one offer, pre-sell, market feedback over theory.</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#c9a84c;">Layer 4 - Disciplines:</strong> Full-stack: product, marketing, sales, delivery, operations.</div>
+          <div style="padding:6px 0;"><strong style="color:#c9a84c;">Layer 5 - Processes:</strong> Tools and workflows. Only after the foundation is solid.</div>
+        </div>
+      </div>
+
+      <!-- 7. FIRST PRINCIPLES -->
+      <div>
+        <div style="font-size:13px;color:#c9a84c;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.15);">7. First Principles - The Bedrock</div>
+        <div style="font-size:14px;color:#d4cfc8;line-height:1.7;">
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#f0ebe3;">Market is the only lab.</strong> Your mind, friends, family are fiction when it comes to testing ideas. Only the market tells truth.</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#f0ebe3;">Foundation leverage.</strong> One small improvement in foundations = massive downstream impact.</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#f0ebe3;">Simplify to the equation.</strong> Everything boils down to math. Find the formula, optimize variables.</div>
+          <div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);"><strong style="color:#f0ebe3;">Data beats opinions.</strong> You can't scale what you can't measure. Track everything.</div>
+          <div style="padding:6px 0;"><strong style="color:#f0ebe3;">Week one before Facebook ads.</strong> Foundations before tactics. Always.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
