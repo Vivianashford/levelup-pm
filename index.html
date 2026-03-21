@@ -110,6 +110,8 @@
   .tm-badge { font-size:9px; font-weight:700; text-transform:uppercase; padding:1px 5px; border-radius:3px; margin-left:4px; vertical-align:middle; }
   .b-high { background:rgba(184,60,48,.15); color:#b83c30; }
   .b-med { background:rgba(201,168,76,.12); color:#c9a84c; }
+  .b-rate { background:rgba(74,140,92,.12); color:#4a8c5c; }
+  .b-ops { background:rgba(100,100,120,.08); color:#6b655e; }
   .view-all { display:block; text-align:center; padding:10px; font-size:12px; color:#c9a84c; text-decoration:none; border-top:1px solid rgba(255,255,255,.04); margin-top:8px; }
   .view-all:hover { color:#f0ebe3; }
 
@@ -409,36 +411,39 @@ renderLinks();
 // TODOS
 // ============================================================
 var TODOS = [
-  { text:"Send Grant the data room + one-sheet", project:"arena", priority:"high" },
-  { text:"Set up Zoom link for Grant deep-dive", project:"arena", priority:"high" },
-  { text:"Email Grant: exit strategy partnership next steps", project:"arena", priority:"high" },
-  { text:"Email George the one-sheet for feedback", project:"arena", priority:"high" },
-  { text:"Request inventory email blast from Marie (3,000 contacts)", project:"tofc", priority:"high" },
-  { text:"Update inventory sheet with bottom-line prices", project:"tofc", priority:"high" },
-  { text:"Send intro email to Stephanie (Jet Lending)", project:"arena", priority:"high" },
-  { text:"Sign up for ClickUp", project:"ops", priority:"high" },
-  { text:"Get Paul to sign visa application", project:"personal", priority:"high" },
-  { text:"Clear Nikil's invoices", project:"ops", priority:"high" },
-  { text:"Confirm AJ (famous.ai) - 900+ press releases", project:"levelup", priority:"high" },
-  { text:"Set up data center", project:"ops", priority:"high" },
-  { text:"Invite Michael (SSC Glass) + partner to Tuesday event", project:"arena", priority:"high" },
-  { text:"Refine VTM workshop framing (pride-based)", project:"arena", priority:"med" },
-  { text:"Draft Vision Traction Workshop pitch for Eden", project:"arena", priority:"med" },
-  { text:"Record VSL video (deck v2 ready)", project:"arena", priority:"med" },
-  { text:"Build training materials framework", project:"arena", priority:"med" },
-  { text:"Switch TOFC bot to Claude API", project:"tofc", priority:"med" },
-  { text:"Follow up with Eddie Gant on marked-up document", project:"arena", priority:"med" },
-  { text:"Create one-sheet: 90-day vs 12-month for Dennis", project:"arena", priority:"med" },
-  { text:"Re-auth Google OAuth", project:"ops", priority:"med" },
-  { text:"Collect bank statements for Asim", project:"levelup", priority:"med" },
-  { text:"Share data room with Mallika, Selena, James", project:"arena", priority:"med" },
-  { text:"Text Brandon re: Grant's regards", project:"arena", priority:"low" },
-  { text:"Schedule coffee with George (Vancouver)", project:"arena", priority:"low" },
-  { text:"Coordinate PNC + Max docs (Sebastian)", project:"arena", priority:"low" },
-  { text:"Document agent setup for team scaling", project:"ops", priority:"low" },
-  { text:"Send Vivian Fireflies API key", project:"ops", priority:"low" },
-  { text:"Confirm Operating Partner role (Track One)", project:"personal", priority:"low" },
-  { text:"Follow up with Ken/Saud on PE role", project:"personal", priority:"low" },
+  // REVENUE - CLOSING ($5,000+/hr)
+  { text:"Send Grant the data room + one-sheet", project:"arena", priority:"high", rev:true, rate:"$5,000+/hr" },
+  { text:"Set up Zoom link for Grant deep-dive", project:"arena", priority:"high", rev:true, rate:"$5,000+/hr" },
+  { text:"Email Grant: exit strategy next steps", project:"arena", priority:"high", rev:true, rate:"$5,000+/hr" },
+  { text:"Email George the one-sheet for feedback", project:"arena", priority:"high", rev:true, rate:"$2,500/hr" },
+  { text:"Send intro email to Stephanie (Jet Lending)", project:"arena", priority:"high", rev:true, rate:"$2,000/hr" },
+  { text:"Invite Michael (SSC Glass) + partner to Tuesday", project:"arena", priority:"high", rev:true, rate:"$2,000/hr" },
+  // REVENUE - PIPELINE ($500-$2,000/hr)
+  { text:"Follow up with Eddie Gant on markup", project:"arena", priority:"med", rev:true, rate:"$2,000/hr" },
+  { text:"Request inventory blast from Marie (3K contacts)", project:"tofc", priority:"high", rev:true, rate:"$1,000/hr" },
+  { text:"Record VSL video (deck v2 ready)", project:"arena", priority:"med", rev:true, rate:"$1,000/hr" },
+  { text:"Update inventory sheet with prices", project:"tofc", priority:"high", rev:true, rate:"$500/hr" },
+  { text:"Draft VTM Workshop pitch for Eden", project:"arena", priority:"med", rev:true, rate:"$500/hr" },
+  { text:"Create one-sheet for Dennis", project:"arena", priority:"med", rev:true, rate:"$500/hr" },
+  { text:"Streamline oil sector sales cycle", project:"arena", priority:"med", rev:true, rate:"$500/hr" },
+  // SYSTEMS ($50-$100/hr) - DELEGATE TO VIVIAN
+  { text:"Refine VTM workshop framing", project:"arena", priority:"med", rev:false, rate:"$100/hr" },
+  { text:"Rewrite funnel landing page", project:"arena", priority:"med", rev:false, rate:"$50/hr" },
+  { text:"Build training materials framework", project:"arena", priority:"med", rev:false, rate:"$50/hr" },
+  { text:"Share data room with team", project:"arena", priority:"med", rev:false, rate:"$50/hr" },
+  // OPS ($25/hr) - DELEGATE OR BATCH
+  { text:"Sign up for ClickUp", project:"ops", priority:"high", rev:false, rate:"$25/hr" },
+  { text:"Clear Nikil's invoices", project:"ops", priority:"high", rev:false, rate:"$25/hr" },
+  { text:"Re-auth Google OAuth", project:"ops", priority:"med", rev:false, rate:"$25/hr" },
+  { text:"Set up data center", project:"ops", priority:"high", rev:false, rate:"$25/hr" },
+  { text:"Confirm AJ (famous.ai) - press releases", project:"levelup", priority:"high", rev:false, rate:"$25/hr" },
+  { text:"Collect bank statements for Asim", project:"levelup", priority:"med", rev:false, rate:"$25/hr" },
+  { text:"Send Vivian Fireflies API key", project:"ops", priority:"low", rev:false, rate:"$25/hr" },
+  // PERSONAL
+  { text:"Get Paul to sign visa application", project:"personal", priority:"high", rev:false, rate:"$0/hr" },
+  { text:"Update Book of Self for 2026", project:"personal", priority:"med", rev:false, rate:"$0/hr" },
+  { text:"Confirm Operating Partner role", project:"personal", priority:"low", rev:true, rate:"$200/hr" },
+  { text:"Follow up with Ken/Saud on PE role", project:"personal", priority:"low", rev:true, rate:"$100/hr" },
 ];
 TODOS.forEach(function(t){ t.done = false; });
 
@@ -483,9 +488,14 @@ function renderTodos() {
     var badge = '';
     if (t.priority === 'high') badge = '<span class="tm-badge b-high">urgent</span>';
     else if (t.priority === 'med') badge = '<span class="tm-badge b-med">today</span>';
+    var rateBadge = '';
+    if (t.rate) {
+      var rc = t.rev ? 'b-rate' : 'b-ops';
+      rateBadge = '<span class="tm-badge '+rc+'">'+(t.rev?'💰':'⚙️')+' '+t.rate+'</span>';
+    }
     html += '<div class="tm-item" onclick="toggleCCTodo('+t._idx+')">';
     html += '<div class="tm-check"></div>';
-    html += '<div class="tm-text"><span style="color:'+(projColors[t.project]||'#666')+';font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">'+t.project+'</span> '+t.text+badge+'</div>';
+    html += '<div class="tm-text"><span style="color:'+(projColors[t.project]||'#666')+';font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">'+t.project+'</span> '+t.text+badge+rateBadge+'</div>';
     html += '</div>';
   });
   if (!html) html = '<p style="text-align:center;color:#3a3a3a;padding:20px;font-size:13px;">Nothing here. Nice work. 🏆</p>';

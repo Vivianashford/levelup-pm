@@ -55,6 +55,9 @@
   .p-high { background:rgba(184,60,48,.15); color:#b83c30; }
   .p-med { background:rgba(201,168,76,.12); color:#c9a84c; }
   .p-low { background:rgba(100,100,120,.1); color:#6b655e; }
+  .todo-rate { font-size:10px; font-weight:600; padding:1px 6px; border-radius:3px; margin-left:4px; }
+  .rate-rev { background:rgba(74,140,92,.15); color:#4a8c5c; }
+  .rate-ops { background:rgba(100,100,120,.08); color:#6b655e; }
 
   /* DONE SECTION */
   .done-section { margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,.04); }
@@ -130,79 +133,57 @@ var DATA = {
   ],
 
   todos: [
-    // ===== ARENA =====
-    // ===== ARENA =====
-    // From Grant call (March 19) - HIGH PRIORITY
-    { text: "Send Grant the data room + one-sheet", project: "arena", priority: "high", done: false, meta: "📞 Grant call. 🤖 Vivian can build the data room page + one-sheet PDF. Just say go." },
-    { text: "Set up Zoom link for Grant deep-dive", project: "arena", priority: "high", done: false, meta: "📞 Grant call. 🤖 Vivian can create Zoom link + send calendar invite if you give Grant's email." },
-    { text: "Email Grant: exit strategy partnership next steps", project: "arena", priority: "high", done: false, meta: "📞 Pocket action item. 🤖 Vivian has draft email ready from Pocket. Say 'send Grant email' to review + fire." },
-    
-    // From George call (March 19)
-    { text: "Email George the one-sheet for feedback", project: "arena", priority: "high", done: false, meta: "📞 George call. 🤖 Vivian can send to george@georgedecurvecommunications.com. Same one-sheet as Grant." },
-    { text: "Schedule coffee with George next time in Vancouver", project: "arena", priority: "low", done: false, meta: "📞 Pocket. Low urgency — park until next Van trip." },
+    // ===== ARENA — CLOSING / SALES (Revenue: $150K-$200K per close) =====
+    { text: "Send Grant the data room + one-sheet", project: "arena", priority: "high", done: false, rev: true, rate: "$5,000+/hr", meta: "💰 REVENUE. Moves Grant toward $150-200K close. 🤖 Vivian builds it. Jean sends it." },
+    { text: "Set up Zoom link for Grant deep-dive", project: "arena", priority: "high", done: false, rev: true, rate: "$5,000+/hr", meta: "💰 REVENUE. Direct path to close. 🤖 Vivian creates link + invite." },
+    { text: "Email Grant: exit strategy partnership next steps", project: "arena", priority: "high", done: false, rev: true, rate: "$5,000+/hr", meta: "💰 REVENUE. Follow-up = fortune. 🤖 Vivian has draft ready." },
+    { text: "Email George the one-sheet for feedback", project: "arena", priority: "high", done: false, rev: true, rate: "$2,500/hr", meta: "💰 REVENUE. Referral partner - multiplies deal flow. 🤖 Vivian sends." },
+    { text: "Send intro email to Stephanie (Jet Lending)", project: "arena", priority: "high", done: false, rev: true, rate: "$2,000/hr", meta: "💰 REVENUE. CFO restructuring - $4K deposit to start. Eddie setting up Zoom." },
+    { text: "Follow up with Eddie Gant on marked-up document", project: "arena", priority: "med", done: false, rev: true, rate: "$2,000/hr", meta: "💰 REVENUE. $4K deposit, $7M capital deadline Apr 7. Weekend markup coming." },
+    { text: "Request inventory email blast from Marie (3,000 contacts)", project: "tofc", priority: "high", done: false, rev: true, rate: "$1,000/hr", meta: "💰 REVENUE. 3,000 contacts = direct sales pipeline. 🤖 Vivian drafts message." },
+    { text: "Update inventory sheet with bottom-line prices", project: "tofc", priority: "high", done: false, rev: true, rate: "$500/hr", meta: "💰 REVENUE. Pricing enables sales. ⚠️ Jen/Val need to provide numbers." },
 
-    // From John Cameron call (March 19)
-    { text: "Refine VTM workshop framing for sellers (pride-based)", project: "arena", priority: "med", done: false, meta: "📞 John Cameron. 🤖 Already done — VSL deck v2 uses pride messaging. Review deck to confirm." },
-    
-    // From TOFC/Eden call
-    { text: "Draft Vision Traction Workshop pitch for Eden (Daniel + Jonah)", project: "arena", priority: "med", done: false, meta: "📞 Pocket. 🤖 Vivian can draft the email. 3-day intensive, cover travel + lodging only. Say 'draft Eden pitch.'" },
-    { text: "Text Brandon re: Grant's regards", project: "arena", priority: "low", done: false, meta: "📞 Pocket. 🤖 Vivian can send via iMessage/WhatsApp. Just say 'text Brandon.'" },
+    // ===== ARENA — PIPELINE BUILDING =====
+    { text: "Record VSL video", project: "arena", priority: "med", done: false, rev: true, rate: "$1,000/hr", meta: "💰 REVENUE. Scales sales 24/7 without you. Deck v2 ready as teleprompter. ⚠️ Only Jean." },
+    { text: "Draft Vision Traction Workshop pitch for Eden", project: "arena", priority: "med", done: false, rev: true, rate: "$500/hr", meta: "💰 REVENUE. New client pathway. 🤖 Vivian drafts." },
+    { text: "Create one-sheet: 90-day vs 12-month for Dennis", project: "arena", priority: "med", done: false, rev: true, rate: "$500/hr", meta: "💰 REVENUE. Enables Dennis close. 🤖 Vivian drafts." },
+    { text: "Streamline oil sector client sales cycle to 2 weeks", project: "arena", priority: "med", done: false, rev: true, rate: "$500/hr", meta: "💰 REVENUE. Faster cycles = more closes per quarter." },
+    { text: "Coordinate with PNC + Max on financing docs (Sebastian)", project: "arena", priority: "low", done: false, rev: true, rate: "$250/hr", meta: "💰 REVENUE. PNC approval pending. Low urgency but protects deal." },
+    { text: "Post inventory to Instagram + run ads from posts", project: "tofc", priority: "med", done: false, rev: true, rate: "$250/hr", meta: "💰 REVENUE. Direct sales channel. Sydney posts, Jean runs ads." },
 
-    // Ongoing Arena
-    { text: "Rewrite funnel landing page copy (pride-based)", project: "arena", priority: "med", done: false, meta: "🤖 Vivian can rewrite thearenapartners.com copy to match new VSL deck. Say 'rewrite landing page.'" },
-    { text: "Record VSL video", project: "arena", priority: "med", done: false, meta: "⚠️ Only Jean can do this. Deck v2 is ready as teleprompter. 78 slides, ~23 min." },
-    { text: "Build training materials framework (document client #1)", project: "arena", priority: "med", done: false, meta: "🤖 Vivian can set up the doc structure + weekly capture template. Say 'build training framework.'" },
+    // ===== RELATIONSHIP / NETWORK (Indirect Revenue) =====
+    { text: "Schedule coffee with George next time in Vancouver", project: "arena", priority: "low", done: false, rev: false, rate: "$100/hr", meta: "🤝 RELATIONSHIP. Referral partner nurture. Park until next trip." },
+    { text: "Text Brandon re: Grant's regards", project: "arena", priority: "low", done: false, rev: false, rate: "$50/hr", meta: "🤝 RELATIONSHIP. 30-second text. 🤖 Vivian can send." },
+    { text: "Confirm Operating Partner role with Track One / Cracking Capital", project: "personal", priority: "low", done: false, rev: true, rate: "$200/hr", meta: "💰 REVENUE. Potential ongoing income stream. ⚠️ Only Jean." },
+    { text: "Follow up with Ken/Saud on PE role", project: "personal", priority: "low", done: false, rev: true, rate: "$100/hr", meta: "💰 REVENUE. $98-110K salary opportunity. ⚠️ Only Jean." },
+
+    // ===== OFFER / CONTENT REFINEMENT =====
+    { text: "Refine VTM workshop framing for sellers (pride-based)", project: "arena", priority: "med", done: false, rev: false, rate: "$100/hr", meta: "🔧 SYSTEMS. Already done in VSL v2. Review only. 🤖 Vivian did this." },
+    { text: "Rewrite funnel landing page copy (pride-based)", project: "arena", priority: "med", done: false, rev: false, rate: "$50/hr", meta: "🔧 SYSTEMS. 🤖 Vivian does this. Jean reviews only." },
+    { text: "Build training materials framework (document client #1)", project: "arena", priority: "med", done: false, rev: false, rate: "$50/hr", meta: "🔧 SYSTEMS. 🤖 Vivian builds structure. Jean adds content from real client work." },
+    { text: "Share data room materials with Mallika, Selena, James", project: "arena", priority: "med", done: false, rev: false, rate: "$50/hr", meta: "🔧 SYSTEMS. Training team. 🤖 Vivian can share." },
+    { text: "Update Transferable: add Brandon's Swan story, remove Sean", project: "arena", priority: "med", done: false, rev: false, rate: "$50/hr", meta: "🔧 SYSTEMS. 🤖 Vivian drafts. Jean provides story details." },
+    { text: "Remake event deck with new messaging (pride-based, house analogy)", project: "arena", priority: "med", done: false, rev: false, rate: "$50/hr", meta: "🔧 SYSTEMS. 🤖 Vivian rebuilds. Same approach as VSL v2." },
+
+    // ===== OPS / ADMIN (Delegate or Eliminate) =====
+    { text: "Switch TOFC bot to Claude API (replace ManyChat)", project: "tofc", priority: "med", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 🤖 Vivian builds. Jean provides webhook URL." },
+    { text: "Email TOFC team Claude API requirements", project: "tofc", priority: "med", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 🤖 Vivian drafts. Jean sends." },
+    { text: "Sign up for ClickUp (free)", project: "ops", priority: "high", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 2 min task. ⚠️ Only Jean. Then Vivian builds everything." },
+    { text: "Re-auth Google OAuth (gog auth login)", project: "ops", priority: "med", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 2 min task. ⚠️ Only Jean. Unblocks Vivian's visibility." },
+    { text: "Clear Nikil's invoices", project: "ops", priority: "high", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. Admin. ⚠️ Only Jean. 5 minutes." },
+    { text: "Send Vivian Fireflies.ai API key", project: "ops", priority: "low", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 2 min task. ⚠️ Only Jean. Copy key from settings." },
+    { text: "Document OpenClaw/Claude agent setup for team scaling", project: "ops", priority: "low", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 🤖 Vivian writes documentation." },
+    { text: "Set up data center for Arena infrastructure", project: "ops", priority: "high", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. Jean scopes. 🤖 Vivian researches providers." },
+    { text: "Collect bank statements for Asim (accounting)", project: "levelup", priority: "med", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. Admin. ⚠️ Only Jean. $432, 14-day delivery." },
 
     // ===== LEVEL UP =====
-    { text: "Write tonight's PR article (9 PM)", project: "levelup", priority: "med", done: false, meta: "🤖 Vivian handles this. Auto-publishes at 9 PM to group chat." },
-    { text: "Get Logan's article spreadsheet and sync to dashboard", project: "levelup", priority: "low", done: false, meta: "🤖 Send Vivian the spreadsheet link or screenshot. She'll sync to vivianashford.github.io/levelup-pm/" },
-    { text: "Collect bank statements for Asim (accounting)", project: "levelup", priority: "med", done: false, meta: "⚠️ Only Jean can do this. Asim needs all statements from business start. $432, 14-day delivery." },
-
-    // ===== TOFC =====
-    { text: "Request inventory email blast from Marie (3,000 contacts)", project: "tofc", priority: "high", done: false, meta: "📞 Pocket. 🤖 Vivian can draft the message to Marie. Say 'draft Marie blast message.'" },
-    { text: "Update inventory sheet with bottom-line prices", project: "tofc", priority: "high", done: false, meta: "📞 Pocket. ⚠️ Jen/Val need to provide updated numbers. Was due yesterday." },
-    { text: "Switch TOFC bot to Claude API (replace ManyChat)", project: "tofc", priority: "med", done: false, meta: "📞 TOFC call. 🤖 Vivian can build the Claude API integration. Need TOFC's ManyChat webhook URL." },
-    { text: "Post inventory to Instagram + run ads from posts", project: "tofc", priority: "med", done: false, meta: "📞 TOFC call. ⚠️ Sydney posts daily. Jean runs ads from those posts." },
-    { text: "Email TOFC team Claude API requirements", project: "tofc", priority: "med", done: false, meta: "📞 TOFC call. 🤖 Vivian can draft the requirements email. Say 'draft TOFC Claude email.'" },
-
-    // ===== JET LENDING (from Fireflies - March 19) =====
-    { text: "Send intro email to Stephanie (Jet Lending)", project: "arena", priority: "high", done: false, meta: "🎙️ Fireflies. CFO/back-office restructuring proposal. Eddie setting up Zoom in 2-3 days." },
-    { text: "Follow up with Eddie Gant on marked-up document", project: "arena", priority: "med", done: false, meta: "🎙️ Fireflies. He's sending markup by this weekend. $4K deposit to start. $7M capital deadline Apr 7." },
-
-    // ===== ARENA WEEKLY (from Fireflies - March 18) =====
-    { text: "Share data room materials with Mallika, Selena, James", project: "arena", priority: "med", done: false, meta: "🎙️ Fireflies. Arena Weekly call. For deeper understanding and training." },
-    { text: "Streamline oil sector client sales cycle to 2 weeks", project: "arena", priority: "med", done: false, meta: "🎙️ Fireflies. Arena Weekly call." },
-
-    // ===== DENNIS (from Fireflies - March 18) =====
-    { text: "Create one-sheet: 90-day vs 12-month programs for Dennis", project: "arena", priority: "med", done: false, meta: "🎙️ Fireflies. 🤖 Vivian can draft this. Tax savings + hassle reduction + ROI. Clear tier structure." },
-
-    // ===== SEBASTIAN (from Fireflies - March 17) =====
-    { text: "Coordinate with PNC + Max on financing docs (Sebastian)", project: "arena", priority: "low", done: false, meta: "🎙️ Fireflies. Get info requested early. PNC approval pending." },
-
-    // ===== OPS =====
-    { text: "Sign up for ClickUp (free) → clickup.com", project: "ops", priority: "high", done: false, meta: "⚠️ Only Jean. 2 min signup. Send Vivian the workspace URL and she builds the full structure." },
-    { text: "Re-auth Google OAuth (gog auth login)", project: "ops", priority: "med", done: false, meta: "⚠️ Only Jean. Run 'gog auth login' in terminal. 2 min. Unblocks email + calendar visibility." },
-    { text: "Document OpenClaw/Claude agent setup for team scaling", project: "ops", priority: "low", done: false, meta: "📞 Pocket. Due Mar 22. 🤖 Vivian can write the documentation. Say 'document agent setup.'" },
-    { text: "Send Vivian Fireflies.ai API key", project: "ops", priority: "low", done: false, meta: "⚠️ Only Jean. Go to app.fireflies.ai → Settings → Developer API → copy key. Send to Vivian." },
+    { text: "Write tonight's PR article (9 PM)", project: "levelup", priority: "med", done: false, rev: false, rate: "$0/hr", meta: "🤖 DELEGATED. Vivian handles this entirely. Auto-publishes at 9 PM." },
+    { text: "Get Logan's article spreadsheet and sync to dashboard", project: "levelup", priority: "low", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 🤖 Send Vivian the link." },
+    { text: "Confirm AJ (famous.ai) is taken care of — 900+ press releases", project: "levelup", priority: "high", done: false, rev: false, rate: "$25/hr", meta: "⚙️ OPS. 5 min check-in. ⚠️ Only Jean." },
 
     // ===== PERSONAL =====
-    { text: "Get Paul to sign visa application", project: "personal", priority: "high", done: false, meta: "⚠️ Only Jean. Reach out to Paul, get signature." },
-    { text: "Confirm Operating Partner role with Track One / Cracking Capital", project: "personal", priority: "low", done: false, meta: "📞 Pocket. Due Mar 23. ⚠️ Only Jean. Restaurants, RV parks, daycares." },
-    { text: "Follow up with Ken/Saud on PE role", project: "personal", priority: "low", done: false, meta: "⚠️ Only Jean. Salary ceiling $98-100K vs $110K target." },
-
-    // ===== BOOK / CONTENT =====
-    { text: "Update Transferable: add Brandon's Swan story, remove Sean", project: "arena", priority: "med", done: false, meta: "🤖 Vivian can draft the new section if you share Brandon's story details." },
-    { text: "Remake event deck with new messaging (pride-based, house analogy)", project: "arena", priority: "med", done: false, meta: "🤖 Vivian can rebuild. Same approach as VSL deck v2." },
-
-    // ===== FINANCE =====
-    { text: "Clear Nikil's invoices", project: "ops", priority: "high", done: false, meta: "⚠️ Only Jean. Outstanding payments." },
-
-    // ===== LEVEL UP =====
-    { text: "Confirm AJ (famous.ai) is taken care of — 900+ press releases", project: "levelup", priority: "high", done: false, meta: "⚠️ Only Jean. Make sure delivery is on track." },
-    { text: "Update Book of Self (Alchemy of Self) for 2026", project: "personal", priority: "med", done: false, meta: "⚠️ Only Jean. Review current version at vivianashford.github.io/levelup-pm/book-of-self.html, update goals/numbers/vision. Send updates to Vivian." },
-
-    // ===== DATA CENTER =====
-    { text: "Set up data center for Arena infrastructure", project: "ops", priority: "high", done: false, meta: "⚠️ Jean to scope requirements. 🤖 Vivian can research providers, pricing, and specs once direction is set." },
+    { text: "Get Paul to sign visa application", project: "personal", priority: "high", done: false, rev: false, rate: "$0/hr", meta: "📋 PERSONAL. Must do. ⚠️ Only Jean." },
+    { text: "Update Book of Self (Alchemy of Self) for 2026", project: "personal", priority: "med", done: false, rev: false, rate: "$0/hr", meta: "📋 PERSONAL. Mindset foundation. Read + update at book-of-self.html" },
   ]
 };
 
@@ -315,10 +296,15 @@ function renderTodo(t) {
   var pBadge = '';
   if (t.priority === 'high') pBadge = '<span class="todo-priority p-high">urgent</span>';
   else if (t.priority === 'med') pBadge = '<span class="todo-priority p-med">today</span>';
+  var rateBadge = '';
+  if (t.rate) {
+    var rClass = t.rev ? 'rate-rev' : 'rate-ops';
+    rateBadge = '<span class="todo-rate '+rClass+'">'+(t.rev?'💰 ':'⚙️ ')+t.rate+'</span>';
+  }
   var html = '<div class="'+cls+'" onclick="toggleTodo('+t._idx+')">';
   html += '<div class="todo-check"></div>';
   html += '<div class="todo-content">';
-  html += '<div class="todo-text">' + t.text + pBadge + '</div>';
+  html += '<div class="todo-text">' + t.text + pBadge + rateBadge + '</div>';
   if (t.meta) html += '<div class="todo-meta">' + t.meta + '</div>';
   html += '</div></div>';
   return html;
