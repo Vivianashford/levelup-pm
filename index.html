@@ -384,11 +384,12 @@ var PRIORITIES=[
 ];
 function loadPri(){
   var st=JSON.parse(localStorage.getItem('cc-pri')||'{}');
+  var shared=JSON.parse(localStorage.getItem('todo-done-shared')||'{}');
   var today=new Date().toDateString();
   if(st.date!==today)st={date:today,done:{}};
   var h='';
   PRIORITIES.forEach(function(p,i){
-    var dn=st.done[i]||false;
+    var dn=st.done[i]||shared[p.text]||false;
     var rc=p.rev?'rate-rev':'rate-ops';
     h+='<div class="pri-item'+(dn?' done':'')+'" onclick="togglePri('+i+')">';
     h+='<div class="pri-check"></div>';
@@ -403,6 +404,11 @@ function togglePri(i){
   if(st.date!==today)st={date:today,done:{}};
   st.done[i]=!st.done[i];
   localStorage.setItem('cc-pri',JSON.stringify(st));
+  // Sync to shared state so todo list sees it too
+  var shared=JSON.parse(localStorage.getItem('todo-done-shared')||'{}');
+  var text=PRIORITIES[i].text;
+  if(st.done[i]){shared[text]=true;}else{delete shared[text];}
+  localStorage.setItem('todo-done-shared',JSON.stringify(shared));
   loadPri();
 }
 loadPri();
