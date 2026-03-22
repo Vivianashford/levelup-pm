@@ -1,4 +1,4 @@
-// Service Worker - always fetch fresh, never serve stale
+// Service Worker v2 - always fetch fresh, never serve stale
 self.addEventListener('install', function(e) { self.skipWaiting(); });
 self.addEventListener('activate', function(e) {
   e.waitUntil(

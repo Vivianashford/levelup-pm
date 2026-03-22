@@ -252,7 +252,8 @@
 <script src="sam-system.js"></script>
 <script>
 // Register service worker to prevent stale cache
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js?v=2').then(function(r){r.update();});}
+// v2 - file browser with slug fallback
 
 // LOAD LIVE DATA FROM data.json
 fetch('data.json?t='+Date.now())
