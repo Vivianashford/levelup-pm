@@ -195,6 +195,60 @@
     <a href="todo.html" class="view-link">Full Todo List →</a>
   </div>
 
+  <!-- ANALYTICS DASHBOARD -->
+  <div class="pri-section" id="analytics-section">
+    <div style="padding:12px 14px 8px;border-bottom:1px solid rgba(255,255,255,.04);">
+      <span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#c9a84c;">📊 Website Analytics</span>
+      <span style="float:right;font-size:10px;color:#6b655e;" id="ga-realtime">0 live</span>
+    </div>
+    <div style="padding:12px 14px;">
+      <!-- 7 Day Stats -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:700;color:#c9a84c;" id="ga-users">0</div>
+          <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">Users</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:700;color:#f5f0e8;" id="ga-sessions">0</div>
+          <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">Sessions</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:700;color:#f5f0e8;" id="ga-pageviews">0</div>
+          <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">Pageviews</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:700;color:#5cb85c;" id="ga-conversions">0</div>
+          <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">Conversions</div>
+        </div>
+      </div>
+      <div style="font-size:9px;color:#6b655e;margin-bottom:8px;">Last 7 days - Avg session: <span id="ga-duration">0s</span></div>
+
+      <!-- 28 Day Comparison -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;padding:8px;background:rgba(255,255,255,.02);border-radius:6px;">
+        <div style="text-align:center;">
+          <div style="font-size:14px;font-weight:600;color:#9a9590;" id="ga-m-users">0</div>
+          <div style="font-size:8px;color:#6b655e;">28d Users</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:14px;font-weight:600;color:#9a9590;" id="ga-m-sessions">0</div>
+          <div style="font-size:8px;color:#6b655e;">28d Sessions</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:14px;font-weight:600;color:#9a9590;" id="ga-m-pageviews">0</div>
+          <div style="font-size:8px;color:#6b655e;">28d Pageviews</div>
+        </div>
+      </div>
+
+      <!-- Top Pages -->
+      <div style="font-size:9px;text-transform:uppercase;color:#6b655e;margin-bottom:4px;letter-spacing:1px;">Top Pages</div>
+      <div id="ga-pages" style="margin-bottom:8px;font-size:11px;color:#9a9590;"></div>
+
+      <!-- Traffic Sources -->
+      <div style="font-size:9px;text-transform:uppercase;color:#6b655e;margin-bottom:4px;letter-spacing:1px;">Traffic Sources</div>
+      <div id="ga-sources" style="font-size:11px;color:#9a9590;"></div>
+    </div>
+  </div>
+
   <!-- DAILY FEEDBACK SCORECARD -->
   <div class="fb-section">
     <div style="padding:12px 14px 8px;border-bottom:1px solid rgba(255,255,255,.04);">
@@ -308,6 +362,44 @@ fetch('data.json?t='+Date.now())
     // Render client pipeline from live data
     if(d.clients){
       renderClients(d.clients);
+    }
+    // GA4 Analytics
+    if(d.analytics && d.analytics.week){
+      var a=d.analytics;
+      document.getElementById('ga-realtime').textContent=(a.realtime_users||0)+' live now';
+      document.getElementById('ga-users').textContent=a.week.users||0;
+      document.getElementById('ga-sessions').textContent=a.week.sessions||0;
+      document.getElementById('ga-pageviews').textContent=a.week.pageviews||0;
+      document.getElementById('ga-conversions').textContent=a.week.conversions||0;
+      var dur=a.week.avg_duration||0;
+      document.getElementById('ga-duration').textContent=dur>60?Math.round(dur/60)+'m '+Math.round(dur%60)+'s':Math.round(dur)+'s';
+      if(a.month){
+        document.getElementById('ga-m-users').textContent=a.month.users||0;
+        document.getElementById('ga-m-sessions').textContent=a.month.sessions||0;
+        document.getElementById('ga-m-pageviews').textContent=a.month.pageviews||0;
+      }
+      if(a.top_pages&&a.top_pages.length){
+        var ph='';
+        a.top_pages.slice(0,5).forEach(function(p){
+          ph+='<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.03);">';
+          ph+='<span style="color:#f5f0e8;">'+p.page+'</span>';
+          ph+='<span>'+p.views+' views</span></div>';
+        });
+        document.getElementById('ga-pages').innerHTML=ph;
+      } else {
+        document.getElementById('ga-pages').innerHTML='<div style="color:#4a4540;font-size:10px;">No data yet - check back in 24-48h</div>';
+      }
+      if(a.traffic_sources&&a.traffic_sources.length){
+        var sh='';
+        a.traffic_sources.slice(0,5).forEach(function(s){
+          sh+='<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.03);">';
+          sh+='<span style="color:#f5f0e8;">'+(s.source||'(direct)')+'</span>';
+          sh+='<span>'+s.sessions+' sessions</span></div>';
+        });
+        document.getElementById('ga-sources').innerHTML=sh;
+      } else {
+        document.getElementById('ga-sources').innerHTML='<div style="color:#4a4540;font-size:10px;">No data yet</div>';
+      }
     }
   })
   .catch(function(e){console.log('data.json not loaded:',e)});
