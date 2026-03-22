@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Arena Rep Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; padding-bottom:60px; }
+  .container { max-width:500px; margin:0 auto; padding:12px; }
+  
+  .header { text-align:center; padding:16px 0 12px; }
+  .header h1 { font-family:'Playfair Display',serif; font-size:22px; color:#c9a84c; }
+  .header .sub { font-size:11px; color:#6b655e; margin-top:4px; }
+  .header .live { font-size:10px; color:#4a8c5c; margin-top:2px; }
+  
+  /* Score Cards */
+  .scores { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:12px 0; }
+  .score-card { background:#111; border:1px solid rgba(255,255,255,.06); border-radius:8px; padding:10px 6px; text-align:center; }
+  .score-val { font-size:22px; font-weight:700; color:#c9a84c; }
+  .score-label { font-size:9px; color:#6b655e; text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+  
+  /* Pipeline Visual */
+  .pipeline { display:flex; gap:2px; margin:12px 0; overflow-x:auto; }
+  .pipe-col { flex:1; min-width:0; text-align:center; }
+  .pipe-bar { height:40px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; margin-bottom:3px; }
+  .pipe-label { font-size:8px; color:#6b655e; text-transform:uppercase; letter-spacing:.5px; }
+  
+  /* Client Cards */
+  .stage-section { margin:12px 0; }
+  .stage-header { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; padding:8px 0 4px; display:flex; align-items:center; gap:6px; }
+  
+  .client-card { display:flex; align-items:center; gap:10px; padding:10px; background:#111; border:1px solid rgba(255,255,255,.04); border-radius:8px; margin-bottom:4px; cursor:pointer; }
+  .client-card:active { background:#161616; }
+  .client-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
+  .client-info { flex:1; min-width:0; }
+  .client-name { font-size:13px; font-weight:500; }
+  .client-company { font-size:11px; color:#6b655e; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .client-meta { text-align:right; flex-shrink:0; }
+  .client-status { font-size:10px; font-weight:600; }
+  .client-time { font-size:9px; color:#4a4038; }
+  
+  /* Detail Panel */
+  .client-detail { display:none; padding:8px 10px 12px; margin:-2px 0 4px; background:#0e0e0e; border:1px solid rgba(255,255,255,.04); border-top:none; border-radius:0 0 8px 8px; font-size:12px; }
+  .detail-row { padding:3px 0; color:#9a9590; }
+  .detail-row a { color:#c9a84c; text-decoration:none; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600; margin:1px 2px; }
+  .badge-green { background:rgba(74,140,92,.15); color:#4a8c5c; }
+  .badge-gold { background:rgba(201,168,76,.15); color:#c9a84c; }
+  .badge-red { background:rgba(216,122,106,.15); color:#d87a6a; }
+  .badge-blue { background:rgba(106,159,216,.15); color:#6a9fd8; }
+  
+  /* Files */
+  .files-section { margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,.04); }
+  .file-cat { font-size:9px; color:#9a9590; text-transform:uppercase; margin-top:4px; }
+  .file-link { display:block; padding:2px 0; }
+  .file-link a { color:#6a9fd8; text-decoration:none; font-size:11px; }
+  .file-size { font-size:9px; color:#4a4038; margin-left:6px; }
+  
+  /* Action Buttons */
+  .actions { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+  .action-btn { padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; text-decoration:none; border:1px solid; }
+  .action-nda { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+  .action-info { color:#6a9fd8; border-color:rgba(106,159,216,.3); }
+  .action-upload { color:#4a8c5c; border-color:rgba(74,140,92,.3); }
+  .action-ghl { color:#9a9590; border-color:rgba(255,255,255,.1); }
+  
+  /* Nav */
+  .nav-bottom { position:fixed; bottom:0; left:0; right:0; background:#111; border-top:1px solid rgba(255,255,255,.06); padding:10px 16px; display:flex; gap:8px; justify-content:center; z-index:10; }
+  .nav-btn { padding:8px 16px; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; color:#9a9590; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); }
+  .nav-btn.active { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+  
+  /* Empty */
+  .empty { text-align:center; padding:30px; color:#4a4038; font-size:13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>Rep Dashboard</h1>
+  <div class="sub">Arena Partners Pipeline</div>
+  <div class="live" id="live-ts">Loading...</div>
+</div>
+
+<!-- Score Cards -->
+<div class="scores">
+  <div class="score-card"><div class="score-val" id="s-total">0</div><div class="score-label">Pipeline</div></div>
+  <div class="score-card"><div class="score-val" id="s-active">0</div><div class="score-label">Active</div></div>
+  <div class="score-card"><div class="score-val" id="s-stale">0</div><div class="score-label">Stale</div></div>
+  <div class="score-card"><div class="score-val" id="s-won">0</div><div class="score-label">Won</div></div>
+</div>
+
+<!-- Pipeline Visual -->
+<div class="pipeline" id="pipe-visual"></div>
+
+<!-- Client List by Stage -->
+<div id="client-stages"></div>
+
+</div>
+
+<div class="nav-bottom">
+  <a href="index.html" class="nav-btn">Command Center</a>
+  <a href="sales-sop.html" class="nav-btn">Sales SOP</a>
+  <a href="rep-dashboard.html" class="nav-btn active">Rep Dashboard</a>
+  <a href="todo.html" class="nav-btn">Todo</a>
+</div>
+
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js?v=2');}
+
+var STAGES=[
+  {key:'closed_won',label:'Won',color:'#4a8c5c',icon:'✅'},
+  {key:'proposal',label:'Proposal',color:'#4a8c5c',icon:'🔥'},
+  {key:'due_diligence',label:'Due Diligence',color:'#c9a84c',icon:'📊'},
+  {key:'nda_signed',label:'NDA',color:'#c9a84c',icon:'📝'},
+  {key:'call_complete',label:'Call Done',color:'#6a9fd8',icon:'📞'},
+  {key:'assessment_done',label:'Assessment',color:'#6a9fd8',icon:'📋'},
+  {key:'call_booked',label:'Booked',color:'#6a9fd8',icon:'📅'},
+  {key:'vsl_lead',label:'VSL Lead',color:'#9a9590',icon:'📥'},
+  {key:'no_show',label:'No Show',color:'#d87a6a',icon:'⚠️'},
+  {key:'nurture',label:'Nurture',color:'#9a6850',icon:'⏳'},
+];
+
+function getInitials(n){
+  if(!n)return'??';
+  var p=n.trim().split(/\s+/);
+  return p.length>=2?(p[0][0]+p[1][0]).toUpperCase():n.substring(0,2).toUpperCase();
+}
+
+function timeAgo(d){
+  if(!d)return'';
+  var diff=Date.now()-new Date(d).getTime();
+  var days=Math.floor(diff/86400000);
+  if(days===0)return'today';
+  if(days===1)return'yesterday';
+  if(days<7)return days+'d ago';
+  return Math.floor(days/7)+'w ago';
+}
+
+function isStale(d){
+  if(!d)return false;
+  return(Date.now()-new Date(d).getTime())>7*86400000;
+}
+
+fetch('data.json?t='+Date.now())
+  .then(function(r){return r.json()})
+  .then(function(d){
+    // Timestamp
+    if(d.updated_local)document.getElementById('live-ts').textContent='Live: '+d.updated_local;
+    
+    var clients=d.clients||[];
+    // Filter out test/internal
+    clients=clients.filter(function(c){
+      var n=(c.name||'').toLowerCase();
+      return n!=='jean hardy'&&n!=='jean louis hardy'&&!n.includes('(example)');
+    });
+    
+    // Scores
+    var total=clients.length;
+    var won=clients.filter(function(c){return c.stage==='closed_won'}).length;
+    var stale=clients.filter(function(c){return isStale(c.lastUpdate)&&c.stage!=='closed_won'&&c.stage!=='nurture'}).length;
+    var active=total-won-clients.filter(function(c){return c.stage==='nurture'}).length;
+    
+    document.getElementById('s-total').textContent=total;
+    document.getElementById('s-active').textContent=active;
+    document.getElementById('s-stale').textContent=stale;
+    document.getElementById('s-won').textContent=won;
+    if(stale>0)document.getElementById('s-stale').style.color='#d87a6a';
+    
+    // Pipeline bars
+    var pipeHtml='';
+    // Only show active stages in pipe visual
+    var pipeStages=STAGES.filter(function(s){return['vsl_lead','call_booked','call_complete','nda_signed','due_diligence','proposal','closed_won'].indexOf(s.key)>=0});
+    pipeStages.forEach(function(s){
+      var count=clients.filter(function(c){return c.stage===s.key}).length;
+      var bg=count>0?s.color+'33':'#111';
+      var tc=count>0?s.color:'#3a3a3a';
+      pipeHtml+='<div class="pipe-col"><div class="pipe-bar" style="background:'+bg+';color:'+tc+';border:1px solid '+(count>0?s.color+'44':'rgba(255,255,255,.06)')+';">'+count+'</div><div class="pipe-label">'+s.label+'</div></div>';
+    });
+    document.getElementById('pipe-visual').innerHTML=pipeHtml;
+    
+    // Client cards by stage
+    var html='';
+    STAGES.forEach(function(s){
+      var sc=clients.filter(function(c){return c.stage===s.key});
+      if(sc.length===0)return;
+      
+      html+='<div class="stage-section">';
+      html+='<div class="stage-header" style="color:'+s.color+';">'+s.icon+' '+s.label.toUpperCase()+' ('+sc.length+')</div>';
+      
+      sc.forEach(function(c){
+        var init=getInitials(c.name);
+        var ago=timeAgo(c.lastUpdate);
+        var staleFlag=isStale(c.lastUpdate)&&s.key!=='closed_won'&&s.key!=='nurture';
+        
+        // Badges
+        var badges=[];
+        if(c.completed.indexOf('nda')>=0)badges.push('<span class="badge badge-green">NDA</span>');
+        if(c.completed.indexOf('company-info')>=0)badges.push('<span class="badge badge-green">Info</span>');
+        if(c.completed.indexOf('vsl-100')>=0)badges.push('<span class="badge badge-blue">VSL 100%</span>');
+        else if(c.completed.indexOf('vsl-75')>=0)badges.push('<span class="badge badge-gold">VSL 75%</span>');
+        else if(c.completed.indexOf('vsl-50')>=0)badges.push('<span class="badge badge-gold">VSL 50%</span>');
+        
+        var statusColor=staleFlag?'#d87a6a':s.color;
+        var statusText=staleFlag?'⚠️ STALE':(badges.length>0?badges.length+' done':'Pending');
+        
+        // Risk
+        var riskHtml='';
+        if(c.exitRiskScore){
+          var rs=parseInt(c.exitRiskScore)||0;
+          var rc=rs>60?'badge-red':rs>30?'badge-gold':'badge-green';
+          riskHtml='<span class="badge '+rc+'">Risk: '+rs+'</span>';
+        }
+        
+        html+='<div class="client-card" onclick="toggleDetail(this)">';
+        html+='<div class="client-avatar" style="background:'+s.color+'22;border:1px solid '+s.color+'44;color:'+s.color+';">'+init+'</div>';
+        html+='<div class="client-info"><div class="client-name">'+c.name+(riskHtml?' '+riskHtml:'')+'</div><div class="client-company">'+c.company+'</div></div>';
+        html+='<div class="client-meta"><div class="client-status" style="color:'+statusColor+';">'+statusText+'</div><div class="client-time">'+ago+'</div></div>';
+        html+='</div>';
+        
+        // Detail
+        var cSlug=(c.company||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+        html+='<div class="client-detail" data-slug="'+cSlug+'">';
+        if(c.email)html+='<div class="detail-row">✉ '+c.email+'</div>';
+        if(badges.length)html+='<div class="detail-row">'+badges.join(' ')+'</div>';
+        
+        // Missing
+        var missing=[];
+        if(c.completed.indexOf('nda')<0&&['due_diligence','proposal','closed_won'].indexOf(s.key)>=0)missing.push('NDA');
+        if(c.completed.indexOf('company-info')<0&&['due_diligence','proposal','closed_won'].indexOf(s.key)>=0)missing.push('Company Info');
+        if(missing.length)html+='<div class="detail-row" style="color:#d87a6a;">Missing: '+missing.join(', ')+'</div>';
+        
+        if(c.exitRiskLevel)html+='<div class="detail-row">Exit Risk: '+c.exitRiskLevel+'</div>';
+        
+        // Action buttons
+        var enc=encodeURIComponent;
+        html+='<div class="actions">';
+        if(c.completed.indexOf('nda')<0)html+='<a class="action-btn action-nda" href="https://thearenapartners.com/nda.html?name='+enc(c.name)+'&company='+enc(c.company)+'&email='+enc(c.email)+'&cid='+c.id+'" target="_blank">Send NDA</a>';
+        if(c.completed.indexOf('company-info')<0&&c.completed.indexOf('nda')>=0)html+='<a class="action-btn action-info" href="https://thearenapartners.com/company-info.html?name='+enc(c.name)+'&company='+enc(c.company)+'&email='+enc(c.email)+'&cid='+c.id+'" target="_blank">Send Info Form</a>';
+        html+='<a class="action-btn action-upload" href="https://thearenapartners.com/upload.html?company='+enc(c.company)+'&name='+enc(c.name)+'&email='+enc(c.email)+'&cid='+c.id+'" target="_blank">Upload Portal</a>';
+        html+='<a class="action-btn action-ghl" href="https://app.gohighlevel.com/v2/location/LSvdgiiT7ManCRx9CCwE/contacts/detail/'+c.id+'" target="_blank">GHL</a>';
+        html+='</div>';
+        
+        // Files placeholder
+        html+='<div class="files-section client-files" data-slug="'+cSlug+'"></div>';
+        html+='</div>';
+      });
+      html+='</div>';
+    });
+    
+    if(html==='')html='<div class="empty">No contacts in pipeline yet.<br>When someone opts in, they\'ll appear here.</div>';
+    document.getElementById('client-stages').innerHTML=html;
+  })
+  .catch(function(e){
+    document.getElementById('client-stages').innerHTML='<div class="empty">Could not load pipeline data.<br>'+e.message+'</div>';
+  });
+
+function toggleDetail(el){
+  var detail=el.nextElementSibling;
+  if(!detail||!detail.classList.contains('client-detail'))return;
+  var show=detail.style.display!=='block';
+  detail.style.display=show?'block':'none';
+  
+  // Load files
+  if(show){
+    var filesDiv=detail.querySelector('.client-files');
+    if(filesDiv&&!filesDiv.dataset.loaded){
+      filesDiv.dataset.loaded='1';
+      var slug=filesDiv.dataset.slug;
+      var slugParts=slug.split('-');
+      var slugsToTry=[slug];
+      for(var i=slugParts.length-1;i>=2;i--)slugsToTry.push(slugParts.slice(0,i).join('-'));
+      
+      function trySlug(idx){
+        if(idx>=slugsToTry.length){filesDiv.innerHTML='';return;}
+        fetch('https://arena-api.jean-475.workers.dev/api/client-files/'+slugsToTry[idx])
+          .then(function(r){return r.json()})
+          .then(function(data){
+            if(data.totalFiles&&data.totalFiles>0){
+              var fh='<div style="font-size:10px;color:#c9a84c;margin-bottom:4px;font-weight:600;">📁 FILES ('+data.totalFiles+')</div>';
+              Object.keys(data.categories).forEach(function(cat){
+                fh+='<div class="file-cat">'+cat+'</div>';
+                data.categories[cat].forEach(function(f){
+                  var fn=(f.name||'').replace(/^\d+-/,'');
+                  var sz=f.size||0;
+                  var ss=sz>0?(sz>1048576?(sz/1048576).toFixed(1)+'MB':(sz/1024).toFixed(0)+'KB'):'';
+                  fh+='<div class="file-link"><a href="'+f.url+'" target="_blank">'+fn+'</a><span class="file-size">'+ss+'</span></div>';
+                });
+              });
+              filesDiv.innerHTML=fh;
+            }else{trySlug(idx+1);}
+          }).catch(function(){trySlug(idx+1);});
+      }
+      trySlug(0);
+    }
+  }
+}
+</script>
+</body>
+</html>

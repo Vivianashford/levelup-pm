@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Arena Sales SOP — Pipeline Playbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
+  .container { max-width:800px; margin:0 auto; padding:20px 16px 60px; }
+  
+  .header { text-align:center; padding:30px 0 20px; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:30px; }
+  .header h1 { font-family:'Playfair Display',serif; font-size:28px; color:#c9a84c; margin-bottom:6px; }
+  .header p { font-size:13px; color:#6b655e; }
+  
+  .rule { font-size:12px; color:#c9a84c; background:rgba(201,168,76,.08); border-left:3px solid #c9a84c; padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:30px; line-height:1.6; }
+  
+  .stage { background:#111; border:1px solid rgba(255,255,255,.06); border-radius:12px; margin-bottom:16px; overflow:hidden; }
+  .stage-header { display:flex; align-items:center; gap:12px; padding:16px; cursor:pointer; }
+  .stage-header:active { background:rgba(255,255,255,.02); }
+  .stage-num { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  .stage-title { flex:1; }
+  .stage-title h2 { font-size:16px; font-weight:600; margin-bottom:2px; }
+  .stage-title .trigger { font-size:11px; color:#9a9590; }
+  .stage-arrow { color:#6b655e; font-size:14px; transition:transform .2s; }
+  .stage.open .stage-arrow { transform:rotate(90deg); }
+  
+  .stage-body { display:none; padding:0 16px 16px; }
+  .stage.open .stage-body { display:block; }
+  
+  .section-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin:12px 0 6px; }
+  .auto { color:#4a8c5c; }
+  .manual { color:#c9a84c; }
+  .metric { color:#6a9fd8; }
+  .warn { color:#d87a6a; }
+  
+  .task { padding:6px 0; font-size:13px; color:#d5d0c8; line-height:1.5; display:flex; gap:8px; }
+  .task .icon { flex-shrink:0; width:20px; text-align:center; }
+  
+  .divider { height:1px; background:rgba(255,255,255,.04); margin:10px 0; }
+  
+  .timeline { display:inline-block; font-size:11px; color:#0a0a0a; background:#c9a84c; padding:3px 10px; border-radius:4px; font-weight:600; margin-top:8px; }
+  
+  .exit-criteria { background:rgba(74,140,92,.08); border:1px solid rgba(74,140,92,.15); border-radius:8px; padding:12px; margin-top:10px; }
+  .exit-criteria .label { font-size:10px; color:#4a8c5c; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:4px; }
+  .exit-criteria .text { font-size:12px; color:#d5d0c8; line-height:1.5; }
+  
+  .nav-bottom { position:fixed; bottom:0; left:0; right:0; background:#111; border-top:1px solid rgba(255,255,255,.06); padding:10px 16px; display:flex; gap:8px; justify-content:center; z-index:10; }
+  .nav-btn { padding:8px 16px; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; color:#9a9590; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); }
+  .nav-btn.active { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+  
+  .script-box { background:#0a0a0a; border:1px solid rgba(255,255,255,.08); border-radius:8px; padding:12px; margin-top:8px; }
+  .script-box .label { font-size:10px; color:#6a9fd8; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px; }
+  .script-box p { font-size:12px; color:#d5d0c8; line-height:1.6; font-style:italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>Arena Sales Playbook</h1>
+  <p>Pipeline SOP — What happens at every stage</p>
+</div>
+
+<div class="rule">
+  <strong>THE RULE:</strong> Every contact moves forward or gets tagged for nurture. No one sits in a stage for more than 7 days without action. If they stall, move them to Long-Term Nurture. Dead pipeline kills deals.
+</div>
+
+<!-- STAGE 1 -->
+<div class="stage open" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#9a959022;color:#9a9590;">1</div>
+    <div class="stage-title">
+      <h2>📥 VSL Lead</h2>
+      <div class="trigger">Trigger: Opts in on landing page</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> Contact created in GHL with tags: vsl-lead</div>
+    <div class="task"><span class="icon">✅</span> Opportunity created in Arena Pipeline (this stage)</div>
+    <div class="task"><span class="icon">✅</span> Confirmation email sent with VSL training link</div>
+    <div class="task"><span class="icon">✅</span> Video watch progress tracked (25/50/75/100%)</div>
+    <div class="task"><span class="icon">✅</span> Jean notified of new lead via email</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Review lead info (name, revenue, goal)</div>
+    <div class="task"><span class="icon">📋</span> Check video watch % - did they finish?</div>
+    <div class="task"><span class="icon">📋</span> If 75%+ watched: reach out personally to book a call</div>
+    <div class="task"><span class="icon">📋</span> If under 25% after 48hrs: send nudge message</div>
+    
+    <div class="divider"></div>
+    <div class="section-label metric">📊 KEY METRICS</div>
+    <div class="task"><span class="icon">📈</span> Target: 60% watch 50%+ of VSL</div>
+    <div class="task"><span class="icon">📈</span> Target: 30% of VSL leads book a call</div>
+    
+    <div class="timeline">Max time in stage: 7 days</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → Call Booked</div>
+      <div class="text">Lead books a diagnostic call through the booking link. Move to Call Booked.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 2 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#6a9fd822;color:#6a9fd8;">2</div>
+    <div class="stage-title">
+      <h2>📅 Call Booked</h2>
+      <div class="trigger">Trigger: Books diagnostic call</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> Tag vsl-booked applied</div>
+    <div class="task"><span class="icon">✅</span> Booking confirmation email sent</div>
+    <div class="task"><span class="icon">✅</span> Reminder emails: Day before + morning of</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Review their Exit Risk Assessment (if completed)</div>
+    <div class="task"><span class="icon">📋</span> Review their VSL watch data - what topics interested them?</div>
+    <div class="task"><span class="icon">📋</span> Research their company (Google, LinkedIn, industry)</div>
+    <div class="task"><span class="icon">📋</span> Prepare 3 specific insights about their business</div>
+    <div class="task"><span class="icon">📋</span> If no assessment yet: send assessment link before call</div>
+    
+    <div class="script-box">
+      <div class="label">📞 Pre-call prep checklist</div>
+      <p>1. What's their revenue? (from form)<br>
+      2. What's their exit timeline? (from assessment or form)<br>
+      3. What's their biggest risk? (from assessment scores)<br>
+      4. What similar deal have we done? (case study ready)<br>
+      5. What's the ONE insight that will make them say "this guy gets it"?</p>
+    </div>
+    
+    <div class="timeline">Max time in stage: Until call date</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → Call Complete or No Show</div>
+      <div class="text">Call happens: move to Call Complete. They don't show: move to No Show.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 3 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#6a9fd822;color:#6a9fd8;">3</div>
+    <div class="stage-title">
+      <h2>📋 Assessment Done</h2>
+      <div class="trigger">Trigger: Completes Exit Risk Assessment</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> All 7 risk scores written to contact custom fields</div>
+    <div class="task"><span class="icon">✅</span> Overall Exit Risk Score calculated (0-100)</div>
+    <div class="task"><span class="icon">✅</span> Risk level assigned (Low/Moderate/High/Critical)</div>
+    <div class="task"><span class="icon">✅</span> Detailed note added to contact</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Review the 7 risk scores - identify top 3 problem areas</div>
+    <div class="task"><span class="icon">📋</span> Use scores to personalize the diagnostic call</div>
+    <div class="task"><span class="icon">📋</span> If score > 60 (HIGH): this is a hot lead - prioritize</div>
+    <div class="task"><span class="icon">📋</span> If score < 30 (LOW): they might not need us yet - qualify carefully</div>
+    
+    <div class="script-box">
+      <div class="label">🎯 How to use scores on the call</div>
+      <p>"I noticed your owner dependency score came in at 18 out of 20. That tells me if you got sick tomorrow, the business would be in serious trouble. Let's talk about what that means for your exit timeline..."</p>
+    </div>
+    
+    <div class="exit-criteria">
+      <div class="label">Note</div>
+      <div class="text">This stage can overlap with Call Booked. Some leads complete the assessment before booking, some after. Both paths work.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 4 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#6a9fd822;color:#6a9fd8;">4</div>
+    <div class="stage-title">
+      <h2>📞 Call Complete</h2>
+      <div class="trigger">Trigger: Diagnostic call completed</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
+    <div class="task"><span class="icon">✅</span> NDA link emailed to client automatically</div>
+    <div class="task"><span class="icon">✅</span> Jean notified of pipeline change</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Move the contact to this stage in GHL immediately after the call</div>
+    <div class="task"><span class="icon">📋</span> Add call notes to GHL contact (key takeaways, pain points, timeline)</div>
+    <div class="task"><span class="icon">📋</span> Score the lead: Hot (ready now) / Warm (3-6 months) / Cold (exploring)</div>
+    <div class="task"><span class="icon">📋</span> If Hot: follow up same day to confirm they received the NDA</div>
+    <div class="task"><span class="icon">📋</span> If Cold: move to Long-Term Nurture instead</div>
+    
+    <div class="script-box">
+      <div class="label">💬 Post-call follow-up text (send within 1 hour)</div>
+      <p>"Hey [Name], great talking today. I just sent over the NDA to your email - quick 2-minute sign. Once that's done, I'll send you the company overview form and we'll start building your roadmap. Talk soon."</p>
+    </div>
+    
+    <div class="timeline">Max time in stage: 3 days</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → NDA Signed</div>
+      <div class="text">Client signs the NDA electronically. System auto-tags them and moves to next stage.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 5 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#c9a84c22;color:#c9a84c;">5</div>
+    <div class="stage-title">
+      <h2>📝 NDA Signed</h2>
+      <div class="trigger">Trigger: Client signs NDA on portal</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> Tag nda-signed applied</div>
+    <div class="task"><span class="icon">✅</span> NDA PDF generated and stored in R2</div>
+    <div class="task"><span class="icon">✅</span> Confirmation email sent to client (with PDF download)</div>
+    <div class="task"><span class="icon">✅</span> Company Info form link sent automatically</div>
+    <div class="task"><span class="icon">✅</span> Jean notified</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Verify NDA was received (check GHL contact notes)</div>
+    <div class="task"><span class="icon">📋</span> If company info not submitted within 48hrs: personal follow-up</div>
+    
+    <div class="script-box">
+      <div class="label">💬 Nudge if company info is late (Day 3)</div>
+      <p>"Hey [Name], just checking in - did you get the Company Overview form I sent after the NDA? It takes about 10 minutes and it's the last thing I need before I can start building your exit roadmap. Let me know if you have any questions."</p>
+    </div>
+    
+    <div class="timeline">Max time in stage: 5 days</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → Due Diligence</div>
+      <div class="text">Client submits company info form. Tag company-info-submitted fires. Move to Due Diligence.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 6 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#c9a84c22;color:#c9a84c;">6</div>
+    <div class="stage-title">
+      <h2>📊 Due Diligence</h2>
+      <div class="trigger">Trigger: Company info submitted + docs uploading</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> Tag company-info-submitted applied</div>
+    <div class="task"><span class="icon">✅</span> Upload Portal link emailed to client</div>
+    <div class="task"><span class="icon">✅</span> Jean notified when documents are uploaded</div>
+    <div class="task"><span class="icon">✅</span> Files stored in R2 organized by category</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB — THIS IS WHERE YOU EARN YOUR FEE</div>
+    <div class="task"><span class="icon">📋</span> Review all uploaded documents thoroughly</div>
+    <div class="task"><span class="icon">📋</span> Build the client's Exit Roadmap:</div>
+    <div class="task"><span class="icon">  </span> - EBITDA analysis + add-backs</div>
+    <div class="task"><span class="icon">  </span> - Valuation range (multiple x adjusted EBITDA)</div>
+    <div class="task"><span class="icon">  </span> - Top 3 value destroyers (from risk assessment + docs)</div>
+    <div class="task"><span class="icon">  </span> - Top 3 value creators (quick wins before exit)</div>
+    <div class="task"><span class="icon">  </span> - Recommended timeline</div>
+    <div class="task"><span class="icon">📋</span> Identify missing documents - follow up for gaps</div>
+    <div class="task"><span class="icon">📋</span> Prepare Call 2 presentation/proposal</div>
+    
+    <div class="script-box">
+      <div class="label">📁 Document checklist - what you need</div>
+      <p>
+        <strong>Must have:</strong> P&L (3 years), Balance Sheet, Tax Returns<br>
+        <strong>Should have:</strong> Org Chart, Client Revenue Breakdown, Employee List<br>
+        <strong>Nice to have:</strong> SOPs, Contracts, Insurance, Property/Equipment List
+      </p>
+    </div>
+    
+    <div class="timeline">Max time in stage: 7 days</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → 2nd Call - Proposal</div>
+      <div class="text">You've reviewed everything, built the roadmap, and are ready to present. Move to Proposal and the system emails the Call 2 booking link.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 7 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#4a8c5c22;color:#4a8c5c;">7</div>
+    <div class="stage-title">
+      <h2>🔥 2nd Call - Proposal</h2>
+      <div class="trigger">Trigger: Roadmap ready, booking Call 2</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
+    <div class="task"><span class="icon">✅</span> Call 2 booking link emailed to client</div>
+    <div class="task"><span class="icon">✅</span> Subject: "Your Exit Roadmap is Ready"</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB — THE CLOSE</div>
+    <div class="task"><span class="icon">📋</span> Present the Exit Roadmap on Call 2</div>
+    <div class="task"><span class="icon">📋</span> Walk through findings: value destroyers, value creators, timeline</div>
+    <div class="task"><span class="icon">📋</span> Present the engagement: scope, timeline, fee structure</div>
+    <div class="task"><span class="icon">📋</span> Handle objections (see scripts below)</div>
+    <div class="task"><span class="icon">📋</span> Close: send engagement agreement + collect deposit</div>
+    
+    <div class="script-box">
+      <div class="label">🎯 Call 2 structure (45 min)</div>
+      <p>
+        <strong>0-5 min:</strong> Recap Call 1, confirm nothing changed<br>
+        <strong>5-15 min:</strong> Present findings - 3 risks, 3 opportunities<br>
+        <strong>15-25 min:</strong> Walk through the roadmap - phases, timeline, deliverables<br>
+        <strong>25-35 min:</strong> Present engagement terms and fee structure<br>
+        <strong>35-45 min:</strong> Q&A, handle objections, close or set decision timeline
+      </p>
+    </div>
+    
+    <div class="script-box">
+      <div class="label">💬 Common objections</div>
+      <p>
+        <strong>"I need to think about it"</strong> → "Totally understand. What specifically do you want to think through? Let's address it now so you have everything you need to make a decision."<br><br>
+        <strong>"The fee is high"</strong> → "What's your business worth right now? [Answer]. And what would a 1.5x multiple increase mean? That's the gap we close. The fee is a fraction of the value we create."<br><br>
+        <strong>"I'm not ready yet"</strong> → "The best time to prepare for an exit is 18-24 months before you want to sell. If you wait until you're ready, you've already left money on the table."
+      </p>
+    </div>
+    
+    <div class="timeline">Max time in stage: 7 days after Call 2</div>
+    
+    <div class="exit-criteria">
+      <div class="label">✅ Exit criteria → Closed Won or Long-Term Nurture</div>
+      <div class="text">They sign + pay deposit: Closed Won. They need time: Long-Term Nurture with a follow-up date set.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 8 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#4a8c5c22;color:#4a8c5c;">8</div>
+    <div class="stage-title">
+      <h2>✅ Closed Won</h2>
+      <div class="trigger">Trigger: Engagement signed + deposit paid</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
+    <div class="task"><span class="icon">✅</span> Welcome + onboarding email sent</div>
+    <div class="task"><span class="icon">✅</span> Phase 1 overview: Alignment (Weeks 1-4)</div>
+    <div class="task"><span class="icon">✅</span> Jean notified</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Schedule kickoff session within 48 hours</div>
+    <div class="task"><span class="icon">📋</span> Send engagement agreement for signature (if not done on call)</div>
+    <div class="task"><span class="icon">📋</span> Collect deposit payment</div>
+    <div class="task"><span class="icon">📋</span> Set up client folder and project timeline</div>
+    <div class="task"><span class="icon">📋</span> Begin Phase 1: Alignment</div>
+    
+    <div class="exit-criteria">
+      <div class="label">🎉 This is the goal</div>
+      <div class="text">Client is paying. Engagement is active. Now deliver exceptional value and earn referrals.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 9 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#d87a6a22;color:#d87a6a;">9</div>
+    <div class="stage-title">
+      <h2>⚠️ No Show</h2>
+      <div class="trigger">Trigger: Missed scheduled call</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
+    <div class="task"><span class="icon">✅</span> Recovery email sent with reschedule link</div>
+    
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Wait 1 hour, then send personal text</div>
+    <div class="task"><span class="icon">📋</span> If no response in 24hrs: call them</div>
+    <div class="task"><span class="icon">📋</span> If no response in 72hrs: one more email, then Long-Term Nurture</div>
+    
+    <div class="script-box">
+      <div class="label">💬 No-show text (1 hour after missed call)</div>
+      <p>"Hey [Name], we had a call scheduled today - looks like we missed each other. No worries at all. Want to reschedule? I've got some time [tomorrow/Thursday]. Just let me know what works."</p>
+    </div>
+    
+    <div class="timeline">Max recovery window: 7 days</div>
+    
+    <div class="exit-criteria">
+      <div class="label">Exit criteria</div>
+      <div class="text">They reschedule: move back to Call Booked. No response in 7 days: move to Long-Term Nurture.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAGE 10 -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#9a685022;color:#9a6850;">10</div>
+    <div class="stage-title">
+      <h2>⏳ Long-Term Nurture</h2>
+      <div class="trigger">Trigger: Not ready now, maintaining relationship</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> Set a follow-up date in GHL (30/60/90 days)</div>
+    <div class="task"><span class="icon">📋</span> Monthly value email: industry insight, case study, or market update</div>
+    <div class="task"><span class="icon">📋</span> Check in quarterly with a personal message</div>
+    <div class="task"><span class="icon">📋</span> Never burn the bridge - they may come back in 6-12 months</div>
+    
+    <div class="script-box">
+      <div class="label">💬 Monthly check-in template</div>
+      <p>"Hey [Name], saw an interesting report on [industry] exit multiples this quarter - thought of you. Average multiples for businesses your size went [up/down] to [X]x EBITDA. Happy to discuss what this means for your timeline whenever you're ready. No pressure."</p>
+    </div>
+    
+    <div class="exit-criteria">
+      <div class="label">Re-entry criteria</div>
+      <div class="text">They reach out, respond to nurture, or a trigger event happens (health, competitor exit, etc). Move back to Call Booked.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:20px;margin-top:24px;">
+  <h3 style="color:#c9a84c;font-size:14px;margin-bottom:12px;">📊 PIPELINE HEALTH RULES</h3>
+  <div class="task"><span class="icon">1.</span> <strong>No stale deals.</strong> If nothing moves in 7 days, take action or move to nurture.</div>
+  <div class="task"><span class="icon">2.</span> <strong>Speed wins.</strong> Contact new leads within 1 hour. Follow up same day after calls.</div>
+  <div class="task"><span class="icon">3.</span> <strong>Notes on everything.</strong> Every call, every interaction - add a note in GHL.</div>
+  <div class="task"><span class="icon">4.</span> <strong>Move the card.</strong> When something happens, move the opportunity card. The system handles the rest.</div>
+  <div class="task"><span class="icon">5.</span> <strong>The pipeline is the scoreboard.</strong> Review it daily. If it's not moving, you're not selling.</div>
+</div>
+
+</div>
+
+<div class="nav-bottom">
+  <a href="index.html" class="nav-btn">Command Center</a>
+  <a href="sales-sop.html" class="nav-btn active">Sales SOP</a>
+  <a href="rep-dashboard.html" class="nav-btn">Rep Dashboard</a>
+  <a href="todo.html" class="nav-btn">Todo</a>
+</div>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js?v=2');}</script>
+</body>
+</html>
