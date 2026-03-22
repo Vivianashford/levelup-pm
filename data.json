@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T16:33:19.409700+00:00",
-  "updated_local": "2026-03-22 11:33 AM",
+  "updated": "2026-03-22T16:38:32.129268+00:00",
+  "updated_local": "2026-03-22 11:38 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -36,8 +36,8 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 17,
-    "real": 9
+    "total": 18,
+    "real": 10
   },
   "appointments": {
     "upcoming": 0
