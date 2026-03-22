@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Arena Sales SOP — Pipeline Playbook</title>
+<title>Arena Sales SOP - Pipeline Playbook</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -63,7 +63,7 @@
 
 <div class="header">
   <h1>Arena Sales Playbook</h1>
-  <p>Pipeline SOP — What happens at every stage</p>
+  <p>Pipeline SOP - What happens at every stage</p>
 </div>
 
 <div class="rule">
@@ -85,26 +85,72 @@
     <div class="task"><span class="icon">✅</span> Contact created in GHL with tags: vsl-lead</div>
     <div class="task"><span class="icon">✅</span> Opportunity created in Arena Pipeline (this stage)</div>
     <div class="task"><span class="icon">✅</span> Confirmation email sent with VSL training link</div>
-    <div class="task"><span class="icon">✅</span> Video watch progress tracked (25/50/75/100%)</div>
+    <div class="task"><span class="icon">✅</span> Video watch progress tracked (25 / 50 / 75 / 100%)</div>
     <div class="task"><span class="icon">✅</span> Jean notified of new lead via email</div>
-    
+    <div class="task"><span class="icon">✅</span> People Data Labs enrichment fires automatically - industry, employee count, founded year, LinkedIn URL written to contact fields</div>
+    <div class="task"><span class="icon">✅</span> Watch engine (cron every 15 min) segments lead into one of 4 re-engagement sequences based on watch %</div>
+
+    <div class="divider"></div>
+    <div class="section-label auto">🔁 JAY ABRAHAM RE-ENGAGEMENT SEQUENCES (4 SEGMENTS)</div>
+
+    <div class="script-box">
+      <div class="label">HIGH (75%+ watch) - 9 touchpoints over 21 days</div>
+      <p>
+        <strong>Sequence: 5 emails + 4 SMS</strong><br>
+        Methodology: Preeminence + Risk Reversal<br>
+        If PDL data exists - copy personalized with industry, company size. If not - generic fallback.<br>
+        Goal: book a call within 21 days.<br>
+        After sequence completes + no booking after 10 hours - auto-moved to Long-Term Nurture.
+      </p>
+    </div>
+
+    <div class="script-box">
+      <div class="label">ENGAGED (50-74% watch) - 8 touchpoints over 21 days</div>
+      <p>
+        <strong>Sequence: 5 emails + 3 SMS</strong><br>
+        Methodology: Education-Based Marketing + Preeminence<br>
+        Lead gets value-first content showing what an exit-ready business looks like.<br>
+        After sequence completes + no booking after 10 hours - auto-moved to Long-Term Nurture.
+      </p>
+    </div>
+
+    <div class="script-box">
+      <div class="label">CURIOUS (25-49% watch) - 8 touchpoints over 28 days</div>
+      <p>
+        <strong>Sequence: 5 emails + 3 SMS</strong><br>
+        Methodology: Education-Based Marketing + Risk Reversal<br>
+        Longer runway. Nurture curiosity into conviction over 4 weeks.<br>
+        After sequence completes + no booking after 10 hours - auto-moved to Long-Term Nurture.
+      </p>
+    </div>
+
+    <div class="script-box">
+      <div class="label">LOW (&lt;25% watch) - 7 touchpoints over 21 days</div>
+      <p>
+        <strong>Sequence: 3 emails + 4 SMS</strong><br>
+        Methodology: Pattern interrupt. Heavy on SMS - shorter, punchier.<br>
+        Goal is re-engagement with the VSL first, call second.<br>
+        After sequence completes + no booking after 10 hours - auto-moved to Long-Term Nurture.
+      </p>
+    </div>
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Review lead info (name, revenue, goal)</div>
-    <div class="task"><span class="icon">📋</span> Check video watch % - did they finish?</div>
-    <div class="task"><span class="icon">📋</span> If 75%+ watched: reach out personally to book a call</div>
-    <div class="task"><span class="icon">📋</span> If under 25% after 48hrs: send nudge message</div>
-    
+    <div class="task"><span class="icon">📋</span> Check enrichment data - did PDL fill in industry and employee count?</div>
+    <div class="task"><span class="icon">📋</span> Check video watch % - HIGH leads get personal outreach from Jean</div>
+    <div class="task"><span class="icon">📋</span> If 75%+ watched: reach out personally to book a call (on top of automation)</div>
+
     <div class="divider"></div>
     <div class="section-label metric">📊 KEY METRICS</div>
     <div class="task"><span class="icon">📈</span> Target: 60% watch 50%+ of VSL</div>
     <div class="task"><span class="icon">📈</span> Target: 30% of VSL leads book a call</div>
-    
-    <div class="timeline">Max time in stage: 7 days</div>
-    
+
+    <div class="timeline">Max time in stage: 7 days then auto-nurture</div>
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → Call Booked</div>
-      <div class="text">Lead books a diagnostic call through the booking link. Move to Call Booked.</div>
+      <div class="label">✅ Exit criteria - Call Booked</div>
+      <div class="text">Lead books a diagnostic call through the booking link. Move to Call Booked. Kill switch fires - vsl-booked tag stops all watch sequences.</div>
     </div>
   </div>
 </div>
@@ -121,18 +167,20 @@
   </div>
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED</div>
-    <div class="task"><span class="icon">✅</span> Tag vsl-booked applied</div>
+    <div class="task"><span class="icon">✅</span> Tag vsl-booked auto-applied - visible on Command Center and kills active watch nurture sequence immediately</div>
+    <div class="task"><span class="icon">✅</span> Stage automation engine fires within 5 min (cron every 5 min)</div>
     <div class="task"><span class="icon">✅</span> Booking confirmation email sent</div>
     <div class="task"><span class="icon">✅</span> Reminder emails: Day before + morning of</div>
-    
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Review their Exit Risk Assessment (if completed)</div>
     <div class="task"><span class="icon">📋</span> Review their VSL watch data - what topics interested them?</div>
+    <div class="task"><span class="icon">📋</span> Review PDL enrichment data - industry, size, years in business</div>
     <div class="task"><span class="icon">📋</span> Research their company (Google, LinkedIn, industry)</div>
     <div class="task"><span class="icon">📋</span> Prepare 3 specific insights about their business</div>
     <div class="task"><span class="icon">📋</span> If no assessment yet: send assessment link before call</div>
-    
+
     <div class="script-box">
       <div class="label">📞 Pre-call prep checklist</div>
       <p>1. What's their revenue? (from form)<br>
@@ -141,11 +189,11 @@
       4. What similar deal have we done? (case study ready)<br>
       5. What's the ONE insight that will make them say "this guy gets it"?</p>
     </div>
-    
+
     <div class="timeline">Max time in stage: Until call date</div>
-    
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → Call Complete or No Show</div>
+      <div class="label">✅ Exit criteria - Call Complete or No Show</div>
       <div class="text">Call happens: move to Call Complete. They don't show: move to No Show.</div>
     </div>
   </div>
@@ -165,21 +213,21 @@
     <div class="section-label auto">⚡ AUTOMATED</div>
     <div class="task"><span class="icon">✅</span> All 7 risk scores written to contact custom fields</div>
     <div class="task"><span class="icon">✅</span> Overall Exit Risk Score calculated (0-100)</div>
-    <div class="task"><span class="icon">✅</span> Risk level assigned (Low/Moderate/High/Critical)</div>
+    <div class="task"><span class="icon">✅</span> Risk level assigned (Low / Moderate / High / Critical)</div>
     <div class="task"><span class="icon">✅</span> Detailed note added to contact</div>
-    
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Review the 7 risk scores - identify top 3 problem areas</div>
     <div class="task"><span class="icon">📋</span> Use scores to personalize the diagnostic call</div>
-    <div class="task"><span class="icon">📋</span> If score > 60 (HIGH): this is a hot lead - prioritize</div>
-    <div class="task"><span class="icon">📋</span> If score < 30 (LOW): they might not need us yet - qualify carefully</div>
-    
+    <div class="task"><span class="icon">📋</span> If score &gt; 60 (HIGH): this is a hot lead - prioritize</div>
+    <div class="task"><span class="icon">📋</span> If score &lt; 30 (LOW): they might not need us yet - qualify carefully</div>
+
     <div class="script-box">
       <div class="label">🎯 How to use scores on the call</div>
       <p>"I noticed your owner dependency score came in at 18 out of 20. That tells me if you got sick tomorrow, the business would be in serious trouble. Let's talk about what that means for your exit timeline..."</p>
     </div>
-    
+
     <div class="exit-criteria">
       <div class="label">Note</div>
       <div class="text">This stage can overlap with Call Booked. Some leads complete the assessment before booking, some after. Both paths work.</div>
@@ -199,9 +247,10 @@
   </div>
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
-    <div class="task"><span class="icon">✅</span> NDA link emailed to client automatically</div>
-    <div class="task"><span class="icon">✅</span> Jean notified of pipeline change</div>
-    
+    <div class="task"><span class="icon">✅</span> NDA email sent automatically with DocuSign / PandaDoc signing link</div>
+    <div class="task"><span class="icon">✅</span> Jean gets notification email on every pipeline stage change</div>
+    <div class="task"><span class="icon">✅</span> Stage automation engine fires within 5 min of stage change</div>
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Move the contact to this stage in GHL immediately after the call</div>
@@ -209,16 +258,16 @@
     <div class="task"><span class="icon">📋</span> Score the lead: Hot (ready now) / Warm (3-6 months) / Cold (exploring)</div>
     <div class="task"><span class="icon">📋</span> If Hot: follow up same day to confirm they received the NDA</div>
     <div class="task"><span class="icon">📋</span> If Cold: move to Long-Term Nurture instead</div>
-    
+
     <div class="script-box">
       <div class="label">💬 Post-call follow-up text (send within 1 hour)</div>
       <p>"Hey [Name], great talking today. I just sent over the NDA to your email - quick 2-minute sign. Once that's done, I'll send you the company overview form and we'll start building your roadmap. Talk soon."</p>
     </div>
-    
+
     <div class="timeline">Max time in stage: 3 days</div>
-    
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → NDA Signed</div>
+      <div class="label">✅ Exit criteria - NDA Signed</div>
       <div class="text">Client signs the NDA electronically. System auto-tags them and moves to next stage.</div>
     </div>
   </div>
@@ -239,23 +288,23 @@
     <div class="task"><span class="icon">✅</span> Tag nda-signed applied</div>
     <div class="task"><span class="icon">✅</span> NDA PDF generated and stored in R2</div>
     <div class="task"><span class="icon">✅</span> Confirmation email sent to client (with PDF download)</div>
-    <div class="task"><span class="icon">✅</span> Company Info form link sent automatically</div>
-    <div class="task"><span class="icon">✅</span> Jean notified</div>
-    
+    <div class="task"><span class="icon">✅</span> Company Info form link auto-sent immediately after signing</div>
+    <div class="task"><span class="icon">✅</span> Jean notified via email of stage change</div>
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Verify NDA was received (check GHL contact notes)</div>
     <div class="task"><span class="icon">📋</span> If company info not submitted within 48hrs: personal follow-up</div>
-    
+
     <div class="script-box">
       <div class="label">💬 Nudge if company info is late (Day 3)</div>
       <p>"Hey [Name], just checking in - did you get the Company Overview form I sent after the NDA? It takes about 10 minutes and it's the last thing I need before I can start building your exit roadmap. Let me know if you have any questions."</p>
     </div>
-    
+
     <div class="timeline">Max time in stage: 5 days</div>
-    
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → Due Diligence</div>
+      <div class="label">✅ Exit criteria - Due Diligence</div>
       <div class="text">Client submits company info form. Tag company-info-submitted fires. Move to Due Diligence.</div>
     </div>
   </div>
@@ -274,12 +323,12 @@
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED</div>
     <div class="task"><span class="icon">✅</span> Tag company-info-submitted applied</div>
-    <div class="task"><span class="icon">✅</span> Upload Portal link emailed to client</div>
+    <div class="task"><span class="icon">✅</span> Upload Portal link auto-sent to client via email</div>
     <div class="task"><span class="icon">✅</span> Jean notified when documents are uploaded</div>
-    <div class="task"><span class="icon">✅</span> Files stored in R2 organized by category</div>
-    
+    <div class="task"><span class="icon">✅</span> Files stored in Cloudflare R2 under clients/{company-slug}/{category}/</div>
+
     <div class="divider"></div>
-    <div class="section-label manual">👤 YOUR JOB — THIS IS WHERE YOU EARN YOUR FEE</div>
+    <div class="section-label manual">👤 YOUR JOB - THIS IS WHERE YOU EARN YOUR FEE</div>
     <div class="task"><span class="icon">📋</span> Review all uploaded documents thoroughly</div>
     <div class="task"><span class="icon">📋</span> Build the client's Exit Roadmap:</div>
     <div class="task"><span class="icon">  </span> - EBITDA analysis + add-backs</div>
@@ -288,22 +337,22 @@
     <div class="task"><span class="icon">  </span> - Top 3 value creators (quick wins before exit)</div>
     <div class="task"><span class="icon">  </span> - Recommended timeline</div>
     <div class="task"><span class="icon">📋</span> Identify missing documents - follow up for gaps</div>
-    <div class="task"><span class="icon">📋</span> Prepare Call 2 presentation/proposal</div>
-    
+    <div class="task"><span class="icon">📋</span> Prepare Call 2 presentation / proposal</div>
+
     <div class="script-box">
       <div class="label">📁 Document checklist - what you need</div>
       <p>
-        <strong>Must have:</strong> P&L (3 years), Balance Sheet, Tax Returns<br>
+        <strong>Must have:</strong> P&amp;L (3 years), Balance Sheet, Tax Returns<br>
         <strong>Should have:</strong> Org Chart, Client Revenue Breakdown, Employee List<br>
         <strong>Nice to have:</strong> SOPs, Contracts, Insurance, Property/Equipment List
       </p>
     </div>
-    
+
     <div class="timeline">Max time in stage: 7 days</div>
-    
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → 2nd Call - Proposal</div>
-      <div class="text">You've reviewed everything, built the roadmap, and are ready to present. Move to Proposal and the system emails the Call 2 booking link.</div>
+      <div class="label">✅ Exit criteria - 2nd Call - Proposal</div>
+      <div class="text">You've reviewed everything, built the roadmap, and are ready to present. Move to Proposal and the system emails the Call 2 booking link automatically.</div>
     </div>
   </div>
 </div>
@@ -320,17 +369,18 @@
   </div>
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
-    <div class="task"><span class="icon">✅</span> Call 2 booking link emailed to client</div>
+    <div class="task"><span class="icon">✅</span> Call 2 booking link auto-sent via email</div>
     <div class="task"><span class="icon">✅</span> Subject: "Your Exit Roadmap is Ready"</div>
-    
+    <div class="task"><span class="icon">✅</span> Jean notified via email of stage change</div>
+
     <div class="divider"></div>
-    <div class="section-label manual">👤 YOUR JOB — THE CLOSE</div>
+    <div class="section-label manual">👤 YOUR JOB - THE CLOSE</div>
     <div class="task"><span class="icon">📋</span> Present the Exit Roadmap on Call 2</div>
     <div class="task"><span class="icon">📋</span> Walk through findings: value destroyers, value creators, timeline</div>
     <div class="task"><span class="icon">📋</span> Present the engagement: scope, timeline, fee structure</div>
     <div class="task"><span class="icon">📋</span> Handle objections (see scripts below)</div>
     <div class="task"><span class="icon">📋</span> Close: send engagement agreement + collect deposit</div>
-    
+
     <div class="script-box">
       <div class="label">🎯 Call 2 structure (45 min)</div>
       <p>
@@ -338,23 +388,23 @@
         <strong>5-15 min:</strong> Present findings - 3 risks, 3 opportunities<br>
         <strong>15-25 min:</strong> Walk through the roadmap - phases, timeline, deliverables<br>
         <strong>25-35 min:</strong> Present engagement terms and fee structure<br>
-        <strong>35-45 min:</strong> Q&A, handle objections, close or set decision timeline
+        <strong>35-45 min:</strong> Q&amp;A, handle objections, close or set decision timeline
       </p>
     </div>
-    
+
     <div class="script-box">
       <div class="label">💬 Common objections</div>
       <p>
-        <strong>"I need to think about it"</strong> → "Totally understand. What specifically do you want to think through? Let's address it now so you have everything you need to make a decision."<br><br>
-        <strong>"The fee is high"</strong> → "What's your business worth right now? [Answer]. And what would a 1.5x multiple increase mean? That's the gap we close. The fee is a fraction of the value we create."<br><br>
-        <strong>"I'm not ready yet"</strong> → "The best time to prepare for an exit is 18-24 months before you want to sell. If you wait until you're ready, you've already left money on the table."
+        <strong>"I need to think about it"</strong> - "Totally understand. What specifically do you want to think through? Let's address it now so you have everything you need to make a decision."<br><br>
+        <strong>"The fee is high"</strong> - "What's your business worth right now? [Answer]. And what would a 1.5x multiple increase mean? That's the gap we close. The fee is a fraction of the value we create."<br><br>
+        <strong>"I'm not ready yet"</strong> - "The best time to prepare for an exit is 18-24 months before you want to sell. If you wait until you're ready, you've already left money on the table."
       </p>
     </div>
-    
+
     <div class="timeline">Max time in stage: 7 days after Call 2</div>
-    
+
     <div class="exit-criteria">
-      <div class="label">✅ Exit criteria → Closed Won or Long-Term Nurture</div>
+      <div class="label">✅ Exit criteria - Closed Won or Long-Term Nurture</div>
       <div class="text">They sign + pay deposit: Closed Won. They need time: Long-Term Nurture with a follow-up date set.</div>
     </div>
   </div>
@@ -372,27 +422,33 @@
   </div>
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
-    <div class="task"><span class="icon">✅</span> Welcome email sent with full 4-phase breakdown</div>
+    <div class="task"><span class="icon">✅</span> Welcome email sent automatically with full 4-phase onboarding breakdown</div>
+    <div class="task"><span class="icon">✅</span> Pre-visit checklist included in the welcome email</div>
     <div class="task"><span class="icon">✅</span> Upload portal link included for remaining docs</div>
-    <div class="task"><span class="icon">✅</span> Jean notified</div>
-    
+    <div class="task"><span class="icon">✅</span> Jean notified via email of stage change</div>
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Schedule kickoff call within 48 hours</div>
     <div class="task"><span class="icon">📋</span> Send engagement agreement + collect deposit (if not done on Call 2)</div>
     <div class="task"><span class="icon">📋</span> Set up client folder and project timeline</div>
-    
+
     <div class="divider"></div>
     <div class="section-label" style="color:#6a9fd8;">📍 THE 4 PHASES OF ENGAGEMENT</div>
-    
+
     <div class="script-box">
       <div class="label">Phase 1: Alignment (Weeks 1-2)</div>
-      <p>Kickoff call - align on vision, timeline, priorities. Send pre-visit prep list: key people to meet, systems to access, financial records needed, daily operations schedule.</p>
+      <p>Kickoff call - align on vision, timeline, priorities.<br><br>
+      Pre-visit prep (auto-included in welcome email):<br>
+      - Key people to meet (ops lead, sales, admin, foremen)<br>
+      - Systems to get access to before arrival<br>
+      - Financial records needed<br>
+      - Daily operations schedule overview</p>
     </div>
-    
+
     <div class="script-box">
-      <div class="label">Phase 2: On-Site Immersion (Weeks 3-5) ← THIS IS THE DIFFERENTIATOR</div>
-      <p><strong>You go to their location for 2-3 weeks.</strong><br><br>
+      <div class="label">Phase 2: On-Site Immersion (Weeks 3-5) - GO TO CLIENT LOCATION</div>
+      <p><strong>You go to their location for 2-3 weeks. This is the differentiator.</strong><br><br>
       - Meet every key team member one-on-one<br>
       - Shadow daily operations to see how the business actually runs<br>
       - Document every process that lives in the owner's head<br>
@@ -403,35 +459,39 @@
       - Audit financial systems, reporting, cash flow<br><br>
       <strong>Why this matters:</strong> A buyer will do their own version during due diligence. We do it first so there are zero surprises. This is what separates us from every other "exit advisor" who just sends templates.</p>
     </div>
-    
+
     <div class="script-box">
       <div class="label">Phase 3: System Build (Weeks 6-12)</div>
-      <p>- Build SOPs for every undocumented process<br>
+      <p>
+      - Build SOPs for every undocumented process<br>
       - Create the operations manual a buyer needs<br>
       - Implement management dashboards and KPIs<br>
       - Transfer owner-dependent relationships to team<br>
-      - Train the #2 on everything the owner does alone<br>
-      - Financial clean-up: separate personal from business, identify add-backs</p>
+      - Train the number two on everything the owner does alone<br>
+      - Financial clean-up: separate personal from business, identify add-backs
+      </p>
     </div>
-    
+
     <div class="script-box">
       <div class="label">Phase 4: Market Ready (Months 4-18)</div>
-      <p>- Prove business runs without owner (3-6 month track record)<br>
+      <p>
+      - Prove business runs without owner (3-6 month track record)<br>
       - Optimize EBITDA for maximum valuation<br>
       - Prepare data room for buyers<br>
       - Position for strategic premium<br>
-      - When ready: introduce to qualified buyers or broker</p>
+      - When ready: introduce to qualified buyers or broker
+      </p>
     </div>
-    
+
     <div class="divider"></div>
-    <div class="section-label manual">👤 PRE-VISIT CHECKLIST (send before on-site)</div>
+    <div class="section-label manual">👤 PRE-VISIT CHECKLIST (included in auto-welcome email)</div>
     <div class="task"><span class="icon">📋</span> Block 2-3 weeks on calendar with client</div>
     <div class="task"><span class="icon">📋</span> Get list of key people to interview (ops lead, sales, admin, foremen)</div>
     <div class="task"><span class="icon">📋</span> Request access to: financial systems, CRM, project management tools</div>
     <div class="task"><span class="icon">📋</span> Request: employee handbook, existing SOPs, org chart, vendor contracts</div>
     <div class="task"><span class="icon">📋</span> Book travel and accommodations</div>
     <div class="task"><span class="icon">📋</span> Prepare interview templates for each role</div>
-    
+
     <div class="exit-criteria">
       <div class="label">🎉 This is the goal</div>
       <div class="text">Client is paying. You're on-site building the machine. Deliver so much value they refer you to everyone they know.</div>
@@ -451,21 +511,23 @@
   </div>
   <div class="stage-body">
     <div class="section-label auto">⚡ AUTOMATED (when you move them here)</div>
-    <div class="task"><span class="icon">✅</span> Recovery email sent with reschedule link</div>
-    
+    <div class="task"><span class="icon">✅</span> Recovery and reschedule email auto-sent with booking link</div>
+    <div class="task"><span class="icon">✅</span> Jean notified via email of stage change</div>
+    <div class="task"><span class="icon">✅</span> Stage automation engine fires within 5 min</div>
+
     <div class="divider"></div>
     <div class="section-label manual">👤 YOUR JOB</div>
     <div class="task"><span class="icon">📋</span> Wait 1 hour, then send personal text</div>
     <div class="task"><span class="icon">📋</span> If no response in 24hrs: call them</div>
     <div class="task"><span class="icon">📋</span> If no response in 72hrs: one more email, then Long-Term Nurture</div>
-    
+
     <div class="script-box">
       <div class="label">💬 No-show text (1 hour after missed call)</div>
       <p>"Hey [Name], we had a call scheduled today - looks like we missed each other. No worries at all. Want to reschedule? I've got some time [tomorrow/Thursday]. Just let me know what works."</p>
     </div>
-    
+
     <div class="timeline">Max recovery window: 7 days</div>
-    
+
     <div class="exit-criteria">
       <div class="label">Exit criteria</div>
       <div class="text">They reschedule: move back to Call Booked. No response in 7 days: move to Long-Term Nurture.</div>
@@ -479,26 +541,125 @@
     <div class="stage-num" style="background:#9a685022;color:#9a6850;">10</div>
     <div class="stage-title">
       <h2>⏳ Long-Term Nurture</h2>
-      <div class="trigger">Trigger: Not ready now, maintaining relationship</div>
+      <div class="trigger">Trigger: Not ready now - maintaining relationship</div>
     </div>
     <div class="stage-arrow">▶</div>
   </div>
   <div class="stage-body">
-    <div class="section-label manual">👤 YOUR JOB</div>
-    <div class="task"><span class="icon">📋</span> Set a follow-up date in GHL (30/60/90 days)</div>
-    <div class="task"><span class="icon">📋</span> Monthly value email: industry insight, case study, or market update</div>
-    <div class="task"><span class="icon">📋</span> Check in quarterly with a personal message</div>
-    <div class="task"><span class="icon">📋</span> Never burn the bridge - they may come back in 6-12 months</div>
-    
+    <div class="section-label auto">⚡ AUTOMATED - 120-DAY NURTURE MACHINE (Jay Abraham Methodology)</div>
+    <div class="task"><span class="icon">✅</span> 34 touchpoints over 120 days fire automatically on cron every 15 min</div>
+    <div class="task"><span class="icon">✅</span> Kill switch: if contact books a call (gets vsl-booked tag), all sequences stop immediately</div>
+    <div class="task"><span class="icon">✅</span> Enrichment personalization: if PDL data exists, copy is personalized. If not, generic fallback.</div>
+    <div class="task"><span class="icon">✅</span> After Day 120 breakup email: 14-day wait, then auto-tag for quarterly newsletter</div>
+
+    <div class="divider"></div>
+    <div class="section-label auto">📅 MONTH 1 - CONSCIOUSNESS RAISING (Days 1-30)</div>
     <div class="script-box">
-      <div class="label">💬 Monthly check-in template</div>
-      <p>"Hey [Name], saw an interesting report on [industry] exit multiples this quarter - thought of you. Average multiples for businesses your size went [up/down] to [X]x EBITDA. Happy to discuss what this means for your timeline whenever you're ready. No pressure."</p>
+      <div class="label">6 emails + 4 SMS + 1 handwritten notecard (Handwrytten)</div>
+      <p>
+        Goal: Make them conscious of the gap between where they are and where they need to be.<br>
+        Jay Abraham: Preeminence. Position Jean as the most trusted advisor they've never hired.<br><br>
+        Handwritten notecard via Handwrytten - personal, stands out in the mail. Sent end of Month 1.<br><br>
+        Copy style: Education-first. No pitch. Build the case that their business has a time bomb if owner dependency isn't fixed before exit.
+      </p>
     </div>
-    
+
+    <div class="divider"></div>
+    <div class="section-label auto">📅 MONTH 2 - DRAMATIC RELIEF (Days 31-60)</div>
+    <div class="script-box">
+      <div class="label">4 emails + 3 SMS + 1 oversized postcard (PostGrid) + 9-word email (Day 35)</div>
+      <p>
+        Goal: Create emotional urgency. Show them the pain of inaction vs. the relief of moving forward.<br>
+        Jay Abraham: Risk Reversal. Make the decision to engage feel safe and obvious.<br><br>
+        <strong>Day 35 - 9-word email (plain text, no branding, no images):</strong><br>
+        Subject: quick question<br>
+        Body: "Are you still looking to exit your business, [First Name]?"<br><br>
+        Oversized postcard via PostGrid - physical mail cuts through digital noise. Includes a specific case result.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label auto">📅 MONTH 3 - SELF-REEVALUATION (Days 61-90)</div>
+    <div class="script-box">
+      <div class="label">3 emails + 3 SMS + 1 personalized letter (PostGrid)</div>
+      <p>
+        Goal: Help them see themselves differently. Not just as a business owner - as a future seller.<br>
+        Jay Abraham: Education-Based Marketing. Teach them what buyers actually look for.<br><br>
+        Personalized letter via PostGrid - full letter, addressed to them by name. Feels like something important arrived.<br><br>
+        Copy style: "Here's what a buyer's due diligence team will look at when they walk into your building. Are you ready for that conversation?"
+      </p>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label auto">📅 MONTH 4 - URGENCY AND BREAKUP (Days 91-120)</div>
+    <div class="script-box">
+      <div class="label">4 emails + 3 SMS + 1 premium handwritten card (Handwrytten) + Day 112 nine-word email + Day 120 breakup</div>
+      <p>
+        Goal: Create urgency. This is the last chance to re-engage before the file closes.<br>
+        Jay Abraham: Scarcity + Pattern interrupt.<br><br>
+        <strong>Day 112 - 9-word email (plain text, no branding):</strong><br>
+        Subject: still thinking about this?<br>
+        Body: "Wanted to check in one last time, [First Name]."<br><br>
+        <strong>Day 116 - Conditional SMS:</strong> Only fires if lead score &gt; 50. "Hey [First Name], just one thing left to tell you before I close your file - want to hear it?"<br><br>
+        Premium handwritten card via Handwrytten - highest quality card stock, personal note from Jean.<br><br>
+        <strong>Day 120 - BREAKUP EMAIL:</strong><br>
+        Subject: Closing your file, [First Name]<br>
+        Body: Plain text. No pitch. Graceful exit. "I've been following up for 4 months because I genuinely believe we could add millions to your exit. But I don't want to keep bothering you. I'm closing your file today. If anything changes, you know where to find me."
+      </p>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label manual">👤 YOUR JOB</div>
+    <div class="task"><span class="icon">📋</span> You don't have to do much - the machine runs</div>
+    <div class="task"><span class="icon">📋</span> If someone replies to any touchpoint - get on a call immediately</div>
+    <div class="task"><span class="icon">📋</span> Check GHL weekly for replies that slipped through</div>
+    <div class="task"><span class="icon">📋</span> Never burn the bridge - they may come back even after Day 120</div>
+
     <div class="exit-criteria">
       <div class="label">Re-entry criteria</div>
-      <div class="text">They reach out, respond to nurture, or a trigger event happens (health, competitor exit, etc). Move back to Call Booked.</div>
+      <div class="text">They reply to any email or SMS, book a call, or a trigger event happens (health, competitor exit, etc). Kill switch fires - sequences stop. Move back to Call Booked.</div>
     </div>
+  </div>
+</div>
+
+<!-- AUTOMATION ENGINE STATUS -->
+<div class="stage" onclick="this.classList.toggle('open')">
+  <div class="stage-header">
+    <div class="stage-num" style="background:#4a8c5c22;color:#4a8c5c;">⚙</div>
+    <div class="stage-title">
+      <h2>🤖 Automation Engine Status</h2>
+      <div class="trigger">4 cron engines running 24/7</div>
+    </div>
+    <div class="stage-arrow">▶</div>
+  </div>
+  <div class="stage-body">
+    <div class="section-label auto">⚡ CRON ENGINES</div>
+    <div class="task"><span class="icon">✅</span> Stats Engine - fires every 5 min - updates pipeline counts, lead scores, Command Center metrics</div>
+    <div class="task"><span class="icon">✅</span> Stage Automation Engine - fires every 5 min - executes all stage-change automations (NDA, notifications, booking links)</div>
+    <div class="task"><span class="icon">✅</span> Watch Engine - fires every 15 min - reads VSL watch % data, segments leads, fires Jay Abraham re-engagement sequences</div>
+    <div class="task"><span class="icon">✅</span> 120-Day Nurture Engine - fires every 15 min - processes Long-Term Nurture contacts, sends emails, SMS, triggers direct mail</div>
+
+    <div class="divider"></div>
+    <div class="section-label auto">🔗 INTEGRATIONS</div>
+    <div class="task"><span class="icon">✅</span> All API calls routed through Cloudflare Worker proxy: arena-api.jean-475.workers.dev</div>
+    <div class="task"><span class="icon">✅</span> All emails sent from: The Arena Partners - support@thearenapartners.com</div>
+    <div class="task"><span class="icon">✅</span> Enrichment: People Data Labs (free 100/month) - industry, employee count, founded year, LinkedIn via Worker proxy</div>
+    <div class="task"><span class="icon">✅</span> File storage: Cloudflare R2 - clients/{company-slug}/{category}/</div>
+    <div class="task"><span class="icon">✅</span> Direct mail postcards + letters: PostGrid</div>
+    <div class="task"><span class="icon">✅</span> Direct mail handwritten cards + notecards: Handwrytten</div>
+
+    <div class="divider"></div>
+    <div class="section-label metric">📊 WHAT'S FULLY AUTOMATED</div>
+    <div class="task"><span class="icon">✅</span> Stage 1: Lead creation, watch tracking, enrichment, 4 Jay Abraham sequences</div>
+    <div class="task"><span class="icon">✅</span> Stage 2: vsl-booked tag, kill nurture sequence, confirmation + reminders</div>
+    <div class="task"><span class="icon">✅</span> Stage 4: NDA email with signing link, Jean notification</div>
+    <div class="task"><span class="icon">✅</span> Stage 5: Company Info form link sent after NDA signing</div>
+    <div class="task"><span class="icon">✅</span> Stage 6: Upload Portal link sent</div>
+    <div class="task"><span class="icon">✅</span> Stage 7: Call 2 booking link sent</div>
+    <div class="task"><span class="icon">✅</span> Stage 8: Welcome email + 4-phase onboarding + pre-visit checklist</div>
+    <div class="task"><span class="icon">✅</span> Stage 9: Recovery and reschedule email</div>
+    <div class="task"><span class="icon">✅</span> Stage 10: Full 120-day nurture machine - 34 touchpoints, direct mail, 9-word emails, breakup</div>
+    <div class="task"><span class="icon">✅</span> All stages: Jean notification email on every stage change</div>
   </div>
 </div>
 
