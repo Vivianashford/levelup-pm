@@ -246,6 +246,25 @@
       <!-- Traffic Sources -->
       <div style="font-size:9px;text-transform:uppercase;color:#6b655e;margin-bottom:4px;letter-spacing:1px;">Traffic Sources</div>
       <div id="ga-sources" style="font-size:11px;color:#9a9590;"></div>
+
+      <!-- Blog Analytics -->
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.04);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:9px;text-transform:uppercase;color:#6b655e;letter-spacing:1px;">Blog Performance (7d)</span>
+          <a href="https://thearenapartners.com/blog/" target="_blank" style="font-size:9px;color:#c9a84c;text-decoration:none;">View Blog &rarr;</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div style="text-align:center;padding:6px;background:rgba(255,255,255,.02);border-radius:4px;">
+            <div style="font-size:16px;font-weight:700;color:#c9a84c;" id="blog-views">0</div>
+            <div style="font-size:8px;color:#6b655e;">Blog Views</div>
+          </div>
+          <div style="text-align:center;padding:6px;background:rgba(255,255,255,.02);border-radius:4px;">
+            <div style="font-size:16px;font-weight:700;color:#f5f0e8;" id="blog-users">0</div>
+            <div style="font-size:8px;color:#6b655e;">Blog Readers</div>
+          </div>
+        </div>
+        <div id="blog-articles" style="font-size:11px;color:#9a9590;"></div>
+      </div>
     </div>
   </div>
 
@@ -265,6 +284,9 @@
     <a href="todo.html" class="nav-btn"><span class="ico">✅</span>Full Todos</a>
     <a href="https://app.gohighlevel.com" target="_blank" class="nav-btn"><span class="ico">⚙️</span>GHL CRM</a>
     <a href="https://thearenapartners.com" target="_blank" class="nav-btn"><span class="ico">🌐</span>Arena Site</a>
+    <a href="https://thearenapartners.com/blog/" target="_blank" class="nav-btn"><span class="ico">📝</span>Blog</a>
+    <a href="sales-sop.html" class="nav-btn"><span class="ico">📋</span>Sales SOP</a>
+    <a href="rep-dashboard.html" class="nav-btn"><span class="ico">📊</span>Rep Dash</a>
     <a href="https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod" target="_blank" class="nav-btn"><span class="ico">📅</span>Calendar</a>
     <a href="https://dashboard.stripe.com" target="_blank" class="nav-btn"><span class="ico">💳</span>Stripe</a>
     <a href="https://app.monarchmoney.com" target="_blank" class="nav-btn"><span class="ico">👑</span>Monarch</a>
@@ -388,6 +410,26 @@ fetch('data.json?t='+Date.now())
         document.getElementById('ga-pages').innerHTML=ph;
       } else {
         document.getElementById('ga-pages').innerHTML='<div style="color:#4a4540;font-size:10px;">No data yet - check back in 24-48h</div>';
+      }
+      // Blog analytics
+      if(a.blog){
+        document.getElementById('blog-views').textContent=a.blog.total_views||0;
+        document.getElementById('blog-users').textContent=a.blog.total_users||0;
+        if(a.blog.articles&&a.blog.articles.length){
+          var bh='';
+          a.blog.articles.forEach(function(b){
+            var name=b.page.replace('/blog/','').replace('.html','').replace(/-/g,' ');
+            name=name.charAt(0).toUpperCase()+name.slice(1);
+            var dur=b.avg_duration||0;
+            var durStr=dur>60?Math.round(dur/60)+'m':Math.round(dur)+'s';
+            bh+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.03);">';
+            bh+='<span style="color:#f5f0e8;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;">'+name+'</span>';
+            bh+='<span style="white-space:nowrap;">'+b.views+' <span style="color:#6b655e;font-size:9px;">views</span> '+durStr+'</span></div>';
+          });
+          document.getElementById('blog-articles').innerHTML=bh;
+        } else {
+          document.getElementById('blog-articles').innerHTML='<div style="color:#4a4540;font-size:10px;">No blog traffic yet - articles are indexing</div>';
+        }
       }
       if(a.traffic_sources&&a.traffic_sources.length){
         var sh='';
