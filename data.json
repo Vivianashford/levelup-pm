@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T05:03:10.614948+00:00",
-  "updated_local": "2026-03-22 12:03 AM",
+  "updated": "2026-03-22T05:08:12.123336+00:00",
+  "updated_local": "2026-03-22 12:08 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -8,11 +8,11 @@
     "revenue": 0
   },
   "arena_pipeline": {
-    "new_lead": 2,
+    "new_lead": 0,
     "contacted": 0,
-    "proposal": 1,
+    "proposal": 0,
     "closed": 0,
-    "no_show": 1,
+    "no_show": 0,
     "nurture": 0,
     "total": 4,
     "total_value": 0.0
@@ -48,7 +48,7 @@
       "name": "Rick Brennan",
       "company": "Brennan Plumbing & Mechanical",
       "email": "rick.brennan@brennanplumbing.com",
-      "stage": "proposal",
+      "stage": "call_booked",
       "status": "open",
       "value": 0.0,
       "completed": [
