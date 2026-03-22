@@ -222,6 +222,15 @@
     <div class="eq-bottom">The ONLY bottleneck is <strong>conversations</strong>.</div>
   </div>
 
+  <!-- CLIENT TRACKER -->
+  <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;border-bottom:1px solid rgba(255,255,255,.04);">
+      <span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#c9a84c;">👥 Client Pipeline</span>
+      <a href="https://thearenapartners.com/upload.html" target="_blank" style="font-size:10px;color:#6b655e;text-decoration:none;">Upload Portal →</a>
+    </div>
+    <div id="client-list" style="padding:8px 14px 12px;"></div>
+  </div>
+
   <!-- PHASE TRACKER - compact bar -->
   <div style="display:flex;gap:3px;margin-bottom:16px;">
     <div style="flex:1;height:6px;border-radius:3px;background:#4a8c5c;" title="1. Mindset ✓"></div>
@@ -450,6 +459,75 @@ function toggleFB(id){
   renderFB();
 }
 renderFB();
+
+// CLIENT PIPELINE
+var CLIENTS=[
+  // CLOSING
+  {name:"Grant",company:"Data Room + One-Sheet",stage:"closing",initials:"GR",tasks:["Send data room","Set up Zoom deep-dive","Email exit strategy next steps"],docs:false},
+  {name:"George",company:"de Curve Communications",stage:"closing",initials:"GE",tasks:["Send one-sheet for feedback"],docs:false},
+  {name:"Eddie & Johnny",company:"Jet Lending",stage:"closing",initials:"JL",tasks:["Follow up on markup","Intro email to Stephanie (CFO)","Session 1: Group Vision"],docs:false,note:"First client. $4K deposit. April 7 deadline."},
+  // CONTACTED
+  {name:"Michael + Partner",company:"SSC Glass",stage:"contacted",initials:"SS",tasks:["Invite to Tuesday Park House event"],docs:false},
+  {name:"Dennis",company:"90-Day vs 12-Month",stage:"contacted",initials:"DN",tasks:["Create one-sheet"],docs:false},
+  {name:"Eden (Daniel + Jonah)",company:"VTM",stage:"contacted",initials:"VT",tasks:["Draft VTM workshop pitch"],docs:false},
+  {name:"Sebastian",company:"PNC Financing",stage:"contacted",initials:"SB",tasks:[],docs:false},
+  // LEAD
+  {name:"Sydney Tate",company:"VSL Lead",stage:"lead",initials:"ST",tasks:[],docs:false},
+];
+
+var STAGE_CONFIG={
+  closing:{color:"#4a8c5c",label:"CLOSING",icon:"🔥"},
+  contacted:{color:"#c9a84c",label:"CONTACTED",icon:"💬"},
+  lead:{color:"#6a9fd8",label:"LEAD",icon:"📥"},
+  closed:{color:"#4a8c5c",label:"CLOSED ✓",icon:"✅"},
+};
+
+function renderClients(){
+  var stages=["closing","contacted","lead","closed"];
+  var h='';
+  stages.forEach(function(stage){
+    var clients=CLIENTS.filter(function(c){return c.stage===stage});
+    if(clients.length===0)return;
+    var cfg=STAGE_CONFIG[stage];
+    h+='<div style="margin-bottom:12px;">';
+    h+='<div style="font-size:9px;color:'+cfg.color+';text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px;">'+cfg.icon+' '+cfg.label+' ('+clients.length+')</div>';
+    clients.forEach(function(c){
+      var taskCount=c.tasks.length;
+      var taskColor=taskCount>0?'#d87a6a':'#4a8c5c';
+      var taskText=taskCount>0?taskCount+' pending':'Up to date';
+      h+='<div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:6px;margin-bottom:3px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);cursor:pointer;" onclick="toggleClientDetail(this)">';
+      // Avatar
+      h+='<div style="width:32px;height:32px;border-radius:50%;background:'+cfg.color+'22;border:1px solid '+cfg.color+'44;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:'+cfg.color+';flex-shrink:0;">'+c.initials+'</div>';
+      // Info
+      h+='<div style="flex:1;min-width:0;">';
+      h+='<div style="font-size:13px;color:#f0ebe3;font-weight:500;">'+c.name+'</div>';
+      h+='<div style="font-size:11px;color:#6b655e;">'+c.company+'</div>';
+      h+='</div>';
+      // Status
+      h+='<div style="text-align:right;flex-shrink:0;">';
+      h+='<div style="font-size:10px;color:'+taskColor+';font-weight:600;">'+taskText+'</div>';
+      if(c.docs){h+='<div style="font-size:9px;color:#4a8c5c;">📁 Docs</div>';}
+      h+='</div>';
+      h+='</div>';
+      // Detail (hidden)
+      h+='<div class="client-detail" style="display:none;padding:6px 8px 10px 50px;font-size:12px;color:#9a9590;">';
+      if(c.note)h+='<div style="color:#c9a84c;margin-bottom:4px;font-style:italic;">'+c.note+'</div>';
+      if(c.tasks.length>0){
+        c.tasks.forEach(function(t){h+='<div style="padding:2px 0;">• '+t+'</div>';});
+      }else{
+        h+='<div>No pending tasks</div>';
+      }
+      h+='</div>';
+    });
+    h+='</div>';
+  });
+  document.getElementById('client-list').innerHTML=h;
+}
+function toggleClientDetail(el){
+  var detail=el.nextElementSibling;
+  detail.style.display=detail.style.display==='none'?'block':'none';
+}
+renderClients();
 </script>
 </body>
 </html>
