@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T05:08:12.123336+00:00",
-  "updated_local": "2026-03-22 12:08 AM",
+  "updated": "2026-03-22T05:13:10.803860+00:00",
+  "updated_local": "2026-03-22 12:13 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -48,7 +48,7 @@
       "name": "Rick Brennan",
       "company": "Brennan Plumbing & Mechanical",
       "email": "rick.brennan@brennanplumbing.com",
-      "stage": "call_booked",
+      "stage": "call_complete",
       "status": "open",
       "value": 0.0,
       "completed": [
