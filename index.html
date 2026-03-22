@@ -172,11 +172,13 @@
 
   <!-- PIPELINE VISUAL -->
   <div class="pipeline">
-    <div class="pipe-stage" id="ps-leads"><div class="pipe-num">0</div><div class="pipe-label">Leads</div></div>
-    <div class="pipe-stage" id="ps-contacted"><div class="pipe-num">0</div><div class="pipe-label">Contacted</div></div>
-    <div class="pipe-stage" id="ps-call"><div class="pipe-num">0</div><div class="pipe-label">Call Set</div></div>
-    <div class="pipe-stage" id="ps-proposal"><div class="pipe-num">0</div><div class="pipe-label">Proposal</div></div>
-    <div class="pipe-stage" id="ps-closed"><div class="pipe-num">0</div><div class="pipe-label">Closed</div></div>
+    <div class="pipe-stage" id="ps-vsl"><div class="pipe-num">0</div><div class="pipe-label">VSL</div></div>
+    <div class="pipe-stage" id="ps-booked"><div class="pipe-num">0</div><div class="pipe-label">Booked</div></div>
+    <div class="pipe-stage" id="ps-call"><div class="pipe-num">0</div><div class="pipe-label">Call</div></div>
+    <div class="pipe-stage" id="ps-nda"><div class="pipe-num">0</div><div class="pipe-label">NDA</div></div>
+    <div class="pipe-stage" id="ps-dd"><div class="pipe-num">0</div><div class="pipe-label">DD</div></div>
+    <div class="pipe-stage" id="ps-proposal"><div class="pipe-num">0</div><div class="pipe-label">Call 2</div></div>
+    <div class="pipe-stage" id="ps-closed"><div class="pipe-num">0</div><div class="pipe-label">Won</div></div>
   </div>
 
   <!-- NON-NEGOTIABLES -->
@@ -270,9 +272,18 @@ fetch('data.json?t='+Date.now())
     // Pipeline stages
     if(d.arena_pipeline){
       var ap=d.arena_pipeline;
-      var stageMap={leads:ap.new_lead||0,contacted:ap.contacted||0,call:ap.proposal||0,proposal:ap.proposal||0,closed:ap.closed||0};
-      ['leads','contacted','call','proposal','closed'].forEach(function(st){
+      var stageMap={
+        vsl:(ap.vsl_lead||0)+(ap.assessment_done||0),
+        booked:ap.call_booked||0,
+        call:ap.call_complete||0,
+        nda:ap.nda_signed||0,
+        dd:ap.due_diligence||0,
+        proposal:ap.proposal||0,
+        closed:ap.closed_won||0
+      };
+      ['vsl','booked','call','nda','dd','proposal','closed'].forEach(function(st){
         var el=document.getElementById('ps-'+st);
+        if(!el)return;
         var num=stageMap[st]||0;
         el.querySelector('.pipe-num').textContent=num;
         if(num>0)el.classList.add(st==='closed'?'closed':'has');
@@ -473,12 +484,16 @@ renderFB();
 
 // CLIENT PIPELINE - Live from GHL via data.json
 var STAGE_CONFIG={
-  proposal:{color:"#4a8c5c",label:"CLOSING",icon:"🔥",order:1},
-  contacted:{color:"#c9a84c",label:"CONTACTED",icon:"💬",order:2},
-  new_lead:{color:"#6a9fd8",label:"NEW LEAD",icon:"📥",order:3},
-  closed:{color:"#4a8c5c",label:"CLOSED",icon:"✅",order:4},
-  nurture:{color:"#9a6850",label:"LONG-TERM NURTURE",icon:"⏳",order:5},
-  no_show:{color:"#d87a6a",label:"NO SHOW",icon:"⚠️",order:6},
+  closed_won:{color:"#4a8c5c",label:"CLOSED WON",icon:"✅",order:0},
+  proposal:{color:"#4a8c5c",label:"2ND CALL - PROPOSAL",icon:"🔥",order:1},
+  due_diligence:{color:"#c9a84c",label:"DUE DILIGENCE",icon:"📊",order:2},
+  nda_signed:{color:"#c9a84c",label:"NDA SIGNED",icon:"📝",order:3},
+  call_complete:{color:"#6a9fd8",label:"CALL COMPLETE",icon:"📞",order:4},
+  assessment_done:{color:"#6a9fd8",label:"ASSESSMENT DONE",icon:"📋",order:5},
+  call_booked:{color:"#6a9fd8",label:"CALL BOOKED",icon:"📅",order:6},
+  vsl_lead:{color:"#9a9590",label:"VSL LEAD",icon:"📥",order:7},
+  no_show:{color:"#d87a6a",label:"NO SHOW",icon:"⚠️",order:8},
+  nurture:{color:"#9a6850",label:"LONG-TERM NURTURE",icon:"⏳",order:9},
 };
 
 function getInitials(name){
@@ -514,7 +529,7 @@ function renderClients(clients){
   });
 
   // Group by stage
-  var stageOrder=["proposal","contacted","new_lead","closed","nurture","no_show"];
+  var stageOrder=["closed_won","proposal","due_diligence","nda_signed","call_complete","assessment_done","call_booked","vsl_lead","no_show","nurture"];
   var h='';
 
   stageOrder.forEach(function(stage){
