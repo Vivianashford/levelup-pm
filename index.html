@@ -303,14 +303,25 @@
     <div class="eq-bottom">The ONLY bottleneck is <strong>conversations</strong>.</div>
   </div>
 
-  <!-- CLIENT TRACKER -->
-  <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:16px;">
+  <!-- CLIENT TRACKER - Summary -->
+  <a href="clients.html" style="text-decoration:none;display:block;">
+  <div style="background:#111;border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:16px;cursor:pointer;transition:border-color .15s;" onmouseover="this.style.borderColor='rgba(201,168,76,.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,.06)'">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;border-bottom:1px solid rgba(255,255,255,.04);">
       <span style="font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#c9a84c;">👥 Client Pipeline</span>
-      <a href="https://thearenapartners.com/upload.html" target="_blank" style="font-size:10px;color:#6b655e;text-decoration:none;">Upload Portal →</a>
+      <span style="font-size:10px;color:#6b655e;">View All &rarr;</span>
     </div>
-    <div id="client-list" style="padding:8px 14px 12px;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px;">
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:700;color:#5cb85c;" id="new-submissions">0</div>
+        <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">New This Week</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:700;color:#c9a84c;" id="pending-count">0</div>
+        <div style="font-size:9px;color:#6b655e;text-transform:uppercase;">Pending</div>
+      </div>
+    </div>
   </div>
+  </a>
 
   <!-- PHASE TRACKER - compact bar -->
   <div style="display:flex;gap:3px;margin-bottom:16px;">
@@ -381,9 +392,17 @@ fetch('data.json?t='+Date.now())
       updEl.textContent='Live data: '+d.updated_local;
       document.querySelector('.score-row').insertAdjacentElement('afterend',updEl);
     }
-    // Render client pipeline from live data
+    // Client pipeline summary counts
     if(d.clients){
-      renderClients(d.clients);
+      var newThisWeek=0, pending=0;
+      var oneWeekAgo=Date.now()-7*24*60*60*1000;
+      d.clients.forEach(function(c){
+        if(c.dateAdded&&new Date(c.dateAdded).getTime()>oneWeekAgo) newThisWeek++;
+        var s=(c.stage||'').toLowerCase();
+        if(s!=='closed won'&&s!=='long term nurture') pending++;
+      });
+      document.getElementById('new-submissions').textContent=newThisWeek;
+      document.getElementById('pending-count').textContent=pending;
     }
     // GA4 Analytics
     if(d.analytics && d.analytics.week){

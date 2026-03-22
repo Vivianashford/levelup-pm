@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Clients - The Arena Partners</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#f5f0e8;min-height:100vh;}
+  .container{max-width:800px;margin:0 auto;padding:20px 16px 40px;}
+  .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+  .header h1{font-family:'Playfair Display',serif;font-size:22px;color:#c9a84c;}
+  .back-link{font-size:12px;color:#6b655e;text-decoration:none;}
+  .back-link:hover{color:#c9a84c;}
+
+  .summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;}
+  .summary-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px;text-align:center;}
+  .summary-num{font-size:22px;font-weight:700;}
+  .summary-label{font-size:9px;color:#6b655e;text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+
+  .stage-section{margin-bottom:16px;}
+  .stage-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#111;border:1px solid rgba(255,255,255,.06);border-radius:8px 8px 0 0;cursor:pointer;}
+  .stage-header:hover{border-color:rgba(201,168,76,.3);}
+  .stage-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;}
+  .stage-count{font-size:11px;color:#6b655e;background:rgba(255,255,255,.04);padding:2px 8px;border-radius:10px;}
+  .stage-body{background:rgba(17,17,17,.6);border:1px solid rgba(255,255,255,.04);border-top:0;border-radius:0 0 8px 8px;display:none;}
+  .stage-body.open{display:block;}
+
+  .client-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.03);cursor:pointer;transition:background .1s;}
+  .client-row:hover{background:rgba(201,168,76,.05);}
+  .client-row:last-child{border-bottom:0;}
+  .client-name{font-size:13px;font-weight:600;color:#f5f0e8;}
+  .client-company{font-size:11px;color:#9a9590;}
+  .client-date{font-size:10px;color:#6b655e;}
+
+  .client-detail{display:none;background:#0d0d0d;border:1px solid rgba(201,168,76,.15);border-radius:8px;margin:8px 14px;padding:14px;}
+  .client-detail.open{display:block;}
+  .detail-row{display:flex;justify-content:space-between;padding:4px 0;font-size:11px;border-bottom:1px solid rgba(255,255,255,.03);}
+  .detail-label{color:#6b655e;}
+  .detail-value{color:#f5f0e8;font-weight:500;}
+
+  .files-section{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06);}
+  .files-title{font-size:10px;color:#c9a84c;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+  .file-item{display:flex;align-items:center;justify-content:space-between;padding:4px 0;font-size:11px;}
+  .file-name{color:#9a9590;}
+  .file-link{color:#c9a84c;text-decoration:none;font-size:10px;}
+  .file-link:hover{text-decoration:underline;}
+  .no-files{font-size:11px;color:#4a4540;font-style:italic;}
+
+  .tag{display:inline-block;padding:2px 6px;border-radius:3px;font-size:9px;font-weight:600;margin-right:4px;margin-bottom:2px;}
+  .tag-green{background:rgba(92,184,92,.15);color:#5cb85c;}
+  .tag-gold{background:rgba(201,168,76,.15);color:#c9a84c;}
+  .tag-blue{background:rgba(106,159,216,.15);color:#6a9fd8;}
+  .tag-red{background:rgba(217,83,79,.15);color:#d9534f;}
+
+  .loading{text-align:center;padding:40px;color:#6b655e;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>👥 Clients</h1>
+    <a href="index.html" class="back-link">&larr; Command Center</a>
+  </div>
+
+  <!-- Summary Bar -->
+  <div class="summary-bar">
+    <div class="summary-card">
+      <div class="summary-num" style="color:#5cb85c;" id="s-total">0</div>
+      <div class="summary-label">Total</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num" style="color:#c9a84c;" id="s-active">0</div>
+      <div class="summary-label">Active</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num" style="color:#6a9fd8;" id="s-new">0</div>
+      <div class="summary-label">New (7d)</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num" style="color:#f5f0e8;" id="s-won">0</div>
+      <div class="summary-label">Won</div>
+    </div>
+  </div>
+
+  <!-- Pipeline by Stage -->
+  <div id="pipeline-stages">
+    <div class="loading">Loading pipeline data...</div>
+  </div>
+
+</div>
+
+<script>
+var WORKER='https://arena-api.jean-475.workers.dev';
+var STAGE_ORDER=[
+  'VSL Lead','Call Booked','Assessment Done','Call Complete',
+  'NDA Signed','Due Diligence','2nd Call - Proposal','Closed Won',
+  'No Show','Long Term Nurture'
+];
+var STAGE_COLORS={
+  'VSL Lead':'#6b655e','Call Booked':'#6a9fd8','Assessment Done':'#6a9fd8',
+  'Call Complete':'#c9a84c','NDA Signed':'#c9a84c','Due Diligence':'#c9a84c',
+  '2nd Call - Proposal':'#c9a84c','Closed Won':'#5cb85c',
+  'No Show':'#d9534f','Long Term Nurture':'#9a9590'
+};
+
+function formatDate(d){
+  if(!d) return '-';
+  var dt=new Date(d);
+  return (dt.getMonth()+1)+'/'+dt.getDate()+'/'+dt.getFullYear();
+}
+
+function slugify(name){
+  return (name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
+
+function renderPipeline(clients){
+  var container=document.getElementById('pipeline-stages');
+  container.innerHTML='';
+
+  var grouped={};
+  STAGE_ORDER.forEach(function(s){grouped[s]=[];});
+  var total=0, active=0, newCount=0, won=0;
+  var oneWeekAgo=Date.now()-7*24*60*60*1000;
+
+  clients.forEach(function(c){
+    var stage=c.stage||'VSL Lead';
+    if(!grouped[stage]) grouped[stage]=[];
+    grouped[stage].push(c);
+    total++;
+    if(stage!=='Closed Won'&&stage!=='Long Term Nurture') active++;
+    if(stage==='Closed Won') won++;
+    if(c.dateAdded&&new Date(c.dateAdded).getTime()>oneWeekAgo) newCount++;
+  });
+
+  document.getElementById('s-total').textContent=total;
+  document.getElementById('s-active').textContent=active;
+  document.getElementById('s-new').textContent=newCount;
+  document.getElementById('s-won').textContent=won;
+
+  STAGE_ORDER.forEach(function(stage){
+    var list=grouped[stage]||[];
+    if(list.length===0) return;
+
+    var section=document.createElement('div');
+    section.className='stage-section';
+
+    var color=STAGE_COLORS[stage]||'#6b655e';
+    var header=document.createElement('div');
+    header.className='stage-header';
+    header.innerHTML='<span class="stage-name" style="color:'+color+';">'+stage+'</span><span class="stage-count">'+list.length+'</span>';
+    header.onclick=function(){
+      var body=this.nextElementSibling;
+      body.classList.toggle('open');
+    };
+    section.appendChild(header);
+
+    var body=document.createElement('div');
+    body.className='stage-body open';
+
+    list.forEach(function(c,idx){
+      var row=document.createElement('div');
+      row.className='client-row';
+      var name=(c.firstName||'')+' '+(c.lastName||'');
+      row.innerHTML='<div><div class="client-name">'+name.trim()+'</div><div class="client-company">'+(c.companyName||'-')+'</div></div><div class="client-date">'+formatDate(c.dateAdded)+'</div>';
+
+      var detail=document.createElement('div');
+      detail.className='client-detail';
+      detail.id='detail-'+stage.replace(/\s/g,'')+'-'+idx;
+
+      var tags='';
+      if(c.tags&&c.tags.length){
+        c.tags.forEach(function(t){
+          var cls='tag-gold';
+          if(t.indexOf('booked')>-1) cls='tag-green';
+          if(t.indexOf('nda')>-1||t.indexOf('signed')>-1) cls='tag-blue';
+          if(t.indexOf('nurture')>-1) cls='tag-red';
+          tags+='<span class="tag '+cls+'">'+t+'</span>';
+        });
+      }
+
+      detail.innerHTML=
+        '<div class="detail-row"><span class="detail-label">Email</span><span class="detail-value">'+(c.email||'-')+'</span></div>'+
+        '<div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">'+(c.phone||'-')+'</span></div>'+
+        '<div class="detail-row"><span class="detail-label">Company</span><span class="detail-value">'+(c.companyName||'-')+'</span></div>'+
+        '<div class="detail-row"><span class="detail-label">Stage</span><span class="detail-value" style="color:'+color+';">'+stage+'</span></div>'+
+        '<div class="detail-row"><span class="detail-label">Added</span><span class="detail-value">'+formatDate(c.dateAdded)+'</span></div>'+
+        (tags?'<div style="margin-top:8px;">'+tags+'</div>':'')+
+        '<div class="files-section"><div class="files-title">📁 Documents</div><div id="files-'+slugify(c.companyName||name)+'" class="file-list"><span class="no-files">Loading...</span></div></div>';
+
+      row.onclick=function(){
+        detail.classList.toggle('open');
+        if(detail.classList.contains('open')){
+          loadFiles(slugify(c.companyName||name));
+        }
+      };
+
+      body.appendChild(row);
+      body.appendChild(detail);
+    });
+
+    section.appendChild(body);
+    container.appendChild(section);
+  });
+}
+
+function loadFiles(slug){
+  var el=document.getElementById('files-'+slug);
+  if(!el) return;
+
+  // Try progressively shorter slugs
+  var slugs=[slug];
+  var parts=slug.split('-');
+  for(var i=parts.length-1;i>=1;i--){
+    slugs.push(parts.slice(0,i).join('-'));
+  }
+
+  function trySlug(idx){
+    if(idx>=slugs.length){
+      el.innerHTML='<span class="no-files">No documents uploaded yet</span>';
+      return;
+    }
+    fetch(WORKER+'/api/client-files/'+slugs[idx])
+      .then(function(r){return r.json();})
+      .then(function(data){
+        if(data.files&&data.files.length>0){
+          var html='';
+          data.files.forEach(function(f){
+            var fname=f.key.split('/').pop().replace(/^\d+-/,'');
+            var category=f.key.split('/')[2]||'general';
+            html+='<div class="file-item"><span class="file-name">'+category+'/'+fname+'</span><a href="'+WORKER+'/files/'+f.key+'" target="_blank" class="file-link">Download</a></div>';
+          });
+          el.innerHTML=html;
+        } else {
+          trySlug(idx+1);
+        }
+      })
+      .catch(function(){trySlug(idx+1);});
+  }
+  trySlug(0);
+}
+
+// Load data
+fetch('data.json?t='+Date.now())
+  .then(function(r){return r.json();})
+  .then(function(d){
+    if(d.clients&&d.clients.length){
+      renderPipeline(d.clients);
+    } else {
+      document.getElementById('pipeline-stages').innerHTML='<div class="loading">No clients in pipeline yet</div>';
+    }
+  })
+  .catch(function(){
+    document.getElementById('pipeline-stages').innerHTML='<div class="loading">Could not load data</div>';
+  });
+</script>
+
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js?v=2');}</script>
+</body>
+</html>
