@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T14:33:14.131879+00:00",
-  "updated_local": "2026-03-22 09:33 AM",
+  "updated": "2026-03-22T14:38:12.666161+00:00",
+  "updated_local": "2026-03-22 09:38 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -26,7 +26,7 @@
     "total": 0
   },
   "funnel": {
-    "vsl-lead": 4,
+    "vsl-lead": 3,
     "vsl-watched-25": 0,
     "vsl-watched-50": 0,
     "vsl-watched-75": 0,
@@ -36,8 +36,8 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 15,
-    "real": 6
+    "total": 17,
+    "real": 9
   },
   "appointments": {
     "upcoming": 0
