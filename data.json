@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T16:38:32.129268+00:00",
-  "updated_local": "2026-03-22 11:38 AM",
+  "updated": "2026-03-22T16:42:48.440123+00:00",
+  "updated_local": "2026-03-22 11:42 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -68,5 +68,23 @@
       "lastUpdate": "2026-03-22T04:17:29.655Z",
       "opportunityId": "kZp1gioVBEJvrlsnd44w"
     }
-  ]
+  ],
+  "analytics": {
+    "realtime_users": 0,
+    "week": {
+      "users": 0,
+      "sessions": 0,
+      "pageviews": 0,
+      "avg_duration": 0,
+      "conversions": 0
+    },
+    "month": {
+      "users": 0,
+      "sessions": 0,
+      "pageviews": 0,
+      "conversions": 0
+    },
+    "top_pages": [],
+    "traffic_sources": []
+  }
 }
