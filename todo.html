@@ -171,3 +171,185 @@ var DATA = {
     { text: "Send Vivian Fireflies.ai API key", project: "ops", priority: "low", done: false, rev: false, rate: "$25/hr", meta: "OPS. Copy key from settings. Only Jean." },
   ]
 };
+// ============================================================
+// RENDER
+// ============================================================
+var projectConfig = {
+  arena: { label: "The Arena", dot: "dot-arena", title: "title-arena" },
+  levelup: { label: "Level Up With Anna", dot: "dot-levelup", title: "title-levelup" },
+  tofc: { label: "TOFC", dot: "dot-tofc", title: "title-tofc" },
+  personal: { label: "Personal", dot: "dot-personal", title: "title-personal" },
+  ops: { label: "Operations", dot: "dot-ops", title: "title-ops" }
+};
+
+function render() {
+  // Date
+  var now = new Date();
+  var opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', opts);
+  document.getElementById('last-updated').textContent = 'Updated by Vivian: ' + DATA.lastUpdated;
+
+  // Non-negotiables
+  if (DATA.dailyRoutine) {
+    // Load saved state from localStorage (resets daily)
+    var today = new Date().toDateString();
+    var nnState = JSON.parse(localStorage.getItem('nn-state') || '{}');
+    if (nnState.date !== today) { nnState = { date: today, done: {} }; }
+    
+    var rHTML = '';
+    var nowHr = new Date().getHours();
+    var allDone = true;
+    
+    DATA.dailyRoutine.forEach(function(r) {
+      var isDone = nnState.done[r.id] || false;
+      if (!isDone) allDone = false;
+      var checkStyle = isDone 
+        ? 'background:#4a8c5c;border-color:#4a8c5c;' 
+        : 'border:2px solid #3a3a3a;';
+      var textStyle = isDone ? 'text-decoration:line-through;color:#4a4540;' : 'color:#d4cfc8;';
+      
+      rHTML += '<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;margin-bottom:3px;cursor:pointer;border:1px solid rgba(255,255,255,.03);" onclick="toggleNN(\''+r.id+'\')">';
+      rHTML += '<div style="width:18px;height:18px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;'+checkStyle+'">';
+      if (isDone) rHTML += '<span style="color:#fff;font-size:11px;font-weight:700;">✓</span>';
+      rHTML += '</div>';
+      rHTML += '<span style="font-size:18px;">'+r.icon+'</span>';
+      rHTML += '<span style="font-size:14px;'+textStyle+'">'+r.task+'</span>';
+      rHTML += '</div>';
+    });
+    
+    // Warning if past 8PM and not all done
+    if (nowHr >= 20 && !allDone) {
+      rHTML = '<div style="background:rgba(184,60,48,.12);border:1px solid rgba(184,60,48,.3);border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:13px;color:#b83c30;font-weight:600;">⚠️ Get these done before bed. No excuses.</div>' + rHTML;
+    }
+    
+    document.getElementById('routine-list').innerHTML = rHTML;
+  }
+
+  // Focus
+  document.getElementById('focus-block').innerHTML =
+    '<div class="focus-label">⚡ Flow Block 1 Priority</div>' +
+    '<div class="focus-task">' + DATA.focus.task + '</div>' +
+    '<div class="focus-sub">' + DATA.focus.sub + '</div>';
+
+  // Stats
+  var total = DATA.todos.length;
+  var doneCount = DATA.todos.filter(function(t){return t.done}).length;
+  var highOpen = DATA.todos.filter(function(t){return !t.done && t.priority==='high'}).length;
+  document.getElementById('stats-bar').innerHTML =
+    '<div class="sb"><strong>' + (total-doneCount) + '</strong> open</div>' +
+    '<div class="sb"><strong>' + doneCount + '</strong> done</div>' +
+    '<div class="sb"><strong>' + highOpen + '</strong> urgent</div>';
+
+  // Group by project (only open items)
+  var groups = {};
+  var doneItems = [];
+  DATA.todos.forEach(function(t,i) {
+    t._idx = i;
+    if (t.done) { doneItems.push(t); return; }
+    if (!groups[t.project]) groups[t.project] = [];
+    groups[t.project].push(t);
+  });
+
+  // Render sections in order
+  var order = ['arena','levelup','tofc','ops','personal'];
+  var sectionsHTML = '';
+  order.forEach(function(proj) {
+    if (!groups[proj] || groups[proj].length === 0) return;
+    var cfg = projectConfig[proj];
+    sectionsHTML += '<div class="section">';
+    sectionsHTML += '<div class="section-head"><div class="section-dot '+cfg.dot+'"></div><span class="section-title '+cfg.title+'">'+cfg.label+'</span></div>';
+    // Sort by priority within section
+    var pOrder = {high:0, med:1, low:2};
+    groups[proj].sort(function(a,b){ return (pOrder[a.priority]||9) - (pOrder[b.priority]||9); });
+    groups[proj].forEach(function(t) {
+      sectionsHTML += renderTodo(t);
+    });
+    sectionsHTML += '</div>';
+  });
+  document.getElementById('todo-sections').innerHTML = sectionsHTML;
+
+  // Done items
+  document.getElementById('done-count').textContent = doneItems.length;
+  var doneHTML = '';
+  doneItems.forEach(function(t) { doneHTML += renderTodo(t); });
+  document.getElementById('done-list').innerHTML = doneHTML;
+}
+
+function renderTodo(t) {
+  var cls = t.done ? 'todo done' : 'todo';
+  var pBadge = '';
+  if (t.priority === 'high') pBadge = '<span class="todo-priority p-high">urgent</span>';
+  else if (t.priority === 'med') pBadge = '<span class="todo-priority p-med">today</span>';
+  var rateBadge = '';
+  if (t.rate) {
+    var rClass = t.rev ? 'rate-rev' : 'rate-ops';
+    rateBadge = '<span class="todo-rate '+rClass+'">'+(t.rev?'💰 ':'⚙️ ')+t.rate+'</span>';
+  }
+  var html = '<div class="'+cls+'" onclick="toggleTodo('+t._idx+')">';
+  html += '<div class="todo-check"></div>';
+  html += '<div class="todo-content">';
+  html += '<div class="todo-text">' + t.text + pBadge + rateBadge + '</div>';
+  if (t.meta) html += '<div class="todo-meta">' + t.meta + '</div>';
+  html += '</div></div>';
+  return html;
+}
+
+function toggleTodo(idx) {
+  DATA.todos[idx].done = !DATA.todos[idx].done;
+  saveTodoState();
+  render();
+}
+
+function saveTodoState() {
+  // Save by text key so command center can read the same state
+  var state = {};
+  var stateByText = {};
+  DATA.todos.forEach(function(t, i) {
+    if (t.done) {
+      state[i] = true;
+      stateByText[t.text] = true;
+    }
+  });
+  localStorage.setItem('todo-done-state', JSON.stringify(state));
+  localStorage.setItem('todo-done-shared', JSON.stringify(stateByText));
+}
+
+function loadTodoState() {
+  // First load by index (legacy), then overlay shared state by text
+  var state = JSON.parse(localStorage.getItem('todo-done-state') || '{}');
+  var shared = JSON.parse(localStorage.getItem('todo-done-shared') || '{}');
+  Object.keys(state).forEach(function(i) {
+    if (DATA.todos[parseInt(i)]) DATA.todos[parseInt(i)].done = state[i];
+  });
+  // Also load items marked done from command center (shared by text key)
+  DATA.todos.forEach(function(t) {
+    if (shared[t.text]) t.done = true;
+  });
+}
+
+function toggleDone() {
+  var el = document.getElementById('done-list');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleRoutine() {
+  var el = document.getElementById('routine-list');
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleNN(id) {
+  var today = new Date().toDateString();
+  var nnState = JSON.parse(localStorage.getItem('nn-state') || '{}');
+  if (nnState.date !== today) { nnState = { date: today, done: {} }; }
+  nnState.done[id] = !nnState.done[id];
+  localStorage.setItem('nn-state', JSON.stringify(nnState));
+  render();
+}
+
+loadTodoState();
+render();
+</script>
+
+
+</body>
+</html>
