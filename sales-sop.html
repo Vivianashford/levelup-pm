@@ -11,7 +11,7 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'DM Sans',sans-serif; background:#0a0a0a; color:#f0ebe3; min-height:100vh; }
-  .container { max-width:800px; margin:0 auto; padding:20px 16px 60px; }
+  .container { max-width:800px; margin:0 auto; padding:20px 16px 40px; }
   
   .header { text-align:center; padding:30px 0 20px; border-bottom:1px solid rgba(201,168,76,.15); margin-bottom:30px; }
   .header h1 { font-family:'Playfair Display',serif; font-size:28px; color:#c9a84c; margin-bottom:6px; }
@@ -49,9 +49,7 @@
   .exit-criteria .label { font-size:10px; color:#4a8c5c; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:4px; }
   .exit-criteria .text { font-size:12px; color:#d5d0c8; line-height:1.5; }
   
-  .nav-bottom { position:fixed; bottom:0; left:0; right:0; background:#111; border-top:1px solid rgba(255,255,255,.06); padding:10px 16px; display:flex; gap:8px; justify-content:center; z-index:10; }
-  .nav-btn { padding:8px 16px; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; color:#9a9590; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); }
-  .nav-btn.active { color:#c9a84c; border-color:rgba(201,168,76,.3); }
+  /* nav removed - standalone SOP */
   
   .script-box { background:#0a0a0a; border:1px solid rgba(255,255,255,.08); border-radius:8px; padding:12px; margin-top:8px; }
   .script-box .label { font-size:10px; color:#6a9fd8; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px; }
@@ -675,12 +673,7 @@
 
 </div>
 
-<div class="nav-bottom">
-  <a href="index.html" class="nav-btn">Command Center</a>
-  <a href="sales-sop.html" class="nav-btn active">Sales SOP</a>
-  <a href="rep-dashboard.html" class="nav-btn">Rep Dashboard</a>
-  <a href="todo.html" class="nav-btn">Todo</a>
-</div>
+<!-- standalone SOP - no navigation -->
 
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js?v=2');}</script>
 </body>
