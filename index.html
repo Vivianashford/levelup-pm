@@ -590,7 +590,11 @@ function renderClients(clients){
         h+='<div style="margin-bottom:4px;">Exit Risk: '+c.exitRiskLevel+'</div>';
       }
       // Files section (lazy loaded on expand)
-      var companySlug=(c.company||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      // Use contact name as fallback slug, strip common suffixes, limit to first 2-3 words
+      var rawCo=c.company||c.name||'';
+      // Remove opportunity suffixes like "- VSL Lead"
+      rawCo=rawCo.replace(/\s*-\s*(VSL Lead|Lead|Opportunity).*$/i,'');
+      var companySlug=rawCo.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
       h+='<div class="client-files" data-slug="'+companySlug+'" style="margin:6px 0;padding:6px 0;border-top:1px solid rgba(255,255,255,.04);"></div>';
       // GHL link
       if(c.id){
@@ -614,35 +618,48 @@ function toggleClientDetail(el){
       var slug=filesDiv.dataset.slug;
       filesDiv.dataset.loaded='1';
       filesDiv.innerHTML='<div style="color:#6b655e;font-size:11px;">Loading files...</div>';
-      fetch('https://arena-api.jean-475.workers.dev/api/client-files/'+slug)
-        .then(function(r){return r.json()})
-        .then(function(data){
-          var total=data.totalFiles||0;
-          if(!total||!data.categories){
-            filesDiv.innerHTML='<div style="color:#6b655e;font-size:11px;">No files uploaded yet</div>';
-            return;
-          }
-          var fh='<div style="font-size:10px;color:#c9a84c;margin-bottom:4px;font-weight:600;">📁 FILES ('+total+')</div>';
-          var cats=data.categories;
-          Object.keys(cats).forEach(function(cat){
-            fh+='<div style="font-size:9px;color:#9a9590;text-transform:uppercase;margin-top:4px;">'+cat+'</div>';
-            cats[cat].forEach(function(file){
-              var fname=(file.name||'').replace(/^\d+-/,'');
-              var sz=file.size||0;
-              var sizeStr=sz>0?(sz>1048576?(sz/1048576).toFixed(1)+'MB':(sz/1024).toFixed(0)+'KB'):'';
-              fh+='<div style="padding:2px 0;display:flex;align-items:center;gap:6px;">';
-              fh+='<a href="'+(file.url||'https://arena-api.jean-475.workers.dev/files/'+file.key)+'" target="_blank" style="color:#6a9fd8;text-decoration:none;font-size:11px;">'+fname+'</a>';
-              if(sizeStr)fh+='<span style="font-size:9px;color:#4a4038;">'+sizeStr+'</span>';
-              fh+='</div>';
-            });
-          });
-          filesDiv.innerHTML=fh;
-        })
-        .catch(function(){filesDiv.innerHTML='<div style="color:#6b655e;font-size:11px;">Could not load files</div>';});
+      // Try full slug first, then progressively shorter versions
+      var slugParts=slug.split('-');
+      var slugsToTry=[slug];
+      for(var si=slugParts.length-1;si>=2;si--){
+        slugsToTry.push(slugParts.slice(0,si).join('-'));
+      }
+      function trySlug(idx){
+        if(idx>=slugsToTry.length){
+          filesDiv.innerHTML='<div style="color:#6b655e;font-size:11px;">No files uploaded yet</div>';
+          return;
+        }
+        fetch('https://arena-api.jean-475.workers.dev/api/client-files/'+slugsToTry[idx])
+          .then(function(r){return r.json()})
+          .then(function(data){
+            if(data.totalFiles&&data.totalFiles>0){renderFilesPanel(filesDiv,data);}
+            else{trySlug(idx+1);}
+          })
+          .catch(function(){trySlug(idx+1);});
+      }
+      trySlug(0);
     }
   }else{
     detail.style.display='none';
   }
+}
+
+function renderFilesPanel(filesDiv,data){
+  var fh='<div style="font-size:10px;color:#c9a84c;margin-bottom:4px;font-weight:600;">📁 FILES ('+data.totalFiles+')</div>';
+  var cats=data.categories;
+  Object.keys(cats).forEach(function(cat){
+    fh+='<div style="font-size:9px;color:#9a9590;text-transform:uppercase;margin-top:4px;">'+cat+'</div>';
+    cats[cat].forEach(function(file){
+      var fname=(file.name||'').replace(/^\d+-/,'');
+      var sz=file.size||0;
+      var sizeStr=sz>0?(sz>1048576?(sz/1048576).toFixed(1)+'MB':(sz/1024).toFixed(0)+'KB'):'';
+      fh+='<div style="padding:2px 0;display:flex;align-items:center;gap:6px;">';
+      fh+='<a href="'+(file.url||'https://arena-api.jean-475.workers.dev/files/'+file.key)+'" target="_blank" style="color:#6a9fd8;text-decoration:none;font-size:11px;">'+fname+'</a>';
+      if(sizeStr)fh+='<span style="font-size:9px;color:#4a4038;">'+sizeStr+'</span>';
+      fh+='</div>';
+    });
+  });
+  filesDiv.innerHTML=fh;
 }
 </script>
 </body>
