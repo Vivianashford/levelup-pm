@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T04:53:11.071072+00:00",
-  "updated_local": "2026-03-21 11:53 PM",
+  "updated": "2026-03-22T04:56:06.734935+00:00",
+  "updated_local": "2026-03-21 11:56 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -67,55 +67,6 @@
       "exitRiskLevel": "High Risk (62/100)",
       "lastUpdate": "2026-03-22T04:17:29.655Z",
       "opportunityId": "kZp1gioVBEJvrlsnd44w"
-    },
-    {
-      "id": "b0JFLtEtmLKgc9ZOFs2F",
-      "name": "Jean Hardy",
-      "company": "Eng",
-      "email": "jeanfrancoihardy@gmail.com",
-      "stage": "new_lead",
-      "status": "open",
-      "value": 0.0,
-      "completed": [],
-      "tags": [
-        "vsl-lead"
-      ],
-      "exitRiskScore": "",
-      "exitRiskLevel": "",
-      "lastUpdate": "2026-03-22T03:50:31.405Z",
-      "opportunityId": "gY0ihBpaovl1Ua0aJp62"
-    },
-    {
-      "id": "pY7xVAXdLNhlL6B5BKzM",
-      "name": "Ami Louishardy",
-      "company": "Ami Louishardy - VSL Lead",
-      "email": "charity.louishardy@gmail.com",
-      "stage": "new_lead",
-      "status": "open",
-      "value": 0.0,
-      "completed": [],
-      "tags": [
-        "vsl-lead"
-      ],
-      "exitRiskScore": "",
-      "exitRiskLevel": "",
-      "lastUpdate": "2026-03-22T03:50:07.594Z",
-      "opportunityId": "2a6z34BTEfjZWIFf1qb4"
-    },
-    {
-      "id": "ZoSzNQkcfgjYjc37tPs4",
-      "name": "Jean Hardy",
-      "company": "Eng2",
-      "email": "jean@eng2.ca",
-      "stage": "no_show",
-      "status": "open",
-      "value": 0.0,
-      "completed": [],
-      "tags": [],
-      "exitRiskScore": 48,
-      "exitRiskLevel": "High Risk (48/100)",
-      "lastUpdate": "2026-03-19T01:33:36.778Z",
-      "opportunityId": "5HbJn6qVkVeouOoVpWVR"
     }
   ]
 }
