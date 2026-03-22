@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T04:17:59.475049+00:00",
-  "updated_local": "2026-03-21 11:17 PM",
+  "updated": "2026-03-22T04:23:10.702294+00:00",
+  "updated_local": "2026-03-21 11:23 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -33,7 +33,7 @@
     "vsl-watched-100": 1,
     "vsl-booked": 1,
     "nda-signed": 2,
-    "company-info-submitted": 0
+    "company-info-submitted": 1
   },
   "contacts": {
     "total": 15,
