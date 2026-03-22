@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-22T18:13:25.136813+00:00",
-  "updated_local": "2026-03-22 01:13 PM",
+  "updated": "2026-03-22T18:18:22.928445+00:00",
+  "updated_local": "2026-03-22 01:18 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -48,6 +48,7 @@
       "name": "Rick Brennan",
       "company": "Brennan Plumbing & Mechanical",
       "email": "rick.brennan@brennanplumbing.com",
+      "phone": "+17135551234",
       "stage": "call_complete",
       "status": "open",
       "value": 0.0,
@@ -56,6 +57,7 @@
         "company-info",
         "vsl-100"
       ],
+      "missing": [],
       "tags": [
         "vsl-lead",
         "vsl-watched-100",
@@ -63,9 +65,21 @@
         "nda-signed",
         "company-info-submitted"
       ],
+      "watchPct": 100,
+      "maxWatchPct": 100,
+      "videoSegment": "watched-100",
+      "leadScore": "",
       "exitRiskScore": 62,
       "exitRiskLevel": "High Risk (62/100)",
+      "exitTimeline": 4,
+      "financialClean": 6,
+      "sopScore": 14,
+      "ebitdaScore": 8,
+      "ownerDependency": 18,
+      "customerConcentration": 12,
+      "successionScore": 10,
       "lastUpdate": "2026-03-22T04:17:29.655Z",
+      "dateAdded": "2026-03-22T04:17:29.655Z",
       "opportunityId": "kZp1gioVBEJvrlsnd44w"
     }
   ],
