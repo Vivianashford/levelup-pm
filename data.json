@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T14:57:13.099578+00:00",
-  "updated_local": "2026-03-23 09:57 AM",
+  "updated": "2026-03-23T16:40:52.609635+00:00",
+  "updated_local": "2026-03-23 11:40 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,28 +84,33 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 5,
     "week": {
-      "users": 9,
-      "sessions": 11,
-      "pageviews": 13,
-      "avg_duration": 45.2,
+      "users": 12,
+      "sessions": 15,
+      "pageviews": 20,
+      "avg_duration": 74.2,
       "conversions": 0
     },
     "month": {
-      "users": 9,
-      "sessions": 11,
-      "pageviews": 13,
+      "users": 12,
+      "sessions": 15,
+      "pageviews": 20,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 5,
-        "users": 4
+        "views": 9,
+        "users": 7
       },
       {
         "page": "/assessment.html",
+        "views": 3,
+        "users": 4
+      },
+      {
+        "page": "/blog/",
         "views": 3,
         "users": 4
       },
@@ -115,56 +120,62 @@
         "users": 2
       },
       {
-        "page": "/blog/",
+        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
         "views": 1,
-        "users": 2
+        "users": 1
       },
       {
-        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+        "page": "/contact",
         "views": 1,
         "users": 1
       },
       {
         "page": "/watch.html",
         "views": 1,
-        "users": 1
+        "users": 2
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 10,
-        "users": 8
+        "sessions": 13,
+        "users": 11
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 3,
-        "users": 3
+        "sessions": 6,
+        "users": 6
       },
       {
         "source": "linkedin.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
+      },
+      {
+        "source": "vivianashford.github.io",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
       }
     ],
     "blog": {
-      "total_views": 4,
-      "total_users": 5,
+      "total_views": 6,
+      "total_users": 7,
       "articles": [
+        {
+          "page": "/blog/",
+          "views": 3,
+          "users": 4,
+          "avg_duration": 10.6
+        },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
           "views": 2,
           "users": 2,
           "avg_duration": 16.0
-        },
-        {
-          "page": "/blog/",
-          "views": 1,
-          "users": 2,
-          "avg_duration": 12.1
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -176,9 +187,9 @@
     },
     "funnel": {
       "/": {
-        "views": 5,
-        "users": 4,
-        "avg_duration": 0.7
+        "views": 9,
+        "users": 7,
+        "avg_duration": 72.5
       },
       "/assessment.html": {
         "views": 3,
@@ -187,8 +198,8 @@
       },
       "/watch.html": {
         "views": 1,
-        "users": 1,
-        "avg_duration": 69.8
+        "users": 2,
+        "avg_duration": 50.6
       }
     },
     "video_events": {},
