@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T20:19:22.657708+00:00",
-  "updated_local": "2026-03-23 03:19 PM",
+  "updated": "2026-03-23T20:28:58.814163+00:00",
+  "updated_local": "2026-03-23 03:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 27,
-      "sessions": 35,
-      "pageviews": 87,
-      "avg_duration": 873.2,
+      "users": 28,
+      "sessions": 36,
+      "pageviews": 91,
+      "avg_duration": 856.9,
       "conversions": 0
     },
     "month": {
-      "users": 27,
-      "sessions": 35,
-      "pageviews": 87,
+      "users": 28,
+      "sessions": 36,
+      "pageviews": 91,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 39,
-        "users": 20
+        "views": 42,
+        "users": 21
       },
       {
         "page": "/watch.html",
@@ -110,14 +110,14 @@
         "users": 2
       },
       {
+        "page": "/book.html",
+        "views": 8,
+        "users": 1
+      },
+      {
         "page": "/blog/",
         "views": 7,
         "users": 5
-      },
-      {
-        "page": "/book.html",
-        "views": 7,
-        "users": 1
       },
       {
         "page": "/assessment.html",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 17,
-        "users": 13
+        "sessions": 18,
+        "users": 14
       },
       {
         "source": "vivianashford.github.io",
@@ -220,9 +220,9 @@
     },
     "funnel": {
       "/": {
-        "views": 39,
-        "users": 20,
-        "avg_duration": 132.8
+        "views": 42,
+        "users": 21,
+        "avg_duration": 128.0
       },
       "/watch.html": {
         "views": 10,
@@ -230,9 +230,9 @@
         "avg_duration": 555.7
       },
       "/book.html": {
-        "views": 7,
+        "views": 8,
         "users": 1,
-        "avg_duration": 14790.3
+        "avg_duration": 15075.1
       },
       "/assessment.html": {
         "views": 5,
