@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T23:30:00.047518+00:00",
-  "updated_local": "2026-03-23 06:30 PM",
+  "updated": "2026-03-23T23:35:02.130294+00:00",
+  "updated_local": "2026-03-23 06:35 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 46,
       "sessions": 56,
-      "pageviews": 130,
+      "pageviews": 131,
       "avg_duration": 724.6,
       "conversions": 0
     },
     "month": {
       "users": 46,
       "sessions": 56,
-      "pageviews": 130,
+      "pageviews": 131,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 51,
+        "views": 52,
         "users": 24
       },
       {
@@ -182,6 +182,12 @@
         "users": 1
       },
       {
+        "source": "l.facebook.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
+      },
+      {
         "source": "thearenapartners.com",
         "medium": "referral",
         "sessions": 1,
@@ -220,7 +226,7 @@
     },
     "funnel": {
       "/": {
-        "views": 51,
+        "views": 52,
         "users": 24,
         "avg_duration": 201.9
       },
