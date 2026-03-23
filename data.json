@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T13:12:21.262784+00:00",
-  "updated_local": "2026-03-23 08:12 AM",
+  "updated": "2026-03-23T13:17:14.578127+00:00",
+  "updated_local": "2026-03-23 08:17 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 7,
       "sessions": 9,
-      "pageviews": 10,
-      "avg_duration": 51.3,
+      "pageviews": 11,
+      "avg_duration": 51.6,
       "conversions": 0
     },
     "month": {
       "users": 7,
       "sessions": 9,
-      "pageviews": 10,
+      "pageviews": 11,
       "conversions": 0
     },
     "top_pages": [
@@ -170,9 +170,9 @@
     },
     "funnel": {
       "/": {
-        "views": 3,
-        "users": 2,
-        "avg_duration": 0.0
+        "views": 4,
+        "users": 3,
+        "avg_duration": 0.8
       },
       "/assessment.html": {
         "views": 3,
