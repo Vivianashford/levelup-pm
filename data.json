@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:24:00.619183+00:00",
-  "updated_local": "2026-03-23 12:24 PM",
+  "updated": "2026-03-23T17:29:05.341533+00:00",
+  "updated_local": "2026-03-23 12:29 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 2,
     "week": {
       "users": 13,
       "sessions": 18,
-      "pageviews": 32,
-      "avg_duration": 178.6,
+      "pageviews": 33,
+      "avg_duration": 203.8,
       "conversions": 0
     },
     "month": {
       "users": 13,
       "sessions": 18,
-      "pageviews": 32,
+      "pageviews": 33,
       "conversions": 0
     },
     "top_pages": [
@@ -111,7 +111,7 @@
       },
       {
         "page": "/watch.html",
-        "views": 4,
+        "views": 5,
         "users": 2
       },
       {
@@ -154,13 +154,13 @@
         "users": 8
       },
       {
-        "source": "linkedin.com",
+        "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 1,
+        "sessions": 2,
         "users": 1
       },
       {
-        "source": "vivianashford.github.io",
+        "source": "linkedin.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -197,9 +197,9 @@
         "avg_duration": 76.4
       },
       "/watch.html": {
-        "views": 4,
+        "views": 5,
         "users": 2,
-        "avg_duration": 272.6
+        "avg_duration": 290.6
       },
       "/assessment.html": {
         "views": 3,
