@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T13:37:13.368789+00:00",
-  "updated_local": "2026-03-23 08:37 AM",
+  "updated": "2026-03-23T13:42:23.472987+00:00",
+  "updated_local": "2026-03-23 08:42 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
-      "users": 8,
-      "sessions": 10,
-      "pageviews": 12,
-      "avg_duration": 46.5,
+      "users": 9,
+      "sessions": 11,
+      "pageviews": 13,
+      "avg_duration": 42.3,
       "conversions": 0
     },
     "month": {
-      "users": 8,
-      "sessions": 10,
-      "pageviews": 12,
+      "users": 9,
+      "sessions": 11,
+      "pageviews": 13,
       "conversions": 0
     },
     "top_pages": [
@@ -110,14 +110,14 @@
         "users": 4
       },
       {
-        "page": "/blog/",
-        "views": 1,
+        "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+        "views": 2,
         "users": 2
       },
       {
-        "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+        "page": "/blog/",
         "views": 1,
-        "users": 1
+        "users": 2
       },
       {
         "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -142,23 +142,29 @@
         "medium": "(not set)",
         "sessions": 3,
         "users": 3
+      },
+      {
+        "source": "linkedin.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
       }
     ],
     "blog": {
-      "total_views": 3,
-      "total_users": 4,
+      "total_views": 4,
+      "total_users": 5,
       "articles": [
+        {
+          "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+          "views": 2,
+          "users": 2,
+          "avg_duration": 0.0
+        },
         {
           "page": "/blog/",
           "views": 1,
           "users": 2,
           "avg_duration": 12.1
-        },
-        {
-          "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
-          "views": 1,
-          "users": 1,
-          "avg_duration": 0.0
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
