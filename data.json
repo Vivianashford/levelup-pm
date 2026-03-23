@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T18:28:58.324835+00:00",
-  "updated_local": "2026-03-23 01:28 PM",
+  "updated": "2026-03-23T18:33:58.782899+00:00",
+  "updated_local": "2026-03-23 01:33 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 4,
+    "realtime_users": 6,
     "week": {
       "users": 19,
       "sessions": 25,
-      "pageviews": 60,
+      "pageviews": 62,
       "avg_duration": 684.3,
       "conversions": 0
     },
     "month": {
       "users": 19,
       "sessions": 25,
-      "pageviews": 60,
+      "pageviews": 62,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 25,
+        "views": 26,
         "users": 14
       },
       {
@@ -110,14 +110,14 @@
         "users": 2
       },
       {
+        "page": "/blog/",
+        "views": 6,
+        "users": 4
+      },
+      {
         "page": "/assessment.html",
         "views": 5,
         "users": 5
-      },
-      {
-        "page": "/blog/",
-        "views": 5,
-        "users": 4
       },
       {
         "page": "/book.html",
@@ -154,7 +154,7 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 20,
+        "sessions": 21,
         "users": 18
       },
       {
@@ -177,12 +177,12 @@
       }
     ],
     "blog": {
-      "total_views": 8,
+      "total_views": 9,
       "total_users": 7,
       "articles": [
         {
           "page": "/blog/",
-          "views": 5,
+          "views": 6,
           "users": 4,
           "avg_duration": 165.3
         },
@@ -202,7 +202,7 @@
     },
     "funnel": {
       "/": {
-        "views": 25,
+        "views": 26,
         "users": 14,
         "avg_duration": 144.2
       },
