@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T18:43:55.399060+00:00",
-  "updated_local": "2026-03-23 01:43 PM",
+  "updated": "2026-03-23T18:48:57.682197+00:00",
+  "updated_local": "2026-03-23 01:48 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 7,
     "week": {
-      "users": 19,
-      "sessions": 25,
-      "pageviews": 63,
-      "avg_duration": 699.2,
+      "users": 20,
+      "sessions": 26,
+      "pageviews": 66,
+      "avg_duration": 848.9,
       "conversions": 0
     },
     "month": {
-      "users": 19,
-      "sessions": 25,
-      "pageviews": 63,
+      "users": 20,
+      "sessions": 26,
+      "pageviews": 66,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 27,
-        "users": 14
+        "views": 28,
+        "users": 15
       },
       {
         "page": "/watch.html",
@@ -115,14 +115,14 @@
         "users": 4
       },
       {
+        "page": "/book.html",
+        "views": 6,
+        "users": 1
+      },
+      {
         "page": "/assessment.html",
         "views": 5,
         "users": 5
-      },
-      {
-        "page": "/book.html",
-        "views": 4,
-        "users": 1
       },
       {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 21,
-        "users": 18
+        "sessions": 22,
+        "users": 19
       },
       {
         "source": "(not set)",
@@ -202,24 +202,24 @@
     },
     "funnel": {
       "/": {
-        "views": 27,
-        "users": 14,
-        "avg_duration": 144.2
+        "views": 28,
+        "users": 15,
+        "avg_duration": 136.6
       },
       "/watch.html": {
         "views": 10,
         "users": 2,
         "avg_duration": 555.7
       },
+      "/book.html": {
+        "views": 6,
+        "users": 1,
+        "avg_duration": 11878.2
+      },
       "/assessment.html": {
         "views": 5,
         "users": 5,
         "avg_duration": 110.6
-      },
-      "/book.html": {
-        "views": 4,
-        "users": 1,
-        "avg_duration": 7287.7
       },
       "/nda.html": {
         "views": 2,
