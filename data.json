@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T23:40:03.141521+00:00",
-  "updated_local": "2026-03-23 06:40 PM",
+  "updated": "2026-03-23T23:45:03.404328+00:00",
+  "updated_local": "2026-03-23 06:45 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,28 +86,28 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 46,
-      "sessions": 56,
-      "pageviews": 131,
-      "avg_duration": 724.6,
+      "users": 47,
+      "sessions": 57,
+      "pageviews": 133,
+      "avg_duration": 711.9,
       "conversions": 0
     },
     "month": {
-      "users": 46,
-      "sessions": 56,
-      "pageviews": 131,
+      "users": 47,
+      "sessions": 57,
+      "pageviews": 133,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 52,
+        "views": 53,
         "users": 24
       },
       {
         "page": "/blog/",
-        "views": 12,
-        "users": 8
+        "views": 13,
+        "users": 9
       },
       {
         "page": "/watch.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 43,
-        "users": 39
+        "sessions": 44,
+        "users": 40
       },
       {
         "source": "(not set)",
@@ -195,14 +195,14 @@
       }
     ],
     "blog": {
-      "total_views": 17,
-      "total_users": 13,
+      "total_views": 18,
+      "total_users": 14,
       "articles": [
         {
           "page": "/blog/",
-          "views": 12,
-          "users": 8,
-          "avg_duration": 597.7
+          "views": 13,
+          "users": 9,
+          "avg_duration": 543.3
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -226,7 +226,7 @@
     },
     "funnel": {
       "/": {
-        "views": 52,
+        "views": 53,
         "users": 24,
         "avg_duration": 201.9
       },
