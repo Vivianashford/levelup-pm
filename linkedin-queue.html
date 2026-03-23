@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Queue | Arena Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,system-ui,sans-serif;background:#0a0a0a;color:#e8e4df;min-height:100vh}
+header{background:#111;border-bottom:2px solid #C9A84C;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:14px;color:#C9A84C;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none}
+nav{display:flex;gap:16px}
+nav a{font-size:13px;color:#888;text-decoration:none}
+nav a:hover{color:#C9A84C}
+.container{max-width:800px;margin:0 auto;padding:32px 24px}
+h1{font-size:24px;color:#C9A84C;margin-bottom:8px}
+.subtitle{color:#888;font-size:14px;margin-bottom:32px}
+.queue-item{background:#1a1714;border:1px solid #2a2520;border-radius:8px;padding:24px;margin-bottom:20px;position:relative}
+.queue-item.reply{border-left:3px solid #4a9eff}
+.queue-item.newsletter{border-left:3px solid #C9A84C}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.badge.reply{background:rgba(74,158,255,0.15);color:#4a9eff}
+.badge.newsletter{background:rgba(201,168,76,0.15);color:#C9A84C}
+.meta{font-size:12px;color:#666;margin-bottom:12px}
+.context{font-size:13px;color:#888;margin-bottom:12px;padding:12px;background:#111;border-radius:4px;border-left:2px solid #333}
+.content{font-size:15px;line-height:1.7;color:#e8e4df;white-space:pre-wrap;padding:16px;background:#111;border-radius:6px;position:relative;cursor:pointer;transition:border-color 0.2s}
+.content:hover{border-color:#C9A84C}
+.copy-btn{position:absolute;top:8px;right:8px;background:#C9A84C;color:#0a0a0a;border:none;padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;opacity:0;transition:opacity 0.2s}
+.content:hover .copy-btn{opacity:1}
+.done-btn{background:#333;color:#888;border:none;padding:8px 16px;border-radius:4px;font-size:13px;cursor:pointer;margin-top:12px}
+.done-btn:hover{background:#444;color:#fff}
+.empty{text-align:center;padding:60px;color:#555}
+.empty-icon{font-size:48px;margin-bottom:16px}
+.tabs{display:flex;gap:8px;margin-bottom:24px}
+.tab{padding:8px 16px;border-radius:4px;font-size:13px;cursor:pointer;background:#1a1714;color:#888;border:1px solid #2a2520}
+.tab.active{background:#C9A84C;color:#0a0a0a;border-color:#C9A84C;font-weight:600}
+#queue-data{display:none}
+</style>
+</head>
+<body>
+<header>
+<a href="index.html" class="logo">Arena Command Center</a>
+<nav>
+<a href="index.html">Dashboard</a>
+<a href="clients.html">Pipeline</a>
+<a href="todo.html">Todo</a>
+<a href="analytics.html">Analytics</a>
+</nav>
+</header>
+
+<div class="container">
+<h1>LinkedIn Queue</h1>
+<p class="subtitle">Replies and newsletters drafted by Vivian. Click to copy, then post on LinkedIn.</p>
+
+<div class="tabs">
+<div class="tab active" onclick="filterQueue('all')">All</div>
+<div class="tab" onclick="filterQueue('reply')">Replies</div>
+<div class="tab" onclick="filterQueue('newsletter')">Newsletters</div>
+</div>
+
+<div id="queue"></div>
+</div>
+
+<script>
+let queue = JSON.parse(localStorage.getItem('li-queue') || '[]');
+
+function renderQueue(filter) {
+  const el = document.getElementById('queue');
+  const items = filter === 'all' ? queue : queue.filter(i => i.type === filter);
+  
+  if (items.length === 0) {
+    el.innerHTML = '<div class="empty"><div class="empty-icon">✅</div><p>Queue is clear. Nothing to post.</p></div>';
+    return;
+  }
+  
+  el.innerHTML = items.map((item, i) => {
+    const realIdx = queue.indexOf(item);
+    return `
+    <div class="queue-item ${item.type}" data-idx="${realIdx}">
+      <span class="badge ${item.type}">${item.type}</span>
+      <div class="meta">${item.date} ${item.postUrl ? '· <a href="'+item.postUrl+'" target="_blank" style="color:#4a9eff">View Post</a>' : ''}</div>
+      ${item.context ? '<div class="context">Replying to: ' + item.context + '</div>' : ''}
+      <div class="content" onclick="copyText(this)">${item.text}<button class="copy-btn">Copy</button></div>
+      <button class="done-btn" onclick="markDone(${realIdx})">✓ Posted</button>
+    </div>`;
+  }).join('');
+}
+
+function copyText(el) {
+  const text = el.innerText.replace('Copy', '').trim();
+  navigator.clipboard.writeText(text);
+  const btn = el.querySelector('.copy-btn');
+  btn.textContent = 'Copied!';
+  btn.style.opacity = 1;
+  setTimeout(() => { btn.textContent = 'Copy'; btn.style.opacity = 0; }, 2000);
+}
+
+function markDone(idx) {
+  queue.splice(idx, 1);
+  localStorage.setItem('li-queue', JSON.stringify(queue));
+  renderQueue(currentFilter);
+}
+
+function filterQueue(type) {
+  currentFilter = type;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderQueue(type);
+}
+
+// External API: add items via console or URL params
+window.addToQueue = function(item) {
+  queue.push(item);
+  localStorage.setItem('li-queue', JSON.stringify(queue));
+  renderQueue(currentFilter);
+};
+
+// Check URL for items to add (from Vivian's API calls)
+const params = new URLSearchParams(window.location.search);
+if (params.get('add')) {
+  try {
+    const item = JSON.parse(decodeURIComponent(params.get('add')));
+    queue.push(item);
+    localStorage.setItem('li-queue', JSON.stringify(queue));
+    window.history.replaceState({}, '', window.location.pathname);
+  } catch(e) {}
+}
+
+let currentFilter = 'all';
+renderQueue('all');
+</script>
+</body>
+</html>
