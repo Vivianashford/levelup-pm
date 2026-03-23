@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T18:53:58.283202+00:00",
-  "updated_local": "2026-03-23 01:53 PM",
+  "updated": "2026-03-23T18:58:58.575461+00:00",
+  "updated_local": "2026-03-23 01:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,12 +84,12 @@
     }
   ],
   "analytics": {
-    "realtime_users": 7,
+    "realtime_users": 5,
     "week": {
       "users": 20,
       "sessions": 26,
       "pageviews": 66,
-      "avg_duration": 848.9,
+      "avg_duration": 918.8,
       "conversions": 0
     },
     "month": {
@@ -214,7 +214,7 @@
       "/book.html": {
         "views": 6,
         "users": 1,
-        "avg_duration": 11878.2
+        "avg_duration": 13695.3
       },
       "/assessment.html": {
         "views": 5,
