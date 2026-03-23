@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:48:59.806031+00:00",
-  "updated_local": "2026-03-23 12:48 PM",
+  "updated": "2026-03-23T17:53:57.416353+00:00",
+  "updated_local": "2026-03-23 12:53 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 19,
       "sessions": 25,
-      "pageviews": 53,
-      "avg_duration": 412.7,
+      "pageviews": 56,
+      "avg_duration": 431.2,
       "conversions": 0
     },
     "month": {
       "users": 19,
       "sessions": 25,
-      "pageviews": 53,
+      "pageviews": 56,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 22,
+        "views": 23,
         "users": 14
       },
       {
@@ -110,19 +110,24 @@
         "users": 2
       },
       {
+        "page": "/assessment.html",
+        "views": 5,
+        "users": 5
+      },
+      {
         "page": "/blog/",
         "views": 5,
         "users": 4
       },
       {
-        "page": "/assessment.html",
-        "views": 4,
-        "users": 5
-      },
-      {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
         "views": 2,
         "users": 2
+      },
+      {
+        "page": "/book.html",
+        "views": 2,
+        "users": 1
       },
       {
         "page": "/calculator.html",
@@ -143,19 +148,14 @@
         "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
         "views": 1,
         "users": 1
-      },
-      {
-        "page": "/book.html",
-        "views": 1,
-        "users": 1
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 17,
-        "users": 15
+        "sessions": 18,
+        "users": 16
       },
       {
         "source": "(not set)",
@@ -202,9 +202,9 @@
     },
     "funnel": {
       "/": {
-        "views": 22,
+        "views": 23,
         "users": 14,
-        "avg_duration": 140.7
+        "avg_duration": 140.9
       },
       "/watch.html": {
         "views": 10,
@@ -212,19 +212,19 @@
         "avg_duration": 555.7
       },
       "/assessment.html": {
-        "views": 4,
+        "views": 5,
         "users": 5,
-        "avg_duration": 58.1
+        "avg_duration": 48.4
+      },
+      "/book.html": {
+        "views": 2,
+        "users": 1,
+        "avg_duration": 1019.9
       },
       "/nda.html": {
         "views": 2,
         "users": 1,
         "avg_duration": 327.5
-      },
-      "/book.html": {
-        "views": 1,
-        "users": 1,
-        "avg_duration": 560.6
       },
       "/upload.html": {
         "views": 1,
