@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:08:57.465086+00:00",
-  "updated_local": "2026-03-23 12:08 PM",
+  "updated": "2026-03-23T17:13:57.597343+00:00",
+  "updated_local": "2026-03-23 12:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 7,
+    "realtime_users": 6,
     "week": {
       "users": 12,
-      "sessions": 15,
-      "pageviews": 23,
-      "avg_duration": 77.0,
+      "sessions": 17,
+      "pageviews": 26,
+      "avg_duration": 78.1,
       "conversions": 0
     },
     "month": {
       "users": 12,
-      "sessions": 15,
-      "pageviews": 23,
+      "sessions": 17,
+      "pageviews": 26,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 10,
+        "views": 13,
         "users": 7
       },
       {
@@ -145,8 +145,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 6,
-        "users": 6
+        "sessions": 8,
+        "users": 7
       },
       {
         "source": "linkedin.com",
@@ -187,9 +187,9 @@
     },
     "funnel": {
       "/": {
-        "views": 10,
+        "views": 13,
         "users": 7,
-        "avg_duration": 72.5
+        "avg_duration": 75.3
       },
       "/assessment.html": {
         "views": 3,
