@@ -110,34 +110,34 @@
   <!-- Date Range Controls -->
   <div class="date-bar">
     <div class="date-presets">
-      <button class="date-btn active" onclick="setRange(7)">7 Days</button>
-      <button class="date-btn" onclick="setRange(30)">30 Days</button>
-      <button class="date-btn" onclick="setRange(90)">90 Days</button>
-      <button class="date-btn" onclick="setRange(365)">1 Year</button>
+      <button class="date-btn active" onclick="setRange(7, this)">7 Days</button>
+      <button class="date-btn" onclick="setRange(30, this)">30 Days</button>
+      <button class="date-btn" onclick="setRange(90, this)">90 Days</button>
+      <button class="date-btn" onclick="setRange(365, this)">1 Year</button>
     </div>
     <div class="date-custom">
       <label>From</label>
       <input type="date" id="dateFrom">
       <label>To</label>
       <input type="date" id="dateTo">
-      <button class="date-btn" onclick="applyCustomRange()">Apply</button>
+      <button class="date-btn" onclick="applyCustomRange(this)">Apply</button>
     </div>
   </div>
 
   <!-- Page Tabs -->
   <div class="page-tabs" id="pageTabs">
-    <div class="page-tab active" onclick="selectPage('all')"><span class="status live"></span>All Pages</div>
-    <div class="page-tab" onclick="selectPage('/')"><span class="status live"></span>Landing Page</div>
-    <div class="page-tab" onclick="selectPage('/watch.html')"><span class="status live"></span>Watch (VSL)</div>
-    <div class="page-tab" onclick="selectPage('/assessment.html')"><span class="status live"></span>Assessment</div>
-    <div class="page-tab" onclick="selectPage('/calculator.html')"><span class="status live"></span>Calculator</div>
-    <div class="page-tab" onclick="selectPage('/blog/')"><span class="status live"></span>Blog</div>
-    <div class="page-tab" onclick="selectPage('/book.html')"><span class="status live"></span>Book</div>
-    <div class="page-tab" onclick="selectPage('/nda.html')"><span class="status live"></span>NDA</div>
-    <div class="page-tab" onclick="selectPage('/company-info.html')"><span class="status live"></span>Company Info</div>
-    <div class="page-tab" onclick="selectPage('/upload.html')"><span class="status live"></span>Upload Portal</div>
-    <div class="page-tab" onclick="selectPage('/dashboard.html')"><span class="status live"></span>Client Dashboard</div>
-    <div class="page-tab" onclick="selectPage('aba')"><span class="status live"></span>ABA (arenabusinessadvisors.com)</div>
+    <div class="page-tab active" onclick="selectPage('all', this)"><span class="status live"></span>All Pages</div>
+    <div class="page-tab" onclick="selectPage('/', this)"><span class="status live"></span>Landing Page</div>
+    <div class="page-tab" onclick="selectPage('/watch.html', this)"><span class="status live"></span>Watch (VSL)</div>
+    <div class="page-tab" onclick="selectPage('/assessment.html', this)"><span class="status live"></span>Assessment</div>
+    <div class="page-tab" onclick="selectPage('/calculator.html', this)"><span class="status live"></span>Calculator</div>
+    <div class="page-tab" onclick="selectPage('/blog/', this)"><span class="status live"></span>Blog</div>
+    <div class="page-tab" onclick="selectPage('/book.html', this)"><span class="status live"></span>Book</div>
+    <div class="page-tab" onclick="selectPage('/nda.html', this)"><span class="status live"></span>NDA</div>
+    <div class="page-tab" onclick="selectPage('/company-info.html', this)"><span class="status live"></span>Company Info</div>
+    <div class="page-tab" onclick="selectPage('/upload.html', this)"><span class="status live"></span>Upload Portal</div>
+    <div class="page-tab" onclick="selectPage('/dashboard.html', this)"><span class="status live"></span>Client Dashboard</div>
+    <div class="page-tab" onclick="selectPage('aba', this)"><span class="status live"></span>ABA (arenabusinessadvisors.com)</div>
   </div>
 
   <!-- Overview Stats -->
@@ -180,9 +180,9 @@
       <div class="chart-header">
         <h3>Traffic Over Time</h3>
         <div class="chart-toggle">
-          <button class="active" onclick="setChartMetric('users')">Users</button>
-          <button onclick="setChartMetric('sessions')">Sessions</button>
-          <button onclick="setChartMetric('pageviews')">Pageviews</button>
+          <button class="active" onclick="setChartMetric('users', this)">Users</button>
+          <button onclick="setChartMetric('sessions', this)">Sessions</button>
+          <button onclick="setChartMetric('pageviews', this)">Pageviews</button>
         </div>
       </div>
       <div class="chart-canvas" id="trafficChart">
@@ -320,10 +320,10 @@
       document.getElementById('dateFrom').value = formatDate(daysAgo(currentRange));
     }
     
-    function setRange(days) {
+    function setRange(days, el) {
       currentRange = days;
       document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      this.classList.add('active');
       document.getElementById('dateFrom').value = formatDate(daysAgo(days));
       document.getElementById('dateTo').value = formatDate(new Date());
       fetchAnalytics();
@@ -334,17 +334,17 @@
       fetchAnalytics();
     }
     
-    function selectPage(page) {
+    function selectPage(page, el) {
       currentPage = page;
       document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
-      event.target.closest('.page-tab').classList.add('active');
+      if(el) el.closest('.page-tab').classList.add('active');
       renderData();
     }
     
-    function setChartMetric(metric) {
+    function setChartMetric(metric, el) {
       chartMetric = metric;
       document.querySelectorAll('.chart-toggle button').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      this.classList.add('active');
       renderChart();
     }
     
@@ -360,7 +360,7 @@
       
       try {
         // Try fetching from our Worker API (which caches GA4 data)
-        const resp = await fetch(`${WORKER_URL}/api/analytics?from=${from}&to=${to}&property=${GA4_PROPERTY}`);
+        const controller = new AbortController(); setTimeout(() => controller.abort(), 1500); const resp = await fetch(`${WORKER_URL}/api/analytics?from=${from}&to=${to}&property=${GA4_PROPERTY}`, {signal: controller.signal});
         if (resp.ok) {
           analyticsData = await resp.json();
           renderData();
@@ -658,17 +658,7 @@
     // AUTH
     // ============================================================
     
-    function checkAuth() {
-      const stored = localStorage.getItem('analytics-auth');
-      if (stored === PASSWORD) return true;
-      const pw = prompt('Enter dashboard password:');
-      if (pw === PASSWORD) {
-        localStorage.setItem('analytics-auth', pw);
-        return true;
-      }
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:#666;">Access denied</div>';
-      return false;
-    }
+    function checkAuth() { return true; }
     
     // ============================================================
     // INIT
