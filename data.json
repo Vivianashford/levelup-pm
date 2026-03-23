@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T19:28:58.694290+00:00",
-  "updated_local": "2026-03-23 02:28 PM",
+  "updated": "2026-03-23T19:33:59.546316+00:00",
+  "updated_local": "2026-03-23 02:33 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 4,
+    "realtime_users": 5,
     "week": {
-      "users": 23,
-      "sessions": 29,
-      "pageviews": 70,
-      "avg_duration": 878.8,
+      "users": 24,
+      "sessions": 30,
+      "pageviews": 72,
+      "avg_duration": 849.5,
       "conversions": 0
     },
     "month": {
-      "users": 23,
-      "sessions": 29,
-      "pageviews": 70,
+      "users": 24,
+      "sessions": 30,
+      "pageviews": 72,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 29,
-        "users": 16
+        "views": 30,
+        "users": 17
       },
       {
         "page": "/watch.html",
@@ -174,11 +174,17 @@
         "medium": "referral",
         "sessions": 2,
         "users": 2
+      },
+      {
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
       }
     ],
     "blog": {
-      "total_views": 10,
-      "total_users": 8,
+      "total_views": 11,
+      "total_users": 9,
       "articles": [
         {
           "page": "/blog/",
@@ -197,14 +203,20 @@
           "views": 1,
           "users": 1,
           "avg_duration": 7.2
+        },
+        {
+          "page": "/blog/mckinsey-5-trillion-boomer-business-transfer.html",
+          "views": 1,
+          "users": 1,
+          "avg_duration": 0.0
         }
       ]
     },
     "funnel": {
       "/": {
-        "views": 29,
-        "users": 16,
-        "avg_duration": 130.2
+        "views": 30,
+        "users": 17,
+        "avg_duration": 124.0
       },
       "/watch.html": {
         "views": 10,
