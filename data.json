@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:33:56.976521+00:00",
-  "updated_local": "2026-03-23 12:33 PM",
+  "updated": "2026-03-23T17:39:04.934089+00:00",
+  "updated_local": "2026-03-23 12:39 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,33 +86,33 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 13,
-      "sessions": 18,
-      "pageviews": 33,
-      "avg_duration": 203.8,
+      "users": 14,
+      "sessions": 19,
+      "pageviews": 42,
+      "avg_duration": 321.9,
       "conversions": 0
     },
     "month": {
-      "users": 13,
-      "sessions": 18,
-      "pageviews": 33,
+      "users": 14,
+      "sessions": 19,
+      "pageviews": 42,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 14,
-        "users": 8
+        "views": 17,
+        "users": 9
+      },
+      {
+        "page": "/watch.html",
+        "views": 8,
+        "users": 2
       },
       {
         "page": "/blog/",
         "views": 5,
         "users": 4
-      },
-      {
-        "page": "/watch.html",
-        "views": 5,
-        "users": 2
       },
       {
         "page": "/assessment.html",
@@ -138,14 +138,24 @@
         "page": "/calculator.html",
         "views": 1,
         "users": 1
+      },
+      {
+        "page": "/dashboard.html",
+        "views": 1,
+        "users": 1
+      },
+      {
+        "page": "/nda.html",
+        "views": 1,
+        "users": 1
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 13,
-        "users": 11
+        "sessions": 15,
+        "users": 13
       },
       {
         "source": "(not set)",
@@ -174,7 +184,7 @@
           "page": "/blog/",
           "views": 5,
           "users": 4,
-          "avg_duration": 144.2
+          "avg_duration": 165.3
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -192,19 +202,29 @@
     },
     "funnel": {
       "/": {
-        "views": 14,
-        "users": 8,
-        "avg_duration": 76.4
+        "views": 17,
+        "users": 9,
+        "avg_duration": 101.0
       },
       "/watch.html": {
-        "views": 5,
+        "views": 8,
         "users": 2,
-        "avg_duration": 290.6
+        "avg_duration": 458.0
       },
       "/assessment.html": {
         "views": 3,
         "users": 5,
         "avg_duration": 58.1
+      },
+      "/nda.html": {
+        "views": 1,
+        "users": 1,
+        "avg_duration": 0.0
+      },
+      "/upload.html": {
+        "views": 1,
+        "users": 1,
+        "avg_duration": 814.9
       }
     },
     "video_events": {},
