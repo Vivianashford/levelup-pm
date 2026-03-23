@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:18:58.655126+00:00",
-  "updated_local": "2026-03-23 12:18 PM",
+  "updated": "2026-03-23T17:24:00.619183+00:00",
+  "updated_local": "2026-03-23 12:24 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,35 +84,40 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 3,
     "week": {
-      "users": 12,
-      "sessions": 17,
-      "pageviews": 28,
-      "avg_duration": 112.7,
+      "users": 13,
+      "sessions": 18,
+      "pageviews": 32,
+      "avg_duration": 178.6,
       "conversions": 0
     },
     "month": {
-      "users": 12,
-      "sessions": 17,
-      "pageviews": 28,
+      "users": 13,
+      "sessions": 18,
+      "pageviews": 32,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
         "views": 14,
-        "users": 7
+        "users": 8
       },
       {
         "page": "/blog/",
-        "views": 4,
+        "views": 5,
         "users": 4
+      },
+      {
+        "page": "/watch.html",
+        "views": 4,
+        "users": 2
       },
       {
         "page": "/assessment.html",
         "views": 3,
-        "users": 4
+        "users": 5
       },
       {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -125,12 +130,12 @@
         "users": 2
       },
       {
-        "page": "/watch.html",
-        "views": 2,
-        "users": 2
+        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+        "views": 1,
+        "users": 1
       },
       {
-        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+        "page": "/calculator.html",
         "views": 1,
         "users": 1
       }
@@ -145,8 +150,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 8,
-        "users": 7
+        "sessions": 9,
+        "users": 8
       },
       {
         "source": "linkedin.com",
@@ -162,14 +167,14 @@
       }
     ],
     "blog": {
-      "total_views": 7,
+      "total_views": 8,
       "total_users": 7,
       "articles": [
         {
           "page": "/blog/",
-          "views": 4,
+          "views": 5,
           "users": 4,
-          "avg_duration": 63.2
+          "avg_duration": 144.2
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -188,18 +193,18 @@
     "funnel": {
       "/": {
         "views": 14,
-        "users": 7,
-        "avg_duration": 84.1
+        "users": 8,
+        "avg_duration": 76.4
+      },
+      "/watch.html": {
+        "views": 4,
+        "users": 2,
+        "avg_duration": 272.6
       },
       "/assessment.html": {
         "views": 3,
-        "users": 4,
-        "avg_duration": 72.6
-      },
-      "/watch.html": {
-        "views": 2,
-        "users": 2,
-        "avg_duration": 102.4
+        "users": 5,
+        "avg_duration": 58.1
       }
     },
     "video_events": {},
