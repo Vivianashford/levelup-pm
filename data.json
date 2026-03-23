@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T16:40:52.609635+00:00",
-  "updated_local": "2026-03-23 11:40 AM",
+  "updated": "2026-03-23T17:03:59.266216+00:00",
+  "updated_local": "2026-03-23 12:03 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 9,
     "week": {
       "users": 12,
       "sessions": 15,
-      "pageviews": 20,
-      "avg_duration": 74.2,
+      "pageviews": 23,
+      "avg_duration": 77.0,
       "conversions": 0
     },
     "month": {
       "users": 12,
       "sessions": 15,
-      "pageviews": 20,
+      "pageviews": 23,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 9,
+        "views": 10,
         "users": 7
       },
       {
@@ -120,19 +120,19 @@
         "users": 2
       },
       {
-        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
-        "views": 1,
-        "users": 1
-      },
-      {
         "page": "/contact",
-        "views": 1,
-        "users": 1
+        "views": 2,
+        "users": 2
       },
       {
         "page": "/watch.html",
-        "views": 1,
+        "views": 2,
         "users": 2
+      },
+      {
+        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+        "views": 1,
+        "users": 1
       }
     ],
     "traffic_sources": [
@@ -187,7 +187,7 @@
     },
     "funnel": {
       "/": {
-        "views": 9,
+        "views": 10,
         "users": 7,
         "avg_duration": 72.5
       },
@@ -197,9 +197,9 @@
         "avg_duration": 72.6
       },
       "/watch.html": {
-        "views": 1,
+        "views": 2,
         "users": 2,
-        "avg_duration": 50.6
+        "avg_duration": 61.1
       }
     },
     "video_events": {},
