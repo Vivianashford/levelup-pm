@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T17:43:56.958945+00:00",
-  "updated_local": "2026-03-23 12:43 PM",
+  "updated": "2026-03-23T17:48:59.806031+00:00",
+  "updated_local": "2026-03-23 12:48 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,27 +86,27 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 14,
-      "sessions": 19,
-      "pageviews": 42,
-      "avg_duration": 321.9,
+      "users": 19,
+      "sessions": 25,
+      "pageviews": 53,
+      "avg_duration": 412.7,
       "conversions": 0
     },
     "month": {
-      "users": 14,
-      "sessions": 19,
-      "pageviews": 42,
+      "users": 19,
+      "sessions": 25,
+      "pageviews": 53,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 17,
-        "users": 9
+        "views": 22,
+        "users": 14
       },
       {
         "page": "/watch.html",
-        "views": 8,
+        "views": 10,
         "users": 2
       },
       {
@@ -116,7 +116,7 @@
       },
       {
         "page": "/assessment.html",
-        "views": 3,
+        "views": 4,
         "users": 5
       },
       {
@@ -125,9 +125,19 @@
         "users": 2
       },
       {
+        "page": "/calculator.html",
+        "views": 2,
+        "users": 1
+      },
+      {
         "page": "/contact",
         "views": 2,
         "users": 2
+      },
+      {
+        "page": "/nda.html",
+        "views": 2,
+        "users": 1
       },
       {
         "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -135,17 +145,7 @@
         "users": 1
       },
       {
-        "page": "/calculator.html",
-        "views": 1,
-        "users": 1
-      },
-      {
-        "page": "/dashboard.html",
-        "views": 1,
-        "users": 1
-      },
-      {
-        "page": "/nda.html",
+        "page": "/book.html",
         "views": 1,
         "users": 1
       }
@@ -154,20 +154,20 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 15,
-        "users": 13
+        "sessions": 17,
+        "users": 15
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 9,
-        "users": 8
+        "sessions": 14,
+        "users": 12
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 2,
-        "users": 1
+        "sessions": 3,
+        "users": 2
       },
       {
         "source": "linkedin.com",
@@ -202,24 +202,29 @@
     },
     "funnel": {
       "/": {
-        "views": 17,
-        "users": 9,
-        "avg_duration": 101.0
+        "views": 22,
+        "users": 14,
+        "avg_duration": 140.7
       },
       "/watch.html": {
-        "views": 8,
+        "views": 10,
         "users": 2,
-        "avg_duration": 458.0
+        "avg_duration": 555.7
       },
       "/assessment.html": {
-        "views": 3,
+        "views": 4,
         "users": 5,
         "avg_duration": 58.1
       },
       "/nda.html": {
+        "views": 2,
+        "users": 1,
+        "avg_duration": 327.5
+      },
+      "/book.html": {
         "views": 1,
         "users": 1,
-        "avg_duration": 0.0
+        "avg_duration": 560.6
       },
       "/upload.html": {
         "views": 1,
