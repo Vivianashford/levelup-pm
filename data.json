@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T22:24:59.252659+00:00",
-  "updated_local": "2026-03-23 05:24 PM",
+  "updated": "2026-03-23T22:30:04.298233+00:00",
+  "updated_local": "2026-03-23 05:30 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
       "users": 44,
       "sessions": 53,
-      "pageviews": 123,
-      "avg_duration": 700.4,
+      "pageviews": 126,
+      "avg_duration": 732.3,
       "conversions": 0
     },
     "month": {
       "users": 44,
       "sessions": 53,
-      "pageviews": 123,
+      "pageviews": 126,
       "conversions": 0
     },
     "top_pages": [
@@ -106,7 +106,7 @@
       },
       {
         "page": "/blog/",
-        "views": 11,
+        "views": 12,
         "users": 8
       },
       {
@@ -131,7 +131,7 @@
       },
       {
         "page": "/about",
-        "views": 5,
+        "views": 6,
         "users": 4
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 40,
-        "users": 36
+        "sessions": 41,
+        "users": 37
       },
       {
         "source": "(not set)",
@@ -189,12 +189,12 @@
       }
     ],
     "blog": {
-      "total_views": 16,
+      "total_views": 17,
       "total_users": 13,
       "articles": [
         {
           "page": "/blog/",
-          "views": 11,
+          "views": 12,
           "users": 8,
           "avg_duration": 480.0
         },
@@ -222,7 +222,7 @@
       "/": {
         "views": 50,
         "users": 23,
-        "avg_duration": 159.2
+        "avg_duration": 215.4
       },
       "/watch.html": {
         "views": 10,
