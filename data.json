@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T21:40:01.913212+00:00",
-  "updated_local": "2026-03-23 04:40 PM",
+  "updated": "2026-03-23T21:45:11.068321+00:00",
+  "updated_local": "2026-03-23 04:45 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,22 +86,22 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 37,
-      "sessions": 46,
-      "pageviews": 110,
-      "avg_duration": 748.0,
+      "users": 40,
+      "sessions": 49,
+      "pageviews": 114,
+      "avg_duration": 755.7,
       "conversions": 0
     },
     "month": {
-      "users": 37,
-      "sessions": 46,
-      "pageviews": 110,
+      "users": 40,
+      "sessions": 49,
+      "pageviews": 114,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 47,
+        "views": 48,
         "users": 23
       },
       {
@@ -121,6 +121,11 @@
       },
       {
         "page": "/contact",
+        "views": 8,
+        "users": 5
+      },
+      {
+        "page": "/services",
         "views": 6,
         "users": 4
       },
@@ -133,11 +138,6 @@
         "page": "/assessment.html",
         "views": 5,
         "users": 5
-      },
-      {
-        "page": "/services",
-        "views": 5,
-        "users": 3
       },
       {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 34,
-        "users": 30
+        "sessions": 36,
+        "users": 32
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 22,
-        "users": 18
+        "sessions": 23,
+        "users": 19
       },
       {
         "source": "vivianashford.github.io",
@@ -196,7 +196,7 @@
           "page": "/blog/",
           "views": 9,
           "users": 7,
-          "avg_duration": 282.6
+          "avg_duration": 533.3
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -220,9 +220,9 @@
     },
     "funnel": {
       "/": {
-        "views": 47,
+        "views": 48,
         "users": 23,
-        "avg_duration": 153.4
+        "avg_duration": 156.2
       },
       "/watch.html": {
         "views": 10,
