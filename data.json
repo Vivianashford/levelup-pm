@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T20:40:03.519348+00:00",
-  "updated_local": "2026-03-23 03:40 PM",
+  "updated": "2026-03-23T20:45:04.636325+00:00",
+  "updated_local": "2026-03-23 03:45 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 18,
     "week": {
-      "users": 28,
-      "sessions": 36,
-      "pageviews": 92,
-      "avg_duration": 857.1,
+      "users": 29,
+      "sessions": 37,
+      "pageviews": 95,
+      "avg_duration": 833.9,
       "conversions": 0
     },
     "month": {
-      "users": 28,
-      "sessions": 36,
-      "pageviews": 92,
+      "users": 29,
+      "sessions": 37,
+      "pageviews": 95,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 43,
-        "users": 21
+        "views": 45,
+        "users": 22
       },
       {
         "page": "/watch.html",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 18,
-        "users": 14
+        "sessions": 19,
+        "users": 15
       },
       {
         "source": "vivianashford.github.io",
@@ -220,9 +220,9 @@
     },
     "funnel": {
       "/": {
-        "views": 43,
-        "users": 21,
-        "avg_duration": 128.2
+        "views": 45,
+        "users": 22,
+        "avg_duration": 123.6
       },
       "/watch.html": {
         "views": 10,
