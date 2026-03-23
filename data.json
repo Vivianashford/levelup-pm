@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T19:38:58.493252+00:00",
-  "updated_local": "2026-03-23 02:38 PM",
+  "updated": "2026-03-23T19:44:00.004645+00:00",
+  "updated_local": "2026-03-23 02:44 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 1,
     "week": {
       "users": 24,
-      "sessions": 31,
-      "pageviews": 73,
-      "avg_duration": 907.9,
+      "sessions": 32,
+      "pageviews": 74,
+      "avg_duration": 879.5,
       "conversions": 0
     },
     "month": {
       "users": 24,
-      "sessions": 31,
-      "pageviews": 73,
+      "sessions": 32,
+      "pageviews": 74,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 30,
+        "views": 31,
         "users": 17
       },
       {
@@ -160,7 +160,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 15,
+        "sessions": 16,
         "users": 12
       },
       {
@@ -214,9 +214,9 @@
     },
     "funnel": {
       "/": {
-        "views": 30,
+        "views": 31,
         "users": 17,
-        "avg_duration": 129.7
+        "avg_duration": 124.0
       },
       "/watch.html": {
         "views": 10,
