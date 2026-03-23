@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T22:40:00.445761+00:00",
-  "updated_local": "2026-03-23 05:40 PM",
+  "updated": "2026-03-23T22:45:05.910339+00:00",
+  "updated_local": "2026-03-23 05:45 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -87,14 +87,14 @@
     "realtime_users": 0,
     "week": {
       "users": 44,
-      "sessions": 53,
+      "sessions": 54,
       "pageviews": 126,
-      "avg_duration": 732.3,
+      "avg_duration": 720.4,
       "conversions": 0
     },
     "month": {
       "users": 44,
-      "sessions": 53,
+      "sessions": 54,
       "pageviews": 126,
       "conversions": 0
     },
@@ -178,7 +178,7 @@
       {
         "source": "telegra.ph",
         "medium": "referral",
-        "sessions": 1,
+        "sessions": 2,
         "users": 1
       },
       {
@@ -222,7 +222,7 @@
       "/": {
         "views": 50,
         "users": 23,
-        "avg_duration": 215.4
+        "avg_duration": 208.4
       },
       "/watch.html": {
         "views": 10,
