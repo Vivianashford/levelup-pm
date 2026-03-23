@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T11:47:12.699921+00:00",
-  "updated_local": "2026-03-23 06:47 AM",
+  "updated": "2026-03-23T11:52:11.809497+00:00",
+  "updated_local": "2026-03-23 06:52 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 2,
-      "sessions": 4,
-      "pageviews": 4,
-      "avg_duration": 79.0,
+      "users": 4,
+      "sessions": 6,
+      "pageviews": 5,
+      "avg_duration": 52.7,
       "conversions": 0
     },
     "month": {
-      "users": 2,
-      "sessions": 4,
-      "pageviews": 4,
+      "users": 4,
+      "sessions": 6,
+      "pageviews": 5,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 2,
-        "users": 1
+        "views": 3,
+        "users": 2
       },
       {
         "page": "/assessment.html",
@@ -113,6 +113,11 @@
         "page": "/watch.html",
         "views": 1,
         "users": 1
+      },
+      {
+        "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+        "views": 0,
+        "users": 1
       }
     ],
     "traffic_sources": [
@@ -122,13 +127,20 @@
       },
       {
         "source": "(not set)",
-        "sessions": 1
+        "sessions": 3
       }
     ],
     "blog": {
       "total_views": 0,
-      "total_users": 0,
-      "articles": []
+      "total_users": 1,
+      "articles": [
+        {
+          "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+          "views": 0,
+          "users": 1,
+          "avg_duration": 0.0
+        }
+      ]
     }
   }
 }
