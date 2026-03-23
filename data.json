@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T13:02:17.658337+00:00",
-  "updated_local": "2026-03-23 08:02 AM",
+  "updated": "2026-03-23T13:07:14.013165+00:00",
+  "updated_local": "2026-03-23 08:07 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
-      "users": 5,
-      "sessions": 7,
-      "pageviews": 8,
-      "avg_duration": 52.8,
+      "users": 7,
+      "sessions": 9,
+      "pageviews": 10,
+      "avg_duration": 51.3,
       "conversions": 0
     },
     "month": {
-      "users": 5,
-      "sessions": 7,
-      "pageviews": 8,
+      "users": 7,
+      "sessions": 9,
+      "pageviews": 10,
       "conversions": 0
     },
     "top_pages": [
@@ -106,16 +106,21 @@
       },
       {
         "page": "/assessment.html",
-        "views": 2,
-        "users": 3
+        "views": 3,
+        "users": 4
       },
       {
         "page": "/blog/",
         "views": 1,
-        "users": 1
+        "users": 2
       },
       {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
+        "views": 1,
+        "users": 1
+      },
+      {
+        "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
         "views": 1,
         "users": 1
       },
@@ -129,8 +134,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 7,
-        "users": 5
+        "sessions": 9,
+        "users": 7
       },
       {
         "source": "(not set)",
@@ -140,20 +145,26 @@
       }
     ],
     "blog": {
-      "total_views": 2,
-      "total_users": 2,
+      "total_views": 3,
+      "total_users": 4,
       "articles": [
         {
           "page": "/blog/",
           "views": 1,
-          "users": 1,
-          "avg_duration": 24.2
+          "users": 2,
+          "avg_duration": 12.1
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
           "views": 1,
           "users": 1,
           "avg_duration": 0.0
+        },
+        {
+          "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+          "views": 1,
+          "users": 1,
+          "avg_duration": 7.2
         }
       ]
     },
@@ -164,9 +175,9 @@
         "avg_duration": 0.0
       },
       "/assessment.html": {
-        "views": 2,
-        "users": 3,
-        "avg_duration": 68.6
+        "views": 3,
+        "users": 4,
+        "avg_duration": 72.6
       },
       "/watch.html": {
         "views": 1,
