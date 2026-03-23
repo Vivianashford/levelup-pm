@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Arena Partners - Operations Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; }
+
+    /* Header */
+    .page-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%); padding: 60px 24px 48px; text-align: center; border-bottom: 3px solid #C9A84C; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 50%); }
+    .page-header h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; position: relative; letter-spacing: -0.5px; }
+    .page-header h1 span { color: #C9A84C; }
+    .page-header .subtitle { font-size: 16px; color: #888; margin-top: 12px; position: relative; }
+    .page-header .updated { font-size: 12px; color: #555; margin-top: 16px; position: relative; }
+    .header-stats { display: flex; justify-content: center; gap: 48px; margin-top: 32px; position: relative; }
+    .header-stat { text-align: center; }
+    .header-stat .num { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; color: #C9A84C; }
+    .header-stat .lbl { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+    /* Navigation */
+    .dept-nav { background: #111118; padding: 0; display: flex; justify-content: center; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; z-index: 100; }
+    .dept-nav a { display: flex; align-items: center; gap: 8px; padding: 16px 28px; color: #888; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.2s; }
+    .dept-nav a:hover { color: #C9A84C; background: rgba(201,168,76,0.05); }
+    .dept-nav a .icon { font-size: 18px; }
+
+    /* Department Sections */
+    .department { padding: 48px 24px; max-width: 1200px; margin: 0 auto; }
+    .dept-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid #1e1e2e; }
+    .dept-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .dept-header h2 { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 800; color: #fff; }
+    .dept-header .dept-desc { font-size: 14px; color: #888; margin-top: 4px; }
+
+    /* Cards Grid */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .card { background: #111118; border: 1px solid #1e1e2e; border-radius: 12px; padding: 24px; transition: all 0.2s; position: relative; overflow: hidden; }
+    .card:hover { border-color: #C9A84C; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.1); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent, #C9A84C); opacity: 0; transition: opacity 0.2s; }
+    .card:hover::before { opacity: 1; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .card h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .card .status { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+    .status.live { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .status.active { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .status.ready { background: rgba(201,168,76,0.15); color: #C9A84C; }
+    .status.pending { background: rgba(234,179,8,0.15); color: #eab308; }
+    .status.planned { background: rgba(107,114,128,0.15); color: #6b7280; }
+    .card p { font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 16px; }
+    .card-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .card-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: #C9A84C; background: rgba(201,168,76,0.1); padding: 6px 12px; border-radius: 6px; text-decoration: none; transition: all 0.15s; }
+    .card-link:hover { background: rgba(201,168,76,0.2); color: #e0c060; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag { font-size: 10px; padding: 3px 8px; border-radius: 3px; background: #1a1a2e; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Connection Lines */
+    .connections { background: #0d0d14; padding: 32px 24px; border-top: 1px solid #1e1e2e; border-bottom: 1px solid #1e1e2e; }
+    .connections h3 { font-family: 'Montserrat', sans-serif; font-size: 18px; color: #fff; text-align: center; margin-bottom: 24px; }
+    .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; padding: 20px; }
+    .flow-step { background: #111118; border: 1px solid #2a2a3e; border-radius: 10px; padding: 16px 20px; text-align: center; min-width: 140px; }
+    .flow-step .step-icon { font-size: 24px; margin-bottom: 6px; }
+    .flow-step .step-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .flow-step .step-detail { font-size: 11px; color: #666; margin-top: 4px; }
+    .flow-arrow { color: #C9A84C; font-size: 24px; padding: 0 8px; }
+
+    /* Dividers */
+    .section-divider { height: 1px; background: linear-gradient(to right, transparent, #1e1e2e, transparent); margin: 0; }
+
+    /* Footer */
+    .map-footer { padding: 32px 24px; text-align: center; color: #444; font-size: 12px; }
+    .map-footer a { color: #C9A84C; text-decoration: none; }
+
+    /* Colors per department */
+    .marketing { --accent: #C9A84C; }
+    .marketing .dept-icon { background: rgba(201,168,76,0.15); }
+    .sales { --accent: #22c55e; }
+    .sales .dept-icon { background: rgba(34,197,94,0.15); }
+    .delivery { --accent: #3b82f6; }
+    .delivery .dept-icon { background: rgba(59,130,246,0.15); }
+    .accounting { --accent: #a855f7; }
+    .accounting .dept-icon { background: rgba(168,85,247,0.15); }
+    .legal { --accent: #ef4444; }
+    .legal .dept-icon { background: rgba(239,68,68,0.15); }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 26px; }
+      .header-stats { gap: 24px; flex-wrap: wrap; }
+      .dept-nav { overflow-x: auto; justify-content: flex-start; }
+      .dept-nav a { padding: 14px 16px; font-size: 11px; }
+      .cards { grid-template-columns: 1fr; }
+      .flow-diagram { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="page-header">
+    <h1>THE ARENA <span>PARTNERS</span></h1>
+    <div class="subtitle">Complete Operations Map - Everything We've Built</div>
+    <div class="updated">Last updated: March 23, 2026</div>
+    <div class="header-stats">
+      <div class="header-stat"><div class="num">2</div><div class="lbl">Domains</div></div>
+      <div class="header-stat"><div class="num">18</div><div class="lbl">Blog Articles</div></div>
+      <div class="header-stat"><div class="num">54</div><div class="lbl">Backlinks</div></div>
+      <div class="header-stat"><div class="num">5</div><div class="lbl">Engines Running</div></div>
+      <div class="header-stat"><div class="num">28</div><div class="lbl">Funnel Touchpoints</div></div>
+    </div>
+  </header>
+
+  <!-- Department Navigation -->
+  <nav class="dept-nav">
+    <a href="#marketing"><span class="icon">📣</span> Marketing</a>
+    <a href="#sales"><span class="icon">🤝</span> Sales</a>
+    <a href="#delivery"><span class="icon">⚙️</span> Delivery</a>
+    <a href="#accounting"><span class="icon">💰</span> Accounting</a>
+    <a href="#legal"><span class="icon">📜</span> Legal</a>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- FULL FUNNEL FLOW -->
+  <!-- ============================================================ -->
+  <div class="connections">
+    <h3>The Full Client Journey</h3>
+    <div class="flow-diagram">
+      <div class="flow-step"><div class="step-icon">🔍</div><div class="step-name">SEO / Content</div><div class="step-detail">Blog, backlinks, organic</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">🌐</div><div class="step-name">Website</div><div class="step-detail">arenabusinessadvisors.com</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">🎬</div><div class="step-name">Free Training</div><div class="step-detail">VSL + Watch Tracking</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">📋</div><div class="step-name">Assessment</div><div class="step-detail">Exit Risk Score</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">📞</div><div class="step-name">Diagnostic Call</div><div class="step-detail">30-min discovery</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">📝</div><div class="step-name">NDA + Info</div><div class="step-detail">Company data collection</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="step-icon">🏆</div><div class="step-name">Close</div><div class="step-detail">Proposal + Agreement</div></div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- MARKETING -->
+  <!-- ============================================================ -->
+  <section class="department marketing" id="marketing">
+    <div class="dept-header">
+      <div class="dept-icon">📣</div>
+      <div>
+        <h2>Marketing</h2>
+        <div class="dept-desc">Content, SEO, traffic generation, and brand presence across all channels</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- Primary Website -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Arena Business Advisors Website</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Primary public-facing site. Built on Lovable (React SPA), hosted on Cloudflare. Phone + booking calendar CTA. Adding free training and blog.</p>
+        <div class="card-links">
+          <a href="https://www.arenabusinessadvisors.com" class="card-link" target="_blank">🌐 Visit Site</a>
+        </div>
+        <div class="card-tags"><span class="tag">Cloudflare</span><span class="tag">Lovable.dev</span><span class="tag">React</span></div>
+      </div>
+
+      <!-- Funnel Site -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Arena Partners Funnel (Engine Room)</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Full conversion funnel: landing page, VSL watch page, assessment, book reader, calculator, exit guide. All automation runs through here.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com" class="card-link" target="_blank">🌐 Landing</a>
+          <a href="https://thearenapartners.com/watch.html" class="card-link" target="_blank">🎬 Watch</a>
+          <a href="https://thearenapartners.com/assessment.html" class="card-link" target="_blank">📋 Assessment</a>
+          <a href="https://thearenapartners.com/calculator.html" class="card-link" target="_blank">🔢 Calculator</a>
+          <a href="https://thearenapartners.com/exit-planning-guide.html" class="card-link" target="_blank">📖 Exit Guide</a>
+          <a href="https://thearenapartners.com/book.html" class="card-link" target="_blank">📚 Book</a>
+        </div>
+        <div class="card-tags"><span class="tag">GitHub Pages</span><span class="tag">GA4</span><span class="tag">Custom Domain</span></div>
+      </div>
+
+      <!-- Blog - TAP -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Blog - thearenapartners.com</h3>
+          <span class="status live">12 Articles</span>
+        </div>
+        <p>SEO-optimized blog targeting long-tail exit planning keywords. Auto-published Mon/Wed/Fri via content engine. 20 articles queued.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/blog/" class="card-link" target="_blank">📝 Blog</a>
+          <a href="https://thearenapartners.com/rss.xml" class="card-link" target="_blank">📡 RSS</a>
+          <a href="https://thearenapartners.com/sitemap.xml" class="card-link" target="_blank">🗺️ Sitemap</a>
+        </div>
+        <div class="card-tags"><span class="tag">Content Engine</span><span class="tag">Auto-publish</span><span class="tag">20 queued</span></div>
+      </div>
+
+      <!-- Blog - ABA -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Blog - arenabusinessadvisors.com</h3>
+          <span class="status ready">6 Articles</span>
+        </div>
+        <p>Separate blog for the primary domain. High-value pillar content: complete selling guides, valuation methods, PE playbook, Houston local.</p>
+        <div class="card-links">
+          <a href="https://github.com/Vivianashford/arenabusinessadvisors/tree/main/blog" class="card-link" target="_blank">📝 GitHub</a>
+        </div>
+        <div class="card-tags"><span class="tag">Pending Deploy</span><span class="tag">Lovable Integration</span></div>
+      </div>
+
+      <!-- Content Engine -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Content Engine</h3>
+          <span class="status active">Running</span>
+        </div>
+        <p>Automated content pipeline: generates articles targeting exit planning keywords across all service verticals. Publishes Mon/Wed/Fri 6 AM CT. Approval-gated.</p>
+        <div class="card-links">
+          <a href="https://github.com/Vivianashford/exit-system" class="card-link" target="_blank">💻 Source</a>
+        </div>
+        <div class="card-tags"><span class="tag">Cron</span><span class="tag">Python</span><span class="tag">1,121 lines</span></div>
+      </div>
+
+      <!-- SEO Engine -->
+      <div class="card">
+        <div class="card-top">
+          <h3>SEO Backlink Engine</h3>
+          <span class="status active">54 Backlinks</span>
+        </div>
+        <p>Automated backlink building: Telegraph articles (52), Google Business Profile, LinkedIn Company Page. Targeting 800+ across 16 categories.</p>
+        <div class="card-links">
+          <a href="https://telegra.ph" class="card-link" target="_blank">📰 Telegraph (52)</a>
+        </div>
+        <div class="card-tags"><span class="tag">DA 80-100</span><span class="tag">Dofollow</span><span class="tag">10 Verticals</span></div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="card">
+        <div class="card-top">
+          <h3>LinkedIn Auto-Post</h3>
+          <span class="status active">Connected</span>
+        </div>
+        <p>Make.com webhook triggers LinkedIn posts when content is approved. Jean's personal brand channel. Content engine feeds into this.</p>
+        <div class="card-links">
+          <a href="https://www.linkedin.com/in/jeanlouishardy/" class="card-link" target="_blank">👤 Profile</a>
+        </div>
+        <div class="card-tags"><span class="tag">Make.com</span><span class="tag">Webhook</span><span class="tag">Approval-gated</span></div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Analytics Dashboard</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>GA4 tracking on both domains. Traffic, sources, devices, locations, funnel, events, UTM campaigns. Facebook Ads placeholder ready.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/levelup-pm/analytics.html" class="card-link" target="_blank">📊 Dashboard</a>
+        </div>
+        <div class="card-tags"><span class="tag">GA4</span><span class="tag">G-SDMM90P63D</span><span class="tag">Dual Domain</span></div>
+      </div>
+
+      <!-- Domain Warmup -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Email Domain Warmup</h3>
+          <span class="status active">Day 1 of 28</span>
+        </div>
+        <p>Warming thearenapartners.com sending domain. 5 internal emails/day Week 1, scaling to external by Week 3. Protects deliverability.</p>
+        <div class="card-tags"><span class="tag">Cron Daily 9AM</span><span class="tag">GHL Email</span></div>
+      </div>
+
+      <!-- Cold Outreach -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Cold Outreach Infrastructure</h3>
+          <span class="status ready">Ready</span>
+        </div>
+        <p>Separate domain (thearenaaccess.com) for cold email. 3 Instantly.ai accounts warming. Hunter.io for prospecting. Never touches main domain.</p>
+        <div class="card-links">
+          <a href="https://instantly.ai" class="card-link" target="_blank">📧 Instantly.ai</a>
+        </div>
+        <div class="card-tags"><span class="tag">thearenaaccess.com</span><span class="tag">3 accounts</span><span class="tag">Warming</span></div>
+      </div>
+
+      <!-- Direct Mail -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Direct Mail</h3>
+          <span class="status ready">Wired</span>
+        </div>
+        <p>PostGrid for postcards + letters (Day 56, 91 of nurture). Handwrytten for handwritten cards (Day 18, 108). Integrated into 120-day nurture engine.</p>
+        <div class="card-links">
+          <a href="https://app.postgrid.com" class="card-link" target="_blank">📬 PostGrid</a>
+        </div>
+        <div class="card-tags"><span class="tag">PostGrid Live</span><span class="tag">Handwrytten Pending</span></div>
+      </div>
+
+      <!-- IndexNow -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Search Engine Indexing</h3>
+          <span class="status live">Submitted</span>
+        </div>
+        <p>IndexNow (Bing/Yandex instant indexing), Pingomatic (RSS syndication), Google Search Console verified. Both domains submitted.</p>
+        <div class="card-tags"><span class="tag">IndexNow</span><span class="tag">Pingomatic</span><span class="tag">GSC Verified</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- SALES -->
+  <!-- ============================================================ -->
+  <section class="department sales" id="sales">
+    <div class="dept-header">
+      <div class="dept-icon">🤝</div>
+      <div>
+        <h2>Sales</h2>
+        <div class="dept-desc">Pipeline management, booking automation, follow-up sequences, and closing infrastructure</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- GHL CRM -->
+      <div class="card">
+        <div class="card-top">
+          <h3>GoHighLevel CRM</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Full CRM with Arena Pipeline (10 stages), Book Pipeline (6 stages), custom fields for exit risk scoring, tags for automation triggers.</p>
+        <div class="card-links">
+          <a href="https://app.gohighlevel.com" class="card-link" target="_blank">🏢 GHL Dashboard</a>
+        </div>
+        <div class="card-tags"><span class="tag">19 Contacts</span><span class="tag">10 Pipeline Stages</span><span class="tag">12 Custom Fields</span></div>
+      </div>
+
+      <!-- Booking Engine -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Booking Engine</h3>
+          <span class="status active">Running</span>
+        </div>
+        <p>Auto-processes new GHL appointments. Sends confirmation, triggers assessment delivery, fires pre-call nurture. Runs on cron.</p>
+        <div class="card-tags"><span class="tag">Cron</span><span class="tag">Python</span><span class="tag">GHL API</span></div>
+      </div>
+
+      <!-- Watch Engine -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Watch-Time Re-Engagement Engine</h3>
+          <span class="status active">32 Touchpoints</span>
+        </div>
+        <p>Jay Abraham methodology. 4 segments (high/engaged/curious/low) with personalized email + SMS sequences based on video watch percentage. Kill switch on booking.</p>
+        <div class="card-tags"><span class="tag">Every 15 min</span><span class="tag">964 lines</span><span class="tag">4 Segments</span></div>
+      </div>
+
+      <!-- 120-Day Nurture -->
+      <div class="card">
+        <div class="card-top">
+          <h3>120-Day Nurture Engine</h3>
+          <span class="status active">Running</span>
+        </div>
+        <p>Long-term nurture for leads who don't book: emails, SMS, direct mail (PostGrid postcards, Handwrytten cards), 9-word re-engagement. Auto-moves from watch engine after 10hr timer.</p>
+        <div class="card-tags"><span class="tag">Every 15 min</span><span class="tag">1,578 lines</span><span class="tag">Direct Mail</span></div>
+      </div>
+
+      <!-- Stage Automation -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Pipeline Stage Automation</h3>
+          <span class="status active">7 Triggers</span>
+        </div>
+        <p>Auto-fires emails on pipeline stage transitions: Call Complete → NDA link, NDA Signed → Company Info form, Due Diligence → Upload Portal, No Show → Recovery, Closed Won → Onboarding.</p>
+        <div class="card-tags"><span class="tag">Every 5 min</span><span class="tag">GHL API</span></div>
+      </div>
+
+      <!-- Show Up System -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Show Up System</h3>
+          <span class="status ready">28 Scripts Spec'd</span>
+        </div>
+        <p>Full booking-to-call conversion flowchart. 28 touchpoints across 7 sequences using 6 psychology principles. Interactive reference built.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/arena-show-up-system/" class="card-link" target="_blank">📋 Flowchart</a>
+        </div>
+        <div class="card-tags"><span class="tag">7 Sequences</span><span class="tag">6 Psychology Principles</span></div>
+      </div>
+
+      <!-- Sales SOP -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Sales SOP</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Complete sales process documentation: diagnostic call script, objection handling, two-call close methodology, pricing framework.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/levelup-pm/sales-sop.html" class="card-link" target="_blank">📋 View SOP</a>
+        </div>
+      </div>
+
+      <!-- Calendars -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Booking Calendars</h3>
+          <span class="status live">2 Calendars</span>
+        </div>
+        <p>Arena Calendar (thearenapartners.com funnel) and Website Calendar (arenabusinessadvisors.com). Both in GHL, 30-min slots, Mon-Fri 9-5 CT.</p>
+        <div class="card-links">
+          <a href="https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod" class="card-link" target="_blank">📅 Arena Cal</a>
+          <a href="https://api.leadconnectorhq.com/widget/booking/jvo78MqD91Vq7gUiJTE4" class="card-link" target="_blank">📅 Website Cal</a>
+        </div>
+      </div>
+
+      <!-- PDL Enrichment -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Lead Enrichment</h3>
+          <span class="status ready">Wired</span>
+        </div>
+        <p>People Data Labs API enriches contacts with company data, revenue, employee count, industry. 100 free calls/month. Endpoint on Worker proxy.</p>
+        <div class="card-links">
+          <a href="https://arena-api.jean-475.workers.dev/api/enrich" class="card-link" target="_blank">🔍 API Endpoint</a>
+        </div>
+        <div class="card-tags"><span class="tag">PDL</span><span class="tag">100/month free</span></div>
+      </div>
+
+      <!-- Rep Dashboard -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Rep Dashboard</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Sales rep performance tracking: conversations, calls, pipeline value, revenue. Real-time scoring.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/levelup-pm/rep-dashboard.html" class="card-link" target="_blank">📊 Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- DELIVERY -->
+  <!-- ============================================================ -->
+  <section class="department delivery" id="delivery">
+    <div class="dept-header">
+      <div class="dept-icon">⚙️</div>
+      <div>
+        <h2>Delivery of Services</h2>
+        <div class="dept-desc">Client onboarding, document management, portals, and the Transferable Exit System</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- Client Portal -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Client Dashboard</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Branded client portal showing engagement progress, uploaded documents, exit risk score, and next steps. Personalized per contact.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/dashboard.html" class="card-link" target="_blank">🏢 Portal</a>
+        </div>
+      </div>
+
+      <!-- Upload Portal -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Document Upload Portal</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Secure file upload for client financials, org charts, tax returns, SOPs. Files stored in Cloudflare R2. Organized by company slug and category.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/upload.html" class="card-link" target="_blank">📤 Upload</a>
+        </div>
+        <div class="card-tags"><span class="tag">R2 Storage</span><span class="tag">10GB free</span></div>
+      </div>
+
+      <!-- R2 File Storage -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Cloudflare R2 File Storage</h3>
+          <span class="status live">Active</span>
+        </div>
+        <p>Client files stored securely on Cloudflare R2. Organized: clients/{company-slug}/{category}/{file}. API endpoints for upload, download, list by company.</p>
+        <div class="card-links">
+          <a href="https://arena-api.jean-475.workers.dev/api/files" class="card-link" target="_blank">📁 API</a>
+        </div>
+        <div class="card-tags"><span class="tag">arena-files bucket</span><span class="tag">9 files uploaded</span></div>
+      </div>
+
+      <!-- Exit Risk Assessment -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Exit Risk Assessment</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Interactive 30-question assessment across 8 risk categories. Generates personalized score (0-100) with risk flags and call prep guidance. 13-15 min completion.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/assessment.html" class="card-link" target="_blank">📋 Take Assessment</a>
+        </div>
+        <div class="card-tags"><span class="tag">30 Questions</span><span class="tag">8 Categories</span><span class="tag">Scoring Algorithm</span></div>
+      </div>
+
+      <!-- Business Valuation Calculator -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Business Valuation Calculator</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Interactive tool for service business owners to estimate their company's value. Inputs: revenue, EBITDA, industry, owner dependency level.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/calculator.html" class="card-link" target="_blank">🔢 Calculator</a>
+        </div>
+      </div>
+
+      <!-- Company Info Collection -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Company Information Form</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Post-NDA data collection form. Company details, financials, org structure, customer breakdown. Auto-emailed after NDA signing via stage automation.</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/company-info.html" class="card-link" target="_blank">🏢 Form</a>
+        </div>
+      </div>
+
+      <!-- Clients Page -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Client Management Page</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Internal view of all active clients with pipeline stage, contact info, uploaded files, and risk scores. Pulls from GHL + R2.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/levelup-pm/clients.html" class="card-link" target="_blank">👥 Clients</a>
+        </div>
+      </div>
+
+      <!-- Transferable Exit System -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Transferable Exit System (Product)</h3>
+          <span class="status live">Defined</span>
+        </div>
+        <p>The core product: 4 phases over 18+ months. Align → Map → Automate → Scale. 27 deliverables. $150K-$200K + 1-2% success fee.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="card-link" target="_blank">📖 System Page</a>
+        </div>
+        <div class="card-tags"><span class="tag">4 Phases</span><span class="tag">27 Deliverables</span><span class="tag">18+ Months</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- ACCOUNTING -->
+  <!-- ============================================================ -->
+  <section class="department accounting" id="accounting">
+    <div class="dept-header">
+      <div class="dept-icon">💰</div>
+      <div>
+        <h2>Accounting</h2>
+        <div class="dept-desc">Financial tracking, revenue metrics, and subscription management</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- Stripe -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Stripe Payments</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>$6 book transaction live. Ready for engagement fee processing. Needs API integration for live revenue on Command Center.</p>
+        <div class="card-tags"><span class="tag">Book Sales</span><span class="tag">Revenue Tracking Pending</span></div>
+      </div>
+
+      <!-- Command Center -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Command Center (Operations Hub)</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Central operating dashboard: scoreboard, pipeline overview, Sam Ovens methodology tracker, daily priorities, feedback loop. Real-time data from GHL.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/levelup-pm/" class="card-link" target="_blank">🎯 Command Center</a>
+          <a href="https://vivianashford.github.io/levelup-pm/todo.html" class="card-link" target="_blank">✅ Todos</a>
+          <a href="https://vivianashford.github.io/levelup-pm/methodology.html" class="card-link" target="_blank">🧠 Methodology</a>
+        </div>
+      </div>
+
+      <!-- Stats Engine -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Stats Engine</h3>
+          <span class="status active">Every 5 min</span>
+        </div>
+        <p>Pulls GHL pipeline data, contact counts, appointment stats, and analytics. Writes to data.json which powers the Command Center and Analytics dashboards.</p>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">Cron</span><span class="tag">GHL + GA4</span></div>
+      </div>
+
+      <!-- Tool Costs -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Monthly Tool Costs</h3>
+          <span class="status active">Tracking</span>
+        </div>
+        <p>Make.com ($10.59/mo), Instantly.ai ($37/mo), GHL (existing). PostGrid + Handwrytten pay-per-send. Cloudflare free tier. GitHub free.</p>
+        <div class="card-tags"><span class="tag">~$48/mo active</span><span class="tag">Free tier maximized</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- LEGAL -->
+  <!-- ============================================================ -->
+  <section class="department legal" id="legal">
+    <div class="dept-header">
+      <div class="dept-icon">📜</div>
+      <div>
+        <h2>Legal</h2>
+        <div class="dept-desc">NDA, agreements, compliance, and client documentation</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <!-- NDA -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Digital NDA System</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p>Online NDA with digital signature, PDF generation (triple fallback), and auto-email to both parties. Auto-sent when pipeline moves to "Call Complete."</p>
+        <div class="card-links">
+          <a href="https://thearenapartners.com/nda.html" class="card-link" target="_blank">📝 NDA Page</a>
+        </div>
+        <div class="card-tags"><span class="tag">jsPDF</span><span class="tag">Digital Signature</span><span class="tag">Auto-trigger</span></div>
+      </div>
+
+      <!-- Arena Alignment Guarantee -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Arena Alignment Guarantee</h3>
+          <span class="status ready">Defined</span>
+        </div>
+        <p>5 written commitments that define the client-advisor relationship. Built into the Transferable Exit System offer page. Builds trust through transparency.</p>
+        <div class="card-links">
+          <a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="card-link" target="_blank">📖 View</a>
+        </div>
+      </div>
+
+      <!-- A2P 10DLC -->
+      <div class="card">
+        <div class="card-top">
+          <h3>A2P 10DLC Registration</h3>
+          <span class="status pending">Submitted</span>
+        </div>
+        <p>SMS compliance registration for business texting. Submitted, awaiting 1-2 week approval. Required for automated SMS sequences.</p>
+        <div class="card-tags"><span class="tag">1-2 Week Wait</span><span class="tag">GHL</span></div>
+      </div>
+
+      <!-- Privacy / Terms -->
+      <div class="card">
+        <div class="card-top">
+          <h3>Privacy & Terms</h3>
+          <span class="status planned">Planned</span>
+        </div>
+        <p>Privacy policy and terms of service for both domains. Required before Facebook Ads can run. Standard templates to be customized.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- INFRASTRUCTURE -->
+  <!-- ============================================================ -->
+  <div class="connections" style="background:#0a0a0f;">
+    <h3>Infrastructure Layer</h3>
+    <div class="flow-diagram" style="flex-wrap:wrap; gap:16px; justify-content:center;">
+      <div class="flow-step"><div class="step-icon">☁️</div><div class="step-name">Cloudflare Worker</div><div class="step-detail">API proxy, R2, enrichment, mail</div></div>
+      <div class="flow-step"><div class="step-icon">🔄</div><div class="step-name">Make.com</div><div class="step-detail">LinkedIn, Gmail, webhooks</div></div>
+      <div class="flow-step"><div class="step-icon">📊</div><div class="step-name">GA4</div><div class="step-detail">Both domains, G-SDMM90P63D</div></div>
+      <div class="flow-step"><div class="step-icon">🐙</div><div class="step-name">GitHub</div><div class="step-detail">5 repos, auto-deploy</div></div>
+      <div class="flow-step"><div class="step-icon">⏰</div><div class="step-name">5 Cron Engines</div><div class="step-detail">Book, Watch, Nurture, Stage, Stats</div></div>
+      <div class="flow-step"><div class="step-icon">🔑</div><div class="step-name">macOS Keychain</div><div class="step-detail">9 API keys secured</div></div>
+    </div>
+  </div>
+
+  <footer class="map-footer">
+    <p>The Arena Partners - Operations Map | Built by Vivian Ashford</p>
+    <p style="margin-top:8px;"><a href="https://vivianashford.github.io/levelup-pm/">← Back to Command Center</a></p>
+  </footer>
+
+</body>
+</html>
