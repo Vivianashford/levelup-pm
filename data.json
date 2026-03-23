@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T19:23:59.133736+00:00",
-  "updated_local": "2026-03-23 02:23 PM",
+  "updated": "2026-03-23T19:28:58.694290+00:00",
+  "updated_local": "2026-03-23 02:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 4,
     "week": {
-      "users": 22,
-      "sessions": 28,
-      "pageviews": 68,
-      "avg_duration": 905.4,
+      "users": 23,
+      "sessions": 29,
+      "pageviews": 70,
+      "avg_duration": 878.8,
       "conversions": 0
     },
     "month": {
-      "users": 22,
-      "sessions": 28,
-      "pageviews": 68,
+      "users": 23,
+      "sessions": 29,
+      "pageviews": 70,
       "conversions": 0
     },
     "top_pages": [
@@ -110,14 +110,14 @@
         "users": 2
       },
       {
+        "page": "/book.html",
+        "views": 7,
+        "users": 1
+      },
+      {
         "page": "/blog/",
         "views": 6,
         "users": 4
-      },
-      {
-        "page": "/book.html",
-        "views": 6,
-        "users": 1
       },
       {
         "page": "/assessment.html",
@@ -126,8 +126,8 @@
       },
       {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
-        "views": 2,
-        "users": 2
+        "views": 3,
+        "users": 3
       },
       {
         "page": "/calculator.html",
@@ -172,13 +172,13 @@
       {
         "source": "linkedin.com",
         "medium": "referral",
-        "sessions": 1,
-        "users": 1
+        "sessions": 2,
+        "users": 2
       }
     ],
     "blog": {
-      "total_views": 9,
-      "total_users": 7,
+      "total_views": 10,
+      "total_users": 8,
       "articles": [
         {
           "page": "/blog/",
@@ -188,9 +188,9 @@
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
-          "views": 2,
-          "users": 2,
-          "avg_duration": 16.0
+          "views": 3,
+          "users": 3,
+          "avg_duration": 46.1
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -212,9 +212,9 @@
         "avg_duration": 555.7
       },
       "/book.html": {
-        "views": 6,
+        "views": 7,
         "users": 1,
-        "avg_duration": 14763.3
+        "avg_duration": 14790.3
       },
       "/assessment.html": {
         "views": 5,
