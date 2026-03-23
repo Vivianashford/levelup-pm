@@ -265,6 +265,39 @@
         </div>
         <div id="blog-articles" style="font-size:11px;color:#9a9590;"></div>
       </div>
+
+      <!-- FUNNEL ANALYTICS -->
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.04);">
+        <div style="font-size:9px;text-transform:uppercase;color:#c9a84c;letter-spacing:1px;margin-bottom:10px;font-weight:700;">🔻 Funnel (7 Days)</div>
+        <div id="funnel-chart" style="margin-bottom:12px;"></div>
+      </div>
+
+      <!-- VIDEO ENGAGEMENT -->
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.04);">
+        <div style="font-size:9px;text-transform:uppercase;color:#c9a84c;letter-spacing:1px;margin-bottom:10px;font-weight:700;">🎬 Video Watch Analytics (7 Days)</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px;">
+          <div style="text-align:center;padding:6px;background:rgba(255,255,255,.02);border-radius:4px;">
+            <div style="font-size:16px;font-weight:700;color:#c9a84c;" id="vid-plays">0</div>
+            <div style="font-size:8px;color:#6b655e;">Plays</div>
+          </div>
+          <div style="text-align:center;padding:6px;background:rgba(255,255,255,.02);border-radius:4px;">
+            <div style="font-size:16px;font-weight:700;color:#f5f0e8;" id="vid-users">0</div>
+            <div style="font-size:8px;color:#6b655e;">Viewers</div>
+          </div>
+          <div style="text-align:center;padding:6px;background:rgba(255,255,255,.02);border-radius:4px;">
+            <div style="font-size:16px;font-weight:700;color:#5cb85c;" id="vid-optins">0</div>
+            <div style="font-size:8px;color:#6b655e;">Opt-ins</div>
+          </div>
+        </div>
+        <div style="font-size:9px;text-transform:uppercase;color:#6b655e;letter-spacing:1px;margin-bottom:6px;">Watch Retention</div>
+        <div id="vid-progress" style="margin-bottom:4px;"></div>
+      </div>
+
+      <!-- TRAFFIC BREAKDOWN -->
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.04);">
+        <div style="font-size:9px;text-transform:uppercase;color:#c9a84c;letter-spacing:1px;margin-bottom:10px;font-weight:700;">🌐 How They Found Us (7 Days)</div>
+        <div id="ga-sources-detail" style="font-size:11px;color:#9a9590;"></div>
+      </div>
     </div>
   </div>
 
@@ -460,6 +493,98 @@ fetch('data.json?t='+Date.now())
         document.getElementById('ga-sources').innerHTML=sh;
       } else {
         document.getElementById('ga-sources').innerHTML='<div style="color:#4a4540;font-size:10px;">No data yet</div>';
+      }
+
+      // FUNNEL VISUALIZATION
+      if(a.funnel){
+        var steps=[
+          {key:'/',label:'Landing Page',color:'#c9a84c'},
+          {key:'/watch.html',label:'Watch Page',color:'#e3c96e'},
+          {key:'/book.html',label:'Book/Training',color:'#a8872e'},
+          {key:'/assessment.html',label:'Assessment',color:'#5cb85c'},
+          {key:'/nda.html',label:'NDA',color:'#4a90d9'},
+          {key:'/company-info.html',label:'Company Info',color:'#9b59b6'},
+          {key:'/upload.html',label:'Upload Docs',color:'#e67e22'},
+        ];
+        var maxUsers=0;
+        steps.forEach(function(s){
+          var f=a.funnel[s.key];
+          if(f&&f.users>maxUsers)maxUsers=f.users;
+        });
+        var fh='';
+        steps.forEach(function(s,i){
+          var f=a.funnel[s.key]||{views:0,users:0,avg_duration:0};
+          var pct=maxUsers>0?Math.round((f.users/maxUsers)*100):0;
+          var barW=Math.max(pct,8);
+          var dropoff='';
+          if(i>0){
+            var prev=a.funnel[steps[i-1].key]||{users:0};
+            if(prev.users>0){
+              var drop=Math.round((1-f.users/prev.users)*100);
+              dropoff=' <span style="color:#c44b3f;font-size:9px;">(-'+drop+'%)</span>';
+            }
+          }
+          fh+='<div style="margin-bottom:6px;">';
+          fh+='<div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px;">';
+          fh+='<span style="color:#f5f0e8;">'+s.label+'</span>';
+          fh+='<span style="color:#9a9590;">'+f.users+' users / '+f.views+' views'+dropoff+'</span>';
+          fh+='</div>';
+          fh+='<div style="background:rgba(255,255,255,.05);border-radius:3px;height:8px;overflow:hidden;">';
+          fh+='<div style="width:'+barW+'%;height:100%;background:'+s.color+';border-radius:3px;transition:width 0.5s;"></div>';
+          fh+='</div></div>';
+        });
+        document.getElementById('funnel-chart').innerHTML=fh;
+      }
+
+      // VIDEO ENGAGEMENT
+      if(a.video_events){
+        var ve=a.video_events;
+        var plays=(ve.video_play||{}).count||0;
+        var vslPlays=(ve.vsl_play||{}).count||0;
+        plays=Math.max(plays,vslPlays);
+        var viewers=(ve.video_play||{}).users||(ve.vsl_play||{}).users||0;
+        var optins=(ve.optin_submit||{}).count||0;
+        document.getElementById('vid-plays').textContent=plays;
+        document.getElementById('vid-users').textContent=viewers;
+        document.getElementById('vid-optins').textContent=optins;
+      }
+
+      // VIDEO PROGRESS BARS
+      if(a.video_progress){
+        var vp=a.video_progress;
+        var milestones=[
+          {pct:'25',label:'25%',color:'#e67e22'},
+          {pct:'50',label:'50%',color:'#e3c96e'},
+          {pct:'75',label:'75%',color:'#c9a84c'},
+          {pct:'100',label:'100%',color:'#5cb85c'},
+        ];
+        var maxVP=0;
+        milestones.forEach(function(m){if((vp[m.pct]||0)>maxVP)maxVP=vp[m.pct];});
+        var vh='';
+        milestones.forEach(function(m){
+          var count=vp[m.pct]||0;
+          var barW=maxVP>0?Math.max(Math.round((count/maxVP)*100),5):5;
+          vh+='<div style="display:flex;align-items:center;margin-bottom:4px;">';
+          vh+='<span style="width:35px;font-size:10px;color:#9a9590;">'+m.label+'</span>';
+          vh+='<div style="flex:1;background:rgba(255,255,255,.05);border-radius:3px;height:8px;overflow:hidden;margin:0 8px;">';
+          vh+='<div style="width:'+barW+'%;height:100%;background:'+m.color+';border-radius:3px;"></div>';
+          vh+='</div>';
+          vh+='<span style="font-size:10px;color:#f5f0e8;width:30px;text-align:right;">'+count+'</span>';
+          vh+='</div>';
+        });
+        document.getElementById('vid-progress').innerHTML=vh;
+      }
+
+      // TRAFFIC SOURCES DETAIL (with medium)
+      if(a.traffic_sources&&a.traffic_sources.length){
+        var dh='';
+        a.traffic_sources.slice(0,10).forEach(function(s){
+          var label=(s.source||'(direct)')+(s.medium&&s.medium!=='(none)'?' / '+s.medium:'');
+          dh+='<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.03);">';
+          dh+='<span style="color:#f5f0e8;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;">'+label+'</span>';
+          dh+='<span style="white-space:nowrap;">'+s.sessions+' <span style="color:#6b655e;font-size:9px;">sessions</span> '+s.users+' <span style="color:#6b655e;font-size:9px;">users</span></span></div>';
+        });
+        document.getElementById('ga-sources-detail').innerHTML=dh;
       }
     }
   })
