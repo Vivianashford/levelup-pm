@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T22:00:02.806110+00:00",
-  "updated_local": "2026-03-23 05:00 PM",
+  "updated": "2026-03-23T22:05:06.857454+00:00",
+  "updated_local": "2026-03-23 05:05 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,30 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
-      "users": 40,
-      "sessions": 49,
-      "pageviews": 114,
-      "avg_duration": 755.7,
+      "users": 44,
+      "sessions": 53,
+      "pageviews": 123,
+      "avg_duration": 700.4,
       "conversions": 0
     },
     "month": {
-      "users": 40,
-      "sessions": 49,
-      "pageviews": 114,
+      "users": 44,
+      "sessions": 53,
+      "pageviews": 123,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 48,
+        "views": 50,
         "users": 23
+      },
+      {
+        "page": "/blog/",
+        "views": 11,
+        "users": 8
       },
       {
         "page": "/watch.html",
@@ -110,13 +115,8 @@
         "users": 2
       },
       {
-        "page": "/blog/",
-        "views": 9,
-        "users": 7
-      },
-      {
         "page": "/book.html",
-        "views": 8,
+        "views": 9,
         "users": 1
       },
       {
@@ -126,7 +126,7 @@
       },
       {
         "page": "/services",
-        "views": 6,
+        "views": 7,
         "users": 4
       },
       {
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 36,
-        "users": 32
+        "sessions": 40,
+        "users": 36
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 23,
-        "users": 19
+        "sessions": 24,
+        "users": 20
       },
       {
         "source": "vivianashford.github.io",
@@ -189,14 +189,14 @@
       }
     ],
     "blog": {
-      "total_views": 14,
-      "total_users": 12,
+      "total_views": 16,
+      "total_users": 13,
       "articles": [
         {
           "page": "/blog/",
-          "views": 9,
-          "users": 7,
-          "avg_duration": 533.3
+          "views": 11,
+          "users": 8,
+          "avg_duration": 480.0
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -220,9 +220,9 @@
     },
     "funnel": {
       "/": {
-        "views": 48,
+        "views": 50,
         "users": 23,
-        "avg_duration": 156.2
+        "avg_duration": 159.2
       },
       "/watch.html": {
         "views": 10,
@@ -230,7 +230,7 @@
         "avg_duration": 555.7
       },
       "/book.html": {
-        "views": 8,
+        "views": 9,
         "users": 1,
         "avg_duration": 15075.1
       },
