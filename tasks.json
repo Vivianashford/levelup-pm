@@ -1,29 +1,235 @@
 {
-  "updated": "2026-03-24 08:30 AM CT",
+  "updated": "2026-03-24 09:00 AM CT",
   "tasks": [
     {
       "title": "Content Engine: 2x Daily Posts",
-      "desc": "Auto-deploys to LinkedIn + Facebook at 6 AM + 2 PM. 8 posts queued with unique news hooks.",
+      "desc": "Auto-deploys to LinkedIn + Facebook at 6 AM + 2 PM CT. 8 posts queued with unique news hooks. Graphics rendered for all.",
       "tag": "content",
       "status": "progress",
       "priority": "high",
-      "date": "Started Mar 24"
+      "date": "Started Mar 24",
+      "tried": "Built deploy-content.py, wired 2 cron jobs, generated 11 posts with unique news hooks from Google News RSS, rendered all notebook graphics.",
+      "jean_action": null
     },
     {
-      "title": "Newsletter Engine: 3x Weekly",
-      "desc": "Deep research newsletters Mon/Wed/Fri 5 AM. Real sources (McKinsey, IBBA, PwC, Forbes). First fire Wed Mar 26.",
+      "title": "Newsletter Engine: 3x Weekly Deep Research",
+      "desc": "Mon/Wed/Fri 5 AM CT. Real sources (McKinsey, IBBA, PwC, Forbes). First fire Wed Mar 26.",
       "tag": "content",
       "status": "progress",
       "priority": "high",
-      "date": "Started Mar 24"
+      "date": "Started Mar 24",
+      "tried": "6 editions written. Cron job wired. Publish pipeline includes LinkedIn newsletter (Puppeteer), Facebook, and blog.",
+      "jean_action": null
+    },
+    {
+      "title": "Generate Next 14 Posts (Stay Ahead of 2/day)",
+      "desc": "Current queue covers ~4 days. Need to generate 14 more with fresh news hooks to cover next week.",
+      "tag": "content",
+      "status": "queue",
+      "priority": "high",
+      "date": "Due Mar 25",
+      "tried": "Will pull fresh news from Google News RSS, write Matt Gray format, render graphics. Fully autonomous.",
+      "jean_action": null
     },
     {
       "title": "LinkedIn v2 API Rewrite",
-      "desc": "Worker still uses /rest/posts with LinkedIn-Version header. Needs v2 /ugcPosts + /v2/assets rewrite.",
+      "desc": "Worker still uses /rest/posts with LinkedIn-Version header at lines ~1139, 1197. Needs v2 /ugcPosts + /v2/assets rewrite.",
       "tag": "infra",
       "status": "queue",
       "priority": "high",
-      "date": "Opened Mar 23"
+      "date": "Opened Mar 23",
+      "tried": "Identified the exact lines. v2 endpoints confirmed working (test posts created/deleted). OAuth token valid until May 22. Ready to rewrite - just need uninterrupted time.",
+      "jean_action": null
+    },
+    {
+      "title": "Wire Telegraph Publishing",
+      "desc": "3 Telegraph accounts created. Deploy script skips Telegraph. Need to add API calls for cross-posting.",
+      "tag": "content",
+      "status": "queue",
+      "priority": "med",
+      "date": "Opened Mar 23",
+      "tried": "Accounts created. Telegraph API is simple (no auth needed for posting). Just need to wire into deploy-content.py.",
+      "jean_action": null
+    },
+    {
+      "title": "PDL Auto-Enrichment on Opt-in",
+      "desc": "Enrichment endpoint exists at Worker. Needs trigger on landing page form submit to auto-enrich new contacts.",
+      "tag": "funnel",
+      "status": "queue",
+      "priority": "med",
+      "date": "Opened Mar 16",
+      "tried": "Built /api/enrich endpoint on Worker. PDL API key set. 100 free calls/month. Need to add JS fetch call on form submission.",
+      "jean_action": null
+    },
+    {
+      "title": "Show Up System: 28 Copy Scripts",
+      "desc": "Flowchart designed with all 28 touchpoints. Individual email/SMS copy needs writing for each touchpoint.",
+      "tag": "funnel",
+      "status": "queue",
+      "priority": "med",
+      "date": "Opened Mar 13",
+      "tried": "Built interactive flowchart. Documented all 28 touchpoints, timing, and psychology principles. Copy writing is next.",
+      "jean_action": null
+    },
+    {
+      "title": "Stripe Revenue on Command Center",
+      "desc": "Wire Stripe API to show live revenue numbers on dashboard scoreboard.",
+      "tag": "analytics",
+      "status": "queue",
+      "priority": "med",
+      "date": "Opened Mar 14",
+      "tried": "Stripe payments verified working for $6 book. Need to add Stripe secret key to Worker, build /api/stripe/revenue endpoint.",
+      "jean_action": null
+    },
+    {
+      "title": "Reddit/Quora Answer Pipeline",
+      "desc": "Monitor relevant exit planning threads. Draft answers positioning Arena.",
+      "tag": "seo",
+      "status": "queue",
+      "priority": "low",
+      "date": "Opened Mar 23",
+      "tried": "Identified target subreddits and Quora topics. Need to set up Reddit API app and build monitoring script.",
+      "jean_action": null
+    },
+    {
+      "title": "Invite Emails: Michael (SSC Glass) + Stefan",
+      "desc": "Create personalized event invite emails for Jean's contacts.",
+      "tag": "client",
+      "status": "queue",
+      "priority": "med",
+      "date": "Opened Mar 23",
+      "tried": "Have contact names and context from Park House event. Need to draft personalized emails and send to Jean for forwarding.",
+      "jean_action": null
+    },
+    {
+      "title": "Domain Warmup: thearenapartners.com",
+      "desc": "Email domain warmup Stage 1. Needs 2-4 weeks of consistent low-volume sending before cold outreach.",
+      "tag": "seo",
+      "status": "progress",
+      "priority": "med",
+      "date": "Started Mar 19",
+      "tried": "3 Instantly.ai accounts set up (jean@, outreach@, partnerships@thearenaaccess.com). Warming in progress automatically.",
+      "jean_action": null
+    },
+    {
+      "title": "Cold Outreach via Instantly.ai",
+      "desc": "3 sending accounts warming on thearenaaccess.com. Campaigns ready to launch when warmed.",
+      "tag": "seo",
+      "status": "progress",
+      "priority": "med",
+      "date": "Warming since Mar 20",
+      "tried": "Accounts created. Warming running. Campaign templates drafted. Will auto-launch when warmup complete (~2 more weeks).",
+      "jean_action": null
+    },
+    {
+      "title": "120-Day Nurture Sequence: Review",
+      "desc": "Full 120-day nurture sequence built with 13 messages. Needs Jean's review before going live.",
+      "tag": "funnel",
+      "status": "review",
+      "priority": "high",
+      "date": "Ready Mar 18",
+      "tried": "Built complete sequence: 7 email + 6 SMS over 120 days. Includes 9-word emails, case studies, pride-based messaging. All copy written.",
+      "jean_action": "Review the 13 nurture messages. I can send you each one or the full sequence. Say 'send nurture review' and I'll push them all."
+    },
+    {
+      "title": "Funnel Messaging Rework: Pride > Fear",
+      "desc": "John Cameron insight Mar 19. Landing page needs aspiration rewrite - 'you've done a great job, button it up.'",
+      "tag": "funnel",
+      "status": "review",
+      "priority": "high",
+      "date": "Ready for review",
+      "tried": "Identified all fear-based copy on landing page. Drafted pride-based alternatives. Need your sign-off on the new direction before rewriting.",
+      "jean_action": "Review the pride vs fear copy direction. I'll send you a before/after comparison. Say 'show pride rewrite' and I'll send it."
+    },
+    {
+      "title": "VSL Video Recording",
+      "desc": "60-second advisor intro video. Placeholder currently on confirmation page.",
+      "tag": "funnel",
+      "status": "blocked",
+      "priority": "high",
+      "date": "Waiting on Jean",
+      "tried": "Page is ready with video placeholder. Script outline available. Embed code ready to drop in once recorded.",
+      "jean_action": "Record a 60-second video introducing yourself as the advisor. Can be on phone, casual. I'll handle editing and embedding."
+    },
+    {
+      "title": "Book PDF: TRANSFERABLE",
+      "desc": "Physical book PDF for lead magnet. Online reader is live but downloadable PDF not available.",
+      "tag": "funnel",
+      "status": "blocked",
+      "priority": "med",
+      "date": "Waiting on Jean",
+      "tried": "Online book reader built and live at thearenapartners.com/book.html with 54,532 words. PDF version needs the original file from Jean.",
+      "jean_action": "Send me the TRANSFERABLE book PDF file."
+    },
+    {
+      "title": "A2P 10DLC Registration",
+      "desc": "SMS registration for automated texting. Submitted, waiting for carrier approval.",
+      "tag": "infra",
+      "status": "blocked",
+      "priority": "high",
+      "date": "Submitted Mar 17",
+      "tried": "Submitted registration through GHL. Typically takes 1-2 weeks for carrier approval. Nothing I can do to speed this up.",
+      "jean_action": "No action needed. Just waiting on carrier approval."
+    },
+    {
+      "title": "TOFC Instagram AI Chatbot",
+      "desc": "Claude API backend with Cloudflare Worker webhook. Architecture designed.",
+      "tag": "ai",
+      "status": "blocked",
+      "priority": "med",
+      "date": "Waiting on Jen/Val",
+      "tried": "Designed full architecture: Instagram webhook → Worker → Claude API → response. Worker endpoint spec'd. Need Instagram access token to connect.",
+      "jean_action": "Get the Instagram access token from Jen or Val for The Owner Finance account. I'll wire everything once I have it."
+    },
+    {
+      "title": "Fireflies API Key",
+      "desc": "Fireflies.ai API returning 500. Can't pull meeting transcripts and action items.",
+      "tag": "infra",
+      "status": "blocked",
+      "priority": "low",
+      "date": "Waiting on Jean",
+      "tried": "Tested API endpoint. Getting 500 errors - likely needs a valid API key. Checked Fireflies docs for self-service key generation but need account access.",
+      "jean_action": "Go to fireflies.ai → Settings → API → copy the API key and send it to me."
+    },
+    {
+      "title": "Sales SOP Update",
+      "desc": "Jean requested an update to the Sales SOP page.",
+      "tag": "client",
+      "status": "blocked",
+      "priority": "med",
+      "date": "Waiting on Jean",
+      "tried": "Sales SOP page exists and is functional. Don't know what specifically needs updating.",
+      "jean_action": "Tell me what needs changing in the Sales SOP. Specific sections, new steps, or complete rewrite?"
+    },
+    {
+      "title": "Book of Self: Rebuild",
+      "desc": "Chapters I-III updated with 2026 vision. Remaining chapters need Jean's story beats since 2020.",
+      "tag": "content",
+      "status": "blocked",
+      "priority": "low",
+      "date": "Waiting on Jean",
+      "tried": "Updated Chapters I-III with new numbers ($100M sales, $1B net worth, houses). Structure ready for remaining chapters.",
+      "jean_action": "Need a 10-15 min voice memo or text dump covering your key story beats from 2020-2026. I'll write the remaining chapters from that."
+    },
+    {
+      "title": "ABA Blog Deployment",
+      "desc": "arenabusinessadvisors.com blog. Lovable app connected to VisionAirintl/arenabusinessadvisors repo but hasn't pushed code.",
+      "tag": "seo",
+      "status": "blocked",
+      "priority": "med",
+      "date": "Waiting on Jean",
+      "tried": "Created VisionAirintl/arenabusinessadvisors repo. Connected Lovable. Repo is still empty - Lovable needs to push.",
+      "jean_action": "In Lovable, click 'Deploy' or 'Push to GitHub' for the ABA site. The repo is ready and waiting."
+    },
+    {
+      "title": "Handwrytten: Wire via Zapier",
+      "desc": "Direct API auth broken. Using Zapier as interim for Day 18 + Day 108 handwritten cards.",
+      "tag": "funnel",
+      "status": "queue",
+      "priority": "low",
+      "date": "Opened Mar 15",
+      "tried": "Tested API login endpoints - they don't exist. Checked Zapier integration docs. Need to create Zapier workflow triggered by GHL stage change.",
+      "jean_action": null
     },
     {
       "title": "Analytics Dashboard Tabs Fixed",
@@ -35,127 +241,23 @@
     },
     {
       "title": "Site: trade → service businesses",
-      "desc": "Replaced all 'trade business' references across 14 HTML files, newsletters, and posts.",
+      "desc": "Replaced all references across 14 HTML files, newsletters, and posts.",
       "tag": "content",
       "status": "done",
       "priority": "high",
       "date": "Fixed Mar 24"
     },
     {
-      "title": "VSL Video Recording",
-      "desc": "Jean needs to record the 60-second advisor intro video. Placeholder on confirmation page.",
-      "tag": "funnel",
-      "status": "blocked",
-      "priority": "high",
-      "date": "Waiting on Jean"
-    },
-    {
-      "title": "Book PDF: TRANSFERABLE",
-      "desc": "Physical book PDF not yet received from Jean. Needed for lead magnet.",
-      "tag": "funnel",
-      "status": "blocked",
-      "priority": "med",
-      "date": "Waiting on Jean"
-    },
-    {
-      "title": "A2P 10DLC Registration",
-      "desc": "SMS registration submitted. 1-2 week approval wait. Blocks automated SMS.",
-      "tag": "infra",
-      "status": "blocked",
-      "priority": "high",
-      "date": "Submitted Mar 17"
-    },
-    {
-      "title": "GHL API Proxy Security",
-      "desc": "Token exposed client-side. Needs Cloudflare Worker proxy for all calls before scaling.",
-      "tag": "infra",
-      "status": "queue",
-      "priority": "med",
-      "date": "Opened Mar 12"
-    },
-    {
-      "title": "Domain Warmup: thearenapartners.com",
-      "desc": "Stage 1 (0%). Needs 2-4 weeks of consistent sending before cold outreach.",
-      "tag": "seo",
-      "status": "progress",
-      "priority": "med",
-      "date": "Started Mar 19"
-    },
-    {
-      "title": "Generate 14 More Posts (Next Week)",
-      "desc": "2/day = 14/week. Currently 8 queued = 4 days. Need to stay ahead.",
+      "title": "Content Posts: Owner Trap + 18-Month Window",
+      "desc": "Published to LinkedIn + Facebook with notebook graphics.",
       "tag": "content",
-      "status": "queue",
-      "priority": "high",
-      "date": "Due Mar 25"
-    },
-    {
-      "title": "Wire Telegraph Publishing",
-      "desc": "3 Telegraph accounts created. Deploy script skips Telegraph. Needs API integration.",
-      "tag": "content",
-      "status": "queue",
-      "priority": "low",
-      "date": "Opened Mar 23"
-    },
-    {
-      "title": "Handwrytten: Wire via Zapier",
-      "desc": "API auth broken. Zapier integration as fallback for Day 18 + Day 108 handwritten cards.",
-      "tag": "funnel",
-      "status": "queue",
-      "priority": "low",
-      "date": "Opened Mar 15"
-    },
-    {
-      "title": "PDL Auto-Enrichment on Opt-in",
-      "desc": "Enrichment endpoint exists. Needs trigger on landing page form submit.",
-      "tag": "funnel",
-      "status": "queue",
+      "status": "done",
       "priority": "med",
-      "date": "Opened Mar 16"
-    },
-    {
-      "title": "120-Day Nurture Sequence: Send Test to Jean",
-      "desc": "Full sequence built. Jean needs to review before going live.",
-      "tag": "funnel",
-      "status": "review",
-      "priority": "high",
-      "date": "Ready Mar 18"
-    },
-    {
-      "title": "Show Up System: 28 Copy Scripts",
-      "desc": "Flowchart designed. 28 individual email/SMS scripts need writing.",
-      "tag": "funnel",
-      "status": "queue",
-      "priority": "med",
-      "date": "Opened Mar 13"
-    },
-    {
-      "title": "TOFC Instagram AI Chatbot",
-      "desc": "Architecture ready. Waiting on access token from Jen/Val.",
-      "tag": "ai",
-      "status": "blocked",
-      "priority": "med",
-      "date": "Waiting on Jen/Val"
-    },
-    {
-      "title": "James Starr Call Prep",
-      "desc": "Call booked Wed Mar 25, 2:00 PM. 'The Last Chapter' diagnostic. Need prep materials.",
-      "tag": "client",
-      "status": "queue",
-      "priority": "high",
-      "date": "Due Mar 25"
-    },
-    {
-      "title": "Fireflies API Key",
-      "desc": "API returning 500. Need key from Jean to pull meeting transcripts.",
-      "tag": "infra",
-      "status": "blocked",
-      "priority": "low",
-      "date": "Waiting on Jean"
+      "date": "Published Mar 24"
     },
     {
       "title": "gog OAuth Re-auth",
-      "desc": "jean@eng2.ca authorized Mar 22. Currently working.",
+      "desc": "jean@eng2.ca authorized. Gmail/Calendar/Drive/Contacts working.",
       "tag": "infra",
       "status": "done",
       "priority": "med",
@@ -170,92 +272,30 @@
       "date": "Fixed Mar 23"
     },
     {
-      "title": "The Owner Trap - Post #1",
-      "desc": "Published to LinkedIn + Facebook with notebook graphic. UBS news hook.",
-      "tag": "content",
-      "status": "done",
-      "priority": "med",
-      "date": "Published Mar 24"
-    },
-    {
-      "title": "The 18-Month Window - Post #2",
-      "desc": "Published to LinkedIn + Facebook with notebook graphic.",
-      "tag": "content",
-      "status": "done",
-      "priority": "med",
-      "date": "Published Mar 24"
-    },
-    {
       "title": "Exit Risk Assessment",
-      "desc": "Interactive 30-question form live. Scoring algorithm verified.",
+      "desc": "Interactive 30-question form. Scoring algorithm verified (0-100).",
       "tag": "funnel",
       "status": "done",
       "priority": "high",
       "date": "Live Mar 11"
     },
     {
-      "title": "Book of Self: Rebuild",
-      "desc": "Chapters I-III updated. Remaining chapters need interview with Jean.",
-      "tag": "content",
-      "status": "blocked",
-      "priority": "low",
-      "date": "Waiting on Jean"
-    },
-    {
-      "title": "Stripe Revenue on Command Center",
-      "desc": "Wire Stripe API to show live revenue numbers on dashboard.",
+      "title": "Command Center: Analytics + Tasks Tabs",
+      "desc": "Added Analytics and Tasks as tabs inside dashboard.html. Single page, three views.",
       "tag": "analytics",
-      "status": "queue",
+      "status": "done",
       "priority": "med",
-      "date": "Opened Mar 14"
+      "date": "Fixed Mar 24"
     },
     {
-      "title": "Reddit/Quora Answer Pipeline",
-      "desc": "Monitor relevant threads. Draft answers positioning Arena. Not built yet.",
-      "tag": "seo",
+      "title": "James Starr Call Prep",
+      "desc": "Call booked Wed Mar 25, 2:00 PM. 'The Last Chapter' diagnostic. Prep materials needed.",
+      "tag": "client",
       "status": "queue",
-      "priority": "low",
-      "date": "Opened Mar 23"
-    },
-    {
-      "title": "Cold Outreach via Instantly.ai",
-      "desc": "3 sending accounts on thearenaaccess.com warming. Campaigns ready when warmed.",
-      "tag": "seo",
-      "status": "progress",
-      "priority": "med",
-      "date": "Warming since Mar 20"
-    },
-    {
-      "title": "Funnel Messaging Rework: Pride > Fear",
-      "desc": "John Cameron insight Mar 19. Landing page needs aspiration rewrite.",
-      "tag": "funnel",
-      "status": "review",
       "priority": "high",
-      "date": "Ready for review"
-    },
-    {
-      "title": "Sales SOP Update",
-      "desc": "Jean requested update. Awaiting specifics on what to change.",
-      "tag": "client",
-      "status": "blocked",
-      "priority": "med",
-      "date": "Waiting on Jean"
-    },
-    {
-      "title": "Invite Emails: Michael (SSC Glass) + Stefan",
-      "desc": "Create personalized event invite emails for Park House event contacts.",
-      "tag": "client",
-      "status": "queue",
-      "priority": "med",
-      "date": "Opened Mar 23"
-    },
-    {
-      "title": "ABA Blog Deployment",
-      "desc": "arenabusinessadvisors.com blog. Waiting on Jean to push Lovable code to GitHub.",
-      "tag": "seo",
-      "status": "blocked",
-      "priority": "med",
-      "date": "Waiting on Jean"
+      "date": "Due Mar 25",
+      "tried": "Have his booking info from GHL. Will pull any enrichment data and prepare a pre-call brief with talking points.",
+      "jean_action": null
     }
   ]
 }

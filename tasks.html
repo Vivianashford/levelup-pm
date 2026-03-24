@@ -56,6 +56,10 @@
   .tag-client { background: #2a1a0a; color: #fb923c; }
   .tag-ai { background: #0a1a2a; color: #38bdf8; }
   .tile-date { font-size: 10px; color: #444; }
+  .tile-tried { font-size: 11px; color: #4ade80; margin-top: 8px; padding: 8px; background: rgba(74,222,128,0.05); border-radius: 6px; border-left: 2px solid #4ade80; line-height: 1.4; }
+  .tile-tried-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #4ade80; margin-bottom: 4px; }
+  .tile-jean { font-size: 11px; color: #fbbf24; margin-top: 6px; padding: 8px; background: rgba(251,191,36,0.05); border-radius: 6px; border-left: 2px solid #fbbf24; line-height: 1.4; }
+  .tile-jean-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #fbbf24; margin-bottom: 4px; }
   .tile-priority { font-size: 10px; font-weight: 700; }
   .priority-high { color: #f87171; }
   .priority-med { color: #fbbf24; }
@@ -116,6 +120,8 @@ function tile(t) {
       <span class="tile-priority ${priClass}">${(t.priority || 'MED').toUpperCase()}</span>
     </div>
     ${t.date ? `<div class="tile-date" style="margin-top:6px">${t.date}</div>` : ''}
+    ${t.tried ? `<div class="tile-tried"><div class="tile-tried-label">🔧 What I tried</div>${t.tried}</div>` : ''}
+    ${t.jean_action ? `<div class="tile-jean"><div class="tile-jean-label">👤 Jean's action</div>${t.jean_action}</div>` : ''}
   </div>`;
 }
 
