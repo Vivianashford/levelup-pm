@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T20:24:20.949803+00:00",
-  "updated_local": "2026-03-24 03:24 PM",
+  "updated": "2026-03-24T20:29:24.860380+00:00",
+  "updated_local": "2026-03-24 03:29 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 98,
       "sessions": 118,
-      "pageviews": 218,
+      "pageviews": 219,
       "avg_duration": 191.6,
       "conversions": 0
     },
     "month": {
       "users": 98,
       "sessions": 118,
-      "pageviews": 218,
+      "pageviews": 219,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 96,
+        "views": 97,
         "users": 58
       },
       {
@@ -154,7 +154,7 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 84,
+        "sessions": 85,
         "users": 77
       },
       {
@@ -250,7 +250,7 @@
     },
     "funnel": {
       "/": {
-        "views": 96,
+        "views": 97,
         "users": 58,
         "avg_duration": 150.0
       },
@@ -313,7 +313,7 @@
         "date": "2026-03-24",
         "users": 43,
         "sessions": 48,
-        "pageviews": 49
+        "pageviews": 50
       }
     ],
     "devices": [
@@ -403,7 +403,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 218
+        "count": 219
       },
       {
         "event": "scroll",
@@ -411,7 +411,7 @@
       },
       {
         "event": "session_start",
-        "count": 113
+        "count": 114
       },
       {
         "event": "user_engagement",
@@ -461,7 +461,7 @@
         "medium": "(none)",
         "content": "(not set)",
         "users": 77,
-        "sessions": 84
+        "sessions": 85
       },
       {
         "campaign": "(referral)",
