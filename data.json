@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T05:46:20.617694+00:00",
-  "updated_local": "2026-03-24 12:46 AM",
+  "updated": "2026-03-24T05:51:26.412258+00:00",
+  "updated_local": "2026-03-24 12:51 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 51,
-      "sessions": 64,
-      "pageviews": 153,
-      "avg_duration": 721.4,
+      "users": 52,
+      "sessions": 65,
+      "pageviews": 154,
+      "avg_duration": 710.3,
       "conversions": 0
     },
     "month": {
-      "users": 51,
-      "sessions": 64,
-      "pageviews": 153,
+      "users": 52,
+      "sessions": 65,
+      "pageviews": 154,
       "conversions": 0
     },
     "top_pages": [
@@ -106,8 +106,8 @@
       },
       {
         "page": "/blog/",
-        "views": 15,
-        "users": 9
+        "views": 16,
+        "users": 10
       },
       {
         "page": "/watch.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 49,
-        "users": 44
+        "sessions": 50,
+        "users": 45
       },
       {
         "source": "(not set)",
@@ -195,14 +195,14 @@
       }
     ],
     "blog": {
-      "total_views": 21,
-      "total_users": 15,
+      "total_views": 22,
+      "total_users": 16,
       "articles": [
         {
           "page": "/blog/",
-          "views": 15,
-          "users": 9,
-          "avg_duration": 498.1
+          "views": 16,
+          "users": 10,
+          "avg_duration": 459.8
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -267,16 +267,16 @@
       },
       {
         "date": "2026-03-23",
-        "users": 50,
-        "sessions": 60,
-        "pageviews": 149
+        "users": 51,
+        "sessions": 61,
+        "pageviews": 150
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 61,
-        "users": 48
+        "sessions": 62,
+        "users": 49
       },
       {
         "device": "Mobile",
@@ -356,15 +356,15 @@
         "sessions": 1
       },
       {
-        "city": "Jacksonville",
+        "city": "Istres",
         "users": 1,
-        "sessions": 2
+        "sessions": 1
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 153
+        "count": 154
       },
       {
         "event": "scroll",
@@ -376,11 +376,11 @@
       },
       {
         "event": "session_start",
-        "count": 67
+        "count": 68
       },
       {
         "event": "first_visit",
-        "count": 55
+        "count": 56
       },
       {
         "event": "scroll_depth",
@@ -413,8 +413,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 44,
-        "sessions": 49
+        "users": 45,
+        "sessions": 50
       },
       {
         "campaign": "(referral)",
@@ -457,6 +457,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.3
+    "bounce_rate": 95.4
   }
 }
