@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T01:55:02.750156+00:00",
-  "updated_local": "2026-03-23 08:55 PM",
+  "updated": "2026-03-24T02:00:04.277162+00:00",
+  "updated_local": "2026-03-23 09:00 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 146,
-      "avg_duration": 710.5,
+      "pageviews": 150,
+      "avg_duration": 736.7,
       "conversions": 0
     },
     "month": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 146,
+      "pageviews": 150,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 56,
+        "views": 58,
         "users": 26
       },
       {
@@ -121,7 +121,7 @@
       },
       {
         "page": "/book.html",
-        "views": 9,
+        "views": 10,
         "users": 1
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 47,
-        "users": 42
+        "sessions": 48,
+        "users": 43
       },
       {
         "source": "(not set)",
@@ -195,14 +195,14 @@
       }
     ],
     "blog": {
-      "total_views": 20,
+      "total_views": 21,
       "total_users": 15,
       "articles": [
         {
           "page": "/blog/",
           "views": 15,
           "users": 9,
-          "avg_duration": 543.4
+          "avg_duration": 498.1
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -212,9 +212,9 @@
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
-          "views": 1,
+          "views": 2,
           "users": 2,
-          "avg_duration": 349.9
+          "avg_duration": 687.8
         },
         {
           "page": "/blog/mckinsey-5-trillion-boomer-business-transfer.html",
@@ -226,7 +226,7 @@
     },
     "funnel": {
       "/": {
-        "views": 56,
+        "views": 58,
         "users": 26,
         "avg_duration": 179.6
       },
@@ -236,9 +236,9 @@
         "avg_duration": 586.7
       },
       "/book.html": {
-        "views": 9,
+        "views": 10,
         "users": 1,
-        "avg_duration": 15075.1
+        "avg_duration": 7998.3
       },
       "/assessment.html": {
         "views": 6,
@@ -269,7 +269,7 @@
         "date": "2026-03-23",
         "users": 48,
         "sessions": 57,
-        "pageviews": 144
+        "pageviews": 146
       }
     ],
     "devices": [
@@ -364,7 +364,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 148
+        "count": 150
       },
       {
         "event": "scroll",
@@ -372,7 +372,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 77
+        "count": 78
       },
       {
         "event": "session_start",
@@ -384,7 +384,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 52
+        "count": 53
       },
       {
         "event": "click",
