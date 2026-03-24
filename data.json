@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T16:43:01.953674+00:00",
-  "updated_local": "2026-03-24 11:43 AM",
+  "updated": "2026-03-24T16:48:04.021807+00:00",
+  "updated_local": "2026-03-24 11:48 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 83,
-      "sessions": 101,
-      "pageviews": 192,
-      "avg_duration": 478.4,
+      "users": 84,
+      "sessions": 102,
+      "pageviews": 195,
+      "avg_duration": 477.1,
       "conversions": 0
     },
     "month": {
-      "users": 83,
-      "sessions": 101,
-      "pageviews": 192,
+      "users": 84,
+      "sessions": 102,
+      "pageviews": 195,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 80,
-        "users": 45
+        "views": 83,
+        "users": 46
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 72,
-        "users": 65
+        "sessions": 75,
+        "users": 68
       },
       {
         "source": "(not set)",
@@ -244,9 +244,9 @@
     },
     "funnel": {
       "/": {
-        "views": 80,
-        "users": 45,
-        "avg_duration": 168.9
+        "views": 83,
+        "users": 46,
+        "avg_duration": 171.8
       },
       "/watch.html": {
         "views": 13,
@@ -279,7 +279,12 @@
         "avg_duration": 656.4
       }
     },
-    "video_events": {},
+    "video_events": {
+      "vsl_play": {
+        "count": 1,
+        "users": 1
+      }
+    },
     "video_progress": {},
     "daily": [
       {
@@ -296,16 +301,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 30,
-        "sessions": 34,
-        "pageviews": 36
+        "users": 31,
+        "sessions": 35,
+        "pageviews": 39
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 95,
-        "users": 78
+        "sessions": 96,
+        "users": 79
       },
       {
         "device": "Mobile",
@@ -316,8 +321,8 @@
     "locations": [
       {
         "city": "",
-        "users": 15,
-        "sessions": 19
+        "users": 16,
+        "sessions": 20
       },
       {
         "city": "Hounslow",
@@ -393,7 +398,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 192
+        "count": 195
       },
       {
         "event": "scroll",
@@ -401,19 +406,19 @@
       },
       {
         "event": "session_start",
-        "count": 101
+        "count": 104
       },
       {
         "event": "user_engagement",
-        "count": 93
+        "count": 95
       },
       {
         "event": "first_visit",
-        "count": 84
+        "count": 87
       },
       {
         "event": "scroll_depth",
-        "count": 56
+        "count": 64
       },
       {
         "event": "click",
@@ -434,6 +439,10 @@
       {
         "event": "video_start",
         "count": 1
+      },
+      {
+        "event": "vsl_play",
+        "count": 1
       }
     ],
     "utm": [
@@ -442,8 +451,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 65,
-        "sessions": 72
+        "users": 68,
+        "sessions": 75
       },
       {
         "campaign": "(referral)",
@@ -510,6 +519,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 97.0
+    "bounce_rate": 97.1
   }
 }
