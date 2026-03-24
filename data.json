@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T09:26:42.180899+00:00",
-  "updated_local": "2026-03-24 04:26 AM",
+  "updated": "2026-03-24T09:31:38.397254+00:00",
+  "updated_local": "2026-03-24 04:31 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 59,
-      "sessions": 73,
-      "pageviews": 163,
-      "avg_duration": 641.5,
+      "users": 60,
+      "sessions": 74,
+      "pageviews": 164,
+      "avg_duration": 632.8,
       "conversions": 0
     },
     "month": {
-      "users": 59,
-      "sessions": 73,
-      "pageviews": 163,
+      "users": 60,
+      "sessions": 74,
+      "pageviews": 164,
       "conversions": 0
     },
     "top_pages": [
@@ -131,8 +131,8 @@
       },
       {
         "page": "/services",
-        "views": 7,
-        "users": 4
+        "views": 8,
+        "users": 5
       },
       {
         "page": "/assessment.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 54,
-        "users": 49
+        "sessions": 55,
+        "users": 50
       },
       {
         "source": "(not set)",
@@ -273,9 +273,9 @@
       },
       {
         "date": "2026-03-24",
-        "users": 5,
-        "sessions": 6,
-        "pageviews": 7
+        "users": 6,
+        "sessions": 7,
+        "pageviews": 8
       }
     ],
     "devices": [
