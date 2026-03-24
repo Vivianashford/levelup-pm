@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T03:31:19.990701+00:00",
-  "updated_local": "2026-03-23 10:31 PM",
+  "updated": "2026-03-24T03:36:22.509342+00:00",
+  "updated_local": "2026-03-23 10:36 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 49,
-      "sessions": 62,
-      "pageviews": 151,
-      "avg_duration": 724.8,
+      "users": 50,
+      "sessions": 63,
+      "pageviews": 152,
+      "avg_duration": 713.3,
       "conversions": 0
     },
     "month": {
-      "users": 49,
-      "sessions": 62,
-      "pageviews": 151,
+      "users": 50,
+      "sessions": 63,
+      "pageviews": 152,
       "conversions": 0
     },
     "top_pages": [
@@ -140,14 +140,14 @@
         "users": 5
       },
       {
+        "page": "/calculator.html",
+        "views": 4,
+        "users": 2
+      },
+      {
         "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
         "views": 3,
         "users": 3
-      },
-      {
-        "page": "/calculator.html",
-        "views": 3,
-        "users": 1
       }
     ],
     "traffic_sources": [
@@ -172,8 +172,8 @@
       {
         "source": "linkedin.com",
         "medium": "referral",
-        "sessions": 2,
-        "users": 2
+        "sessions": 3,
+        "users": 3
       },
       {
         "source": "telegra.ph",
@@ -267,9 +267,9 @@
       },
       {
         "date": "2026-03-23",
-        "users": 48,
-        "sessions": 58,
-        "pageviews": 147
+        "users": 49,
+        "sessions": 59,
+        "pageviews": 148
       }
     ],
     "devices": [
@@ -280,8 +280,8 @@
       },
       {
         "device": "Mobile",
-        "sessions": 2,
-        "users": 2
+        "sessions": 3,
+        "users": 3
       }
     ],
     "locations": [
@@ -306,6 +306,11 @@
         "sessions": 4
       },
       {
+        "city": "Houston",
+        "users": 3,
+        "sessions": 11
+      },
+      {
         "city": "Miami",
         "users": 3,
         "sessions": 3
@@ -314,11 +319,6 @@
         "city": "Des Moines",
         "users": 2,
         "sessions": 2
-      },
-      {
-        "city": "Houston",
-        "users": 2,
-        "sessions": 10
       },
       {
         "city": "Stratford",
@@ -364,7 +364,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 151
+        "count": 152
       },
       {
         "event": "scroll",
@@ -376,11 +376,11 @@
       },
       {
         "event": "session_start",
-        "count": 65
+        "count": 66
       },
       {
         "event": "first_visit",
-        "count": 53
+        "count": 54
       },
       {
         "event": "scroll_depth",
@@ -421,8 +421,8 @@
         "source": "linkedin.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 2,
-        "sessions": 2
+        "users": 3,
+        "sessions": 3
       },
       {
         "campaign": "(referral)",
