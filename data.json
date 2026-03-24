@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T17:13:05.532551+00:00",
-  "updated_local": "2026-03-24 12:13 PM",
+  "updated": "2026-03-24T17:18:06.478902+00:00",
+  "updated_local": "2026-03-24 12:18 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 85,
-      "sessions": 103,
-      "pageviews": 196,
-      "avg_duration": 472.5,
+      "users": 86,
+      "sessions": 104,
+      "pageviews": 197,
+      "avg_duration": 467.9,
       "conversions": 0
     },
     "month": {
-      "users": 85,
-      "sessions": 103,
-      "pageviews": 196,
+      "users": 86,
+      "sessions": 104,
+      "pageviews": 197,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 84,
-        "users": 47
+        "views": 85,
+        "users": 48
       },
       {
         "page": "/blog/",
@@ -188,6 +188,12 @@
         "users": 1
       },
       {
+        "source": "google",
+        "medium": "organic",
+        "sessions": 1,
+        "users": 1
+      },
+      {
         "source": "l.facebook.com",
         "medium": "referral",
         "sessions": 1,
@@ -244,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 84,
-        "users": 47,
-        "avg_duration": 169.0
+        "views": 85,
+        "users": 48,
+        "avg_duration": 166.2
       },
       "/watch.html": {
         "views": 13,
@@ -301,9 +307,9 @@
       },
       {
         "date": "2026-03-24",
-        "users": 32,
-        "sessions": 36,
-        "pageviews": 40
+        "users": 33,
+        "sessions": 37,
+        "pageviews": 41
       }
     ],
     "devices": [
@@ -314,8 +320,8 @@
       },
       {
         "device": "Mobile",
-        "sessions": 7,
-        "users": 6
+        "sessions": 8,
+        "users": 7
       }
     ],
     "locations": [
@@ -398,7 +404,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 196
+        "count": 197
       },
       {
         "event": "scroll",
@@ -406,7 +412,7 @@
       },
       {
         "event": "session_start",
-        "count": 105
+        "count": 106
       },
       {
         "event": "user_engagement",
@@ -414,7 +420,7 @@
       },
       {
         "event": "first_visit",
-        "count": 88
+        "count": 89
       },
       {
         "event": "scroll_depth",
