@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T16:52:56.364957+00:00",
-  "updated_local": "2026-03-24 11:52 AM",
+  "updated": "2026-03-24T16:58:04.476669+00:00",
+  "updated_local": "2026-03-24 11:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,7 +84,7 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 1,
     "week": {
       "users": 85,
       "sessions": 103,
@@ -244,9 +244,9 @@
     },
     "funnel": {
       "/": {
-        "views": 83,
-        "users": 46,
-        "avg_duration": 171.8
+        "views": 84,
+        "users": 47,
+        "avg_duration": 169.0
       },
       "/watch.html": {
         "views": 13,
@@ -301,16 +301,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 31,
-        "sessions": 35,
-        "pageviews": 39
+        "users": 32,
+        "sessions": 36,
+        "pageviews": 40
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 96,
-        "users": 79
+        "sessions": 97,
+        "users": 80
       },
       {
         "device": "Mobile",
@@ -398,15 +398,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 195
+        "count": 196
       },
       {
         "event": "scroll",
-        "count": 110
+        "count": 111
       },
       {
         "event": "session_start",
-        "count": 104
+        "count": 105
       },
       {
         "event": "user_engagement",
@@ -414,7 +414,7 @@
       },
       {
         "event": "first_visit",
-        "count": 87
+        "count": 88
       },
       {
         "event": "scroll_depth",
@@ -451,8 +451,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 68,
-        "sessions": 75
+        "users": 69,
+        "sessions": 76
       },
       {
         "campaign": "(referral)",
