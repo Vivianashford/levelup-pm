@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T00:15:00.197603+00:00",
-  "updated_local": "2026-03-23 07:15 PM",
+  "updated": "2026-03-24T00:20:04.871535+00:00",
+  "updated_local": "2026-03-23 07:20 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 47,
       "sessions": 58,
-      "pageviews": 136,
+      "pageviews": 137,
       "avg_duration": 699.7,
       "conversions": 0
     },
     "month": {
       "users": 47,
       "sessions": 58,
-      "pageviews": 136,
+      "pageviews": 137,
       "conversions": 0
     },
     "top_pages": [
@@ -106,7 +106,7 @@
       },
       {
         "page": "/blog/",
-        "views": 14,
+        "views": 15,
         "users": 9
       },
       {
@@ -195,12 +195,12 @@
       }
     ],
     "blog": {
-      "total_views": 19,
+      "total_views": 20,
       "total_users": 14,
       "articles": [
         {
           "page": "/blog/",
-          "views": 14,
+          "views": 15,
           "users": 9,
           "avg_duration": 543.4
         },
