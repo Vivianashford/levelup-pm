@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T07:21:24.539053+00:00",
-  "updated_local": "2026-03-24 02:21 AM",
+  "updated": "2026-03-24T07:26:25.868069+00:00",
+  "updated_local": "2026-03-24 02:26 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 4,
     "week": {
-      "users": 52,
-      "sessions": 65,
+      "users": 53,
+      "sessions": 66,
       "pageviews": 154,
-      "avg_duration": 710.3,
+      "avg_duration": 699.5,
       "conversions": 0
     },
     "month": {
-      "users": 52,
-      "sessions": 65,
+      "users": 53,
+      "sessions": 66,
       "pageviews": 154,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 60,
-        "users": 27
+        "users": 28
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 30,
-        "users": 24
+        "sessions": 31,
+        "users": 25
       },
       {
         "source": "vivianashford.github.io",
@@ -227,8 +227,8 @@
     "funnel": {
       "/": {
         "views": 60,
-        "users": 27,
-        "avg_duration": 202.5
+        "users": 28,
+        "avg_duration": 197.3
       },
       "/watch.html": {
         "views": 13,
@@ -267,16 +267,16 @@
       },
       {
         "date": "2026-03-23",
-        "users": 51,
-        "sessions": 61,
+        "users": 52,
+        "sessions": 62,
         "pageviews": 150
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 62,
-        "users": 49
+        "sessions": 63,
+        "users": 50
       },
       {
         "device": "Mobile",
@@ -351,12 +351,12 @@
         "sessions": 1
       },
       {
-        "city": "Gurnee",
+        "city": "East Los Angeles",
         "users": 1,
         "sessions": 1
       },
       {
-        "city": "Istres",
+        "city": "Gurnee",
         "users": 1,
         "sessions": 1
       }
@@ -368,7 +368,7 @@
       },
       {
         "event": "scroll",
-        "count": 86
+        "count": 87
       },
       {
         "event": "user_engagement",
@@ -457,6 +457,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.4
+    "bounce_rate": 95.5
   }
 }
