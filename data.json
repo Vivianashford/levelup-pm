@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T13:57:57.724366+00:00",
-  "updated_local": "2026-03-24 08:57 AM",
+  "updated": "2026-03-24T14:03:25.237098+00:00",
+  "updated_local": "2026-03-24 09:03 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -94,14 +94,14 @@
     },
     "month": {
       "users": 70,
-      "sessions": 84,
-      "pageviews": 175,
+      "sessions": 85,
+      "pageviews": 176,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 72,
+        "views": 73,
         "users": 38
       },
       {
@@ -154,13 +154,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 64,
-        "users": 59
+        "sessions": 65,
+        "users": 60
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 35,
+        "sessions": 36,
         "users": 29
       },
       {
@@ -226,7 +226,7 @@
     },
     "funnel": {
       "/": {
-        "views": 72,
+        "views": 73,
         "users": 38,
         "avg_duration": 190.6
       },
@@ -248,7 +248,7 @@
       "/calculator.html": {
         "views": 4,
         "users": 2,
-        "avg_duration": 1502.6
+        "avg_duration": 1001.8
       },
       "/nda.html": {
         "views": 2,
@@ -279,14 +279,14 @@
       {
         "date": "2026-03-24",
         "users": 16,
-        "sessions": 17,
-        "pageviews": 19
+        "sessions": 18,
+        "pageviews": 20
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 80,
+        "sessions": 81,
         "users": 66
       },
       {
@@ -299,7 +299,7 @@
       {
         "city": "",
         "users": 12,
-        "sessions": 15
+        "sessions": 16
       },
       {
         "city": "Hounslow",
@@ -375,15 +375,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 175
+        "count": 176
       },
       {
         "event": "scroll",
-        "count": 101
+        "count": 103
       },
       {
         "event": "session_start",
-        "count": 86
+        "count": 87
       },
       {
         "event": "user_engagement",
@@ -391,7 +391,7 @@
       },
       {
         "event": "first_visit",
-        "count": 73
+        "count": 74
       },
       {
         "event": "scroll_depth",
@@ -424,8 +424,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 59,
-        "sessions": 64
+        "users": 60,
+        "sessions": 65
       },
       {
         "campaign": "(referral)",
@@ -468,6 +468,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 96.4
+    "bounce_rate": 96.5
   }
 }
