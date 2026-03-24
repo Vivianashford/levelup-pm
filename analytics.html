@@ -180,7 +180,38 @@
       currentPage = p;
       document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
       if (el) el.classList.add('active');
+      renderOverview();
       renderPages();
+      renderChart();
+    }
+
+    function renderOverview() {
+      if (!DATA) return;
+      const w = DATA.week || {};
+      const m = DATA.month || {};
+      const funnel = DATA.funnel || {};
+      if (currentPage === 'all') {
+        document.getElementById('sUsers').textContent = (w.users || 0).toLocaleString();
+        document.getElementById('sUsersMonth').textContent = '28d: ' + (m.users || 0).toLocaleString();
+        document.getElementById('sSessions').textContent = (w.sessions || 0).toLocaleString();
+        document.getElementById('sSessionsMonth').textContent = '28d: ' + (m.sessions || 0).toLocaleString();
+        document.getElementById('sPageviews').textContent = (w.pageviews || 0).toLocaleString();
+        document.getElementById('sPageviewsMonth').textContent = '28d: ' + (m.pageviews || 0).toLocaleString();
+        document.getElementById('sDuration').textContent = Math.round(w.avg_duration || 0) + 's';
+      } else {
+        const pageKey = currentPage === '/' ? '/' : currentPage + '.html';
+        const pg = funnel[pageKey] || {};
+        const topPages = (DATA.top_pages || []).filter(tp => tp.page.startsWith(currentPage));
+        const totalViews = topPages.reduce((s, tp) => s + (tp.views || 0), 0) || pg.views || 0;
+        const totalUsers = topPages.reduce((s, tp) => s + (tp.users || 0), 0) || pg.users || 0;
+        document.getElementById('sUsers').textContent = totalUsers.toLocaleString();
+        document.getElementById('sUsersMonth').textContent = 'filtered';
+        document.getElementById('sSessions').textContent = totalUsers.toLocaleString();
+        document.getElementById('sSessionsMonth').textContent = 'filtered';
+        document.getElementById('sPageviews').textContent = totalViews.toLocaleString();
+        document.getElementById('sPageviewsMonth').textContent = 'filtered';
+        document.getElementById('sDuration').textContent = Math.round(pg.avg_duration || 0) + 's';
+      }
     }
 
     function setMetric(m, el) {
@@ -251,8 +282,8 @@
 
     function renderFunnel() {
       const f = DATA.funnel || {};
-      const steps = ['/', '/watch.html', '/book.html', '/assessment.html', '/nda.html', '/company-info.html', '/upload.html'];
-      const labels = ['Landing Page', 'Watch (VSL)', 'Book', 'Assessment', 'NDA', 'Company Info', 'Upload Portal'];
+      const steps = ['/', '/watch.html', '/book.html', '/calculator.html', '/assessment.html', '/nda.html', '/company-info.html', '/upload.html'];
+      const labels = ['Landing Page', 'Watch (VSL)', 'Book', 'Calculator', 'Assessment', 'NDA', 'Company Info', 'Upload Portal'];
       const tb = document.getElementById('tbFunnel');
       const rows = steps.map((s, i) => {
         const d = f[s] || { users: 0, views: 0 };
