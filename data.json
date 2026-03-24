@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T15:33:00.398286+00:00",
-  "updated_local": "2026-03-24 10:33 AM",
+  "updated": "2026-03-24T15:37:54.979083+00:00",
+  "updated_local": "2026-03-24 10:37 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -36,8 +36,8 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 19,
-    "real": 11
+    "total": 20,
+    "real": 12
   },
   "appointments": {
     "upcoming": 0
@@ -86,10 +86,10 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 76,
-      "sessions": 93,
-      "pageviews": 184,
-      "avg_duration": 514.6,
+      "users": 78,
+      "sessions": 96,
+      "pageviews": 185,
+      "avg_duration": 498.6,
       "conversions": 0
     },
     "month": {
@@ -101,8 +101,8 @@
     "top_pages": [
       {
         "page": "/",
-        "views": 75,
-        "users": 39
+        "views": 76,
+        "users": 41
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 38,
-        "users": 32
+        "sessions": 41,
+        "users": 34
       },
       {
         "source": "vivianashford.github.io",
@@ -238,9 +238,9 @@
     },
     "funnel": {
       "/": {
-        "views": 75,
-        "users": 39,
-        "avg_duration": 183.2
+        "views": 76,
+        "users": 41,
+        "avg_duration": 173.0
       },
       "/watch.html": {
         "views": 13,
@@ -290,16 +290,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 22,
-        "sessions": 26,
-        "pageviews": 28
+        "users": 25,
+        "sessions": 29,
+        "pageviews": 29
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 87,
-        "users": 71
+        "sessions": 90,
+        "users": 73
       },
       {
         "device": "Mobile",
@@ -311,7 +311,7 @@
       {
         "city": "",
         "users": 14,
-        "sessions": 17
+        "sessions": 18
       },
       {
         "city": "Hounslow",
@@ -379,7 +379,7 @@
         "sessions": 2
       },
       {
-        "city": "Barcelona",
+        "city": "Ashburn",
         "users": 1,
         "sessions": 1
       }
@@ -387,11 +387,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 184
+        "count": 185
       },
       {
         "event": "scroll",
-        "count": 104
+        "count": 106
       },
       {
         "event": "session_start",
@@ -399,7 +399,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 89
+        "count": 92
       },
       {
         "event": "first_visit",
