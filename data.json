@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T01:25:05.434326+00:00",
-  "updated_local": "2026-03-23 08:25 PM",
+  "updated": "2026-03-24T01:30:23.545859+00:00",
+  "updated_local": "2026-03-23 08:30 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 141,
-      "avg_duration": 678.1,
+      "pageviews": 145,
+      "avg_duration": 679.5,
       "conversions": 0
     },
     "month": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 141,
+      "pageviews": 145,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 55,
+        "views": 56,
         "users": 26
       },
       {
@@ -111,13 +111,13 @@
       },
       {
         "page": "/watch.html",
-        "views": 10,
+        "views": 12,
         "users": 2
       },
       {
         "page": "/about",
-        "views": 9,
-        "users": 4
+        "views": 10,
+        "users": 5
       },
       {
         "page": "/book.html",
@@ -166,7 +166,7 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 4,
+        "sessions": 5,
         "users": 2
       },
       {
@@ -226,14 +226,14 @@
     },
     "funnel": {
       "/": {
-        "views": 55,
+        "views": 56,
         "users": 26,
         "avg_duration": 179.6
       },
       "/watch.html": {
-        "views": 10,
+        "views": 12,
         "users": 2,
-        "avg_duration": 555.7
+        "avg_duration": 445.6
       },
       "/book.html": {
         "views": 9,
@@ -269,7 +269,7 @@
         "date": "2026-03-23",
         "users": 48,
         "sessions": 57,
-        "pageviews": 137
+        "pageviews": 141
       }
     ],
     "devices": [
@@ -364,19 +364,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 141
+        "count": 145
       },
       {
         "event": "scroll",
-        "count": 80
+        "count": 81
       },
       {
         "event": "user_engagement",
-        "count": 74
+        "count": 75
       },
       {
         "event": "session_start",
-        "count": 63
+        "count": 64
       },
       {
         "event": "first_visit",
@@ -384,7 +384,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 48
+        "count": 52
       },
       {
         "event": "click",
@@ -430,7 +430,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 2,
-        "sessions": 4
+        "sessions": 5
       },
       {
         "campaign": "(referral)",
