@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T08:06:22.925220+00:00",
-  "updated_local": "2026-03-24 03:06 AM",
+  "updated": "2026-03-24T08:11:28.189517+00:00",
+  "updated_local": "2026-03-24 03:11 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 56,
-      "sessions": 69,
-      "pageviews": 157,
-      "avg_duration": 669.2,
+      "users": 58,
+      "sessions": 71,
+      "pageviews": 160,
+      "avg_duration": 659.4,
       "conversions": 0
     },
     "month": {
-      "users": 56,
-      "sessions": 69,
-      "pageviews": 157,
+      "users": 58,
+      "sessions": 71,
+      "pageviews": 160,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 63,
-        "users": 31
+        "views": 66,
+        "users": 33
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 51,
-        "users": 46
+        "sessions": 53,
+        "users": 48
       },
       {
         "source": "(not set)",
@@ -166,8 +166,8 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 6,
-        "users": 3
+        "sessions": 7,
+        "users": 4
       },
       {
         "source": "linkedin.com",
@@ -226,9 +226,9 @@
     },
     "funnel": {
       "/": {
-        "views": 63,
-        "users": 31,
-        "avg_duration": 183.3
+        "views": 66,
+        "users": 33,
+        "avg_duration": 189.6
       },
       "/watch.html": {
         "views": 13,
@@ -273,16 +273,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 2,
-        "sessions": 2,
-        "pageviews": 1
+        "users": 4,
+        "sessions": 4,
+        "pageviews": 4
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 65,
-        "users": 52
+        "sessions": 67,
+        "users": 54
       },
       {
         "device": "Mobile",
@@ -322,7 +322,17 @@
         "sessions": 3
       },
       {
+        "city": "Council Bluffs",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "Des Moines",
+        "users": 2,
+        "sessions": 2
+      },
+      {
+        "city": "Puchong",
         "users": 2,
         "sessions": 2
       },
@@ -347,11 +357,6 @@
         "sessions": 1
       },
       {
-        "city": "Council Bluffs",
-        "users": 1,
-        "sessions": 1
-      },
-      {
         "city": "Dallas",
         "users": 1,
         "sessions": 1
@@ -360,37 +365,32 @@
         "city": "East Los Angeles",
         "users": 1,
         "sessions": 1
-      },
-      {
-        "city": "Flower Mound",
-        "users": 1,
-        "sessions": 1
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 157
+        "count": 160
       },
       {
         "event": "scroll",
-        "count": 89
+        "count": 90
       },
       {
         "event": "user_engagement",
-        "count": 80
+        "count": 81
       },
       {
         "event": "session_start",
-        "count": 71
+        "count": 74
       },
       {
         "event": "first_visit",
-        "count": 59
+        "count": 62
       },
       {
         "event": "scroll_depth",
-        "count": 53
+        "count": 56
       },
       {
         "event": "click",
@@ -419,8 +419,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 46,
-        "sessions": 51
+        "users": 48,
+        "sessions": 53
       },
       {
         "campaign": "(referral)",
@@ -435,8 +435,8 @@
         "source": "vivianashford.github.io",
         "medium": "referral",
         "content": "(not set)",
-        "users": 3,
-        "sessions": 6
+        "users": 4,
+        "sessions": 7
       },
       {
         "campaign": "(referral)",
@@ -463,6 +463,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.7
+    "bounce_rate": 95.8
   }
 }
