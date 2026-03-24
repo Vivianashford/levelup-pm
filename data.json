@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T09:56:39.730623+00:00",
-  "updated_local": "2026-03-24 04:56 AM",
+  "updated": "2026-03-24T10:01:44.932897+00:00",
+  "updated_local": "2026-03-24 05:01 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -273,21 +273,21 @@
       },
       {
         "date": "2026-03-24",
-        "users": 6,
-        "sessions": 7,
-        "pageviews": 8
+        "users": 8,
+        "sessions": 9,
+        "pageviews": 10
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 70,
-        "users": 56
+        "sessions": 71,
+        "users": 57
       },
       {
         "device": "Mobile",
-        "sessions": 4,
-        "users": 4
+        "sessions": 5,
+        "users": 5
       }
     ],
     "locations": [
@@ -308,8 +308,13 @@
       },
       {
         "city": "Amsterdam",
-        "users": 4,
-        "sessions": 4
+        "users": 5,
+        "sessions": 5
+      },
+      {
+        "city": "Council Bluffs",
+        "users": 3,
+        "sessions": 3
       },
       {
         "city": "Houston",
@@ -320,11 +325,6 @@
         "city": "Miami",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Council Bluffs",
-        "users": 2,
-        "sessions": 2
       },
       {
         "city": "Des Moines",
@@ -370,7 +370,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 164
+        "count": 166
       },
       {
         "event": "scroll",
@@ -382,11 +382,11 @@
       },
       {
         "event": "session_start",
-        "count": 77
+        "count": 79
       },
       {
         "event": "first_visit",
-        "count": 64
+        "count": 66
       },
       {
         "event": "scroll_depth",
@@ -419,8 +419,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 50,
-        "sessions": 55
+        "users": 52,
+        "sessions": 57
       },
       {
         "campaign": "(referral)",
@@ -463,6 +463,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.9
+    "bounce_rate": 96.1
   }
 }
