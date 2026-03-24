@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T05:11:20.439428+00:00",
-  "updated_local": "2026-03-24 12:11 AM",
+  "updated": "2026-03-24T05:16:25.876551+00:00",
+  "updated_local": "2026-03-24 12:16 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,12 +84,12 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
       "users": 51,
       "sessions": 64,
       "pageviews": 153,
-      "avg_duration": 704.8,
+      "avg_duration": 721.4,
       "conversions": 0
     },
     "month": {
@@ -228,7 +228,7 @@
       "/": {
         "views": 60,
         "users": 27,
-        "avg_duration": 174.6
+        "avg_duration": 202.5
       },
       "/watch.html": {
         "views": 13,
@@ -372,7 +372,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 79
+        "count": 80
       },
       {
         "event": "session_start",
