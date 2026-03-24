@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T22:24:21.710943+00:00",
-  "updated_local": "2026-03-24 05:24 PM",
+  "updated": "2026-03-24T22:29:24.714812+00:00",
+  "updated_local": "2026-03-24 05:29 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -101,8 +101,8 @@
     "top_pages": [
       {
         "page": "/",
-        "views": 98,
-        "users": 59
+        "views": 100,
+        "users": 61
       },
       {
         "page": "/blog/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 86,
-        "users": 78
+        "sessions": 88,
+        "users": 80
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 21,
-        "users": 20
+        "sessions": 22,
+        "users": 21
       },
       {
         "source": "vivianashford.github.io",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 98,
-        "users": 59,
-        "avg_duration": 148.0
+        "views": 100,
+        "users": 61,
+        "avg_duration": 144.1
       },
       "/book.html": {
         "views": 14,
@@ -311,16 +311,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 45,
-        "sessions": 50,
-        "pageviews": 51
+        "users": 47,
+        "sessions": 52,
+        "pageviews": 53
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 111,
-        "users": 91
+        "sessions": 113,
+        "users": 93
       },
       {
         "device": "Mobile",
@@ -330,14 +330,14 @@
     ],
     "locations": [
       {
+        "city": "",
+        "users": 10,
+        "sessions": 11
+      },
+      {
         "city": "Wheaton",
         "users": 10,
         "sessions": 10
-      },
-      {
-        "city": "",
-        "users": 8,
-        "sessions": 9
       },
       {
         "city": "Hounslow",
@@ -403,7 +403,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 220
+        "count": 222
       },
       {
         "event": "scroll",
@@ -411,15 +411,15 @@
       },
       {
         "event": "session_start",
-        "count": 115
+        "count": 117
       },
       {
         "event": "user_engagement",
-        "count": 115
+        "count": 116
       },
       {
         "event": "first_visit",
-        "count": 96
+        "count": 98
       },
       {
         "event": "scroll_depth",
