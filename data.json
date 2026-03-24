@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T17:48:08.679065+00:00",
-  "updated_local": "2026-03-24 12:48 PM",
+  "updated": "2026-03-24T17:53:11.494927+00:00",
+  "updated_local": "2026-03-24 12:53 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 86,
-      "sessions": 104,
-      "pageviews": 197,
-      "avg_duration": 467.9,
+      "users": 87,
+      "sessions": 105,
+      "pageviews": 198,
+      "avg_duration": 463.5,
       "conversions": 0
     },
     "month": {
-      "users": 86,
-      "sessions": 104,
-      "pageviews": 197,
+      "users": 87,
+      "sessions": 105,
+      "pageviews": 198,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 85,
-        "users": 48
+        "views": 86,
+        "users": 49
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 76,
-        "users": 69
+        "sessions": 77,
+        "users": 70
       },
       {
         "source": "(not set)",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 85,
-        "users": 48,
-        "avg_duration": 166.2
+        "views": 86,
+        "users": 49,
+        "avg_duration": 163.5
       },
       "/watch.html": {
         "views": 13,
@@ -307,16 +307,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 33,
-        "sessions": 37,
-        "pageviews": 41
+        "users": 34,
+        "sessions": 38,
+        "pageviews": 42
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 97,
-        "users": 80
+        "sessions": 98,
+        "users": 81
       },
       {
         "device": "Mobile",
@@ -371,6 +371,11 @@
         "sessions": 2
       },
       {
+        "city": "Burnaby",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "Des Moines",
         "users": 2,
         "sessions": 2
@@ -394,17 +399,12 @@
         "city": "Quezon City",
         "users": 2,
         "sessions": 2
-      },
-      {
-        "city": "Stratford",
-        "users": 2,
-        "sessions": 2
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 197
+        "count": 198
       },
       {
         "event": "scroll",
@@ -412,7 +412,7 @@
       },
       {
         "event": "session_start",
-        "count": 106
+        "count": 107
       },
       {
         "event": "user_engagement",
@@ -420,7 +420,7 @@
       },
       {
         "event": "first_visit",
-        "count": 89
+        "count": 90
       },
       {
         "event": "scroll_depth",
@@ -457,8 +457,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 69,
-        "sessions": 76
+        "users": 70,
+        "sessions": 77
       },
       {
         "campaign": "(referral)",
