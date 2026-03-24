@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T12:07:43.615313+00:00",
-  "updated_local": "2026-03-24 07:07 AM",
+  "updated": "2026-03-24T12:12:45.644592+00:00",
+  "updated_local": "2026-03-24 07:12 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -374,7 +374,7 @@
       },
       {
         "event": "scroll",
-        "count": 99
+        "count": 100
       },
       {
         "event": "user_engagement",
