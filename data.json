@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-23T23:55:01.948506+00:00",
-  "updated_local": "2026-03-23 06:55 PM",
+  "updated": "2026-03-24T00:00:02.186236+00:00",
+  "updated_local": "2026-03-23 07:00 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -87,26 +87,26 @@
     "realtime_users": 2,
     "week": {
       "users": 47,
-      "sessions": 57,
-      "pageviews": 133,
-      "avg_duration": 711.9,
+      "sessions": 58,
+      "pageviews": 136,
+      "avg_duration": 699.7,
       "conversions": 0
     },
     "month": {
       "users": 47,
-      "sessions": 57,
-      "pageviews": 133,
+      "sessions": 58,
+      "pageviews": 136,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 53,
+        "views": 54,
         "users": 24
       },
       {
         "page": "/blog/",
-        "views": 13,
+        "views": 14,
         "users": 9
       },
       {
@@ -125,13 +125,13 @@
         "users": 5
       },
       {
-        "page": "/services",
+        "page": "/about",
         "views": 7,
         "users": 4
       },
       {
-        "page": "/about",
-        "views": 6,
+        "page": "/services",
+        "views": 7,
         "users": 4
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 44,
-        "users": 40
+        "sessions": 46,
+        "users": 41
       },
       {
         "source": "(not set)",
@@ -195,14 +195,14 @@
       }
     ],
     "blog": {
-      "total_views": 18,
+      "total_views": 19,
       "total_users": 14,
       "articles": [
         {
           "page": "/blog/",
-          "views": 13,
+          "views": 14,
           "users": 9,
-          "avg_duration": 543.3
+          "avg_duration": 543.4
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -226,9 +226,9 @@
     },
     "funnel": {
       "/": {
-        "views": 53,
+        "views": 54,
         "users": 24,
-        "avg_duration": 201.9
+        "avg_duration": 195.8
       },
       "/watch.html": {
         "views": 10,
