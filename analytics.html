@@ -7,46 +7,28 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; }
-    
-    /* Header */
     .header { background: #111118; border-bottom: 1px solid #1e1e2e; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
     .header h1 { font-size: 20px; font-weight: 700; color: #fff; }
     .header h1 span { color: #C9A84C; }
     .header-right { display: flex; gap: 12px; align-items: center; }
     .back-link { color: #888; font-size: 13px; text-decoration: none; }
     .back-link:hover { color: #C9A84C; }
-    
-    /* Date Controls */
-    .date-bar { background: #111118; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e1e2e; flex-wrap: wrap; gap: 12px; }
-    .date-presets { display: flex; gap: 8px; }
-    .date-btn { background: #1a1a2e; border: 1px solid #2a2a3e; color: #aaa; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; }
-    .date-btn:hover { border-color: #C9A84C; color: #C9A84C; }
-    .date-btn.active { background: #C9A84C; color: #0a0a0f; border-color: #C9A84C; }
-    .date-custom { display: flex; gap: 8px; align-items: center; }
-    .date-custom input { background: #1a1a2e; border: 1px solid #2a2a3e; color: #e0e0e0; padding: 8px 12px; border-radius: 6px; font-size: 13px; }
-    .date-custom label { color: #666; font-size: 13px; }
+    .refresh-btn { background: #1a1a2e; border: 1px solid #2a2a3e; color: #C9A84C; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+    .refresh-btn:hover { background: #C9A84C; color: #0a0a0f; border-color: #C9A84C; }
+    .refresh-btn.loading { opacity: 0.6; pointer-events: none; }
+    .refresh-btn .spin { display: inline-block; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .refresh-time { color: #555; font-size: 12px; }
-    
-    /* Page Tabs */
-    .page-tabs { background: #0d0d14; padding: 0 24px; display: flex; overflow-x: auto; border-bottom: 1px solid #1e1e2e; }
-    .page-tab { padding: 14px 20px; color: #888; font-size: 13px; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
-    .page-tab:hover { color: #C9A84C; }
-    .page-tab.active { color: #C9A84C; border-bottom-color: #C9A84C; }
-    .page-tab .status { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; }
-    .page-tab .status.live { background: #22c55e; }
-    .page-tab .status.pending { background: #eab308; }
-    
-    /* Overview Cards */
-    .overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 24px; }
+    .realtime { display: flex; align-items: center; gap: 6px; background: #0d1f0d; border: 1px solid #1a3a1a; padding: 6px 14px; border-radius: 20px; font-size: 13px; color: #22c55e; font-weight: 600; }
+    .realtime .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; padding: 24px; }
     .stat-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 10px; padding: 20px; }
     .stat-card .label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
     .stat-card .value { font-size: 28px; font-weight: 700; color: #fff; }
-    .stat-card .change { font-size: 13px; margin-top: 4px; }
+    .stat-card .sub { font-size: 13px; color: #888; margin-top: 4px; }
     .stat-card .change.up { color: #22c55e; }
     .stat-card .change.down { color: #ef4444; }
-    .stat-card .change.flat { color: #666; }
-    
-    /* Chart Container */
     .chart-section { padding: 0 24px 24px; }
     .chart-box { background: #111118; border: 1px solid #1e1e2e; border-radius: 10px; padding: 24px; }
     .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -54,11 +36,8 @@
     .chart-toggle { display: flex; gap: 6px; }
     .chart-toggle button { background: #1a1a2e; border: 1px solid #2a2a3e; color: #888; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
     .chart-toggle button.active { background: #C9A84C; color: #0a0a0f; border-color: #C9A84C; }
-    .chart-canvas { width: 100%; height: 300px; position: relative; }
-    
-    /* Data Tables */
     .tables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 24px 24px; }
-    @media (max-width: 900px) { .tables-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .tables-grid { grid-template-columns: 1fr; } .overview { grid-template-columns: repeat(2, 1fr); } }
     .data-table { background: #111118; border: 1px solid #1e1e2e; border-radius: 10px; padding: 20px; }
     .data-table h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 16px; }
     .data-table table { width: 100%; border-collapse: collapse; }
@@ -67,611 +46,334 @@
     .data-table td:last-child { text-align: right; font-weight: 600; }
     .bar-cell { display: flex; align-items: center; gap: 8px; }
     .bar-fill { height: 6px; border-radius: 3px; background: #C9A84C; min-width: 4px; }
-    
-    /* Ads Section */
     .ads-section { padding: 0 24px 24px; }
     .ads-placeholder { background: #111118; border: 2px dashed #2a2a3e; border-radius: 10px; padding: 48px; text-align: center; }
     .ads-placeholder .icon { font-size: 48px; margin-bottom: 16px; }
     .ads-placeholder h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
     .ads-placeholder p { color: #666; font-size: 14px; max-width: 500px; margin: 0 auto; }
     .ads-placeholder .coming { display: inline-block; background: #1a1a2e; color: #C9A84C; padding: 6px 14px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-top: 16px; letter-spacing: 1px; }
-    
-    /* UTM Table */
-    .utm-section { padding: 0 24px 24px; }
-    .utm-table { background: #111118; border: 1px solid #1e1e2e; border-radius: 10px; padding: 20px; }
-    .utm-table h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .utm-table .subtitle { font-size: 12px; color: #666; margin-bottom: 16px; }
-    
-    /* Footer */
     .footer { padding: 24px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid #1e1e2e; }
-    
-    /* Loading */
-    .loading { display: flex; align-items: center; justify-content: center; height: 200px; color: #666; }
-    .spinner { width: 24px; height: 24px; border: 3px solid #2a2a3e; border-top-color: #C9A84C; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 12px; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .overview { grid-template-columns: repeat(2, 1fr); }
-      .page-tabs { padding: 0 12px; }
-      .page-tab { padding: 12px 14px; font-size: 12px; }
-    }
+    .page-tabs { background: #0d0d14; padding: 0 24px; display: flex; overflow-x: auto; border-bottom: 1px solid #1e1e2e; }
+    .page-tab { padding: 14px 20px; color: #888; font-size: 13px; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+    .page-tab:hover { color: #C9A84C; }
+    .page-tab.active { color: #C9A84C; border-bottom-color: #C9A84C; }
+    .status { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; background: #22c55e; }
   </style>
 </head>
 <body>
   <header class="header">
     <h1>📊 Analytics <span>Dashboard</span></h1>
     <div class="header-right">
+      <div class="realtime"><div class="dot"></div><span id="realtimeUsers">0</span> live</div>
+      <button class="refresh-btn" id="refreshBtn" onclick="refresh()">🔄 Refresh</button>
       <span class="refresh-time" id="lastRefresh">Loading...</span>
       <a href="index.html" class="back-link">← Command Center</a>
     </div>
   </header>
 
-  <!-- Date Range Controls -->
-  <div class="date-bar">
-    <div class="date-presets">
-      <button class="date-btn active" onclick="setRange(7, this)">7 Days</button>
-      <button class="date-btn" onclick="setRange(30, this)">30 Days</button>
-      <button class="date-btn" onclick="setRange(90, this)">90 Days</button>
-      <button class="date-btn" onclick="setRange(365, this)">1 Year</button>
-    </div>
-    <div class="date-custom">
-      <label>From</label>
-      <input type="date" id="dateFrom">
-      <label>To</label>
-      <input type="date" id="dateTo">
-      <button class="date-btn" onclick="applyCustomRange(this)">Apply</button>
-    </div>
+  <div class="page-tabs">
+    <div class="page-tab active" data-page="all" onclick="selectPage('all',this)"><span class="status"></span>All Pages</div>
+    <div class="page-tab" data-page="/" onclick="selectPage('/',this)"><span class="status"></span>Landing</div>
+    <div class="page-tab" data-page="/watch" onclick="selectPage('/watch',this)"><span class="status"></span>VSL</div>
+    <div class="page-tab" data-page="/calculator" onclick="selectPage('/calculator',this)"><span class="status"></span>Calculator</div>
+    <div class="page-tab" data-page="/assessment" onclick="selectPage('/assessment',this)"><span class="status"></span>Assessment</div>
+    <div class="page-tab" data-page="/blog" onclick="selectPage('/blog',this)"><span class="status"></span>Blog</div>
+    <div class="page-tab" data-page="/book" onclick="selectPage('/book',this)"><span class="status"></span>Book</div>
   </div>
 
-  <!-- Page Tabs -->
-  <div class="page-tabs" id="pageTabs">
-    <div class="page-tab active" onclick="selectPage('all', this)"><span class="status live"></span>All Pages</div>
-    <div class="page-tab" onclick="selectPage('/', this)"><span class="status live"></span>Landing Page</div>
-    <div class="page-tab" onclick="selectPage('/watch.html', this)"><span class="status live"></span>Watch (VSL)</div>
-    <div class="page-tab" onclick="selectPage('/assessment.html', this)"><span class="status live"></span>Assessment</div>
-    <div class="page-tab" onclick="selectPage('/calculator.html', this)"><span class="status live"></span>Calculator</div>
-    <div class="page-tab" onclick="selectPage('/blog/', this)"><span class="status live"></span>Blog</div>
-    <div class="page-tab" onclick="selectPage('/book.html', this)"><span class="status live"></span>Book</div>
-    <div class="page-tab" onclick="selectPage('/nda.html', this)"><span class="status live"></span>NDA</div>
-    <div class="page-tab" onclick="selectPage('/company-info.html', this)"><span class="status live"></span>Company Info</div>
-    <div class="page-tab" onclick="selectPage('/upload.html', this)"><span class="status live"></span>Upload Portal</div>
-    <div class="page-tab" onclick="selectPage('/dashboard.html', this)"><span class="status live"></span>Client Dashboard</div>
-    <div class="page-tab" onclick="selectPage('aba', this)"><span class="status live"></span>ABA (arenabusinessadvisors.com)</div>
-  </div>
-
-  <!-- Overview Stats -->
   <div class="overview" id="overviewCards">
-    <div class="stat-card">
-      <div class="label">Total Users</div>
-      <div class="value" id="totalUsers">--</div>
-      <div class="change flat" id="usersChange">Loading...</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Sessions</div>
-      <div class="value" id="totalSessions">--</div>
-      <div class="change flat" id="sessionsChange">Loading...</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Pageviews</div>
-      <div class="value" id="totalPageviews">--</div>
-      <div class="change flat" id="pageviewsChange">Loading...</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Avg. Session Duration</div>
-      <div class="value" id="avgDuration">--</div>
-      <div class="change flat" id="durationChange">Loading...</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Bounce Rate</div>
-      <div class="value" id="bounceRate">--</div>
-      <div class="change flat" id="bounceChange">Loading...</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Conversions</div>
-      <div class="value" id="totalConversions">--</div>
-      <div class="change flat" id="convChange">Loading...</div>
-    </div>
+    <div class="stat-card"><div class="label">Users (7d)</div><div class="value" id="sUsers">--</div><div class="sub" id="sUsersMonth">28d: --</div></div>
+    <div class="stat-card"><div class="label">Sessions (7d)</div><div class="value" id="sSessions">--</div><div class="sub" id="sSessionsMonth">28d: --</div></div>
+    <div class="stat-card"><div class="label">Pageviews (7d)</div><div class="value" id="sPageviews">--</div><div class="sub" id="sPageviewsMonth">28d: --</div></div>
+    <div class="stat-card"><div class="label">Avg Duration</div><div class="value" id="sDuration">--</div><div class="sub">seconds avg</div></div>
+    <div class="stat-card"><div class="label">Bounce Rate</div><div class="value" id="sBounce">--</div><div class="sub">lower is better</div></div>
+    <div class="stat-card"><div class="label">Conversions</div><div class="value" id="sConversions">--</div><div class="sub">book-a-call clicks</div></div>
   </div>
 
-  <!-- Traffic Chart -->
   <div class="chart-section">
     <div class="chart-box">
       <div class="chart-header">
-        <h3>Traffic Over Time</h3>
+        <h3>Traffic (Last 14 Days)</h3>
         <div class="chart-toggle">
-          <button class="active" onclick="setChartMetric('users', this)">Users</button>
-          <button onclick="setChartMetric('sessions', this)">Sessions</button>
-          <button onclick="setChartMetric('pageviews', this)">Pageviews</button>
+          <button class="active" onclick="setMetric('users',this)">Users</button>
+          <button onclick="setMetric('sessions',this)">Sessions</button>
+          <button onclick="setMetric('pageviews',this)">Pageviews</button>
         </div>
       </div>
-      <div class="chart-canvas" id="trafficChart">
-        <canvas id="mainChart" width="1000" height="300"></canvas>
-      </div>
+      <canvas id="mainChart" style="width:100%;height:280px"></canvas>
     </div>
   </div>
 
-  <!-- Data Tables -->
   <div class="tables-grid">
-    <!-- Traffic Sources -->
-    <div class="data-table">
-      <h3>Traffic Sources</h3>
-      <table id="sourcesTable">
-        <thead><tr><th>Source / Medium</th><th>Users</th></tr></thead>
-        <tbody id="sourcesBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Top Pages -->
-    <div class="data-table">
-      <h3>Top Pages</h3>
-      <table id="pagesTable">
-        <thead><tr><th>Page</th><th>Views</th></tr></thead>
-        <tbody id="pagesBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Devices -->
-    <div class="data-table">
-      <h3>Devices</h3>
-      <table>
-        <thead><tr><th>Device</th><th>Sessions</th></tr></thead>
-        <tbody id="devicesBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Locations -->
-    <div class="data-table">
-      <h3>Top Locations</h3>
-      <table>
-        <thead><tr><th>City</th><th>Users</th></tr></thead>
-        <tbody id="locationsBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Funnel -->
-    <div class="data-table">
-      <h3>Funnel Flow</h3>
-      <table>
-        <thead><tr><th>Step</th><th>Users</th></tr></thead>
-        <tbody id="funnelBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Events -->
-    <div class="data-table">
-      <h3>Key Events</h3>
-      <table>
-        <thead><tr><th>Event</th><th>Count</th></tr></thead>
-        <tbody id="eventsBody">
-          <tr><td colspan="2" class="loading"><div class="spinner"></div>Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="data-table"><h3>Traffic Sources</h3><table><thead><tr><th>Source / Medium</th><th>Users</th></tr></thead><tbody id="tbSources"></tbody></table></div>
+    <div class="data-table"><h3>Top Pages</h3><table><thead><tr><th>Page</th><th>Views</th></tr></thead><tbody id="tbPages"></tbody></table></div>
+    <div class="data-table"><h3>Devices</h3><table><thead><tr><th>Device</th><th>Sessions</th></tr></thead><tbody id="tbDevices"></tbody></table></div>
+    <div class="data-table"><h3>Top Locations</h3><table><thead><tr><th>City</th><th>Users</th></tr></thead><tbody id="tbLocations"></tbody></table></div>
+    <div class="data-table"><h3>Funnel Flow</h3><table><thead><tr><th>Step</th><th>Users</th></tr></thead><tbody id="tbFunnel"></tbody></table></div>
+    <div class="data-table"><h3>Events</h3><table><thead><tr><th>Event</th><th>Count</th></tr></thead><tbody id="tbEvents"></tbody></table></div>
   </div>
 
-  <!-- UTM Tracking -->
-  <div class="utm-section">
-    <div class="utm-table">
+  <div class="tables-grid">
+    <div class="data-table" style="grid-column: 1/-1;">
       <h3>UTM Campaign Tracking</h3>
-      <div class="subtitle">Track which campaigns, sources, and content are driving traffic</div>
-      <table style="width:100%; border-collapse:collapse;">
-        <thead><tr>
-          <th style="text-align:left;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Campaign</th>
-          <th style="text-align:left;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Source</th>
-          <th style="text-align:left;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Medium</th>
-          <th style="text-align:left;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Content</th>
-          <th style="text-align:right;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Users</th>
-          <th style="text-align:right;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #1e1e2e;">Sessions</th>
-        </tr></thead>
-        <tbody id="utmBody">
-          <tr><td colspan="6" style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14;color:#666;">No UTM data yet. UTM parameters will appear here when traffic arrives with campaign tags.</td></tr>
-        </tbody>
-      </table>
+      <table><thead><tr><th>Campaign</th><th>Source</th><th>Medium</th><th>Users</th><th>Sessions</th></tr></thead><tbody id="tbUTM"></tbody></table>
     </div>
   </div>
 
-  <!-- Facebook Ads Placeholder -->
+  <div class="tables-grid">
+    <div class="data-table" style="grid-column: 1/-1;">
+      <h3>Blog Performance</h3>
+      <table><thead><tr><th>Article</th><th>Views</th><th>Users</th><th>Avg Duration</th></tr></thead><tbody id="tbBlog"></tbody></table>
+    </div>
+  </div>
+
   <div class="ads-section">
     <div class="ads-placeholder">
       <div class="icon">📣</div>
       <h3>Facebook Ads Performance</h3>
-      <p>When Facebook Ads are running, this section will show: spend, impressions, clicks, CTR, CPC, conversions, ROAS, and per-ad breakdowns. UTM parameters will link ad clicks to on-site behavior above.</p>
+      <p>When ads are running, spend, impressions, clicks, CTR, CPC, conversions, and ROAS will appear here.</p>
       <div class="coming">COMING SOON</div>
     </div>
   </div>
 
   <footer class="footer">
-    <p>Data from GA4 (G-SDMM90P63D) | Domains: thearenapartners.com + arenabusinessadvisors.com</p>
-    <p style="margin-top:4px;">Powered by Arena Partners Analytics Engine</p>
+    <p>Data from GA4 (G-SDMM90P63D) | thearenapartners.com + arenabusinessadvisors.com | Auto-refreshes every 5 min</p>
   </footer>
 
   <script>
-    // ============================================================
-    // ANALYTICS DASHBOARD ENGINE
-    // ============================================================
-    
-    const GA4_PROPERTY = '529455630';
-    const WORKER_URL = 'https://arena-api.jean-475.workers.dev';
-    const PASSWORD = 'arena2026';
-    
-    let currentRange = 7;
+    let DATA = null;
+    let metric = 'users';
     let currentPage = 'all';
-    let chartMetric = 'users';
-    let analyticsData = null;
-    
-    // Date helpers
-    function formatDate(d) { return d.toISOString().split('T')[0]; }
-    function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return d; }
-    
-    // Initialize date inputs
-    function initDates() {
-      document.getElementById('dateTo').value = formatDate(new Date());
-      document.getElementById('dateFrom').value = formatDate(daysAgo(currentRange));
-    }
-    
-    function setRange(days, el) {
-      currentRange = days;
-      document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      document.getElementById('dateFrom').value = formatDate(daysAgo(days));
-      document.getElementById('dateTo').value = formatDate(new Date());
-      fetchAnalytics();
-    }
-    
-    function applyCustomRange() {
-      document.querySelectorAll('.date-presets .date-btn').forEach(b => b.classList.remove('active'));
-      fetchAnalytics();
-    }
-    
-    function selectPage(page, el) {
-      currentPage = page;
-      document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
-      if(el) el.closest('.page-tab').classList.add('active');
-      renderData();
-    }
-    
-    function setChartMetric(metric, el) {
-      chartMetric = metric;
-      document.querySelectorAll('.chart-toggle button').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      renderChart();
-    }
-    
-    // ============================================================
-    // GA4 DATA FETCHING (via Worker proxy or direct)
-    // ============================================================
-    
-    async function fetchAnalytics() {
-      const from = document.getElementById('dateFrom').value;
-      const to = document.getElementById('dateTo').value;
-      
-      document.getElementById('lastRefresh').textContent = 'Fetching...';
-      
+    const DATA_URL = 'data.json';
+
+    async function fetchData() {
+      const btn = document.getElementById('refreshBtn');
+      btn.classList.add('loading');
+      btn.innerHTML = '<span class="spin">🔄</span> Loading...';
       try {
-        // Try fetching from our Worker API (which caches GA4 data)
-        const controller = new AbortController(); setTimeout(() => controller.abort(), 1500); const resp = await fetch(`${WORKER_URL}/api/analytics?from=${from}&to=${to}&property=${GA4_PROPERTY}`, {signal: controller.signal});
-        if (resp.ok) {
-          analyticsData = await resp.json();
-          renderData();
-          document.getElementById('lastRefresh').textContent = `Updated ${new Date().toLocaleTimeString()}`;
-          return;
-        }
+        const r = await fetch(DATA_URL + '?t=' + Date.now());
+        if (!r.ok) throw new Error('fetch failed');
+        const raw = await r.json();
+        DATA = raw.analytics || {};
+        localStorage.setItem('arena-analytics', JSON.stringify(DATA));
+        localStorage.setItem('arena-analytics-time', raw.updated || new Date().toISOString());
+        render();
+        document.getElementById('lastRefresh').textContent = 'Updated ' + new Date().toLocaleTimeString();
       } catch(e) {
-        console.log('Worker analytics not available, using cached data');
-      }
-      
-      // Fallback: use locally stored data from stats engine
-      try {
-        const resp = await fetch('data.json');
-        if (resp.ok) {
-          const data = await resp.json();
-          analyticsData = transformLocalData(data);
-          renderData();
-          document.getElementById('lastRefresh').textContent = `Updated from cache ${new Date().toLocaleTimeString()}`;
-          return;
+        const cached = localStorage.getItem('arena-analytics');
+        if (cached) {
+          DATA = JSON.parse(cached);
+          render();
+          const ct = localStorage.getItem('arena-analytics-time') || '?';
+          document.getElementById('lastRefresh').textContent = 'Cached: ' + ct.substring(0,16);
+        } else {
+          document.getElementById('lastRefresh').textContent = 'No data available';
         }
-      } catch(e) {}
-      
-      // Show demo data for now
-      analyticsData = getDemoData();
-      renderData();
-      document.getElementById('lastRefresh').textContent = 'Using sample data - connect GA4 for live metrics';
-    }
-    
-    function transformLocalData(data) {
-      // Transform stats-engine data.json format to our analytics format
-      const ga = data.analytics || {};
-      return {
-        overview: {
-          users: ga.users || 0,
-          sessions: ga.sessions || 0,
-          pageviews: ga.pageviews || 0,
-          avgDuration: ga.avgDuration || '0:00',
-          bounceRate: ga.bounceRate || '0%',
-          conversions: ga.conversions || 0
-        },
-        sources: ga.sources || [],
-        pages: ga.pages || [],
-        devices: ga.devices || [],
-        locations: ga.locations || [],
-        funnel: ga.funnel || [],
-        events: ga.events || [],
-        utm: ga.utm || [],
-        daily: ga.daily || []
-      };
-    }
-    
-    function getDemoData() {
-      // Real data from GA4 as of March 23
-      return {
-        overview: { users: 5, sessions: 7, pageviews: 12, avgDuration: '1:24', bounceRate: '42%', conversions: 0 },
-        sources: [
-          { source: '(direct) / (none)', users: 5, sessions: 7 },
-        ],
-        pages: [
-          { page: '/', views: 3, domain: 'thearenapartners.com' },
-          { page: '/assessment.html', views: 2, domain: 'thearenapartners.com' },
-          { page: '/watch.html', views: 1, domain: 'thearenapartners.com' },
-          { page: '/calculator.html', views: 1, domain: 'thearenapartners.com' },
-          { page: '/blog/', views: 1, domain: 'thearenapartners.com' },
-          { page: '/exit-planning-guide.html', views: 1, domain: 'thearenapartners.com' },
-        ],
-        devices: [
-          { device: 'Desktop', sessions: 4 },
-          { device: 'Mobile', sessions: 3 },
-        ],
-        locations: [
-          { city: 'Houston', users: 3 },
-          { city: 'Vancouver', users: 1 },
-          { city: 'Austin', users: 1 },
-        ],
-        funnel: [
-          { step: 'Landing Page (/)', users: 5 },
-          { step: 'Watch (VSL)', users: 1 },
-          { step: 'Assessment', users: 2 },
-          { step: 'Book Call', users: 0 },
-          { step: 'NDA Signed', users: 0 },
-          { step: 'Closed Won', users: 0 },
-        ],
-        events: [
-          { event: 'page_view', count: 12 },
-          { event: 'session_start', count: 7 },
-          { event: 'first_visit', count: 5 },
-          { event: 'scroll', count: 8 },
-          { event: 'vsl_play', count: 1 },
-          { event: 'assessment_start', count: 2 },
-          { event: 'book_call_click', count: 0 },
-        ],
-        utm: [],
-        daily: [
-          { date: '2026-03-17', users: 0, sessions: 0, pageviews: 0 },
-          { date: '2026-03-18', users: 1, sessions: 1, pageviews: 2 },
-          { date: '2026-03-19', users: 1, sessions: 1, pageviews: 1 },
-          { date: '2026-03-20', users: 1, sessions: 2, pageviews: 3 },
-          { date: '2026-03-21', users: 0, sessions: 0, pageviews: 0 },
-          { date: '2026-03-22', users: 2, sessions: 2, pageviews: 4 },
-          { date: '2026-03-23', users: 1, sessions: 1, pageviews: 2 },
-        ]
-      };
-    }
-    
-    // ============================================================
-    // RENDERING
-    // ============================================================
-    
-    function renderData() {
-      if (!analyticsData) return;
-      const d = analyticsData;
-      
-      // Filter by selected page
-      let filtered = d;
-      if (currentPage === 'aba') {
-        // Filter for arenabusinessadvisors.com
-        filtered = {...d, pages: d.pages.filter(p => p.domain === 'arenabusinessadvisors.com')};
-      } else if (currentPage !== 'all') {
-        filtered = {...d, pages: d.pages.filter(p => p.page.startsWith(currentPage))};
       }
-      
-      // Overview cards
-      const o = d.overview;
-      document.getElementById('totalUsers').textContent = o.users.toLocaleString();
-      document.getElementById('totalSessions').textContent = o.sessions.toLocaleString();
-      document.getElementById('totalPageviews').textContent = o.pageviews.toLocaleString();
-      document.getElementById('avgDuration').textContent = o.avgDuration;
-      document.getElementById('bounceRate').textContent = o.bounceRate;
-      document.getElementById('totalConversions').textContent = o.conversions.toLocaleString();
-      
-      // Sources
-      renderTable('sourcesBody', d.sources, r => `<td>${r.source}</td><td style="text-align:right;font-weight:600">${r.users}</td>`);
-      
-      // Pages
-      const pagesToShow = currentPage === 'all' ? d.pages : filtered.pages;
-      renderTable('pagesBody', pagesToShow, r => {
-        const maxViews = Math.max(...d.pages.map(p => p.views));
-        const pct = (r.views / maxViews * 100) || 0;
-        return `<td><div class="bar-cell"><div class="bar-fill" style="width:${pct}%"></div>${r.page}</div></td><td style="text-align:right;font-weight:600">${r.views}</td>`;
-      });
-      
-      // Devices
-      renderTable('devicesBody', d.devices, r => `<td>${r.device}</td><td style="text-align:right;font-weight:600">${r.sessions}</td>`);
-      
-      // Locations
-      renderTable('locationsBody', d.locations, r => `<td>${r.city}</td><td style="text-align:right;font-weight:600">${r.users}</td>`);
-      
-      // Funnel
-      renderTable('funnelBody', d.funnel, r => {
-        const maxU = Math.max(...d.funnel.map(f => f.users));
-        const pct = maxU > 0 ? (r.users / maxU * 100) : 0;
-        return `<td><div class="bar-cell"><div class="bar-fill" style="width:${pct}%;background:${r.users > 0 ? '#22c55e' : '#333'}""></div>${r.step}</div></td><td style="text-align:right;font-weight:600">${r.users}</td>`;
-      });
-      
-      // Events
-      renderTable('eventsBody', d.events, r => `<td>${r.event}</td><td style="text-align:right;font-weight:600">${r.count}</td>`);
-      
-      // UTM
-      if (d.utm && d.utm.length > 0) {
-        let utmHtml = '';
-        d.utm.forEach(r => {
-          utmHtml += `<tr><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14">${r.campaign || '-'}</td><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14">${r.source || '-'}</td><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14">${r.medium || '-'}</td><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14">${r.content || '-'}</td><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14;text-align:right;font-weight:600">${r.users}</td><td style="padding:10px 0;font-size:14px;border-bottom:1px solid #0d0d14;text-align:right;font-weight:600">${r.sessions}</td></tr>`;
-        });
-        document.getElementById('utmBody').innerHTML = utmHtml;
-      }
-      
+      btn.classList.remove('loading');
+      btn.innerHTML = '🔄 Refresh';
+    }
+
+    function refresh() { fetchData(); }
+
+    function selectPage(p, el) {
+      currentPage = p;
+      document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+      if (el) el.classList.add('active');
+      renderPages();
+    }
+
+    function setMetric(m, el) {
+      metric = m;
+      document.querySelectorAll('.chart-toggle button').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
       renderChart();
     }
-    
-    function renderTable(id, data, rowFn) {
-      const tbody = document.getElementById(id);
-      if (!data || data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="2" style="color:#555;padding:12px 0">No data</td></tr>';
-        return;
-      }
-      tbody.innerHTML = data.map(r => `<tr>${rowFn(r)}</tr>`).join('');
+
+    function render() {
+      if (!DATA) return;
+      const w = DATA.week || {};
+      const m = DATA.month || {};
+      document.getElementById('realtimeUsers').textContent = DATA.realtime_users || 0;
+      document.getElementById('sUsers').textContent = (w.users || 0).toLocaleString();
+      document.getElementById('sUsersMonth').textContent = '28d: ' + (m.users || 0).toLocaleString();
+      document.getElementById('sSessions').textContent = (w.sessions || 0).toLocaleString();
+      document.getElementById('sSessionsMonth').textContent = '28d: ' + (m.sessions || 0).toLocaleString();
+      document.getElementById('sPageviews').textContent = (w.pageviews || 0).toLocaleString();
+      document.getElementById('sPageviewsMonth').textContent = '28d: ' + (m.pageviews || 0).toLocaleString();
+      document.getElementById('sDuration').textContent = Math.round(w.avg_duration || 0) + 's';
+      document.getElementById('sBounce').textContent = (DATA.bounce_rate || 0) + '%';
+      document.getElementById('sConversions').textContent = (w.conversions || 0).toLocaleString();
+
+      renderSources();
+      renderPages();
+      renderDevices();
+      renderLocations();
+      renderFunnel();
+      renderEvents();
+      renderUTM();
+      renderBlog();
+      renderChart();
     }
-    
-    // ============================================================
-    // CHART RENDERING (Canvas)
-    // ============================================================
-    
+
+    function renderSources() {
+      const src = DATA.traffic_sources || [];
+      const tb = document.getElementById('tbSources');
+      if (!src.length) { tb.innerHTML = '<tr><td colspan="2" style="color:#555">No data</td></tr>'; return; }
+      tb.innerHTML = src.map(s => `<tr><td>${s.source} / ${s.medium}</td><td style="text-align:right;font-weight:600">${s.users}</td></tr>`).join('');
+    }
+
+    function renderPages() {
+      let pages = DATA.top_pages || [];
+      if (currentPage !== 'all') pages = pages.filter(p => p.page.startsWith(currentPage));
+      const tb = document.getElementById('tbPages');
+      if (!pages.length) { tb.innerHTML = '<tr><td colspan="2" style="color:#555">No data for this page</td></tr>'; return; }
+      const mx = Math.max(...pages.map(p => p.views));
+      tb.innerHTML = pages.map(p => {
+        const pct = (p.views / mx * 100) || 0;
+        return `<tr><td><div class="bar-cell"><div class="bar-fill" style="width:${pct}%"></div>${p.page}</div></td><td style="text-align:right;font-weight:600">${p.views}</td></tr>`;
+      }).join('');
+    }
+
+    function renderDevices() {
+      const dev = DATA.devices || [];
+      const tb = document.getElementById('tbDevices');
+      if (!dev.length) { tb.innerHTML = '<tr><td colspan="2" style="color:#555">No data</td></tr>'; return; }
+      tb.innerHTML = dev.map(d => `<tr><td>${d.device}</td><td style="text-align:right;font-weight:600">${d.sessions}</td></tr>`).join('');
+    }
+
+    function renderLocations() {
+      const loc = DATA.locations || [];
+      const tb = document.getElementById('tbLocations');
+      if (!loc.length) { tb.innerHTML = '<tr><td colspan="2" style="color:#555">No data</td></tr>'; return; }
+      tb.innerHTML = loc.filter(l => l.city).map(l => `<tr><td>${l.city}</td><td style="text-align:right;font-weight:600">${l.users}</td></tr>`).join('');
+    }
+
+    function renderFunnel() {
+      const f = DATA.funnel || {};
+      const steps = ['/', '/watch.html', '/book.html', '/assessment.html', '/nda.html', '/company-info.html', '/upload.html'];
+      const labels = ['Landing Page', 'Watch (VSL)', 'Book', 'Assessment', 'NDA', 'Company Info', 'Upload Portal'];
+      const tb = document.getElementById('tbFunnel');
+      const rows = steps.map((s, i) => {
+        const d = f[s] || { users: 0, views: 0 };
+        return { step: labels[i], users: d.users || 0 };
+      });
+      const mx = Math.max(...rows.map(r => r.users), 1);
+      tb.innerHTML = rows.map(r => {
+        const pct = (r.users / mx * 100) || 0;
+        const color = r.users > 0 ? '#22c55e' : '#333';
+        return `<tr><td><div class="bar-cell"><div class="bar-fill" style="width:${pct}%;background:${color}"></div>${r.step}</div></td><td style="text-align:right;font-weight:600">${r.users}</td></tr>`;
+      }).join('');
+    }
+
+    function renderEvents() {
+      const ev = DATA.all_events || [];
+      const tb = document.getElementById('tbEvents');
+      if (!ev.length) { tb.innerHTML = '<tr><td colspan="2" style="color:#555">No data</td></tr>'; return; }
+      tb.innerHTML = ev.slice(0, 10).map(e => `<tr><td>${e.event}</td><td style="text-align:right;font-weight:600">${e.count}</td></tr>`).join('');
+    }
+
+    function renderUTM() {
+      const utm = DATA.utm || [];
+      const tb = document.getElementById('tbUTM');
+      if (!utm.length) { tb.innerHTML = '<tr><td colspan="5" style="color:#555">No UTM campaign data yet</td></tr>'; return; }
+      tb.innerHTML = utm.map(u => `<tr><td>${u.campaign}</td><td>${u.source}</td><td>${u.medium}</td><td style="text-align:right;font-weight:600">${u.users}</td><td style="text-align:right;font-weight:600">${u.sessions}</td></tr>`).join('');
+    }
+
+    function renderBlog() {
+      const blog = DATA.blog || {};
+      const articles = blog.articles || [];
+      const tb = document.getElementById('tbBlog');
+      if (!articles.length) { tb.innerHTML = '<tr><td colspan="4" style="color:#555">No blog data</td></tr>'; return; }
+      tb.innerHTML = articles.map(a => {
+        const dur = a.avg_duration ? Math.round(a.avg_duration) + 's' : '-';
+        return `<tr><td>${a.page}</td><td style="text-align:right;font-weight:600">${a.views}</td><td style="text-align:right">${a.users}</td><td style="text-align:right">${dur}</td></tr>`;
+      }).join('');
+    }
+
     function renderChart() {
       const canvas = document.getElementById('mainChart');
       const ctx = canvas.getContext('2d');
       const rect = canvas.parentElement.getBoundingClientRect();
       canvas.width = rect.width * 2;
-      canvas.height = 300 * 2;
+      canvas.height = 280 * 2;
       canvas.style.width = rect.width + 'px';
-      canvas.style.height = '300px';
+      canvas.style.height = '280px';
       ctx.scale(2, 2);
-      
-      const data = analyticsData?.daily || [];
-      if (data.length === 0) {
+
+      const daily = DATA?.daily || [];
+      const w = rect.width, h = 280;
+      const pad = { top: 20, right: 20, bottom: 40, left: 50 };
+      const cw = w - pad.left - pad.right, ch = h - pad.top - pad.bottom;
+
+      ctx.clearRect(0, 0, w, h);
+
+      if (!daily.length) {
         ctx.fillStyle = '#555';
         ctx.font = '14px -apple-system, sans-serif';
-        ctx.fillText('No daily data available', 20, 150);
+        ctx.fillText('No daily data yet - will populate on next stats refresh', 20, h/2);
         return;
       }
-      
-      const metric = chartMetric;
-      const values = data.map(d => d[metric] || 0);
-      const labels = data.map(d => {
-        const dt = new Date(d.date);
-        return `${dt.getMonth()+1}/${dt.getDate()}`;
-      });
-      
-      const maxVal = Math.max(...values, 1);
-      const w = rect.width;
-      const h = 300;
-      const padding = { top: 20, right: 20, bottom: 40, left: 50 };
-      const chartW = w - padding.left - padding.right;
-      const chartH = h - padding.top - padding.bottom;
-      
-      // Clear
-      ctx.clearRect(0, 0, w, h);
-      
-      // Grid lines
-      ctx.strokeStyle = '#1e1e2e';
-      ctx.lineWidth = 1;
+
+      const vals = daily.map(d => d[metric] || 0);
+      const labels = daily.map(d => { const dt = new Date(d.date); return `${dt.getMonth()+1}/${dt.getDate()}`; });
+      const mx = Math.max(...vals, 1);
+
+      // Grid
+      ctx.strokeStyle = '#1e1e2e'; ctx.lineWidth = 1;
       for (let i = 0; i <= 4; i++) {
-        const y = padding.top + (chartH / 4) * i;
-        ctx.beginPath();
-        ctx.moveTo(padding.left, y);
-        ctx.lineTo(w - padding.right, y);
-        ctx.stroke();
-        
-        // Y axis labels
-        ctx.fillStyle = '#555';
-        ctx.font = '11px -apple-system, sans-serif';
-        ctx.textAlign = 'right';
-        ctx.fillText(Math.round(maxVal - (maxVal / 4) * i), padding.left - 8, y + 4);
+        const y = pad.top + (ch / 4) * i;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+        ctx.fillStyle = '#555'; ctx.font = '11px -apple-system'; ctx.textAlign = 'right';
+        ctx.fillText(Math.round(mx - (mx / 4) * i), pad.left - 8, y + 4);
       }
-      
-      // X axis labels
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#555';
+
+      // X labels
+      ctx.textAlign = 'center'; ctx.fillStyle = '#555';
       const step = Math.max(1, Math.floor(labels.length / 7));
-      labels.forEach((label, i) => {
+      labels.forEach((l, i) => {
         if (i % step === 0) {
-          const x = padding.left + (chartW / (labels.length - 1 || 1)) * i;
-          ctx.fillText(label, x, h - 10);
+          const x = pad.left + (cw / Math.max(labels.length - 1, 1)) * i;
+          ctx.fillText(l, x, h - 10);
         }
       });
-      
-      // Line + area
-      if (values.length > 1) {
-        // Area fill
-        ctx.beginPath();
-        ctx.moveTo(padding.left, padding.top + chartH);
-        values.forEach((v, i) => {
-          const x = padding.left + (chartW / (values.length - 1)) * i;
-          const y = padding.top + chartH - (v / maxVal) * chartH;
-          ctx.lineTo(x, y);
-        });
-        ctx.lineTo(padding.left + chartW, padding.top + chartH);
-        ctx.closePath();
-        const grad = ctx.createLinearGradient(0, padding.top, 0, h);
-        grad.addColorStop(0, 'rgba(201, 168, 76, 0.3)');
-        grad.addColorStop(1, 'rgba(201, 168, 76, 0)');
-        ctx.fillStyle = grad;
-        ctx.fill();
-        
-        // Line
-        ctx.beginPath();
-        ctx.strokeStyle = '#C9A84C';
-        ctx.lineWidth = 2.5;
-        ctx.lineJoin = 'round';
-        values.forEach((v, i) => {
-          const x = padding.left + (chartW / (values.length - 1)) * i;
-          const y = padding.top + chartH - (v / maxVal) * chartH;
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-        
-        // Dots
-        values.forEach((v, i) => {
-          const x = padding.left + (chartW / (values.length - 1)) * i;
-          const y = padding.top + chartH - (v / maxVal) * chartH;
-          ctx.beginPath();
-          ctx.arc(x, y, 4, 0, Math.PI * 2);
-          ctx.fillStyle = '#C9A84C';
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(x, y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = '#0a0a0f';
-          ctx.fill();
-        });
-      }
+
+      if (vals.length < 2) return;
+
+      // Area
+      ctx.beginPath(); ctx.moveTo(pad.left, pad.top + ch);
+      vals.forEach((v, i) => {
+        const x = pad.left + (cw / (vals.length - 1)) * i;
+        const y = pad.top + ch - (v / mx) * ch;
+        ctx.lineTo(x, y);
+      });
+      ctx.lineTo(pad.left + cw, pad.top + ch); ctx.closePath();
+      const grad = ctx.createLinearGradient(0, pad.top, 0, h);
+      grad.addColorStop(0, 'rgba(201,168,76,0.3)'); grad.addColorStop(1, 'rgba(201,168,76,0)');
+      ctx.fillStyle = grad; ctx.fill();
+
+      // Line
+      ctx.beginPath(); ctx.strokeStyle = '#C9A84C'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+      vals.forEach((v, i) => {
+        const x = pad.left + (cw / (vals.length - 1)) * i;
+        const y = pad.top + ch - (v / mx) * ch;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      // Dots
+      vals.forEach((v, i) => {
+        const x = pad.left + (cw / (vals.length - 1)) * i;
+        const y = pad.top + ch - (v / mx) * ch;
+        ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fillStyle = '#C9A84C'; ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2); ctx.fillStyle = '#0a0a0f'; ctx.fill();
+      });
     }
-    
-    // ============================================================
-    // AUTH
-    // ============================================================
-    
-    function checkAuth() { return true; }
-    
-    // ============================================================
-    // INIT
-    // ============================================================
-    
-    if (checkAuth()) {
-      initDates();
-      fetchAnalytics();
-      // Auto-refresh every 5 minutes
-      setInterval(fetchAnalytics, 5 * 60 * 1000);
-      // Resize chart on window resize
-      window.addEventListener('resize', renderChart);
-    }
+
+    // Init
+    fetchData();
+    setInterval(fetchData, 5 * 60 * 1000);
+    window.addEventListener('resize', renderChart);
   </script>
 </body>
 </html>
