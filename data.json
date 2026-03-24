@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T16:28:09.727855+00:00",
-  "updated_local": "2026-03-24 11:28 AM",
+  "updated": "2026-03-24T16:33:52.910649+00:00",
+  "updated_local": "2026-03-24 11:33 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 81,
-      "sessions": 99,
-      "pageviews": 189,
-      "avg_duration": 483.5,
+      "users": 83,
+      "sessions": 101,
+      "pageviews": 192,
+      "avg_duration": 478.4,
       "conversions": 0
     },
     "month": {
-      "users": 81,
-      "sessions": 99,
-      "pageviews": 189,
+      "users": 83,
+      "sessions": 101,
+      "pageviews": 192,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 78,
-        "users": 43
+        "views": 80,
+        "users": 45
       },
       {
         "page": "/blog/",
@@ -145,23 +145,23 @@
         "users": 5
       },
       {
-        "page": "/disclaimer",
-        "views": 4,
-        "users": 3
+        "page": "/privacy",
+        "views": 5,
+        "users": 5
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 71,
-        "users": 64
+        "sessions": 72,
+        "users": 65
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 43,
-        "users": 36
+        "sessions": 44,
+        "users": 37
       },
       {
         "source": "vivianashford.github.io",
@@ -195,6 +195,12 @@
       },
       {
         "source": "m.facebook.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
+      },
+      {
+        "source": "oneadmin.internal.us1.twilio.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -238,9 +244,9 @@
     },
     "funnel": {
       "/": {
-        "views": 78,
-        "users": 43,
-        "avg_duration": 166.8
+        "views": 80,
+        "users": 45,
+        "avg_duration": 168.9
       },
       "/watch.html": {
         "views": 13,
@@ -290,16 +296,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 28,
-        "sessions": 32,
-        "pageviews": 33
+        "users": 30,
+        "sessions": 34,
+        "pageviews": 36
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 93,
-        "users": 76
+        "sessions": 95,
+        "users": 78
       },
       {
         "device": "Mobile",
@@ -359,6 +365,11 @@
         "sessions": 2
       },
       {
+        "city": "New Delhi",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "Paris",
         "users": 2,
         "sessions": 2
@@ -377,25 +388,20 @@
         "city": "Stratford",
         "users": 2,
         "sessions": 2
-      },
-      {
-        "city": "Ashburn",
-        "users": 1,
-        "sessions": 1
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 189
+        "count": 192
       },
       {
         "event": "scroll",
-        "count": 108
+        "count": 110
       },
       {
         "event": "session_start",
-        "count": 99
+        "count": 101
       },
       {
         "event": "user_engagement",
@@ -403,7 +409,7 @@
       },
       {
         "event": "first_visit",
-        "count": 82
+        "count": 84
       },
       {
         "event": "scroll_depth",
@@ -436,8 +442,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 64,
-        "sessions": 71
+        "users": 65,
+        "sessions": 72
       },
       {
         "campaign": "(referral)",
@@ -474,6 +480,14 @@
       {
         "campaign": "(referral)",
         "source": "m.facebook.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "campaign": "(referral)",
+        "source": "oneadmin.internal.us1.twilio.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
