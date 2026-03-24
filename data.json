@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T19:33:03.637081+00:00",
-  "updated_local": "2026-03-24 02:33 PM",
+  "updated": "2026-03-24T19:38:19.834765+00:00",
+  "updated_local": "2026-03-24 02:38 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 90,
-      "sessions": 109,
+      "users": 91,
+      "sessions": 110,
       "pageviews": 212,
-      "avg_duration": 207.1,
+      "avg_duration": 205.2,
       "conversions": 0
     },
     "month": {
-      "users": 90,
-      "sessions": 109,
+      "users": 91,
+      "sessions": 110,
       "pageviews": 212,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 92,
-        "users": 52
+        "users": 53
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 14,
-        "users": 14
+        "sessions": 15,
+        "users": 15
       },
       {
         "source": "vivianashford.github.io",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 92,
-        "users": 52,
-        "avg_duration": 165.8
+        "users": 53,
+        "avg_duration": 163.3
       },
       "/book.html": {
         "views": 14,
@@ -311,16 +311,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 35,
-        "sessions": 39,
+        "users": 36,
+        "sessions": 40,
         "pageviews": 43
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 100,
-        "users": 82
+        "sessions": 101,
+        "users": 83
       },
       {
         "device": "Mobile",
@@ -407,7 +407,7 @@
       },
       {
         "event": "scroll",
-        "count": 112
+        "count": 113
       },
       {
         "event": "user_engagement",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 78.0
+    "bounce_rate": 78.2
   }
 }
