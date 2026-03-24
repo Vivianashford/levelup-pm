@@ -118,10 +118,10 @@
 // DATA  -  Vivian updates this daily
 // ============================================================
 var DATA = {
-  lastUpdated: "March 22, 2026  -  1:30 PM CDT",
+  lastUpdated: "March 24, 2026  -  4:15 AM CDT",
   focus: {
-    task: "ORGANIC TRAFFIC: Start LinkedIn outreach + blog distribution",
-    sub: "Phase 4: Outreach. Funnel is built. Now feed it."
+    task: "CONTENT LIVE: Review graphics + schedule 10 posts to LinkedIn/Facebook",
+    sub: "Phase 4: Outreach. 10 posts ready. Graphics rendered. Jean approves, Vivian schedules."
   },
   dailyRoutine: [
     { time: "6:00 AM", task: "Read Book of Self", icon: "📖", id: "bookofself" },
@@ -132,6 +132,13 @@ var DATA = {
     { time: "7:00 AM", task: "Pull-ups", icon: "💪", id: "pullups" },
   ],
   todos: [
+    { text: "Review + approve 10 Matt Gray posts (arena-followup/outreach/matt-gray-posts/)", project: "arena", priority: "high", done: false, rev: true, rate: "$1,000/hr", meta: "REVENUE. 10 posts written 2026-03-24. 5th grade reading level. LinkedIn + Facebook. Jean approves, Vivian schedules." },
+    { text: "Review + approve 10 notebook graphics (arena-followup/graphics/*.png)", project: "arena", priority: "high", done: false, rev: true, rate: "$500/hr", meta: "REVENUE. Cream paper, Caveat font, hand-drawn style. Rendered via Puppeteer. Jean approves each before publish." },
+    { text: "Schedule 10 posts to LinkedIn + Facebook via Worker API", project: "arena", priority: "high", done: false, rev: true, rate: "$500/hr", meta: "REVENUE. Posts drafted. Graphics rendered. Needs Jean approval first. Then Vivian schedules via arena-api Worker." },
+    { text: "Distribute newsletter editions 002-006 (Transferable series)", project: "arena", priority: "med", done: false, rev: true, rate: "$500/hr", meta: "REVENUE. 5 editions written: owner dependency, deal-killers, docs multiplier, concentration risk, 18-month timeline. Vivian pushes to blog + GHL." },
+    { text: "Post 5 Reddit draft answers (review before submitting)", project: "arena", priority: "med", done: false, rev: false, rate: "$100/hr", meta: "OPS. Drafts in arena-followup/outreach/reddit-posts/. r/smallbusiness, r/Entrepreneur, r/exitplanning. Jean reviews tone before posting." },
+    { text: "Post 5 Quora draft answers (review before submitting)", project: "arena", priority: "med", done: false, rev: false, rate: "$100/hr", meta: "OPS. Drafts in arena-followup/outreach/quora-answers/. Exit planning Q&A. Jean reviews before posting." },
+    { text: "Fix LinkedIn commenting API endpoint (returning 404)", project: "arena", priority: "med", done: false, rev: false, rate: "$100/hr", meta: "OPS. POST /api/linkedin/comment on arena-api Worker returned 404 on test URN urn:li:share:7442003958379823104. May be URN issue or endpoint bug. Vivian investigates." },
     { text: "Record VSL video", project: "arena", priority: "high", done: false, rev: true, rate: "$5,000+/hr", meta: "REVENUE. #1 blocker. Entire funnel built but top is empty. Only Jean." },
     { text: "Post Day 1 LinkedIn content (Orkin story)", project: "arena", priority: "high", done: false, rev: true, rate: "$1,000/hr", meta: "REVENUE. 30 days ready. Copy from linkedin/content-calendar.md. Only Jean." },
     { text: "Set up LinkedIn automation (Dripify or Expandi)", project: "arena", priority: "high", done: false, rev: true, rate: "$500/hr", meta: "REVENUE. Auto-connects + DM sequences. See linkedin/automation-plan.md. Only Jean." },
