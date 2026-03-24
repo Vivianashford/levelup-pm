@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T17:58:06.043287+00:00",
-  "updated_local": "2026-03-24 12:58 PM",
+  "updated": "2026-03-24T18:03:08.538647+00:00",
+  "updated_local": "2026-03-24 01:03 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -93,9 +93,9 @@
       "conversions": 0
     },
     "month": {
-      "users": 88,
-      "sessions": 106,
-      "pageviews": 199,
+      "users": 90,
+      "sessions": 109,
+      "pageviews": 212,
       "conversions": 0
     },
     "top_pages": [
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 78,
-        "users": 71
+        "sessions": 80,
+        "users": 73
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 44,
-        "users": 37
+        "sessions": 14,
+        "users": 14
       },
       {
         "source": "vivianashford.github.io",
@@ -182,9 +182,15 @@
         "users": 3
       },
       {
+        "source": "m.facebook.com",
+        "medium": "referral",
+        "sessions": 3,
+        "users": 3
+      },
+      {
         "source": "telegra.ph",
         "medium": "referral",
-        "sessions": 2,
+        "sessions": 3,
         "users": 1
       },
       {
@@ -195,12 +201,6 @@
       },
       {
         "source": "l.facebook.com",
-        "medium": "referral",
-        "sessions": 1,
-        "users": 1
-      },
-      {
-        "source": "m.facebook.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -287,6 +287,10 @@
     },
     "video_events": {
       "vsl_play": {
+        "count": 2,
+        "users": 2
+      },
+      "optin_submit": {
         "count": 1,
         "users": 1
       }
@@ -301,9 +305,9 @@
       },
       {
         "date": "2026-03-23",
-        "users": 53,
-        "sessions": 63,
-        "pageviews": 152
+        "users": 55,
+        "sessions": 66,
+        "pageviews": 165
       },
       {
         "date": "2026-03-24",
@@ -315,13 +319,13 @@
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 99,
+        "sessions": 100,
         "users": 82
       },
       {
         "device": "Mobile",
-        "sessions": 8,
-        "users": 7
+        "sessions": 10,
+        "users": 9
       }
     ],
     "locations": [
@@ -456,8 +460,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 70,
-        "sessions": 77
+        "users": 73,
+        "sessions": 80
       },
       {
         "campaign": "(referral)",
@@ -485,15 +489,15 @@
       },
       {
         "campaign": "(referral)",
-        "source": "l.facebook.com",
+        "source": "m.facebook.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 1,
-        "sessions": 1
+        "users": 3,
+        "sessions": 3
       },
       {
         "campaign": "(referral)",
-        "source": "m.facebook.com",
+        "source": "l.facebook.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
@@ -513,7 +517,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
-        "sessions": 2
+        "sessions": 3
       },
       {
         "campaign": "(referral)",
@@ -524,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 97.1
+    "bounce_rate": 78.0
   }
 }
