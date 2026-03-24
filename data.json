@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T01:50:04.952313+00:00",
-  "updated_local": "2026-03-23 08:50 PM",
+  "updated": "2026-03-24T01:55:02.750156+00:00",
+  "updated_local": "2026-03-23 08:55 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -269,7 +269,7 @@
         "date": "2026-03-23",
         "users": 48,
         "sessions": 57,
-        "pageviews": 142
+        "pageviews": 144
       }
     ],
     "devices": [
@@ -364,11 +364,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 146
+        "count": 148
       },
       {
         "event": "scroll",
-        "count": 83
+        "count": 85
       },
       {
         "event": "user_engagement",
@@ -376,11 +376,11 @@
       },
       {
         "event": "session_start",
-        "count": 64
+        "count": 65
       },
       {
         "event": "first_visit",
-        "count": 52
+        "count": 53
       },
       {
         "event": "scroll_depth",
@@ -413,8 +413,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 42,
-        "sessions": 47
+        "users": 43,
+        "sessions": 48
       },
       {
         "campaign": "(referral)",
