@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T22:19:24.040734+00:00",
-  "updated_local": "2026-03-24 05:19 PM",
+  "updated": "2026-03-24T22:24:21.710943+00:00",
+  "updated_local": "2026-03-24 05:24 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 99,
-      "sessions": 120,
-      "pageviews": 220,
-      "avg_duration": 188.4,
+      "users": 101,
+      "sessions": 122,
+      "pageviews": 222,
+      "avg_duration": 185.3,
       "conversions": 0
     },
     "month": {
-      "users": 99,
-      "sessions": 120,
-      "pageviews": 220,
+      "users": 101,
+      "sessions": 122,
+      "pageviews": 222,
       "conversions": 0
     },
     "top_pages": [
@@ -460,8 +460,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 78,
-        "sessions": 86
+        "users": 80,
+        "sessions": 88
       },
       {
         "campaign": "(referral)",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 80.0
+    "bounce_rate": 80.3
   }
 }
