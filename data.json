@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T15:57:57.061137+00:00",
-  "updated_local": "2026-03-24 10:57 AM",
+  "updated": "2026-03-24T16:02:56.590892+00:00",
+  "updated_local": "2026-03-24 11:02 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 4,
     "week": {
-      "users": 79,
-      "sessions": 97,
-      "pageviews": 187,
-      "avg_duration": 493.5,
+      "users": 81,
+      "sessions": 99,
+      "pageviews": 189,
+      "avg_duration": 483.5,
       "conversions": 0
     },
     "month": {
-      "users": 79,
-      "sessions": 97,
-      "pageviews": 187,
+      "users": 81,
+      "sessions": 99,
+      "pageviews": 189,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 77,
-        "users": 42
+        "views": 78,
+        "users": 43
       },
       {
         "page": "/blog/",
@@ -120,6 +120,11 @@
         "users": 7
       },
       {
+        "page": "/contact",
+        "views": 11,
+        "users": 6
+      },
+      {
         "page": "/book.html",
         "views": 10,
         "users": 1
@@ -128,11 +133,6 @@
         "page": "/calculator.html",
         "views": 10,
         "users": 7
-      },
-      {
-        "page": "/contact",
-        "views": 10,
-        "users": 6
       },
       {
         "page": "/services",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 69,
-        "users": 63
+        "sessions": 71,
+        "users": 64
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 42,
-        "users": 35
+        "sessions": 43,
+        "users": 36
       },
       {
         "source": "vivianashford.github.io",
@@ -238,9 +238,9 @@
     },
     "funnel": {
       "/": {
-        "views": 77,
-        "users": 42,
-        "avg_duration": 169.8
+        "views": 78,
+        "users": 43,
+        "avg_duration": 166.8
       },
       "/watch.html": {
         "views": 13,
@@ -290,16 +290,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 26,
-        "sessions": 30,
-        "pageviews": 31
+        "users": 28,
+        "sessions": 32,
+        "pageviews": 33
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 91,
-        "users": 74
+        "sessions": 93,
+        "users": 76
       },
       {
         "device": "Mobile",
@@ -310,8 +310,8 @@
     "locations": [
       {
         "city": "",
-        "users": 14,
-        "sessions": 18
+        "users": 15,
+        "sessions": 19
       },
       {
         "city": "Hounslow",
@@ -387,15 +387,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 187
+        "count": 189
       },
       {
         "event": "scroll",
-        "count": 107
+        "count": 108
       },
       {
         "event": "session_start",
-        "count": 97
+        "count": 99
       },
       {
         "event": "user_engagement",
@@ -403,7 +403,7 @@
       },
       {
         "event": "first_visit",
-        "count": 81
+        "count": 82
       },
       {
         "event": "scroll_depth",
@@ -436,8 +436,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 63,
-        "sessions": 69
+        "users": 64,
+        "sessions": 71
       },
       {
         "campaign": "(referral)",
@@ -496,6 +496,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 96.9
+    "bounce_rate": 97.0
   }
 }
