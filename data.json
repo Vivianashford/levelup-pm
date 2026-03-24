@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T14:13:03.672490+00:00",
-  "updated_local": "2026-03-24 09:13 AM",
+  "updated": "2026-03-24T14:17:56.760506+00:00",
+  "updated_local": "2026-03-24 09:17 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 74,
       "sessions": 88,
-      "pageviews": 178,
+      "pageviews": 179,
       "avg_duration": 543.9,
       "conversions": 0
     },
     "month": {
       "users": 74,
       "sessions": 88,
-      "pageviews": 178,
+      "pageviews": 179,
       "conversions": 0
     },
     "top_pages": [
@@ -135,14 +135,14 @@
         "users": 5
       },
       {
+        "page": "/calculator.html",
+        "views": 7,
+        "users": 6
+      },
+      {
         "page": "/assessment.html",
         "views": 6,
         "users": 5
-      },
-      {
-        "page": "/calculator.html",
-        "views": 6,
-        "users": 6
       },
       {
         "page": "/disclaimer",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 65,
-        "users": 60
+        "sessions": 66,
+        "users": 61
       },
       {
         "source": "(not set)",
@@ -252,15 +252,15 @@
         "users": 1,
         "avg_duration": 7998.3
       },
+      "/calculator.html": {
+        "views": 7,
+        "users": 6,
+        "avg_duration": 505.3
+      },
       "/assessment.html": {
         "views": 6,
         "users": 5,
         "avg_duration": 106.0
-      },
-      "/calculator.html": {
-        "views": 6,
-        "users": 6,
-        "avg_duration": 505.3
       },
       "/nda.html": {
         "views": 2,
@@ -387,7 +387,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 178
+        "count": 179
       },
       {
         "event": "scroll",
@@ -395,7 +395,7 @@
       },
       {
         "event": "session_start",
-        "count": 89
+        "count": 90
       },
       {
         "event": "user_engagement",
@@ -403,7 +403,7 @@
       },
       {
         "event": "first_visit",
-        "count": 76
+        "count": 77
       },
       {
         "event": "scroll_depth",
