@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T00:25:03.027289+00:00",
-  "updated_local": "2026-03-23 07:25 PM",
+  "updated": "2026-03-24T00:30:12.619972+00:00",
+  "updated_local": "2026-03-23 07:30 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 47,
       "sessions": 58,
-      "pageviews": 137,
-      "avg_duration": 699.7,
+      "pageviews": 138,
+      "avg_duration": 712.7,
       "conversions": 0
     },
     "month": {
       "users": 47,
       "sessions": 58,
-      "pageviews": 137,
+      "pageviews": 138,
       "conversions": 0
     },
     "top_pages": [
@@ -120,14 +120,14 @@
         "users": 1
       },
       {
+        "page": "/about",
+        "views": 8,
+        "users": 4
+      },
+      {
         "page": "/contact",
         "views": 8,
         "users": 5
-      },
-      {
-        "page": "/about",
-        "views": 7,
-        "users": 4
       },
       {
         "page": "/services",
