@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T11:17:24.056290+00:00",
-  "updated_local": "2026-03-24 06:17 AM",
+  "updated": "2026-03-24T11:22:31.511041+00:00",
+  "updated_local": "2026-03-24 06:22 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 3,
     "week": {
-      "users": 62,
-      "sessions": 76,
-      "pageviews": 166,
-      "avg_duration": 616.4,
+      "users": 63,
+      "sessions": 77,
+      "pageviews": 167,
+      "avg_duration": 608.4,
       "conversions": 0
     },
     "month": {
-      "users": 62,
-      "sessions": 76,
-      "pageviews": 166,
+      "users": 63,
+      "sessions": 77,
+      "pageviews": 167,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 67,
-        "users": 34
+        "views": 68,
+        "users": 35
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 57,
-        "users": 52
+        "sessions": 58,
+        "users": 53
       },
       {
         "source": "(not set)",
@@ -226,9 +226,9 @@
     },
     "funnel": {
       "/": {
-        "views": 67,
-        "users": 34,
-        "avg_duration": 185.6
+        "views": 68,
+        "users": 35,
+        "avg_duration": 181.6
       },
       "/watch.html": {
         "views": 13,
@@ -273,16 +273,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 8,
-        "sessions": 9,
-        "pageviews": 10
+        "users": 9,
+        "sessions": 10,
+        "pageviews": 11
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 72,
-        "users": 58
+        "sessions": 73,
+        "users": 59
       },
       {
         "device": "Mobile",
@@ -332,6 +332,11 @@
         "sessions": 2
       },
       {
+        "city": "Paris",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "Puchong",
         "users": 2,
         "sessions": 3
@@ -360,17 +365,12 @@
         "city": "Dallas",
         "users": 1,
         "sessions": 1
-      },
-      {
-        "city": "East Los Angeles",
-        "users": 1,
-        "sessions": 1
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 166
+        "count": 167
       },
       {
         "event": "scroll",
@@ -382,11 +382,11 @@
       },
       {
         "event": "session_start",
-        "count": 79
+        "count": 80
       },
       {
         "event": "first_visit",
-        "count": 66
+        "count": 67
       },
       {
         "event": "scroll_depth",
@@ -419,8 +419,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 52,
-        "sessions": 57
+        "users": 53,
+        "sessions": 58
       },
       {
         "campaign": "(referral)",
