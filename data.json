@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T09:06:25.760909+00:00",
-  "updated_local": "2026-03-24 04:06 AM",
+  "updated": "2026-03-24T09:11:26.522636+00:00",
+  "updated_local": "2026-03-24 04:11 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -87,9 +87,9 @@
     "realtime_users": 1,
     "week": {
       "users": 59,
-      "sessions": 72,
-      "pageviews": 162,
-      "avg_duration": 650.3,
+      "sessions": 73,
+      "pageviews": 163,
+      "avg_duration": 641.5,
       "conversions": 0
     },
     "month": {
@@ -107,7 +107,7 @@
       {
         "page": "/blog/",
         "views": 17,
-        "users": 10
+        "users": 11
       },
       {
         "page": "/watch.html",
@@ -196,13 +196,13 @@
     ],
     "blog": {
       "total_views": 23,
-      "total_users": 16,
+      "total_users": 17,
       "articles": [
         {
           "page": "/blog/",
           "views": 17,
-          "users": 10,
-          "avg_duration": 427.0
+          "users": 11,
+          "avg_duration": 427.6
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -378,7 +378,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 81
+        "count": 82
       },
       {
         "event": "session_start",
