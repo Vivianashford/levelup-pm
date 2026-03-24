@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T20:59:23.100971+00:00",
-  "updated_local": "2026-03-24 03:59 PM",
+  "updated": "2026-03-24T21:04:30.096463+00:00",
+  "updated_local": "2026-03-24 04:04 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -226,7 +226,7 @@
           "page": "/blog/",
           "views": 21,
           "users": 13,
-          "avg_duration": 138.1
+          "avg_duration": 130.0
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -415,7 +415,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 114
+        "count": 115
       },
       {
         "event": "first_visit",
