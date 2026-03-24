@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T01:40:06.666649+00:00",
-  "updated_local": "2026-03-23 08:40 PM",
+  "updated": "2026-03-24T01:45:09.615498+00:00",
+  "updated_local": "2026-03-23 08:45 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 145,
-      "avg_duration": 691.7,
+      "pageviews": 146,
+      "avg_duration": 710.5,
       "conversions": 0
     },
     "month": {
       "users": 49,
       "sessions": 61,
-      "pageviews": 145,
+      "pageviews": 146,
       "conversions": 0
     },
     "top_pages": [
@@ -231,9 +231,9 @@
         "avg_duration": 179.6
       },
       "/watch.html": {
-        "views": 12,
+        "views": 13,
         "users": 2,
-        "avg_duration": 445.6
+        "avg_duration": 586.7
       },
       "/book.html": {
         "views": 9,
@@ -269,7 +269,7 @@
         "date": "2026-03-23",
         "users": 48,
         "sessions": 57,
-        "pageviews": 141
+        "pageviews": 142
       }
     ],
     "devices": [
@@ -364,7 +364,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 145
+        "count": 146
       },
       {
         "event": "scroll",
@@ -372,7 +372,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 75
+        "count": 77
       },
       {
         "event": "session_start",
