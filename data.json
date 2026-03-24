@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T07:56:25.939084+00:00",
-  "updated_local": "2026-03-24 02:56 AM",
+  "updated": "2026-03-24T08:01:26.646972+00:00",
+  "updated_local": "2026-03-24 03:01 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 53,
-      "sessions": 66,
-      "pageviews": 155,
-      "avg_duration": 699.5,
+      "users": 56,
+      "sessions": 69,
+      "pageviews": 157,
+      "avg_duration": 669.2,
       "conversions": 0
     },
     "month": {
-      "users": 53,
-      "sessions": 66,
-      "pageviews": 155,
+      "users": 56,
+      "sessions": 69,
+      "pageviews": 157,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 61,
-        "users": 28
+        "views": 63,
+        "users": 31
       },
       {
         "page": "/blog/",
@@ -160,20 +160,20 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 31,
-        "users": 25
+        "sessions": 32,
+        "users": 26
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 5,
-        "users": 2
+        "sessions": 6,
+        "users": 3
       },
       {
         "source": "linkedin.com",
         "medium": "referral",
-        "sessions": 3,
-        "users": 3
+        "sessions": 4,
+        "users": 4
       },
       {
         "source": "telegra.ph",
@@ -226,9 +226,9 @@
     },
     "funnel": {
       "/": {
-        "views": 61,
-        "users": 28,
-        "avg_duration": 197.3
+        "views": 63,
+        "users": 31,
+        "avg_duration": 183.3
       },
       "/watch.html": {
         "views": 13,
@@ -267,21 +267,27 @@
       },
       {
         "date": "2026-03-23",
-        "users": 52,
-        "sessions": 62,
-        "pageviews": 151
+        "users": 53,
+        "sessions": 63,
+        "pageviews": 152
+      },
+      {
+        "date": "2026-03-24",
+        "users": 2,
+        "sessions": 2,
+        "pageviews": 1
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 63,
-        "users": 50
+        "sessions": 65,
+        "users": 52
       },
       {
         "device": "Mobile",
-        "sessions": 3,
-        "users": 3
+        "sessions": 4,
+        "users": 4
       }
     ],
     "locations": [
@@ -356,7 +362,7 @@
         "sessions": 1
       },
       {
-        "city": "Gurnee",
+        "city": "Flower Mound",
         "users": 1,
         "sessions": 1
       }
@@ -364,11 +370,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 155
+        "count": 157
       },
       {
         "event": "scroll",
-        "count": 87
+        "count": 89
       },
       {
         "event": "user_engagement",
@@ -376,11 +382,11 @@
       },
       {
         "event": "session_start",
-        "count": 69
+        "count": 71
       },
       {
         "event": "first_visit",
-        "count": 57
+        "count": 59
       },
       {
         "event": "scroll_depth",
@@ -421,16 +427,16 @@
         "source": "linkedin.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 3,
-        "sessions": 3
+        "users": 4,
+        "sessions": 4
       },
       {
         "campaign": "(referral)",
         "source": "vivianashford.github.io",
         "medium": "referral",
         "content": "(not set)",
-        "users": 2,
-        "sessions": 5
+        "users": 3,
+        "sessions": 6
       },
       {
         "campaign": "(referral)",
@@ -457,6 +463,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.5
+    "bounce_rate": 95.7
   }
 }
