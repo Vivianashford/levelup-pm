@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T01:20:03.858224+00:00",
-  "updated_local": "2026-03-23 08:20 PM",
+  "updated": "2026-03-24T01:25:05.434326+00:00",
+  "updated_local": "2026-03-23 08:25 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
-      "users": 48,
-      "sessions": 59,
-      "pageviews": 139,
-      "avg_duration": 700.6,
+      "users": 49,
+      "sessions": 61,
+      "pageviews": 141,
+      "avg_duration": 678.1,
       "conversions": 0
     },
     "month": {
-      "users": 48,
-      "sessions": 59,
-      "pageviews": 139,
+      "users": 49,
+      "sessions": 61,
+      "pageviews": 141,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 54,
-        "users": 25
+        "views": 55,
+        "users": 26
       },
       {
         "page": "/blog/",
@@ -136,7 +136,7 @@
       },
       {
         "page": "/assessment.html",
-        "views": 5,
+        "views": 6,
         "users": 5
       },
       {
@@ -154,13 +154,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 46,
-        "users": 41
+        "sessions": 47,
+        "users": 42
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 26,
+        "sessions": 27,
         "users": 22
       },
       {
@@ -226,9 +226,9 @@
     },
     "funnel": {
       "/": {
-        "views": 54,
-        "users": 25,
-        "avg_duration": 190.2
+        "views": 55,
+        "users": 26,
+        "avg_duration": 179.6
       },
       "/watch.html": {
         "views": 10,
@@ -241,9 +241,9 @@
         "avg_duration": 15075.1
       },
       "/assessment.html": {
-        "views": 5,
+        "views": 6,
         "users": 5,
-        "avg_duration": 110.6
+        "avg_duration": 98.6
       },
       "/nda.html": {
         "views": 2,
@@ -267,16 +267,16 @@
       },
       {
         "date": "2026-03-23",
-        "users": 46,
-        "sessions": 54,
-        "pageviews": 135
+        "users": 48,
+        "sessions": 57,
+        "pageviews": 137
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 56,
-        "users": 45
+        "sessions": 59,
+        "users": 47
       },
       {
         "device": "Mobile",
@@ -318,7 +318,7 @@
       {
         "city": "Houston",
         "users": 2,
-        "sessions": 9
+        "sessions": 10
       },
       {
         "city": "Stratford",
@@ -364,7 +364,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 139
+        "count": 141
       },
       {
         "event": "scroll",
@@ -376,15 +376,15 @@
       },
       {
         "event": "session_start",
-        "count": 62
+        "count": 63
       },
       {
         "event": "first_visit",
-        "count": 51
+        "count": 52
       },
       {
         "event": "scroll_depth",
-        "count": 39
+        "count": 48
       },
       {
         "event": "click",
@@ -396,7 +396,7 @@
       },
       {
         "event": "assessment_complete",
-        "count": 1
+        "count": 2
       },
       {
         "event": "calculator_submit",
@@ -413,8 +413,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 41,
-        "sessions": 46
+        "users": 42,
+        "sessions": 47
       },
       {
         "campaign": "(referral)",
@@ -457,6 +457,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 94.8
+    "bounce_rate": 95.1
   }
 }
