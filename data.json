@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T17:53:11.494927+00:00",
-  "updated_local": "2026-03-24 12:53 PM",
+  "updated": "2026-03-24T17:58:06.043287+00:00",
+  "updated_local": "2026-03-24 12:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,28 +86,33 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 87,
-      "sessions": 105,
-      "pageviews": 198,
-      "avg_duration": 463.5,
+      "users": 90,
+      "sessions": 109,
+      "pageviews": 212,
+      "avg_duration": 207.1,
       "conversions": 0
     },
     "month": {
-      "users": 87,
-      "sessions": 105,
-      "pageviews": 198,
+      "users": 88,
+      "sessions": 106,
+      "pageviews": 199,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 86,
-        "users": 49
+        "views": 92,
+        "users": 52
       },
       {
         "page": "/blog/",
-        "views": 17,
+        "views": 19,
         "users": 11
+      },
+      {
+        "page": "/book.html",
+        "views": 14,
+        "users": 1
       },
       {
         "page": "/watch.html",
@@ -116,7 +121,12 @@
       },
       {
         "page": "/about",
-        "views": 12,
+        "views": 11,
+        "users": 8
+      },
+      {
+        "page": "/calculator.html",
+        "views": 11,
         "users": 7
       },
       {
@@ -125,18 +135,8 @@
         "users": 6
       },
       {
-        "page": "/book.html",
-        "views": 10,
-        "users": 1
-      },
-      {
-        "page": "/calculator.html",
-        "views": 10,
-        "users": 7
-      },
-      {
         "page": "/services",
-        "views": 8,
+        "views": 9,
         "users": 5
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 77,
-        "users": 70
+        "sessions": 78,
+        "users": 71
       },
       {
         "source": "(not set)",
@@ -219,70 +219,70 @@
       }
     ],
     "blog": {
-      "total_views": 23,
+      "total_views": 25,
       "total_users": 17,
       "articles": [
         {
           "page": "/blog/",
-          "views": 17,
+          "views": 19,
           "users": 11,
-          "avg_duration": 427.6
+          "avg_duration": 155.6
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
           "views": 3,
           "users": 3,
-          "avg_duration": 46.1
+          "avg_duration": 48.6
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
           "views": 2,
           "users": 2,
-          "avg_duration": 687.8
+          "avg_duration": 8.5
         },
         {
           "page": "/blog/mckinsey-5-trillion-boomer-business-transfer.html",
           "views": 1,
           "users": 1,
-          "avg_duration": 16.2
+          "avg_duration": 1338.6
         }
       ]
     },
     "funnel": {
       "/": {
-        "views": 86,
-        "users": 49,
-        "avg_duration": 163.5
+        "views": 92,
+        "users": 52,
+        "avg_duration": 165.8
+      },
+      "/book.html": {
+        "views": 14,
+        "users": 1,
+        "avg_duration": 1668.9
       },
       "/watch.html": {
         "views": 13,
         "users": 2,
-        "avg_duration": 586.7
-      },
-      "/book.html": {
-        "views": 10,
-        "users": 1,
-        "avg_duration": 7998.3
+        "avg_duration": 105.1
       },
       "/calculator.html": {
-        "views": 10,
+        "views": 11,
         "users": 7,
-        "avg_duration": 379.0
+        "avg_duration": 22.1
       },
       "/assessment.html": {
         "views": 6,
         "users": 5,
-        "avg_duration": 106.0
+        "avg_duration": 93.0
       },
       "/nda.html": {
         "views": 2,
         "users": 1,
-        "avg_duration": 327.5
+        "avg_duration": 41.0
       },
       "/upload.html": {
         "views": 2,
         "users": 2,
-        "avg_duration": 656.4
+        "avg_duration": 272.0
       }
     },
     "video_events": {
@@ -307,16 +307,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 34,
-        "sessions": 38,
-        "pageviews": 42
+        "users": 35,
+        "sessions": 39,
+        "pageviews": 43
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 98,
-        "users": 81
+        "sessions": 99,
+        "users": 82
       },
       {
         "device": "Mobile",
@@ -327,8 +327,8 @@
     "locations": [
       {
         "city": "",
-        "users": 16,
-        "sessions": 20
+        "users": 8,
+        "sessions": 8
       },
       {
         "city": "Hounslow",
@@ -346,6 +346,11 @@
         "sessions": 6
       },
       {
+        "city": "Boardman",
+        "users": 3,
+        "sessions": 3
+      },
+      {
         "city": "Council Bluffs",
         "users": 3,
         "sessions": 3
@@ -353,7 +358,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 12
+        "sessions": 13
       },
       {
         "city": "London",
@@ -364,11 +369,6 @@
         "city": "Miami",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Boardman",
-        "users": 2,
-        "sessions": 2
       },
       {
         "city": "Burnaby",
@@ -394,41 +394,36 @@
         "city": "Puchong",
         "users": 2,
         "sessions": 3
-      },
-      {
-        "city": "Quezon City",
-        "users": 2,
-        "sessions": 2
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 198
+        "count": 212
       },
       {
         "event": "scroll",
-        "count": 111
+        "count": 112
+      },
+      {
+        "event": "user_engagement",
+        "count": 110
       },
       {
         "event": "session_start",
         "count": 107
       },
       {
-        "event": "user_engagement",
-        "count": 95
-      },
-      {
         "event": "first_visit",
-        "count": 90
+        "count": 89
       },
       {
         "event": "scroll_depth",
-        "count": 64
+        "count": 77
       },
       {
         "event": "click",
-        "count": 7
+        "count": 6
       },
       {
         "event": "assessment_start",
@@ -439,15 +434,19 @@
         "count": 2
       },
       {
+        "event": "vsl_play",
+        "count": 2
+      },
+      {
         "event": "calculator_submit",
         "count": 1
       },
       {
-        "event": "video_start",
+        "event": "optin_submit",
         "count": 1
       },
       {
-        "event": "vsl_play",
+        "event": "video_start",
         "count": 1
       }
     ],
