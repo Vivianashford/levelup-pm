@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-24T01:15:02.394420+00:00",
+  "updated": "2026-03-24T01:15:31.748756+00:00",
   "updated_local": "2026-03-23 08:15 PM",
   "scoreboard": {
     "conversations": 0,
@@ -257,6 +257,206 @@
       }
     },
     "video_events": {},
-    "video_progress": {}
+    "video_progress": {},
+    "daily": [
+      {
+        "date": "2026-03-22",
+        "users": 2,
+        "sessions": 4,
+        "pageviews": 4
+      },
+      {
+        "date": "2026-03-23",
+        "users": 46,
+        "sessions": 54,
+        "pageviews": 135
+      }
+    ],
+    "devices": [
+      {
+        "device": "Desktop",
+        "sessions": 56,
+        "users": 45
+      },
+      {
+        "device": "Mobile",
+        "sessions": 2,
+        "users": 2
+      }
+    ],
+    "locations": [
+      {
+        "city": "",
+        "users": 10,
+        "sessions": 13
+      },
+      {
+        "city": "Wheaton",
+        "users": 7,
+        "sessions": 7
+      },
+      {
+        "city": "Amsterdam",
+        "users": 4,
+        "sessions": 4
+      },
+      {
+        "city": "Hounslow",
+        "users": 4,
+        "sessions": 4
+      },
+      {
+        "city": "Miami",
+        "users": 3,
+        "sessions": 3
+      },
+      {
+        "city": "Des Moines",
+        "users": 2,
+        "sessions": 2
+      },
+      {
+        "city": "Houston",
+        "users": 2,
+        "sessions": 9
+      },
+      {
+        "city": "Stratford",
+        "users": 2,
+        "sessions": 2
+      },
+      {
+        "city": "Barcelona",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Boulogne-Billancourt",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Burnaby",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Council Bluffs",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Dallas",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Gurnee",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "city": "Jacksonville",
+        "users": 1,
+        "sessions": 2
+      }
+    ],
+    "all_events": [
+      {
+        "event": "page_view",
+        "count": 139
+      },
+      {
+        "event": "scroll",
+        "count": 80
+      },
+      {
+        "event": "user_engagement",
+        "count": 74
+      },
+      {
+        "event": "session_start",
+        "count": 62
+      },
+      {
+        "event": "first_visit",
+        "count": 51
+      },
+      {
+        "event": "scroll_depth",
+        "count": 39
+      },
+      {
+        "event": "click",
+        "count": 7
+      },
+      {
+        "event": "assessment_start",
+        "count": 3
+      },
+      {
+        "event": "assessment_complete",
+        "count": 1
+      },
+      {
+        "event": "calculator_submit",
+        "count": 1
+      },
+      {
+        "event": "video_start",
+        "count": 1
+      }
+    ],
+    "utm": [
+      {
+        "campaign": "(direct)",
+        "source": "(direct)",
+        "medium": "(none)",
+        "content": "(not set)",
+        "users": 41,
+        "sessions": 46
+      },
+      {
+        "campaign": "(referral)",
+        "source": "linkedin.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 2,
+        "sessions": 2
+      },
+      {
+        "campaign": "(referral)",
+        "source": "vivianashford.github.io",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 2,
+        "sessions": 4
+      },
+      {
+        "campaign": "(referral)",
+        "source": "l.facebook.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "campaign": "(referral)",
+        "source": "telegra.ph",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 2
+      },
+      {
+        "campaign": "(referral)",
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
+      }
+    ],
+    "bounce_rate": 94.8
   }
 }
