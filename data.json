@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T14:22:59.450755+00:00",
-  "updated_local": "2026-03-24 09:22 AM",
+  "updated": "2026-03-24T14:27:57.986102+00:00",
+  "updated_local": "2026-03-24 09:27 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,7 +84,7 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 1,
     "week": {
       "users": 75,
       "sessions": 89,
@@ -94,8 +94,8 @@
     },
     "month": {
       "users": 75,
-      "sessions": 89,
-      "pageviews": 180,
+      "sessions": 91,
+      "pageviews": 182,
       "conversions": 0
     },
     "top_pages": [
@@ -125,14 +125,14 @@
         "users": 1
       },
       {
+        "page": "/calculator.html",
+        "views": 10,
+        "users": 7
+      },
+      {
         "page": "/contact",
         "views": 9,
         "users": 6
-      },
-      {
-        "page": "/calculator.html",
-        "views": 8,
-        "users": 7
       },
       {
         "page": "/services",
@@ -166,20 +166,20 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 8,
+        "sessions": 9,
         "users": 4
       },
       {
         "source": "linkedin.com",
         "medium": "referral",
-        "sessions": 4,
+        "sessions": 5,
         "users": 4
       },
       {
         "source": "facebook.com",
         "medium": "referral",
-        "sessions": 2,
-        "users": 2
+        "sessions": 3,
+        "users": 3
       },
       {
         "source": "telegra.ph",
@@ -253,9 +253,9 @@
         "avg_duration": 7998.3
       },
       "/calculator.html": {
-        "views": 8,
+        "views": 10,
         "users": 7,
-        "avg_duration": 433.1
+        "avg_duration": 379.0
       },
       "/assessment.html": {
         "views": 6,
@@ -291,26 +291,26 @@
       {
         "date": "2026-03-24",
         "users": 21,
-        "sessions": 22,
-        "pageviews": 24
+        "sessions": 24,
+        "pageviews": 26
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 84,
+        "sessions": 85,
         "users": 70
       },
       {
         "device": "Mobile",
-        "sessions": 6,
+        "sessions": 7,
         "users": 6
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 13,
+        "users": 14,
         "sessions": 17
       },
       {
@@ -336,7 +336,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 11
+        "sessions": 12
       },
       {
         "city": "Miami",
@@ -387,7 +387,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 180
+        "count": 182
       },
       {
         "event": "scroll",
@@ -395,15 +395,15 @@
       },
       {
         "event": "session_start",
-        "count": 91
+        "count": 94
       },
       {
         "event": "user_engagement",
-        "count": 88
+        "count": 89
       },
       {
         "event": "first_visit",
-        "count": 78
+        "count": 79
       },
       {
         "event": "scroll_depth",
@@ -445,7 +445,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 4
+        "sessions": 5
       },
       {
         "campaign": "(referral)",
@@ -453,15 +453,15 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 8
+        "sessions": 9
       },
       {
         "campaign": "(referral)",
         "source": "facebook.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 2,
-        "sessions": 2
+        "users": 3,
+        "sessions": 3
       },
       {
         "campaign": "(referral)",
@@ -496,6 +496,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 96.6
+    "bounce_rate": 96.7
   }
 }
