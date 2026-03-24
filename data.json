@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T19:53:09.866747+00:00",
-  "updated_local": "2026-03-24 02:53 PM",
+  "updated": "2026-03-24T19:58:07.670905+00:00",
+  "updated_local": "2026-03-24 02:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,30 +84,30 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
-      "users": 91,
-      "sessions": 110,
-      "pageviews": 212,
-      "avg_duration": 205.2,
+      "users": 98,
+      "sessions": 117,
+      "pageviews": 217,
+      "avg_duration": 193.2,
       "conversions": 0
     },
     "month": {
-      "users": 91,
-      "sessions": 110,
-      "pageviews": 212,
+      "users": 98,
+      "sessions": 117,
+      "pageviews": 217,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 92,
-        "users": 53
+        "views": 95,
+        "users": 58
       },
       {
         "page": "/blog/",
-        "views": 19,
-        "users": 11
+        "views": 21,
+        "users": 13
       },
       {
         "page": "/book.html",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 80,
-        "users": 73
+        "sessions": 84,
+        "users": 77
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 15,
-        "users": 15
+        "sessions": 18,
+        "users": 18
       },
       {
         "source": "vivianashford.github.io",
@@ -170,16 +170,16 @@
         "users": 4
       },
       {
+        "source": "facebook.com",
+        "medium": "referral",
+        "sessions": 5,
+        "users": 5
+      },
+      {
         "source": "linkedin.com",
         "medium": "referral",
         "sessions": 5,
         "users": 4
-      },
-      {
-        "source": "facebook.com",
-        "medium": "referral",
-        "sessions": 3,
-        "users": 3
       },
       {
         "source": "m.facebook.com",
@@ -219,14 +219,14 @@
       }
     ],
     "blog": {
-      "total_views": 25,
-      "total_users": 17,
+      "total_views": 27,
+      "total_users": 19,
       "articles": [
         {
           "page": "/blog/",
-          "views": 19,
-          "users": 11,
-          "avg_duration": 155.6
+          "views": 21,
+          "users": 13,
+          "avg_duration": 138.1
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 92,
-        "users": 53,
-        "avg_duration": 163.3
+        "views": 95,
+        "users": 58,
+        "avg_duration": 152.0
       },
       "/book.html": {
         "views": 14,
@@ -311,16 +311,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 36,
-        "sessions": 40,
-        "pageviews": 43
+        "users": 43,
+        "sessions": 47,
+        "pageviews": 48
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 101,
-        "users": 83
+        "sessions": 108,
+        "users": 90
       },
       {
         "device": "Mobile",
@@ -330,6 +330,11 @@
     ],
     "locations": [
       {
+        "city": "Wheaton",
+        "users": 10,
+        "sessions": 10
+      },
+      {
         "city": "",
         "users": 8,
         "sessions": 8
@@ -338,11 +343,6 @@
         "city": "Hounslow",
         "users": 8,
         "sessions": 8
-      },
-      {
-        "city": "Wheaton",
-        "users": 7,
-        "sessions": 7
       },
       {
         "city": "Amsterdam",
@@ -375,6 +375,11 @@
         "sessions": 3
       },
       {
+        "city": "Boulogne-Billancourt",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "Burnaby",
         "users": 2,
         "sessions": 2
@@ -385,41 +390,36 @@
         "sessions": 2
       },
       {
+        "city": "East Los Angeles",
+        "users": 2,
+        "sessions": 2
+      },
+      {
         "city": "New Delhi",
         "users": 2,
         "sessions": 2
-      },
-      {
-        "city": "Paris",
-        "users": 2,
-        "sessions": 2
-      },
-      {
-        "city": "Puchong",
-        "users": 2,
-        "sessions": 3
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 212
+        "count": 217
       },
       {
         "event": "scroll",
-        "count": 113
-      },
-      {
-        "event": "user_engagement",
-        "count": 110
+        "count": 117
       },
       {
         "event": "session_start",
-        "count": 107
+        "count": 112
+      },
+      {
+        "event": "user_engagement",
+        "count": 111
       },
       {
         "event": "first_visit",
-        "count": 89
+        "count": 94
       },
       {
         "event": "scroll_depth",
@@ -460,8 +460,16 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 73,
-        "sessions": 80
+        "users": 77,
+        "sessions": 84
+      },
+      {
+        "campaign": "(referral)",
+        "source": "facebook.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 5,
+        "sessions": 5
       },
       {
         "campaign": "(referral)",
@@ -478,14 +486,6 @@
         "content": "(not set)",
         "users": 4,
         "sessions": 9
-      },
-      {
-        "campaign": "(referral)",
-        "source": "facebook.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 3,
-        "sessions": 3
       },
       {
         "campaign": "(referral)",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 78.2
+    "bounce_rate": 79.5
   }
 }
