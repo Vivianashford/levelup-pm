@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-24T04:46:20.431789+00:00",
-  "updated_local": "2026-03-23 11:46 PM",
+  "updated": "2026-03-24T04:51:26.471407+00:00",
+  "updated_local": "2026-03-23 11:51 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 2,
     "week": {
-      "users": 50,
-      "sessions": 63,
+      "users": 51,
+      "sessions": 64,
       "pageviews": 152,
-      "avg_duration": 713.3,
+      "avg_duration": 704.8,
       "conversions": 0
     },
     "month": {
-      "users": 50,
-      "sessions": 63,
+      "users": 51,
+      "sessions": 64,
       "pageviews": 152,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 59,
-        "users": 26
+        "users": 27
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 29,
-        "users": 23
+        "sessions": 30,
+        "users": 24
       },
       {
         "source": "vivianashford.github.io",
@@ -227,8 +227,8 @@
     "funnel": {
       "/": {
         "views": 59,
-        "users": 26,
-        "avg_duration": 174.8
+        "users": 27,
+        "avg_duration": 174.6
       },
       "/watch.html": {
         "views": 13,
@@ -267,16 +267,16 @@
       },
       {
         "date": "2026-03-23",
-        "users": 49,
-        "sessions": 59,
+        "users": 50,
+        "sessions": 60,
         "pageviews": 148
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 60,
-        "users": 47
+        "sessions": 61,
+        "users": 48
       },
       {
         "device": "Mobile",
@@ -368,11 +368,11 @@
       },
       {
         "event": "scroll",
-        "count": 85
+        "count": 86
       },
       {
         "event": "user_engagement",
-        "count": 78
+        "count": 79
       },
       {
         "event": "session_start",
@@ -457,6 +457,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 95.2
+    "bounce_rate": 95.3
   }
 }
