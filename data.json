@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T18:46:38.873464+00:00",
-  "updated_local": "2026-03-25 01:46 PM",
+  "updated": "2026-03-25T18:51:44.639775+00:00",
+  "updated_local": "2026-03-25 01:51 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -93,9 +93,9 @@
       "conversions": 0
     },
     "month": {
-      "users": 115,
-      "sessions": 138,
-      "pageviews": 237,
+      "users": 118,
+      "sessions": 141,
+      "pageviews": 245,
       "conversions": 0
     },
     "top_pages": [
@@ -311,9 +311,9 @@
       },
       {
         "date": "2026-03-24",
-        "users": 55,
-        "sessions": 61,
-        "pageviews": 62
+        "users": 58,
+        "sessions": 64,
+        "pageviews": 70
       },
       {
         "date": "2026-03-25",
