@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T01:44:22.713976+00:00",
-  "updated_local": "2026-03-24 08:44 PM",
+  "updated": "2026-03-25T01:49:26.417691+00:00",
+  "updated_local": "2026-03-24 08:49 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 103,
-        "users": 63
+        "users": 64
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 24,
-        "users": 22
+        "sessions": 25,
+        "users": 23
       },
       {
         "source": "vivianashford.github.io",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 103,
-        "users": 63,
-        "avg_duration": 138.6
+        "users": 64,
+        "avg_duration": 136.9
       },
       "/book.html": {
         "views": 14,
@@ -311,8 +311,8 @@
       },
       {
         "date": "2026-03-24",
-        "users": 49,
-        "sessions": 55,
+        "users": 50,
+        "sessions": 56,
         "pageviews": 56
       }
     ],
