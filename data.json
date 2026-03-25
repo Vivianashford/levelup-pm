@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T18:51:44.639775+00:00",
-  "updated_local": "2026-03-25 01:51 PM",
+  "updated": "2026-03-25T18:56:37.293426+00:00",
+  "updated_local": "2026-03-25 01:56 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 2,
     "week": {
-      "users": 115,
-      "sessions": 138,
-      "pageviews": 237,
-      "avg_duration": 164.4,
+      "users": 116,
+      "sessions": 140,
+      "pageviews": 239,
+      "avg_duration": 162.1,
       "conversions": 0
     },
     "month": {
-      "users": 118,
-      "sessions": 141,
-      "pageviews": 245,
+      "users": 119,
+      "sessions": 143,
+      "pageviews": 247,
       "conversions": 0
     },
     "top_pages": [
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 102,
-        "users": 92
+        "sessions": 103,
+        "users": 93
       },
       {
         "source": "(not set)",
@@ -194,6 +194,12 @@
         "users": 1
       },
       {
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "sessions": 2,
+        "users": 2
+      },
+      {
         "source": "google",
         "medium": "organic",
         "sessions": 1,
@@ -207,12 +213,6 @@
       },
       {
         "source": "oneadmin.internal.us1.twilio.com",
-        "medium": "referral",
-        "sessions": 1,
-        "users": 1
-      },
-      {
-        "source": "thearenapartners.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -466,8 +466,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 92,
-        "sessions": 102
+        "users": 93,
+        "sessions": 103
       },
       {
         "campaign": "(referral)",
@@ -503,6 +503,14 @@
       },
       {
         "campaign": "(referral)",
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 2,
+        "sessions": 2
+      },
+      {
+        "campaign": "(referral)",
         "source": "l.facebook.com",
         "medium": "referral",
         "content": "(not set)",
@@ -524,14 +532,6 @@
         "content": "(not set)",
         "users": 1,
         "sessions": 3
-      },
-      {
-        "campaign": "(referral)",
-        "source": "thearenapartners.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 1,
-        "sessions": 1
       }
     ],
     "bounce_rate": 82.6
