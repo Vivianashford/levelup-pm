@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T19:33:05.987373+00:00",
-  "updated_local": "2026-03-25 02:33 PM",
+  "updated": "2026-03-25T19:38:05.710382+00:00",
+  "updated_local": "2026-03-25 02:38 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 117,
       "sessions": 143,
-      "pageviews": 243,
-      "avg_duration": 167.1,
+      "pageviews": 244,
+      "avg_duration": 176.2,
       "conversions": 0
     },
     "month": {
       "users": 120,
       "sessions": 146,
-      "pageviews": 251,
+      "pageviews": 252,
       "conversions": 0
     },
     "top_pages": [
@@ -111,7 +111,7 @@
       },
       {
         "page": "/book.html",
-        "views": 14,
+        "views": 15,
         "users": 1
       },
       {
@@ -255,9 +255,9 @@
         "avg_duration": 116.9
       },
       "/book.html": {
-        "views": 14,
+        "views": 15,
         "users": 1,
-        "avg_duration": 1668.9
+        "avg_duration": 1112.6
       },
       "/watch.html": {
         "views": 13,
@@ -283,6 +283,11 @@
         "views": 2,
         "users": 2,
         "avg_duration": 272.0
+      },
+      "/company-info.html": {
+        "views": 0,
+        "users": 1,
+        "avg_duration": 1296.2
       }
     },
     "video_events": {
@@ -319,7 +324,7 @@
         "date": "2026-03-25",
         "users": 11,
         "sessions": 12,
-        "pageviews": 12
+        "pageviews": 13
       }
     ],
     "devices": [
@@ -409,11 +414,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 243
+        "count": 244
       },
       {
         "event": "scroll",
-        "count": 137
+        "count": 138
       },
       {
         "event": "session_start",
@@ -421,7 +426,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 125
+        "count": 126
       },
       {
         "event": "first_visit",
