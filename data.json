@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T19:58:01.148450+00:00",
-  "updated_local": "2026-03-25 02:58 PM",
+  "updated": "2026-03-25T20:03:05.862243+00:00",
+  "updated_local": "2026-03-25 03:03 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 120,
-      "sessions": 146,
-      "pageviews": 255,
-      "avg_duration": 175.6,
+      "users": 121,
+      "sessions": 147,
+      "pageviews": 257,
+      "avg_duration": 174.4,
       "conversions": 0
     },
     "month": {
-      "users": 120,
-      "sessions": 146,
-      "pageviews": 255,
+      "users": 121,
+      "sessions": 147,
+      "pageviews": 257,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 124,
-        "users": 77
+        "views": 125,
+        "users": 78
       },
       {
         "page": "/blog/",
@@ -116,7 +116,7 @@
       },
       {
         "page": "/calculator.html",
-        "views": 13,
+        "views": 14,
         "users": 9
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 110,
-        "users": 99
+        "sessions": 111,
+        "users": 100
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 7,
-        "users": 7
+        "sessions": 8,
+        "users": 8
       },
       {
         "source": "facebook.com",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 124,
-        "users": 77,
-        "avg_duration": 115.3
+        "views": 125,
+        "users": 78,
+        "avg_duration": 114.1
       },
       "/book.html": {
         "views": 15,
@@ -260,7 +260,7 @@
         "avg_duration": 1112.6
       },
       "/calculator.html": {
-        "views": 13,
+        "views": 14,
         "users": 9,
         "avg_duration": 23.5
       },
@@ -322,16 +322,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 11,
-        "sessions": 12,
-        "pageviews": 16
+        "users": 12,
+        "sessions": 13,
+        "pageviews": 18
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 135,
-        "users": 110
+        "sessions": 136,
+        "users": 111
       },
       {
         "device": "Mobile",
@@ -371,6 +371,11 @@
         "sessions": 4
       },
       {
+        "city": "East Los Angeles",
+        "users": 4,
+        "sessions": 4
+      },
+      {
         "city": "San Jose",
         "users": 4,
         "sessions": 4
@@ -382,11 +387,6 @@
       },
       {
         "city": "Burnaby",
-        "users": 3,
-        "sessions": 3
-      },
-      {
-        "city": "East Los Angeles",
         "users": 3,
         "sessions": 3
       },
@@ -414,23 +414,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 255
+        "count": 257
       },
       {
         "event": "session_start",
-        "count": 144
+        "count": 145
       },
       {
         "event": "scroll",
-        "count": 142
+        "count": 144
       },
       {
         "event": "user_engagement",
-        "count": 131
+        "count": 133
       },
       {
         "event": "first_visit",
-        "count": 119
+        "count": 120
       },
       {
         "event": "scroll_depth",
@@ -438,7 +438,7 @@
       },
       {
         "event": "click",
-        "count": 7
+        "count": 8
       },
       {
         "event": "assessment_start",
@@ -471,8 +471,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 99,
-        "sessions": 110
+        "users": 100,
+        "sessions": 111
       },
       {
         "campaign": "(referral)",
@@ -539,6 +539,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.3
+    "bounce_rate": 73.5
   }
 }
