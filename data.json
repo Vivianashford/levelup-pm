@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T16:21:38.617267+00:00",
-  "updated_local": "2026-03-25 11:21 AM",
+  "updated": "2026-03-25T16:26:39.913037+00:00",
+  "updated_local": "2026-03-25 11:26 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 110,
-      "sessions": 132,
-      "pageviews": 232,
-      "avg_duration": 171.4,
+      "users": 112,
+      "sessions": 135,
+      "pageviews": 234,
+      "avg_duration": 167.6,
       "conversions": 0
     },
     "month": {
-      "users": 110,
-      "sessions": 132,
-      "pageviews": 232,
+      "users": 112,
+      "sessions": 135,
+      "pageviews": 234,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 109,
-        "users": 69
+        "views": 111,
+        "users": 71
       },
       {
         "page": "/blog/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 97,
-        "users": 88
+        "sessions": 99,
+        "users": 89
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 29,
-        "users": 27
+        "sessions": 30,
+        "users": 28
       },
       {
         "source": "vivianashford.github.io",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 109,
-        "users": 69,
-        "avg_duration": 129.1
+        "views": 111,
+        "users": 71,
+        "avg_duration": 124.7
       },
       "/book.html": {
         "views": 14,
@@ -317,16 +317,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 1,
-        "sessions": 1,
-        "pageviews": 1
+        "users": 3,
+        "sessions": 4,
+        "pageviews": 3
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 123,
-        "users": 102
+        "sessions": 126,
+        "users": 104
       },
       {
         "device": "Mobile",
@@ -338,7 +338,7 @@
       {
         "city": "",
         "users": 11,
-        "sessions": 12
+        "sessions": 13
       },
       {
         "city": "Wheaton",
@@ -361,14 +361,14 @@
         "sessions": 5
       },
       {
-        "city": "Council Bluffs",
+        "city": "Aulnay-sous-Bois",
         "users": 4,
         "sessions": 4
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 3,
-        "sessions": 3
+        "city": "Council Bluffs",
+        "users": 4,
+        "sessions": 4
       },
       {
         "city": "Boardman",
@@ -409,23 +409,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 232
-      },
-      {
-        "event": "scroll",
-        "count": 126
+        "count": 234
       },
       {
         "event": "session_start",
-        "count": 126
+        "count": 128
+      },
+      {
+        "event": "scroll",
+        "count": 127
       },
       {
         "event": "user_engagement",
-        "count": 120
+        "count": 121
       },
       {
         "event": "first_visit",
-        "count": 106
+        "count": 107
       },
       {
         "event": "scroll_depth",
@@ -466,8 +466,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 88,
-        "sessions": 97
+        "users": 89,
+        "sessions": 99
       },
       {
         "campaign": "(referral)",
@@ -534,6 +534,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 81.8
+    "bounce_rate": 82.2
   }
 }
