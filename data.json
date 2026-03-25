@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T01:59:23.871939+00:00",
-  "updated_local": "2026-03-24 08:59 PM",
+  "updated": "2026-03-25T02:07:12.863486+00:00",
+  "updated_local": "2026-03-24 09:07 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -89,7 +89,7 @@
       "users": 104,
       "sessions": 126,
       "pageviews": 225,
-      "avg_duration": 179.4,
+      "avg_duration": 179.5,
       "conversions": 0
     },
     "month": {
