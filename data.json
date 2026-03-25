@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T23:08:55.350961+00:00",
-  "updated_local": "2026-03-25 06:08 PM",
+  "updated": "2026-03-25T23:13:53.372958+00:00",
+  "updated_local": "2026-03-25 06:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -323,14 +323,14 @@
       {
         "date": "2026-03-25",
         "users": 12,
-        "sessions": 14,
-        "pageviews": 21
+        "sessions": 15,
+        "pageviews": 22
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 137,
+        "sessions": 138,
         "users": 111
       },
       {
@@ -393,7 +393,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 16
+        "sessions": 17
       },
       {
         "city": "Istres",
@@ -414,7 +414,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 260
+        "count": 261
       },
       {
         "event": "scroll",
@@ -422,7 +422,7 @@
       },
       {
         "event": "session_start",
-        "count": 146
+        "count": 147
       },
       {
         "event": "user_engagement",
@@ -504,7 +504,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 11
+        "sessions": 12
       },
       {
         "campaign": "(referral)",
@@ -539,6 +539,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.6
+    "bounce_rate": 73.8
   }
 }
