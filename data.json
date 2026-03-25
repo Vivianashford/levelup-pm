@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T01:14:25.396190+00:00",
-  "updated_local": "2026-03-24 08:14 PM",
+  "updated": "2026-03-25T01:19:23.039523+00:00",
+  "updated_local": "2026-03-24 08:19 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -319,8 +319,8 @@
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 114,
-        "users": 94
+        "sessions": 116,
+        "users": 95
       },
       {
         "device": "Mobile",
@@ -331,8 +331,8 @@
     "locations": [
       {
         "city": "",
-        "users": 10,
-        "sessions": 11
+        "users": 11,
+        "sessions": 12
       },
       {
         "city": "Wheaton",
@@ -407,7 +407,7 @@
       },
       {
         "event": "scroll",
-        "count": 120
+        "count": 122
       },
       {
         "event": "session_start",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 80.5
+    "bounce_rate": 80.8
   }
 }
