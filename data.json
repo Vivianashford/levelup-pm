@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T17:56:35.822052+00:00",
-  "updated_local": "2026-03-25 12:56 PM",
+  "updated": "2026-03-25T18:01:38.797360+00:00",
+  "updated_local": "2026-03-25 01:01 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 114,
-      "sessions": 137,
-      "pageviews": 236,
-      "avg_duration": 165.3,
+      "users": 115,
+      "sessions": 138,
+      "pageviews": 237,
+      "avg_duration": 164.4,
       "conversions": 0
     },
     "month": {
-      "users": 114,
-      "sessions": 137,
-      "pageviews": 236,
+      "users": 115,
+      "sessions": 138,
+      "pageviews": 237,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 113,
-        "users": 73
+        "views": 114,
+        "users": 74
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 101,
-        "users": 91
+        "sessions": 102,
+        "users": 92
       },
       {
         "source": "(not set)",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 113,
-        "users": 73,
-        "avg_duration": 122.0
+        "views": 114,
+        "users": 74,
+        "avg_duration": 121.2
       },
       "/book.html": {
         "views": 14,
@@ -317,16 +317,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 5,
-        "sessions": 6,
-        "pageviews": 5
+        "users": 7,
+        "sessions": 7,
+        "pageviews": 6
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 128,
-        "users": 106
+        "sessions": 129,
+        "users": 107
       },
       {
         "device": "Mobile",
@@ -346,14 +346,14 @@
         "sessions": 10
       },
       {
-        "city": "Hounslow",
+        "city": "Amsterdam",
         "users": 8,
         "sessions": 8
       },
       {
-        "city": "Amsterdam",
-        "users": 7,
-        "sessions": 7
+        "city": "Hounslow",
+        "users": 8,
+        "sessions": 8
       },
       {
         "city": "London",
@@ -409,15 +409,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 236
+        "count": 237
       },
       {
         "event": "scroll",
-        "count": 130
+        "count": 131
       },
       {
         "event": "session_start",
-        "count": 130
+        "count": 131
       },
       {
         "event": "user_engagement",
@@ -425,7 +425,7 @@
       },
       {
         "event": "first_visit",
-        "count": 109
+        "count": 110
       },
       {
         "event": "scroll_depth",
@@ -433,7 +433,7 @@
       },
       {
         "event": "click",
-        "count": 6
+        "count": 7
       },
       {
         "event": "assessment_start",
@@ -466,8 +466,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 91,
-        "sessions": 101
+        "users": 92,
+        "sessions": 102
       },
       {
         "campaign": "(referral)",
@@ -534,6 +534,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 82.5
+    "bounce_rate": 82.6
   }
 }
