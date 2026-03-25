@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T00:34:27.504168+00:00",
-  "updated_local": "2026-03-24 07:34 PM",
+  "updated": "2026-03-25T00:39:20.077110+00:00",
+  "updated_local": "2026-03-24 07:39 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,7 +84,7 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 2,
     "week": {
       "users": 101,
       "sessions": 122,
