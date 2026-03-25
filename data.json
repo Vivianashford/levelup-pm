@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T20:07:59.561033+00:00",
-  "updated_local": "2026-03-25 03:07 PM",
+  "updated": "2026-03-25T20:13:10.808178+00:00",
+  "updated_local": "2026-03-25 03:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -89,7 +89,7 @@
       "users": 121,
       "sessions": 147,
       "pageviews": 257,
-      "avg_duration": 174.4,
+      "avg_duration": 174.7,
       "conversions": 0
     },
     "month": {
@@ -277,7 +277,7 @@
       "/nda.html": {
         "views": 3,
         "users": 1,
-        "avg_duration": 72.3
+        "avg_duration": 98.6
       },
       "/upload.html": {
         "views": 2,
@@ -417,12 +417,12 @@
         "count": 257
       },
       {
-        "event": "session_start",
+        "event": "scroll",
         "count": 145
       },
       {
-        "event": "scroll",
-        "count": 144
+        "event": "session_start",
+        "count": 145
       },
       {
         "event": "user_engagement",
