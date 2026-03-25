@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T08:03:07.152857+00:00",
-  "updated_local": "2026-03-25 03:03 AM",
+  "updated": "2026-03-25T08:08:03.418474+00:00",
+  "updated_local": "2026-03-25 03:08 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -314,13 +314,19 @@
         "users": 55,
         "sessions": 61,
         "pageviews": 62
+      },
+      {
+        "date": "2026-03-25",
+        "users": 1,
+        "sessions": 1,
+        "pageviews": 0
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 122,
-        "users": 101
+        "sessions": 123,
+        "users": 102
       },
       {
         "device": "Mobile",
@@ -355,6 +361,11 @@
         "sessions": 5
       },
       {
+        "city": "Council Bluffs",
+        "users": 4,
+        "sessions": 4
+      },
+      {
         "city": "Aulnay-sous-Bois",
         "users": 3,
         "sessions": 3
@@ -366,11 +377,6 @@
       },
       {
         "city": "Burnaby",
-        "users": 3,
-        "sessions": 3
-      },
-      {
-        "city": "Council Bluffs",
         "users": 3,
         "sessions": 3
       },
@@ -415,7 +421,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 119
+        "count": 120
       },
       {
         "event": "first_visit",
@@ -528,6 +534,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 81.7
+    "bounce_rate": 81.8
   }
 }
