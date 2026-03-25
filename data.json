@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T08:18:01.392696+00:00",
-  "updated_local": "2026-03-25 03:18 AM",
+  "updated": "2026-03-25T08:23:21.599366+00:00",
+  "updated_local": "2026-03-25 03:23 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -252,7 +252,7 @@
       "/": {
         "views": 109,
         "users": 69,
-        "avg_duration": 129.0
+        "avg_duration": 129.1
       },
       "/book.html": {
         "views": 14,
