@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T01:29:20.275481+00:00",
-  "updated_local": "2026-03-24 08:29 PM",
+  "updated": "2026-03-25T01:34:23.927818+00:00",
+  "updated_local": "2026-03-24 08:34 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 103,
       "sessions": 125,
-      "pageviews": 223,
+      "pageviews": 225,
       "avg_duration": 180.9,
       "conversions": 0
     },
     "month": {
       "users": 103,
       "sessions": 125,
-      "pageviews": 223,
+      "pageviews": 225,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 101,
+        "views": 103,
         "users": 63
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 89,
-        "users": 81
+        "sessions": 91,
+        "users": 82
       },
       {
         "source": "(not set)",
@@ -250,7 +250,7 @@
     },
     "funnel": {
       "/": {
-        "views": 101,
+        "views": 103,
         "users": 63,
         "avg_duration": 138.6
       },
@@ -313,7 +313,7 @@
         "date": "2026-03-24",
         "users": 49,
         "sessions": 55,
-        "pageviews": 54
+        "pageviews": 56
       }
     ],
     "devices": [
@@ -403,7 +403,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 223
+        "count": 225
       },
       {
         "event": "scroll",
@@ -411,7 +411,7 @@
       },
       {
         "event": "session_start",
-        "count": 118
+        "count": 120
       },
       {
         "event": "user_engagement",
@@ -419,7 +419,7 @@
       },
       {
         "event": "first_visit",
-        "count": 99
+        "count": 100
       },
       {
         "event": "scroll_depth",
@@ -460,8 +460,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 81,
-        "sessions": 89
+        "users": 82,
+        "sessions": 91
       },
       {
         "campaign": "(referral)",
