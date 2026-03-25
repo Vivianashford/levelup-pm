@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T03:37:54.758406+00:00",
-  "updated_local": "2026-03-24 10:37 PM",
+  "updated": "2026-03-25T03:42:56.649930+00:00",
+  "updated_local": "2026-03-24 10:42 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 104,
-      "sessions": 126,
+      "users": 105,
+      "sessions": 127,
       "pageviews": 225,
-      "avg_duration": 179.5,
+      "avg_duration": 178.1,
       "conversions": 0
     },
     "month": {
-      "users": 104,
-      "sessions": 126,
+      "users": 105,
+      "sessions": 127,
       "pageviews": 225,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 103,
-        "users": 64
+        "users": 65
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 25,
-        "users": 23
+        "sessions": 26,
+        "users": 24
       },
       {
         "source": "vivianashford.github.io",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 103,
-        "users": 64,
-        "avg_duration": 137.1
+        "users": 65,
+        "avg_duration": 135.4
       },
       "/book.html": {
         "views": 14,
@@ -311,16 +311,16 @@
       },
       {
         "date": "2026-03-24",
-        "users": 50,
-        "sessions": 56,
+        "users": 51,
+        "sessions": 57,
         "pageviews": 56
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 117,
-        "users": 96
+        "sessions": 118,
+        "users": 97
       },
       {
         "device": "Mobile",
@@ -351,8 +351,8 @@
       },
       {
         "city": "London",
-        "users": 4,
-        "sessions": 4
+        "users": 5,
+        "sessions": 5
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -407,7 +407,7 @@
       },
       {
         "event": "scroll",
-        "count": 123
+        "count": 124
       },
       {
         "event": "session_start",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 81.0
+    "bounce_rate": 81.1
   }
 }
