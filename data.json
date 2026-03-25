@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T08:13:06.191645+00:00",
-  "updated_local": "2026-03-25 03:13 AM",
+  "updated": "2026-03-25T08:18:01.392696+00:00",
+  "updated_local": "2026-03-25 03:18 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -412,12 +412,12 @@
         "count": 232
       },
       {
-        "event": "session_start",
+        "event": "scroll",
         "count": 126
       },
       {
-        "event": "scroll",
-        "count": 125
+        "event": "session_start",
+        "count": 126
       },
       {
         "event": "user_engagement",
