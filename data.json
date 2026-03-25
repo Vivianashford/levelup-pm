@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T18:56:37.293426+00:00",
-  "updated_local": "2026-03-25 01:56 PM",
+  "updated": "2026-03-25T19:03:07.987442+00:00",
+  "updated_local": "2026-03-25 02:03 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -101,8 +101,8 @@
     "top_pages": [
       {
         "page": "/",
-        "views": 114,
-        "users": 74
+        "views": 116,
+        "users": 75
       },
       {
         "page": "/blog/",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 114,
-        "users": 74,
-        "avg_duration": 121.2
+        "views": 116,
+        "users": 75,
+        "avg_duration": 118.7
       },
       "/book.html": {
         "views": 14,
@@ -317,16 +317,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 7,
-        "sessions": 7,
-        "pageviews": 6
+        "users": 9,
+        "sessions": 9,
+        "pageviews": 8
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 129,
-        "users": 107
+        "sessions": 131,
+        "users": 108
       },
       {
         "device": "Mobile",
@@ -356,14 +356,14 @@
         "sessions": 8
       },
       {
-        "city": "London",
+        "city": "Aulnay-sous-Bois",
         "users": 5,
         "sessions": 5
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 4,
-        "sessions": 4
+        "city": "London",
+        "users": 5,
+        "sessions": 5
       },
       {
         "city": "Council Bluffs",
@@ -388,7 +388,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 14
+        "sessions": 15
       },
       {
         "city": "Miami",
@@ -409,23 +409,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 237
-      },
-      {
-        "event": "scroll",
-        "count": 131
+        "count": 239
       },
       {
         "event": "session_start",
-        "count": 131
+        "count": 133
+      },
+      {
+        "event": "scroll",
+        "count": 132
       },
       {
         "event": "user_engagement",
-        "count": 123
+        "count": 124
       },
       {
         "event": "first_visit",
-        "count": 110
+        "count": 111
       },
       {
         "event": "scroll_depth",
@@ -534,6 +534,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.6
+    "bounce_rate": 82.9
   }
 }
