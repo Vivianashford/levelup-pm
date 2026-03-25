@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T01:39:24.321378+00:00",
-  "updated_local": "2026-03-24 08:39 PM",
+  "updated": "2026-03-25T01:44:22.713976+00:00",
+  "updated_local": "2026-03-24 08:44 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 103,
-      "sessions": 125,
+      "users": 104,
+      "sessions": 126,
       "pageviews": 225,
-      "avg_duration": 180.9,
+      "avg_duration": 179.4,
       "conversions": 0
     },
     "month": {
-      "users": 103,
-      "sessions": 125,
+      "users": 104,
+      "sessions": 126,
       "pageviews": 225,
       "conversions": 0
     },
@@ -319,8 +319,8 @@
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 116,
-        "users": 95
+        "sessions": 117,
+        "users": 96
       },
       {
         "device": "Mobile",
@@ -355,6 +355,11 @@
         "sessions": 4
       },
       {
+        "city": "Aulnay-sous-Bois",
+        "users": 3,
+        "sessions": 3
+      },
+      {
         "city": "Boardman",
         "users": 3,
         "sessions": 3
@@ -373,11 +378,6 @@
         "city": "Miami",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Aulnay-sous-Bois",
-        "users": 2,
-        "sessions": 2
       },
       {
         "city": "Boulogne-Billancourt",
@@ -407,7 +407,7 @@
       },
       {
         "event": "scroll",
-        "count": 122
+        "count": 123
       },
       {
         "event": "session_start",
@@ -415,7 +415,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 116
+        "count": 117
       },
       {
         "event": "first_visit",
@@ -528,6 +528,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 80.8
+    "bounce_rate": 81.0
   }
 }
