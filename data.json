@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T19:18:00.059945+00:00",
-  "updated_local": "2026-03-25 02:18 PM",
+  "updated": "2026-03-25T19:23:00.295467+00:00",
+  "updated_local": "2026-03-25 02:23 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 116,
-      "sessions": 142,
-      "pageviews": 240,
-      "avg_duration": 160.3,
+      "users": 117,
+      "sessions": 143,
+      "pageviews": 243,
+      "avg_duration": 167.1,
       "conversions": 0
     },
     "month": {
-      "users": 119,
-      "sessions": 145,
-      "pageviews": 248,
+      "users": 120,
+      "sessions": 146,
+      "pageviews": 251,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 116,
-        "users": 75
+        "views": 118,
+        "users": 76
       },
       {
         "page": "/blog/",
@@ -141,7 +141,7 @@
       },
       {
         "page": "/assessment.html",
-        "views": 6,
+        "views": 7,
         "users": 5
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 104,
-        "users": 93
+        "sessions": 105,
+        "users": 94
       },
       {
         "source": "(not set)",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 116,
-        "users": 75,
-        "avg_duration": 118.2
+        "views": 118,
+        "users": 76,
+        "avg_duration": 116.9
       },
       "/book.html": {
         "views": 14,
@@ -270,9 +270,9 @@
         "avg_duration": 22.1
       },
       "/assessment.html": {
-        "views": 6,
+        "views": 7,
         "users": 5,
-        "avg_duration": 93.0
+        "avg_duration": 222.8
       },
       "/nda.html": {
         "views": 2,
@@ -317,16 +317,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 9,
-        "sessions": 11,
-        "pageviews": 9
+        "users": 11,
+        "sessions": 12,
+        "pageviews": 12
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 133,
-        "users": 108
+        "sessions": 134,
+        "users": 109
       },
       {
         "device": "Mobile",
@@ -391,6 +391,11 @@
         "sessions": 16
       },
       {
+        "city": "Istres",
+        "users": 3,
+        "sessions": 3
+      },
+      {
         "city": "Miami",
         "users": 3,
         "sessions": 3
@@ -399,25 +404,20 @@
         "city": "San Jose",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Boulogne-Billancourt",
-        "users": 2,
-        "sessions": 2
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 240
+        "count": 243
       },
       {
         "event": "scroll",
-        "count": 135
+        "count": 136
       },
       {
         "event": "session_start",
-        "count": 134
+        "count": 136
       },
       {
         "event": "user_engagement",
@@ -425,11 +425,11 @@
       },
       {
         "event": "first_visit",
-        "count": 111
+        "count": 112
       },
       {
         "event": "scroll_depth",
-        "count": 77
+        "count": 81
       },
       {
         "event": "click",
@@ -466,8 +466,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 93,
-        "sessions": 104
+        "users": 94,
+        "sessions": 105
       },
       {
         "campaign": "(referral)",
@@ -534,6 +534,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 83.1
+    "bounce_rate": 83.2
   }
 }
