@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T16:51:36.929543+00:00",
-  "updated_local": "2026-03-25 11:51 AM",
+  "updated": "2026-03-25T16:57:10.330211+00:00",
+  "updated_local": "2026-03-25 11:57 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 113,
-      "sessions": 136,
+      "users": 114,
+      "sessions": 137,
       "pageviews": 235,
-      "avg_duration": 166.5,
+      "avg_duration": 165.3,
       "conversions": 0
     },
     "month": {
-      "users": 113,
-      "sessions": 136,
+      "users": 114,
+      "sessions": 137,
       "pageviews": 235,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 112,
-        "users": 72
+        "users": 73
       },
       {
         "page": "/blog/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 31,
-        "users": 29
+        "sessions": 32,
+        "users": 30
       },
       {
         "source": "vivianashford.github.io",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 112,
-        "users": 72,
-        "avg_duration": 123.4
+        "users": 73,
+        "avg_duration": 122.0
       },
       "/book.html": {
         "views": 14,
@@ -317,16 +317,16 @@
       },
       {
         "date": "2026-03-25",
-        "users": 4,
-        "sessions": 5,
+        "users": 5,
+        "sessions": 6,
         "pageviews": 4
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 127,
-        "users": 105
+        "sessions": 128,
+        "users": 106
       },
       {
         "device": "Mobile",
@@ -381,6 +381,11 @@
         "sessions": 3
       },
       {
+        "city": "East Los Angeles",
+        "users": 3,
+        "sessions": 3
+      },
+      {
         "city": "Houston",
         "users": 3,
         "sessions": 14
@@ -399,11 +404,6 @@
         "city": "Boulogne-Billancourt",
         "users": 2,
         "sessions": 2
-      },
-      {
-        "city": "Des Moines",
-        "users": 2,
-        "sessions": 2
       }
     ],
     "all_events": [
@@ -413,7 +413,7 @@
       },
       {
         "event": "scroll",
-        "count": 129
+        "count": 130
       },
       {
         "event": "session_start",
@@ -534,6 +534,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 82.4
+    "bounce_rate": 82.5
   }
 }
