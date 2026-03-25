@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-25T19:07:55.552178+00:00",
-  "updated_local": "2026-03-25 02:07 PM",
+  "updated": "2026-03-25T19:13:01.793125+00:00",
+  "updated_local": "2026-03-25 02:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -87,15 +87,15 @@
     "realtime_users": 2,
     "week": {
       "users": 116,
-      "sessions": 140,
-      "pageviews": 239,
-      "avg_duration": 162.1,
+      "sessions": 142,
+      "pageviews": 240,
+      "avg_duration": 160.3,
       "conversions": 0
     },
     "month": {
       "users": 119,
-      "sessions": 143,
-      "pageviews": 247,
+      "sessions": 145,
+      "pageviews": 248,
       "conversions": 0
     },
     "top_pages": [
@@ -106,7 +106,7 @@
       },
       {
         "page": "/blog/",
-        "views": 21,
+        "views": 22,
         "users": 13
       },
       {
@@ -154,19 +154,19 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 103,
+        "sessions": 104,
         "users": 93
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 32,
+        "sessions": 33,
         "users": 30
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 9,
+        "sessions": 10,
         "users": 4
       },
       {
@@ -219,14 +219,14 @@
       }
     ],
     "blog": {
-      "total_views": 27,
+      "total_views": 28,
       "total_users": 19,
       "articles": [
         {
           "page": "/blog/",
-          "views": 21,
+          "views": 22,
           "users": 13,
-          "avg_duration": 130.0
+          "avg_duration": 122.8
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -252,7 +252,7 @@
       "/": {
         "views": 116,
         "users": 75,
-        "avg_duration": 118.7
+        "avg_duration": 118.2
       },
       "/book.html": {
         "views": 14,
@@ -318,14 +318,14 @@
       {
         "date": "2026-03-25",
         "users": 9,
-        "sessions": 9,
-        "pageviews": 8
+        "sessions": 11,
+        "pageviews": 9
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 131,
+        "sessions": 133,
         "users": 108
       },
       {
@@ -338,7 +338,7 @@
       {
         "city": "",
         "users": 11,
-        "sessions": 13
+        "sessions": 14
       },
       {
         "city": "Wheaton",
@@ -388,7 +388,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 15
+        "sessions": 16
       },
       {
         "city": "Miami",
@@ -409,19 +409,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 239
-      },
-      {
-        "event": "session_start",
-        "count": 133
+        "count": 240
       },
       {
         "event": "scroll",
-        "count": 132
+        "count": 135
+      },
+      {
+        "event": "session_start",
+        "count": 134
       },
       {
         "event": "user_engagement",
-        "count": 124
+        "count": 125
       },
       {
         "event": "first_visit",
@@ -467,7 +467,7 @@
         "medium": "(none)",
         "content": "(not set)",
         "users": 93,
-        "sessions": 103
+        "sessions": 104
       },
       {
         "campaign": "(referral)",
@@ -491,7 +491,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 9
+        "sessions": 10
       },
       {
         "campaign": "(referral)",
@@ -534,6 +534,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.9
+    "bounce_rate": 83.1
   }
 }
