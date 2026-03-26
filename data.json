@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T18:36:20.173622+00:00",
-  "updated_local": "2026-03-26 01:36 PM",
+  "updated": "2026-03-26T18:41:22.261824+00:00",
+  "updated_local": "2026-03-26 01:41 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 128,
-      "sessions": 156,
-      "pageviews": 269,
-      "avg_duration": 188.0,
+      "users": 129,
+      "sessions": 158,
+      "pageviews": 278,
+      "avg_duration": 168.1,
       "conversions": 0
     },
     "month": {
-      "users": 128,
-      "sessions": 156,
-      "pageviews": 269,
+      "users": 129,
+      "sessions": 158,
+      "pageviews": 278,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 131,
-        "users": 81
+        "views": 135,
+        "users": 82
       },
       {
         "page": "/blog/",
@@ -120,18 +120,18 @@
         "users": 9
       },
       {
+        "page": "/about",
+        "views": 13,
+        "users": 9
+      },
+      {
         "page": "/watch.html",
         "views": 13,
         "users": 2
       },
       {
-        "page": "/about",
-        "views": 12,
-        "users": 9
-      },
-      {
         "page": "/contact",
-        "views": 11,
+        "views": 12,
         "users": 6
       },
       {
@@ -141,32 +141,26 @@
       },
       {
         "page": "/assessment.html",
-        "views": 7,
+        "views": 8,
         "users": 5
       },
       {
-        "page": "/privacy",
+        "page": "/nda.html",
         "views": 5,
-        "users": 5
+        "users": 1
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 117,
-        "users": 105
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 12,
-        "users": 11
+        "sessions": 119,
+        "users": 107
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 12,
+        "sessions": 13,
         "users": 4
       },
       {
@@ -192,6 +186,12 @@
         "medium": "referral",
         "sessions": 3,
         "users": 1
+      },
+      {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 2,
+        "users": 2
       },
       {
         "source": "thearenapartners.com",
@@ -226,7 +226,7 @@
           "page": "/blog/",
           "views": 23,
           "users": 13,
-          "avg_duration": 124.9
+          "avg_duration": 125.2
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -250,19 +250,19 @@
     },
     "funnel": {
       "/": {
-        "views": 131,
-        "users": 81,
-        "avg_duration": 109.8
+        "views": 135,
+        "users": 82,
+        "avg_duration": 107.5
       },
       "/book.html": {
         "views": 17,
         "users": 1,
-        "avg_duration": 1739.8
+        "avg_duration": 1384.1
       },
       "/calculator.html": {
         "views": 14,
         "users": 9,
-        "avg_duration": 23.5
+        "avg_duration": 21.5
       },
       "/watch.html": {
         "views": 13,
@@ -270,14 +270,14 @@
         "avg_duration": 105.1
       },
       "/assessment.html": {
-        "views": 7,
+        "views": 8,
         "users": 5,
-        "avg_duration": 222.8
+        "avg_duration": 222.7
       },
       "/nda.html": {
-        "views": 3,
+        "views": 5,
         "users": 1,
-        "avg_duration": 98.6
+        "avg_duration": 40.0
       },
       "/upload.html": {
         "views": 2,
@@ -287,7 +287,7 @@
       "/company-info.html": {
         "views": 1,
         "users": 1,
-        "avg_duration": 1539.5
+        "avg_duration": 257.4
       }
     },
     "video_events": {
@@ -322,9 +322,9 @@
       },
       {
         "date": "2026-03-25",
-        "users": 17,
-        "sessions": 20,
-        "pageviews": 28
+        "users": 18,
+        "sessions": 22,
+        "pageviews": 37
       },
       {
         "date": "2026-03-26",
