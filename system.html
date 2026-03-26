@@ -458,6 +458,529 @@
     margin-bottom: 20px;
   }
 
+  /* ═══════ DAILY OPS STYLES ═══════ */
+
+  /* Clock header */
+  .ops-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .ops-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .ops-header .ops-date { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .ops-header .ops-time { font-size: 22px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+  .ops-header .ops-loc { font-size: 11px; color: var(--text-muted); }
+
+  /* SAM quote */
+  .ops-sam-q {
+    background: linear-gradient(135deg, rgba(74,158,255,.04), rgba(74,158,255,.01));
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px 16px 44px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .ops-sam-q::before {
+    content: '"';
+    font-size: 48px;
+    color: rgba(74,158,255,.15);
+    position: absolute;
+    top: 4px;
+    left: 14px;
+    line-height: 1;
+    font-style: normal;
+  }
+  .ops-sam-q .ops-ctx {
+    font-size: 10px;
+    color: var(--accent-mkt);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-style: normal;
+    margin-top: 8px;
+  }
+
+  /* Challenge */
+  .ops-challenge {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .ops-ch-label {
+    font-size: 10px;
+    color: var(--accent-sales);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .ops-ch-q {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .ops-ch-action {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-radius: 6px;
+    border-left: 3px solid var(--accent-sales);
+  }
+
+  /* Non-negotiables */
+  .ops-nn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+  .ops-nn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all .15s;
+  }
+  .ops-nn:hover { border-color: var(--border-light); }
+  .ops-nn.done { border-color: rgba(74,255,139,.3); background: rgba(74,255,139,.04); }
+  .ops-nn .nn-dot { width: 10px; height: 10px; border: 2px solid var(--text-muted); border-radius: 2px; flex-shrink: 0; }
+  .ops-nn.done .nn-dot { background: var(--accent-delivery); border-color: var(--accent-delivery); }
+  .ops-nn .nn-lbl { color: var(--text-dim); }
+  .ops-nn.done .nn-lbl { color: var(--accent-delivery); text-decoration: line-through; }
+
+  /* Priorities section */
+  .ops-pri {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .ops-pri-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ops-pri-title { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--accent-mkt); }
+  .ops-pri-body { padding: 8px 18px 14px; }
+  .ops-pri-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background .1s;
+  }
+  .ops-pri-item:hover { background: var(--surface2); }
+  .ops-pri-check {
+    width: 16px; height: 16px;
+    border: 2px solid var(--text-muted);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ops-pri-item.done .ops-pri-check { background: var(--accent-delivery); border-color: var(--accent-delivery); }
+  .ops-pri-item.done .ops-pri-check::after { content: '✓'; color: #fff; font-size: 9px; font-weight: 700; }
+  .ops-pri-item.done .ops-pri-text { text-decoration: line-through; color: var(--text-muted); }
+  .ops-pri-text { font-size: 13px; color: var(--text-dim); line-height: 1.3; }
+  .ops-pri-rate {
+    font-size: 9px; font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .ops-rate-rev { background: rgba(74,255,139,.08); color: var(--accent-delivery); }
+  .ops-rate-ops { background: var(--surface2); color: var(--text-muted); }
+  .ops-view-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: var(--accent-mkt);
+    text-decoration: none;
+    border-top: 1px solid var(--border);
+  }
+  .ops-view-link:hover { color: var(--text); }
+
+  /* Feedback scorecard */
+  .ops-fb {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .ops-fb-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background .1s;
+    border-bottom: 1px solid rgba(255,255,255,.02);
+  }
+  .ops-fb-item:last-of-type { border-bottom: none; }
+  .ops-fb-item:hover { background: var(--surface2); }
+  .ops-fb-dot {
+    width: 14px; height: 14px;
+    border: 2px solid var(--text-muted);
+    border-radius: 3px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ops-fb-item.done .ops-fb-dot { background: var(--accent-delivery); border-color: var(--accent-delivery); }
+  .ops-fb-item.done .ops-fb-dot::after { content: '✓'; color: #fff; font-size: 8px; font-weight: 700; }
+  .ops-fb-q { font-size: 13px; color: var(--text-dim); }
+  .ops-fb-item.done .ops-fb-q { color: var(--accent-delivery); }
+  .ops-fb-grade {
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Equation */
+  .ops-eq {
+    text-align: center;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .ops-eq-formula { font-size: 18px; font-weight: 600; color: var(--accent-mkt); margin-bottom: 14px; }
+  .ops-eq-vars { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .ops-eq-var { border-radius: 8px; padding: 10px 16px; text-align: center; }
+  .ops-eq-var.locked { background: rgba(74,255,139,.04); border: 1px solid rgba(74,255,139,.2); }
+  .ops-eq-var.focus { background: rgba(74,158,255,.04); border: 1px solid rgba(74,158,255,.2); }
+  .ops-eq-var .vname { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+  .ops-eq-var.locked .vname { color: var(--accent-delivery); }
+  .ops-eq-var.focus .vname { color: var(--accent-mkt); }
+  .ops-eq-var .vval { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+  .ops-eq-var .vstatus { font-size: 10px; margin-top: 3px; }
+  .ops-eq-var.locked .vstatus { color: var(--accent-delivery); }
+  .ops-eq-var.focus .vstatus { color: var(--accent-mkt); }
+  .ops-eq-bottom { font-size: 12px; color: var(--text-dim); margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .ops-eq-bottom strong { color: var(--accent-mkt); }
+
+  /* Phase tracker */
+  .ops-phase { margin-bottom: 20px; }
+  .ops-phase-bar { display: flex; gap: 3px; margin-bottom: 6px; }
+  .ops-phase-bar div { flex: 1; height: 6px; border-radius: 3px; }
+  .ops-phase-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 2px;
+  }
+  .ops-phase-labels .phase-active { color: var(--accent-mkt); font-weight: 700; }
+
+  /* Quick nav grid */
+  .ops-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .ops-nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all .15s;
+  }
+  .ops-nav-btn:hover { border-color: var(--border-light); color: var(--text); }
+  .ops-nav-btn .ico { font-size: 20px; }
+
+  /* Section label */
+  .ops-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* Two-column layout for daily ops */
+  .ops-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ops-full { grid-column: 1 / -1; }
+
+  /* ═══════ OPERATIONS TAB STYLES ═══════ */
+
+  .ops-map-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .ops-map-stat { text-align: center; }
+  .ops-map-stat .num { font-size: 28px; font-weight: 700; color: #c9a84c; }
+  .ops-map-stat .lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+  .ops-map-flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 30px;
+  }
+  .ops-map-flow h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .ops-map-flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .ops-map-flow-step {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .ops-map-flow-step .ficon { font-size: 20px; margin-bottom: 4px; }
+  .ops-map-flow-step .fname { font-size: 12px; font-weight: 600; color: var(--text); }
+  .ops-map-flow-step .fdetail { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+  .ops-map-flow-arrow { color: var(--text-muted); font-size: 18px; padding: 0 6px; }
+
+  .ops-dept-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .ops-dept-nav a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .ops-dept-nav a:hover { color: var(--text); background: var(--surface2); }
+
+  .ops-dept-section {
+    margin-bottom: 40px;
+    scroll-margin-top: 60px;
+  }
+  .ops-dept-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ops-dept-section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .ops-dept-section-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .ops-dept-section-header .ops-dept-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .ops-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .ops-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ops-card:hover { border-color: var(--border-light); transform: translateY(-1px); }
+  .ops-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, #c9a84c);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .ops-card:hover::before { opacity: 1; }
+  .ops-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .ops-card-top h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .ops-card-status {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  .ops-card-status.live { background: rgba(74,255,139,0.1); color: var(--accent-delivery); }
+  .ops-card-status.active { background: rgba(74,158,255,0.1); color: var(--accent-mkt); }
+  .ops-card-status.ready { background: rgba(255,215,74,0.1); color: var(--accent-accounting); }
+  .ops-card-status.pending { background: rgba(255,215,74,0.1); color: #eab308; }
+  .ops-card-status.planned { background: var(--surface2); color: var(--text-muted); }
+  .ops-card p {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .ops-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ops-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #c9a84c;
+    background: rgba(201,168,76,0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .ops-card-link:hover { background: rgba(201,168,76,0.15); }
+  .ops-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .ops-card-tag {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--surface2);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .ops-infra {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 30px;
+  }
+  .ops-infra h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .ops-infra-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .ops-infra-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+    min-width: 130px;
+  }
+  .ops-infra-item .iicon { font-size: 20px; margin-bottom: 4px; }
+  .ops-infra-item .iname { font-size: 12px; font-weight: 600; color: var(--text); }
+  .ops-infra-item .idetail { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
   /* Responsive */
   @media (max-width: 1200px) {
     .arch-grid, .kpi-grid { grid-template-columns: repeat(3, 1fr); }
@@ -465,6 +988,11 @@
   @media (max-width: 900px) {
     .arch-grid, .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .int-grid { grid-template-columns: 1fr; }
+    .ops-grid { grid-template-columns: 1fr; }
+    .ops-nav { grid-template-columns: repeat(2, 1fr); }
+    .ops-cards-grid { grid-template-columns: 1fr; }
+    .ops-dept-nav { flex-wrap: wrap; }
+    .ops-map-stats { flex-wrap: wrap; gap: 20px; }
     .header, .nav-tabs, .view { padding-left: 24px; padding-right: 24px; }
   }
 </style>
@@ -481,6 +1009,8 @@
   <div class="nav-tab" data-view="flow">Client Flow</div>
   <div class="nav-tab" data-view="kpis">KPI Benchmarks</div>
   <div class="nav-tab" data-view="integrations">Integrations & API</div>
+  <div class="nav-tab" data-view="dailyops">Daily Ops</div>
+  <div class="nav-tab" data-view="operations">Operations</div>
 </div>
 
 <!-- ═══════════════════════ ARCHITECTURE VIEW ═══════════════════════ -->
@@ -1247,6 +1777,516 @@
   </div>
 </div>
 
+<!-- ═══════════════════════ DAILY OPS VIEW ═══════════════════════ -->
+<div class="view" id="dailyops">
+
+  <!-- Clock + Date -->
+  <div class="ops-header">
+    <div>
+      <h2>Daily Operations</h2>
+      <div class="ops-date" id="ops-date"></div>
+    </div>
+    <div style="text-align:right;">
+      <div class="ops-time" id="ops-time"></div>
+      <div class="ops-loc">Houston, TX</div>
+    </div>
+  </div>
+
+  <div class="ops-grid">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- Sam's Daily Quote -->
+      <div class="ops-sam-q">
+        <span id="ops-sam-quote"></span>
+        <div class="ops-ctx" id="ops-sam-ctx"></div>
+      </div>
+
+      <!-- Sam's Daily Challenge -->
+      <div class="ops-challenge">
+        <div class="ops-ch-label">🎯 Sam's Question for Today</div>
+        <div class="ops-ch-q" id="ops-ch-q"></div>
+        <div class="ops-ch-action" id="ops-ch-action"></div>
+      </div>
+
+      <!-- The Equation -->
+      <div class="ops-eq">
+        <div class="ops-eq-formula">Niche × Offer × Traffic = Revenue</div>
+        <div class="ops-eq-vars">
+          <div class="ops-eq-var locked"><div class="vname">Niche</div><div class="vval">55+ Service Owners</div><div class="vstatus">✓ Locked</div></div>
+          <div class="ops-eq-var locked"><div class="vname">Offer</div><div class="vval">Transferable Exit System</div><div class="vstatus">✓ Built</div></div>
+          <div class="ops-eq-var focus"><div class="vname">Traffic</div><div class="vval">Organic Outreach</div><div class="vstatus">⚡ Focus Here</div></div>
+        </div>
+        <div class="ops-eq-bottom">The ONLY bottleneck is <strong>conversations</strong>.</div>
+      </div>
+
+      <!-- Phase Tracker -->
+      <div class="ops-phase">
+        <div class="ops-label">📈 Phase Progress</div>
+        <div class="ops-phase-bar">
+          <div style="background:var(--accent-delivery);" title="1. Mindset ✓"></div>
+          <div style="background:var(--accent-delivery);" title="2. Niche ✓"></div>
+          <div style="background:var(--accent-delivery);" title="3. Offer ✓"></div>
+          <div style="background:var(--accent-mkt);" title="4. Outreach ⚡ NOW"></div>
+          <div style="background:var(--accent-sales);opacity:.5;" title="5. Sales - Active"></div>
+          <div style="background:var(--border);" title="6. Scale - Locked"></div>
+        </div>
+        <div class="ops-phase-labels">
+          <span>Mindset ✓</span><span>Niche ✓</span><span>Offer ✓</span><span class="phase-active">Outreach ⚡</span><span>Sales</span><span>Scale</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+      <!-- Non-Negotiables -->
+      <div class="ops-label">🔒 Non-Negotiables</div>
+      <div class="ops-nn-row" id="ops-nn-row"></div>
+
+      <!-- Today's Priorities -->
+      <div class="ops-pri">
+        <div class="ops-pri-head">
+          <span class="ops-pri-title">⚡ Today's Focus</span>
+          <span style="font-size:10px;color:var(--text-muted);">Sorted by $/hr</span>
+        </div>
+        <div class="ops-pri-body" id="ops-pri-list"></div>
+        <a href="todo.html" class="ops-view-link">Full Todo List →</a>
+      </div>
+
+      <!-- Daily Feedback Scorecard -->
+      <div class="ops-fb">
+        <div style="padding:14px 18px 10px;border-bottom:1px solid var(--border);">
+          <span style="font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--accent-mkt);">🔬 End of Day — Score Yourself</span>
+        </div>
+        <div id="ops-fb-list"></div>
+        <div class="ops-fb-grade" id="ops-fb-grade"></div>
+      </div>
+
+    </div>
+
+    <!-- FULL WIDTH — Quick Nav -->
+    <div class="ops-full">
+      <div class="ops-label">🧭 Quick Nav</div>
+      <div class="ops-nav">
+        <a href="book-of-self.html" class="ops-nav-btn"><span class="ico">📖</span>Book of Self</a>
+        <a href="methodology.html" class="ops-nav-btn"><span class="ico">🧠</span>Sam's Method</a>
+        <a href="todo.html" class="ops-nav-btn"><span class="ico">✅</span>Full Todos</a>
+        <a href="https://app.gohighlevel.com" target="_blank" class="ops-nav-btn"><span class="ico">⚙️</span>GHL CRM</a>
+        <a href="https://thearenapartners.com" target="_blank" class="ops-nav-btn"><span class="ico">🌐</span>Arena Site</a>
+        <a href="https://thearenapartners.com/blog/" target="_blank" class="ops-nav-btn"><span class="ico">📝</span>Blog</a>
+        <a href="sales-sop.html" class="ops-nav-btn"><span class="ico">📋</span>Sales SOP</a>
+        <a href="analytics-v2.html" class="ops-nav-btn"><span class="ico">📊</span>Analytics</a>
+        <a href="map.html" class="ops-nav-btn"><span class="ico">🗺️</span>Operations Map</a>
+        <a href="rep-dashboard.html" class="ops-nav-btn"><span class="ico">📊</span>Rep Dash</a>
+        <a href="https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod" target="_blank" class="ops-nav-btn"><span class="ico">📅</span>Calendar</a>
+        <a href="https://dashboard.stripe.com" target="_blank" class="ops-nav-btn"><span class="ico">💳</span>Stripe</a>
+        <a href="https://app.monarchmoney.com" target="_blank" class="ops-nav-btn"><span class="ico">👑</span>Monarch</a>
+        <a href="links.html" class="ops-nav-btn" style="border-color:var(--border-light);"><span class="ico">🔗</span>All Links</a>
+        <a href="system.html" class="ops-nav-btn"><span class="ico">🏗️</span>System</a>
+        <a href="clients.html" class="ops-nav-btn"><span class="ico">👥</span>Clients</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ OPERATIONS VIEW ═══════════════════════ -->
+<div class="view" id="operations">
+  <div class="section-header">
+    <div class="section-title">Operations Map</div>
+    <div class="section-desc">Complete operational detail — every engine, tool, and system across all departments</div>
+  </div>
+
+  <!-- Header Stats -->
+  <div class="ops-map-stats">
+    <div class="ops-map-stat"><div class="num">4</div><div class="lbl">Domains</div></div>
+    <div class="ops-map-stat"><div class="num">22+</div><div class="lbl">Blog Articles</div></div>
+    <div class="ops-map-stat"><div class="num">60+</div><div class="lbl">Backlinks</div></div>
+    <div class="ops-map-stat"><div class="num">14</div><div class="lbl">Engines Running</div></div>
+    <div class="ops-map-stat"><div class="num">32</div><div class="lbl">Funnel Touchpoints</div></div>
+  </div>
+
+  <!-- Client Journey Flow -->
+  <div class="ops-map-flow">
+    <h4>The Full Client Journey</h4>
+    <div class="ops-map-flow-row">
+      <div class="ops-map-flow-step"><div class="ficon">🔍</div><div class="fname">SEO / Content</div><div class="fdetail">Blog, backlinks, organic</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">🌐</div><div class="fname">Website</div><div class="fdetail">arenabusinessadvisors.com</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">🎬</div><div class="fname">Free Training</div><div class="fdetail">VSL + Watch Tracking</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">📋</div><div class="fname">Assessment</div><div class="fdetail">Exit Risk Score</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">📞</div><div class="fname">Diagnostic Call</div><div class="fdetail">30-min discovery</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">📝</div><div class="fname">NDA + Info</div><div class="fdetail">Company data collection</div></div>
+      <div class="ops-map-flow-arrow">→</div>
+      <div class="ops-map-flow-step"><div class="ficon">🏆</div><div class="fname">Close</div><div class="fdetail">Proposal + Agreement</div></div>
+    </div>
+  </div>
+
+  <!-- Department Navigation -->
+  <div class="ops-dept-nav">
+    <a href="#ops-marketing">📣 Marketing</a>
+    <a href="#ops-sales">🤝 Sales</a>
+    <a href="#ops-delivery">⚙️ Delivery</a>
+    <a href="#ops-accounting">💰 Accounting</a>
+    <a href="#ops-legal">📜 Legal</a>
+  </div>
+
+  <!-- ═══ MARKETING ═══ -->
+  <div class="ops-dept-section" id="ops-marketing">
+    <div class="ops-dept-section-header">
+      <div class="ops-dept-section-icon" style="background:var(--accent-mkt-dim);color:var(--accent-mkt);">📣</div>
+      <div>
+        <h3 style="color:var(--accent-mkt)">Marketing</h3>
+        <div class="ops-dept-desc">Content, SEO, traffic generation, and brand presence across all channels</div>
+      </div>
+    </div>
+    <div class="ops-cards-grid">
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Arena Business Advisors Website</h4><span class="ops-card-status live">Live</span></div>
+        <p>Primary public-facing site. Redesigned March 24 — 7 static pages + shared CSS. Hosted on GitHub Pages. Phone + booking calendar CTA. Blog integrated.</p>
+        <div class="ops-card-links"><a href="https://www.arenabusinessadvisors.com" class="ops-card-link" target="_blank">🌐 Visit Site</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">GitHub Pages</span><span class="ops-card-tag">Static HTML</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Arena Partners Funnel (Engine Room)</h4><span class="ops-card-status live">Live</span></div>
+        <p>Full conversion funnel: landing page, VSL watch page, assessment, book reader, calculator, exit guide. All automation runs through here.</p>
+        <div class="ops-card-links">
+          <a href="https://thearenapartners.com" class="ops-card-link" target="_blank">🌐 Landing</a>
+          <a href="https://thearenapartners.com/watch.html" class="ops-card-link" target="_blank">🎬 Watch</a>
+          <a href="https://thearenapartners.com/assessment.html" class="ops-card-link" target="_blank">📋 Assessment</a>
+          <a href="https://thearenapartners.com/calculator.html" class="ops-card-link" target="_blank">🔢 Calculator</a>
+          <a href="https://thearenapartners.com/book.html" class="ops-card-link" target="_blank">📚 Book</a>
+        </div>
+        <div class="ops-card-tags"><span class="ops-card-tag">GitHub Pages</span><span class="ops-card-tag">GA4</span><span class="ops-card-tag">Custom Domain</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Blog — thearenapartners.com</h4><span class="ops-card-status live">12 Articles</span></div>
+        <p>SEO-optimized blog targeting long-tail exit planning keywords. Auto-published via content engine. Daily blog post added to 9 PM beat.</p>
+        <div class="ops-card-links">
+          <a href="https://thearenapartners.com/blog/" class="ops-card-link" target="_blank">📝 Blog</a>
+          <a href="https://thearenapartners.com/rss.xml" class="ops-card-link" target="_blank">📡 RSS</a>
+        </div>
+        <div class="ops-card-tags"><span class="ops-card-tag">Content Engine</span><span class="ops-card-tag">Daily Post</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Blog — arenabusinessadvisors.com</h4><span class="ops-card-status ready">6 Articles</span></div>
+        <p>Separate blog for the primary domain. High-value pillar content: complete selling guides, valuation methods, PE playbook, Houston local.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Pending Deploy</span><span class="ops-card-tag">Lovable Integration</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Content Engine</h4><span class="ops-card-status active">Running</span></div>
+        <p>Automated content pipeline: generates articles targeting exit planning keywords across all service verticals. Publishes Mon/Wed/Fri 6 AM CT. Approval-gated.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Cron</span><span class="ops-card-tag">Python</span><span class="ops-card-tag">1,121 lines</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>SEO Backlink Engine</h4><span class="ops-card-status active">54 Backlinks</span></div>
+        <p>Automated backlink building: Telegraph articles (52), Google Business Profile, LinkedIn Company Page. Targeting 800+ across 16 categories.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">DA 80-100</span><span class="ops-card-tag">Dofollow</span><span class="ops-card-tag">10 Verticals</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>LinkedIn Content Engine</h4><span class="ops-card-status active">Running</span></div>
+        <p>Direct API posting via Worker. 2x daily posts (6 AM + 2 PM) with notebook-style graphics. 2x daily commenting cron (8 AM + 2 PM). Newsletter "Transferable" (3x/week).</p>
+        <div class="ops-card-links"><a href="https://www.linkedin.com/in/jeanlouishardy/" class="ops-card-link" target="_blank">👤 Profile</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">Worker API</span><span class="ops-card-tag">Image Upload</span><span class="ops-card-tag">Auto-comment</span><span class="ops-card-tag">Newsletter</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Facebook Auto-Post</h4><span class="ops-card-status active">Running</span></div>
+        <p>Direct API posting via Worker (post with image, delete). Same content as LinkedIn, adapted for Facebook. Page token configured.</p>
+        <div class="ops-card-links"><a href="https://www.facebook.com/103908865130039" class="ops-card-link" target="_blank">📘 Page</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">Worker API</span><span class="ops-card-tag">Auto-post</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Social Media Expansion</h4><span class="ops-card-status planned">On Todo</span></div>
+        <p>Planned platforms: X/Twitter, YouTube, Instagram, Medium, Threads, TikTok, Alignable, BizBuySell, Reddit, Quora. Metricool planned for centralized scheduling.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">10 Platforms</span><span class="ops-card-tag">Metricool</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>LinkedIn Commenting Engine</h4><span class="ops-card-status active">2x Daily</span></div>
+        <p>Draft-and-approve flow: 3-5 comment drafts sent to Jean on WhatsApp at 8 AM and 2 PM. Targets exit planning, M&A, business automation niche.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Cron 8AM + 2PM</span><span class="ops-card-tag">Draft-Approve</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Content Strategy Rules</h4><span class="ops-card-status live">Active</span></div>
+        <p>Every post must be news or story-driven (no generic educational). Every post ends with a value CTA. Cross-link everything back to thearenapartners.com. Notebook-style graphic with every post.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">News/Story-driven</span><span class="ops-card-tag">Pride-based</span><span class="ops-card-tag">CTA Required</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Featured.com (PR/Authority)</h4><span class="ops-card-status active">Profile Live</span></div>
+        <p>Expert profile for journalist questions. Answers get backlinks from major publications. Articles from FOX 5, Disrupt Magazine, NY Weekly, Metapress linked.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">PR Backlinks</span><span class="ops-card-tag">Authority</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>SEO Profile Submissions</h4><span class="ops-card-status active">8/80 Done</span></div>
+        <p>80-platform master list across 10 tiers. NAP-consistent business listings. Priority: Medium, Mix.com, Tumblr, Flipboard (DA 80+).</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">80 Platforms</span><span class="ops-card-tag">10 Tiers</span><span class="ops-card-tag">10% Complete</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Analytics Dashboard</h4><span class="ops-card-status live">Live</span></div>
+        <p>GA4 tracking on both domains. Traffic, sources, devices, locations, funnel, events, UTM campaigns.</p>
+        <div class="ops-card-links"><a href="analytics-v2.html" class="ops-card-link">📊 Dashboard</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">GA4</span><span class="ops-card-tag">Dual Domain</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Email Domain Warmup</h4><span class="ops-card-status active">Day 1 of 28</span></div>
+        <p>Warming thearenaaccess.com sending domain. 5 internal emails/day Week 1, scaling to external by Week 3. Protects deliverability for cold outreach.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Cron Daily 9AM</span><span class="ops-card-tag">GHL Email</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Cold Outreach Infrastructure</h4><span class="ops-card-status ready">Ready</span></div>
+        <p>Separate domain (thearenaaccess.com) for cold email via Instantly.ai. API connected (v2, Bearer auth). Needs: sending accounts connected, warmup enabled, lead list built.</p>
+        <div class="ops-card-links"><a href="https://instantly.ai" class="ops-card-link" target="_blank">📧 Instantly.ai</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">thearenaaccess.com</span><span class="ops-card-tag">API Connected</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Direct Mail</h4><span class="ops-card-status ready">Wired</span></div>
+        <p>PostGrid for postcards + letters (Day 56, 91 of nurture). Handwrytten for handwritten cards (Day 18, 108). Integrated into 120-day nurture engine.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">PostGrid Live</span><span class="ops-card-tag">Handwrytten Pending</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
+        <div class="ops-card-top"><h4>Search Engine Indexing</h4><span class="ops-card-status live">Submitted</span></div>
+        <p>IndexNow (Bing/Yandex instant indexing), Pingomatic (RSS syndication), Google Search Console verified. Both domains submitted.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">IndexNow</span><span class="ops-card-tag">Pingomatic</span><span class="ops-card-tag">GSC Verified</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SALES ═══ -->
+  <div class="ops-dept-section" id="ops-sales">
+    <div class="ops-dept-section-header">
+      <div class="ops-dept-section-icon" style="background:var(--accent-sales-dim);color:var(--accent-sales);">🤝</div>
+      <div>
+        <h3 style="color:var(--accent-sales)">Sales</h3>
+        <div class="ops-dept-desc">Pipeline management, booking automation, follow-up sequences, and closing infrastructure</div>
+      </div>
+    </div>
+    <div class="ops-cards-grid">
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>GoHighLevel CRM</h4><span class="ops-card-status live">Live</span></div>
+        <p>Full CRM with Arena Pipeline (10 stages), Book Pipeline (6 stages), custom fields for exit risk scoring, tags for automation triggers.</p>
+        <div class="ops-card-links"><a href="https://app.gohighlevel.com" class="ops-card-link" target="_blank">🏢 GHL Dashboard</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">19 Contacts</span><span class="ops-card-tag">10 Pipeline Stages</span><span class="ops-card-tag">12 Custom Fields</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Booking Engine</h4><span class="ops-card-status active">Running</span></div>
+        <p>Auto-processes new GHL appointments. Sends confirmation, triggers assessment delivery, fires pre-call nurture. Runs every 15 min on cron.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">Python</span><span class="ops-card-tag">GHL API</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Watch-Time Re-Engagement Engine</h4><span class="ops-card-status active">32 Touchpoints</span></div>
+        <p>Jay Abraham methodology. 4 segments (high/engaged/curious/low) with personalized email + SMS sequences based on video watch percentage. Kill switch on booking.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">964 lines</span><span class="ops-card-tag">Email-based tracking</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>120-Day Nurture Engine</h4><span class="ops-card-status active">Running</span></div>
+        <p>Long-term nurture for leads who don't book: emails, SMS, direct mail (PostGrid, Handwrytten), 9-word re-engagement. Pride-based copy rewrite deployed March 24.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">1,578 lines</span><span class="ops-card-tag">Pride-Based</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Pipeline Stage Automation</h4><span class="ops-card-status active">7 Triggers</span></div>
+        <p>Auto-fires emails on pipeline stage transitions: Call Complete → NDA, NDA Signed → Company Info, Due Diligence → Upload, No Show → Recovery, Closed Won → Onboarding.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">GHL API</span><span class="ops-card-tag">Cron Active</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Show Up System</h4><span class="ops-card-status ready">28 Scripts Spec'd</span></div>
+        <p>Full booking-to-call conversion flowchart. 28 touchpoints across 7 sequences using 6 psychology principles.</p>
+        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-show-up-system/" class="ops-card-link" target="_blank">📋 Flowchart</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">7 Sequences</span><span class="ops-card-tag">6 Psychology Principles</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Sales SOP</h4><span class="ops-card-status live">Live</span></div>
+        <p>Complete sales process documentation: diagnostic call script, objection handling, two-call close methodology, pricing framework.</p>
+        <div class="ops-card-links"><a href="sales-sop.html" class="ops-card-link">📋 View SOP</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Booking Calendars</h4><span class="ops-card-status live">2 Calendars</span></div>
+        <p>Arena Calendar (thearenapartners.com funnel) and Website Calendar (arenabusinessadvisors.com). Both in GHL, 30-min slots, Mon-Fri 9-5 CT.</p>
+        <div class="ops-card-links">
+          <a href="https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod" class="ops-card-link" target="_blank">📅 Arena</a>
+          <a href="https://api.leadconnectorhq.com/widget/booking/jvo78MqD91Vq7gUiJTE4" class="ops-card-link" target="_blank">📅 Website</a>
+        </div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Lead Enrichment</h4><span class="ops-card-status ready">Wired</span></div>
+        <p>People Data Labs API enriches contacts with company data, revenue, employee count, industry. 100 free calls/month. Endpoint on Worker proxy.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">PDL</span><span class="ops-card-tag">100/month free</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-sales)">
+        <div class="ops-card-top"><h4>Rep Dashboard</h4><span class="ops-card-status live">Live</span></div>
+        <p>Sales rep performance tracking: conversations, calls, pipeline value, revenue. Real-time scoring.</p>
+        <div class="ops-card-links"><a href="rep-dashboard.html" class="ops-card-link">📊 Dashboard</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DELIVERY ═══ -->
+  <div class="ops-dept-section" id="ops-delivery">
+    <div class="ops-dept-section-header">
+      <div class="ops-dept-section-icon" style="background:var(--accent-delivery-dim);color:var(--accent-delivery);">⚙️</div>
+      <div>
+        <h3 style="color:var(--accent-delivery)">Delivery of Services</h3>
+        <div class="ops-dept-desc">Client onboarding, document management, portals, and the Transferable Exit System</div>
+      </div>
+    </div>
+    <div class="ops-cards-grid">
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Client Dashboard</h4><span class="ops-card-status live">Live</span></div>
+        <p>Branded client portal showing engagement progress, uploaded documents, exit risk score, and next steps. Personalized per contact.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/dashboard.html" class="ops-card-link" target="_blank">🏢 Portal</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Document Upload Portal</h4><span class="ops-card-status live">Live</span></div>
+        <p>Secure file upload for client financials, org charts, tax returns, SOPs. Files stored in Cloudflare R2. Organized by company slug and category.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/upload.html" class="ops-card-link" target="_blank">📤 Upload</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">R2 Storage</span><span class="ops-card-tag">10GB free</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Cloudflare R2 File Storage</h4><span class="ops-card-status live">Active</span></div>
+        <p>Client files stored securely on Cloudflare R2. Organized: clients/{company-slug}/{category}/{file}. API endpoints for upload, download, list by company.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">arena-files bucket</span><span class="ops-card-tag">9 files uploaded</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Exit Risk Assessment</h4><span class="ops-card-status live">Live</span></div>
+        <p>Interactive 30-question assessment across 8 risk categories. Generates personalized score (0-100) with risk flags. 50 pride-based copy rewrites deployed.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/assessment.html" class="ops-card-link" target="_blank">📋 Take Assessment</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">30 Questions</span><span class="ops-card-tag">8 Categories</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Business Valuation Calculator</h4><span class="ops-card-status live">Live</span></div>
+        <p>Interactive tool for service business owners to estimate their company's value. Inputs: revenue, EBITDA, industry, owner dependency level.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/calculator.html" class="ops-card-link" target="_blank">🔢 Calculator</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Company Information Form</h4><span class="ops-card-status live">Live</span></div>
+        <p>Post-NDA data collection form. Company details, financials, org structure, customer breakdown. Auto-emailed after NDA signing via stage automation.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/company-info.html" class="ops-card-link" target="_blank">🏢 Form</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Client Management Page</h4><span class="ops-card-status live">Live</span></div>
+        <p>Internal view of all active clients with pipeline stage, contact info, uploaded files, and risk scores. Pulls from GHL + R2.</p>
+        <div class="ops-card-links"><a href="clients.html" class="ops-card-link">👥 Clients</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Transferable Exit System (Product)</h4><span class="ops-card-status live">Defined</span></div>
+        <p>The core product: 4 phases over 18+ months. Align → Map → Automate → Scale. 27 deliverables. $150K-$200K + 1-2% success fee.</p>
+        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="ops-card-link" target="_blank">📖 System Page</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">4 Phases</span><span class="ops-card-tag">27 Deliverables</span><span class="ops-card-tag">18+ Months</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Transferable Book (Amazon KDP)</h4><span class="ops-card-status ready">KDP Ready</span></div>
+        <p>54,532 words, 16 chapters, 4 parts. KDP-formatted .docx and .epub ready for upload. Cover design in progress.</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/book.html" class="ops-card-link" target="_blank">📚 Web Version</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">ePub + DOCX</span><span class="ops-card-tag">Cover In Progress</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>The Last Chapter Digital Book Funnel</h4><span class="ops-card-status active">DNS Live</span></div>
+        <p>New funnel on thelastchapter.net. DNS pointing to GHL. Domain managed via Namecheap API. Funnel built in GHL.</p>
+        <div class="ops-card-links"><a href="https://thelastchapter.net" class="ops-card-link" target="_blank">🌐 thelastchapter.net</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">GHL Funnel</span><span class="ops-card-tag">Namecheap DNS</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
+        <div class="ops-card-top"><h4>Jet Lending (First Client Engagement)</h4><span class="ops-card-status active">In Progress</span></div>
+        <p>SOP documentation across marketing, sales, service delivery, accounting/legal. Vision alignment + automation. $7M equity target by April 7.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">2.5-3 Month Timeline</span><span class="ops-card-tag">First Client</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ACCOUNTING ═══ -->
+  <div class="ops-dept-section" id="ops-accounting">
+    <div class="ops-dept-section-header">
+      <div class="ops-dept-section-icon" style="background:var(--accent-accounting-dim);color:var(--accent-accounting);">💰</div>
+      <div>
+        <h3 style="color:var(--accent-accounting)">Accounting</h3>
+        <div class="ops-dept-desc">Financial tracking, revenue metrics, and subscription management</div>
+      </div>
+    </div>
+    <div class="ops-cards-grid">
+      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
+        <div class="ops-card-top"><h4>Stripe Payments</h4><span class="ops-card-status live">Live</span></div>
+        <p>$6 book transaction live. Ready for engagement fee processing. Needs API integration for live revenue on Command Center.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Book Sales</span><span class="ops-card-tag">Revenue Tracking Pending</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
+        <div class="ops-card-top"><h4>Command Center (Operations Hub)</h4><span class="ops-card-status live">Live</span></div>
+        <p>Central operating dashboard: scoreboard, pipeline overview, Sam Ovens methodology tracker, daily priorities, feedback loop. Real-time data from GHL.</p>
+        <div class="ops-card-links">
+          <a href="todo.html" class="ops-card-link">✅ Todos</a>
+          <a href="methodology.html" class="ops-card-link">🧠 Methodology</a>
+        </div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
+        <div class="ops-card-top"><h4>Stats Engine</h4><span class="ops-card-status active">Every 5 min</span></div>
+        <p>Pulls GHL pipeline data, contact counts, appointment stats, and analytics. Writes to data.json which powers dashboards.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">Python</span><span class="ops-card-tag">Cron</span><span class="ops-card-tag">GHL + GA4</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
+        <div class="ops-card-top"><h4>Monthly Tool Costs</h4><span class="ops-card-status active">Tracking</span></div>
+        <p>Instantly.ai ($37/mo), GHL (existing), Fireflies.ai (free tier). PostGrid + Handwrytten pay-per-send. Cloudflare free tier.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">~$37/mo active</span><span class="ops-card-tag">Free tier maximized</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LEGAL ═══ -->
+  <div class="ops-dept-section" id="ops-legal">
+    <div class="ops-dept-section-header">
+      <div class="ops-dept-section-icon" style="background:var(--accent-legal-dim);color:var(--accent-legal);">📜</div>
+      <div>
+        <h3 style="color:var(--accent-legal)">Legal</h3>
+        <div class="ops-dept-desc">NDA, agreements, compliance, and client documentation</div>
+      </div>
+    </div>
+    <div class="ops-cards-grid">
+      <div class="ops-card" style="--card-accent:var(--accent-legal)">
+        <div class="ops-card-top"><h4>Digital NDA System</h4><span class="ops-card-status live">Live</span></div>
+        <p>Online NDA with digital signature, PDF generation (triple fallback), and auto-email to both parties. Auto-sent when pipeline moves to "Call Complete."</p>
+        <div class="ops-card-links"><a href="https://thearenapartners.com/nda.html" class="ops-card-link" target="_blank">📝 NDA Page</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">jsPDF</span><span class="ops-card-tag">Digital Signature</span><span class="ops-card-tag">Auto-trigger</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-legal)">
+        <div class="ops-card-top"><h4>Arena Alignment Guarantee</h4><span class="ops-card-status ready">Defined</span></div>
+        <p>5 written commitments that define the client-advisor relationship. Built into the Transferable Exit System offer page. Builds trust through transparency.</p>
+        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="ops-card-link" target="_blank">📖 View</a></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-legal)">
+        <div class="ops-card-top"><h4>A2P 10DLC Registration</h4><span class="ops-card-status pending">Submitted</span></div>
+        <p>SMS compliance registration for business texting. Submitted, awaiting 1-2 week approval. Required for automated SMS sequences.</p>
+        <div class="ops-card-tags"><span class="ops-card-tag">1-2 Week Wait</span><span class="ops-card-tag">GHL</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-legal)">
+        <div class="ops-card-top"><h4>Privacy &amp; Terms</h4><span class="ops-card-status planned">Planned</span></div>
+        <p>Privacy policy and terms of service for both domains. Required before Facebook Ads can run. Standard templates to be customized.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ INFRASTRUCTURE ═══ -->
+  <div class="ops-infra">
+    <h4>Infrastructure Layer</h4>
+    <div class="ops-infra-grid">
+      <div class="ops-infra-item"><div class="iicon">☁️</div><div class="iname">Cloudflare Worker</div><div class="idetail">19 endpoints: GHL, LinkedIn, Facebook, R2, enrichment, PostGrid</div></div>
+      <div class="ops-infra-item"><div class="iicon">📊</div><div class="iname">GA4</div><div class="idetail">Both domains, G-SDMM90P63D</div></div>
+      <div class="ops-infra-item"><div class="iicon">🐙</div><div class="iname">GitHub</div><div class="idetail">5 active repos, auto-deploy</div></div>
+      <div class="ops-infra-item"><div class="iicon">⏰</div><div class="iname">14+ Cron Jobs</div><div class="idetail">Engines, content, commenting, warmup, beats, newsletter</div></div>
+      <div class="ops-infra-item"><div class="iicon">🎙️</div><div class="iname">Fireflies.ai</div><div class="idetail">Meeting transcripts + action items</div></div>
+      <div class="ops-infra-item"><div class="iicon">🎤</div><div class="iname">Pocket (HeyPocket)</div><div class="idetail">Voice recordings + summaries</div></div>
+      <div class="ops-infra-item"><div class="iicon">📧</div><div class="iname">Instantly.ai</div><div class="idetail">Cold outreach (API connected)</div></div>
+      <div class="ops-infra-item"><div class="iicon">🔑</div><div class="iname">macOS Keychain</div><div class="idetail">14+ API keys secured</div></div>
+      <div class="ops-infra-item"><div class="iicon">⭐</div><div class="iname">Featured.com</div><div class="idetail">PR + authority backlinks</div></div>
+      <div class="ops-infra-item"><div class="iicon">🌐</div><div class="iname">Namecheap API</div><div class="idetail">9 domains, DNS management</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="sam-system.js"></script>
 <script>
   // Tab switching
   document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -1257,6 +2297,156 @@
       document.getElementById(tab.dataset.view).classList.add('active');
     });
   });
+
+  // ═══════ DAILY OPS LOGIC ═══════
+
+  // CLOCK
+  function opsTick(){
+    var n = new Date();
+    var timeEl = document.getElementById('ops-time');
+    var dateEl = document.getElementById('ops-date');
+    if(timeEl) timeEl.textContent = n.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+    if(dateEl) dateEl.textContent = n.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  }
+  opsTick(); setInterval(opsTick, 1000);
+
+  // SAM QUOTE + CHALLENGE (loads when SAM is available)
+  function loadSamContent(){
+    if(typeof SAM === 'undefined') return;
+    var q = SAM.getDailyQuote();
+    var quoteEl = document.getElementById('ops-sam-quote');
+    var ctxEl = document.getElementById('ops-sam-ctx');
+    if(quoteEl) quoteEl.textContent = q.text;
+    if(ctxEl) ctxEl.textContent = q.context + ' — Sam Ovens';
+
+    var d = SAM.getDailyDirective();
+    var chqEl = document.getElementById('ops-ch-q');
+    var chaEl = document.getElementById('ops-ch-action');
+    if(chqEl) chqEl.textContent = d.focus;
+    if(chaEl) chaEl.textContent = d.action;
+  }
+  // Try immediately and also after a short delay (in case sam-system.js loads async)
+  loadSamContent();
+  setTimeout(loadSamContent, 500);
+
+  // NON-NEGOTIABLES
+  var OPS_NN = [
+    {id:'bookofself', icon:'📖', label:'Book of Self', link:'book-of-self.html'},
+    {id:'prayer', icon:'🙏', label:'Prayer'},
+    {id:'abs', icon:'💪', label:'Abs'},
+    {id:'back', icon:'💪', label:'Back'},
+    {id:'legs', icon:'🦵', label:'Legs'},
+    {id:'pullups', icon:'💪', label:'Pull-ups'}
+  ];
+
+  function opsRenderNN(){
+    var today = new Date().toDateString();
+    var st = JSON.parse(localStorage.getItem('cc-nn') || '{}');
+    if(st.date !== today) st = {date: today, done: {}};
+    var h = '';
+    OPS_NN.forEach(function(n){
+      var dn = st.done[n.id] || false;
+      h += '<div class="ops-nn' + (dn ? ' done' : '') + '" onclick="' + (n.link ? "window.open('" + n.link + "','_blank');" : '') + "opsToggleNN('" + n.id + "')\">";
+      h += '<div class="nn-dot"></div><span class="nn-lbl">' + n.icon + ' ' + n.label + '</span></div>';
+    });
+    document.getElementById('ops-nn-row').innerHTML = h;
+  }
+
+  window.opsToggleNN = function(id){
+    var today = new Date().toDateString();
+    var st = JSON.parse(localStorage.getItem('cc-nn') || '{}');
+    if(st.date !== today) st = {date: today, done: {}};
+    st.done[id] = !st.done[id];
+    localStorage.setItem('cc-nn', JSON.stringify(st));
+    opsRenderNN();
+  };
+
+  opsRenderNN();
+
+  // TODAY'S PRIORITIES
+  var OPS_PRIORITIES = [
+    {text:"Send Grant the data room + one-sheet", rate:"$5,000+/hr", rev:true},
+    {text:"Set up Zoom for Grant deep-dive", rate:"$5,000+/hr", rev:true},
+    {text:"Email George the one-sheet", rate:"$2,500/hr", rev:true},
+    {text:"Send intro to Stephanie (Jet Lending)", rate:"$2,000/hr", rev:true},
+    {text:"Invite Michael (SSC Glass) to Tuesday event", rate:"$2,000/hr", rev:true},
+    {text:"Follow up with Eddie Gant on markup", rate:"$2,000/hr", rev:true},
+    {text:"Request inventory blast from Marie", rate:"$1,000/hr", rev:true},
+    {text:"Record VSL video", rate:"$1,000/hr", rev:true}
+  ];
+
+  function opsLoadPri(){
+    var st = JSON.parse(localStorage.getItem('cc-pri') || '{}');
+    var shared = JSON.parse(localStorage.getItem('todo-done-shared') || '{}');
+    var today = new Date().toDateString();
+    if(st.date !== today) st = {date: today, done: {}};
+    var h = '';
+    OPS_PRIORITIES.forEach(function(p, i){
+      var dn = st.done[i] || shared[p.text] || false;
+      var rc = p.rev ? 'ops-rate-rev' : 'ops-rate-ops';
+      h += '<div class="ops-pri-item' + (dn ? ' done' : '') + '" onclick="opsTogglePri(' + i + ')">';
+      h += '<div class="ops-pri-check"></div>';
+      h += '<div class="ops-pri-text">' + p.text + ' <span class="ops-pri-rate ' + rc + '">' + (p.rev ? '💰' : '⚙️') + ' ' + p.rate + '</span></div>';
+      h += '</div>';
+    });
+    document.getElementById('ops-pri-list').innerHTML = h;
+  }
+
+  window.opsTogglePri = function(i){
+    var today = new Date().toDateString();
+    var st = JSON.parse(localStorage.getItem('cc-pri') || '{}');
+    if(st.date !== today) st = {date: today, done: {}};
+    st.done[i] = !st.done[i];
+    localStorage.setItem('cc-pri', JSON.stringify(st));
+    var shared = JSON.parse(localStorage.getItem('todo-done-shared') || '{}');
+    var text = OPS_PRIORITIES[i].text;
+    if(st.done[i]){ shared[text] = true; } else { delete shared[text]; }
+    localStorage.setItem('todo-done-shared', JSON.stringify(shared));
+    opsLoadPri();
+  };
+
+  opsLoadPri();
+
+  // FEEDBACK SCORECARD
+  var OPS_FB = [
+    {id:'fb-rev', q:'80%+ time on revenue activities?', icon:'💰'},
+    {id:'fb-conv', q:'Started 5+ new conversations?', icon:'💬'},
+    {id:'fb-follow', q:'Followed up with every open lead?', icon:'📞'},
+    {id:'fb-flow', q:'Protected flow blocks?', icon:'⚡'},
+    {id:'fb-market', q:'Learned something about the market?', icon:'🔬'},
+    {id:'fb-delegate', q:'Delegated all $25/hr tasks?', icon:'🗑️'},
+    {id:'fb-nn', q:'Completed all non-negotiables?', icon:'🔒'}
+  ];
+
+  function opsRenderFB(){
+    var today = new Date().toDateString();
+    var st = JSON.parse(localStorage.getItem('cc-fb') || '{}');
+    if(st.date !== today) st = {date: today, done: {}};
+    var h = '', score = 0;
+    OPS_FB.forEach(function(f){
+      var dn = st.done[f.id] || false;
+      if(dn) score++;
+      h += '<div class="ops-fb-item' + (dn ? ' done' : '') + '" onclick="opsToggleFB(\'' + f.id + '\')">';
+      h += '<div class="ops-fb-dot"></div>';
+      h += '<span class="ops-fb-q">' + f.icon + ' ' + f.q + '</span></div>';
+    });
+    document.getElementById('ops-fb-list').innerHTML = h;
+    var pct = Math.round((score / OPS_FB.length) * 100);
+    var grade = pct >= 85 ? 'A' : pct >= 70 ? 'B' : pct >= 50 ? 'C' : 'F';
+    var gc = pct >= 85 ? 'var(--accent-delivery)' : pct >= 70 ? 'var(--accent-mkt)' : 'var(--accent-sales)';
+    document.getElementById('ops-fb-grade').innerHTML = '<span style="color:' + gc + '">' + score + '/' + OPS_FB.length + ' — ' + grade + '</span>';
+  }
+
+  window.opsToggleFB = function(id){
+    var today = new Date().toDateString();
+    var st = JSON.parse(localStorage.getItem('cc-fb') || '{}');
+    if(st.date !== today) st = {date: today, done: {}};
+    st.done[id] = !st.done[id];
+    localStorage.setItem('cc-fb', JSON.stringify(st));
+    opsRenderFB();
+  };
+
+  opsRenderFB();
 </script>
 
 </body>

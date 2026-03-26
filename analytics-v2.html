@@ -36,7 +36,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
 
 /* ─── LAYOUT ─── */
 .app { display: flex; min-height: 100vh; }
-.sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 24px 0; flex-shrink: 0; position: fixed; top:0; left:0; bottom:0; overflow-y:auto; z-index:100; }
+.sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 24px 0; flex-shrink: 0; position: fixed; top:41px; left:0; bottom:0; overflow-y:auto; z-index:100; }
 .main { flex:1; margin-left: 220px; }
 
 /* ─── SIDEBAR ─── */
@@ -126,9 +126,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
 
 /* Last updated */
 .last-updated { font-size: 10px; color: var(--text-muted); text-align: right; padding: 8px 32px 16px; }
+
+/* Client tracker */
+.client-row { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:6px; margin-bottom:3px; background:rgba(255,255,255,.02); border:1px solid var(--border); cursor:pointer; transition:all .15s; }
+.client-row:hover { border-color:var(--border-light); background:var(--surface2); }
+.client-avatar { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+.client-detail { display:none; padding:8px 12px 12px 54px; font-size:12px; color:var(--text-dim); }
+.stage-group-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin:12px 0 6px; }
 </style>
 </head>
 <body>
+<nav style="background:#111;border-bottom:1px solid #252525;padding:10px 20px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:1000;font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;">
+  <a href="system.html" style="color:#c9a84c;text-decoration:none;font-size:13px;font-weight:600;">&#8592; System</a>
+  <span style="color:#333;">|</span>
+  <a href="analytics-v2.html" style="color:#888;text-decoration:none;font-size:13px;">Analytics</a>
+  <a href="todo.html" style="color:#888;text-decoration:none;font-size:13px;">Todos</a>
+  <a href="clients.html" style="color:#888;text-decoration:none;font-size:13px;">Clients</a>
+  <a href="tasks.html" style="color:#888;text-decoration:none;font-size:13px;">Tasks</a>
+  <a href="links.html" style="color:#888;text-decoration:none;font-size:13px;">Links</a>
+</nav>
 <div class="app">
 
 <!-- ═══════════════════════ SIDEBAR ═══════════════════════ -->
@@ -184,6 +200,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
   <div class="topbar">
     <div class="topbar-title" id="topbar-title">
       &#9632; Dashboard Overview
+      <span id="realtime-badge" style="display:none;font-size:11px;font-weight:500;color:var(--up);margin-left:12px;"><span class="pulse-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--up);margin-right:4px;vertical-align:middle;"></span><span id="realtime-count">0</span> live now</span>
     </div>
     <div class="date-controls">
       <button class="date-btn" data-range="7d">7D</button>
@@ -258,6 +275,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
       <div class="section-divider">Active Pipeline</div>
       <div class="chart-card" style="margin-bottom:24px;">
         <table class="data-table" id="sales-pipeline-table"></table>
+      </div>
+      <div class="section-divider">Client Tracker — Live from GHL</div>
+      <div class="chart-card" style="margin-bottom:24px;padding:0;" id="client-tracker-card">
+        <div id="client-list" style="padding:16px;"><div style="text-align:center;padding:20px;color:var(--text-muted);font-size:12px;">Loading client data...</div></div>
       </div>
     </div>
   </div>
@@ -345,6 +366,49 @@ let currentPage = 'overview';
 let charts = {};
 let cachedData = JSON.parse(localStorage.getItem('arena_analytics_cache') || '{}');
 let lastRefresh = localStorage.getItem('arena_last_refresh') || null;
+
+// ─── STAGE CONFIG (for client pipeline) ───
+const STAGE_CONFIG = {
+  closed_won:{color:"#22c55e",label:"CLOSED WON",icon:"✅",order:0},
+  proposal:{color:"#22c55e",label:"2ND CALL - PROPOSAL",icon:"🔥",order:1},
+  due_diligence:{color:"#eab308",label:"DUE DILIGENCE",icon:"📊",order:2},
+  nda_signed:{color:"#eab308",label:"NDA SIGNED",icon:"📝",order:3},
+  call_complete:{color:"#3b82f6",label:"CALL COMPLETE",icon:"📞",order:4},
+  assessment_done:{color:"#3b82f6",label:"ASSESSMENT DONE",icon:"📋",order:5},
+  call_booked:{color:"#3b82f6",label:"CALL BOOKED",icon:"📅",order:6},
+  vsl_lead:{color:"#a1a1aa",label:"VSL LEAD",icon:"📥",order:7},
+  no_show:{color:"#ef4444",label:"NO SHOW",icon:"⚠️",order:8},
+  nurture:{color:"#a855f7",label:"LONG-TERM NURTURE",icon:"⏳",order:9},
+};
+
+function getInitials(name) {
+  if (!name) return '??';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return name.substring(0, 2).toUpperCase();
+}
+
+function timeAgo(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  const now = new Date();
+  const diff = now - d;
+  const days = Math.floor(diff / 86400000);
+  if (days === 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 7) return days + 'd ago';
+  if (days < 30) return Math.floor(days / 7) + 'w ago';
+  return Math.floor(days / 30) + 'mo ago';
+}
+
+// ─── LIVE DATA HELPERS ───
+function getLive() { return cachedData.live || null; }
+
+function fmtNum(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+  return '$' + n;
+}
 
 // ─── DATE UTILS ───
 function getDateRange(range) {
@@ -588,14 +652,38 @@ function clearContainer(id) { const el = document.getElementById(id); if(el) el.
 function renderOverview() {
   const labels = generateLabels(currentRange);
   const n = labels.length;
+  const live = getLive();
+
+  // Calculate live stats
+  let organicSessions = '2,147';
+  let activeLeads = '34';
+  let pipelineValue = '$485K';
+  let conversations = '—';
+  let callsBooked = '—';
+
+  if (live) {
+    if (live.analytics && live.analytics.week) {
+      organicSessions = (live.analytics.week.sessions || 0).toLocaleString();
+    }
+    if (live.clients) {
+      const active = live.clients.filter(c => c.stage !== 'closed_won' && c.stage !== 'nurture');
+      activeLeads = active.length.toString();
+      const totalValue = live.clients.reduce((sum, c) => sum + (c.value || 0), 0);
+      pipelineValue = fmtNum(totalValue);
+    }
+    if (live.scoreboard) {
+      conversations = (live.scoreboard.conversations || 0).toString();
+      callsBooked = (live.scoreboard.calls_booked || 0).toString();
+    }
+  }
 
   makeStatCard('overview-stats', [
-    { label: 'Organic Sessions', value: '2,147', change: 12, benchmark: '1,500-3,000', source: 'Google Analytics' },
-    { label: 'Active Leads', value: '34', change: 8, benchmark: '—', source: 'Arena API' },
-    { label: 'Pipeline Value', value: '$485K', change: 15, benchmark: '—', source: 'Command Center' },
-    { label: 'Proposals Sent', value: '6', change: -5, benchmark: '—', source: 'Arena API' },
+    { label: 'Organic Sessions', value: organicSessions, change: 12, benchmark: '1,500-3,000', source: 'Google Analytics' },
+    { label: 'Active Leads', value: activeLeads, change: 8, benchmark: '—', source: 'Arena API' },
+    { label: 'Pipeline Value', value: pipelineValue, change: 15, benchmark: '—', source: 'Command Center' },
+    { label: 'Conversations', value: conversations, benchmark: '5+/week', source: 'Scoreboard' },
+    { label: 'Calls Booked', value: callsBooked, benchmark: '—', source: 'Scoreboard' },
     { label: 'Win Rate', value: '52%', change: 3, benchmark: '47-62%', source: 'RAIN Group' },
-    { label: 'Client Retention', value: '88%', change: 2, benchmark: '85-90%', source: 'First Page Sage' },
     { label: 'Gross Margin', value: '72%', change: 1, benchmark: '60-80%', source: 'SPI/Deltek' },
     { label: 'LTV:CAC Ratio', value: '18:1', change: 5, benchmark: '>20:1', source: 'Calculated' },
   ]);
@@ -642,15 +730,29 @@ function renderOverview() {
 function renderMarketing() {
   const labels = generateLabels(currentRange);
   const n = labels.length;
+  const live = getLive();
+
+  // Wire GA4 stats from live data
+  let organicSessions = '2,147/mo';
+  let gaUsers = '—';
+  let gaPageviews = '—';
+  let gaConversions = '—';
+  if (live && live.analytics && live.analytics.week) {
+    const w = live.analytics.week;
+    organicSessions = (w.sessions || 0).toLocaleString() + '/wk';
+    gaUsers = (w.users || 0).toLocaleString();
+    gaPageviews = (w.pageviews || 0).toLocaleString();
+    gaConversions = (w.conversions || 0).toString();
+  }
 
   makeStatCard('mkt-stats', [
-    { label: 'Organic Sessions', value: '2,147/mo', change: 12, benchmark: '1,500-3,000 (Yr1)', source: 'Semrush', color: 'var(--mkt)' },
+    { label: 'Organic Sessions', value: organicSessions, change: 12, benchmark: '1,500-3,000 (Yr1)', source: 'GA4 (7d)', color: 'var(--mkt)' },
+    { label: 'Users (7d)', value: gaUsers, source: 'GA4' },
+    { label: 'Pageviews (7d)', value: gaPageviews, source: 'GA4' },
+    { label: 'Conversions (7d)', value: gaConversions, source: 'GA4' },
     { label: 'Domain Rating', value: '19', change: 4, benchmark: '18-25 (Yr1)', source: 'Ahrefs' },
-    { label: 'Referring Domains', value: '112', change: 8, benchmark: '80-150 (Yr1)', source: 'Ahrefs' },
     { label: 'Email Open Rate', value: '41.2%', change: 2, benchmark: '36-46%', source: 'B2B Consulting' },
-    { label: 'Email CTR', value: '2.3%', change: 5, benchmark: '2.0-2.5%', source: 'B2B Consulting' },
     { label: 'LinkedIn Engagement', value: '5.1%', change: 3, benchmark: '3.2-6.5%', source: 'LinkedIn' },
-    { label: 'Blog Posts Published', value: '17', change: 0, benchmark: '2-4/mo target', source: 'HubSpot' },
     { label: 'Content CPL', value: '$42', change: -8, benchmark: '$15-60 organic', source: 'FirstPageSage' },
   ]);
 
@@ -1159,36 +1261,256 @@ function renderMarketing() {
       <tr><td>hvac business exit mistakes</td><td>90</td><td>8</td><td>5</td><td>Phase 1</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Page 1</span></td></tr>
     </tbody>
   `;
+
+  // ─── LIVE DATA: TOP PAGES, TRAFFIC SOURCES, BLOG, FUNNEL, VIDEO ───
+  if (live && live.analytics) {
+    const a = live.analytics;
+
+    // Inject live top pages table if available
+    if (a.top_pages && a.top_pages.length) {
+      const tpContainer = document.getElementById('mkt-seo-charts');
+      if (tpContainer) {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+        card.innerHTML = '<div class="chart-header"><div><div class="chart-title">Top Pages — Live from GA4</div><div class="chart-subtitle">Last 7 days</div></div><div class="chart-badge">GA4 LIVE</div></div>';
+        let tbl = '<table class="data-table"><thead><tr><th>Page</th><th>Views</th></tr></thead><tbody>';
+        a.top_pages.slice(0, 10).forEach(p => {
+          tbl += `<tr><td>${p.page}</td><td>${p.views}</td></tr>`;
+        });
+        tbl += '</tbody></table>';
+        card.innerHTML += tbl;
+        tpContainer.appendChild(card);
+      }
+    }
+
+    // Inject live traffic sources if available
+    if (a.traffic_sources && a.traffic_sources.length) {
+      const tsContainer = document.getElementById('mkt-seo-charts');
+      if (tsContainer) {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+        card.innerHTML = '<div class="chart-header"><div><div class="chart-title">Traffic Sources — Live</div><div class="chart-subtitle">Last 7 days by source/medium</div></div><div class="chart-badge">GA4 LIVE</div></div>';
+        let tbl = '<table class="data-table"><thead><tr><th>Source</th><th>Sessions</th><th>Users</th></tr></thead><tbody>';
+        a.traffic_sources.slice(0, 10).forEach(s => {
+          const label = (s.source || '(direct)') + (s.medium && s.medium !== '(none)' ? ' / ' + s.medium : '');
+          tbl += `<tr><td>${label}</td><td>${s.sessions}</td><td>${s.users}</td></tr>`;
+        });
+        tbl += '</tbody></table>';
+        card.innerHTML += tbl;
+        tsContainer.appendChild(card);
+      }
+    }
+
+    // Blog analytics
+    if (a.blog) {
+      const blogContainer = document.getElementById('mkt-content-charts');
+      if (blogContainer) {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+        let bhtml = '<div class="chart-header"><div><div class="chart-title">Blog Performance — Live</div><div class="chart-subtitle">' + (a.blog.total_views || 0) + ' views / ' + (a.blog.total_users || 0) + ' readers (7d)</div></div><div class="chart-badge">GA4 LIVE</div></div>';
+        if (a.blog.articles && a.blog.articles.length) {
+          bhtml += '<table class="data-table"><thead><tr><th>Article</th><th>Views</th><th>Avg Duration</th></tr></thead><tbody>';
+          a.blog.articles.forEach(b => {
+            let name = b.page.replace('/blog/', '').replace('.html', '').replace(/-/g, ' ');
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            const dur = b.avg_duration || 0;
+            const durStr = dur > 60 ? Math.round(dur / 60) + 'm' : Math.round(dur) + 's';
+            bhtml += `<tr><td>${name}</td><td>${b.views}</td><td>${durStr}</td></tr>`;
+          });
+          bhtml += '</tbody></table>';
+        } else {
+          bhtml += '<div style="padding:12px;color:var(--text-muted);font-size:12px;">No blog traffic yet — articles are indexing</div>';
+        }
+        card.innerHTML = bhtml;
+        blogContainer.appendChild(card);
+      }
+    }
+
+    // Funnel visualization
+    if (a.funnel) {
+      const funnelContainer = document.getElementById('mkt-seo-charts');
+      if (funnelContainer) {
+        const steps = [
+          {key:'/',label:'Landing Page',color:'#3b82f6'},
+          {key:'/watch.html',label:'Watch Page',color:'#6366f1'},
+          {key:'/book.html',label:'Book/Training',color:'#a855f7'},
+          {key:'/assessment.html',label:'Assessment',color:'#22c55e'},
+          {key:'/nda.html',label:'NDA',color:'#eab308'},
+          {key:'/company-info.html',label:'Company Info',color:'#ef4444'},
+          {key:'/upload.html',label:'Upload Docs',color:'#f97316'},
+        ];
+        let maxUsers = 0;
+        steps.forEach(s => { const f = a.funnel[s.key]; if (f && f.users > maxUsers) maxUsers = f.users; });
+        const card = document.createElement('div');
+        card.className = 'chart-card full';
+        let fhtml = '<div class="chart-header"><div><div class="chart-title">Website Funnel — Live</div><div class="chart-subtitle">7-day visitor progression</div></div><div class="chart-badge">GA4 LIVE</div></div>';
+        steps.forEach((s, i) => {
+          const f = a.funnel[s.key] || {views: 0, users: 0};
+          const pct = maxUsers > 0 ? Math.round((f.users / maxUsers) * 100) : 0;
+          const barW = Math.max(pct, 5);
+          let dropoff = '';
+          if (i > 0) {
+            const prev = a.funnel[steps[i-1].key] || {users: 0};
+            if (prev.users > 0) {
+              const drop = Math.round((1 - f.users / prev.users) * 100);
+              dropoff = ` <span style="color:var(--down);font-size:10px;">(-${drop}%)</span>`;
+            }
+          }
+          fhtml += `<div style="margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;">
+              <span style="color:var(--text)">${s.label}</span>
+              <span style="color:var(--text-dim)">${f.users} users / ${f.views} views${dropoff}</span>
+            </div>
+            <div style="background:var(--surface3);border-radius:4px;height:10px;overflow:hidden;">
+              <div style="width:${barW}%;height:100%;background:${s.color};border-radius:4px;transition:width 0.5s;"></div>
+            </div>
+          </div>`;
+        });
+        card.innerHTML = fhtml;
+        funnelContainer.appendChild(card);
+      }
+    }
+
+    // Video engagement
+    if (a.video_events || a.video_progress) {
+      const vidContainer = document.getElementById('mkt-content-charts');
+      if (vidContainer) {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+        let vhtml = '<div class="chart-header"><div><div class="chart-title">Video Engagement — Live</div><div class="chart-subtitle">VSL watch analytics (7d)</div></div><div class="chart-badge">GA4 LIVE</div></div>';
+
+        if (a.video_events) {
+          const ve = a.video_events;
+          const plays = Math.max((ve.video_play || {}).count || 0, (ve.vsl_play || {}).count || 0);
+          const viewers = (ve.video_play || {}).users || (ve.vsl_play || {}).users || 0;
+          const optins = (ve.optin_submit || {}).count || 0;
+          vhtml += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+            <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:6px;">
+              <div style="font-size:20px;font-weight:700;color:var(--mkt);">${plays}</div>
+              <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Plays</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:6px;">
+              <div style="font-size:20px;font-weight:700;color:var(--text);">${viewers}</div>
+              <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Viewers</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:var(--surface2);border-radius:6px;">
+              <div style="font-size:20px;font-weight:700;color:var(--up);">${optins}</div>
+              <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;">Opt-ins</div>
+            </div>
+          </div>`;
+        }
+
+        if (a.video_progress) {
+          const vp = a.video_progress;
+          const milestones = [
+            {pct:'25',label:'25%',color:'#f97316'},
+            {pct:'50',label:'50%',color:'#eab308'},
+            {pct:'75',label:'75%',color:'#3b82f6'},
+            {pct:'100',label:'100%',color:'#22c55e'},
+          ];
+          let maxVP = 0;
+          milestones.forEach(m => { if ((vp[m.pct] || 0) > maxVP) maxVP = vp[m.pct]; });
+          vhtml += '<div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;">Watch Retention</div>';
+          milestones.forEach(m => {
+            const count = vp[m.pct] || 0;
+            const barW = maxVP > 0 ? Math.max(Math.round((count / maxVP) * 100), 5) : 5;
+            vhtml += `<div style="display:flex;align-items:center;margin-bottom:4px;">
+              <span style="width:35px;font-size:10px;color:var(--text-dim);">${m.label}</span>
+              <div style="flex:1;background:var(--surface3);border-radius:3px;height:8px;overflow:hidden;margin:0 8px;">
+                <div style="width:${barW}%;height:100%;background:${m.color};border-radius:3px;"></div>
+              </div>
+              <span style="font-size:10px;color:var(--text);width:30px;text-align:right;">${count}</span>
+            </div>`;
+          });
+        }
+
+        card.innerHTML = vhtml;
+        vidContainer.appendChild(card);
+      }
+    }
+  }
 }
 
 // ─── RENDER: SALES ───
 function renderSales() {
   const labels = generateLabels(currentRange);
   const n = labels.length;
+  const live = getLive();
+
+  // Calculate live pipeline stats
+  let pipelineValue = '$485K';
+  let activeProposals = '6';
+  let activeDeals = '—';
+  if (live && live.clients) {
+    const totalValue = live.clients.reduce((sum, c) => sum + (c.value || 0), 0);
+    pipelineValue = fmtNum(totalValue);
+    const proposals = live.clients.filter(c => c.stage === 'proposal');
+    activeProposals = proposals.length.toString();
+    const active = live.clients.filter(c => c.stage !== 'closed_won' && c.stage !== 'nurture');
+    activeDeals = active.length.toString();
+  }
 
   makeStatCard('sales-stats', [
-    { label: 'Pipeline Value', value: '$485K', change: 15, source: 'Command Center', color: 'var(--sales)' },
-    { label: 'Active Proposals', value: '6', change: 0, source: 'Arena API' },
+    { label: 'Pipeline Value', value: pipelineValue, change: 15, source: 'GHL Live', color: 'var(--sales)' },
+    { label: 'Active Deals', value: activeDeals, source: 'GHL Live' },
+    { label: 'Active Proposals', value: activeProposals, change: 0, source: 'Arena API' },
     { label: 'Win Rate', value: '52%', change: 3, benchmark: '47-62%', source: 'RAIN Group' },
     { label: 'Avg Deal Size', value: '$81K', change: 8, benchmark: '$75-500K', source: 'M&A Advisory' },
     { label: 'Speed to Lead', value: '8 min', change: -12, benchmark: '<5 min', source: 'Critical KPI' },
     { label: 'Show Rate', value: '78%', change: 4, benchmark: '75-85%', source: 'Martal Group' },
-    { label: 'Proposals/Win', value: '1.9', change: -5, benchmark: '1.25-2.1', source: 'RAIN Group' },
     { label: 'Sales Cycle', value: '52 days', change: -3, benchmark: '30-90 days', source: 'Industry' },
   ]);
 
   clearContainer('sales-pipeline-charts');
+
+  // Use live arena_pipeline if available
+  let pipeLabels = ['Discovery','Qualification','Proposal','Negotiation','Closing'];
+  let pipeValues = [120000, 95000, 185000, 55000, 30000];
+  if (live && live.arena_pipeline) {
+    const ap = live.arena_pipeline;
+    pipeLabels = ['VSL Lead','Call Booked','Call Complete','NDA Signed','Due Diligence','Proposal','Closed Won'];
+    pipeValues = [
+      (ap.vsl_lead || 0) + (ap.assessment_done || 0),
+      ap.call_booked || 0,
+      ap.call_complete || 0,
+      ap.nda_signed || 0,
+      ap.due_diligence || 0,
+      ap.proposal || 0,
+      ap.closed_won || 0,
+    ];
+  }
+
   makeChart('sales-pipeline-charts', {
-    title: 'Pipeline Value by Stage', subtitle: 'Active deals in funnel', badge: 'ARENA API', full: true, height: 260,
+    title: 'Pipeline by Stage (Count)', subtitle: live && live.arena_pipeline ? 'Live from GHL' : 'Demo data', badge: live && live.arena_pipeline ? 'GHL LIVE' : 'ARENA API', full: true, height: 260,
     type: 'bar',
     data: {
-      labels: ['Discovery','Qualification','Proposal','Negotiation','Closing'],
+      labels: pipeLabels,
       datasets: [
-        { label: 'Value', data: [120000, 95000, 185000, 55000, 30000], backgroundColor: ['rgba(239,68,68,0.3)','rgba(239,68,68,0.4)','rgba(239,68,68,0.6)','rgba(239,68,68,0.75)','rgba(239,68,68,0.9)'], borderRadius: 6 },
+        { label: 'Count', data: pipeValues, backgroundColor: ['rgba(239,68,68,0.2)','rgba(239,68,68,0.3)','rgba(239,68,68,0.4)','rgba(239,68,68,0.5)','rgba(239,68,68,0.6)','rgba(239,68,68,0.75)','rgba(239,68,68,0.9)'], borderRadius: 6 },
       ]
     },
-    yFormat: v => '$'+(v/1000)+'K'
   });
+
+  // Funnel tags from data.funnel
+  let funnelData = [4.2, 35, 18, 42, 65, 28];
+  let funnelLabels = ['Visitor→Lead','Lead→MQL','MQL→SQL','SQL→Opp','Opp→Prop','Prop→Close'];
+  if (live && live.funnel) {
+    const f = live.funnel;
+    funnelLabels = Object.keys(f);
+    funnelData = Object.values(f);
+    // Show as counts not percentages
+    makeChart('sales-pipeline-charts', {
+      title: 'Funnel Tag Counts — Live', subtitle: 'From GHL contact tags', badge: 'GHL LIVE',
+      type: 'bar',
+      data: {
+        labels: funnelLabels.map(l => l.replace(/-/g, ' ')),
+        datasets: [
+          { label: 'Count', data: funnelData, backgroundColor: 'rgba(239,68,68,0.6)', borderRadius: 3 },
+        ]
+      },
+    });
+  }
+
   makeChart('sales-pipeline-charts', {
     title: 'Funnel Conversion by Stage', subtitle: 'Your actual vs. industry benchmark', badge: 'RESEARCH',
     type: 'bar',
@@ -1278,17 +1600,189 @@ function renderSales() {
     legend: true, yFormat: v => v+'%'
   });
 
-  // Pipeline table
+  // Pipeline table - use live clients if available
   const pt = document.getElementById('sales-pipeline-table');
-  pt.innerHTML = `
-    <thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Source</th><th>Days Open</th><th>Next Action</th></tr></thead>
-    <tbody>
-      <tr><td>HVAC Co — Houston</td><td><span class="status"><span class="status-dot" style="background:var(--sales)"></span>Proposal</span></td><td>$125,000</td><td>Referral</td><td>28</td><td>Follow-up call 3/28</td></tr>
-      <tr><td>Electrical Services LLC</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Discovery</span></td><td>$85,000</td><td>Inbound</td><td>12</td><td>Send assessment link</td></tr>
-      <tr><td>Premier Plumbing Group</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Negotiation</span></td><td>$210,000</td><td>Speaking</td><td>65</td><td>Agreement review</td></tr>
-      <tr><td>Gulf Coast Contractors</td><td><span class="status"><span class="status-dot" style="background:var(--mkt)"></span>Qualification</span></td><td>$65,000</td><td>Cold</td><td>8</td><td>Book discovery call</td></tr>
-    </tbody>
-  `;
+  if (live && live.clients && live.clients.length) {
+    const filtered = live.clients.filter(c => {
+      const nm = (c.name || '').toLowerCase();
+      return nm !== 'jean hardy' && nm !== 'jean louis hardy' && !nm.includes('(example)');
+    });
+    let rows = '';
+    filtered.forEach(c => {
+      const cfg = STAGE_CONFIG[c.stage] || {color: '#a1a1aa', label: c.stage || 'Unknown'};
+      const val = c.value > 0 ? '$' + c.value.toLocaleString() : '—';
+      const ago = timeAgo(c.lastUpdate || c.dateAdded);
+      rows += `<tr><td>${c.name}</td><td><span class="status"><span class="status-dot" style="background:${cfg.color}"></span>${cfg.label}</span></td><td>${val}</td><td>${c.company || '—'}</td><td>${ago}</td><td>${c.email || '—'}</td></tr>`;
+    });
+    pt.innerHTML = `<thead><tr><th>Contact</th><th>Stage</th><th>Value</th><th>Company</th><th>Last Update</th><th>Email</th></tr></thead><tbody>${rows}</tbody>`;
+  } else {
+    pt.innerHTML = `
+      <thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Source</th><th>Days Open</th><th>Next Action</th></tr></thead>
+      <tbody>
+        <tr><td>HVAC Co — Houston</td><td><span class="status"><span class="status-dot" style="background:var(--sales)"></span>Proposal</span></td><td>$125,000</td><td>Referral</td><td>28</td><td>Follow-up call 3/28</td></tr>
+        <tr><td>Electrical Services LLC</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Discovery</span></td><td>$85,000</td><td>Inbound</td><td>12</td><td>Send assessment link</td></tr>
+        <tr><td>Premier Plumbing Group</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Negotiation</span></td><td>$210,000</td><td>Speaking</td><td>65</td><td>Agreement review</td></tr>
+        <tr><td>Gulf Coast Contractors</td><td><span class="status"><span class="status-dot" style="background:var(--mkt)"></span>Qualification</span></td><td>$65,000</td><td>Cold</td><td>8</td><td>Book discovery call</td></tr>
+      </tbody>
+    `;
+  }
+
+  // ─── CLIENT TRACKER (full detail) ───
+  renderClients(live ? live.clients : null);
+}
+
+// ─── CLIENT RENDERING ───
+function renderClients(clients) {
+  const listEl = document.getElementById('client-list');
+  if (!listEl) return;
+
+  if (!clients || clients.length === 0) {
+    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-muted);font-size:12px;">No contacts in pipeline yet — data.json will populate this</div>';
+    return;
+  }
+
+  // Filter test/internal contacts
+  const filtered = clients.filter(c => {
+    const nm = (c.name || '').toLowerCase();
+    return nm !== 'jean hardy' && nm !== 'jean louis hardy' && !nm.includes('(example)');
+  });
+
+  const stageOrder = ["closed_won","proposal","due_diligence","nda_signed","call_complete","assessment_done","call_booked","vsl_lead","no_show","nurture"];
+  let h = '';
+
+  stageOrder.forEach(stage => {
+    const stageClients = filtered.filter(c => c.stage === stage);
+    if (stageClients.length === 0) return;
+    const cfg = STAGE_CONFIG[stage] || {color:'var(--text-muted)',label:stage.toUpperCase(),icon:'•'};
+
+    h += `<div style="margin-bottom:16px;">`;
+    h += `<div class="stage-group-label" style="color:${cfg.color}">${cfg.icon} ${cfg.label} (${stageClients.length})</div>`;
+
+    stageClients.forEach(c => {
+      const initials = getInitials(c.name);
+      const ago = timeAgo(c.lastUpdate);
+
+      // Completion badges
+      const badges = [];
+      if (c.completed && c.completed.indexOf('nda') >= 0) badges.push('📝 NDA');
+      if (c.completed && c.completed.indexOf('company-info') >= 0) badges.push('📋 Info');
+      if (c.completed && c.completed.indexOf('vsl-100') >= 0) badges.push('🎬 100%');
+      else if (c.completed && c.completed.indexOf('vsl-75') >= 0) badges.push('🎬 75%');
+      else if (c.completed && c.completed.indexOf('vsl-50') >= 0) badges.push('🎬 50%');
+      else if (c.completed && c.completed.indexOf('vsl-25') >= 0) badges.push('🎬 25%');
+
+      const stColor = (stage === 'nurture' || stage === 'no_show') ? 'var(--down)' : 'var(--up)';
+      let stText = badges.length > 0 ? badges.length + ' done' : 'Pending';
+      if (stage === 'nurture') stText = 'Nurture';
+      if (stage === 'no_show') stText = 'Lost - recover';
+      if (c.status === 'won') stText = 'Won';
+      if (c.status === 'lost') stText = 'Lost';
+
+      let riskBadge = '';
+      if (c.exitRiskScore) {
+        const rs = parseInt(c.exitRiskScore) || 0;
+        const rc = rs > 60 ? 'var(--down)' : rs > 30 ? 'var(--acct)' : 'var(--up)';
+        riskBadge = `<span style="font-size:9px;color:${rc};margin-left:6px;">Risk: ${rs}</span>`;
+      }
+
+      let valText = '';
+      if (c.value > 0) valText = `<div style="font-size:9px;color:var(--up);">$${c.value.toLocaleString()}</div>`;
+
+      // Company slug for files
+      let rawCo = c.company || c.name || '';
+      rawCo = rawCo.replace(/\s*-\s*(VSL Lead|Lead|Opportunity).*$/i, '');
+      const companySlug = rawCo.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+      h += `<div class="client-row" onclick="toggleClientDetail(this)">`;
+      h += `<div class="client-avatar" style="background:${cfg.color}22;border:1px solid ${cfg.color}44;color:${cfg.color};">${initials}</div>`;
+      h += `<div style="flex:1;min-width:0;">`;
+      h += `<div style="font-size:13px;color:var(--text);font-weight:500;">${c.name}${riskBadge}</div>`;
+      h += `<div style="font-size:11px;color:var(--text-muted);">${c.company || ''}</div>`;
+      h += `</div>`;
+      h += `<div style="text-align:right;flex-shrink:0;">`;
+      h += `<div style="font-size:10px;color:${stColor};font-weight:600;">${stText}</div>`;
+      if (ago) h += `<div style="font-size:9px;color:var(--text-muted);">${ago}</div>`;
+      h += valText;
+      h += `</div></div>`;
+
+      // Detail panel (hidden)
+      h += `<div class="client-detail">`;
+      if (c.email) h += `<div style="margin-bottom:4px;">✉ ${c.email}</div>`;
+      if (badges.length > 0) h += `<div style="margin-bottom:4px;color:var(--up);">Completed: ${badges.join(' | ')}</div>`;
+      if (c.completed) {
+        const missing = [];
+        if (c.completed.indexOf('nda') < 0) missing.push('NDA');
+        if (c.completed.indexOf('company-info') < 0) missing.push('Company Info');
+        if (missing.length > 0 && stage !== 'vsl_lead') {
+          h += `<div style="margin-bottom:4px;color:var(--down);">Missing: ${missing.join(', ')}</div>`;
+        }
+      }
+      if (c.exitRiskLevel) h += `<div style="margin-bottom:4px;">Exit Risk: ${c.exitRiskLevel}</div>`;
+      // Files section
+      h += `<div class="client-files" data-slug="${companySlug}" style="margin:6px 0;padding:6px 0;border-top:1px solid var(--border);"></div>`;
+      // GHL link
+      if (c.id) {
+        h += `<div><a href="https://app.gohighlevel.com/v2/location/LSvdgiiT7ManCRx9CCwE/contacts/detail/${c.id}" target="_blank" style="color:var(--mkt);text-decoration:none;font-size:11px;">View in GHL →</a></div>`;
+      }
+      h += `</div>`;
+    });
+    h += `</div>`;
+  });
+
+  listEl.innerHTML = h;
+}
+
+function toggleClientDetail(el) {
+  const detail = el.nextElementSibling;
+  if (!detail || !detail.classList.contains('client-detail')) return;
+  if (detail.style.display === 'none' || detail.style.display === '') {
+    detail.style.display = 'block';
+    // Load files if not loaded
+    const filesDiv = detail.querySelector('.client-files');
+    if (filesDiv && !filesDiv.dataset.loaded) {
+      const slug = filesDiv.dataset.slug;
+      filesDiv.dataset.loaded = '1';
+      filesDiv.innerHTML = '<div style="color:var(--text-muted);font-size:11px;">Loading files...</div>';
+      const slugParts = slug.split('-');
+      const slugsToTry = [slug];
+      for (let si = slugParts.length - 1; si >= 2; si--) {
+        slugsToTry.push(slugParts.slice(0, si).join('-'));
+      }
+      function trySlug(idx) {
+        if (idx >= slugsToTry.length) {
+          filesDiv.innerHTML = '<div style="color:var(--text-muted);font-size:11px;">No files uploaded yet</div>';
+          return;
+        }
+        fetch(`https://arena-api.jean-475.workers.dev/api/client-files/${slugsToTry[idx]}`)
+          .then(r => r.json())
+          .then(data => {
+            if (data.totalFiles && data.totalFiles > 0) {
+              let fh = `<div style="font-size:10px;color:var(--mkt);margin-bottom:4px;font-weight:600;">📁 FILES (${data.totalFiles})</div>`;
+              const cats = data.categories;
+              Object.keys(cats).forEach(cat => {
+                fh += `<div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;margin-top:4px;">${cat}</div>`;
+                cats[cat].forEach(file => {
+                  const fname = (file.name || '').replace(/^\d+-/, '');
+                  const sz = file.size || 0;
+                  const sizeStr = sz > 0 ? (sz > 1048576 ? (sz / 1048576).toFixed(1) + 'MB' : (sz / 1024).toFixed(0) + 'KB') : '';
+                  fh += `<div style="padding:2px 0;display:flex;align-items:center;gap:6px;">
+                    <a href="${file.url || 'https://arena-api.jean-475.workers.dev/files/' + file.key}" target="_blank" style="color:var(--mkt);text-decoration:none;font-size:11px;">${fname}</a>
+                    ${sizeStr ? `<span style="font-size:9px;color:var(--text-muted);">${sizeStr}</span>` : ''}
+                  </div>`;
+                });
+              });
+              filesDiv.innerHTML = fh;
+            } else {
+              trySlug(idx + 1);
+            }
+          })
+          .catch(() => trySlug(idx + 1));
+      }
+      trySlug(0);
+    }
+  } else {
+    detail.style.display = 'none';
+  }
 }
 
 // ─── RENDER: DELIVERY ───
@@ -1814,6 +2308,41 @@ function showToast(msg) {
 
   // Auto-fetch on load
   fetchAllData();
+
+  // ─── FETCH LIVE DATA FROM data.json ───
+  fetch('data.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      cachedData.live = d;
+
+      // Update realtime users badge
+      if (d.analytics && d.analytics.realtime_users) {
+        const badge = document.getElementById('realtime-badge');
+        const count = document.getElementById('realtime-count');
+        if (badge && count) {
+          count.textContent = d.analytics.realtime_users;
+          badge.style.display = 'inline-flex';
+          badge.style.alignItems = 'center';
+        }
+      }
+
+      // Update last updated from data.json
+      if (d.updated_local) {
+        document.getElementById('last-updated').textContent = `Live data: ${d.updated_local}`;
+      }
+
+      // Update GA4 sidebar status
+      if (d.analytics && d.analytics.week) {
+        const ga4Status = document.querySelector('.sidebar-status-row:last-child');
+        if (ga4Status) {
+          ga4Status.innerHTML = '<span class="pulse-dot"></span> GA4 connected';
+        }
+      }
+
+      // Re-render current page with live data
+      renderCurrentPage();
+    })
+    .catch(e => console.log('data.json not loaded:', e));
 })();
 </script>
 </body>
