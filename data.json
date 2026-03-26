@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T20:42:43.669611+00:00",
-  "updated_local": "2026-03-26 03:42 PM",
+  "updated": "2026-03-26T20:47:48.824789+00:00",
+  "updated_local": "2026-03-26 03:47 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 133,
-      "sessions": 162,
-      "pageviews": 280,
-      "avg_duration": 163.9,
+      "users": 134,
+      "sessions": 163,
+      "pageviews": 281,
+      "avg_duration": 162.9,
       "conversions": 0
     },
     "month": {
-      "users": 133,
-      "sessions": 162,
-      "pageviews": 280,
+      "users": 134,
+      "sessions": 163,
+      "pageviews": 281,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 136,
-        "users": 83
+        "views": 137,
+        "users": 84
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 121,
-        "users": 109
+        "sessions": 122,
+        "users": 110
       },
       {
         "source": "vivianashford.github.io",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 136,
-        "users": 83,
-        "avg_duration": 106.4
+        "views": 137,
+        "users": 84,
+        "avg_duration": 105.4
       },
       "/book.html": {
         "views": 17,
@@ -328,16 +328,16 @@
       },
       {
         "date": "2026-03-26",
-        "users": 6,
-        "sessions": 6,
-        "pageviews": 4
+        "users": 7,
+        "sessions": 7,
+        "pageviews": 5
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 150,
-        "users": 122
+        "sessions": 151,
+        "users": 123
       },
       {
         "device": "Mobile",
@@ -387,6 +387,11 @@
         "sessions": 4
       },
       {
+        "city": "Miami",
+        "users": 4,
+        "sessions": 4
+      },
+      {
         "city": "San Jose",
         "users": 4,
         "sessions": 4
@@ -410,21 +415,16 @@
         "city": "Istres",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Miami",
-        "users": 3,
-        "sessions": 3
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 280
+        "count": 281
       },
       {
         "event": "session_start",
-        "count": 159
+        "count": 160
       },
       {
         "event": "scroll",
@@ -436,7 +436,7 @@
       },
       {
         "event": "first_visit",
-        "count": 131
+        "count": 132
       },
       {
         "event": "scroll_depth",
@@ -477,8 +477,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 109,
-        "sessions": 121
+        "users": 110,
+        "sessions": 122
       },
       {
         "campaign": "(referral)",
@@ -545,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 71.0
+    "bounce_rate": 71.2
   }
 }
