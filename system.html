@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena Operating System — Architecture</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #252525;
+    --border-light: #333;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --text-muted: #555;
+    --accent-mkt: #4a9eff;
+    --accent-sales: #ff6b4a;
+    --accent-delivery: #4aff8b;
+    --accent-accounting: #ffd74a;
+    --accent-legal: #c084fc;
+    --accent-mkt-dim: rgba(74,158,255,0.08);
+    --accent-sales-dim: rgba(255,107,74,0.08);
+    --accent-delivery-dim: rgba(74,255,139,0.08);
+    --accent-accounting-dim: rgba(255,215,74,0.08);
+    --accent-legal-dim: rgba(192,132,252,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .header {
+    padding: 40px 60px 30px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+  .header h1 span { color: var(--text-muted); font-weight: 400; }
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Nav tabs */
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-tab {
+    padding: 14px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--text); border-bottom-color: var(--text); }
+
+  /* Views */
+  .view { display: none; padding: 40px 60px; }
+  .view.active { display: block; }
+
+  /* Architecture View */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .dept-col {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .dept-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dept-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .dept-header h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .dept-section {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dept-section:last-child { border-bottom: none; }
+  .dept-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .dept-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 12px;
+    color: var(--text-dim);
+    cursor: default;
+    transition: color 0.15s;
+  }
+  .dept-item:hover { color: var(--text); }
+  .dept-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dept-item a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .dept-item a:hover { text-decoration: underline; }
+
+  /* Marketing */
+  .dept-col.mkt .dept-header { background: var(--accent-mkt-dim); }
+  .dept-col.mkt .dept-icon { background: rgba(74,158,255,0.15); color: var(--accent-mkt); }
+  .dept-col.mkt .dept-header h3 { color: var(--accent-mkt); }
+  .dept-col.mkt .dot { background: var(--accent-mkt); }
+
+  /* Sales */
+  .dept-col.sales .dept-header { background: var(--accent-sales-dim); }
+  .dept-col.sales .dept-icon { background: rgba(255,107,74,0.15); color: var(--accent-sales); }
+  .dept-col.sales .dept-header h3 { color: var(--accent-sales); }
+  .dept-col.sales .dot { background: var(--accent-sales); }
+
+  /* Delivery */
+  .dept-col.delivery .dept-header { background: var(--accent-delivery-dim); }
+  .dept-col.delivery .dept-icon { background: rgba(74,255,139,0.15); color: var(--accent-delivery); }
+  .dept-col.delivery .dept-header h3 { color: var(--accent-delivery); }
+  .dept-col.delivery .dot { background: var(--accent-delivery); }
+
+  /* Accounting */
+  .dept-col.acct .dept-header { background: var(--accent-accounting-dim); }
+  .dept-col.acct .dept-icon { background: rgba(255,215,74,0.15); color: var(--accent-accounting); }
+  .dept-col.acct .dept-header h3 { color: var(--accent-accounting); }
+  .dept-col.acct .dot { background: var(--accent-accounting); }
+
+  /* Legal */
+  .dept-col.legal .dept-header { background: var(--accent-legal-dim); }
+  .dept-col.legal .dept-icon { background: rgba(192,132,252,0.15); color: var(--accent-legal); }
+  .dept-col.legal .dept-header h3 { color: var(--accent-legal); }
+  .dept-col.legal .dot { background: var(--accent-legal); }
+
+  /* Flow View */
+  .flow-container {
+    margin-top: 20px;
+    position: relative;
+  }
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 2px;
+  }
+  .flow-stage {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    position: relative;
+  }
+  .flow-stage:first-child { border-radius: 8px 0 0 8px; }
+  .flow-stage:last-child { border-radius: 0 8px 8px 0; }
+  .flow-stage-num {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .flow-stage h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .flow-stage p {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .flow-arrow {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 24px;
+    height: 24px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .flow-pages {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .flow-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .conversion-bar {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .conversion-bar h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .conversion-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .conv-step {
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .conv-step .rate {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .conv-step .label {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .conv-arrow {
+    color: var(--text-muted);
+    font-size: 16px;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* KPI Dashboard View */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .kpi-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .kpi-card-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .kpi-card-badge {
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .kpi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .kpi-row:last-child { border-bottom: none; }
+  .kpi-label {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .kpi-values {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .kpi-benchmark {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .kpi-source {
+    font-size: 9px;
+    color: var(--text-muted);
+    padding: 2px 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+  }
+
+  /* Integration View */
+  .int-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .int-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .int-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .int-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+  }
+  .int-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .int-card .int-type {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .int-endpoint {
+    font-size: 11px;
+    padding: 6px 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    color: var(--text-dim);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .int-endpoint .method {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+  .method.get { background: rgba(74,255,139,0.15); color: var(--accent-delivery); }
+  .method.post { background: rgba(74,158,255,0.15); color: var(--accent-mkt); }
+  .int-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--accent-delivery);
+    margin-top: 8px;
+  }
+  .int-status .pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-delivery);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .int-status.offline { color: var(--accent-sales); }
+  .int-status.offline .pulse { background: var(--accent-sales); animation: none; opacity: 0.5; }
+
+  /* Section titles */
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 0;
+  }
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .arch-grid, .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .arch-grid, .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .int-grid { grid-template-columns: 1fr; }
+    .header, .nav-tabs, .view { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Arena Operating System <span>v2</span></h1>
+  <div class="header-meta">System Architecture</div>
+</div>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" data-view="architecture">Architecture</div>
+  <div class="nav-tab" data-view="flow">Client Flow</div>
+  <div class="nav-tab" data-view="kpis">KPI Benchmarks</div>
+  <div class="nav-tab" data-view="integrations">Integrations & API</div>
+</div>
+
+<!-- ═══════════════════════ ARCHITECTURE VIEW ═══════════════════════ -->
+<div class="view active" id="architecture">
+  <div class="section-header">
+    <div class="section-title">Department Map</div>
+    <div class="section-desc">All systems, pages, and tools organized by function</div>
+  </div>
+
+  <div class="arch-grid">
+
+    <!-- MARKETING -->
+    <div class="dept-col mkt">
+      <div class="dept-header">
+        <div class="dept-icon">&#9670;</div>
+        <h3>Marketing</h3>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Websites</div>
+        <div class="dept-item"><span class="dot"></span><a href="https://thearenapartners.com" target="_blank">thearenapartners.com</a></div>
+        <div class="dept-item"><span class="dot"></span><a href="https://arenabusinessadvisors.com" target="_blank">arenabusinessadvisors.com</a></div>
+        <div class="dept-item"><span class="dot"></span>levelupwithanna sites</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Funnels</div>
+        <div class="dept-item"><span class="dot"></span>VSL / watch.html</div>
+        <div class="dept-item"><span class="dot"></span>Flip-Book / book.html</div>
+        <div class="dept-item"><span class="dot"></span>Exit Risk Assessment</div>
+        <div class="dept-item"><span class="dot"></span>Valuation Calculator</div>
+        <div class="dept-item"><span class="dot"></span>Training / training.html</div>
+        <div class="dept-item"><span class="dot"></span>Show-Up System</div>
+        <div class="dept-item"><span class="dot"></span>Book-a-Call</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Content & Publishing</div>
+        <div class="dept-item"><span class="dot"></span>Blog (17 articles)</div>
+        <div class="dept-item"><span class="dot"></span>Substack newsletter</div>
+        <div class="dept-item"><span class="dot"></span>Medium / WordPress / Tumblr</div>
+        <div class="dept-item"><span class="dot"></span>7 PR portals</div>
+        <div class="dept-item"><span class="dot"></span>3 Telegraph accounts</div>
+        <div class="dept-item"><span class="dot"></span>LinkedIn Queue</div>
+        <div class="dept-item"><span class="dot"></span>Ad Generator</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Automation</div>
+        <div class="dept-item"><span class="dot"></span>N8N Multi-Platform Publisher</div>
+        <div class="dept-item"><span class="dot"></span>Email signature tool</div>
+        <div class="dept-item"><span class="dot"></span>Event Playbook</div>
+      </div>
+    </div>
+
+    <!-- SALES -->
+    <div class="dept-col sales">
+      <div class="dept-header">
+        <div class="dept-icon">&#9733;</div>
+        <h3>Sales</h3>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Pipeline Pages</div>
+        <div class="dept-item"><span class="dot"></span>book-a-call.html</div>
+        <div class="dept-item"><span class="dot"></span>confirmation.html</div>
+        <div class="dept-item"><span class="dot"></span>show-up.html</div>
+        <div class="dept-item"><span class="dot"></span>one-sheet.html</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Ops Tools</div>
+        <div class="dept-item"><span class="dot"></span>Rep Dashboard</div>
+        <div class="dept-item"><span class="dot"></span>Sales SOP</div>
+        <div class="dept-item"><span class="dot"></span>AVATR Outreach v4</div>
+        <div class="dept-item"><span class="dot"></span>Sales Scripts</div>
+        <div class="dept-item"><span class="dot"></span>Cold Call Playbooks</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">CRM & Tracking</div>
+        <div class="dept-item"><span class="dot"></span>Command Center</div>
+        <div class="dept-item"><span class="dot"></span>Client Details Board</div>
+        <div class="dept-item"><span class="dot"></span>Analytics Dashboard</div>
+        <div class="dept-item"><span class="dot"></span>Task Board</div>
+      </div>
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="dept-col delivery">
+      <div class="dept-header">
+        <div class="dept-icon">&#9654;</div>
+        <h3>Delivery</h3>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Client Portal</div>
+        <div class="dept-item"><span class="dot"></span>dashboard.html (Client CC)</div>
+        <div class="dept-item"><span class="dot"></span>company-info.html</div>
+        <div class="dept-item"><span class="dot"></span>upload.html</div>
+        <div class="dept-item"><span class="dot"></span>nda.html</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Process & SOPs</div>
+        <div class="dept-item"><span class="dot"></span>AOS Methodology</div>
+        <div class="dept-item"><span class="dot"></span>Full Process Map (SVG)</div>
+        <div class="dept-item"><span class="dot"></span>Delivery SOPs</div>
+        <div class="dept-item"><span class="dot"></span>Onboarding Flow</div>
+        <div class="dept-item"><span class="dot"></span>ARCIM Roles</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Ops Hub</div>
+        <div class="dept-item"><span class="dot"></span>LevelUp PM Hub</div>
+        <div class="dept-item"><span class="dot"></span>Ops Map</div>
+        <div class="dept-item"><span class="dot"></span>Daily Todos</div>
+        <div class="dept-item"><span class="dot"></span>Book of Self</div>
+        <div class="dept-item"><span class="dot"></span>TOFC Calendar</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Training</div>
+        <div class="dept-item"><span class="dot"></span>Staff Training Guide</div>
+        <div class="dept-item"><span class="dot"></span>Training Workbook</div>
+        <div class="dept-item"><span class="dot"></span>Offer & Solutions Sheets</div>
+      </div>
+    </div>
+
+    <!-- ACCOUNTING -->
+    <div class="dept-col acct">
+      <div class="dept-header">
+        <div class="dept-icon">&#9632;</div>
+        <h3>Accounting</h3>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Revenue</div>
+        <div class="dept-item"><span class="dot"></span>agreement.html (Stripe)</div>
+        <div class="dept-item"><span class="dot"></span>Engagement Agreements</div>
+        <div class="dept-item"><span class="dot"></span>Earnings Proforma (.xlsx)</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Chart of Accounts</div>
+        <div class="dept-item"><span class="dot"></span>4000 — Consulting Revenue</div>
+        <div class="dept-item"><span class="dot"></span>4100 — Retainer Revenue</div>
+        <div class="dept-item"><span class="dot"></span>4200 — Success Fees</div>
+        <div class="dept-item"><span class="dot"></span>5000 — COGS</div>
+        <div class="dept-item"><span class="dot"></span>6100 — Marketing Expenses</div>
+        <div class="dept-item"><span class="dot"></span>6200 — Sales Expenses</div>
+        <div class="dept-item"><span class="dot"></span>6300 — Technology</div>
+        <div class="dept-item"><span class="dot"></span>6400 — Facilities</div>
+        <div class="dept-item"><span class="dot"></span>6500 — Professional Services</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Targets</div>
+        <div class="dept-item"><span class="dot"></span>Gross Margin: 60-80%</div>
+        <div class="dept-item"><span class="dot"></span>EBITDA: 15-25%</div>
+        <div class="dept-item"><span class="dot"></span>CAC: $2,500-$5,000</div>
+        <div class="dept-item"><span class="dot"></span>LTV:CAC &gt; 20:1</div>
+      </div>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="dept-col legal">
+      <div class="dept-header">
+        <div class="dept-icon">&#9670;</div>
+        <h3>Legal</h3>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Client Agreements</div>
+        <div class="dept-item"><span class="dot"></span>NDA (nda.html)</div>
+        <div class="dept-item"><span class="dot"></span>Engagement Agreement</div>
+        <div class="dept-item"><span class="dot"></span>Advisor Agreements</div>
+        <div class="dept-item"><span class="dot"></span>Contracts v2</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Compliance</div>
+        <div class="dept-item"><span class="dot"></span>privacy.html</div>
+        <div class="dept-item"><span class="dot"></span>terms.html</div>
+      </div>
+      <div class="dept-section">
+        <div class="dept-section-label">Resources</div>
+        <div class="dept-item"><span class="dot"></span>Exit Planning Guide</div>
+        <div class="dept-item"><span class="dot"></span>Offer One-Sheet</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ CLIENT FLOW VIEW ═══════════════════════ -->
+<div class="view" id="flow">
+  <div class="section-header">
+    <div class="section-title">Client Journey</div>
+    <div class="section-desc">End-to-end flow from first touch to deal close</div>
+  </div>
+
+  <div class="flow-container">
+    <div class="flow-row">
+      <div class="flow-stage" style="border-left: 3px solid var(--accent-mkt);">
+        <div class="flow-stage-num">Stage 01</div>
+        <h4 style="color:var(--accent-mkt)">Attract</h4>
+        <p>Organic, paid, and outbound channels drive traffic to Arena properties</p>
+        <div class="flow-pages">
+          <span class="flow-tag">Landing page</span>
+          <span class="flow-tag">Blog (17)</span>
+          <span class="flow-tag">LinkedIn</span>
+          <span class="flow-tag">PR portals (7)</span>
+          <span class="flow-tag">Substack</span>
+          <span class="flow-tag">Ads</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+      </div>
+      <div class="flow-stage" style="border-left: 3px solid var(--accent-mkt);">
+        <div class="flow-stage-num">Stage 02</div>
+        <h4 style="color:var(--accent-mkt)">Engage</h4>
+        <p>Interactive tools and content convert visitors to leads</p>
+        <div class="flow-pages">
+          <span class="flow-tag">VSL</span>
+          <span class="flow-tag">Flip-Book</span>
+          <span class="flow-tag">Assessment</span>
+          <span class="flow-tag">Calculator</span>
+          <span class="flow-tag">Training</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+      </div>
+      <div class="flow-stage" style="border-left: 3px solid var(--accent-sales);">
+        <div class="flow-stage-num">Stage 03</div>
+        <h4 style="color:var(--accent-sales)">Convert</h4>
+        <p>Booking, show-up system, and discovery calls qualify leads</p>
+        <div class="flow-pages">
+          <span class="flow-tag">Book-a-Call</span>
+          <span class="flow-tag">Show-Up</span>
+          <span class="flow-tag">Confirmation</span>
+          <span class="flow-tag">One-Sheet</span>
+          <span class="flow-tag">Rep Dashboard</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+      </div>
+      <div class="flow-stage" style="border-left: 3px solid var(--accent-sales);">
+        <div class="flow-stage-num">Stage 04</div>
+        <h4 style="color:var(--accent-sales)">Close</h4>
+        <p>Proposal, agreement signing, and payment via Stripe</p>
+        <div class="flow-pages">
+          <span class="flow-tag">NDA</span>
+          <span class="flow-tag">Agreement + Stripe</span>
+          <span class="flow-tag">Company Info</span>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+      </div>
+      <div class="flow-stage" style="border-left: 3px solid var(--accent-delivery);">
+        <div class="flow-stage-num">Stage 05</div>
+        <h4 style="color:var(--accent-delivery)">Deliver</h4>
+        <p>Exit planning, M&A advisory, and ongoing client management</p>
+        <div class="flow-pages">
+          <span class="flow-tag">Client Dashboard</span>
+          <span class="flow-tag">Upload</span>
+          <span class="flow-tag">AOS Method</span>
+          <span class="flow-tag">Onboarding</span>
+          <span class="flow-tag">TOFC Calendar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conversion Benchmark Bar -->
+    <div class="conversion-bar">
+      <h4>Funnel Conversion Benchmarks (B2B Exit Advisory)</h4>
+      <div class="conversion-steps">
+        <div class="conv-step">
+          <div class="rate">3-7%</div>
+          <div class="label">Visitor &rarr; Lead</div>
+        </div>
+        <div class="conv-arrow">&rarr;</div>
+        <div class="conv-step">
+          <div class="rate">31-41%</div>
+          <div class="label">Lead &rarr; MQL</div>
+        </div>
+        <div class="conv-arrow">&rarr;</div>
+        <div class="conv-step">
+          <div class="rate">13-21%</div>
+          <div class="label">MQL &rarr; SQL</div>
+        </div>
+        <div class="conv-arrow">&rarr;</div>
+        <div class="conv-step">
+          <div class="rate">30-50%</div>
+          <div class="label">SQL &rarr; Opp</div>
+        </div>
+        <div class="conv-arrow">&rarr;</div>
+        <div class="conv-step">
+          <div class="rate">60-70%</div>
+          <div class="label">Opp &rarr; Proposal</div>
+        </div>
+        <div class="conv-arrow">&rarr;</div>
+        <div class="conv-step">
+          <div class="rate">20-35%</div>
+          <div class="label">Proposal &rarr; Close</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ KPI BENCHMARKS VIEW ═══════════════════════ -->
+<div class="view" id="kpis">
+  <div class="section-header">
+    <div class="section-title">KPI Benchmark Dashboard</div>
+    <div class="section-desc">200+ industry benchmarks — benchmark target vs. your actual (connect API to populate)</div>
+  </div>
+
+  <div class="kpi-grid">
+
+    <!-- SEO & Digital -->
+    <div class="kpi-card" style="border-top: 2px solid var(--accent-mkt);">
+      <div class="kpi-card-header">
+        <div class="kpi-card-title" style="color:var(--accent-mkt)">SEO & Digital</div>
+        <div class="kpi-card-badge" style="background:var(--accent-mkt-dim);color:var(--accent-mkt)">Weekly</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Organic sessions/mo (Yr 1)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">1,500-3,000</div>
+          <div class="kpi-source">Semrush</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Domain Rating (Yr 1)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">18-25</div>
+          <div class="kpi-source">Ahrefs</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Referring domains (Yr 1)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">80-150</div>
+          <div class="kpi-source">Ahrefs</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Organic CTR #1</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">~19%</div>
+          <div class="kpi-source">GrowthSRC</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Site conversion rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">3-7%</div>
+          <div class="kpi-source">Unbounce</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">LCP target</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">&le; 2.5s</div>
+          <div class="kpi-source">Google</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Posts/month target</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">2-4</div>
+          <div class="kpi-source">HubSpot</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email & Social -->
+    <div class="kpi-card" style="border-top: 2px solid var(--accent-mkt);">
+      <div class="kpi-card-header">
+        <div class="kpi-card-title" style="color:var(--accent-mkt)">Email & Social</div>
+        <div class="kpi-card-badge" style="background:var(--accent-mkt-dim);color:var(--accent-mkt)">Weekly</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Email open rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">36-46%</div>
+          <div class="kpi-source">B2B avg</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Email CTR</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">2.0-2.5%</div>
+          <div class="kpi-source">B2B avg</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Email ROI</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">$36-42/$ spent</div>
+          <div class="kpi-source">Verified</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">LinkedIn engagement</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">3.2-6.5%</div>
+          <div class="kpi-source">LinkedIn</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">InMail response rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">10-15%</div>
+          <div class="kpi-source">LinkedIn</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Cold email reply rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">3-5.8%</div>
+          <div class="kpi-source">Industry</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">LinkedIn post frequency</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">3-5x/week</div>
+          <div class="kpi-source">Best prac.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sales -->
+    <div class="kpi-card" style="border-top: 2px solid var(--accent-sales);">
+      <div class="kpi-card-header">
+        <div class="kpi-card-title" style="color:var(--accent-sales)">Sales Pipeline</div>
+        <div class="kpi-card-badge" style="background:var(--accent-sales-dim);color:var(--accent-sales)">Weekly</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Proposal win rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">47-62%</div>
+          <div class="kpi-source">RAIN</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Sales cycle ($25-100K)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">30-90 days</div>
+          <div class="kpi-source">Industry</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Speed to lead target</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">&lt; 5 min</div>
+          <div class="kpi-source">Critical</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Discovery show rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">75-85%</div>
+          <div class="kpi-source">Martal</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Referral close rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">40-60%</div>
+          <div class="kpi-source">Industry</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Follow-ups needed</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">5+ touches</div>
+          <div class="kpi-source">Research</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">MQL &rarr; SQL (SEO leads)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">51%</div>
+          <div class="kpi-source">Industry</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery -->
+    <div class="kpi-card" style="border-top: 2px solid var(--accent-delivery);">
+      <div class="kpi-card-header">
+        <div class="kpi-card-title" style="color:var(--accent-delivery)">Delivery & Retention</div>
+        <div class="kpi-card-badge" style="background:var(--accent-delivery-dim);color:var(--accent-delivery)">Monthly</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Client retention</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">85-90%</div>
+          <div class="kpi-source">FPS</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">NPS score</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">51-68</div>
+          <div class="kpi-source">Survicate</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">CSAT</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">84%+</div>
+          <div class="kpi-source">Retently</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Billable utilization</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">75-80%</div>
+          <div class="kpi-source">SPI/Deltek</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Project margin</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">60-80%</div>
+          <div class="kpi-source">Advisory</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Scope creep incidents</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">&lt; 5%</div>
+          <div class="kpi-source">Target</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Referral rate</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">60%+</div>
+          <div class="kpi-source">Consulting</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial -->
+    <div class="kpi-card" style="border-top: 2px solid var(--accent-accounting);">
+      <div class="kpi-card-header">
+        <div class="kpi-card-title" style="color:var(--accent-accounting)">Financial</div>
+        <div class="kpi-card-badge" style="background:var(--accent-accounting-dim);color:var(--accent-accounting)">Monthly</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Gross margin</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">60-80%</div>
+          <div class="kpi-source">Advisory</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">EBITDA margin</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">15-25%</div>
+          <div class="kpi-source">SPI</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">CAC (fully loaded)</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">$2.5-5K</div>
+          <div class="kpi-source">FPS/DevriX</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">LTV:CAC ratio</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">&gt; 20:1</div>
+          <div class="kpi-source">Calculated</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Revenue/FTE</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">$300-600K</div>
+          <div class="kpi-source">Boutique</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Marketing % of revenue</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">12-20%</div>
+          <div class="kpi-source">Early stage</div>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-label">Break-even timeline</div>
+        <div class="kpi-values">
+          <div class="kpi-benchmark">7-12 mo</div>
+          <div class="kpi-source">FinModels</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════ INTEGRATIONS VIEW ═══════════════════════ -->
+<div class="view" id="integrations">
+  <div class="section-header">
+    <div class="section-title">Integrations & API Endpoints</div>
+    <div class="section-desc">Live connections, API routes, and data sources for automated reporting</div>
+  </div>
+
+  <div class="int-grid">
+
+    <!-- Arena Worker API -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#9889;</div>
+        <div>
+          <h4>Arena Worker API</h4>
+          <div class="int-type">Cloudflare Workers — 19 Endpoints</div>
+        </div>
+      </div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/submit-lead</div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/submit-nda</div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/submit-company-info</div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/submit-assessment</div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/submit-agreement</div>
+      <div class="int-endpoint"><span class="method get">GET</span> /api/get-clients</div>
+      <div class="int-endpoint"><span class="method get">GET</span> /api/get-analytics</div>
+      <div class="int-endpoint"><span class="method post">POST</span> /api/upload-document</div>
+      <div class="int-status"><span class="pulse"></span> Live — arena-api.jean-475.workers.dev</div>
+    </div>
+
+    <!-- Stripe -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#128179;</div>
+        <div>
+          <h4>Stripe Payments</h4>
+          <div class="int-type">Payment Processing</div>
+        </div>
+      </div>
+      <div class="int-endpoint"><span class="method post">POST</span> /create-checkout-session</div>
+      <div class="int-endpoint"><span class="method get">GET</span> /payment-status</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:10px;line-height:1.6;">
+        Connected via agreement.html<br>
+        Reports: Revenue, MRR, churn, payment failures<br>
+        Dashboard: dashboard.stripe.com
+      </div>
+      <div class="int-status"><span class="pulse"></span> Connected</div>
+    </div>
+
+    <!-- N8N -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#9881;</div>
+        <div>
+          <h4>N8N Automation</h4>
+          <div class="int-type">Workflow Engine</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Multi-Platform Publisher workflow<br>
+        Triggers: Manual + scheduled<br>
+        Publishes to: Substack, Medium, WordPress,<br>
+        Tumblr, PR portals, Telegraph<br>
+        Endpoint: localhost:5678
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Local only</div>
+    </div>
+
+    <!-- Google Analytics -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#128200;</div>
+        <div>
+          <h4>Google Analytics</h4>
+          <div class="int-type">Traffic & Behavior — Connect via API</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: Organic sessions, bounce rate, pages/session,<br>
+        conversion events, goal completions<br>
+        Tracks: thearenapartners.com + arenabusinessadvisors.com<br>
+        API: Google Analytics Data API v1
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+    </div>
+
+    <!-- Ahrefs / SEO -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#128269;</div>
+        <div>
+          <h4>SEO Tools</h4>
+          <div class="int-type">Ahrefs / Semrush — Connect via API</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: Domain Rating, referring domains,<br>
+        keyword rankings, organic traffic estimates,<br>
+        backlink growth, content gap analysis<br>
+        API: Ahrefs API v3 or Semrush API
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+    </div>
+
+    <!-- Email Platform -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#9993;</div>
+        <div>
+          <h4>Email Platform</h4>
+          <div class="int-type">Substack + Outreach — Connect via API</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: Open rate, CTR, unsubscribe rate,<br>
+        list growth, delivery rate, bounce rate<br>
+        Integrates: thearenapartners.substack.com<br>
+        + cold email platform metrics
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#128101;</div>
+        <div>
+          <h4>LinkedIn</h4>
+          <div class="int-type">Organic + Ads — Connect via API</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: Impressions, engagement rate,<br>
+        follower growth, InMail metrics,<br>
+        ad spend/CPL/conversions<br>
+        Queue: linkedin-queue.html (levelup-pm)
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+    </div>
+
+    <!-- QuickBooks -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#128176;</div>
+        <div>
+          <h4>QuickBooks</h4>
+          <div class="int-type">Accounting — Connect via API</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: P&L, gross margin, EBITDA, revenue<br>
+        by service line, expense by category (6100-6600),<br>
+        AR aging, cash position<br>
+        API: QuickBooks Online API v3
+      </div>
+      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+    </div>
+
+    <!-- CRM / Command Center -->
+    <div class="int-card">
+      <div class="int-card-header">
+        <div class="int-card-icon">&#127919;</div>
+        <div>
+          <h4>Command Center</h4>
+          <div class="int-type">Internal CRM — LevelUp PM</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
+        Feeds: Pipeline value, deal stages, client count,<br>
+        task completion, rep performance<br>
+        Pages: command-center, analytics, clients,<br>
+        tasks, todo, rep-dashboard
+      </div>
+      <div class="int-status"><span class="pulse"></span> Live — levelup-pm</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.view).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
