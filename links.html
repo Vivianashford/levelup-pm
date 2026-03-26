@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Links | The Arena</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#08080c;color:#e8e4dc;min-height:100vh}
+a{color:#c9a84c;text-decoration:none}
+a:hover{opacity:.85}
+
+.topbar{background:#0e0e14;border-bottom:1px solid #1a1a24;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.topbar h1{font-family:'Playfair Display',serif;font-size:20px;color:#c9a84c}
+.topbar a{font-size:13px;color:#666}
+.topbar a:hover{color:#c9a84c}
+
+.main{max-width:1000px;margin:0 auto;padding:24px}
+
+.search-box{width:100%;padding:12px 16px;background:#0e0e14;border:1px solid #1a1a24;border-radius:8px;color:#e8e4dc;font-size:14px;font-family:'DM Sans',sans-serif;margin-bottom:24px;outline:none}
+.search-box:focus{border-color:#c9a84c40}
+.search-box::placeholder{color:#444}
+
+.section{margin-bottom:32px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #1a1a24}
+.section-icon{font-size:20px}
+.section-title{font-family:'Playfair Display',serif;font-size:16px;color:#c9a84c}
+.section-count{font-size:11px;color:#444;margin-left:auto}
+
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.link-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#0e0e14;border:1px solid #1a1a24;border-radius:8px;transition:all .15s;cursor:pointer}
+.link-item:hover{background:#12121a;border-color:#c9a84c30}
+.link-item .icon{font-size:14px;width:20px;text-align:center;flex-shrink:0}
+.link-item .info{flex:1;min-width:0}
+.link-item .name{font-size:13px;color:#e8e4dc;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-item .url{font-size:10px;color:#444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.link-item .badge{font-size:9px;padding:2px 6px;border-radius:3px;font-weight:700;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.badge-live{background:rgba(34,197,94,.1);color:#22c55e}
+.badge-pending{background:rgba(201,168,76,.1);color:#c9a84c}
+.badge-internal{background:rgba(100,100,120,.1);color:#666}
+.badge-blog{background:rgba(106,159,216,.1);color:#6a9fd8}
+
+.hidden{display:none!important}
+
+.stats{display:flex;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.stat{font-size:12px;color:#666}
+.stat strong{color:#c9a84c;font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🔗 Everything We've Built</h1>
+  <a href="index.html">← Ops Hub</a>
+</div>
+
+<div class="main">
+  <input type="text" class="search-box" id="search" placeholder="Search all links..." oninput="filterLinks()">
+
+  <div class="stats" id="stats"></div>
+
+  <div id="sections"></div>
+</div>
+
+<script>
+var LINKS = {
+  "thearenapartners.com": {
+    icon: "⚔️",
+    items: [
+      { name: "Landing Page", url: "https://thearenapartners.com", badge: "live" },
+      { name: "VSL / Training Video", url: "https://thearenapartners.com/watch.html", badge: "live" },
+      { name: "The Book (23 chapters)", url: "https://thearenapartners.com/book.html", badge: "live" },
+      { name: "Exit Risk Assessment", url: "https://thearenapartners.com/assessment.html", badge: "live" },
+      { name: "Valuation Calculator", url: "https://thearenapartners.com/calculator.html", badge: "live" },
+      { name: "NDA Signing", url: "https://thearenapartners.com/nda.html", badge: "live" },
+      { name: "Company Info Form", url: "https://thearenapartners.com/company-info.html", badge: "live" },
+      { name: "Document Upload", url: "https://thearenapartners.com/upload.html", badge: "live" },
+      { name: "Client Dashboard", url: "https://thearenapartners.com/dashboard.html", badge: "live" },
+      { name: "Engagement Agreement + Stripe", url: "https://thearenapartners.com/agreement.html", badge: "live" },
+      { name: "Offer One-Sheet", url: "https://thearenapartners.com/one-sheet.html", badge: "live" },
+      { name: "Book a Call", url: "https://thearenapartners.com/book-a-call.html", badge: "live" },
+      { name: "About", url: "https://thearenapartners.com/about.html", badge: "live" },
+      { name: "Contact", url: "https://thearenapartners.com/contact.html", badge: "live" },
+      { name: "Services", url: "https://thearenapartners.com/services.html", badge: "live" },
+      { name: "Resources", url: "https://thearenapartners.com/resources.html", badge: "live" },
+      { name: "Show-Up System", url: "https://thearenapartners.com/show-up.html", badge: "live" },
+      { name: "Booking Confirmation", url: "https://thearenapartners.com/confirmation.html", badge: "live" },
+      { name: "Training", url: "https://thearenapartners.com/training.html", badge: "live" },
+      { name: "Transferable Newsletter", url: "https://thearenapartners.com/transferable.html", badge: "live" },
+      { name: "The Last Chapter", url: "https://thearenapartners.com/the-last-chapter.html", badge: "live" },
+      { name: "Exit Planning Guide", url: "https://thearenapartners.com/exit-planning-guide.html", badge: "live" },
+      { name: "Privacy Policy", url: "https://thearenapartners.com/privacy.html", badge: "live" },
+      { name: "Terms of Service", url: "https://thearenapartners.com/terms.html", badge: "live" },
+      { name: "RSS Feed", url: "https://thearenapartners.com/rss.xml", badge: "live" }
+    ]
+  },
+  "Blog (17 Articles)": {
+    icon: "📝",
+    items: [
+      { name: "Blog Index", url: "https://thearenapartners.com/blog/", badge: "blog" },
+      { name: "3 Numbers That Determine Business Worth", url: "https://thearenapartners.com/blog/3-numbers-service-business-worth.html", badge: "blog" },
+      { name: "Exit Planning for Contractors", url: "https://thearenapartners.com/blog/business-exit-planning-contractors.html", badge: "blog" },
+      { name: "Exit Strategy for Service Companies", url: "https://thearenapartners.com/blog/business-exit-strategy-service-companies.html", badge: "blog" },
+      { name: "How Long to Sell a Business", url: "https://thearenapartners.com/blog/how-long-does-it-take-to-sell-a-business.html", badge: "blog" },
+      { name: "Increase Valuation Before Selling", url: "https://thearenapartners.com/blog/how-to-increase-business-valuation-before-selling.html", badge: "blog" },
+      { name: "How to Sell a Plumbing Business", url: "https://thearenapartners.com/blog/how-to-sell-a-plumbing-business.html", badge: "blog" },
+      { name: "Value an Electrical Business", url: "https://thearenapartners.com/blog/how-to-value-an-electrical-business-for-sale.html", badge: "blog" },
+      { name: "HVAC Exit Mistakes", url: "https://thearenapartners.com/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html", badge: "blog" },
+      { name: "McKinsey $5 Trillion Transfer", url: "https://thearenapartners.com/blog/mckinsey-5-trillion-boomer-business-transfer.html", badge: "blog" },
+      { name: "Concentration Trap Newsletter", url: "https://thearenapartners.com/blog/newsletter-007-concentration-trap.html", badge: "blog" },
+      { name: "Owner-Dependent Valuation", url: "https://thearenapartners.com/blog/owner-dependent-business-valuation.html", badge: "blog" },
+      { name: "Selling a Business at 60", url: "https://thearenapartners.com/blog/selling-a-business-at-60.html", badge: "blog" },
+      { name: "Succession Planning for Trades", url: "https://thearenapartners.com/blog/succession-planning-trade-businesses.html", badge: "blog" },
+      { name: "What Buyers Look For", url: "https://thearenapartners.com/blog/what-buyers-look-for-when-buying-a-business.html", badge: "blog" },
+      { name: "What Is My HVAC Business Worth", url: "https://thearenapartners.com/blog/what-is-my-hvac-business-worth.html", badge: "blog" },
+      { name: "Why Start Exit Planning Now", url: "https://thearenapartners.com/blog/why-service-business-owners-over-55-should-start-exit-planning-now.html", badge: "blog" }
+    ]
+  },
+  "arenabusinessadvisors.com": {
+    icon: "🏢",
+    items: [
+      { name: "Home", url: "https://arenabusinessadvisors.com", badge: "live" },
+      { name: "About", url: "https://arenabusinessadvisors.com/about.html", badge: "live" },
+      { name: "Services", url: "https://arenabusinessadvisors.com/services.html", badge: "live" },
+      { name: "Process", url: "https://arenabusinessadvisors.com/process.html", badge: "live" },
+      { name: "Results", url: "https://arenabusinessadvisors.com/results.html", badge: "live" },
+      { name: "Insights", url: "https://arenabusinessadvisors.com/insights.html", badge: "live" },
+      { name: "Contact", url: "https://arenabusinessadvisors.com/contact.html", badge: "live" }
+    ]
+  },
+  "Operations (Ops Hub)": {
+    icon: "⚙️",
+    items: [
+      { name: "Ops Hub", url: "https://vivianashford.github.io/levelup-pm/", badge: "internal" },
+      { name: "Command Center", url: "https://vivianashford.github.io/levelup-pm/command-center.html", badge: "internal" },
+      { name: "Analytics Dashboard", url: "https://vivianashford.github.io/levelup-pm/analytics.html", badge: "internal" },
+      { name: "Daily Todos", url: "https://vivianashford.github.io/levelup-pm/todo.html", badge: "internal" },
+      { name: "Task Board", url: "https://vivianashford.github.io/levelup-pm/tasks.html", badge: "internal" },
+      { name: "Client Details", url: "https://vivianashford.github.io/levelup-pm/clients.html", badge: "internal" },
+      { name: "LinkedIn Queue", url: "https://vivianashford.github.io/levelup-pm/linkedin-queue.html", badge: "internal" },
+      { name: "Sales SOP", url: "https://vivianashford.github.io/levelup-pm/sales-sop.html", badge: "internal" },
+      { name: "Ops Map", url: "https://vivianashford.github.io/levelup-pm/map.html", badge: "internal" },
+      { name: "AOS Methodology", url: "https://vivianashford.github.io/levelup-pm/methodology.html", badge: "internal" },
+      { name: "Rep Dashboard", url: "https://vivianashford.github.io/levelup-pm/rep-dashboard.html", badge: "internal" },
+      { name: "Book of Self", url: "https://vivianashford.github.io/levelup-pm/book-of-self.html", badge: "internal" },
+      { name: "All Links (this page)", url: "https://vivianashford.github.io/levelup-pm/links.html", badge: "internal" }
+    ]
+  },
+  "Publishing Platforms": {
+    icon: "📰",
+    items: [
+      { name: "Substack", url: "https://thearenapartners.substack.com", badge: "live" },
+      { name: "Medium", url: "https://medium.com/@ashfordviva", badge: "live" },
+      { name: "Blogger", url: "https://levelupwithanna.blogspot.com", badge: "live" },
+      { name: "WordPress.com", url: "https://levelupwithanna1.wordpress.com", badge: "pending" },
+      { name: "Tumblr", url: "https://vivianashford.tumblr.com", badge: "live" },
+      { name: "TheUSTimes", url: "https://theustimes.com", badge: "live" },
+      { name: "HustleWeekly", url: "https://hustleweekly.co", badge: "live" },
+      { name: "AmericanBusinessStars", url: "https://americanbusinessstars.com", badge: "live" },
+      { name: "NewYorkBusinessNow", url: "https://newyorkbusinessnow.com", badge: "live" },
+      { name: "StarsofEntrepreneurship", url: "https://starsofentrepreneurship.com", badge: "live" },
+      { name: "MogulsofBusiness", url: "https://mogulsofbusiness.com", badge: "live" },
+      { name: "BusinessSharksMagazine", url: "https://businesssharksmagazine.com", badge: "live" }
+    ]
+  },
+  "Level Up With Anna": {
+    icon: "📈",
+    items: [
+      { name: "Level Up Blog", url: "https://vivianashford.github.io/levelup-anna-blog/", badge: "live" },
+      { name: "Level Up With Anna Site", url: "https://vivianashford.github.io/levelupwithanna/", badge: "live" }
+    ]
+  },
+  "Backend / APIs": {
+    icon: "🔧",
+    items: [
+      { name: "Cloudflare Worker (19 endpoints)", url: "https://arena-api.jean-475.workers.dev/health", badge: "live" },
+      { name: "n8n Workflows", url: "http://localhost:5678", badge: "internal" },
+      { name: "GoHighLevel", url: "https://app.gohighlevel.com", badge: "live" },
+      { name: "LinkedIn (Jean)", url: "https://linkedin.com/in/jeanlouishardy", badge: "live" },
+      { name: "Facebook", url: "https://facebook.com", badge: "live" }
+    ]
+  },
+  "TOFC": {
+    icon: "🏠",
+    items: [
+      { name: "TOFC Calendar", url: "https://vivianashford.github.io/tofc-calendar/", badge: "internal" }
+    ]
+  }
+};
+
+function renderAll() {
+  var sectionsHtml = '';
+  var totalLinks = 0;
+  var totalLive = 0;
+  var sectionKeys = Object.keys(LINKS);
+
+  sectionKeys.forEach(function(key) {
+    var section = LINKS[key];
+    totalLinks += section.items.length;
+    section.items.forEach(function(item) { if (item.badge === 'live' || item.badge === 'blog') totalLive++; });
+
+    sectionsHtml += '<div class="section" data-section="' + key + '">' +
+      '<div class="section-header">' +
+      '<span class="section-icon">' + section.icon + '</span>' +
+      '<span class="section-title">' + key + '</span>' +
+      '<span class="section-count">' + section.items.length + ' links</span>' +
+      '</div>' +
+      '<div class="link-grid">';
+
+    section.items.forEach(function(item) {
+      var badgeClass = item.badge === 'live' ? 'badge-live' : item.badge === 'blog' ? 'badge-blog' : item.badge === 'pending' ? 'badge-pending' : 'badge-internal';
+      sectionsHtml += '<a href="' + item.url + '" target="_blank" class="link-item" data-search="' + (item.name + ' ' + item.url).toLowerCase() + '">' +
+        '<div class="info"><div class="name">' + item.name + '</div><div class="url">' + item.url.replace('https://', '').replace('http://', '') + '</div></div>' +
+        '<span class="badge ' + badgeClass + '">' + item.badge + '</span></a>';
+    });
+
+    sectionsHtml += '</div></div>';
+  });
+
+  document.getElementById('sections').innerHTML = sectionsHtml;
+  document.getElementById('stats').innerHTML =
+    '<div class="stat"><strong>' + totalLinks + '</strong> total links</div>' +
+    '<div class="stat"><strong>' + totalLive + '</strong> public/live</div>' +
+    '<div class="stat"><strong>' + sectionKeys.length + '</strong> categories</div>';
+}
+
+function filterLinks() {
+  var q = document.getElementById('search').value.toLowerCase().trim();
+  document.querySelectorAll('.link-item').forEach(function(el) {
+    el.classList.toggle('hidden', q && el.dataset.search.indexOf(q) === -1);
+  });
+  document.querySelectorAll('.section').forEach(function(el) {
+    var visible = el.querySelectorAll('.link-item:not(.hidden)').length;
+    el.classList.toggle('hidden', q && visible === 0);
+  });
+}
+
+renderAll();
+</script>
+</body>
+</html>
