@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T08:30:54.846794+00:00",
-  "updated_local": "2026-03-26 03:30 AM",
+  "updated": "2026-03-26T08:35:54.471586+00:00",
+  "updated_local": "2026-03-26 03:35 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,21 +88,21 @@
     "week": {
       "users": 127,
       "sessions": 155,
-      "pageviews": 267,
+      "pageviews": 268,
       "avg_duration": 189.2,
       "conversions": 0
     },
     "month": {
-      "users": 126,
-      "sessions": 154,
-      "pageviews": 267,
+      "users": 127,
+      "sessions": 155,
+      "pageviews": 268,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 130,
-        "users": 80
+        "views": 131,
+        "users": 81
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 115,
-        "users": 103
+        "sessions": 116,
+        "users": 104
       },
       {
         "source": "(not set)",
@@ -250,7 +250,7 @@
     },
     "funnel": {
       "/": {
-        "views": 130,
+        "views": 131,
         "users": 81,
         "avg_duration": 109.8
       },
@@ -330,7 +330,7 @@
         "date": "2026-03-26",
         "users": 1,
         "sessions": 1,
-        "pageviews": 0
+        "pageviews": 1
       }
     ],
     "devices": [
@@ -420,15 +420,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 267
+        "count": 268
       },
       {
         "event": "scroll",
-        "count": 152
+        "count": 153
       },
       {
         "event": "session_start",
-        "count": 152
+        "count": 153
       },
       {
         "event": "user_engagement",
@@ -436,7 +436,7 @@
       },
       {
         "event": "first_visit",
-        "count": 125
+        "count": 126
       },
       {
         "event": "scroll_depth",
@@ -477,8 +477,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 103,
-        "sessions": 115
+        "users": 104,
+        "sessions": 116
       },
       {
         "campaign": "(referral)",
