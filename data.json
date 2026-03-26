@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T02:15:50.341766+00:00",
-  "updated_local": "2026-03-25 09:15 PM",
+  "updated": "2026-03-26T02:20:54.990713+00:00",
+  "updated_local": "2026-03-25 09:20 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 121,
-      "sessions": 149,
-      "pageviews": 261,
-      "avg_duration": 196.8,
+      "users": 124,
+      "sessions": 152,
+      "pageviews": 264,
+      "avg_duration": 192.9,
       "conversions": 0
     },
     "month": {
-      "users": 121,
-      "sessions": 149,
-      "pageviews": 261,
+      "users": 124,
+      "sessions": 152,
+      "pageviews": 264,
       "conversions": 0
     },
     "top_pages": [
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 112,
-        "users": 100
+        "sessions": 113,
+        "users": 101
       },
       {
         "source": "vivianashford.github.io",
@@ -166,26 +166,26 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 10,
-        "users": 9
+        "sessions": 11,
+        "users": 10
       },
       {
         "source": "facebook.com",
         "medium": "referral",
-        "sessions": 5,
-        "users": 5
+        "sessions": 6,
+        "users": 6
+      },
+      {
+        "source": "m.facebook.com",
+        "medium": "referral",
+        "sessions": 6,
+        "users": 6
       },
       {
         "source": "linkedin.com",
         "medium": "referral",
         "sessions": 5,
         "users": 4
-      },
-      {
-        "source": "m.facebook.com",
-        "medium": "referral",
-        "sessions": 5,
-        "users": 5
       },
       {
         "source": "telegra.ph",
@@ -322,21 +322,21 @@
       },
       {
         "date": "2026-03-25",
-        "users": 12,
-        "sessions": 15,
-        "pageviews": 22
+        "users": 15,
+        "sessions": 18,
+        "pageviews": 25
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 138,
-        "users": 111
+        "sessions": 140,
+        "users": 113
       },
       {
         "device": "Mobile",
-        "sessions": 12,
-        "users": 11
+        "sessions": 13,
+        "users": 12
       }
     ],
     "locations": [
@@ -366,6 +366,11 @@
         "sessions": 5
       },
       {
+        "city": "Boardman",
+        "users": 4,
+        "sessions": 4
+      },
+      {
         "city": "Council Bluffs",
         "users": 4,
         "sessions": 4
@@ -379,11 +384,6 @@
         "city": "San Jose",
         "users": 4,
         "sessions": 4
-      },
-      {
-        "city": "Boardman",
-        "users": 3,
-        "sessions": 3
       },
       {
         "city": "Burnaby",
@@ -414,23 +414,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 261
+        "count": 264
       },
       {
         "event": "scroll",
-        "count": 150
+        "count": 151
       },
       {
         "event": "session_start",
-        "count": 147
+        "count": 150
       },
       {
         "event": "user_engagement",
-        "count": 135
+        "count": 136
       },
       {
         "event": "first_visit",
-        "count": 120
+        "count": 123
       },
       {
         "event": "scroll_depth",
@@ -471,24 +471,24 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 100,
-        "sessions": 112
+        "users": 101,
+        "sessions": 113
       },
       {
         "campaign": "(referral)",
         "source": "facebook.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 5,
-        "sessions": 5
+        "users": 6,
+        "sessions": 6
       },
       {
         "campaign": "(referral)",
         "source": "m.facebook.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 5,
-        "sessions": 5
+        "users": 6,
+        "sessions": 6
       },
       {
         "campaign": "(referral)",
@@ -539,6 +539,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.8
+    "bounce_rate": 74.3
   }
 }
