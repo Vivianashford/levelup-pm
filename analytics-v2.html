@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena Analytics — Deep Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #09090b;
+  --surface: #111113;
+  --surface2: #18181b;
+  --surface3: #1e1e22;
+  --border: #27272a;
+  --border-light: #3f3f46;
+  --text: #fafafa;
+  --text-dim: #a1a1aa;
+  --text-muted: #52525b;
+  --mkt: #3b82f6;
+  --mkt-dim: rgba(59,130,246,0.1);
+  --sales: #ef4444;
+  --sales-dim: rgba(239,68,68,0.1);
+  --delivery: #22c55e;
+  --delivery-dim: rgba(34,197,94,0.1);
+  --acct: #eab308;
+  --acct-dim: rgba(234,179,8,0.1);
+  --legal: #a855f7;
+  --legal-dim: rgba(168,85,247,0.1);
+  --up: #22c55e;
+  --down: #ef4444;
+  --radius: 8px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height:100vh; }
+
+/* ─── LAYOUT ─── */
+.app { display: flex; min-height: 100vh; }
+.sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 24px 0; flex-shrink: 0; position: fixed; top:0; left:0; bottom:0; overflow-y:auto; z-index:100; }
+.main { flex:1; margin-left: 220px; }
+
+/* ─── SIDEBAR ─── */
+.sidebar-brand { padding: 0 20px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.sidebar-brand h1 { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+.sidebar-brand span { color: var(--text-muted); font-weight: 400; font-size: 12px; }
+.sidebar-section { padding: 0 12px; margin-bottom: 8px; }
+.sidebar-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); padding: 8px 8px 6px; font-weight: 600; }
+.sidebar-link { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; font-size: 13px; color: var(--text-dim); cursor: pointer; transition: all 0.15s; text-decoration: none; }
+.sidebar-link:hover { background: var(--surface2); color: var(--text); }
+.sidebar-link.active { background: var(--surface3); color: var(--text); font-weight: 500; }
+.sidebar-link .icon { width: 18px; text-align: center; font-size: 14px; }
+.sidebar-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink:0; }
+.sidebar-status { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--border); }
+.sidebar-status-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
+.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--up); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ─── TOP BAR ─── */
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top:0; z-index: 50; }
+.topbar-title { font-size: 16px; font-weight: 600; display:flex; align-items:center; gap:10px; }
+.topbar-title .dept-badge { font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ─── DATE PICKER ─── */
+.date-controls { display: flex; align-items: center; gap: 6px; }
+.date-btn { padding: 6px 12px; border-radius: 5px; border: 1px solid var(--border); background: transparent; color: var(--text-dim); font-size: 11px; cursor: pointer; font-weight: 500; transition: all 0.15s; font-family: inherit; }
+.date-btn:hover { border-color: var(--border-light); color: var(--text); }
+.date-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+.date-input { padding: 5px 10px; border-radius: 5px; border: 1px solid var(--border); background: var(--surface2); color: var(--text-dim); font-size: 11px; font-family: inherit; width: 120px; }
+.date-input:focus { outline: none; border-color: var(--border-light); }
+.refresh-btn { padding: 6px 14px; border-radius: 5px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 11px; cursor: pointer; font-weight: 600; font-family: inherit; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
+.refresh-btn:hover { background: var(--surface3); border-color: var(--border-light); }
+.refresh-btn.loading { opacity: 0.5; pointer-events: none; }
+
+/* ─── CONTENT ─── */
+.content { padding: 24px 32px; }
+
+/* ─── STAT CARDS ─── */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+.stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 500; }
+.stat-value { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+.stat-meta { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11px; }
+.stat-change { padding: 2px 6px; border-radius: 3px; font-weight: 600; font-size: 10px; }
+.stat-change.up { background: rgba(34,197,94,0.1); color: var(--up); }
+.stat-change.down { background: rgba(239,68,68,0.1); color: var(--down); }
+.stat-benchmark { color: var(--text-muted); font-size: 10px; }
+.stat-source { font-size: 9px; color: var(--text-muted); padding: 2px 6px; background: var(--surface2); border-radius: 3px; margin-top: 6px; display: inline-block; }
+
+/* ─── CHART CARDS ─── */
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+.chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.chart-card.full { grid-column: 1 / -1; }
+.chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.chart-title { font-size: 13px; font-weight: 600; }
+.chart-subtitle { font-size: 11px; color: var(--text-muted); }
+.chart-badge { font-size: 9px; padding: 3px 8px; border-radius: 3px; background: var(--surface2); color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+.chart-container { position: relative; width: 100%; }
+.chart-container canvas { width: 100% !important; }
+
+/* ─── TABLE ─── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.data-table th { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.data-table tr:hover td { color: var(--text); background: var(--surface2); }
+.data-table .status { display: inline-flex; align-items: center; gap: 5px; }
+.data-table .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* ─── BENCHMARK BAR ─── */
+.bench-bar { height: 6px; background: var(--surface3); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.bench-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+
+/* ─── SECTION DIVIDER ─── */
+.section-divider { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+/* ─── PAGES ─── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1200px){ .charts-grid { grid-template-columns: 1fr; } }
+@media(max-width:900px){ .sidebar { width: 60px; } .sidebar-link span, .sidebar-section-label, .sidebar-brand span, .sidebar-status { display:none; } .main { margin-left: 60px; } .stats-row { grid-template-columns: repeat(2,1fr); } }
+
+/* ─── TOAST ─── */
+.toast { position:fixed; bottom:24px; right:24px; background:var(--surface3); border:1px solid var(--border-light); border-radius:8px; padding:12px 20px; font-size:12px; color:var(--text); z-index:999; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; }
+.toast.show { opacity:1; transform:translateY(0); }
+
+/* Last updated */
+.last-updated { font-size: 10px; color: var(--text-muted); text-align: right; padding: 8px 32px 16px; }
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ═══════════════════════ SIDEBAR ═══════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <h1>Arena Analytics</h1>
+    <span>Operating System v2</span>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Overview</div>
+    <a class="sidebar-link active" data-page="overview">
+      <span class="icon">&#9632;</span><span>Dashboard</span>
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Departments</div>
+    <a class="sidebar-link" data-page="marketing">
+      <span class="sidebar-dot" style="background:var(--mkt)"></span><span>Marketing</span>
+    </a>
+    <a class="sidebar-link" data-page="sales">
+      <span class="sidebar-dot" style="background:var(--sales)"></span><span>Sales</span>
+    </a>
+    <a class="sidebar-link" data-page="delivery">
+      <span class="sidebar-dot" style="background:var(--delivery)"></span><span>Delivery</span>
+    </a>
+    <a class="sidebar-link" data-page="accounting">
+      <span class="sidebar-dot" style="background:var(--acct)"></span><span>Accounting</span>
+    </a>
+    <a class="sidebar-link" data-page="legal">
+      <span class="sidebar-dot" style="background:var(--legal)"></span><span>Legal</span>
+    </a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">System</div>
+    <a class="sidebar-link" data-page="integrations">
+      <span class="icon">&#9889;</span><span>Integrations</span>
+    </a>
+  </div>
+
+  <div class="sidebar-status">
+    <div class="sidebar-status-row"><span class="pulse-dot"></span> Arena API live</div>
+    <div class="sidebar-status-row"><span class="pulse-dot"></span> Stripe connected</div>
+    <div class="sidebar-status-row" id="fb-status"><span class="pulse-dot" style="background:var(--acct)"></span> Facebook Ads</div>
+    <div class="sidebar-status-row"><span class="pulse-dot" style="background:var(--acct)"></span> GA4 pending</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">
+      &#9632; Dashboard Overview
+    </div>
+    <div class="date-controls">
+      <button class="date-btn" data-range="7d">7D</button>
+      <button class="date-btn" data-range="30d" >30D</button>
+      <button class="date-btn active" data-range="90d">90D</button>
+      <button class="date-btn" data-range="ytd">YTD</button>
+      <button class="date-btn" data-range="weekly">Wk</button>
+      <button class="date-btn" data-range="monthly">Mo</button>
+      <button class="date-btn" data-range="quarterly">Qtr</button>
+      <span style="color:var(--text-muted);font-size:11px;margin:0 4px;">|</span>
+      <input type="date" class="date-input" id="date-from" title="From date">
+      <span style="color:var(--text-muted);font-size:11px;">to</span>
+      <input type="date" class="date-input" id="date-to" title="To date">
+      <button class="refresh-btn" id="refresh-btn" title="Refresh all data">&#8635; Refresh</button>
+    </div>
+  </div>
+
+  <div class="last-updated" id="last-updated">Last refreshed: —</div>
+
+  <!-- ═══════════════════════ OVERVIEW PAGE ═══════════════════════ -->
+  <div class="page active" id="page-overview">
+    <div class="content">
+      <div class="stats-row" id="overview-stats"></div>
+      <div class="charts-grid" id="overview-charts"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ MARKETING PAGE ═══════════════════════ -->
+  <div class="page" id="page-marketing">
+    <div class="content">
+      <div class="stats-row" id="mkt-stats"></div>
+      <div class="section-divider">SEO & Organic Traffic</div>
+      <div class="charts-grid" id="mkt-seo-charts"></div>
+      <div class="section-divider">Email Marketing</div>
+      <div class="charts-grid" id="mkt-email-charts"></div>
+      <div class="section-divider">Social & LinkedIn</div>
+      <div class="charts-grid" id="mkt-social-charts"></div>
+      <div class="section-divider">Content & Publishing</div>
+      <div class="charts-grid" id="mkt-content-charts"></div>
+      <div class="section-divider">Paid Advertising (Google + LinkedIn)</div>
+      <div class="charts-grid" id="mkt-paid-charts"></div>
+      <div class="section-divider">Facebook Ads — Full Metrics</div>
+      <div class="stats-row" id="mkt-fb-stats"></div>
+      <div class="charts-grid" id="mkt-fb-charts"></div>
+      <div class="section-divider">Facebook Ads — Campaign Breakdown</div>
+      <div class="charts-grid" id="mkt-fb-campaigns-charts"></div>
+      <div class="section-divider">Facebook Ads — Audience & Creative</div>
+      <div class="charts-grid" id="mkt-fb-audience-charts"></div>
+      <div class="section-divider">Facebook Ads — Active Campaigns</div>
+      <div class="chart-card" style="margin-bottom:24px;">
+        <table class="data-table" id="mkt-fb-campaigns-table"></table>
+      </div>
+      <div class="section-divider">Keyword Rankings</div>
+      <div class="chart-card" style="margin-bottom:24px;">
+        <table class="data-table" id="mkt-keywords-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ SALES PAGE ═══════════════════════ -->
+  <div class="page" id="page-sales">
+    <div class="content">
+      <div class="stats-row" id="sales-stats"></div>
+      <div class="section-divider">Pipeline & Funnel</div>
+      <div class="charts-grid" id="sales-pipeline-charts"></div>
+      <div class="section-divider">Discovery Calls & Show Rates</div>
+      <div class="charts-grid" id="sales-calls-charts"></div>
+      <div class="section-divider">Proposals & Win Rates</div>
+      <div class="charts-grid" id="sales-proposals-charts"></div>
+      <div class="section-divider">Lead Response & Follow-up</div>
+      <div class="charts-grid" id="sales-followup-charts"></div>
+      <div class="section-divider">Active Pipeline</div>
+      <div class="chart-card" style="margin-bottom:24px;">
+        <table class="data-table" id="sales-pipeline-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ DELIVERY PAGE ═══════════════════════ -->
+  <div class="page" id="page-delivery">
+    <div class="content">
+      <div class="stats-row" id="delivery-stats"></div>
+      <div class="section-divider">Client Retention & Satisfaction</div>
+      <div class="charts-grid" id="delivery-retention-charts"></div>
+      <div class="section-divider">Utilization & Productivity</div>
+      <div class="charts-grid" id="delivery-utilization-charts"></div>
+      <div class="section-divider">Project Management</div>
+      <div class="charts-grid" id="delivery-projects-charts"></div>
+      <div class="section-divider">Engagement Tracking</div>
+      <div class="chart-card" style="margin-bottom:24px;">
+        <table class="data-table" id="delivery-engagements-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ ACCOUNTING PAGE ═══════════════════════ -->
+  <div class="page" id="page-accounting">
+    <div class="content">
+      <div class="stats-row" id="acct-stats"></div>
+      <div class="section-divider">Revenue & P&L</div>
+      <div class="charts-grid" id="acct-revenue-charts"></div>
+      <div class="section-divider">Margins & Profitability</div>
+      <div class="charts-grid" id="acct-margins-charts"></div>
+      <div class="section-divider">Unit Economics (CAC / LTV)</div>
+      <div class="charts-grid" id="acct-unit-charts"></div>
+      <div class="section-divider">Expense Breakdown (Chart of Accounts)</div>
+      <div class="charts-grid" id="acct-expense-charts"></div>
+      <div class="section-divider">Cash Position & AR</div>
+      <div class="charts-grid" id="acct-cash-charts"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ LEGAL PAGE ═══════════════════════ -->
+  <div class="page" id="page-legal">
+    <div class="content">
+      <div class="stats-row" id="legal-stats"></div>
+      <div class="section-divider">Contract Pipeline</div>
+      <div class="charts-grid" id="legal-contracts-charts"></div>
+      <div class="section-divider">NDA Tracking</div>
+      <div class="charts-grid" id="legal-nda-charts"></div>
+      <div class="section-divider">Compliance & Policies</div>
+      <div class="charts-grid" id="legal-compliance-charts"></div>
+      <div class="section-divider">Active Agreements</div>
+      <div class="chart-card" style="margin-bottom:24px;">
+        <table class="data-table" id="legal-agreements-table"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ INTEGRATIONS PAGE ═══════════════════════ -->
+  <div class="page" id="page-integrations">
+    <div class="content" id="integrations-content"></div>
+  </div>
+
+</div><!-- /main -->
+</div><!-- /app -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// ARENA ANALYTICS ENGINE
+// ═══════════════════════════════════════════════════════════
+
+const API_BASE = 'https://arena-api.jean-475.workers.dev';
+const STRIPE_DASHBOARD = 'https://dashboard.stripe.com';
+const ANALYTICS_PROPERTY = 'thearenapartners.com';
+const FB_API_VERSION = 'v19.0';
+const FB_GRAPH_URL = 'https://graph.facebook.com';
+// Facebook Ads: Set these in localStorage or Worker env
+// localStorage.setItem('fb_access_token', 'YOUR_TOKEN');
+// localStorage.setItem('fb_ad_account_id', 'act_XXXXXXX');
+const FB_ACCESS_TOKEN = localStorage.getItem('fb_access_token') || '';
+const FB_AD_ACCOUNT_ID = localStorage.getItem('fb_ad_account_id') || '';
+
+// ─── STATE ───
+let currentRange = '90d';
+let currentPage = 'overview';
+let charts = {};
+let cachedData = JSON.parse(localStorage.getItem('arena_analytics_cache') || '{}');
+let lastRefresh = localStorage.getItem('arena_last_refresh') || null;
+
+// ─── DATE UTILS ───
+function getDateRange(range) {
+  const now = new Date();
+  const to = now.toISOString().split('T')[0];
+  let from;
+  switch(range) {
+    case '7d': from = new Date(now - 7*86400000); break;
+    case '30d': from = new Date(now - 30*86400000); break;
+    case '90d': from = new Date(now - 90*86400000); break;
+    case 'ytd': from = new Date(now.getFullYear(), 0, 1); break;
+    case 'weekly': from = new Date(now - 7*86400000); break;
+    case 'monthly': from = new Date(now - 30*86400000); break;
+    case 'quarterly': from = new Date(now - 90*86400000); break;
+    default: from = new Date(now - 90*86400000);
+  }
+  return { from: from.toISOString().split('T')[0], to };
+}
+
+function generateLabels(range) {
+  const n = range === '7d' ? 7 : range === '30d' ? 30 : range === 'weekly' ? 7 : range === 'monthly' ? 12 : range === 'quarterly' ? 4 : range === 'ytd' ? new Date().getMonth()+1 : 12;
+  const labels = [];
+  const now = new Date();
+  if (range === 'monthly' || range === 'ytd') {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    for (let i = n-1; i >= 0; i--) { const d = new Date(now.getFullYear(), now.getMonth()-i, 1); labels.push(months[d.getMonth()]); }
+  } else if (range === 'quarterly') {
+    labels.push('Q1','Q2','Q3','Q4');
+  } else {
+    for (let i = n-1; i >= 0; i--) { const d = new Date(now - i*86400000); labels.push(`${d.getMonth()+1}/${d.getDate()}`); }
+  }
+  return labels;
+}
+
+function generateData(n, min, max, trend=0) {
+  const data = [];
+  let val = min + Math.random()*(max-min)*0.5;
+  for (let i=0; i<n; i++) {
+    val += (Math.random()-0.45+trend*0.01)*(max-min)*0.08;
+    val = Math.max(min, Math.min(max, val));
+    data.push(Math.round(val*10)/10);
+  }
+  return data;
+}
+
+// ─── API LAYER ───
+async function fetchArenaAPI(endpoint) {
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, { mode: 'cors' });
+    if (!res.ok) throw new Error(`${res.status}`);
+    return await res.json();
+  } catch(e) {
+    console.log(`Arena API ${endpoint}: using cached/demo data (${e.message})`);
+    return null;
+  }
+}
+
+// ─── FACEBOOK ADS API LAYER ───
+async function fetchFacebookAds(endpoint, params = {}) {
+  if (!FB_ACCESS_TOKEN || !FB_AD_ACCOUNT_ID) {
+    console.log('Facebook Ads: No token/account configured — using demo data');
+    return null;
+  }
+  try {
+    const {from, to} = getDateRange(currentRange);
+    const baseParams = new URLSearchParams({
+      access_token: FB_ACCESS_TOKEN,
+      time_range: JSON.stringify({since: from, until: to}),
+      ...params
+    });
+    const url = `${FB_GRAPH_URL}/${FB_API_VERSION}/${FB_AD_ACCOUNT_ID}${endpoint}?${baseParams}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`FB API ${res.status}`);
+    return await res.json();
+  } catch(e) {
+    console.log(`Facebook API ${endpoint}: using demo data (${e.message})`);
+    return null;
+  }
+}
+
+async function fetchFacebookInsights() {
+  // Fetch account-level insights with all metrics
+  const fields = [
+    'impressions','reach','frequency','spend','clicks','unique_clicks',
+    'cpc','cpm','cpp','ctr','unique_ctr',
+    'actions','action_values','cost_per_action_type','cost_per_unique_action_type',
+    'conversions','conversion_values','cost_per_conversion',
+    'purchase_roas','website_purchase_roas',
+    'outbound_clicks','outbound_clicks_ctr','cost_per_outbound_click',
+    'inline_link_clicks','inline_link_click_ctr','cost_per_inline_link_click',
+    'inline_post_engagement','cost_per_inline_post_engagement',
+    'social_spend','quality_ranking','engagement_rate_ranking','conversion_rate_ranking',
+    'video_avg_time_watched_actions','video_p25_watched_actions','video_p50_watched_actions',
+    'video_p75_watched_actions','video_p100_watched_actions',
+    'canvas_avg_view_time','canvas_avg_view_percent'
+  ].join(',');
+
+  const [accountInsights, campaigns, dailyInsights] = await Promise.all([
+    fetchFacebookAds('/insights', { fields, level: 'account' }),
+    fetchFacebookAds('/campaigns', { fields: 'name,status,objective,daily_budget,lifetime_budget,start_time,stop_time', limit: 50 }),
+    fetchFacebookAds('/insights', { fields, time_increment: 1, level: 'account' }),
+  ]);
+
+  // Also fetch campaign-level breakdown
+  const campaignInsights = await fetchFacebookAds('/insights', {
+    fields: 'campaign_name,impressions,reach,spend,clicks,cpc,cpm,ctr,actions,conversions,purchase_roas',
+    level: 'campaign',
+    limit: 20
+  });
+
+  // Fetch demographic/placement breakdowns
+  const ageBreakdown = await fetchFacebookAds('/insights', {
+    fields: 'impressions,spend,clicks,ctr,actions',
+    breakdowns: 'age',
+    level: 'account'
+  });
+
+  const placementBreakdown = await fetchFacebookAds('/insights', {
+    fields: 'impressions,spend,clicks,ctr,cpc',
+    breakdowns: 'publisher_platform',
+    level: 'account'
+  });
+
+  return { accountInsights, campaigns, dailyInsights, campaignInsights, ageBreakdown, placementBreakdown };
+}
+
+async function fetchAllData() {
+  const btn = document.getElementById('refresh-btn');
+  btn.classList.add('loading');
+  btn.innerHTML = '&#8635; Loading...';
+
+  const [clients, analytics, fbData] = await Promise.all([
+    fetchArenaAPI('/api/get-clients'),
+    fetchArenaAPI('/api/get-analytics'),
+    fetchFacebookInsights()
+  ]);
+
+  if (clients) cachedData.clients = clients;
+  if (analytics) cachedData.analytics = analytics;
+  if (fbData) cachedData.facebook = fbData;
+
+  cachedData.lastFetch = new Date().toISOString();
+  localStorage.setItem('arena_analytics_cache', JSON.stringify(cachedData));
+  localStorage.setItem('arena_last_refresh', new Date().toISOString());
+  lastRefresh = cachedData.lastFetch;
+
+  btn.classList.remove('loading');
+  btn.innerHTML = '&#8635; Refresh';
+
+  document.getElementById('last-updated').textContent = `Last refreshed: ${new Date().toLocaleString()}`;
+  showToast('Data refreshed from all connected sources');
+
+  renderCurrentPage();
+}
+
+// ─── CHART HELPERS ───
+const chartDefaults = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: '#18181b',
+      borderColor: '#3f3f46',
+      borderWidth: 1,
+      titleColor: '#fafafa',
+      bodyColor: '#a1a1aa',
+      titleFont: { size: 12, weight: 600 },
+      bodyFont: { size: 11 },
+      padding: 10,
+      cornerRadius: 6,
+    }
+  },
+  scales: {
+    x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#52525b', font: { size: 10 } } },
+    y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#52525b', font: { size: 10 } } }
+  }
+};
+
+function makeChart(containerId, config) {
+  const id = `chart-${containerId}-${Math.random().toString(36).substr(2,6)}`;
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const card = document.createElement('div');
+  card.className = `chart-card${config.full?' full':''}`;
+  card.innerHTML = `
+    <div class="chart-header">
+      <div><div class="chart-title">${config.title}</div>${config.subtitle?`<div class="chart-subtitle">${config.subtitle}</div>`:''}</div>
+      ${config.badge?`<div class="chart-badge">${config.badge}</div>`:''}
+    </div>
+    <div class="chart-container" style="height:${config.height||220}px"><canvas id="${id}"></canvas></div>
+  `;
+  container.appendChild(card);
+
+  const ctx = document.getElementById(id).getContext('2d');
+  const chartConfig = {
+    type: config.type || 'line',
+    data: config.data,
+    options: {
+      ...JSON.parse(JSON.stringify(chartDefaults)),
+      ...(config.options || {})
+    }
+  };
+
+  if (config.type === 'doughnut' || config.type === 'pie') {
+    delete chartConfig.options.scales;
+  }
+  if (config.legend) chartConfig.options.plugins.legend = { display: true, position: 'bottom', labels: { color: '#a1a1aa', font: { size: 10 }, padding: 12, usePointStyle: true, pointStyleWidth: 8 } };
+  if (config.stacked) { chartConfig.options.scales.x.stacked = true; chartConfig.options.scales.y.stacked = true; }
+  if (config.yFormat) chartConfig.options.scales.y.ticks.callback = config.yFormat;
+  if (config.horizontal) { chartConfig.options.indexAxis = 'y'; }
+
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(ctx, chartConfig);
+}
+
+function makeStatCard(containerId, stats) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  stats.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+    card.innerHTML = `
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value" style="${s.color?`color:${s.color}`:''}">${s.value}</div>
+      <div class="stat-meta">
+        ${s.change?`<span class="stat-change ${s.change>0?'up':'down'}">${s.change>0?'+':''}${s.change}%</span>`:''}
+        ${s.benchmark?`<span class="stat-benchmark">Bench: ${s.benchmark}</span>`:''}
+      </div>
+      ${s.source?`<div class="stat-source">${s.source}</div>`:''}
+    `;
+    container.appendChild(card);
+  });
+}
+
+function clearContainer(id) { const el = document.getElementById(id); if(el) el.innerHTML = ''; }
+
+// ─── RENDER: OVERVIEW ───
+function renderOverview() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+
+  makeStatCard('overview-stats', [
+    { label: 'Organic Sessions', value: '2,147', change: 12, benchmark: '1,500-3,000', source: 'Google Analytics' },
+    { label: 'Active Leads', value: '34', change: 8, benchmark: '—', source: 'Arena API' },
+    { label: 'Pipeline Value', value: '$485K', change: 15, benchmark: '—', source: 'Command Center' },
+    { label: 'Proposals Sent', value: '6', change: -5, benchmark: '—', source: 'Arena API' },
+    { label: 'Win Rate', value: '52%', change: 3, benchmark: '47-62%', source: 'RAIN Group' },
+    { label: 'Client Retention', value: '88%', change: 2, benchmark: '85-90%', source: 'First Page Sage' },
+    { label: 'Gross Margin', value: '72%', change: 1, benchmark: '60-80%', source: 'SPI/Deltek' },
+    { label: 'LTV:CAC Ratio', value: '18:1', change: 5, benchmark: '>20:1', source: 'Calculated' },
+  ]);
+
+  clearContainer('overview-charts');
+
+  makeChart('overview-charts', {
+    title: 'Revenue Trend', subtitle: 'Monthly consulting + success fees', badge: 'STRIPE + QB',
+    full: true, height: 250,
+    data: {
+      labels, datasets: [
+        { label: 'Consulting', data: generateData(n, 8000, 25000, 2), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Retainers', data: generateData(n, 3000, 12000, 1.5), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Success Fees', data: generateData(n, 0, 50000, 0.5), borderColor: '#eab308', backgroundColor: 'rgba(234,179,8,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toLocaleString()
+  });
+
+  makeChart('overview-charts', {
+    title: 'Funnel Conversion', subtitle: 'Current period vs benchmark', badge: 'ARENA API',
+    data: {
+      labels: ['Visitor→Lead','Lead→MQL','MQL→SQL','SQL→Opp','Opp→Proposal','Proposal→Close'],
+      datasets: [
+        { label: 'Actual', data: [4.2, 35, 18, 42, 65, 28], backgroundColor: 'rgba(59,130,246,0.7)', borderRadius: 4 },
+        { label: 'Benchmark', data: [5, 36, 17, 40, 65, 27.5], backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 4 },
+      ]
+    },
+    type: 'bar', legend: true, yFormat: v => v+'%'
+  });
+
+  makeChart('overview-charts', {
+    title: 'Traffic by Source', subtitle: 'Organic vs Paid vs Referral', badge: 'GA4',
+    type: 'doughnut',
+    data: {
+      labels: ['Organic','Direct','Referral','Paid','Social','Email'],
+      datasets: [{ data: [53, 18, 15, 7, 4, 3], backgroundColor: ['#3b82f6','#6b7280','#22c55e','#ef4444','#a855f7','#eab308'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+}
+
+// ─── RENDER: MARKETING ───
+function renderMarketing() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+
+  makeStatCard('mkt-stats', [
+    { label: 'Organic Sessions', value: '2,147/mo', change: 12, benchmark: '1,500-3,000 (Yr1)', source: 'Semrush', color: 'var(--mkt)' },
+    { label: 'Domain Rating', value: '19', change: 4, benchmark: '18-25 (Yr1)', source: 'Ahrefs' },
+    { label: 'Referring Domains', value: '112', change: 8, benchmark: '80-150 (Yr1)', source: 'Ahrefs' },
+    { label: 'Email Open Rate', value: '41.2%', change: 2, benchmark: '36-46%', source: 'B2B Consulting' },
+    { label: 'Email CTR', value: '2.3%', change: 5, benchmark: '2.0-2.5%', source: 'B2B Consulting' },
+    { label: 'LinkedIn Engagement', value: '5.1%', change: 3, benchmark: '3.2-6.5%', source: 'LinkedIn' },
+    { label: 'Blog Posts Published', value: '17', change: 0, benchmark: '2-4/mo target', source: 'HubSpot' },
+    { label: 'Content CPL', value: '$42', change: -8, benchmark: '$15-60 organic', source: 'FirstPageSage' },
+  ]);
+
+  // SEO
+  clearContainer('mkt-seo-charts');
+  makeChart('mkt-seo-charts', {
+    title: 'Organic Traffic Growth', subtitle: 'Sessions over time — target 3,000/mo by Month 12', badge: 'GA4', full: true, height: 240,
+    data: {
+      labels, datasets: [
+        { label: 'Actual', data: generateData(n, 300, 2500, 3), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#3b82f6' },
+        { label: 'Target', data: generateData(n, 500, 3000, 2), borderColor: '#3f3f46', borderDash: [5,5], tension: 0.4, borderWidth: 1, pointRadius: 0, fill: false },
+      ]
+    },
+    legend: true
+  });
+  makeChart('mkt-seo-charts', {
+    title: 'Domain Rating Progression', subtitle: 'Target DR 25 by Month 12', badge: 'AHREFS',
+    data: {
+      labels, datasets: [
+        { label: 'DR', data: generateData(n, 8, 22, 2), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#3b82f6' },
+      ]
+    },
+  });
+  makeChart('mkt-seo-charts', {
+    title: 'Referring Domains Growth', subtitle: 'Target 5-15 new/month', badge: 'AHREFS',
+    data: {
+      labels, datasets: [
+        { label: 'New RDs', data: generateData(n, 3, 18, 1), backgroundColor: 'rgba(59,130,246,0.6)', borderRadius: 3 },
+      ]
+    },
+    type: 'bar'
+  });
+  makeChart('mkt-seo-charts', {
+    title: 'Core Web Vitals', subtitle: 'LCP ≤2.5s / INP ≤200ms / CLS ≤0.1', badge: 'GOOGLE',
+    data: {
+      labels: ['LCP (s)','INP (ms)','CLS'],
+      datasets: [
+        { label: 'Actual', data: [2.1, 165, 0.06], backgroundColor: ['rgba(59,130,246,0.7)','rgba(34,197,94,0.7)','rgba(234,179,8,0.7)'], borderRadius: 4 },
+        { label: 'Threshold', data: [2.5, 200, 0.1], backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 4 },
+      ]
+    },
+    type: 'bar', legend: true
+  });
+  makeChart('mkt-seo-charts', {
+    title: 'Organic CTR by Position', subtitle: 'AI Overviews impact — Position #1 dropped 32% YoY', badge: 'GROWTHSRC',
+    data: {
+      labels: ['#1','#2','#3','#4','#5','#6','#7','#8','#9','#10'],
+      datasets: [
+        { label: 'Clean SERP', data: [39.8,18.7,10.2,7.4,5.1,4.1,3.4,2.9,2.2,1.6], borderColor: '#3b82f6', tension: 0.3, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#3b82f6' },
+        { label: 'With AI Overview', data: [19,12.6,8.5,6,4.5,3.5,2.8,2.2,1.8,1.2], borderColor: '#ef4444', borderDash: [4,4], tension: 0.3, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ef4444' },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('mkt-seo-charts', {
+    title: 'Site Conversion Rate', subtitle: 'Visitor → Lead — Benchmark 3-7%', badge: 'UNBOUNCE',
+    data: {
+      labels, datasets: [
+        { label: 'Conv %', data: generateData(n, 2, 6, 0.5), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+
+  // Email
+  clearContainer('mkt-email-charts');
+  makeChart('mkt-email-charts', {
+    title: 'Email Performance Over Time', subtitle: 'Open rate, CTR, CTOR tracked weekly', badge: 'EMAIL', full: true, height: 220,
+    data: {
+      labels, datasets: [
+        { label: 'Open Rate', data: generateData(n, 34, 48, 0.5), borderColor: '#3b82f6', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'CTR', data: generateData(n, 1.5, 3, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'CTOR', data: generateData(n, 8, 14, 0.2), borderColor: '#eab308', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('mkt-email-charts', {
+    title: 'List Growth', subtitle: 'Substack + email subscribers', badge: 'SUBSTACK',
+    data: {
+      labels, datasets: [
+        { label: 'Subscribers', data: generateData(n, 100, 800, 3), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+  });
+  makeChart('mkt-email-charts', {
+    title: 'Unsubscribe & Bounce', subtitle: 'Benchmark: <0.22% unsub, <2.48% bounce', badge: 'EMAIL',
+    data: {
+      labels, datasets: [
+        { label: 'Unsub %', data: generateData(n, 0.05, 0.25, -0.2), borderColor: '#ef4444', tension: 0.3, borderWidth: 2, pointRadius: 0 },
+        { label: 'Bounce %', data: generateData(n, 1.5, 3, -0.3), borderColor: '#eab308', tension: 0.3, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+
+  // Social
+  clearContainer('mkt-social-charts');
+  makeChart('mkt-social-charts', {
+    title: 'LinkedIn Impressions & Engagement', subtitle: 'Company page — benchmark 3,700 median impressions', badge: 'LINKEDIN',
+    data: {
+      labels, datasets: [
+        { label: 'Impressions', data: generateData(n, 1000, 8000, 2), borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Engagement %', data: generateData(n, 3, 7, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y1' },
+      ]
+    },
+    legend: true,
+    options: { scales: { y: { position: 'left', grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#52525b', font: { size: 10 } } }, y1: { position: 'right', grid: { display: false }, ticks: { color: '#52525b', font: { size: 10 }, callback: v => v+'%' } } } }
+  });
+  makeChart('mkt-social-charts', {
+    title: 'Post Type Performance', subtitle: 'Engagement rate by format', badge: 'LINKEDIN',
+    type: 'bar',
+    data: {
+      labels: ['Multi-Image','Carousel','Video','Text+Image','Text Only','Polls'],
+      datasets: [
+        { data: [6.6, 6.1, 5.6, 4.2, 3.1, 7.2], backgroundColor: ['#3b82f6','#6366f1','#a855f7','#22c55e','#6b7280','#eab308'], borderRadius: 4 },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+  makeChart('mkt-social-charts', {
+    title: 'Cold Outreach Reply Rates', subtitle: 'Email + LinkedIn + Phone — Benchmark 3-5.8%', badge: 'OUTREACH',
+    data: {
+      labels: ['Email Only','LinkedIn Only','Phone Only','Email+LI','Multi-Channel'],
+      datasets: [
+        { data: [3.2, 4.1, 2.8, 6.5, 12.1], backgroundColor: 'rgba(59,130,246,0.6)', borderRadius: 4 },
+        { data: [5.8, 5.8, 5.8, 5.8, 5.8], backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 4, label: 'Benchmark' },
+      ]
+    },
+    type: 'bar', legend: true, yFormat: v => v+'%'
+  });
+  makeChart('mkt-social-charts', {
+    title: 'Lead Magnet Conversion', subtitle: 'Interactive tools convert 7-10x vs static PDFs', badge: 'RESEARCH',
+    type: 'bar',
+    data: {
+      labels: ['Assessment Tool','ROI Calculator','Free Consult','Webinar Reg','Gated eBook','PDF Download'],
+      datasets: [
+        { data: [10.2, 8.5, 8.1, 5.4, 1.2, 0.8], backgroundColor: v => v.raw > 5 ? 'rgba(34,197,94,0.6)' : 'rgba(239,68,68,0.4)', borderRadius: 4 },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+
+  // Content
+  clearContainer('mkt-content-charts');
+  makeChart('mkt-content-charts', {
+    title: 'Content Published by Channel', subtitle: 'Blog, Substack, PR portals, Medium, etc.', badge: 'N8N', full: true,
+    type: 'bar', stacked: true,
+    data: {
+      labels, datasets: [
+        { label: 'Blog', data: generateData(n, 0, 4, 0.5), backgroundColor: '#3b82f6', borderRadius: 2 },
+        { label: 'Substack', data: generateData(n, 0, 2, 0.3), backgroundColor: '#22c55e', borderRadius: 2 },
+        { label: 'PR Portals', data: generateData(n, 0, 3, 0.2), backgroundColor: '#a855f7', borderRadius: 2 },
+        { label: 'Medium/WP', data: generateData(n, 0, 2, 0.1), backgroundColor: '#eab308', borderRadius: 2 },
+        { label: 'LinkedIn', data: generateData(n, 2, 5, 0.5), backgroundColor: '#6366f1', borderRadius: 2 },
+      ]
+    },
+    legend: true
+  });
+
+  // Paid
+  clearContainer('mkt-paid-charts');
+  makeChart('mkt-paid-charts', {
+    title: 'Cost per Lead by Channel', subtitle: 'Referrals $25 vs ABM $4,664', badge: 'ALL CHANNELS',
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Referrals','SEO/Organic','Email Marketing','Public Speaking','PPC/SEM','LinkedIn Ads','Facebook Ads','SDRs','ABM'],
+      datasets: [{ data: [25,533,510,518,802,115,142,1980,4664], backgroundColor: v => v.raw < 600 ? 'rgba(34,197,94,0.6)' : v.raw < 1000 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 3 }]
+    },
+    height: 280, yFormat: v => '$'+v
+  });
+  makeChart('mkt-paid-charts', {
+    title: 'Ad Spend & CPL Trend', subtitle: 'Google + LinkedIn Ads', badge: 'ADS',
+    data: {
+      labels, datasets: [
+        { label: 'Spend', data: generateData(n, 1000, 5000, 0.5), borderColor: '#ef4444', tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'CPL', data: generateData(n, 60, 200, -0.5), borderColor: '#eab308', tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y1' },
+      ]
+    },
+    legend: true,
+    options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} } } }
+  });
+
+  // ─── FACEBOOK ADS — FULL METRICS ───
+  const fb = cachedData.facebook || {};
+  const fbConnected = !!FB_ACCESS_TOKEN;
+
+  // Top-level Facebook stat cards
+  makeStatCard('mkt-fb-stats', [
+    { label: 'Total Spend', value: fbConnected ? '—' : '$4,218', change: 12, source: 'Facebook Ads API', color: '#1877f2' },
+    { label: 'Impressions', value: fbConnected ? '—' : '142,680', change: 8, benchmark: '—', source: 'FB Insights' },
+    { label: 'Reach', value: fbConnected ? '—' : '68,420', change: 6, benchmark: '—', source: 'FB Insights' },
+    { label: 'Frequency', value: fbConnected ? '—' : '2.08', change: -3, benchmark: '<3.0', source: 'FB Best Practice' },
+    { label: 'CPC (All)', value: fbConnected ? '—' : '$2.84', change: -5, benchmark: '$1.72 avg', source: 'WordStream 2025' },
+    { label: 'CPM', value: fbConnected ? '—' : '$29.56', change: 4, benchmark: '$14.40 avg', source: 'WordStream 2025' },
+    { label: 'CTR (All)', value: fbConnected ? '—' : '1.49%', change: 2, benchmark: '0.90% avg', source: 'WordStream 2025' },
+    { label: 'Cost per Lead', value: fbConnected ? '—' : '$142', change: -8, benchmark: '$142 B2B avg', source: 'Research' },
+    { label: 'ROAS', value: fbConnected ? '—' : '3.2x', change: 15, benchmark: '2-4x target', source: 'FB Ads' },
+    { label: 'Conversions', value: fbConnected ? '—' : '29', change: 10, source: 'FB Pixel' },
+    { label: 'Cost per Conversion', value: fbConnected ? '—' : '$145.45', change: -6, source: 'FB Insights' },
+    { label: 'Link Clicks', value: fbConnected ? '—' : '1,486', change: 9, source: 'FB Insights' },
+  ]);
+
+  clearContainer('mkt-fb-charts');
+
+  // Spend & Results Over Time
+  makeChart('mkt-fb-charts', {
+    title: 'Daily Ad Spend & Conversions', subtitle: 'Facebook Ads Manager — auto-fetched', badge: 'FB API', full: true, height: 260,
+    data: {
+      labels, datasets: [
+        { label: 'Spend ($)', data: generateData(n, 50, 250, 0.5), borderColor: '#1877f2', backgroundColor: 'rgba(24,119,242,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Conversions', data: generateData(n, 0, 5, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e', yAxisID: 'y1' },
+      ]
+    },
+    legend: true,
+    options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10}} } } }
+  });
+
+  // CPC, CPM, CTR Over Time
+  makeChart('mkt-fb-charts', {
+    title: 'CPC Trend', subtitle: 'Cost per Click (All) — Benchmark $1.72', badge: 'FB API',
+    data: {
+      labels, datasets: [
+        { label: 'CPC', data: generateData(n, 1.20, 4.50, -0.3), borderColor: '#1877f2', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#1877f2' },
+        { label: 'Industry Avg ($1.72)', data: Array(n).fill(1.72), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toFixed(2)
+  });
+
+  makeChart('mkt-fb-charts', {
+    title: 'CPM Trend', subtitle: 'Cost per 1,000 Impressions — Benchmark $14.40', badge: 'FB API',
+    data: {
+      labels, datasets: [
+        { label: 'CPM', data: generateData(n, 12, 45, -0.2), borderColor: '#e4405f', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#e4405f' },
+        { label: 'Industry Avg ($14.40)', data: Array(n).fill(14.40), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toFixed(2)
+  });
+
+  makeChart('mkt-fb-charts', {
+    title: 'CTR Trend (All Clicks)', subtitle: 'Click-Through Rate — Benchmark 0.90%', badge: 'FB API',
+    data: {
+      labels, datasets: [
+        { label: 'CTR', data: generateData(n, 0.5, 2.5, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+        { label: 'Industry Avg (0.90%)', data: Array(n).fill(0.90), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v.toFixed(2)+'%'
+  });
+
+  makeChart('mkt-fb-charts', {
+    title: 'Link CTR vs Outbound CTR', subtitle: 'Inline link clicks vs outbound clicks', badge: 'FB API',
+    data: {
+      labels, datasets: [
+        { label: 'Link CTR', data: generateData(n, 0.8, 3.0, 0.2), borderColor: '#1877f2', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Outbound CTR', data: generateData(n, 0.5, 2.2, 0.2), borderColor: '#a855f7', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Unique CTR', data: generateData(n, 1.0, 3.5, 0.3), borderColor: '#eab308', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v.toFixed(2)+'%'
+  });
+
+  // Cost Metrics Deep Dive
+  makeChart('mkt-fb-charts', {
+    title: 'Cost per Result by Objective', subtitle: 'Every conversion action cost', badge: 'FB PIXEL',
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Cost per Lead','Cost per Link Click','Cost per Outbound Click','Cost per Landing Page View',
+               'Cost per Post Engagement','Cost per ThruPlay','Cost per 1K Reached','Cost per Add to Cart',
+               'Cost per Purchase','Cost per Registration'],
+      datasets: [{
+        data: [142, 2.84, 3.12, 4.56, 0.82, 0.15, 8.20, 38.50, 285, 95],
+        backgroundColor: v => v.raw < 5 ? 'rgba(34,197,94,0.6)' : v.raw < 50 ? 'rgba(59,130,246,0.6)' : v.raw < 150 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)',
+        borderRadius: 3
+      }]
+    },
+    height: 320, yFormat: v => '$'+v
+  });
+
+  // Impressions, Reach, Frequency
+  makeChart('mkt-fb-charts', {
+    title: 'Impressions & Reach Over Time', subtitle: 'Monitor frequency to avoid ad fatigue', badge: 'FB API', full: true, height: 240,
+    data: {
+      labels, datasets: [
+        { label: 'Impressions', data: generateData(n, 2000, 12000, 1), borderColor: '#1877f2', backgroundColor: 'rgba(24,119,242,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Reach', data: generateData(n, 1000, 6000, 0.8), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Frequency', data: generateData(n, 1.2, 3.5, 0.2), borderColor: '#ef4444', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#ef4444', yAxisID: 'y1' },
+      ]
+    },
+    legend: true,
+    options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10}} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10}} } } }
+  });
+
+  // ROAS & Conversion Value
+  makeChart('mkt-fb-charts', {
+    title: 'ROAS (Return on Ad Spend)', subtitle: 'Purchase value / spend — Target 3-4x', badge: 'FB PIXEL',
+    data: {
+      labels, datasets: [
+        { label: 'ROAS', data: generateData(n, 1.5, 5.0, 0.5), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+        { label: 'Break-even (1.0x)', data: Array(n).fill(1.0), borderColor: '#ef4444', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+        { label: 'Target (3.0x)', data: Array(n).fill(3.0), borderColor: '#3f3f46', borderDash: [3,3], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v.toFixed(1)+'x'
+  });
+
+  makeChart('mkt-fb-charts', {
+    title: 'Conversion Value vs Spend', subtitle: 'Revenue generated by Facebook Ads', badge: 'FB PIXEL',
+    type: 'bar',
+    data: {
+      labels, datasets: [
+        { label: 'Ad Spend', data: generateData(n, 50, 250, 0.5), backgroundColor: 'rgba(239,68,68,0.5)', borderRadius: 3 },
+        { label: 'Conv. Value', data: generateData(n, 100, 800, 1), backgroundColor: 'rgba(34,197,94,0.6)', borderRadius: 3 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v
+  });
+
+  // Video Metrics
+  makeChart('mkt-fb-charts', {
+    title: 'Video Watch Retention', subtitle: 'Percentage watched at each quartile', badge: 'FB API',
+    type: 'bar',
+    data: {
+      labels: ['25% Watched','50% Watched','75% Watched','100% (ThruPlay)'],
+      datasets: [{
+        data: [78, 52, 34, 18],
+        backgroundColor: ['rgba(24,119,242,0.8)','rgba(24,119,242,0.6)','rgba(24,119,242,0.4)','rgba(24,119,242,0.25)'],
+        borderRadius: 4
+      }]
+    },
+    yFormat: v => v+'%'
+  });
+
+  makeChart('mkt-fb-charts', {
+    title: 'Cost per ThruPlay & Video Views', subtitle: 'ThruPlay = 15s+ or full view', badge: 'FB API',
+    data: {
+      labels, datasets: [
+        { label: 'Cost/ThruPlay', data: generateData(n, 0.05, 0.35, -0.2), borderColor: '#1877f2', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#1877f2' },
+        { label: 'Cost/3s View', data: generateData(n, 0.01, 0.08, -0.1), borderColor: '#a855f7', tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toFixed(3)
+  });
+
+  // Quality Ranking
+  makeChart('mkt-fb-charts', {
+    title: 'Ad Quality Rankings', subtitle: 'Facebook relevance diagnostics (1=worst, 5=best)', badge: 'FB API',
+    type: 'bar',
+    data: {
+      labels: ['Quality Ranking','Engagement Rate Ranking','Conversion Rate Ranking'],
+      datasets: [{
+        data: [4, 3, 4],
+        backgroundColor: v => v.raw >= 4 ? 'rgba(34,197,94,0.7)' : v.raw >= 3 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.6)',
+        borderRadius: 4
+      }]
+    },
+    options: { scales: { y: { max: 5, grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10}} }, x: { grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10}} } } }
+  });
+
+  // Engagement Metrics
+  makeChart('mkt-fb-charts', {
+    title: 'Post Engagement Breakdown', subtitle: 'Reactions, comments, shares, saves', badge: 'FB API',
+    type: 'doughnut',
+    data: {
+      labels: ['Reactions','Link Clicks','Post Shares','Comments','Post Saves','Other'],
+      datasets: [{ data: [42, 28, 12, 8, 6, 4], backgroundColor: ['#1877f2','#22c55e','#a855f7','#eab308','#ef4444','#6b7280'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+
+  // ─── FACEBOOK ADS — CAMPAIGN BREAKDOWN ───
+  clearContainer('mkt-fb-campaigns-charts');
+
+  makeChart('mkt-fb-campaigns-charts', {
+    title: 'Spend by Campaign', subtitle: 'Active campaign budget allocation', badge: 'FB API', full: true,
+    type: 'bar',
+    data: {
+      labels: ['Exit Planning Awareness','Retargeting - Site Visitors','Lookalike - Business Owners','VSL Promo - Houston','Assessment Lead Gen','Book Download'],
+      datasets: [
+        { label: 'Spend', data: [1200, 850, 680, 520, 480, 488], backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 4 },
+      ]
+    },
+    yFormat: v => '$'+v
+  });
+
+  makeChart('mkt-fb-campaigns-charts', {
+    title: 'CPC by Campaign', subtitle: 'Cost per click varies by objective', badge: 'FB API',
+    type: 'bar',
+    data: {
+      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
+      datasets: [
+        { label: 'CPC', data: [3.80, 1.45, 2.90, 2.10, 4.20, 1.85], backgroundColor: v => v.raw < 2 ? 'rgba(34,197,94,0.7)' : v.raw < 3 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
+      ]
+    },
+    yFormat: v => '$'+v.toFixed(2)
+  });
+
+  makeChart('mkt-fb-campaigns-charts', {
+    title: 'CTR by Campaign', subtitle: 'Click-through rate per campaign', badge: 'FB API',
+    type: 'bar',
+    data: {
+      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
+      datasets: [
+        { label: 'CTR', data: [0.85, 2.40, 1.10, 1.65, 0.72, 1.95], backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.7)' : v.raw > 0.9 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
+      ]
+    },
+    yFormat: v => v.toFixed(2)+'%'
+  });
+
+  makeChart('mkt-fb-campaigns-charts', {
+    title: 'ROAS by Campaign', subtitle: 'Return on ad spend per campaign', badge: 'FB PIXEL',
+    type: 'bar',
+    data: {
+      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
+      datasets: [
+        { label: 'ROAS', data: [1.8, 5.2, 2.4, 3.1, 4.5, 2.8], backgroundColor: v => v.raw >= 3 ? 'rgba(34,197,94,0.7)' : v.raw >= 2 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
+      ]
+    },
+    yFormat: v => v.toFixed(1)+'x'
+  });
+
+  // ─── FACEBOOK ADS — AUDIENCE & CREATIVE ───
+  clearContainer('mkt-fb-audience-charts');
+
+  makeChart('mkt-fb-audience-charts', {
+    title: 'Performance by Age Group', subtitle: 'CPC and CTR by demographic', badge: 'FB BREAKDOWN',
+    type: 'bar',
+    data: {
+      labels: ['25-34','35-44','45-54','55-64','65+'],
+      datasets: [
+        { label: 'CTR %', data: [0.72, 1.15, 1.85, 2.10, 1.40], backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 3, yAxisID: 'y' },
+        { label: 'CPC $', data: [4.20, 3.10, 2.40, 1.95, 2.80], borderColor: '#ef4444', type: 'line', tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ef4444', yAxisID: 'y1' },
+      ]
+    },
+    legend: true,
+    options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>v+'%'} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} } } }
+  });
+
+  makeChart('mkt-fb-audience-charts', {
+    title: 'Performance by Placement', subtitle: 'Where your ads run best', badge: 'FB BREAKDOWN',
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Facebook Feed','Facebook Reels','Facebook Right Column','Instagram Feed','Instagram Stories','Instagram Reels','Audience Network','Messenger'],
+      datasets: [{
+        data: [1.85, 0.92, 0.45, 1.65, 1.20, 0.88, 0.35, 0.55],
+        backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.6)' : v.raw > 0.8 ? 'rgba(24,119,242,0.5)' : 'rgba(239,68,68,0.4)',
+        borderRadius: 3
+      }]
+    },
+    height: 260, yFormat: v => v+'% CTR'
+  });
+
+  makeChart('mkt-fb-audience-charts', {
+    title: 'Spend Distribution by Placement', subtitle: 'Budget allocation across placements', badge: 'FB API',
+    type: 'doughnut',
+    data: {
+      labels: ['Facebook Feed','Instagram Feed','Facebook Reels','Instagram Stories','Instagram Reels','Other'],
+      datasets: [{ data: [35, 22, 15, 12, 10, 6], backgroundColor: ['#1877f2','#e4405f','#1877f2','#e4405f','#c13584','#6b7280'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+
+  makeChart('mkt-fb-audience-charts', {
+    title: 'Hourly Performance', subtitle: 'Best hours for your ads', badge: 'FB BREAKDOWN',
+    type: 'bar',
+    data: {
+      labels: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'],
+      datasets: [{
+        label: 'CTR',
+        data: [0.4,0.6,1.1,1.8,2.1,1.9,1.5,1.3,1.1,1.0,0.9,1.2,1.6,1.8,1.5,1.0],
+        backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.6)' : v.raw > 1.0 ? 'rgba(24,119,242,0.4)' : 'rgba(255,255,255,0.06)',
+        borderRadius: 2
+      }]
+    },
+    yFormat: v => v+'%'
+  });
+
+  // ─── FACEBOOK ADS — CAMPAIGNS TABLE ───
+  const fbTable = document.getElementById('mkt-fb-campaigns-table');
+  fbTable.innerHTML = `
+    <thead><tr><th>Campaign</th><th>Status</th><th>Objective</th><th>Spend</th><th>Impressions</th><th>Reach</th><th>Clicks</th><th>CPC</th><th>CPM</th><th>CTR</th><th>Conversions</th><th>CPL</th><th>ROAS</th></tr></thead>
+    <tbody>
+      <tr><td>Exit Planning Awareness</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Awareness</td><td>$1,200</td><td>42,800</td><td>22,150</td><td>315</td><td>$3.81</td><td>$28.04</td><td>0.74%</td><td>4</td><td>$300</td><td>1.8x</td></tr>
+      <tr><td>Retargeting — Site Visitors</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Conversions</td><td>$850</td><td>18,200</td><td>4,800</td><td>586</td><td>$1.45</td><td>$46.70</td><td>3.22%</td><td>8</td><td>$106</td><td>5.2x</td></tr>
+      <tr><td>Lookalike — Business Owners</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Lead Gen</td><td>$680</td><td>28,400</td><td>18,200</td><td>234</td><td>$2.91</td><td>$23.94</td><td>0.82%</td><td>5</td><td>$136</td><td>2.4x</td></tr>
+      <tr><td>VSL Promo — Houston</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Traffic</td><td>$520</td><td>22,100</td><td>12,400</td><td>248</td><td>$2.10</td><td>$23.53</td><td>1.12%</td><td>6</td><td>$87</td><td>3.1x</td></tr>
+      <tr><td>Assessment Lead Gen</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Lead Gen</td><td>$480</td><td>15,800</td><td>8,900</td><td>114</td><td>$4.21</td><td>$30.38</td><td>0.72%</td><td>4</td><td>$120</td><td>4.5x</td></tr>
+      <tr><td>Book Download</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Paused</span></td><td>Lead Gen</td><td>$488</td><td>15,380</td><td>11,970</td><td>264</td><td>$1.85</td><td>$31.73</td><td>1.72%</td><td>2</td><td>$244</td><td>2.8x</td></tr>
+    </tbody>
+  `;
+
+  // Keywords table
+  const kwTable = document.getElementById('mkt-keywords-table');
+  kwTable.innerHTML = `
+    <thead><tr><th>Keyword</th><th>Volume</th><th>KD</th><th>Position</th><th>Phase</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>sell my business houston</td><td>210</td><td>18</td><td>14</td><td>Phase 1</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Tracking</span></td></tr>
+      <tr><td>exit planning advisor</td><td>320</td><td>22</td><td>21</td><td>Phase 1</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Tracking</span></td></tr>
+      <tr><td>business exit strategy</td><td>1,800</td><td>42</td><td>38</td><td>Phase 2</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Planned</span></td></tr>
+      <tr><td>exit planning</td><td>2,100</td><td>37</td><td>45</td><td>Phase 2</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Planned</span></td></tr>
+      <tr><td>sell my business</td><td>9,900</td><td>62</td><td>—</td><td>Phase 3</td><td><span class="status"><span class="status-dot" style="background:var(--text-muted)"></span>Future</span></td></tr>
+      <tr><td>business valuation</td><td>8,100</td><td>58</td><td>—</td><td>Phase 3</td><td><span class="status"><span class="status-dot" style="background:var(--text-muted)"></span>Future</span></td></tr>
+      <tr><td>how to sell a plumbing business</td><td>140</td><td>12</td><td>8</td><td>Phase 1</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Page 1</span></td></tr>
+      <tr><td>hvac business exit mistakes</td><td>90</td><td>8</td><td>5</td><td>Phase 1</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Page 1</span></td></tr>
+    </tbody>
+  `;
+}
+
+// ─── RENDER: SALES ───
+function renderSales() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+
+  makeStatCard('sales-stats', [
+    { label: 'Pipeline Value', value: '$485K', change: 15, source: 'Command Center', color: 'var(--sales)' },
+    { label: 'Active Proposals', value: '6', change: 0, source: 'Arena API' },
+    { label: 'Win Rate', value: '52%', change: 3, benchmark: '47-62%', source: 'RAIN Group' },
+    { label: 'Avg Deal Size', value: '$81K', change: 8, benchmark: '$75-500K', source: 'M&A Advisory' },
+    { label: 'Speed to Lead', value: '8 min', change: -12, benchmark: '<5 min', source: 'Critical KPI' },
+    { label: 'Show Rate', value: '78%', change: 4, benchmark: '75-85%', source: 'Martal Group' },
+    { label: 'Proposals/Win', value: '1.9', change: -5, benchmark: '1.25-2.1', source: 'RAIN Group' },
+    { label: 'Sales Cycle', value: '52 days', change: -3, benchmark: '30-90 days', source: 'Industry' },
+  ]);
+
+  clearContainer('sales-pipeline-charts');
+  makeChart('sales-pipeline-charts', {
+    title: 'Pipeline Value by Stage', subtitle: 'Active deals in funnel', badge: 'ARENA API', full: true, height: 260,
+    type: 'bar',
+    data: {
+      labels: ['Discovery','Qualification','Proposal','Negotiation','Closing'],
+      datasets: [
+        { label: 'Value', data: [120000, 95000, 185000, 55000, 30000], backgroundColor: ['rgba(239,68,68,0.3)','rgba(239,68,68,0.4)','rgba(239,68,68,0.6)','rgba(239,68,68,0.75)','rgba(239,68,68,0.9)'], borderRadius: 6 },
+      ]
+    },
+    yFormat: v => '$'+(v/1000)+'K'
+  });
+  makeChart('sales-pipeline-charts', {
+    title: 'Funnel Conversion by Stage', subtitle: 'Your actual vs. industry benchmark', badge: 'RESEARCH',
+    type: 'bar',
+    data: {
+      labels: ['Visitor→Lead','Lead→MQL','MQL→SQL','SQL→Opp','Opp→Prop','Prop→Close'],
+      datasets: [
+        { label: 'Actual', data: [4.2, 35, 18, 42, 65, 28], backgroundColor: 'rgba(239,68,68,0.6)', borderRadius: 3 },
+        { label: 'Benchmark', data: [5, 36, 17, 40, 65, 27.5], backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 3 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('sales-pipeline-charts', {
+    title: 'Deals Won Over Time', subtitle: 'Count and value trend', badge: 'STRIPE',
+    data: {
+      labels, datasets: [
+        { label: 'Revenue', data: generateData(n, 0, 100000, 1.5), borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    yFormat: v => '$'+(v/1000).toFixed(0)+'K'
+  });
+
+  clearContainer('sales-calls-charts');
+  makeChart('sales-calls-charts', {
+    title: 'Discovery Calls — Booked vs Attended', subtitle: 'Show rate benchmark: 75-85%', badge: 'CALENDLY',
+    type: 'bar',
+    data: {
+      labels, datasets: [
+        { label: 'Booked', data: generateData(n, 3, 12, 1), backgroundColor: 'rgba(239,68,68,0.3)', borderRadius: 3 },
+        { label: 'Attended', data: generateData(n, 2, 10, 1), backgroundColor: 'rgba(239,68,68,0.7)', borderRadius: 3 },
+      ]
+    },
+    legend: true
+  });
+  makeChart('sales-calls-charts', {
+    title: 'No-Show Rate by Lead Source', subtitle: 'Referrals 5-15% vs Cold 25-40%', badge: 'RESEARCH',
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Referral','Inbound (form)','Warm/Nurtured','Cold Outreach'],
+      datasets: [{ data: [8, 14, 18, 32], backgroundColor: v => v.raw < 15 ? 'rgba(34,197,94,0.6)' : v.raw < 25 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.6)', borderRadius: 3 }]
+    },
+    yFormat: v => v+'%'
+  });
+
+  clearContainer('sales-proposals-charts');
+  makeChart('sales-proposals-charts', {
+    title: 'Win Rate by Source', subtitle: 'Referrals close 40-60% vs Cold 5-10%', badge: 'RAIN GROUP',
+    type: 'bar',
+    data: {
+      labels: ['Referral','Speaking/Event','Inbound Content','Cold Outbound'],
+      datasets: [{ data: [52, 38, 22, 7], backgroundColor: ['rgba(34,197,94,0.7)','rgba(59,130,246,0.7)','rgba(234,179,8,0.7)','rgba(239,68,68,0.6)'], borderRadius: 4 }]
+    },
+    yFormat: v => v+'%'
+  });
+  makeChart('sales-proposals-charts', {
+    title: 'Proposal Win Rate Trend', subtitle: 'Rolling average — target 50%+', badge: 'ARENA API',
+    data: {
+      labels, datasets: [
+        { label: 'Win Rate', data: generateData(n, 35, 60, 0.8), borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#ef4444' },
+        { label: 'Avg (47%)', data: Array(n).fill(47), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+
+  clearContainer('sales-followup-charts');
+  makeChart('sales-followup-charts', {
+    title: 'Speed to Lead Distribution', subtitle: '78% of buyers purchase from first responder', badge: 'CRITICAL',
+    type: 'bar',
+    data: {
+      labels: ['<1 min','1-5 min','5-30 min','30-60 min','1-24 hr','24+ hr'],
+      datasets: [
+        { label: 'Your leads', data: [5, 18, 30, 22, 15, 10], backgroundColor: v => v.dataIndex < 2 ? 'rgba(34,197,94,0.7)' : v.dataIndex < 4 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.6)', borderRadius: 3 },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+  makeChart('sales-followup-charts', {
+    title: 'Follow-up Persistence', subtitle: '50% of sales happen after 5th contact', badge: 'RESEARCH',
+    data: {
+      labels: ['1st','2nd','3rd','4th','5th','6th','7th','8th+'],
+      datasets: [
+        { label: 'Cumulative close %', data: [2, 5, 10, 18, 50, 62, 75, 85], borderColor: '#ef4444', tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ef4444' },
+        { label: '% of reps still following up', data: [100, 92, 80, 65, 8, 5, 3, 2], borderColor: '#3f3f46', borderDash: [4,4], tension: 0.4, borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+
+  // Pipeline table
+  const pt = document.getElementById('sales-pipeline-table');
+  pt.innerHTML = `
+    <thead><tr><th>Deal</th><th>Stage</th><th>Value</th><th>Source</th><th>Days Open</th><th>Next Action</th></tr></thead>
+    <tbody>
+      <tr><td>HVAC Co — Houston</td><td><span class="status"><span class="status-dot" style="background:var(--sales)"></span>Proposal</span></td><td>$125,000</td><td>Referral</td><td>28</td><td>Follow-up call 3/28</td></tr>
+      <tr><td>Electrical Services LLC</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Discovery</span></td><td>$85,000</td><td>Inbound</td><td>12</td><td>Send assessment link</td></tr>
+      <tr><td>Premier Plumbing Group</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Negotiation</span></td><td>$210,000</td><td>Speaking</td><td>65</td><td>Agreement review</td></tr>
+      <tr><td>Gulf Coast Contractors</td><td><span class="status"><span class="status-dot" style="background:var(--mkt)"></span>Qualification</span></td><td>$65,000</td><td>Cold</td><td>8</td><td>Book discovery call</td></tr>
+    </tbody>
+  `;
+}
+
+// ─── RENDER: DELIVERY ───
+function renderDelivery() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+
+  makeStatCard('delivery-stats', [
+    { label: 'Active Clients', value: '8', change: 2, source: 'Arena API', color: 'var(--delivery)' },
+    { label: 'Client Retention', value: '88%', change: 2, benchmark: '85-90%', source: 'First Page Sage' },
+    { label: 'NPS Score', value: '62', change: 4, benchmark: '51-68', source: 'Survicate' },
+    { label: 'CSAT', value: '87%', change: 1, benchmark: '84%+', source: 'Retently' },
+    { label: 'Utilization', value: '74%', change: 3, benchmark: '75-80%', source: 'SPI/Deltek' },
+    { label: 'Project Margin', value: '68%', change: 2, benchmark: '60-80%', source: 'Advisory avg' },
+    { label: 'Scope Creep', value: '3%', change: -2, benchmark: '<5%', source: 'PMI' },
+    { label: 'Referral Rate', value: '62%', change: 5, benchmark: '60%+', source: 'Consulting' },
+  ]);
+
+  clearContainer('delivery-retention-charts');
+  makeChart('delivery-retention-charts', {
+    title: 'Client Retention Rate (Rolling 12mo)', subtitle: 'Target 90%+', badge: 'ARENA API',
+    data: {
+      labels, datasets: [
+        { label: 'Retention', data: generateData(n, 82, 95, 0.5), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Benchmark (85%)', data: Array(n).fill(85), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('delivery-retention-charts', {
+    title: 'NPS Distribution', subtitle: 'Promoters / Passives / Detractors', badge: 'SURVEY',
+    type: 'doughnut',
+    data: {
+      labels: ['Promoters (9-10)','Passives (7-8)','Detractors (0-6)'],
+      datasets: [{ data: [68, 24, 8], backgroundColor: ['rgba(34,197,94,0.7)','rgba(234,179,8,0.6)','rgba(239,68,68,0.6)'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+  makeChart('delivery-retention-charts', {
+    title: 'Revenue Concentration', subtitle: '% from top clients — diversify below 30%', badge: 'QB',
+    type: 'doughnut',
+    data: {
+      labels: ['Top Client','#2 Client','#3 Client','All Others'],
+      datasets: [{ data: [28, 18, 14, 40], backgroundColor: ['#22c55e','#3b82f6','#a855f7','rgba(255,255,255,0.08)'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+  makeChart('delivery-retention-charts', {
+    title: 'CSAT Score Trend', subtitle: 'Consulting benchmark: 84%', badge: 'SURVEY',
+    data: {
+      labels, datasets: [
+        { label: 'CSAT', data: generateData(n, 80, 92, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+
+  clearContainer('delivery-utilization-charts');
+  makeChart('delivery-utilization-charts', {
+    title: 'Billable Utilization', subtitle: 'Industry avg 68.9% — Top performer 80%+', badge: 'SPI/DELTEK',
+    data: {
+      labels, datasets: [
+        { label: 'Utilization %', data: generateData(n, 60, 82, 0.8), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+        { label: 'Target (75%)', data: Array(n).fill(75), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('delivery-utilization-charts', {
+    title: 'Revenue per FTE', subtitle: 'Boutique M&A target: $300-600K', badge: 'FINANCIAL',
+    data: {
+      labels: generateLabels('monthly'), datasets: [
+        { label: '$/FTE', data: generateData(12, 250000, 500000, 2), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+      ]
+    },
+    yFormat: v => '$'+(v/1000).toFixed(0)+'K'
+  });
+
+  clearContainer('delivery-projects-charts');
+  makeChart('delivery-projects-charts', {
+    title: 'Engagement Duration', subtitle: 'Exit planning 12-24 months total', badge: 'ARENA API', full: true,
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Exit Planning Phase','M&A Prep Phase','Active Marketing','Due Diligence','Close'],
+      datasets: [{ data: [6, 3, 4, 2, 1], backgroundColor: 'rgba(34,197,94,0.5)', borderRadius: 3 }]
+    },
+    height: 200
+  });
+
+  const et = document.getElementById('delivery-engagements-table');
+  et.innerHTML = `
+    <thead><tr><th>Client</th><th>Engagement Type</th><th>Start Date</th><th>Phase</th><th>Health</th><th>Revenue</th></tr></thead>
+    <tbody>
+      <tr><td>Premier Plumbing Group</td><td>Full M&A</td><td>2025-09-15</td><td>Active Marketing</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>On Track</span></td><td>$210,000</td></tr>
+      <tr><td>HVAC Co — Houston</td><td>Exit Planning</td><td>2025-11-01</td><td>Value Enhancement</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>On Track</span></td><td>$85,000</td></tr>
+      <tr><td>Gulf Coast Electrical</td><td>Retainer</td><td>2026-01-15</td><td>Advisory</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Review Needed</span></td><td>$5,000/mo</td></tr>
+    </tbody>
+  `;
+}
+
+// ─── RENDER: ACCOUNTING ───
+function renderAccounting() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+  const mLabels = generateLabels('monthly');
+
+  makeStatCard('acct-stats', [
+    { label: 'Gross Margin', value: '72%', change: 1, benchmark: '60-80%', source: 'Advisory', color: 'var(--acct)' },
+    { label: 'EBITDA Margin', value: '22%', change: 3, benchmark: '15-25%', source: 'SPI/Deltek' },
+    { label: 'Revenue MTD', value: '$38,200', change: 12, source: 'Stripe + QB' },
+    { label: 'CAC (Loaded)', value: '$3,100', change: -8, benchmark: '$2,500-5,000', source: 'Calculated' },
+    { label: 'LTV:CAC', value: '18:1', change: 5, benchmark: '>20:1', source: 'Calculated' },
+    { label: 'Cash Position', value: '$124K', change: 6, benchmark: '$100-150K buffer', source: 'QB' },
+    { label: 'AR Aging (>30d)', value: '$12K', change: -15, source: 'QuickBooks' },
+    { label: 'Revenue/FTE', value: '$385K', change: 8, benchmark: '$300-600K', source: 'Boutique M&A' },
+  ]);
+
+  clearContainer('acct-revenue-charts');
+  makeChart('acct-revenue-charts', {
+    title: 'Monthly Revenue by Service Line', subtitle: 'Consulting + Retainer + Success Fees', badge: 'STRIPE + QB', full: true, height: 260,
+    type: 'bar', stacked: true,
+    data: {
+      labels: mLabels, datasets: [
+        { label: 'Consulting', data: generateData(12, 10000, 35000, 2), backgroundColor: 'rgba(234,179,8,0.7)', borderRadius: 2 },
+        { label: 'Retainers', data: generateData(12, 5000, 15000, 1.5), backgroundColor: 'rgba(234,179,8,0.4)', borderRadius: 2 },
+        { label: 'Success Fees', data: [0,0,0,50000,0,0,0,0,75000,0,0,0], backgroundColor: 'rgba(34,197,94,0.6)', borderRadius: 2 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+(v/1000).toFixed(0)+'K'
+  });
+  makeChart('acct-revenue-charts', {
+    title: 'Recurring vs Project Revenue', subtitle: 'Target 50-60% recurring by Year 3', badge: 'STRATEGIC',
+    type: 'doughnut',
+    data: {
+      labels: ['Retainer/Recurring','Project-Based','Success Fees'],
+      datasets: [{ data: [28, 45, 27], backgroundColor: ['#eab308','rgba(234,179,8,0.4)','rgba(34,197,94,0.6)'], borderWidth: 0 }]
+    },
+    legend: true
+  });
+  makeChart('acct-revenue-charts', {
+    title: 'Revenue Allocation vs Target', subtitle: 'Early stage (<$1M) recommended split', badge: 'HINGE',
+    type: 'bar',
+    data: {
+      labels: ['People','Marketing','Software','Contractors','G&A','Profit'],
+      datasets: [
+        { label: 'Actual', data: [48, 16, 4, 8, 12, 12], backgroundColor: 'rgba(234,179,8,0.6)', borderRadius: 3 },
+        { label: 'Target', data: [47.5, 16, 4, 7.5, 11.5, 12.5], backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 3 },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+
+  clearContainer('acct-margins-charts');
+  makeChart('acct-margins-charts', {
+    title: 'Gross & EBITDA Margin Trend', subtitle: 'Advisory target: 60-80% gross', badge: 'QB',
+    data: {
+      labels: mLabels, datasets: [
+        { label: 'Gross Margin', data: generateData(12, 58, 82, 0.5), borderColor: '#eab308', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#eab308' },
+        { label: 'EBITDA', data: generateData(12, 12, 28, 0.8), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+      ]
+    },
+    legend: true, yFormat: v => v+'%'
+  });
+  makeChart('acct-margins-charts', {
+    title: 'Project Profitability Distribution', subtitle: 'Each engagement gross margin', badge: 'QB',
+    type: 'bar',
+    data: {
+      labels: ['Premier Plumb','HVAC Co','Gulf Elec','Retainer A','Retainer B','Consult C'],
+      datasets: [{ data: [72, 68, 55, 80, 78, 62], backgroundColor: v => v.raw >= 70 ? 'rgba(34,197,94,0.6)' : v.raw >= 60 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 }]
+    },
+    yFormat: v => v+'%'
+  });
+
+  clearContainer('acct-unit-charts');
+  makeChart('acct-unit-charts', {
+    title: 'CAC Trend (Fully Loaded)', subtitle: 'All 6100+6200 accounts + BD time / new clients', badge: 'QB + CRM',
+    data: {
+      labels: mLabels, datasets: [
+        { label: 'CAC', data: generateData(12, 1800, 5500, -0.5), borderColor: '#eab308', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#eab308' },
+        { label: 'Target ($5K)', data: Array(12).fill(5000), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toLocaleString()
+  });
+  makeChart('acct-unit-charts', {
+    title: 'LTV:CAC Ratio', subtitle: 'Potential >20:1 — Industry standard 3:1', badge: 'CALCULATED',
+    data: {
+      labels: mLabels, datasets: [
+        { label: 'LTV:CAC', data: generateData(12, 8, 22, 1), borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+        { label: 'Healthy (3:1)', data: Array(12).fill(3), borderColor: '#ef4444', borderDash: [3,3], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true
+  });
+
+  clearContainer('acct-expense-charts');
+  makeChart('acct-expense-charts', {
+    title: 'Expense by Chart of Accounts', subtitle: '6100-6600 series breakdown', badge: 'QB', full: true,
+    type: 'bar', stacked: true,
+    data: {
+      labels: mLabels, datasets: [
+        { label: '6100 Marketing', data: generateData(12, 1500, 4000, 0.3), backgroundColor: '#3b82f6' },
+        { label: '6200 Sales', data: generateData(12, 800, 2500, 0.2), backgroundColor: '#ef4444' },
+        { label: '6300 Technology', data: generateData(12, 500, 1200, 0.1), backgroundColor: '#a855f7' },
+        { label: '6400 Facilities', data: generateData(12, 400, 800, 0), backgroundColor: '#22c55e' },
+        { label: '6500 Professional', data: generateData(12, 300, 1000, 0), backgroundColor: '#eab308' },
+        { label: '6600 Development', data: generateData(12, 200, 600, 0.1), backgroundColor: '#6b7280' },
+      ]
+    },
+    legend: true, yFormat: v => '$'+v.toLocaleString()
+  });
+
+  clearContainer('acct-cash-charts');
+  makeChart('acct-cash-charts', {
+    title: 'Cash Position & Runway', subtitle: 'Target: $100-150K buffer (6-12mo fixed costs)', badge: 'QB',
+    data: {
+      labels: mLabels, datasets: [
+        { label: 'Cash', data: generateData(12, 80000, 160000, 1), borderColor: '#eab308', backgroundColor: 'rgba(234,179,8,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#eab308' },
+        { label: 'Min Buffer ($100K)', data: Array(12).fill(100000), borderColor: '#ef4444', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      ]
+    },
+    legend: true, yFormat: v => '$'+(v/1000).toFixed(0)+'K'
+  });
+  makeChart('acct-cash-charts', {
+    title: 'AR Aging Buckets', subtitle: 'Outstanding receivables', badge: 'QB',
+    type: 'bar',
+    data: {
+      labels: ['Current','1-30 days','31-60 days','61-90 days','90+ days'],
+      datasets: [{ data: [25000, 12000, 8000, 3000, 1500], backgroundColor: ['rgba(34,197,94,0.6)','rgba(34,197,94,0.4)','rgba(234,179,8,0.6)','rgba(239,68,68,0.5)','rgba(239,68,68,0.7)'], borderRadius: 4 }]
+    },
+    yFormat: v => '$'+(v/1000).toFixed(0)+'K'
+  });
+}
+
+// ─── RENDER: LEGAL ───
+function renderLegal() {
+  const labels = generateLabels(currentRange);
+  const n = labels.length;
+
+  makeStatCard('legal-stats', [
+    { label: 'Active NDAs', value: '12', change: 3, source: 'Arena API', color: 'var(--legal)' },
+    { label: 'Pending Agreements', value: '3', change: 0, source: 'Arena API' },
+    { label: 'Signed This Month', value: '2', change: 0, source: 'Arena API' },
+    { label: 'Avg Sign Time', value: '3.2 days', change: -15, source: 'Calculated' },
+    { label: 'Compliance Score', value: '94%', change: 2, source: 'Internal' },
+    { label: 'Expiring (30d)', value: '1', change: 0, source: 'Alert' },
+  ]);
+
+  clearContainer('legal-contracts-charts');
+  makeChart('legal-contracts-charts', {
+    title: 'Contract Pipeline', subtitle: 'NDA → Info → Agreement → Active', badge: 'ARENA API',
+    type: 'bar',
+    data: {
+      labels: ['NDA Sent','NDA Signed','Info Submitted','Agreement Sent','Agreement Signed','Active'],
+      datasets: [
+        { data: [18, 14, 11, 8, 6, 5], backgroundColor: ['rgba(168,85,247,0.2)','rgba(168,85,247,0.35)','rgba(168,85,247,0.5)','rgba(168,85,247,0.65)','rgba(168,85,247,0.8)','rgba(168,85,247,0.95)'], borderRadius: 4 },
+      ]
+    },
+  });
+  makeChart('legal-contracts-charts', {
+    title: 'Agreement Signing Velocity', subtitle: 'Days from send to signature', badge: 'ARENA API',
+    data: {
+      labels, datasets: [
+        { label: 'Days to Sign', data: generateData(n, 1, 8, -0.3), borderColor: '#a855f7', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#a855f7' },
+      ]
+    },
+  });
+
+  clearContainer('legal-nda-charts');
+  makeChart('legal-nda-charts', {
+    title: 'NDA Volume Over Time', subtitle: 'Sent vs Signed — conversion tracking', badge: 'ARENA API',
+    type: 'bar',
+    data: {
+      labels, datasets: [
+        { label: 'Sent', data: generateData(n, 1, 6, 0.5), backgroundColor: 'rgba(168,85,247,0.3)', borderRadius: 3 },
+        { label: 'Signed', data: generateData(n, 0, 5, 0.5), backgroundColor: 'rgba(168,85,247,0.7)', borderRadius: 3 },
+      ]
+    },
+    legend: true
+  });
+  makeChart('legal-nda-charts', {
+    title: 'NDA Conversion Rate', subtitle: 'Sent → Signed %', badge: 'CALCULATED',
+    data: {
+      labels, datasets: [
+        { label: 'Conv %', data: generateData(n, 65, 90, 0.5), borderColor: '#a855f7', backgroundColor: 'rgba(168,85,247,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0 },
+      ]
+    },
+    yFormat: v => v+'%'
+  });
+
+  clearContainer('legal-compliance-charts');
+  makeChart('legal-compliance-charts', {
+    title: 'Compliance Checklist', subtitle: 'Privacy, Terms, NDA, Engagement, Insurance', badge: 'INTERNAL',
+    type: 'bar', horizontal: true,
+    data: {
+      labels: ['Privacy Policy','Terms of Service','NDA Template','Engagement Agreement','E&O Insurance','Data Processing'],
+      datasets: [{ data: [100, 100, 95, 90, 100, 85], backgroundColor: v => v.raw >= 95 ? 'rgba(34,197,94,0.6)' : 'rgba(234,179,8,0.6)', borderRadius: 3 }]
+    },
+    height: 200, yFormat: v => v+'%'
+  });
+  makeChart('legal-compliance-charts', {
+    title: 'Agreement Expiry Timeline', subtitle: 'Upcoming renewals and expirations', badge: 'ALERT',
+    type: 'bar',
+    data: {
+      labels: ['This Month','Next Month','2 Months','3 Months','6+ Months'],
+      datasets: [{ data: [1, 0, 2, 1, 4], backgroundColor: ['rgba(239,68,68,0.7)','rgba(234,179,8,0.6)','rgba(234,179,8,0.4)','rgba(34,197,94,0.4)','rgba(34,197,94,0.6)'], borderRadius: 4 }]
+    },
+  });
+
+  const at = document.getElementById('legal-agreements-table');
+  at.innerHTML = `
+    <thead><tr><th>Client</th><th>Document</th><th>Status</th><th>Signed Date</th><th>Expires</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Premier Plumbing Group</td><td>Engagement Agreement</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>2025-09-15</td><td>2026-09-15</td><td>$210,000</td></tr>
+      <tr><td>HVAC Co — Houston</td><td>NDA + Engagement</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>2025-11-01</td><td>2026-11-01</td><td>$85,000</td></tr>
+      <tr><td>Gulf Coast Electrical</td><td>Retainer Agreement</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>2026-01-15</td><td>2027-01-15</td><td>$60,000</td></tr>
+      <tr><td>Southwest HVAC</td><td>NDA</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Pending Sign</span></td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Metro Contractors Inc</td><td>Engagement Agreement</td><td><span class="status"><span class="status-dot" style="background:var(--legal)"></span>Sent</span></td><td>—</td><td>—</td><td>$125,000</td></tr>
+    </tbody>
+  `;
+}
+
+// ─── RENDER: INTEGRATIONS ───
+function renderIntegrations() {
+  const c = document.getElementById('integrations-content');
+  c.innerHTML = `
+    <div class="section-divider">Connected — Live Data</div>
+    <div class="stats-row">
+      <div class="stat-card" style="border-left:3px solid var(--up)">
+        <div class="stat-label">Arena Worker API</div>
+        <div class="stat-value" style="font-size:16px">19 endpoints</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;font-family:monospace">arena-api.jean-475.workers.dev</div>
+        <div class="stat-meta"><span class="stat-change up">Live</span></div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--up)">
+        <div class="stat-label">Stripe Payments</div>
+        <div class="stat-value" style="font-size:16px">Connected</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px">Revenue, MRR, payment status</div>
+        <div class="stat-meta"><span class="stat-change up">Live</span></div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--up)">
+        <div class="stat-label">Command Center</div>
+        <div class="stat-value" style="font-size:16px">LevelUp PM</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px">Pipeline, clients, tasks, analytics</div>
+        <div class="stat-meta"><span class="stat-change up">Live</span></div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--up)">
+        <div class="stat-label">N8N Automation</div>
+        <div class="stat-value" style="font-size:16px">Publisher Workflow</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px">Multi-platform content distribution</div>
+        <div class="stat-meta"><span class="stat-change up">Local</span></div>
+      </div>
+    </div>
+    <div class="section-divider">Needs Connection — API Keys Required</div>
+    <div class="stats-row">
+      <div class="stat-card" style="border-left:3px solid ${FB_ACCESS_TOKEN?'var(--up)':'var(--acct)'}">
+        <div class="stat-label">Facebook Ads</div>
+        <div class="stat-value" style="font-size:14px">Marketing API ${FB_API_VERSION}</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">CPC, CPM, CTR, ROAS, conversions, reach, frequency, spend, video views, quality rankings, age/placement breakdowns. Full Ads Manager parity.</div>
+        <div class="stat-meta"><span class="stat-change ${FB_ACCESS_TOKEN?'up':'down'}">${FB_ACCESS_TOKEN?'Connected':'Not Connected'}</span></div>
+        <div class="stat-source">Feeds: Facebook Ads section (Marketing)</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">Google Analytics 4</div>
+        <div class="stat-value" style="font-size:14px">Data API v1</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">Organic sessions, bounce rate, conversion events, goal completions. Tracks both domains.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: SEO & Digital metrics</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">Ahrefs / Semrush</div>
+        <div class="stat-value" style="font-size:14px">SEO API v3</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">DR, referring domains, keyword rankings, organic estimates, backlink growth.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: Marketing SEO charts</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">LinkedIn API</div>
+        <div class="stat-value" style="font-size:14px">Marketing API</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">Impressions, engagement, follower growth, InMail metrics, ad conversions.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: Social & paid metrics</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">QuickBooks Online</div>
+        <div class="stat-value" style="font-size:14px">API v3</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">P&L, gross margin, EBITDA, expense by category (6100-6600), AR aging, cash position.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: All Accounting charts</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">Email Platform</div>
+        <div class="stat-value" style="font-size:14px">Substack + Outreach</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">Open rate, CTR, list growth, delivery rate, cold email reply rates.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: Email marketing charts</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--acct)">
+        <div class="stat-label">Google Search Console</div>
+        <div class="stat-value" style="font-size:14px">Search API</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.6">Impressions, clicks, CTR, position by query. Core Web Vitals data.</div>
+        <div class="stat-meta"><span class="stat-change down">Not Connected</span></div>
+        <div class="stat-source">Feeds: SEO position tracking</div>
+      </div>
+    </div>
+    <div class="section-divider">Integration Setup Guide</div>
+    <div class="chart-card" style="margin-bottom:24px">
+      <div style="font-size:12px;color:var(--text-dim);line-height:2">
+        <strong style="color:var(--text)">To connect live data, add API keys to your Arena Worker:</strong><br>
+        1. <strong style="color:#1877f2">Facebook Ads</strong> → developers.facebook.com → Create App → Add Marketing API → Generate long-lived token → Run in console: <span style="font-family:monospace;background:var(--surface3);padding:2px 6px;border-radius:3px">localStorage.setItem('fb_access_token','YOUR_TOKEN')</span> and <span style="font-family:monospace;background:var(--surface3);padding:2px 6px;border-radius:3px">localStorage.setItem('fb_ad_account_id','act_XXXXX')</span><br>
+        2. Google Analytics → Create GA4 Data API credentials → Add to Worker env vars<br>
+        3. Ahrefs → API v3 token from dashboard → Add AHREFS_API_KEY to Worker<br>
+        4. LinkedIn → Create app at developers.linkedin.com → OAuth2 flow → Add token<br>
+        5. QuickBooks → Intuit Developer account → OAuth2 → Add QB_CLIENT_ID + SECRET<br>
+        6. Email → Substack has no public API; use N8N webhook to forward metrics<br>
+        7. Search Console → Same Google project as GA4 → Enable Search Console API<br>
+        <br>
+        <strong style="color:var(--text)">Once connected, this dashboard auto-fetches on every page load and refresh click.</strong>
+      </div>
+    </div>
+  `;
+}
+
+// ─── PAGE NAVIGATION ───
+function switchPage(page) {
+  currentPage = page;
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  document.querySelector(`[data-page="${page}"]`).classList.add('active');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(`page-${page}`).classList.add('active');
+
+  const titles = {
+    overview: '&#9632; Dashboard Overview',
+    marketing: '<span class="dept-badge" style="background:var(--mkt-dim);color:var(--mkt)">MKT</span> Marketing Analytics',
+    sales: '<span class="dept-badge" style="background:var(--sales-dim);color:var(--sales)">SALES</span> Sales Analytics',
+    delivery: '<span class="dept-badge" style="background:var(--delivery-dim);color:var(--delivery)">DEL</span> Delivery Analytics',
+    accounting: '<span class="dept-badge" style="background:var(--acct-dim);color:var(--acct)">ACCT</span> Accounting Analytics',
+    legal: '<span class="dept-badge" style="background:var(--legal-dim);color:var(--legal)">LEGAL</span> Legal Analytics',
+    integrations: '&#9889; Integrations & API Connections',
+  };
+  document.getElementById('topbar-title').innerHTML = titles[page] || '';
+
+  renderCurrentPage();
+}
+
+function renderCurrentPage() {
+  // Destroy existing charts
+  Object.keys(charts).forEach(k => { charts[k].destroy(); delete charts[k]; });
+
+  // Clear chart containers for current page
+  const page = document.getElementById(`page-${currentPage}`);
+  if (page) {
+    page.querySelectorAll('.charts-grid').forEach(g => g.innerHTML = '');
+  }
+
+  switch(currentPage) {
+    case 'overview': renderOverview(); break;
+    case 'marketing': renderMarketing(); break;
+    case 'sales': renderSales(); break;
+    case 'delivery': renderDelivery(); break;
+    case 'accounting': renderAccounting(); break;
+    case 'legal': renderLegal(); break;
+    case 'integrations': renderIntegrations(); break;
+  }
+}
+
+// ─── EVENT LISTENERS ───
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', e => { e.preventDefault(); switchPage(link.dataset.page); });
+});
+
+document.querySelectorAll('.date-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRange = btn.dataset.range;
+    renderCurrentPage();
+    showToast(`Showing ${btn.textContent} data`);
+  });
+});
+
+document.getElementById('date-from').addEventListener('change', () => {
+  document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+  currentRange = 'custom';
+  renderCurrentPage();
+});
+
+document.getElementById('date-to').addEventListener('change', () => {
+  document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+  currentRange = 'custom';
+  renderCurrentPage();
+});
+
+document.getElementById('refresh-btn').addEventListener('click', fetchAllData);
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─── INIT ───
+(function init() {
+  // Set date inputs
+  const {from, to} = getDateRange('90d');
+  document.getElementById('date-from').value = from;
+  document.getElementById('date-to').value = to;
+
+  // Show last refresh
+  if (lastRefresh) {
+    document.getElementById('last-updated').textContent = `Last refreshed: ${new Date(lastRefresh).toLocaleString()}`;
+  }
+
+  // Update Facebook status in sidebar
+  const fbStatusEl = document.getElementById('fb-status');
+  if (fbStatusEl && FB_ACCESS_TOKEN) {
+    fbStatusEl.innerHTML = '<span class="pulse-dot"></span> Facebook Ads';
+  }
+
+  // Render overview
+  renderOverview();
+
+  // Auto-fetch on load
+  fetchAllData();
+})();
+</script>
+</body>
+</html>
