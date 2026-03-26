@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T18:51:20.037168+00:00",
-  "updated_local": "2026-03-26 01:51 PM",
+  "updated": "2026-03-26T18:56:24.097235+00:00",
+  "updated_local": "2026-03-26 01:56 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 129,
-      "sessions": 158,
+      "users": 130,
+      "sessions": 159,
       "pageviews": 278,
-      "avg_duration": 168.1,
+      "avg_duration": 167.0,
       "conversions": 0
     },
     "month": {
-      "users": 129,
-      "sessions": 158,
+      "users": 130,
+      "sessions": 159,
       "pageviews": 278,
       "conversions": 0
     },
@@ -182,16 +182,16 @@
         "users": 4
       },
       {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 3,
+        "users": 3
+      },
+      {
         "source": "telegra.ph",
         "medium": "referral",
         "sessions": 3,
         "users": 1
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 2,
-        "users": 2
       },
       {
         "source": "thearenapartners.com",
@@ -328,16 +328,16 @@
       },
       {
         "date": "2026-03-26",
-        "users": 2,
-        "sessions": 2,
+        "users": 3,
+        "sessions": 3,
         "pageviews": 2
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 146,
-        "users": 118
+        "sessions": 147,
+        "users": 119
       },
       {
         "device": "Mobile",
@@ -353,8 +353,8 @@
       },
       {
         "city": "Amsterdam",
-        "users": 8,
-        "sessions": 8
+        "users": 9,
+        "sessions": 9
       },
       {
         "city": "Hounslow",
@@ -428,7 +428,7 @@
       },
       {
         "event": "scroll",
-        "count": 155
+        "count": 156
       },
       {
         "event": "user_engagement",
@@ -545,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 70.3
+    "bounce_rate": 70.4
   }
 }
