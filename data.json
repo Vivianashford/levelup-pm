@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T08:25:55.020093+00:00",
-  "updated_local": "2026-03-26 03:25 AM",
+  "updated": "2026-03-26T08:30:54.846794+00:00",
+  "updated_local": "2026-03-26 03:30 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,10 +86,10 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 126,
-      "sessions": 154,
+      "users": 127,
+      "sessions": 155,
       "pageviews": 267,
-      "avg_duration": 190.5,
+      "avg_duration": 189.2,
       "conversions": 0
     },
     "month": {
@@ -158,16 +158,16 @@
         "users": 103
       },
       {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 12,
+        "users": 11
+      },
+      {
         "source": "vivianashford.github.io",
         "medium": "referral",
         "sessions": 12,
         "users": 4
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 11,
-        "users": 10
       },
       {
         "source": "facebook.com",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 130,
-        "users": 80,
-        "avg_duration": 110.9
+        "users": 81,
+        "avg_duration": 109.8
       },
       "/book.html": {
         "views": 17,
@@ -325,13 +325,19 @@
         "users": 17,
         "sessions": 20,
         "pageviews": 28
+      },
+      {
+        "date": "2026-03-26",
+        "users": 1,
+        "sessions": 1,
+        "pageviews": 0
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 142,
-        "users": 115
+        "sessions": 143,
+        "users": 116
       },
       {
         "device": "Mobile",
@@ -361,17 +367,17 @@
         "sessions": 5
       },
       {
+        "city": "Council Bluffs",
+        "users": 5,
+        "sessions": 5
+      },
+      {
         "city": "London",
         "users": 5,
         "sessions": 5
       },
       {
         "city": "Boardman",
-        "users": 4,
-        "sessions": 4
-      },
-      {
-        "city": "Council Bluffs",
         "users": 4,
         "sessions": 4
       },
@@ -426,7 +432,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 137
+        "count": 138
       },
       {
         "event": "first_visit",
@@ -539,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 74.7
+    "bounce_rate": 74.8
   }
 }
