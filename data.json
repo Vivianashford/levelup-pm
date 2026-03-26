@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T20:37:39.811840+00:00",
-  "updated_local": "2026-03-26 03:37 PM",
+  "updated": "2026-03-26T20:42:43.669611+00:00",
+  "updated_local": "2026-03-26 03:42 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 0,
     "week": {
-      "users": 132,
-      "sessions": 161,
+      "users": 133,
+      "sessions": 162,
       "pageviews": 280,
-      "avg_duration": 164.9,
+      "avg_duration": 163.9,
       "conversions": 0
     },
     "month": {
-      "users": 132,
-      "sessions": 161,
+      "users": 133,
+      "sessions": 162,
       "pageviews": 280,
       "conversions": 0
     },
@@ -132,7 +132,7 @@
       {
         "page": "/contact",
         "views": 12,
-        "users": 6
+        "users": 7
       },
       {
         "page": "/services",
@@ -176,15 +176,15 @@
         "users": 6
       },
       {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 5,
+        "users": 5
+      },
+      {
         "source": "linkedin.com",
         "medium": "referral",
         "sessions": 5,
-        "users": 4
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 4,
         "users": 4
       },
       {
@@ -328,16 +328,16 @@
       },
       {
         "date": "2026-03-26",
-        "users": 5,
-        "sessions": 5,
+        "users": 6,
+        "sessions": 6,
         "pageviews": 4
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 149,
-        "users": 121
+        "sessions": 150,
+        "users": 122
       },
       {
         "device": "Mobile",
@@ -358,8 +358,8 @@
       },
       {
         "city": "Hounslow",
-        "users": 8,
-        "sessions": 8
+        "users": 9,
+        "sessions": 9
       },
       {
         "city": "London",
@@ -428,7 +428,7 @@
       },
       {
         "event": "scroll",
-        "count": 157
+        "count": 158
       },
       {
         "event": "user_engagement",
@@ -545,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 70.8
+    "bounce_rate": 71.0
   }
 }
