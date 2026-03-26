@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-26T21:57:40.296943+00:00",
-  "updated_local": "2026-03-26 04:57 PM",
+  "updated": "2026-03-26T22:02:53.530951+00:00",
+  "updated_local": "2026-03-26 05:02 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -89,7 +89,7 @@
       "users": 136,
       "sessions": 165,
       "pageviews": 283,
-      "avg_duration": 160.9,
+      "avg_duration": 161.0,
       "conversions": 0
     },
     "month": {
@@ -432,7 +432,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 144
+        "count": 145
       },
       {
         "event": "first_visit",
