@@ -423,8 +423,15 @@
     <div class="ops-cards-grid">
       <div class="ops-card" style="--card-accent:var(--accent-accounting)">
         <div class="ops-card-top"><h4>Stripe Payments</h4><span class="ops-card-status live">Live</span></div>
-        <p>$6 book transaction live. Ready for engagement fee processing. Needs API integration for live revenue on Command Center.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Book Sales</span><span class="ops-card-tag">Revenue Tracking Pending</span></div>
+        <p>Payment processing for book sales and engagement fees. Connected via agreement.html. Reports: Revenue, MRR, churn, payment failures.</p>
+        <div class="ops-card-links"><a href="https://dashboard.stripe.com" class="ops-card-link" target="_blank">💳 Stripe Dashboard</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">Connected</span><span class="ops-card-tag">Payment Processing</span></div>
+      </div>
+      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
+        <div class="ops-card-top"><h4>Wave Accounting</h4><span class="ops-card-status pending">API Pending</span></div>
+        <p>Source of truth for all financials. Tom updates books. We read via GraphQL API: P&L, gross margin, EBITDA, revenue by service line, expense by category (6100-6600), AR aging, cash position, invoices, payments.</p>
+        <div class="ops-card-links"><a href="https://www.waveapps.com" class="ops-card-link" target="_blank">📊 Wave App</a><a href="https://developer.waveapps.com" class="ops-card-link" target="_blank">🔗 API Docs</a></div>
+        <div class="ops-card-tags"><span class="ops-card-tag">GraphQL API</span><span class="ops-card-tag">Tom manages</span><span class="ops-card-tag">Read-only access</span></div>
       </div>
       <div class="ops-card" style="--card-accent:var(--accent-accounting)">
         <div class="ops-card-top"><h4>Command Center (Operations Hub)</h4><span class="ops-card-status live">Live</span></div>

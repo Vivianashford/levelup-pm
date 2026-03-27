@@ -441,6 +441,8 @@
   }
   .int-status.offline { color: var(--accent-sales); }
   .int-status.offline .pulse { background: var(--accent-sales); animation: none; opacity: 0.5; }
+  .int-status.partial { color: var(--accent-accounting); }
+  .int-status.partial .pulse { background: var(--accent-accounting); }
 
   /* Section titles */
   .section-title {
@@ -1669,16 +1671,17 @@
         <div class="int-card-icon">&#128200;</div>
         <div>
           <h4>Google Analytics</h4>
-          <div class="int-type">Traffic & Behavior — Connect via API</div>
+          <div class="int-type">Traffic & Behavior — GA4 Data API v1</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
         Feeds: Organic sessions, bounce rate, pages/session,<br>
-        conversion events, goal completions<br>
+        conversion events, goal completions, realtime users<br>
         Tracks: thearenapartners.com + arenabusinessadvisors.com<br>
-        API: Google Analytics Data API v1
+        Property: G-SDMM90P63D (ID: 529455630)<br>
+        Service account: arena-analytics@eminent-subset-358618
       </div>
-      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+      <div class="int-status online"><span class="pulse"></span> Connected</div>
     </div>
 
     <!-- Ahrefs / SEO -->
@@ -1723,34 +1726,36 @@
         <div class="int-card-icon">&#128101;</div>
         <div>
           <h4>LinkedIn</h4>
-          <div class="int-type">Organic + Ads — Connect via API</div>
+          <div class="int-type">Posting Connected — Analytics API pending</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
-        Feeds: Impressions, engagement rate,<br>
-        follower growth, InMail metrics,<br>
-        ad spend/CPL/conversions<br>
-        Queue: linkedin-queue.html (levelup-pm)
+        POST: Articles, images, comments, delete ✅<br>
+        Newsletter: "Transferable" (3x/week) ✅<br>
+        OAuth valid until May 22, 2026<br>
+        URN: urn:li:person:dcmUWQ8jjn<br>
+        Pending: Marketing Analytics API for impressions/engagement
       </div>
-      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+      <div class="int-status partial"><span class="pulse"></span> Partially connected</div>
     </div>
 
-    <!-- QuickBooks -->
+    <!-- Wave -->
     <div class="int-card">
       <div class="int-card-header">
         <div class="int-card-icon">&#128176;</div>
         <div>
-          <h4>QuickBooks</h4>
-          <div class="int-type">Accounting — Connect via API</div>
+          <h4>Wave</h4>
+          <div class="int-type">Accounting — Connect via GraphQL API</div>
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-dim);line-height:1.8;">
         Feeds: P&L, gross margin, EBITDA, revenue<br>
         by service line, expense by category (6100-6600),<br>
-        AR aging, cash position<br>
-        API: QuickBooks Online API v3
+        AR aging, cash position, invoices, payments<br>
+        API: developer.waveapps.com (GraphQL)<br>
+        Tom updates books → we read via API
       </div>
-      <div class="int-status offline"><span class="pulse"></span> Needs connection</div>
+      <div class="int-status offline"><span class="pulse"></span> Needs API token</div>
     </div>
 
     <!-- CRM / Command Center -->
