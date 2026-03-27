@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T10:42:26.584243+00:00",
-  "updated_local": "2026-03-27 05:42 AM",
+  "updated": "2026-03-27T10:57:24.935743+00:00",
+  "updated_local": "2026-03-27 05:57 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 4,
+    "realtime_users": 0,
     "week": {
-      "users": 142,
-      "sessions": 174,
+      "users": 143,
+      "sessions": 175,
       "pageviews": 297,
-      "avg_duration": 168.9,
+      "avg_duration": 168.0,
       "conversions": 0
     },
     "month": {
-      "users": 142,
-      "sessions": 174,
+      "users": 143,
+      "sessions": 175,
       "pageviews": 297,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 149,
-        "users": 92
+        "users": 93
       },
       {
         "page": "/blog/",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 9,
-        "users": 9
+        "sessions": 10,
+        "users": 10
       },
       {
         "source": "facebook.com",
@@ -251,8 +251,8 @@
     "funnel": {
       "/": {
         "views": 149,
-        "users": 92,
-        "avg_duration": 111.7
+        "users": 93,
+        "avg_duration": 110.7
       },
       "/book.html": {
         "views": 17,
@@ -334,16 +334,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 3,
-        "sessions": 3,
+        "users": 4,
+        "sessions": 4,
         "pageviews": 7
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 161,
-        "users": 130
+        "sessions": 162,
+        "users": 131
       },
       {
         "device": "Mobile",
@@ -438,7 +438,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 153
+        "count": 154
       },
       {
         "event": "first_visit",
@@ -551,6 +551,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.0
+    "bounce_rate": 73.1
   }
 }
