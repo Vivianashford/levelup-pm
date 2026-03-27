@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T03:40:54.486827+00:00",
-  "updated_local": "2026-03-26 10:40 PM",
+  "updated": "2026-03-27T03:55:54.982365+00:00",
+  "updated_local": "2026-03-26 10:55 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 138,
-      "sessions": 170,
-      "pageviews": 289,
-      "avg_duration": 157.7,
+      "users": 139,
+      "sessions": 171,
+      "pageviews": 290,
+      "avg_duration": 156.8,
       "conversions": 0
     },
     "month": {
-      "users": 138,
-      "sessions": 170,
-      "pageviews": 289,
+      "users": 139,
+      "sessions": 171,
+      "pageviews": 290,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 144,
-        "users": 88
+        "views": 145,
+        "users": 89
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 126,
-        "users": 114
+        "sessions": 127,
+        "users": 115
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 7,
-        "users": 7
+        "sessions": 8,
+        "users": 8
       },
       {
         "source": "facebook.com",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 144,
-        "users": 88,
-        "avg_duration": 101.1
+        "views": 145,
+        "users": 89,
+        "avg_duration": 100.2
       },
       "/book.html": {
         "views": 17,
@@ -328,16 +328,16 @@
       },
       {
         "date": "2026-03-26",
-        "users": 13,
-        "sessions": 14,
-        "pageviews": 13
+        "users": 14,
+        "sessions": 15,
+        "pageviews": 14
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 157,
-        "users": 126
+        "sessions": 158,
+        "users": 127
       },
       {
         "device": "Mobile",
@@ -397,6 +397,11 @@
         "sessions": 4
       },
       {
+        "city": "",
+        "users": 3,
+        "sessions": 3
+      },
+      {
         "city": "Boulogne-Billancourt",
         "users": 3,
         "sessions": 3
@@ -410,25 +415,20 @@
         "city": "Houston",
         "users": 3,
         "sessions": 21
-      },
-      {
-        "city": "Istres",
-        "users": 3,
-        "sessions": 3
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 289
+        "count": 290
       },
       {
         "event": "session_start",
-        "count": 167
+        "count": 168
       },
       {
         "event": "scroll",
-        "count": 162
+        "count": 163
       },
       {
         "event": "user_engagement",
@@ -436,7 +436,7 @@
       },
       {
         "event": "first_visit",
-        "count": 136
+        "count": 137
       },
       {
         "event": "scroll_depth",
@@ -477,8 +477,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 114,
-        "sessions": 126
+        "users": 115,
+        "sessions": 127
       },
       {
         "campaign": "(referral)",
@@ -545,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 72.4
+    "bounce_rate": 72.5
   }
 }
