@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <title>Arena Operating System — Architecture</title>
 <style>
   :root {
@@ -443,6 +444,13 @@
   .int-status.offline .pulse { background: var(--accent-sales); animation: none; opacity: 0.5; }
   .int-status.partial { color: var(--accent-accounting); }
   .int-status.partial .pulse { background: var(--accent-accounting); }
+  .fb-range { padding:4px 10px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:10px;cursor:pointer;font-weight:600;font-family:inherit;transition:all .15s }
+  .fb-range:hover { border-color:var(--text-dim);color:var(--text) }
+  .fb-range.active { background:var(--text);color:var(--bg);border-color:var(--text) }
+  .fb-kpi { background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:14px 16px }
+  .fb-kpi-label { font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:4px }
+  .fb-kpi-val { font-size:22px;font-weight:700;letter-spacing:-.5px }
+  .fb-kpi-sub { font-size:9px;color:var(--text-dim);margin-top:4px }
 
   /* Section titles */
   .section-title {
@@ -1777,6 +1785,59 @@
     </div>
 
   </div>
+
+  <!-- ═══ LIVE FACEBOOK ADS ANALYTICS ═══ -->
+  <div class="section-header" style="margin-top:30px">
+    <div class="section-title">📊 Live Facebook Ads Analytics</div>
+    <div class="section-desc">Real-time data from Trek One Capital — act_1392828839106650</div>
+  </div>
+
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+    <button class="fb-range active" data-r="7d">7D</button>
+    <button class="fb-range" data-r="30d">30D</button>
+    <button class="fb-range" data-r="90d">90D</button>
+    <button class="fb-range" data-r="ytd">YTD</button>
+    <span style="color:var(--text-dim);font-size:10px;margin:0 4px">|</span>
+    <input type="date" id="fb-from" style="padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px">
+    <span style="color:var(--text-dim);font-size:10px">to</span>
+    <input type="date" id="fb-to" style="padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px">
+    <button id="fb-refresh" style="padding:4px 12px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px;cursor:pointer;font-weight:700">↻ Refresh</button>
+    <span id="fb-last-up" style="font-size:9px;color:var(--text-dim);margin-left:auto"></span>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="int-grid" id="fb-kpi-cards" style="margin-bottom:16px"></div>
+
+  <!-- Campaign Table -->
+  <div style="margin-bottom:20px">
+    <div style="font-size:12px;font-weight:600;margin-bottom:8px">Campaign Performance</div>
+    <div style="overflow-x:auto">
+      <table id="fb-camp-table" style="width:100%;border-collapse:collapse;font-size:11px">
+        <thead><tr style="border-bottom:1px solid var(--border)">
+          <th style="text-align:left;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">Campaign</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">Spend</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">Leads</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">CPL</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">Impr</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">Clicks</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">CPC</th>
+          <th style="text-align:right;padding:8px;color:var(--text-dim);font-size:9px;text-transform:uppercase">CTR</th>
+        </tr></thead>
+        <tbody id="fb-camp-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Daily Chart -->
+  <div style="margin-bottom:20px">
+    <div style="font-size:12px;font-weight:600;margin-bottom:8px">Daily Leads & Spend</div>
+    <div style="height:220px"><canvas id="fb-daily-chart"></canvas></div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px">
+    <a href="https://thearenapartners.com/theGoldMine.html" target="_blank" style="color:var(--accent-mkt);font-size:11px;text-decoration:none">Open full GoldMine dashboard →</a>
+  </div>
+
 </div>
 
 <!-- ═══════════════════════ DAILY OPS VIEW ═══════════════════════ -->
@@ -2056,6 +2117,153 @@
   };
 
   opsRenderFB();
+
+  // ═══════ FACEBOOK ADS ANALYTICS (Integrations Tab) ═══════
+  const FB_ADS_TOKEN = 'EAANbF4N0IhABRErQK4nG6QiouVymvuqrnzow6cbTw07ZB2RHV82Ugrb8vAPxZBF0edLvXYGCTevwtYzu3iHYxMeZCMYuuXbZBJBzG5fQw6tChZCqrqZCJxFLuSgXWmjJ7dWxrc2O09KvgP3mPaJJiSuAHxxtJKC5cRfZAGlsXxKGMevWo5vHy0MYLafltEzVXR6G9kVp5FZATZA7M';
+  const FB_AD_ACCT = 'act_1392828839106650';
+  const FB_GRAPH_URL = 'https://graph.facebook.com/v19.0';
+  let fbAdsRange = '30d';
+  let fbDailyChart = null;
+
+  function fbDateRange(r) {
+    const now = new Date(), to = now.toISOString().split('T')[0];
+    let f;
+    switch(r){case'7d':f=new Date(now-7*864e5);break;case'30d':f=new Date(now-30*864e5);break;case'90d':f=new Date(now-90*864e5);break;case'ytd':f=new Date(now.getFullYear(),0,1);break;default:f=new Date(now-30*864e5)}
+    return {from:f.toISOString().split('T')[0], to};
+  }
+
+  async function fbAdsFetch(ep, params={}, skipTR=false) {
+    try {
+      let from = document.getElementById('fb-from')?.value;
+      let to = document.getElementById('fb-to')?.value;
+      if (!from||!to) { const d=fbDateRange(fbAdsRange); from=d.from; to=d.to; }
+      const p = new URLSearchParams({access_token:FB_ADS_TOKEN,...params});
+      if (!skipTR) p.set('time_range', JSON.stringify({since:from,until:to}));
+      const r = await fetch(`${FB_GRAPH_URL}/${FB_AD_ACCT}${ep}?${p}`);
+      if (!r.ok) { console.log('FB Ads error:', r.status); return null; }
+      return await r.json();
+    } catch(e) { console.log('FB Ads:', e.message); return null; }
+  }
+
+  async function loadFBAds() {
+    const btn = document.getElementById('fb-refresh');
+    if (btn) { btn.textContent = 'Loading...'; btn.style.opacity = '.5'; }
+
+    const [acct, camps, daily] = await Promise.all([
+      fbAdsFetch('/insights', {fields:'spend,impressions,clicks,cpc,ctr,actions,cost_per_action_type',level:'account'}),
+      fbAdsFetch('/insights', {fields:'campaign_name,spend,impressions,clicks,cpc,ctr,actions',level:'campaign',limit:20}),
+      fbAdsFetch('/insights', {fields:'spend,clicks,actions',time_increment:1,level:'account'})
+    ]);
+
+    if (btn) { btn.textContent = '↻ Refresh'; btn.style.opacity = '1'; }
+    const upEl = document.getElementById('fb-last-up');
+    if (upEl) upEl.textContent = 'Updated: ' + new Date().toLocaleTimeString();
+
+    // Parse account data
+    const ins = acct?.data?.[0] || {};
+    const spend = parseFloat(ins.spend||0);
+    const impr = parseInt(ins.impressions||0);
+    const clicks = parseInt(ins.clicks||0);
+    const cpc = parseFloat(ins.cpc||0);
+    const ctr = parseFloat(ins.ctr||0);
+    const leads = parseInt((ins.actions||[]).find(a=>a.action_type==='lead')?.value||0);
+    const cpl = leads>0 ? spend/leads : 0;
+
+    // KPI Cards
+    const kpiEl = document.getElementById('fb-kpi-cards');
+    if (kpiEl) {
+      kpiEl.innerHTML = [
+        {l:'Ad Spend',v:'$'+spend.toLocaleString(undefined,{maximumFractionDigits:0}),c:'#ef4444'},
+        {l:'Leads',v:leads,c:'#1877f2'},
+        {l:'CPL',v:'$'+cpl.toFixed(0),c:cpl<142?'#22c55e':'#eab308',s:'Bench: $142'},
+        {l:'Impressions',v:impr.toLocaleString()},
+        {l:'Link Clicks',v:clicks.toLocaleString()},
+        {l:'CPC',v:'$'+cpc.toFixed(2)},
+        {l:'CTR',v:ctr.toFixed(2)+'%',c:ctr>1?'#22c55e':'#eab308',s:'Bench: >1%'},
+        {l:'Campaigns',v:(camps?.data||[]).filter(c=>parseFloat(c.spend)>0).length}
+      ].map(k=>`<div class="fb-kpi"><div class="fb-kpi-label">${k.l}</div><div class="fb-kpi-val" style="${k.c?'color:'+k.c:''}">${k.v}</div>${k.s?'<div class="fb-kpi-sub">'+k.s+'</div>':''}</div>`).join('');
+    }
+
+    // Campaign table
+    const tbody = document.getElementById('fb-camp-tbody');
+    if (tbody && camps?.data) {
+      const rows = camps.data.filter(c=>parseFloat(c.spend)>0).sort((a,b)=>parseFloat(b.spend)-parseFloat(a.spend));
+      tbody.innerHTML = rows.map(c=>{
+        const s=parseFloat(c.spend);const l=parseInt((c.actions||[]).find(a=>a.action_type==='lead')?.value||0);
+        const cp=l>0?s/l:0;
+        return `<tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:8px;color:var(--text)">${c.campaign_name}</td>
+          <td style="padding:8px;text-align:right;color:#ef4444">$${s.toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+          <td style="padding:8px;text-align:right;color:#1877f2;font-weight:700">${l}</td>
+          <td style="padding:8px;text-align:right;color:${cp<142?'#22c55e':'#eab308'}">${cp>0?'$'+cp.toFixed(0):'—'}</td>
+          <td style="padding:8px;text-align:right;color:var(--text-dim)">${parseInt(c.impressions).toLocaleString()}</td>
+          <td style="padding:8px;text-align:right;color:var(--text-dim)">${parseInt(c.clicks).toLocaleString()}</td>
+          <td style="padding:8px;text-align:right;color:var(--text-dim)">$${parseFloat(c.cpc).toFixed(2)}</td>
+          <td style="padding:8px;text-align:right;color:var(--text-dim)">${parseFloat(c.ctr).toFixed(2)}%</td>
+        </tr>`;
+      }).join('');
+      // Totals row
+      tbody.innerHTML += `<tr style="border-top:2px solid var(--border);font-weight:700">
+        <td style="padding:8px;color:var(--text)">TOTAL</td>
+        <td style="padding:8px;text-align:right;color:#ef4444">$${spend.toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+        <td style="padding:8px;text-align:right;color:#1877f2">${leads}</td>
+        <td style="padding:8px;text-align:right;color:${cpl<142?'#22c55e':'#eab308'}">$${cpl.toFixed(0)}</td>
+        <td style="padding:8px;text-align:right;color:var(--text-dim)">${impr.toLocaleString()}</td>
+        <td style="padding:8px;text-align:right;color:var(--text-dim)">${clicks.toLocaleString()}</td>
+        <td style="padding:8px;text-align:right;color:var(--text-dim)">$${cpc.toFixed(2)}</td>
+        <td style="padding:8px;text-align:right;color:var(--text-dim)">${ctr.toFixed(2)}%</td>
+      </tr>`;
+    }
+
+    // Daily chart
+    if (daily?.data && daily.data.length > 0) {
+      const canvas = document.getElementById('fb-daily-chart');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const dLabels = daily.data.map(d=>d.date_start?.substring(5)||'');
+        const dSpend = daily.data.map(d=>parseFloat(d.spend||0));
+        const dLeads = daily.data.map(d=>parseInt((d.actions||[]).find(a=>a.action_type==='lead')?.value||0));
+        if (fbDailyChart) fbDailyChart.destroy();
+        fbDailyChart = new Chart(ctx, {
+          type:'bar',
+          data:{labels:dLabels,datasets:[
+            {label:'Spend ($)',data:dSpend,backgroundColor:'rgba(239,68,68,.4)',borderRadius:3,yAxisID:'y',order:2},
+            {label:'Leads',data:dLeads,type:'line',borderColor:'#1877f2',backgroundColor:'rgba(24,119,242,.08)',fill:true,tension:.3,borderWidth:2,pointRadius:2,pointBackgroundColor:'#1877f2',yAxisID:'y1',order:1}
+          ]},
+          options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'var(--text-dim)',font:{size:9},usePointStyle:true}}},
+            scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:8},maxRotation:45}},
+              y:{position:'left',grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:9},callback:v=>'$'+v}},
+              y1:{position:'right',grid:{display:false},ticks:{color:'#1877f2',font:{size:9}}}
+            }
+          }
+        });
+      }
+    }
+  }
+
+  // FB Ads event listeners
+  document.querySelectorAll('.fb-range').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    fbAdsRange = b.dataset.r;
+    const dr = fbDateRange(fbAdsRange);
+    const fromEl = document.getElementById('fb-from');
+    const toEl = document.getElementById('fb-to');
+    if (fromEl) fromEl.value = dr.from;
+    if (toEl) toEl.value = dr.to;
+    loadFBAds();
+  }));
+  document.getElementById('fb-refresh')?.addEventListener('click', loadFBAds);
+  document.getElementById('fb-from')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
+  document.getElementById('fb-to')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
+
+  // Load FB ads when integrations tab is clicked
+  document.querySelector('[data-view="integrations"]')?.addEventListener('click', ()=>{
+    if (!document.getElementById('fb-kpi-cards')?.innerHTML) loadFBAds();
+  });
+
+  // Also load if integrations is the active tab
+  if (document.querySelector('[data-view="integrations"]')?.classList.contains('active')) loadFBAds();
 </script>
 
 </body>
