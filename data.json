@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T00:07:46.199025+00:00",
-  "updated_local": "2026-03-26 07:07 PM",
+  "updated": "2026-03-27T00:22:50.693209+00:00",
+  "updated_local": "2026-03-26 07:22 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 0,
     "week": {
       "users": 137,
-      "sessions": 166,
-      "pageviews": 284,
-      "avg_duration": 160.0,
+      "sessions": 167,
+      "pageviews": 285,
+      "avg_duration": 159.0,
       "conversions": 0
     },
     "month": {
       "users": 137,
-      "sessions": 166,
-      "pageviews": 284,
+      "sessions": 167,
+      "pageviews": 285,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 140,
+        "views": 141,
         "users": 87
       },
       {
@@ -160,7 +160,7 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 13,
+        "sessions": 14,
         "users": 4
       },
       {
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 140,
+        "views": 141,
         "users": 87,
-        "avg_duration": 102.5
+        "avg_duration": 101.6
       },
       "/book.html": {
         "views": 17,
@@ -329,14 +329,14 @@
       {
         "date": "2026-03-26",
         "users": 10,
-        "sessions": 10,
-        "pageviews": 8
+        "sessions": 11,
+        "pageviews": 9
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 154,
+        "sessions": 155,
         "users": 126
       },
       {
@@ -409,7 +409,7 @@
       {
         "city": "Houston",
         "users": 3,
-        "sessions": 18
+        "sessions": 19
       },
       {
         "city": "Istres",
@@ -420,11 +420,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 284
+        "count": 285
       },
       {
         "event": "session_start",
-        "count": 163
+        "count": 164
       },
       {
         "event": "scroll",
@@ -510,7 +510,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 13
+        "sessions": 14
       },
       {
         "campaign": "(referral)",
@@ -545,6 +545,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 71.7
+    "bounce_rate": 71.9
   }
 }
