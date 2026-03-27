@@ -354,9 +354,9 @@ const STRIPE_DASHBOARD = 'https://dashboard.stripe.com';
 const ANALYTICS_PROPERTY = 'thearenapartners.com';
 const FB_API_VERSION = 'v19.0';
 const FB_GRAPH_URL = 'https://graph.facebook.com';
-// Facebook Ads — long-lived token (expires May 25, 2026)
-const FB_ACCESS_TOKEN = localStorage.getItem('fb_access_token') || 'EAANbF4N0IhABRErQK4nG6QiouVymvuqrnzow6cbTw07ZB2RHV82Ugrb8vAPxZBF0edLvXYGCTevwtYzu3iHYxMeZCMYuuXbZBJBzG5fQw6tChZCqrqZCJxFLuSgXWmjJ7dWxrc2O09KvgP3mPaJJiSuAHxxtJKC5cRfZAGlsXxKGMevWo5vHy0MYLafltEzVXR6G9kVp5FZATZA7M';
-const FB_AD_ACCOUNT_ID = localStorage.getItem('fb_ad_account_id') || 'act_1392828839106650';
+// Facebook Ads — connect Arena's own ad account when ready
+const FB_ACCESS_TOKEN = localStorage.getItem('fb_access_token') || '';
+const FB_AD_ACCOUNT_ID = localStorage.getItem('fb_ad_account_id') || '';
 
 // ─── STATE ───
 let currentRange = '90d';
