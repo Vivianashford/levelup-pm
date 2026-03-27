@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T23:12:44.235462+00:00",
-  "updated_local": "2026-03-27 06:12 PM",
+  "updated": "2026-03-27T23:27:44.395163+00:00",
+  "updated_local": "2026-03-27 06:27 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 151,
-      "sessions": 184,
-      "pageviews": 312,
-      "avg_duration": 159.9,
+      "users": 152,
+      "sessions": 185,
+      "pageviews": 313,
+      "avg_duration": 159.1,
       "conversions": 0
     },
     "month": {
-      "users": 151,
-      "sessions": 184,
-      "pageviews": 312,
+      "users": 152,
+      "sessions": 185,
+      "pageviews": 313,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 158,
-        "users": 100
+        "views": 159,
+        "users": 101
       },
       {
         "page": "/blog/",
@@ -164,6 +164,12 @@
         "users": 5
       },
       {
+        "source": "m.facebook.com",
+        "medium": "referral",
+        "sessions": 7,
+        "users": 7
+      },
+      {
         "source": "(not set)",
         "medium": "(not set)",
         "sessions": 6,
@@ -171,12 +177,6 @@
       },
       {
         "source": "facebook.com",
-        "medium": "referral",
-        "sessions": 6,
-        "users": 6
-      },
-      {
-        "source": "m.facebook.com",
         "medium": "referral",
         "sessions": 6,
         "users": 6
@@ -256,9 +256,9 @@
     },
     "funnel": {
       "/": {
-        "views": 158,
-        "users": 100,
-        "avg_duration": 104.6
+        "views": 159,
+        "users": 101,
+        "avg_duration": 103.8
       },
       "/book.html": {
         "views": 18,
@@ -340,16 +340,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 11,
-        "sessions": 11,
-        "pageviews": 18
+        "users": 12,
+        "sessions": 12,
+        "pageviews": 19
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 171,
-        "users": 139
+        "sessions": 172,
+        "users": 140
       },
       {
         "device": "Mobile",
@@ -432,11 +432,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 312
+        "count": 313
       },
       {
         "event": "session_start",
-        "count": 182
+        "count": 183
       },
       {
         "event": "scroll",
@@ -448,7 +448,7 @@
       },
       {
         "event": "first_visit",
-        "count": 150
+        "count": 151
       },
       {
         "event": "scroll_depth",
@@ -494,15 +494,15 @@
       },
       {
         "campaign": "(referral)",
-        "source": "facebook.com",
+        "source": "m.facebook.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 6,
-        "sessions": 6
+        "users": 7,
+        "sessions": 7
       },
       {
         "campaign": "(referral)",
-        "source": "m.facebook.com",
+        "source": "facebook.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 6,
@@ -565,6 +565,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.9
+    "bounce_rate": 74.1
   }
 }
