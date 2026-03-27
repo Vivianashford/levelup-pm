@@ -63,6 +63,9 @@
   .rate-ops { background:rgba(100,100,120,.08); color:#6b655e; }
 
   /* DONE SECTION */
+  .todo-remove { position:absolute; top:8px; right:8px; width:20px; height:20px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:14px; color:#4a4540; cursor:pointer; opacity:0; transition:all .15s; }
+  .todo:hover .todo-remove { opacity:1; }
+  .todo-remove:hover { color:#b83c30; background:rgba(184,60,48,.15); }
   .done-section { margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,.04); }
   .done-header { font-size:11px; color:#4a4540; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; cursor:pointer; }
   .done-header:hover { color:#6b655e; }
@@ -315,10 +318,10 @@
 // DATA  -  Vivian updates this daily
 // ============================================================
 var DATA = {
-  lastUpdated: "March 24, 2026  -  4:15 AM CDT",
+  lastUpdated: "March 26, 2026  -  10:30 PM CDT",
   focus: {
-    task: "CONTENT LIVE: Review graphics + schedule 10 posts to LinkedIn/Facebook",
-    sub: "Phase 4: Outreach. 10 posts ready. Graphics rendered. Jean approves, Vivian schedules."
+    task: "Close Jet Lending + launch outreach engine",
+    sub: "Phase 1 kickoff, cold email warmup, LinkedIn content Day 1. Revenue tasks first."
   },
   dailyRoutine: [
     { time: "6:00 AM", task: "Read Book of Self", icon: "📖", id: "bookofself" },
@@ -593,12 +596,14 @@ function renderTodo(t) {
     var rClass = t.rev ? 'rate-rev' : 'rate-ops';
     rateBadge = '<span class="todo-rate '+rClass+'">'+(t.rev?'💰 ':'⚙️ ')+t.rate+'</span>';
   }
-  var html = '<div class="'+cls+'" onclick="toggleTodo('+t._idx+')">';
-  html += '<div class="todo-check"></div>';
-  html += '<div class="todo-content">';
+  var html = '<div class="'+cls+'" style="position:relative;">';
+  html += '<div class="todo-check" onclick="toggleTodo('+t._idx+')"></div>';
+  html += '<div class="todo-content" onclick="toggleTodo('+t._idx+')">';
   html += '<div class="todo-text">' + t.text + pBadge + rateBadge + '</div>';
   if (t.meta) html += '<div class="todo-meta">' + t.meta + '</div>';
-  html += '</div></div>';
+  html += '</div>';
+  html += '<div class="todo-remove" onclick="event.stopPropagation();removeTodo('+t._idx+')" title="Remove task">×</div>';
+  html += '</div>';
   return html;
 }
 
@@ -623,16 +628,28 @@ function saveTodoState() {
 }
 
 function loadTodoState() {
-  // First load by index (legacy), then overlay shared state by text
-  var state = JSON.parse(localStorage.getItem('todo-done-state') || '{}');
+  // Load done + removed state by text key (survives code pushes)
   var shared = JSON.parse(localStorage.getItem('todo-done-shared') || '{}');
-  Object.keys(state).forEach(function(i) {
-    if (DATA.todos[parseInt(i)]) DATA.todos[parseInt(i)].done = state[i];
-  });
-  // Also load items marked done from command center (shared by text key)
+  var removed = JSON.parse(localStorage.getItem('todo-removed') || '{}');
+  
+  // Filter out removed tasks first
+  DATA.todos = DATA.todos.filter(function(t) { return !removed[t.text]; });
+  
+  // Apply done state by text match (not index - indices shift on code updates)
   DATA.todos.forEach(function(t) {
     if (shared[t.text]) t.done = true;
   });
+}
+
+function removeTodo(idx) {
+  var t = DATA.todos[idx];
+  if (!t) return;
+  var removed = JSON.parse(localStorage.getItem('todo-removed') || '{}');
+  removed[t.text] = true;
+  localStorage.setItem('todo-removed', JSON.stringify(removed));
+  DATA.todos.splice(idx, 1);
+  saveTodoState();
+  render();
 }
 
 function toggleDone() {
