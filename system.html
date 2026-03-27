@@ -1005,6 +1005,46 @@
     .ops-map-stats { flex-wrap: wrap; gap: 20px; }
     .header, .nav-tabs, .view { padding-left: 24px; padding-right: 24px; }
   }
+  @media (max-width: 600px) {
+    .header { padding: 20px 16px 16px; flex-direction: column; align-items: flex-start; gap: 4px; }
+    .header h1 { font-size: 17px; }
+    .header-meta { font-size: 10px; }
+    .nav-tabs { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0; }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab { padding: 10px 14px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+    .view { padding: 20px 16px; }
+    .section-header .section-title { font-size: 16px; }
+    .section-header .section-desc { font-size: 11px; }
+    .arch-grid { grid-template-columns: 1fr; gap: 12px; }
+    .arch-card { padding: 14px; }
+    .arch-card h3 { font-size: 13px; }
+    .dept-item { font-size: 11px; padding: 4px 0; }
+    .flow-row { flex-direction: column; gap: 12px; }
+    .flow-stage { min-width: unset; }
+    .flow-arrow { display: none; }
+    .kpi-grid { grid-template-columns: 1fr; gap: 10px; }
+    .kpi-card { padding: 12px; }
+    .kpi-row { flex-direction: column; gap: 2px; }
+    .kpi-row .metric { font-size: 11px; }
+    .kpi-row .target { font-size: 10px; }
+    .int-grid { grid-template-columns: 1fr; gap: 10px; }
+    .int-card { padding: 14px; }
+    .int-card h4 { font-size: 13px; }
+    .int-endpoint { font-size: 10px; }
+    .ops-grid { grid-template-columns: 1fr; }
+    .ops-header { flex-direction: column; gap: 8px; }
+    .ops-header h2 { font-size: 18px; }
+    .ops-time { font-size: 28px; }
+    .ops-sam-q { font-size: 13px; padding: 14px; }
+    .ops-challenge { padding: 14px; }
+    .ops-nav { grid-template-columns: 1fr; gap: 6px; }
+    .ops-nav a { font-size: 11px; padding: 8px 10px; }
+    .ops-cards-grid { grid-template-columns: 1fr; }
+    .ops-dept-nav { flex-wrap: wrap; gap: 4px; }
+    .ops-dept-nav a { font-size: 10px; padding: 4px 8px; }
+    .ops-map-stats { flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
+    .ops-map-flow-row { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
