@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T10:57:24.935743+00:00",
-  "updated_local": "2026-03-27 05:57 AM",
+  "updated": "2026-03-27T11:12:24.440373+00:00",
+  "updated_local": "2026-03-27 06:12 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 143,
-      "sessions": 175,
-      "pageviews": 297,
-      "avg_duration": 168.0,
+      "users": 146,
+      "sessions": 178,
+      "pageviews": 302,
+      "avg_duration": 165.1,
       "conversions": 0
     },
     "month": {
-      "users": 143,
-      "sessions": 175,
-      "pageviews": 297,
+      "users": 146,
+      "sessions": 178,
+      "pageviews": 302,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 149,
-        "users": 93
+        "views": 154,
+        "users": 96
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 128,
-        "users": 116
+        "sessions": 131,
+        "users": 119
       },
       {
         "source": "vivianashford.github.io",
@@ -166,7 +166,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 10,
+        "sessions": 11,
         "users": 10
       },
       {
@@ -188,16 +188,16 @@
         "users": 4
       },
       {
+        "source": "google",
+        "medium": "organic",
+        "sessions": 3,
+        "users": 3
+      },
+      {
         "source": "telegra.ph",
         "medium": "referral",
         "sessions": 3,
         "users": 1
-      },
-      {
-        "source": "google",
-        "medium": "organic",
-        "sessions": 2,
-        "users": 2
       },
       {
         "source": "thearenapartners.com",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 149,
-        "users": 93,
-        "avg_duration": 110.7
+        "views": 154,
+        "users": 96,
+        "avg_duration": 108.0
       },
       "/book.html": {
         "views": 17,
@@ -334,16 +334,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 4,
-        "sessions": 4,
-        "pageviews": 7
+        "users": 7,
+        "sessions": 7,
+        "pageviews": 12
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 162,
-        "users": 131
+        "sessions": 165,
+        "users": 134
       },
       {
         "device": "Mobile",
@@ -368,6 +368,11 @@
         "sessions": 9
       },
       {
+        "city": "East Los Angeles",
+        "users": 7,
+        "sessions": 7
+      },
+      {
         "city": "London",
         "users": 6,
         "sessions": 6
@@ -384,11 +389,6 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 5,
-        "sessions": 5
-      },
-      {
-        "city": "East Los Angeles",
         "users": 5,
         "sessions": 5
       },
@@ -426,15 +426,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 297
+        "count": 302
       },
       {
         "event": "session_start",
-        "count": 170
+        "count": 174
       },
       {
         "event": "scroll",
-        "count": 166
+        "count": 167
       },
       {
         "event": "user_engagement",
@@ -442,7 +442,7 @@
       },
       {
         "event": "first_visit",
-        "count": 139
+        "count": 143
       },
       {
         "event": "scroll_depth",
@@ -483,8 +483,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 116,
-        "sessions": 128
+        "users": 119,
+        "sessions": 131
       },
       {
         "campaign": "(referral)",
@@ -551,6 +551,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.1
+    "bounce_rate": 73.6
   }
 }
