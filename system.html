@@ -1017,6 +1017,7 @@
 <div class="nav-tabs">
   <div class="nav-tab active" data-view="architecture">Architecture</div>
   <div class="nav-tab" data-view="flow">Client Flow & KPIs</div>
+  <div class="nav-tab" data-view="analytics">Analytics</div>
   <div class="nav-tab" data-view="integrations">Integrations & API</div>
   <div class="nav-tab" data-view="dailyops">Daily Ops</div>
 
@@ -1785,16 +1786,18 @@
     </div>
 
   </div>
+</div>
 
-  <!-- ═══ LIVE FACEBOOK ADS ANALYTICS ═══ -->
-  <div class="section-header" style="margin-top:30px">
-    <div class="section-title">📊 Live Facebook Ads Analytics</div>
-    <div class="section-desc">Real-time data from Trek One Capital — act_1392828839106650</div>
+<!-- ═══════════════════════ ANALYTICS VIEW ═══════════════════════ -->
+<div class="view" id="analytics">
+  <div class="section-header">
+    <div class="section-title">📊 Live Analytics</div>
+    <div class="section-desc">Real-time data from Facebook Ads, GA4, and pipeline</div>
   </div>
 
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <button class="fb-range active" data-r="7d">7D</button>
-    <button class="fb-range" data-r="30d">30D</button>
+    <button class="fb-range" data-r="7d">7D</button>
+    <button class="fb-range active" data-r="30d">30D</button>
     <button class="fb-range" data-r="90d">90D</button>
     <button class="fb-range" data-r="ytd">YTD</button>
     <span style="color:var(--text-dim);font-size:10px;margin:0 4px">|</span>
@@ -1806,11 +1809,17 @@
   </div>
 
   <!-- KPI Cards -->
-  <div class="int-grid" id="fb-kpi-cards" style="margin-bottom:16px"></div>
+  <div class="int-grid" id="fb-kpi-cards" style="margin-bottom:20px"></div>
+
+  <!-- Daily Chart -->
+  <div style="margin-bottom:24px;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:18px">
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px">Daily Leads & Spend</div>
+    <div style="height:260px"><canvas id="fb-daily-chart"></canvas></div>
+  </div>
 
   <!-- Campaign Table -->
-  <div style="margin-bottom:20px">
-    <div style="font-size:12px;font-weight:600;margin-bottom:8px">Campaign Performance</div>
+  <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:24px">
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px">Campaign Performance</div>
     <div style="overflow-x:auto">
       <table id="fb-camp-table" style="width:100%;border-collapse:collapse;font-size:11px">
         <thead><tr style="border-bottom:1px solid var(--border)">
@@ -1828,16 +1837,21 @@
     </div>
   </div>
 
-  <!-- Daily Chart -->
-  <div style="margin-bottom:20px">
-    <div style="font-size:12px;font-weight:600;margin-bottom:8px">Daily Leads & Spend</div>
-    <div style="height:220px"><canvas id="fb-daily-chart"></canvas></div>
+  <!-- CPL by Campaign Chart -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+    <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:18px">
+      <div style="font-size:13px;font-weight:600;margin-bottom:12px">CPL by Campaign</div>
+      <div style="height:220px"><canvas id="fb-cpl-chart"></canvas></div>
+    </div>
+    <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:18px">
+      <div style="font-size:13px;font-weight:600;margin-bottom:12px">Spend Distribution</div>
+      <div style="height:220px"><canvas id="fb-spend-chart"></canvas></div>
+    </div>
   </div>
 
-  <div style="text-align:center;margin-top:8px">
-    <a href="https://thearenapartners.com/theGoldMine.html" target="_blank" style="color:var(--accent-mkt);font-size:11px;text-decoration:none">Open full GoldMine dashboard →</a>
+  <div style="text-align:center;margin-top:12px">
+    <a href="https://thearenapartners.com/theGoldMine.html" target="_blank" style="color:var(--accent-mkt);font-size:12px;text-decoration:none;font-weight:600">Open full GoldMine dashboard →</a>
   </div>
-
 </div>
 
 <!-- ═══════════════════════ DAILY OPS VIEW ═══════════════════════ -->
@@ -2215,6 +2229,36 @@
       </tr>`;
     }
 
+    // CPL by Campaign chart
+    const cplCanvas = document.getElementById('fb-cpl-chart');
+    if (cplCanvas && camps?.data) {
+      const ctx2 = cplCanvas.getContext('2d');
+      const rows = camps.data.filter(c=>parseFloat(c.spend)>0).sort((a,b)=>parseFloat(b.spend)-parseFloat(a.spend));
+      const cNames = rows.map(c=>c.campaign_name.length>20?c.campaign_name.substring(0,20)+'…':c.campaign_name);
+      const cCPLs = rows.map(c=>{const l=parseInt((c.actions||[]).find(a=>a.action_type==='lead')?.value||0);return l>0?parseFloat(c.spend)/l:0});
+      if (window._cplChart) window._cplChart.destroy();
+      window._cplChart = new Chart(ctx2, {
+        type:'bar',
+        data:{labels:cNames,datasets:[{data:cCPLs.map(v=>Math.round(v)),backgroundColor:cCPLs.map(v=>v<100?'rgba(34,197,94,.7)':v<150?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)'),borderRadius:4}]},
+        options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:9},callback:v=>'$'+v}},y:{grid:{display:false},ticks:{color:'#a1a1aa',font:{size:9}}}}}
+      });
+    }
+
+    // Spend distribution doughnut
+    const spendCanvas = document.getElementById('fb-spend-chart');
+    if (spendCanvas && camps?.data) {
+      const ctx3 = spendCanvas.getContext('2d');
+      const rows = camps.data.filter(c=>parseFloat(c.spend)>0).sort((a,b)=>parseFloat(b.spend)-parseFloat(a.spend));
+      const sNames = rows.map(c=>c.campaign_name.length>20?c.campaign_name.substring(0,20)+'…':c.campaign_name);
+      const sVals = rows.map(c=>parseFloat(c.spend));
+      if (window._spendChart) window._spendChart.destroy();
+      window._spendChart = new Chart(ctx3, {
+        type:'doughnut',
+        data:{labels:sNames,datasets:[{data:sVals,backgroundColor:['#1877f2','#22c55e','#6366f1','#eab308','#ef4444','#a855f7','#6b7280','#f59e0b'],borderWidth:0}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{color:'#a1a1aa',font:{size:8},padding:6,usePointStyle:true,pointStyleWidth:6}}}}
+      });
+    }
+
     // Daily chart
     if (daily?.data && daily.data.length > 0) {
       const canvas = document.getElementById('fb-daily-chart');
@@ -2257,13 +2301,10 @@
   document.getElementById('fb-from')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
   document.getElementById('fb-to')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
 
-  // Load FB ads when integrations tab is clicked
-  document.querySelector('[data-view="integrations"]')?.addEventListener('click', ()=>{
-    if (!document.getElementById('fb-kpi-cards')?.innerHTML) loadFBAds();
+  // Load FB ads when analytics tab is clicked
+  document.querySelector('[data-view="analytics"]')?.addEventListener('click', ()=>{
+    setTimeout(()=>{ if (!document.getElementById('fb-kpi-cards')?.innerHTML) loadFBAds(); }, 100);
   });
-
-  // Also load if integrations is the active tab
-  if (document.querySelector('[data-view="integrations"]')?.classList.contains('active')) loadFBAds();
 </script>
 
 </body>
