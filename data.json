@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T22:57:46.543519+00:00",
-  "updated_local": "2026-03-27 05:57 PM",
+  "updated": "2026-03-27T23:12:44.235462+00:00",
+  "updated_local": "2026-03-27 06:12 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 150,
-      "sessions": 183,
-      "pageviews": 311,
-      "avg_duration": 160.8,
+      "users": 151,
+      "sessions": 184,
+      "pageviews": 312,
+      "avg_duration": 159.9,
       "conversions": 0
     },
     "month": {
-      "users": 150,
-      "sessions": 183,
-      "pageviews": 311,
+      "users": 151,
+      "sessions": 184,
+      "pageviews": 312,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 157,
-        "users": 99
+        "views": 158,
+        "users": 100
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 136,
-        "users": 124
+        "sessions": 137,
+        "users": 125
       },
       {
         "source": "vivianashford.github.io",
@@ -256,9 +256,9 @@
     },
     "funnel": {
       "/": {
-        "views": 157,
-        "users": 99,
-        "avg_duration": 105.5
+        "views": 158,
+        "users": 100,
+        "avg_duration": 104.6
       },
       "/book.html": {
         "views": 18,
@@ -340,16 +340,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 10,
-        "sessions": 10,
-        "pageviews": 17
+        "users": 11,
+        "sessions": 11,
+        "pageviews": 18
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 170,
-        "users": 138
+        "sessions": 171,
+        "users": 139
       },
       {
         "device": "Mobile",
@@ -389,14 +389,14 @@
         "sessions": 6
       },
       {
-        "city": "Council Bluffs",
+        "city": "Boardman",
         "users": 5,
         "sessions": 5
       },
       {
-        "city": "Boardman",
-        "users": 4,
-        "sessions": 4
+        "city": "Council Bluffs",
+        "users": 5,
+        "sessions": 5
       },
       {
         "city": "Miami",
@@ -432,11 +432,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 311
+        "count": 312
       },
       {
         "event": "session_start",
-        "count": 181
+        "count": 182
       },
       {
         "event": "scroll",
@@ -448,7 +448,7 @@
       },
       {
         "event": "first_visit",
-        "count": 149
+        "count": 150
       },
       {
         "event": "scroll_depth",
@@ -489,8 +489,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 124,
-        "sessions": 136
+        "users": 125,
+        "sessions": 137
       },
       {
         "campaign": "(referral)",
@@ -565,6 +565,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 73.8
+    "bounce_rate": 73.9
   }
 }
