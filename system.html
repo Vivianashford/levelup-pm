@@ -1009,7 +1009,7 @@
   <div class="nav-tab" data-view="flow">Client Flow & KPIs</div>
   <div class="nav-tab" data-view="integrations">Integrations & API</div>
   <div class="nav-tab" data-view="dailyops">Daily Ops</div>
-  <div class="nav-tab" data-view="operations">Operations</div>
+
 </div>
 
 <!-- ═══════════════════════ ARCHITECTURE VIEW ═══════════════════════ -->
@@ -1023,9 +1023,9 @@
 
     <!-- MARKETING -->
     <div class="dept-col mkt">
-      <div class="dept-header">
+      <div class="dept-header" style="cursor:pointer;" onclick="window.location.href='operations.html#ops-marketing'">
         <div class="dept-icon">&#9670;</div>
-        <h3>Marketing</h3>
+        <h3>Marketing <span style="font-size:10px;color:var(--text-muted);font-weight:400;">→ deep dive</span></h3>
       </div>
       <div class="dept-section">
         <div class="dept-section-label">Websites</div>
@@ -1063,9 +1063,9 @@
 
     <!-- SALES -->
     <div class="dept-col sales">
-      <div class="dept-header">
+      <div class="dept-header" style="cursor:pointer;" onclick="window.location.href='operations.html#ops-sales'">
         <div class="dept-icon">&#9733;</div>
-        <h3>Sales</h3>
+        <h3>Sales <span style="font-size:10px;color:var(--text-muted);font-weight:400;">→ deep dive</span></h3>
       </div>
       <div class="dept-section">
         <div class="dept-section-label">Pipeline Pages</div>
@@ -1093,9 +1093,9 @@
 
     <!-- DELIVERY -->
     <div class="dept-col delivery">
-      <div class="dept-header">
+      <div class="dept-header" style="cursor:pointer;" onclick="window.location.href='operations.html#ops-delivery'">
         <div class="dept-icon">&#9654;</div>
-        <h3>Delivery</h3>
+        <h3>Delivery <span style="font-size:10px;color:var(--text-muted);font-weight:400;">→ deep dive</span></h3>
       </div>
       <div class="dept-section">
         <div class="dept-section-label">Client Portal</div>
@@ -1130,9 +1130,9 @@
 
     <!-- ACCOUNTING -->
     <div class="dept-col acct">
-      <div class="dept-header">
+      <div class="dept-header" style="cursor:pointer;" onclick="window.location.href='operations.html#ops-accounting'">
         <div class="dept-icon">&#9632;</div>
-        <h3>Accounting</h3>
+        <h3>Accounting <span style="font-size:10px;color:var(--text-muted);font-weight:400;">→ deep dive</span></h3>
       </div>
       <div class="dept-section">
         <div class="dept-section-label">Revenue</div>
@@ -1163,9 +1163,9 @@
 
     <!-- LEGAL -->
     <div class="dept-col legal">
-      <div class="dept-header">
+      <div class="dept-header" style="cursor:pointer;" onclick="window.location.href='operations.html#ops-legal'">
         <div class="dept-icon">&#9670;</div>
-        <h3>Legal</h3>
+        <h3>Legal <span style="font-size:10px;color:var(--text-muted);font-weight:400;">→ deep dive</span></h3>
       </div>
       <div class="dept-section">
         <div class="dept-section-label">Client Agreements</div>
@@ -1891,399 +1891,6 @@
 </div>
 
 <!-- ═══════════════════════ OPERATIONS VIEW ═══════════════════════ -->
-<div class="view" id="operations">
-  <div class="section-header">
-    <div class="section-title">Operations Map</div>
-    <div class="section-desc">Complete operational detail — every engine, tool, and system across all departments</div>
-  </div>
-
-  <!-- Header Stats -->
-  <div class="ops-map-stats">
-    <div class="ops-map-stat"><div class="num">4</div><div class="lbl">Domains</div></div>
-    <div class="ops-map-stat"><div class="num">22+</div><div class="lbl">Blog Articles</div></div>
-    <div class="ops-map-stat"><div class="num">60+</div><div class="lbl">Backlinks</div></div>
-    <div class="ops-map-stat"><div class="num">14</div><div class="lbl">Engines Running</div></div>
-    <div class="ops-map-stat"><div class="num">32</div><div class="lbl">Funnel Touchpoints</div></div>
-  </div>
-
-  <!-- Client Journey Flow -->
-  <div class="ops-map-flow">
-    <h4>The Full Client Journey</h4>
-    <div class="ops-map-flow-row">
-      <div class="ops-map-flow-step"><div class="ficon">🔍</div><div class="fname">SEO / Content</div><div class="fdetail">Blog, backlinks, organic</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">🌐</div><div class="fname">Website</div><div class="fdetail">arenabusinessadvisors.com</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">🎬</div><div class="fname">Free Training</div><div class="fdetail">VSL + Watch Tracking</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">📋</div><div class="fname">Assessment</div><div class="fdetail">Exit Risk Score</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">📞</div><div class="fname">Diagnostic Call</div><div class="fdetail">30-min discovery</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">📝</div><div class="fname">NDA + Info</div><div class="fdetail">Company data collection</div></div>
-      <div class="ops-map-flow-arrow">→</div>
-      <div class="ops-map-flow-step"><div class="ficon">🏆</div><div class="fname">Close</div><div class="fdetail">Proposal + Agreement</div></div>
-    </div>
-  </div>
-
-  <!-- Department Navigation -->
-  <div class="ops-dept-nav">
-    <a href="#ops-marketing">📣 Marketing</a>
-    <a href="#ops-sales">🤝 Sales</a>
-    <a href="#ops-delivery">⚙️ Delivery</a>
-    <a href="#ops-accounting">💰 Accounting</a>
-    <a href="#ops-legal">📜 Legal</a>
-  </div>
-
-  <!-- ═══ MARKETING ═══ -->
-  <div class="ops-dept-section" id="ops-marketing">
-    <div class="ops-dept-section-header">
-      <div class="ops-dept-section-icon" style="background:var(--accent-mkt-dim);color:var(--accent-mkt);">📣</div>
-      <div>
-        <h3 style="color:var(--accent-mkt)">Marketing</h3>
-        <div class="ops-dept-desc">Content, SEO, traffic generation, and brand presence across all channels</div>
-      </div>
-    </div>
-    <div class="ops-cards-grid">
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Arena Business Advisors Website</h4><span class="ops-card-status live">Live</span></div>
-        <p>Primary public-facing site. Redesigned March 24 — 7 static pages + shared CSS. Hosted on GitHub Pages. Phone + booking calendar CTA. Blog integrated.</p>
-        <div class="ops-card-links"><a href="https://www.arenabusinessadvisors.com" class="ops-card-link" target="_blank">🌐 Visit Site</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">GitHub Pages</span><span class="ops-card-tag">Static HTML</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Arena Partners Funnel (Engine Room)</h4><span class="ops-card-status live">Live</span></div>
-        <p>Full conversion funnel: landing page, VSL watch page, assessment, book reader, calculator, exit guide. All automation runs through here.</p>
-        <div class="ops-card-links">
-          <a href="https://thearenapartners.com" class="ops-card-link" target="_blank">🌐 Landing</a>
-          <a href="https://thearenapartners.com/watch.html" class="ops-card-link" target="_blank">🎬 Watch</a>
-          <a href="https://thearenapartners.com/assessment.html" class="ops-card-link" target="_blank">📋 Assessment</a>
-          <a href="https://thearenapartners.com/calculator.html" class="ops-card-link" target="_blank">🔢 Calculator</a>
-          <a href="https://thearenapartners.com/book.html" class="ops-card-link" target="_blank">📚 Book</a>
-        </div>
-        <div class="ops-card-tags"><span class="ops-card-tag">GitHub Pages</span><span class="ops-card-tag">GA4</span><span class="ops-card-tag">Custom Domain</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Blog — thearenapartners.com</h4><span class="ops-card-status live">12 Articles</span></div>
-        <p>SEO-optimized blog targeting long-tail exit planning keywords. Auto-published via content engine. Daily blog post added to 9 PM beat.</p>
-        <div class="ops-card-links">
-          <a href="https://thearenapartners.com/blog/" class="ops-card-link" target="_blank">📝 Blog</a>
-          <a href="https://thearenapartners.com/rss.xml" class="ops-card-link" target="_blank">📡 RSS</a>
-        </div>
-        <div class="ops-card-tags"><span class="ops-card-tag">Content Engine</span><span class="ops-card-tag">Daily Post</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Blog — arenabusinessadvisors.com</h4><span class="ops-card-status ready">6 Articles</span></div>
-        <p>Separate blog for the primary domain. High-value pillar content: complete selling guides, valuation methods, PE playbook, Houston local.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Pending Deploy</span><span class="ops-card-tag">Lovable Integration</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Content Engine</h4><span class="ops-card-status active">Running</span></div>
-        <p>Automated content pipeline: generates articles targeting exit planning keywords across all service verticals. Publishes Mon/Wed/Fri 6 AM CT. Approval-gated.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Cron</span><span class="ops-card-tag">Python</span><span class="ops-card-tag">1,121 lines</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>SEO Backlink Engine</h4><span class="ops-card-status active">54 Backlinks</span></div>
-        <p>Automated backlink building: Telegraph articles (52), Google Business Profile, LinkedIn Company Page. Targeting 800+ across 16 categories.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">DA 80-100</span><span class="ops-card-tag">Dofollow</span><span class="ops-card-tag">10 Verticals</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>LinkedIn Content Engine</h4><span class="ops-card-status active">Running</span></div>
-        <p>Direct API posting via Worker. 2x daily posts (6 AM + 2 PM) with notebook-style graphics. 2x daily commenting cron (8 AM + 2 PM). Newsletter "Transferable" (3x/week).</p>
-        <div class="ops-card-links"><a href="https://www.linkedin.com/in/jeanlouishardy/" class="ops-card-link" target="_blank">👤 Profile</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">Worker API</span><span class="ops-card-tag">Image Upload</span><span class="ops-card-tag">Auto-comment</span><span class="ops-card-tag">Newsletter</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Facebook Auto-Post</h4><span class="ops-card-status active">Running</span></div>
-        <p>Direct API posting via Worker (post with image, delete). Same content as LinkedIn, adapted for Facebook. Page token configured.</p>
-        <div class="ops-card-links"><a href="https://www.facebook.com/103908865130039" class="ops-card-link" target="_blank">📘 Page</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">Worker API</span><span class="ops-card-tag">Auto-post</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Social Media Expansion</h4><span class="ops-card-status planned">On Todo</span></div>
-        <p>Planned platforms: X/Twitter, YouTube, Instagram, Medium, Threads, TikTok, Alignable, BizBuySell, Reddit, Quora. Metricool planned for centralized scheduling.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">10 Platforms</span><span class="ops-card-tag">Metricool</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>LinkedIn Commenting Engine</h4><span class="ops-card-status active">2x Daily</span></div>
-        <p>Draft-and-approve flow: 3-5 comment drafts sent to Jean on WhatsApp at 8 AM and 2 PM. Targets exit planning, M&A, business automation niche.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Cron 8AM + 2PM</span><span class="ops-card-tag">Draft-Approve</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Content Strategy Rules</h4><span class="ops-card-status live">Active</span></div>
-        <p>Every post must be news or story-driven (no generic educational). Every post ends with a value CTA. Cross-link everything back to thearenapartners.com. Notebook-style graphic with every post.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">News/Story-driven</span><span class="ops-card-tag">Pride-based</span><span class="ops-card-tag">CTA Required</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Featured.com (PR/Authority)</h4><span class="ops-card-status active">Profile Live</span></div>
-        <p>Expert profile for journalist questions. Answers get backlinks from major publications. Articles from FOX 5, Disrupt Magazine, NY Weekly, Metapress linked.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">PR Backlinks</span><span class="ops-card-tag">Authority</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>SEO Profile Submissions</h4><span class="ops-card-status active">8/80 Done</span></div>
-        <p>80-platform master list across 10 tiers. NAP-consistent business listings. Priority: Medium, Mix.com, Tumblr, Flipboard (DA 80+).</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">80 Platforms</span><span class="ops-card-tag">10 Tiers</span><span class="ops-card-tag">10% Complete</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Analytics Dashboard</h4><span class="ops-card-status live">Live</span></div>
-        <p>GA4 tracking on both domains. Traffic, sources, devices, locations, funnel, events, UTM campaigns.</p>
-        <div class="ops-card-links"><a href="analytics-v2.html" class="ops-card-link">📊 Dashboard</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">GA4</span><span class="ops-card-tag">Dual Domain</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Email Domain Warmup</h4><span class="ops-card-status active">Day 1 of 28</span></div>
-        <p>Warming thearenaaccess.com sending domain. 5 internal emails/day Week 1, scaling to external by Week 3. Protects deliverability for cold outreach.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Cron Daily 9AM</span><span class="ops-card-tag">GHL Email</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Cold Outreach Infrastructure</h4><span class="ops-card-status ready">Ready</span></div>
-        <p>Separate domain (thearenaaccess.com) for cold email via Instantly.ai. API connected (v2, Bearer auth). Needs: sending accounts connected, warmup enabled, lead list built.</p>
-        <div class="ops-card-links"><a href="https://instantly.ai" class="ops-card-link" target="_blank">📧 Instantly.ai</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">thearenaaccess.com</span><span class="ops-card-tag">API Connected</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Direct Mail</h4><span class="ops-card-status ready">Wired</span></div>
-        <p>PostGrid for postcards + letters (Day 56, 91 of nurture). Handwrytten for handwritten cards (Day 18, 108). Integrated into 120-day nurture engine.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">PostGrid Live</span><span class="ops-card-tag">Handwrytten Pending</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-mkt)">
-        <div class="ops-card-top"><h4>Search Engine Indexing</h4><span class="ops-card-status live">Submitted</span></div>
-        <p>IndexNow (Bing/Yandex instant indexing), Pingomatic (RSS syndication), Google Search Console verified. Both domains submitted.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">IndexNow</span><span class="ops-card-tag">Pingomatic</span><span class="ops-card-tag">GSC Verified</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SALES ═══ -->
-  <div class="ops-dept-section" id="ops-sales">
-    <div class="ops-dept-section-header">
-      <div class="ops-dept-section-icon" style="background:var(--accent-sales-dim);color:var(--accent-sales);">🤝</div>
-      <div>
-        <h3 style="color:var(--accent-sales)">Sales</h3>
-        <div class="ops-dept-desc">Pipeline management, booking automation, follow-up sequences, and closing infrastructure</div>
-      </div>
-    </div>
-    <div class="ops-cards-grid">
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>GoHighLevel CRM</h4><span class="ops-card-status live">Live</span></div>
-        <p>Full CRM with Arena Pipeline (10 stages), Book Pipeline (6 stages), custom fields for exit risk scoring, tags for automation triggers.</p>
-        <div class="ops-card-links"><a href="https://app.gohighlevel.com" class="ops-card-link" target="_blank">🏢 GHL Dashboard</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">19 Contacts</span><span class="ops-card-tag">10 Pipeline Stages</span><span class="ops-card-tag">12 Custom Fields</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Booking Engine</h4><span class="ops-card-status active">Running</span></div>
-        <p>Auto-processes new GHL appointments. Sends confirmation, triggers assessment delivery, fires pre-call nurture. Runs every 15 min on cron.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">Python</span><span class="ops-card-tag">GHL API</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Watch-Time Re-Engagement Engine</h4><span class="ops-card-status active">32 Touchpoints</span></div>
-        <p>Jay Abraham methodology. 4 segments (high/engaged/curious/low) with personalized email + SMS sequences based on video watch percentage. Kill switch on booking.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">964 lines</span><span class="ops-card-tag">Email-based tracking</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>120-Day Nurture Engine</h4><span class="ops-card-status active">Running</span></div>
-        <p>Long-term nurture for leads who don't book: emails, SMS, direct mail (PostGrid, Handwrytten), 9-word re-engagement. Pride-based copy rewrite deployed March 24.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">1,578 lines</span><span class="ops-card-tag">Pride-Based</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Pipeline Stage Automation</h4><span class="ops-card-status active">7 Triggers</span></div>
-        <p>Auto-fires emails on pipeline stage transitions: Call Complete → NDA, NDA Signed → Company Info, Due Diligence → Upload, No Show → Recovery, Closed Won → Onboarding.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Every 15 min</span><span class="ops-card-tag">GHL API</span><span class="ops-card-tag">Cron Active</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Show Up System</h4><span class="ops-card-status ready">28 Scripts Spec'd</span></div>
-        <p>Full booking-to-call conversion flowchart. 28 touchpoints across 7 sequences using 6 psychology principles.</p>
-        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-show-up-system/" class="ops-card-link" target="_blank">📋 Flowchart</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">7 Sequences</span><span class="ops-card-tag">6 Psychology Principles</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Sales SOP</h4><span class="ops-card-status live">Live</span></div>
-        <p>Complete sales process documentation: diagnostic call script, objection handling, two-call close methodology, pricing framework.</p>
-        <div class="ops-card-links"><a href="sales-sop.html" class="ops-card-link">📋 View SOP</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Booking Calendars</h4><span class="ops-card-status live">2 Calendars</span></div>
-        <p>Arena Calendar (thearenapartners.com funnel) and Website Calendar (arenabusinessadvisors.com). Both in GHL, 30-min slots, Mon-Fri 9-5 CT.</p>
-        <div class="ops-card-links">
-          <a href="https://api.leadconnectorhq.com/widget/booking/ZMY7F82g3SOZnYBn3pod" class="ops-card-link" target="_blank">📅 Arena</a>
-          <a href="https://api.leadconnectorhq.com/widget/booking/jvo78MqD91Vq7gUiJTE4" class="ops-card-link" target="_blank">📅 Website</a>
-        </div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Lead Enrichment</h4><span class="ops-card-status ready">Wired</span></div>
-        <p>People Data Labs API enriches contacts with company data, revenue, employee count, industry. 100 free calls/month. Endpoint on Worker proxy.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">PDL</span><span class="ops-card-tag">100/month free</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-sales)">
-        <div class="ops-card-top"><h4>Rep Dashboard</h4><span class="ops-card-status live">Live</span></div>
-        <p>Sales rep performance tracking: conversations, calls, pipeline value, revenue. Real-time scoring.</p>
-        <div class="ops-card-links"><a href="rep-dashboard.html" class="ops-card-link">📊 Dashboard</a></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ DELIVERY ═══ -->
-  <div class="ops-dept-section" id="ops-delivery">
-    <div class="ops-dept-section-header">
-      <div class="ops-dept-section-icon" style="background:var(--accent-delivery-dim);color:var(--accent-delivery);">⚙️</div>
-      <div>
-        <h3 style="color:var(--accent-delivery)">Delivery of Services</h3>
-        <div class="ops-dept-desc">Client onboarding, document management, portals, and the Transferable Exit System</div>
-      </div>
-    </div>
-    <div class="ops-cards-grid">
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Client Dashboard</h4><span class="ops-card-status live">Live</span></div>
-        <p>Branded client portal showing engagement progress, uploaded documents, exit risk score, and next steps. Personalized per contact.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/dashboard.html" class="ops-card-link" target="_blank">🏢 Portal</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Document Upload Portal</h4><span class="ops-card-status live">Live</span></div>
-        <p>Secure file upload for client financials, org charts, tax returns, SOPs. Files stored in Cloudflare R2. Organized by company slug and category.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/upload.html" class="ops-card-link" target="_blank">📤 Upload</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">R2 Storage</span><span class="ops-card-tag">10GB free</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Cloudflare R2 File Storage</h4><span class="ops-card-status live">Active</span></div>
-        <p>Client files stored securely on Cloudflare R2. Organized: clients/{company-slug}/{category}/{file}. API endpoints for upload, download, list by company.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">arena-files bucket</span><span class="ops-card-tag">9 files uploaded</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Exit Risk Assessment</h4><span class="ops-card-status live">Live</span></div>
-        <p>Interactive 30-question assessment across 8 risk categories. Generates personalized score (0-100) with risk flags. 50 pride-based copy rewrites deployed.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/assessment.html" class="ops-card-link" target="_blank">📋 Take Assessment</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">30 Questions</span><span class="ops-card-tag">8 Categories</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Business Valuation Calculator</h4><span class="ops-card-status live">Live</span></div>
-        <p>Interactive tool for service business owners to estimate their company's value. Inputs: revenue, EBITDA, industry, owner dependency level.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/calculator.html" class="ops-card-link" target="_blank">🔢 Calculator</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Company Information Form</h4><span class="ops-card-status live">Live</span></div>
-        <p>Post-NDA data collection form. Company details, financials, org structure, customer breakdown. Auto-emailed after NDA signing via stage automation.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/company-info.html" class="ops-card-link" target="_blank">🏢 Form</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Client Management Page</h4><span class="ops-card-status live">Live</span></div>
-        <p>Internal view of all active clients with pipeline stage, contact info, uploaded files, and risk scores. Pulls from GHL + R2.</p>
-        <div class="ops-card-links"><a href="clients.html" class="ops-card-link">👥 Clients</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Transferable Exit System (Product)</h4><span class="ops-card-status live">Defined</span></div>
-        <p>The core product: 4 phases over 18+ months. Align → Map → Automate → Scale. 27 deliverables. $150K-$200K + 1-2% success fee.</p>
-        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="ops-card-link" target="_blank">📖 System Page</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">4 Phases</span><span class="ops-card-tag">27 Deliverables</span><span class="ops-card-tag">18+ Months</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Transferable Book (Amazon KDP)</h4><span class="ops-card-status ready">KDP Ready</span></div>
-        <p>54,532 words, 16 chapters, 4 parts. KDP-formatted .docx and .epub ready for upload. Cover design in progress.</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/book.html" class="ops-card-link" target="_blank">📚 Web Version</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">ePub + DOCX</span><span class="ops-card-tag">Cover In Progress</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>The Last Chapter Digital Book Funnel</h4><span class="ops-card-status active">DNS Live</span></div>
-        <p>New funnel on thelastchapter.net. DNS pointing to GHL. Domain managed via Namecheap API. Funnel built in GHL.</p>
-        <div class="ops-card-links"><a href="https://thelastchapter.net" class="ops-card-link" target="_blank">🌐 thelastchapter.net</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">GHL Funnel</span><span class="ops-card-tag">Namecheap DNS</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-delivery)">
-        <div class="ops-card-top"><h4>Jet Lending (First Client Engagement)</h4><span class="ops-card-status active">In Progress</span></div>
-        <p>SOP documentation across marketing, sales, service delivery, accounting/legal. Vision alignment + automation. $7M equity target by April 7.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">2.5-3 Month Timeline</span><span class="ops-card-tag">First Client</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ ACCOUNTING ═══ -->
-  <div class="ops-dept-section" id="ops-accounting">
-    <div class="ops-dept-section-header">
-      <div class="ops-dept-section-icon" style="background:var(--accent-accounting-dim);color:var(--accent-accounting);">💰</div>
-      <div>
-        <h3 style="color:var(--accent-accounting)">Accounting</h3>
-        <div class="ops-dept-desc">Financial tracking, revenue metrics, and subscription management</div>
-      </div>
-    </div>
-    <div class="ops-cards-grid">
-      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
-        <div class="ops-card-top"><h4>Stripe Payments</h4><span class="ops-card-status live">Live</span></div>
-        <p>$6 book transaction live. Ready for engagement fee processing. Needs API integration for live revenue on Command Center.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Book Sales</span><span class="ops-card-tag">Revenue Tracking Pending</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
-        <div class="ops-card-top"><h4>Command Center (Operations Hub)</h4><span class="ops-card-status live">Live</span></div>
-        <p>Central operating dashboard: scoreboard, pipeline overview, Sam Ovens methodology tracker, daily priorities, feedback loop. Real-time data from GHL.</p>
-        <div class="ops-card-links">
-          <a href="todo.html" class="ops-card-link">✅ Todos</a>
-          <a href="methodology.html" class="ops-card-link">🧠 Methodology</a>
-        </div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
-        <div class="ops-card-top"><h4>Stats Engine</h4><span class="ops-card-status active">Every 5 min</span></div>
-        <p>Pulls GHL pipeline data, contact counts, appointment stats, and analytics. Writes to data.json which powers dashboards.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">Python</span><span class="ops-card-tag">Cron</span><span class="ops-card-tag">GHL + GA4</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-accounting)">
-        <div class="ops-card-top"><h4>Monthly Tool Costs</h4><span class="ops-card-status active">Tracking</span></div>
-        <p>Instantly.ai ($37/mo), GHL (existing), Fireflies.ai (free tier). PostGrid + Handwrytten pay-per-send. Cloudflare free tier.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">~$37/mo active</span><span class="ops-card-tag">Free tier maximized</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ LEGAL ═══ -->
-  <div class="ops-dept-section" id="ops-legal">
-    <div class="ops-dept-section-header">
-      <div class="ops-dept-section-icon" style="background:var(--accent-legal-dim);color:var(--accent-legal);">📜</div>
-      <div>
-        <h3 style="color:var(--accent-legal)">Legal</h3>
-        <div class="ops-dept-desc">NDA, agreements, compliance, and client documentation</div>
-      </div>
-    </div>
-    <div class="ops-cards-grid">
-      <div class="ops-card" style="--card-accent:var(--accent-legal)">
-        <div class="ops-card-top"><h4>Digital NDA System</h4><span class="ops-card-status live">Live</span></div>
-        <p>Online NDA with digital signature, PDF generation (triple fallback), and auto-email to both parties. Auto-sent when pipeline moves to "Call Complete."</p>
-        <div class="ops-card-links"><a href="https://thearenapartners.com/nda.html" class="ops-card-link" target="_blank">📝 NDA Page</a></div>
-        <div class="ops-card-tags"><span class="ops-card-tag">jsPDF</span><span class="ops-card-tag">Digital Signature</span><span class="ops-card-tag">Auto-trigger</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-legal)">
-        <div class="ops-card-top"><h4>Arena Alignment Guarantee</h4><span class="ops-card-status ready">Defined</span></div>
-        <p>5 written commitments that define the client-advisor relationship. Built into the Transferable Exit System offer page. Builds trust through transparency.</p>
-        <div class="ops-card-links"><a href="https://vivianashford.github.io/arena-transferable-exit-system/" class="ops-card-link" target="_blank">📖 View</a></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-legal)">
-        <div class="ops-card-top"><h4>A2P 10DLC Registration</h4><span class="ops-card-status pending">Submitted</span></div>
-        <p>SMS compliance registration for business texting. Submitted, awaiting 1-2 week approval. Required for automated SMS sequences.</p>
-        <div class="ops-card-tags"><span class="ops-card-tag">1-2 Week Wait</span><span class="ops-card-tag">GHL</span></div>
-      </div>
-      <div class="ops-card" style="--card-accent:var(--accent-legal)">
-        <div class="ops-card-top"><h4>Privacy &amp; Terms</h4><span class="ops-card-status planned">Planned</span></div>
-        <p>Privacy policy and terms of service for both domains. Required before Facebook Ads can run. Standard templates to be customized.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ INFRASTRUCTURE ═══ -->
-  <div class="ops-infra">
-    <h4>Infrastructure Layer</h4>
-    <div class="ops-infra-grid">
-      <div class="ops-infra-item"><div class="iicon">☁️</div><div class="iname">Cloudflare Worker</div><div class="idetail">19 endpoints: GHL, LinkedIn, Facebook, R2, enrichment, PostGrid</div></div>
-      <div class="ops-infra-item"><div class="iicon">📊</div><div class="iname">GA4</div><div class="idetail">Both domains, G-SDMM90P63D</div></div>
-      <div class="ops-infra-item"><div class="iicon">🐙</div><div class="iname">GitHub</div><div class="idetail">5 active repos, auto-deploy</div></div>
-      <div class="ops-infra-item"><div class="iicon">⏰</div><div class="iname">14+ Cron Jobs</div><div class="idetail">Engines, content, commenting, warmup, beats, newsletter</div></div>
-      <div class="ops-infra-item"><div class="iicon">🎙️</div><div class="iname">Fireflies.ai</div><div class="idetail">Meeting transcripts + action items</div></div>
-      <div class="ops-infra-item"><div class="iicon">🎤</div><div class="iname">Pocket (HeyPocket)</div><div class="idetail">Voice recordings + summaries</div></div>
-      <div class="ops-infra-item"><div class="iicon">📧</div><div class="iname">Instantly.ai</div><div class="idetail">Cold outreach (API connected)</div></div>
-      <div class="ops-infra-item"><div class="iicon">🔑</div><div class="iname">macOS Keychain</div><div class="idetail">14+ API keys secured</div></div>
-      <div class="ops-infra-item"><div class="iicon">⭐</div><div class="iname">Featured.com</div><div class="idetail">PR + authority backlinks</div></div>
-      <div class="ops-infra-item"><div class="iicon">🌐</div><div class="iname">Namecheap API</div><div class="idetail">9 domains, DNS management</div></div>
-    </div>
-  </div>
-
-</div>
-
-<script src="sam-system.js"></script>
 <script>
   // Tab switching
   document.querySelectorAll('.nav-tab').forEach(tab => {
