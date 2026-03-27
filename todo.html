@@ -77,6 +77,28 @@
     .dashboard { padding:14px; }
     .focus-task { font-size:17px; }
   }
+  /* INFO CENTER */
+  .info-tbl { width:100%; border-collapse:collapse; font-size:11px; margin-bottom:4px; }
+  .info-tbl th { text-align:left; color:#6b655e; font-weight:600; padding:6px 8px; border-bottom:1px solid #252525; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; }
+  .info-tbl td { padding:6px 8px; border-bottom:1px solid rgba(255,255,255,.03); color:#d0ccc5; }
+  .info-tbl tr:hover td { background:rgba(255,255,255,.02); }
+  .mono { font-family:'SF Mono',Menlo,monospace; font-size:10px; color:#888; }
+  .itag { display:inline-block; padding:2px 7px; border-radius:3px; font-size:9px; font-weight:600; font-family:'SF Mono',monospace; background:rgba(255,255,255,.06); color:#888; }
+  .itag-green { background:rgba(34,197,94,.12); color:#22c55e; }
+  .itag-blue { background:rgba(59,130,246,.12); color:#3b82f6; }
+  .itag-gold { background:rgba(201,168,76,.12); color:#c9a84c; }
+  .itag-purple { background:rgba(168,85,247,.12); color:#a855f7; }
+  .icard { background:#141414; border:1px solid #252525; border-radius:8px; padding:12px; }
+  .ikv { display:flex; justify-content:space-between; align-items:center; padding:3px 0; font-size:11px; }
+  .ikv span:first-child { color:#6b655e; }
+  .cp { cursor:pointer; }
+  .cp:hover { color:#c9a84c; }
+  @media(max-width:600px) {
+    .info-tbl { font-size:10px; }
+    .info-tbl th, .info-tbl td { padding:5px 4px; }
+    .icard { padding:10px; }
+    .ikv { font-size:10px; }
+  }
 </style>
 </head>
 <body>
@@ -119,6 +141,171 @@
   <div class="done-section" id="done-section">
     <div class="done-header" onclick="toggleDone()">✓ Completed (<span id="done-count">0</span>) ▾</div>
     <div id="done-list" style="display:none;"></div>
+  </div>
+
+  <!-- INFO CENTER -->
+  <div style="margin-top:32px;border-top:1px solid rgba(201,168,76,.15);padding-top:20px;">
+    <div class="section-head" style="cursor:pointer;" onclick="toggleInfo()">
+      <span class="section-title" style="color:#c9a84c;">📋 Info Center</span>
+      <span class="section-count" id="info-toggle">▸</span>
+    </div>
+    <div id="info-center" style="display:none;">
+      <input type="text" id="info-search" placeholder="Search tags, UTMs, stages, endpoints..." oninput="filterInfo(this.value)" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #252525;background:#141414;color:#f0ebe3;font-size:13px;font-family:inherit;margin-bottom:16px;outline:none;">
+
+      <!-- LEAD SOURCE TAGS -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">🏷️ Lead Source Tags</div>
+        <div style="font-size:11px;color:#6b655e;margin-bottom:10px;">Auto-applied via UTM params on thearenapartners.com forms</div>
+        <table class="info-tbl">
+          <thead><tr><th>Tag</th><th>GHL ID</th><th>Triggers</th><th>Example UTM</th></tr></thead>
+          <tbody>
+            <tr><td><span class="itag itag-green">source-organic</span></td><td class="mono">lrxbsy7r...4bUI</td><td>No UTMs, SEO, direct, blog</td><td class="mono">thearenapartners.com</td></tr>
+            <tr><td><span class="itag itag-blue">source-paid</span></td><td class="mono">AKNAVd3u...IhPE</td><td>cpc/ppc/paid, facebook, google</td><td class="mono">?utm_source=facebook&utm_medium=cpc</td></tr>
+            <tr><td><span class="itag itag-gold">source-email</span></td><td class="mono">CkFACvVl...R8hJ</td><td>email, newsletter, nurture, ghl</td><td class="mono">?utm_source=newsletter&utm_medium=email</td></tr>
+            <tr><td><span class="itag itag-purple">source-event</span></td><td class="mono">tG2XbNrI...06FX</td><td>event, eventbrite, webinar</td><td class="mono">?utm_source=eventbrite&utm_medium=event</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FUNNEL TAGS -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">🔖 Funnel & Status Tags</div>
+        <table class="info-tbl">
+          <thead><tr><th>Tag</th><th>Applied By</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><span class="itag">vsl-lead</span></td><td>Landing page form</td><td>Submitted VSL form</td></tr>
+            <tr><td><span class="itag">vsl-booked</span></td><td>Booking flow</td><td>Kill switch - stops all sequences</td></tr>
+            <tr><td><span class="itag">assessment-complete</span></td><td>Assessment form</td><td>Completed Exit Risk Assessment</td></tr>
+            <tr><td><span class="itag">contact-form</span></td><td>Contact page</td><td>Book-a-call form submitted</td></tr>
+            <tr><td><span class="itag">got-free-book</span></td><td>Book download</td><td>Downloaded The Last Chapter</td></tr>
+            <tr><td><span class="itag">nda-signed</span></td><td>NDA page</td><td>Signed NDA</td></tr>
+            <tr><td><span class="itag">company-info-submitted</span></td><td>Company info form</td><td>Company details received</td></tr>
+            <tr><td><span class="itag">vsl-nurture-active</span></td><td>Nurture engine</td><td>In 120-day nurture</td></tr>
+            <tr><td><span class="itag">follow-up-sent</span></td><td>Follow-up engine</td><td>Booking follow-ups sent</td></tr>
+            <tr><td><span class="itag">no show</span></td><td>Pipeline</td><td>Missed call</td></tr>
+            <tr><td><span class="itag">warm lead</span></td><td>Manual</td><td>Engaged, not booked</td></tr>
+            <tr><td><span class="itag">high priority</span></td><td>Manual</td><td>Flagged for immediate attention</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- VSL WATCH TAGS -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">📺 VSL Watch Progress</div>
+        <table class="info-tbl">
+          <thead><tr><th>Tag</th><th>Trigger</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><span class="itag itag-blue">vsl-watched-25</span></td><td>25% video</td><td>Re-engagement email</td></tr>
+            <tr><td><span class="itag itag-blue">vsl-watched-50</span></td><td>50% video</td><td>Re-engagement email</td></tr>
+            <tr><td><span class="itag itag-blue">vsl-watched-75</span></td><td>75% video</td><td>Re-engagement email</td></tr>
+            <tr><td><span class="itag itag-blue">vsl-watched-100</span></td><td>100% video</td><td>Assessment CTA + booking</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PIPELINE -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">📊 Pipeline Stages</div>
+        <div style="font-size:10px;color:#6b655e;margin-bottom:8px;">Arena Lead Pipe — PdlZRdFi8hty46vcVyx8</div>
+        <table class="info-tbl">
+          <thead><tr><th>#</th><th>Stage</th><th>Trigger</th><th>Next</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>VSL Lead</strong></td><td>Form submit</td><td>Watch VSL → Book</td></tr>
+            <tr><td>2</td><td><strong>Call Booked</strong></td><td>Calendar booking</td><td>Show-up sequence</td></tr>
+            <tr><td>3</td><td><strong>Assessment Done</strong></td><td>Assessment complete</td><td>Review → prep call</td></tr>
+            <tr><td>4</td><td><strong>Call Complete</strong></td><td>Diagnostic call</td><td>NDA + company info</td></tr>
+            <tr><td>5</td><td><strong>NDA Signed</strong></td><td>E-signature</td><td>Due diligence</td></tr>
+            <tr><td>6</td><td><strong>Due Diligence</strong></td><td>Docs received</td><td>Analysis → proposal</td></tr>
+            <tr><td>7</td><td><strong>2nd Call / Proposal</strong></td><td>Review done</td><td>Present + close</td></tr>
+            <tr><td>8</td><td><strong>Closed Won</strong></td><td>Agreement signed</td><td>Onboard → AOS</td></tr>
+            <tr><td>—</td><td style="color:#6b655e">No Show</td><td>Missed call</td><td>Reschedule</td></tr>
+            <tr><td>—</td><td style="color:#6b655e">Long Term Nurture</td><td>Not ready</td><td>120-day nurture</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- API ENDPOINTS -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">⚡ API Endpoints</div>
+        <div style="font-size:10px;color:#6b655e;margin-bottom:8px;">arena-api.jean-475.workers.dev</div>
+        <table class="info-tbl">
+          <thead><tr><th>Endpoint</th><th>Method</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">/api/ghl/contacts/upsert</td><td>POST</td><td>Create/update contact</td></tr>
+            <tr><td class="mono">/api/ghl/contacts/{id}/notes</td><td>POST</td><td>Add note</td></tr>
+            <tr><td class="mono">/api/ghl/contacts/{id}/tags</td><td>POST</td><td>Add tags</td></tr>
+            <tr><td class="mono">/api/ghl/opportunities/</td><td>POST</td><td>Create opportunity</td></tr>
+            <tr><td class="mono">/api/ghl/conversations/messages</td><td>POST</td><td>Send email</td></tr>
+            <tr><td class="mono">/api/upload</td><td>POST</td><td>Upload to R2</td></tr>
+            <tr><td class="mono">/api/files/{key}</td><td>GET</td><td>Serve from R2</td></tr>
+            <tr><td class="mono">/api/enrich</td><td>POST</td><td>Lead enrichment</td></tr>
+            <tr><td class="mono">/api/linkedin/post</td><td>POST</td><td>Post to LinkedIn</td></tr>
+            <tr><td class="mono">/api/facebook/post</td><td>POST</td><td>Post to Facebook</td></tr>
+            <tr><td class="mono">/api/postGrid/send</td><td>POST</td><td>Direct mail</td></tr>
+            <tr><td class="mono">/health</td><td>GET</td><td>Health check</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- AUTOMATIONS -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">⚙️ Automation Engines</div>
+        <table class="info-tbl">
+          <thead><tr><th>Engine</th><th>Schedule</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Follow-up</strong></td><td>Every 15 min</td><td>Booking confirmations + follow-ups</td></tr>
+            <tr><td><strong>Watch</strong></td><td>Every 15 min</td><td>Re-engage partial watchers</td></tr>
+            <tr><td><strong>Nurture</strong></td><td>Every 15 min</td><td>120-day email/SMS nurture</td></tr>
+            <tr><td><strong>Stage</strong></td><td>Every 15 min</td><td>Pipeline stage transitions</td></tr>
+            <tr><td><strong>Stats</strong></td><td>Every 15 min</td><td>GHL + GA4 → data.json</td></tr>
+            <tr><td><strong>Warmup</strong></td><td>Daily 9 AM</td><td>thearenaaccess.com warmup</td></tr>
+            <tr><td><strong>Content AM</strong></td><td>Daily 6 AM</td><td>Morning LinkedIn/Facebook</td></tr>
+            <tr><td><strong>Content PM</strong></td><td>Daily 2 PM</td><td>Afternoon LinkedIn/Facebook</td></tr>
+            <tr><td><strong>Newsletter</strong></td><td>Mon/Wed/Fri</td><td>LinkedIn newsletter + blog + FB</td></tr>
+            <tr><td><strong>SEO</strong></td><td>Weekdays 7 AM</td><td>Backlink submissions</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KEY IDs -->
+      <div class="info-block" style="margin-bottom:20px;">
+        <div style="font-size:11px;color:#c9a84c;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">🔑 Key Identifiers</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;">
+          <div class="icard">
+            <div style="font-size:11px;font-weight:700;margin-bottom:8px;">GHL</div>
+            <div class="ikv"><span>Location ID</span><span class="mono cp" onclick="icopy(this)">LSvdgiiT7ManCRx9CCwE</span></div>
+            <div class="ikv"><span>Company ID</span><span class="mono cp" onclick="icopy(this)">Y4Exi9kUe3vxVM8CjV6f</span></div>
+            <div class="ikv"><span>Pipeline ID</span><span class="mono cp" onclick="icopy(this)">PdlZRdFi8hty46vcVyx8</span></div>
+            <div class="ikv"><span>Arena Calendar</span><span class="mono cp" onclick="icopy(this)">ZMY7F82g3SOZnYBn3pod</span></div>
+            <div class="ikv"><span>Jean's Calendar</span><span class="mono cp" onclick="icopy(this)">52NbvBqsD5pdRT7Y3vxn</span></div>
+          </div>
+          <div class="icard">
+            <div style="font-size:11px;font-weight:700;margin-bottom:8px;">Facebook / Meta</div>
+            <div class="ikv"><span>App ID</span><span class="mono cp" onclick="icopy(this)">944581477933584</span></div>
+            <div class="ikv"><span>Page ID</span><span class="mono cp" onclick="icopy(this)">103908865130039</span></div>
+            <div class="ikv"><span>Ad Acct (Trek One)</span><span class="mono cp" onclick="icopy(this)">act_1392828839106650</span></div>
+          </div>
+          <div class="icard">
+            <div style="font-size:11px;font-weight:700;margin-bottom:8px;">LinkedIn</div>
+            <div class="ikv"><span>Person URN</span><span class="mono cp" onclick="icopy(this)">urn:li:person:dcmUWQ8jjn</span></div>
+            <div class="ikv"><span>Newsletter ID</span><span class="mono cp" onclick="icopy(this)">7442003958379823104</span></div>
+          </div>
+          <div class="icard">
+            <div style="font-size:11px;font-weight:700;margin-bottom:8px;">Google / GA4</div>
+            <div class="ikv"><span>Property ID</span><span class="mono cp" onclick="icopy(this)">529455630</span></div>
+            <div class="ikv"><span>Measurement ID</span><span class="mono cp" onclick="icopy(this)">G-SDMM90P63D</span></div>
+          </div>
+          <div class="icard">
+            <div style="font-size:11px;font-weight:700;margin-bottom:8px;">Domains</div>
+            <div class="ikv"><span>Main Site</span><span>thearenapartners.com</span></div>
+            <div class="ikv"><span>Front Door</span><span>arenabusinessadvisors.com</span></div>
+            <div class="ikv"><span>Cold Outreach</span><span>thearenaaccess.com</span></div>
+            <div class="ikv"><span>Worker API</span><span>arena-api.jean-475.workers.dev</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -468,6 +655,26 @@ function toggleNN(id) {
 
 loadTodoState();
 render();
+function toggleInfo() {
+  var el = document.getElementById('info-center');
+  var tog = document.getElementById('info-toggle');
+  if (el.style.display === 'none') { el.style.display = 'block'; tog.textContent = '▾'; }
+  else { el.style.display = 'none'; tog.textContent = '▸'; }
+}
+function filterInfo(q) {
+  q = q.toLowerCase();
+  document.querySelectorAll('#info-center .info-tbl tbody tr').forEach(function(r) {
+    r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('#info-center .icard').forEach(function(c) {
+    c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+function icopy(el) {
+  navigator.clipboard.writeText(el.textContent);
+  el.style.color = '#22c55e';
+  setTimeout(function() { el.style.color = ''; }, 800);
+}
 </script>
 
 
