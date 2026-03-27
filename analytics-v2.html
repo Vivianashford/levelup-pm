@@ -65,8 +65,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
 .date-btn { padding: 6px 12px; border-radius: 5px; border: 1px solid var(--border); background: transparent; color: var(--text-dim); font-size: 11px; cursor: pointer; font-weight: 500; transition: all 0.15s; font-family: inherit; }
 .date-btn:hover { border-color: var(--border-light); color: var(--text); }
 .date-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
-.date-input { padding: 5px 10px; border-radius: 5px; border: 1px solid var(--border); background: var(--surface2); color: var(--text-dim); font-size: 11px; font-family: inherit; width: 120px; }
-.date-input:focus { outline: none; border-color: var(--border-light); }
+.date-input { padding: 6px 12px; border-radius: 5px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 12px; font-family: inherit; width: 130px; }
+.date-input:focus { outline: none; border-color: var(--mkt); box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+.date-input::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
 .refresh-btn { padding: 6px 14px; border-radius: 5px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 11px; cursor: pointer; font-weight: 600; font-family: inherit; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
 .refresh-btn:hover { background: var(--surface3); border-color: var(--border-light); }
 .refresh-btn.loading { opacity: 0.5; pointer-events: none; }
@@ -118,7 +119,30 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1200px){ .charts-grid { grid-template-columns: 1fr; } }
-@media(max-width:900px){ .sidebar { width: 60px; } .sidebar-link span, .sidebar-section-label, .sidebar-brand span, .sidebar-status { display:none; } .main { margin-left: 60px; } .stats-row { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:900px){ .sidebar { width: 60px; } .sidebar-link span, .sidebar-section-label, .sidebar-brand span, .sidebar-status { display:none; } .main { margin-left: 60px; } .stats-row { grid-template-columns: repeat(2,1fr); } .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 16px; } .date-controls { width: 100%; flex-wrap: wrap; } }
+@media(max-width:600px){
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .topbar { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .topbar-title { font-size: 14px; }
+  .date-controls { width: 100%; flex-wrap: wrap; gap: 6px; }
+  .date-input { width: 110px; font-size: 11px; padding: 6px 8px; }
+  .refresh-btn { font-size: 11px; padding: 6px 10px; }
+  .content { padding: 16px; }
+  .stats-row { grid-template-columns: 1fr; gap: 8px; }
+  .stat-card { padding: 12px; }
+  .stat-value { font-size: 20px; }
+  .charts-grid { grid-template-columns: 1fr; gap: 12px; }
+  .chart-card { padding: 14px; }
+  .chart-title { font-size: 12px; }
+  .data-table { font-size: 10px; }
+  .data-table th, .data-table td { padding: 6px 4px; }
+  .section-divider { font-size: 11px; margin: 20px 0 12px; padding-bottom: 6px; }
+  .last-updated { padding: 4px 16px; font-size: 9px; }
+  .page-header { font-size: 16px; margin-bottom: 16px; }
+  .header-bar { padding: 8px 16px; }
+  .header-bar h1 { font-size: 14px; }
+}
 
 /* ─── TOAST ─── */
 .toast { position:fixed; bottom:24px; right:24px; background:var(--surface3); border:1px solid var(--border-light); border-radius:8px; padding:12px 20px; font-size:12px; color:var(--text); z-index:999; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; }
@@ -203,14 +227,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
       <span id="realtime-badge" style="display:none;font-size:11px;font-weight:500;color:var(--up);margin-left:12px;"><span class="pulse-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--up);margin-right:4px;vertical-align:middle;"></span><span id="realtime-count">0</span> live now</span>
     </div>
     <div class="date-controls">
-      <button class="date-btn" data-range="7d">7D</button>
-      <button class="date-btn" data-range="30d" >30D</button>
-      <button class="date-btn active" data-range="90d">90D</button>
-      <button class="date-btn" data-range="ytd">YTD</button>
-      <button class="date-btn" data-range="weekly">Wk</button>
-      <button class="date-btn" data-range="monthly">Mo</button>
-      <button class="date-btn" data-range="quarterly">Qtr</button>
-      <span style="color:var(--text-muted);font-size:11px;margin:0 4px;">|</span>
       <input type="date" class="date-input" id="date-from" title="From date">
       <span style="color:var(--text-muted);font-size:11px;">to</span>
       <input type="date" class="date-input" id="date-to" title="To date">
@@ -359,7 +375,7 @@ const FB_ACCESS_TOKEN = localStorage.getItem('fb_access_token') || '';
 const FB_AD_ACCOUNT_ID = localStorage.getItem('fb_ad_account_id') || '';
 
 // ─── STATE ───
-let currentRange = '90d';
+let currentRange = 'mtd';
 let currentPage = 'overview';
 let charts = {};
 let cachedData = JSON.parse(localStorage.getItem('arena_analytics_cache') || '{}');
@@ -414,14 +430,15 @@ function getDateRange(range) {
   const to = now.toISOString().split('T')[0];
   let from;
   switch(range) {
+    case 'mtd': from = new Date(now.getFullYear(), now.getMonth(), 1); break;
     case '7d': from = new Date(now - 7*86400000); break;
     case '30d': from = new Date(now - 30*86400000); break;
     case '90d': from = new Date(now - 90*86400000); break;
     case 'ytd': from = new Date(now.getFullYear(), 0, 1); break;
     case 'weekly': from = new Date(now - 7*86400000); break;
-    case 'monthly': from = new Date(now - 30*86400000); break;
+    case 'monthly': from = new Date(now.getFullYear(), now.getMonth(), 1); break;
     case 'quarterly': from = new Date(now - 90*86400000); break;
-    default: from = new Date(now - 90*86400000);
+    default: from = new Date(now.getFullYear(), now.getMonth(), 1);
   }
   return { from: from.toISOString().split('T')[0], to };
 }
@@ -2297,24 +2314,12 @@ document.querySelectorAll('.sidebar-link').forEach(link => {
   link.addEventListener('click', e => { e.preventDefault(); switchPage(link.dataset.page); });
 });
 
-document.querySelectorAll('.date-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentRange = btn.dataset.range;
-    renderCurrentPage();
-    showToast(`Showing ${btn.textContent} data`);
-  });
-});
-
 document.getElementById('date-from').addEventListener('change', () => {
-  document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
   currentRange = 'custom';
   renderCurrentPage();
 });
 
 document.getElementById('date-to').addEventListener('change', () => {
-  document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
   currentRange = 'custom';
   renderCurrentPage();
 });
@@ -2330,8 +2335,8 @@ function showToast(msg) {
 
 // ─── INIT ───
 (function init() {
-  // Set date inputs
-  const {from, to} = getDateRange('90d');
+  // Set date inputs to Month-to-Date
+  const {from, to} = getDateRange('mtd');
   document.getElementById('date-from').value = from;
   document.getElementById('date-to').value = to;
 
