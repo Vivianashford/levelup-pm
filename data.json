@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T08:12:24.388821+00:00",
-  "updated_local": "2026-03-27 03:12 AM",
+  "updated": "2026-03-27T08:27:26.832607+00:00",
+  "updated_local": "2026-03-27 03:27 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 2,
     "week": {
-      "users": 139,
-      "sessions": 171,
-      "pageviews": 290,
-      "avg_duration": 156.8,
+      "users": 141,
+      "sessions": 173,
+      "pageviews": 292,
+      "avg_duration": 155.0,
       "conversions": 0
     },
     "month": {
-      "users": 139,
-      "sessions": 171,
-      "pageviews": 290,
+      "users": 141,
+      "sessions": 173,
+      "pageviews": 292,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 145,
-        "users": 89
+        "views": 146,
+        "users": 90
       },
       {
         "page": "/blog/",
@@ -136,8 +136,8 @@
       },
       {
         "page": "/services",
-        "views": 9,
-        "users": 5
+        "views": 10,
+        "users": 6
       },
       {
         "page": "/assessment.html",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 8,
-        "users": 8
+        "sessions": 9,
+        "users": 9
       },
       {
         "source": "facebook.com",
@@ -194,16 +194,16 @@
         "users": 1
       },
       {
-        "source": "thearenapartners.com",
-        "medium": "referral",
+        "source": "google",
+        "medium": "organic",
         "sessions": 2,
         "users": 2
       },
       {
-        "source": "google",
-        "medium": "organic",
-        "sessions": 1,
-        "users": 1
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "sessions": 2,
+        "users": 2
       },
       {
         "source": "l.facebook.com",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 145,
-        "users": 89,
-        "avg_duration": 100.2
+        "views": 146,
+        "users": 90,
+        "avg_duration": 99.4
       },
       "/book.html": {
         "views": 17,
@@ -331,13 +331,19 @@
         "users": 14,
         "sessions": 15,
         "pageviews": 14
+      },
+      {
+        "date": "2026-03-27",
+        "users": 2,
+        "sessions": 2,
+        "pageviews": 2
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 158,
-        "users": 127
+        "sessions": 160,
+        "users": 129
       },
       {
         "device": "Mobile",
@@ -365,6 +371,11 @@
         "city": "London",
         "users": 6,
         "sessions": 6
+      },
+      {
+        "city": "",
+        "users": 5,
+        "sessions": 5
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -397,11 +408,6 @@
         "sessions": 4
       },
       {
-        "city": "",
-        "users": 3,
-        "sessions": 3
-      },
-      {
         "city": "Boulogne-Billancourt",
         "users": 3,
         "sessions": 3
@@ -420,11 +426,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 290
+        "count": 292
       },
       {
         "event": "session_start",
-        "count": 168
+        "count": 169
       },
       {
         "event": "scroll",
@@ -436,7 +442,7 @@
       },
       {
         "event": "first_visit",
-        "count": 137
+        "count": 138
       },
       {
         "event": "scroll_depth",
@@ -545,6 +551,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 72.5
+    "bounce_rate": 72.8
   }
 }
