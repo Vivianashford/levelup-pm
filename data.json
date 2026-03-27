@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T08:27:26.832607+00:00",
-  "updated_local": "2026-03-27 03:27 AM",
+  "updated": "2026-03-27T08:42:26.655759+00:00",
+  "updated_local": "2026-03-27 03:42 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
       "users": 141,
       "sessions": 173,
-      "pageviews": 292,
-      "avg_duration": 155.0,
+      "pageviews": 294,
+      "avg_duration": 157.0,
       "conversions": 0
     },
     "month": {
       "users": 141,
       "sessions": 173,
-      "pageviews": 292,
+      "pageviews": 294,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 146,
-        "users": 90
+        "views": 147,
+        "users": 91
       },
       {
         "page": "/blog/",
@@ -125,14 +125,14 @@
         "users": 9
       },
       {
+        "page": "/contact",
+        "views": 13,
+        "users": 8
+      },
+      {
         "page": "/watch.html",
         "views": 13,
         "users": 2
-      },
-      {
-        "page": "/contact",
-        "views": 12,
-        "users": 7
       },
       {
         "page": "/services",
@@ -250,9 +250,9 @@
     },
     "funnel": {
       "/": {
-        "views": 146,
-        "users": 90,
-        "avg_duration": 99.4
+        "views": 147,
+        "users": 91,
+        "avg_duration": 101.5
       },
       "/book.html": {
         "views": 17,
@@ -292,8 +292,8 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 2,
-        "users": 2
+        "count": 3,
+        "users": 3
       },
       "optin_submit": {
         "count": 1,
@@ -336,7 +336,7 @@
         "date": "2026-03-27",
         "users": 2,
         "sessions": 2,
-        "pageviews": 2
+        "pageviews": 4
       }
     ],
     "devices": [
@@ -426,7 +426,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 292
+        "count": 294
       },
       {
         "event": "session_start",
@@ -434,11 +434,11 @@
       },
       {
         "event": "scroll",
-        "count": 163
+        "count": 165
       },
       {
         "event": "user_engagement",
-        "count": 150
+        "count": 151
       },
       {
         "event": "first_visit",
@@ -446,7 +446,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 90
+        "count": 93
       },
       {
         "event": "click",
@@ -457,11 +457,11 @@
         "count": 4
       },
       {
-        "event": "assessment_complete",
-        "count": 2
+        "event": "vsl_play",
+        "count": 3
       },
       {
-        "event": "vsl_play",
+        "event": "assessment_complete",
         "count": 2
       },
       {
