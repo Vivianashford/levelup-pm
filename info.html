@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena — Info Center</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1a1a1a;
+  --border: #252525;
+  --border-light: #333;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --text-muted: #555;
+  --gold: #C9A84C;
+  --gold2: #d4b85a;
+  --up: #22c55e;
+  --down: #ef4444;
+  --blue: #3b82f6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.6; }
+
+/* Nav */
+.nav { display:flex; align-items:center; justify-content:space-between; padding:12px 32px; border-bottom:1px solid var(--border); background:var(--surface); position:sticky; top:0; z-index:100; }
+.nav-title { font-size:16px; font-weight:700; color:var(--gold); }
+.nav-links { display:flex; gap:16px; }
+.nav-links a { color:var(--text-dim); text-decoration:none; font-size:12px; font-weight:500; letter-spacing:0.5px; text-transform:uppercase; transition:color .15s; }
+.nav-links a:hover { color:var(--text); }
+
+/* Layout */
+.container { max-width:1100px; margin:0 auto; padding:32px 24px; }
+.page-header { font-size:24px; font-weight:700; margin-bottom:4px; }
+.page-sub { color:var(--text-dim); font-size:13px; margin-bottom:32px; }
+
+/* Search */
+.search-box { width:100%; padding:12px 16px; border-radius:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:14px; font-family:inherit; margin-bottom:32px; outline:none; transition:border-color .15s; }
+.search-box:focus { border-color:var(--gold); }
+
+/* Sections */
+.section { margin-bottom:40px; }
+.section-title { font-size:16px; font-weight:700; color:var(--gold); padding-bottom:8px; border-bottom:1px solid var(--border); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+.section-title .icon { font-size:18px; }
+.section-desc { color:var(--text-dim); font-size:12px; margin-bottom:16px; }
+
+/* Info Cards */
+.info-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:12px; }
+.info-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; transition:border-color .15s; }
+.info-card:hover { border-color:var(--border-light); }
+.info-card-title { font-size:13px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.info-card-title .badge { font-size:9px; padding:2px 8px; border-radius:3px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+.badge-live { background:rgba(34,197,94,0.15); color:var(--up); }
+.badge-ghl { background:rgba(59,130,246,0.15); color:var(--blue); }
+.badge-utm { background:rgba(201,168,76,0.15); color:var(--gold); }
+.badge-api { background:rgba(168,85,247,0.15); color:#a855f7; }
+.badge-page { background:rgba(236,72,153,0.15); color:#ec4899; }
+
+/* Key-Value rows */
+.kv-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.03); }
+.kv-row:last-child { border-bottom:none; }
+.kv-key { color:var(--text-dim); }
+.kv-val { color:var(--text); font-weight:500; font-family:'SF Mono',monospace; font-size:11px; max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.kv-val.copyable { cursor:pointer; position:relative; }
+.kv-val.copyable:hover { color:var(--gold); }
+.kv-val.copyable:active::after { content:'Copied!'; position:absolute; right:0; top:-18px; font-size:10px; color:var(--up); }
+
+/* Tables */
+.info-table { width:100%; border-collapse:collapse; font-size:12px; }
+.info-table th { text-align:left; color:var(--text-dim); font-weight:600; padding:8px 12px; border-bottom:1px solid var(--border); font-size:10px; text-transform:uppercase; letter-spacing:0.5px; }
+.info-table td { padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.03); }
+.info-table tr:hover td { background:rgba(255,255,255,0.02); }
+.tag-pill { display:inline-block; padding:2px 8px; border-radius:3px; font-size:10px; font-weight:600; font-family:'SF Mono',monospace; }
+.tag-organic { background:rgba(34,197,94,0.15); color:var(--up); }
+.tag-paid { background:rgba(59,130,246,0.15); color:var(--blue); }
+.tag-email { background:rgba(201,168,76,0.15); color:var(--gold); }
+.tag-event { background:rgba(168,85,247,0.15); color:#a855f7; }
+
+/* Toast */
+.toast { position:fixed; bottom:24px; right:24px; background:var(--surface2); color:var(--text); padding:10px 20px; border-radius:6px; font-size:12px; border:1px solid var(--border); opacity:0; transition:opacity .3s; pointer-events:none; z-index:999; }
+.toast.show { opacity:1; }
+
+/* Mobile */
+@media(max-width:600px) {
+  .nav { padding:10px 16px; }
+  .nav-links { gap:10px; }
+  .nav-links a { font-size:10px; }
+  .container { padding:20px 16px; }
+  .page-header { font-size:18px; }
+  .info-grid { grid-template-columns:1fr; }
+  .search-box { font-size:13px; padding:10px 14px; }
+  .kv-val { max-width:140px; font-size:10px; }
+  .info-table { font-size:11px; }
+  .info-table th, .info-table td { padding:6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-title">&#9632; Arena Info Center</div>
+  <div class="nav-links">
+    <a href="system.html">System</a>
+    <a href="analytics-v2.html">Analytics</a>
+    <a href="pipeline.html">GoldMine</a>
+    <a href="todo.html">Todos</a>
+    <a href="tasks.html">Tasks</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-header">Info Center</div>
+  <div class="page-sub">Tags, UTM mappings, pipelines, API endpoints, pages — everything in one place.</div>
+
+  <input type="text" class="search-box" id="search" placeholder="Search tags, UTMs, endpoints, pages..." oninput="filterAll(this.value)">
+
+  <!-- ═══════ LEAD SOURCE TAGS ═══════ -->
+  <div class="section" data-section="tags">
+    <div class="section-title"><span class="icon">🏷️</span> Lead Source Tags</div>
+    <div class="section-desc">Auto-applied via UTM parameters when leads submit forms on thearenapartners.com</div>
+    <table class="info-table" id="tags-table">
+      <thead>
+        <tr><th>Tag</th><th>GHL ID</th><th>Applied When</th><th>Example UTMs</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-pill tag-organic">source-organic</span></td>
+          <td style="font-family:monospace;font-size:11px;color:var(--text-dim)">lrxbsy7r9l4m1jxa4bUI</td>
+          <td>No UTM params, SEO, direct traffic, blog</td>
+          <td style="font-family:monospace;font-size:10px;color:var(--text-muted)">thearenapartners.com (no params)</td>
+        </tr>
+        <tr>
+          <td><span class="tag-pill tag-paid">source-paid</span></td>
+          <td style="font-family:monospace;font-size:11px;color:var(--text-dim)">AKNAVd3uMmtYCehsIhPE</td>
+          <td>utm_medium = cpc/ppc/paid OR utm_source = facebook/google/fb/gads/instagram</td>
+          <td style="font-family:monospace;font-size:10px;color:var(--text-muted)">?utm_source=facebook&utm_medium=cpc</td>
+        </tr>
+        <tr>
+          <td><span class="tag-pill tag-email">source-email</span></td>
+          <td style="font-family:monospace;font-size:11px;color:var(--text-dim)">CkFACvVlzZLW9dy3R8hJ</td>
+          <td>utm_medium = email OR utm_source = email/newsletter/nurture/ghl/mailchimp</td>
+          <td style="font-family:monospace;font-size:10px;color:var(--text-muted)">?utm_source=newsletter&utm_medium=email</td>
+        </tr>
+        <tr>
+          <td><span class="tag-pill tag-event">source-event</span></td>
+          <td style="font-family:monospace;font-size:11px;color:var(--text-dim)">tG2XbNrIvpIZIMq206FX</td>
+          <td>utm_source = event/eventbrite/webinar/conference OR utm_medium = event/webinar</td>
+          <td style="font-family:monospace;font-size:10px;color:var(--text-muted)">?utm_source=eventbrite&utm_medium=event</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ FUNNEL TAGS ═══════ -->
+  <div class="section" data-section="tags">
+    <div class="section-title"><span class="icon">🔖</span> Funnel & Status Tags</div>
+    <div class="section-desc">Applied by forms, automations, and workflows throughout the pipeline</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Tag</th><th>Applied By</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">vsl-lead</span></td><td>Landing page form</td><td>Lead submitted VSL landing page form</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">vsl-booked</span></td><td>Booking flow</td><td>Kill switch — stops all watch/nurture sequences</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">assessment-complete</span></td><td>Assessment form</td><td>Completed Exit Risk Assessment</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">contact-form</span></td><td>Contact page</td><td>Submitted contact/book-a-call form</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">got-free-book</span></td><td>Book download</td><td>Downloaded The Last Chapter book</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">nda-signed</span></td><td>NDA page</td><td>Signed NDA (moves to due diligence)</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">company-info-submitted</span></td><td>Company info form</td><td>Submitted company details for review</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">vsl-nurture-active</span></td><td>Nurture engine</td><td>In active 120-day nurture sequence</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">follow-up-sent</span></td><td>Follow-up engine</td><td>Booking follow-up emails sent</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">no show</span></td><td>Pipeline stage</td><td>Missed scheduled call</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">warm lead</span></td><td>Manual</td><td>Warm — engaged but not yet booked</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">high priority</span></td><td>Manual</td><td>High-value lead flagged for immediate attention</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ VSL WATCH TAGS ═══════ -->
+  <div class="section" data-section="tags">
+    <div class="section-title"><span class="icon">📺</span> VSL Watch Progress Tags</div>
+    <div class="section-desc">Auto-applied by watch.html based on video completion percentage</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Tag</th><th>Trigger</th><th>Follow-up Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="tag-pill" style="background:rgba(59,130,246,0.1);color:var(--blue)">vsl-watched-25</span></td><td>25% video watched</td><td>Watch engine re-engagement email</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(59,130,246,0.15);color:var(--blue)">vsl-watched-50</span></td><td>50% video watched</td><td>Watch engine re-engagement email</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(59,130,246,0.2);color:var(--blue)">vsl-watched-75</span></td><td>75% video watched</td><td>Watch engine re-engagement email</td></tr>
+        <tr><td><span class="tag-pill" style="background:rgba(59,130,246,0.25);color:var(--blue)">vsl-watched-100</span></td><td>100% video watched</td><td>Assessment CTA + booking push</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ PIPELINE ═══════ -->
+  <div class="section" data-section="pipeline">
+    <div class="section-title"><span class="icon">📊</span> Pipeline Stages</div>
+    <div class="section-desc">Arena Lead Pipe — GHL Pipeline ID: PdlZRdFi8hty46vcVyx8</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>#</th><th>Stage</th><th>Trigger</th><th>Next Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>VSL Lead</strong></td><td>Form submit on landing page</td><td>Watch VSL → Book call</td></tr>
+        <tr><td>2</td><td><strong>Call Booked</strong></td><td>Calendar booking (vsl-booked tag)</td><td>Show-up sequence + confirmation</td></tr>
+        <tr><td>3</td><td><strong>Assessment Done</strong></td><td>Exit Risk Assessment completed</td><td>Review score → prep for call</td></tr>
+        <tr><td>4</td><td><strong>Call Complete</strong></td><td>Diagnostic call finished</td><td>Send NDA + company info form</td></tr>
+        <tr><td>5</td><td><strong>NDA Signed</strong></td><td>E-signature on NDA</td><td>Begin due diligence</td></tr>
+        <tr><td>6</td><td><strong>Due Diligence</strong></td><td>Company info + docs received</td><td>Analysis → build proposal</td></tr>
+        <tr><td>7</td><td><strong>2nd Call / Proposal</strong></td><td>Review complete</td><td>Present findings + close</td></tr>
+        <tr><td>8</td><td><strong>Closed Won</strong></td><td>Agreement signed</td><td>Onboarding → AOS Phase 1</td></tr>
+        <tr><td>—</td><td style="color:var(--text-dim)">No Show</td><td>Missed scheduled call</td><td>Reschedule sequence</td></tr>
+        <tr><td>—</td><td style="color:var(--text-dim)">Long Term Nurture</td><td>Not ready now</td><td>120-day nurture sequence</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ PAGES ═══════ -->
+  <div class="section" data-section="pages">
+    <div class="section-title"><span class="icon">🌐</span> Live Pages — thearenapartners.com</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Page</th><th>URL</th><th>Purpose</th><th>Has UTM?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Landing Page</td><td><a href="https://thearenapartners.com" style="color:var(--blue);text-decoration:none">index.html</a></td><td>Main entry — VSL lead capture</td><td><span style="color:var(--up)">✓</span></td></tr>
+        <tr><td>Watch VSL</td><td><a href="https://thearenapartners.com/watch.html" style="color:var(--blue);text-decoration:none">watch.html</a></td><td>Video sales letter + progress tracking</td><td><span style="color:var(--up)">✓</span></td></tr>
+        <tr><td>Assessment</td><td><a href="https://thearenapartners.com/assessment.html" style="color:var(--blue);text-decoration:none">assessment.html</a></td><td>Exit Risk Assessment (50 questions)</td><td><span style="color:var(--up)">✓</span></td></tr>
+        <tr><td>Contact / Book</td><td><a href="https://thearenapartners.com/contact.html" style="color:var(--blue);text-decoration:none">contact.html</a></td><td>Book a diagnostic call</td><td><span style="color:var(--up)">✓</span></td></tr>
+        <tr><td>Calculator</td><td><a href="https://thearenapartners.com/calculator.html" style="color:var(--blue);text-decoration:none">calculator.html</a></td><td>Business valuation calculator</td><td>—</td></tr>
+        <tr><td>Book</td><td><a href="https://thearenapartners.com/book.html" style="color:var(--blue);text-decoration:none">book.html</a></td><td>The Last Chapter flip-book (23 chapters)</td><td>—</td></tr>
+        <tr><td>NDA</td><td><a href="https://thearenapartners.com/nda.html" style="color:var(--blue);text-decoration:none">nda.html</a></td><td>E-signature NDA</td><td>—</td></tr>
+        <tr><td>Company Info</td><td><a href="https://thearenapartners.com/company-info.html" style="color:var(--blue);text-decoration:none">company-info.html</a></td><td>Company details collection</td><td>—</td></tr>
+        <tr><td>Upload</td><td><a href="https://thearenapartners.com/upload.html" style="color:var(--blue);text-decoration:none">upload.html</a></td><td>Document upload portal</td><td>—</td></tr>
+        <tr><td>Dashboard</td><td><a href="https://thearenapartners.com/dashboard.html" style="color:var(--blue);text-decoration:none">dashboard.html</a></td><td>Client command center</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ INTERNAL PAGES ═══════ -->
+  <div class="section" data-section="pages">
+    <div class="section-title"><span class="icon">🔧</span> Internal Pages — vivianashford.github.io/levelup-pm</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Page</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="system.html" style="color:var(--blue);text-decoration:none">system.html</a></td><td>Operations hub — Architecture, Client Flow, Integrations, Daily Ops</td></tr>
+        <tr><td><a href="analytics-v2.html" style="color:var(--blue);text-decoration:none">analytics-v2.html</a></td><td>Deep analytics dashboard (GA4, SEO, marketing, sales, finance)</td></tr>
+        <tr><td><a href="pipeline.html" style="color:var(--blue);text-decoration:none">pipeline.html (GoldMine)</a></td><td>Client pipeline — FB Ads + GHL + deal tracking</td></tr>
+        <tr><td><a href="operations.html" style="color:var(--blue);text-decoration:none">operations.html</a></td><td>Department deep dives (Marketing, Sales, Delivery, Accounting, Legal)</td></tr>
+        <tr><td><a href="info.html" style="color:var(--blue);text-decoration:none">info.html</a></td><td>This page — info center</td></tr>
+        <tr><td><a href="todo.html" style="color:var(--blue);text-decoration:none">todo.html</a></td><td>Daily todos</td></tr>
+        <tr><td><a href="tasks.html" style="color:var(--blue);text-decoration:none">tasks.html</a></td><td>Task board</td></tr>
+        <tr><td><a href="clients.html" style="color:var(--blue);text-decoration:none">clients.html</a></td><td>Client details</td></tr>
+        <tr><td><a href="sales-sop.html" style="color:var(--blue);text-decoration:none">sales-sop.html</a></td><td>Sales SOPs</td></tr>
+        <tr><td><a href="methodology.html" style="color:var(--blue);text-decoration:none">methodology.html</a></td><td>Arena methodology</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ API ENDPOINTS ═══════ -->
+  <div class="section" data-section="api">
+    <div class="section-title"><span class="icon">⚡</span> API Endpoints — Cloudflare Worker</div>
+    <div class="section-desc">Base URL: arena-api.jean-475.workers.dev</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Endpoint</th><th>Method</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-family:monospace;font-size:11px">/api/ghl/contacts/upsert</td><td>POST</td><td>Create or update GHL contact</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/ghl/contacts/{id}/notes</td><td>POST</td><td>Add note to contact</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/ghl/contacts/{id}/tags</td><td>POST</td><td>Add tags to contact</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/ghl/opportunities/</td><td>POST</td><td>Create pipeline opportunity</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/ghl/conversations/messages</td><td>POST</td><td>Send email via GHL</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/upload</td><td>POST</td><td>Upload file to R2 storage</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/files/{key}</td><td>GET</td><td>Serve file from R2</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/enrich</td><td>POST</td><td>Lead enrichment</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/linkedin/post</td><td>POST</td><td>Publish to LinkedIn</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/facebook/post</td><td>POST</td><td>Publish to Facebook Page</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/api/postGrid/send</td><td>POST</td><td>Send direct mail via PostGrid</td></tr>
+        <tr><td style="font-family:monospace;font-size:11px">/health</td><td>GET</td><td>Health check</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ AUTOMATION ENGINES ═══════ -->
+  <div class="section" data-section="automations">
+    <div class="section-title"><span class="icon">⚙️</span> Automation Engines</div>
+    <div class="section-desc">All running on cron via OpenClaw</div>
+    <table class="info-table">
+      <thead>
+        <tr><th>Engine</th><th>Schedule</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Follow-up</strong> (engine.py)</td><td>Every 15 min</td><td>Booking confirmations, appointment follow-ups</td></tr>
+        <tr><td><strong>Watch</strong> (watch-engine.py)</td><td>Every 15 min</td><td>Re-engage partial video watchers</td></tr>
+        <tr><td><strong>Nurture</strong> (nurture-engine.py)</td><td>Every 15 min</td><td>120-day email/SMS nurture (pride-based)</td></tr>
+        <tr><td><strong>Stage</strong> (stage-automation.py)</td><td>Every 15 min</td><td>Pipeline stage transition emails</td></tr>
+        <tr><td><strong>Stats</strong> (stats-engine.py)</td><td>Every 15 min</td><td>Pull GHL pipeline + GA4 analytics → data.json</td></tr>
+        <tr><td><strong>Warmup</strong> (warmup-engine.py)</td><td>Daily 9 AM</td><td>Domain warmup for thearenaaccess.com</td></tr>
+        <tr><td><strong>Content AM</strong> (deploy-content.py)</td><td>Daily 6 AM</td><td>Morning LinkedIn/Facebook post</td></tr>
+        <tr><td><strong>Content PM</strong> (deploy-content.py)</td><td>Daily 2 PM</td><td>Afternoon LinkedIn/Facebook post</td></tr>
+        <tr><td><strong>Newsletter</strong></td><td>Mon/Wed/Fri 5 AM</td><td>LinkedIn newsletter + blog + Facebook</td></tr>
+        <tr><td><strong>SEO</strong> (seo-engine.py)</td><td>Weekdays 7 AM</td><td>Backlink submissions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════ KEY IDs ═══════ -->
+  <div class="section" data-section="ids">
+    <div class="section-title"><span class="icon">🔑</span> Key Identifiers</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">GHL <span class="badge badge-ghl">GoHighLevel</span></div>
+        <div class="kv-row"><span class="kv-key">Location ID</span><span class="kv-val copyable" onclick="copyVal(this)">LSvdgiiT7ManCRx9CCwE</span></div>
+        <div class="kv-row"><span class="kv-key">Company ID</span><span class="kv-val copyable" onclick="copyVal(this)">Y4Exi9kUe3vxVM8CjV6f</span></div>
+        <div class="kv-row"><span class="kv-key">Pipeline ID</span><span class="kv-val copyable" onclick="copyVal(this)">PdlZRdFi8hty46vcVyx8</span></div>
+        <div class="kv-row"><span class="kv-key">Arena Calendar</span><span class="kv-val copyable" onclick="copyVal(this)">ZMY7F82g3SOZnYBn3pod</span></div>
+        <div class="kv-row"><span class="kv-key">Jean's Calendar</span><span class="kv-val copyable" onclick="copyVal(this)">52NbvBqsD5pdRT7Y3vxn</span></div>
+        <div class="kv-row"><span class="kv-key">Jean's Booking</span><span class="kv-val copyable" onclick="copyVal(this)">HhM3tyyjeiNbvFXLtc4j</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Facebook / Meta <span class="badge badge-api">API</span></div>
+        <div class="kv-row"><span class="kv-key">App ID</span><span class="kv-val copyable" onclick="copyVal(this)">944581477933584</span></div>
+        <div class="kv-row"><span class="kv-key">Page ID</span><span class="kv-val copyable" onclick="copyVal(this)">103908865130039</span></div>
+        <div class="kv-row"><span class="kv-key">Ad Account (Trek One)</span><span class="kv-val copyable" onclick="copyVal(this)">act_1392828839106650</span></div>
+        <div class="kv-row"><span class="kv-key">Token Expires</span><span class="kv-val">~May 25, 2026</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">LinkedIn <span class="badge badge-api">API</span></div>
+        <div class="kv-row"><span class="kv-key">Person URN</span><span class="kv-val copyable" onclick="copyVal(this)">urn:li:person:dcmUWQ8jjn</span></div>
+        <div class="kv-row"><span class="kv-key">Newsletter ID</span><span class="kv-val copyable" onclick="copyVal(this)">7442003958379823104</span></div>
+        <div class="kv-row"><span class="kv-key">OAuth Expires</span><span class="kv-val">~May 22, 2026</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Google / GA4 <span class="badge badge-api">API</span></div>
+        <div class="kv-row"><span class="kv-key">Property ID</span><span class="kv-val copyable" onclick="copyVal(this)">529455630</span></div>
+        <div class="kv-row"><span class="kv-key">Measurement ID</span><span class="kv-val copyable" onclick="copyVal(this)">G-SDMM90P63D</span></div>
+        <div class="kv-row"><span class="kv-key">Project</span><span class="kv-val copyable" onclick="copyVal(this)">eminent-subset-358618</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Domains <span class="badge badge-live">LIVE</span></div>
+        <div class="kv-row"><span class="kv-key">Main Site</span><span class="kv-val">thearenapartners.com</span></div>
+        <div class="kv-row"><span class="kv-key">Front Door</span><span class="kv-val">arenabusinessadvisors.com</span></div>
+        <div class="kv-row"><span class="kv-key">Cold Outreach</span><span class="kv-val">thearenaaccess.com</span></div>
+        <div class="kv-row"><span class="kv-key">Worker API</span><span class="kv-val">arena-api.jean-475.workers.dev</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Storage <span class="badge badge-api">R2</span></div>
+        <div class="kv-row"><span class="kv-key">Bucket</span><span class="kv-val">arena-files</span></div>
+        <div class="kv-row"><span class="kv-key">Contents</span><span class="kv-val">Client files, LinkedIn token, uploads</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function copyVal(el) {
+  navigator.clipboard.writeText(el.textContent);
+  var toast = document.getElementById('toast');
+  toast.textContent = 'Copied: ' + el.textContent;
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 1500);
+}
+
+function filterAll(q) {
+  q = q.toLowerCase();
+  document.querySelectorAll('.info-table tbody tr').forEach(function(row) {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.info-card').forEach(function(card) {
+    card.style.display = card.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.section').forEach(function(sec) {
+    var visibleRows = sec.querySelectorAll('tbody tr:not([style*="display: none"])').length;
+    var visibleCards = sec.querySelectorAll('.info-card:not([style*="display: none"])').length;
+    var hasTable = sec.querySelector('.info-table');
+    var hasGrid = sec.querySelector('.info-grid');
+    if (!q) { sec.style.display = ''; return; }
+    if (hasTable && visibleRows === 0 && !hasGrid) { sec.style.display = 'none'; }
+    else if (hasGrid && visibleCards === 0 && !hasTable) { sec.style.display = 'none'; }
+    else { sec.style.display = ''; }
+  });
+}
+</script>
+</body>
+</html>
