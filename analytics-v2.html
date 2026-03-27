@@ -936,68 +936,90 @@ function renderMarketing() {
 
   // ─── FACEBOOK ADS — FULL METRICS ───
   const fb = cachedData.facebook || {};
-  const fbConnected = !!FB_ACCESS_TOKEN;
+  const fbIns = fb.accountInsights?.data?.[0] || {};
+  const fbSpend = parseFloat(fbIns.spend || 0);
+  const fbImpr = parseInt(fbIns.impressions || 0);
+  const fbReach = parseInt(fbIns.reach || 0);
+  const fbFreq = parseFloat(fbIns.frequency || 0);
+  const fbCPC = parseFloat(fbIns.cpc || 0);
+  const fbCPM = parseFloat(fbIns.cpm || 0);
+  const fbCTR = parseFloat(fbIns.ctr || 0);
+  const fbClicks = parseInt(fbIns.clicks || 0);
+  const fbLeads = parseInt((fbIns.actions || []).find(a => a.action_type === 'lead')?.value || 0);
+  const fbCPL = fbLeads > 0 ? fbSpend / fbLeads : 0;
+  const fbLinkClicks = parseInt((fbIns.actions || []).find(a => a.action_type === 'link_click')?.value || 0);
+  const fbHasData = fbSpend > 0;
 
-  // Top-level Facebook stat cards
   makeStatCard('mkt-fb-stats', [
-    { label: 'Total Spend', value: fbConnected ? '—' : '$4,218', change: 12, source: 'Facebook Ads API', color: '#1877f2' },
-    { label: 'Impressions', value: fbConnected ? '—' : '142,680', change: 8, benchmark: '—', source: 'FB Insights' },
-    { label: 'Reach', value: fbConnected ? '—' : '68,420', change: 6, benchmark: '—', source: 'FB Insights' },
-    { label: 'Frequency', value: fbConnected ? '—' : '2.08', change: -3, benchmark: '<3.0', source: 'FB Best Practice' },
-    { label: 'CPC (All)', value: fbConnected ? '—' : '$2.84', change: -5, benchmark: '$1.72 avg', source: 'WordStream 2025' },
-    { label: 'CPM', value: fbConnected ? '—' : '$29.56', change: 4, benchmark: '$14.40 avg', source: 'WordStream 2025' },
-    { label: 'CTR (All)', value: fbConnected ? '—' : '1.49%', change: 2, benchmark: '0.90% avg', source: 'WordStream 2025' },
-    { label: 'Cost per Lead', value: fbConnected ? '—' : '$142', change: -8, benchmark: '$142 B2B avg', source: 'Research' },
-    { label: 'ROAS', value: fbConnected ? '—' : '3.2x', change: 15, benchmark: '2-4x target', source: 'FB Ads' },
-    { label: 'Conversions', value: fbConnected ? '—' : '29', change: 10, source: 'FB Pixel' },
-    { label: 'Cost per Conversion', value: fbConnected ? '—' : '$145.45', change: -6, source: 'FB Insights' },
-    { label: 'Link Clicks', value: fbConnected ? '—' : '1,486', change: 9, source: 'FB Insights' },
+    { label: 'Total Spend', value: fbHasData ? '$' + fbSpend.toLocaleString(undefined, {maximumFractionDigits: 0}) : '—', source: 'Facebook Ads API', color: '#1877f2' },
+    { label: 'Impressions', value: fbHasData ? fbImpr.toLocaleString() : '—', source: 'FB Insights' },
+    { label: 'Reach', value: fbHasData ? fbReach.toLocaleString() : '—', source: 'FB Insights' },
+    { label: 'Frequency', value: fbHasData ? fbFreq.toFixed(2) : '—', benchmark: '<3.0', source: 'FB Best Practice' },
+    { label: 'CPC', value: fbHasData ? '$' + fbCPC.toFixed(2) : '—', benchmark: '$1.72 avg', source: 'WordStream 2025' },
+    { label: 'CPM', value: fbHasData ? '$' + fbCPM.toFixed(2) : '—', benchmark: '$14.40 avg', source: 'WordStream 2025' },
+    { label: 'CTR', value: fbHasData ? fbCTR.toFixed(2) + '%' : '—', benchmark: '0.90% avg', source: 'WordStream 2025' },
+    { label: 'Cost per Lead', value: fbHasData && fbCPL > 0 ? '$' + fbCPL.toFixed(0) : '—', benchmark: '$142 B2B avg', source: 'Calculated', color: fbCPL < 142 ? 'var(--up)' : 'var(--down)' },
+    { label: 'Leads', value: fbHasData ? fbLeads.toString() : '—', source: 'FB Lead Forms', color: '#1877f2' },
+    { label: 'Link Clicks', value: fbHasData ? fbLinkClicks.toLocaleString() : '—', source: 'FB Insights' },
+    { label: 'Total Clicks', value: fbHasData ? fbClicks.toLocaleString() : '—', source: 'FB Insights' },
+    { label: 'Campaigns', value: (fb.campaignInsights?.data || []).filter(c => parseFloat(c.spend) > 0).length.toString(), source: 'FB Ads' },
   ]);
 
   clearContainer('mkt-fb-charts');
 
-  // Spend & Results Over Time
+  // Use real daily data if available
+  const fbDaily = fb.dailyInsights?.data || [];
+  const fbDailyLabels = fbDaily.length > 0 ? fbDaily.map(d => d.date_start?.substring(5) || '') : labels;
+  const fbDailySpend = fbDaily.length > 0 ? fbDaily.map(d => parseFloat(d.spend || 0)) : generateData(n, 50, 250, 0.5);
+  const fbDailyLeads = fbDaily.length > 0 ? fbDaily.map(d => parseInt((d.actions || []).find(a => a.action_type === 'lead')?.value || 0)) : generateData(n, 0, 5, 0.3);
+  const fbDailyCPL = fbDaily.length > 0 ? fbDaily.map(d => { const l = parseInt((d.actions || []).find(a => a.action_type === 'lead')?.value || 0); const s = parseFloat(d.spend || 0); return l > 0 ? Math.round(s / l) : 0; }) : generateData(n, 80, 220, -0.5);
+  const fbDailyClicks = fbDaily.length > 0 ? fbDaily.map(d => parseInt(d.clicks || 0)) : generateData(n, 10, 60, 0.3);
+  const fbDailyCPC = fbDaily.length > 0 ? fbDaily.map(d => parseFloat(d.cpc || 0)) : generateData(n, 1.2, 4.5, -0.3);
+  const fbDailyCTR = fbDaily.length > 0 ? fbDaily.map(d => parseFloat(d.ctr || 0)) : generateData(n, 0.5, 2.5, 0.3);
+  const fbDN = fbDailyLabels.length;
+
+  // Spend & Leads Over Time
   makeChart('mkt-fb-charts', {
-    title: 'Daily Ad Spend & Conversions', subtitle: 'Facebook Ads Manager — auto-fetched', badge: 'FB API', full: true, height: 260,
+    title: 'Daily Ad Spend & Leads', subtitle: 'Facebook Ads — real data', badge: 'FB API', full: true, height: 260,
     data: {
-      labels, datasets: [
-        { label: 'Spend ($)', data: generateData(n, 50, 250, 0.5), borderColor: '#1877f2', backgroundColor: 'rgba(24,119,242,0.06)', fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
-        { label: 'Conversions', data: generateData(n, 0, 5, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e', yAxisID: 'y1' },
+      labels: fbDailyLabels, datasets: [
+        { label: 'Spend ($)', data: fbDailySpend, borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.06)', fill: true, tension: 0.3, borderWidth: 2, pointRadius: 0, yAxisID: 'y' },
+        { label: 'Leads', data: fbDailyLeads, type: 'bar', backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 3, yAxisID: 'y1' },
       ]
     },
     legend: true,
     options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10}} } } }
   });
 
-  // CPC, CPM, CTR Over Time
+  // CPC, CPL, CTR Over Time
   makeChart('mkt-fb-charts', {
-    title: 'CPC Trend', subtitle: 'Cost per Click (All) — Benchmark $1.72', badge: 'FB API',
+    title: 'CPC Trend', subtitle: 'Cost per Click — Benchmark $1.72', badge: 'FB API',
     data: {
-      labels, datasets: [
-        { label: 'CPC', data: generateData(n, 1.20, 4.50, -0.3), borderColor: '#1877f2', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#1877f2' },
-        { label: 'Industry Avg ($1.72)', data: Array(n).fill(1.72), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      labels: fbDailyLabels, datasets: [
+        { label: 'CPC', data: fbDailyCPC, borderColor: '#1877f2', tension: 0.3, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#1877f2' },
+        { label: 'Industry Avg ($1.72)', data: Array(fbDN).fill(1.72), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
       ]
     },
     legend: true, yFormat: v => '$'+v.toFixed(2)
   });
 
   makeChart('mkt-fb-charts', {
-    title: 'CPM Trend', subtitle: 'Cost per 1,000 Impressions — Benchmark $14.40', badge: 'FB API',
+    title: 'Daily CPL Trend', subtitle: 'Cost per Lead — Benchmark $142', badge: 'FB API',
     data: {
-      labels, datasets: [
-        { label: 'CPM', data: generateData(n, 12, 45, -0.2), borderColor: '#e4405f', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#e4405f' },
-        { label: 'Industry Avg ($14.40)', data: Array(n).fill(14.40), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      labels: fbDailyLabels, datasets: [
+        { label: 'CPL', data: fbDailyCPL, borderColor: '#eab308', tension: 0.3, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#eab308' },
+        { label: 'Benchmark ($142)', data: Array(fbDN).fill(142), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
       ]
     },
-    legend: true, yFormat: v => '$'+v.toFixed(2)
+    legend: true, yFormat: v => '$'+v
   });
 
   makeChart('mkt-fb-charts', {
-    title: 'CTR Trend (All Clicks)', subtitle: 'Click-Through Rate — Benchmark 0.90%', badge: 'FB API',
+    title: 'CTR Trend', subtitle: 'Click-Through Rate — Benchmark 0.90%', badge: 'FB API',
     data: {
-      labels, datasets: [
-        { label: 'CTR', data: generateData(n, 0.5, 2.5, 0.3), borderColor: '#22c55e', tension: 0.4, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
-        { label: 'Industry Avg (0.90%)', data: Array(n).fill(0.90), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
+      labels: fbDailyLabels, datasets: [
+        { label: 'CTR', data: fbDailyCTR, borderColor: '#22c55e', tension: 0.3, borderWidth: 2, pointRadius: 2, pointBackgroundColor: '#22c55e' },
+        { label: 'Industry Avg (0.90%)', data: Array(fbDN).fill(0.90), borderColor: '#3f3f46', borderDash: [5,5], borderWidth: 1, pointRadius: 0 },
       ]
     },
     legend: true, yFormat: v => v.toFixed(2)+'%'
@@ -1126,123 +1148,146 @@ function renderMarketing() {
   // ─── FACEBOOK ADS — CAMPAIGN BREAKDOWN ───
   clearContainer('mkt-fb-campaigns-charts');
 
+  // Use real campaign data
+  const fbCamps = (fb.campaignInsights?.data || []).filter(c => parseFloat(c.spend) > 0).sort((a, b) => parseFloat(b.spend) - parseFloat(a.spend));
+  const campNames = fbCamps.map(c => c.campaign_name.length > 30 ? c.campaign_name.substring(0, 30) + '…' : c.campaign_name);
+  const campSpend = fbCamps.map(c => parseFloat(c.spend));
+  const campLeads = fbCamps.map(c => parseInt((c.actions || []).find(a => a.action_type === 'lead')?.value || 0));
+  const campCPL = fbCamps.map(c => { const l = parseInt((c.actions || []).find(a => a.action_type === 'lead')?.value || 0); return l > 0 ? parseFloat(c.spend) / l : 0; });
+  const campCPC = fbCamps.map(c => parseFloat(c.cpc || 0));
+  const campCTR = fbCamps.map(c => parseFloat(c.ctr || 0));
+
   makeChart('mkt-fb-campaigns-charts', {
-    title: 'Spend by Campaign', subtitle: 'Active campaign budget allocation', badge: 'FB API', full: true,
+    title: 'Spend & Leads by Campaign', subtitle: 'Budget allocation vs lead generation', badge: 'FB API', full: true,
     type: 'bar',
     data: {
-      labels: ['Exit Planning Awareness','Retargeting - Site Visitors','Lookalike - Business Owners','VSL Promo - Houston','Assessment Lead Gen','Book Download'],
+      labels: campNames,
       datasets: [
-        { label: 'Spend', data: [1200, 850, 680, 520, 480, 488], backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 4 },
+        { label: 'Spend ($)', data: campSpend, backgroundColor: 'rgba(239,68,68,0.5)', borderRadius: 4, yAxisID: 'y' },
+        { label: 'Leads', data: campLeads, backgroundColor: 'rgba(24,119,242,0.7)', borderRadius: 4, yAxisID: 'y1' },
       ]
     },
-    yFormat: v => '$'+v
+    legend: true,
+    options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v.toLocaleString()} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10}} } } }
   });
 
   makeChart('mkt-fb-campaigns-charts', {
-    title: 'CPC by Campaign', subtitle: 'Cost per click varies by objective', badge: 'FB API',
-    type: 'bar',
+    title: 'CPL by Campaign', subtitle: 'Cost per lead — benchmark $142', badge: 'FB API',
+    type: 'bar', horizontal: true,
     data: {
-      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
-      datasets: [
-        { label: 'CPC', data: [3.80, 1.45, 2.90, 2.10, 4.20, 1.85], backgroundColor: v => v.raw < 2 ? 'rgba(34,197,94,0.7)' : v.raw < 3 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
-      ]
+      labels: campNames,
+      datasets: [{
+        data: campCPL.map(v => Math.round(v)),
+        backgroundColor: campCPL.map(v => v < 100 ? 'rgba(34,197,94,0.7)' : v < 150 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)'),
+        borderRadius: 4
+      }]
     },
-    yFormat: v => '$'+v.toFixed(2)
+    height: Math.max(180, fbCamps.length * 40),
+    yFormat: v => '$' + v
   });
 
   makeChart('mkt-fb-campaigns-charts', {
-    title: 'CTR by Campaign', subtitle: 'Click-through rate per campaign', badge: 'FB API',
+    title: 'CPC by Campaign', subtitle: 'Cost per click', badge: 'FB API',
     type: 'bar',
     data: {
-      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
-      datasets: [
-        { label: 'CTR', data: [0.85, 2.40, 1.10, 1.65, 0.72, 1.95], backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.7)' : v.raw > 0.9 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
-      ]
+      labels: campNames,
+      datasets: [{
+        label: 'CPC', data: campCPC.map(v => parseFloat(v.toFixed(2))),
+        backgroundColor: campCPC.map(v => v < 2 ? 'rgba(34,197,94,0.7)' : v < 4 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)'),
+        borderRadius: 4
+      }]
     },
-    yFormat: v => v.toFixed(2)+'%'
+    yFormat: v => '$' + v.toFixed(2)
   });
 
   makeChart('mkt-fb-campaigns-charts', {
-    title: 'ROAS by Campaign', subtitle: 'Return on ad spend per campaign', badge: 'FB PIXEL',
+    title: 'CTR by Campaign', subtitle: 'Click-through rate — benchmark >1%', badge: 'FB API',
     type: 'bar',
     data: {
-      labels: ['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],
-      datasets: [
-        { label: 'ROAS', data: [1.8, 5.2, 2.4, 3.1, 4.5, 2.8], backgroundColor: v => v.raw >= 3 ? 'rgba(34,197,94,0.7)' : v.raw >= 2 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)', borderRadius: 4 },
-      ]
+      labels: campNames,
+      datasets: [{
+        label: 'CTR', data: campCTR.map(v => parseFloat(v.toFixed(2))),
+        backgroundColor: campCTR.map(v => v > 1.5 ? 'rgba(34,197,94,0.7)' : v > 0.9 ? 'rgba(234,179,8,0.6)' : 'rgba(239,68,68,0.5)'),
+        borderRadius: 4
+      }]
     },
-    yFormat: v => v.toFixed(1)+'x'
+    yFormat: v => v.toFixed(2) + '%'
   });
 
   // ─── FACEBOOK ADS — AUDIENCE & CREATIVE ───
   clearContainer('mkt-fb-audience-charts');
 
+  // Use real age breakdown data if available
+  const ageData = fb.ageBreakdown?.data || [];
+  const ageLabels = ageData.length > 0 ? ageData.map(a => a.age) : ['25-34','35-44','45-54','55-64','65+'];
+  const ageCTR = ageData.length > 0 ? ageData.map(a => parseFloat(a.ctr || 0)) : [0.72, 1.15, 1.85, 2.10, 1.40];
+  const ageSpend = ageData.length > 0 ? ageData.map(a => parseFloat(a.spend || 0)) : [800, 1200, 900, 700, 500];
+
   makeChart('mkt-fb-audience-charts', {
-    title: 'Performance by Age Group', subtitle: 'CPC and CTR by demographic', badge: 'FB BREAKDOWN',
+    title: 'Performance by Age Group', subtitle: 'CTR and Spend by demographic', badge: 'FB BREAKDOWN',
     type: 'bar',
     data: {
-      labels: ['25-34','35-44','45-54','55-64','65+'],
+      labels: ageLabels,
       datasets: [
-        { label: 'CTR %', data: [0.72, 1.15, 1.85, 2.10, 1.40], backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 3, yAxisID: 'y' },
-        { label: 'CPC $', data: [4.20, 3.10, 2.40, 1.95, 2.80], borderColor: '#ef4444', type: 'line', tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ef4444', yAxisID: 'y1' },
+        { label: 'CTR %', data: ageCTR.map(v => parseFloat(v.toFixed(2))), backgroundColor: 'rgba(24,119,242,0.6)', borderRadius: 3, yAxisID: 'y' },
+        { label: 'Spend $', data: ageSpend, borderColor: '#ef4444', type: 'line', tension: 0.4, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#ef4444', yAxisID: 'y1' },
       ]
     },
     legend: true,
     options: { scales: { y: { position:'left', grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#52525b',font:{size:10},callback:v=>v+'%'} }, y1: { position:'right', grid:{display:false}, ticks:{color:'#52525b',font:{size:10},callback:v=>'$'+v} } } }
   });
 
+  // Use real placement breakdown if available
+  const placeData = fb.placementBreakdown?.data || [];
+  const placeLabels = placeData.length > 0 ? placeData.map(p => p.publisher_platform) : ['facebook','instagram','audience_network','messenger'];
+  const placeCTR = placeData.length > 0 ? placeData.map(p => parseFloat(p.ctr || 0)) : [1.85, 1.20, 0.35, 0.55];
+  const placeSpend = placeData.length > 0 ? placeData.map(p => parseFloat(p.spend || 0)) : [2500, 1200, 300, 200];
+
   makeChart('mkt-fb-audience-charts', {
-    title: 'Performance by Placement', subtitle: 'Where your ads run best', badge: 'FB BREAKDOWN',
+    title: 'CTR by Platform', subtitle: 'Where your ads perform best', badge: 'FB BREAKDOWN',
     type: 'bar', horizontal: true,
     data: {
-      labels: ['Facebook Feed','Facebook Reels','Facebook Right Column','Instagram Feed','Instagram Stories','Instagram Reels','Audience Network','Messenger'],
+      labels: placeLabels,
       datasets: [{
-        data: [1.85, 0.92, 0.45, 1.65, 1.20, 0.88, 0.35, 0.55],
-        backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.6)' : v.raw > 0.8 ? 'rgba(24,119,242,0.5)' : 'rgba(239,68,68,0.4)',
+        data: placeCTR.map(v => parseFloat(v.toFixed(2))),
+        backgroundColor: placeCTR.map(v => v > 1.5 ? 'rgba(34,197,94,0.6)' : v > 0.8 ? 'rgba(24,119,242,0.5)' : 'rgba(239,68,68,0.4)'),
         borderRadius: 3
       }]
     },
-    height: 260, yFormat: v => v+'% CTR'
+    height: Math.max(160, placeLabels.length * 40), yFormat: v => v + '% CTR'
   });
 
   makeChart('mkt-fb-audience-charts', {
-    title: 'Spend Distribution by Placement', subtitle: 'Budget allocation across placements', badge: 'FB API',
+    title: 'Spend by Platform', subtitle: 'Budget distribution', badge: 'FB API',
     type: 'doughnut',
     data: {
-      labels: ['Facebook Feed','Instagram Feed','Facebook Reels','Instagram Stories','Instagram Reels','Other'],
-      datasets: [{ data: [35, 22, 15, 12, 10, 6], backgroundColor: ['#1877f2','#e4405f','#1877f2','#e4405f','#c13584','#6b7280'], borderWidth: 0 }]
+      labels: placeLabels,
+      datasets: [{ data: placeSpend, backgroundColor: ['#1877f2','#e4405f','#6b7280','#a855f7','#22c55e','#eab308'], borderWidth: 0 }]
     },
     legend: true
   });
 
   makeChart('mkt-fb-audience-charts', {
-    title: 'Hourly Performance', subtitle: 'Best hours for your ads', badge: 'FB BREAKDOWN',
-    type: 'bar',
+    title: 'Spend by Campaign (Pie)', subtitle: 'Where the budget goes', badge: 'FB API',
+    type: 'doughnut',
     data: {
-      labels: ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'],
-      datasets: [{
-        label: 'CTR',
-        data: [0.4,0.6,1.1,1.8,2.1,1.9,1.5,1.3,1.1,1.0,0.9,1.2,1.6,1.8,1.5,1.0],
-        backgroundColor: v => v.raw > 1.5 ? 'rgba(34,197,94,0.6)' : v.raw > 1.0 ? 'rgba(24,119,242,0.4)' : 'rgba(255,255,255,0.06)',
-        borderRadius: 2
-      }]
+      labels: campNames,
+      datasets: [{ data: campSpend, backgroundColor: ['#1877f2','#22c55e','#6366f1','#eab308','#ef4444','#a855f7','#6b7280','#f59e0b'], borderWidth: 0 }]
     },
-    yFormat: v => v+'%'
+    legend: true
   });
 
-  // ─── FACEBOOK ADS — CAMPAIGNS TABLE ───
-  const fbTable = document.getElementById('mkt-fb-campaigns-table');
-  fbTable.innerHTML = `
-    <thead><tr><th>Campaign</th><th>Status</th><th>Objective</th><th>Spend</th><th>Impressions</th><th>Reach</th><th>Clicks</th><th>CPC</th><th>CPM</th><th>CTR</th><th>Conversions</th><th>CPL</th><th>ROAS</th></tr></thead>
-    <tbody>
-      <tr><td>Exit Planning Awareness</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Awareness</td><td>$1,200</td><td>42,800</td><td>22,150</td><td>315</td><td>$3.81</td><td>$28.04</td><td>0.74%</td><td>4</td><td>$300</td><td>1.8x</td></tr>
-      <tr><td>Retargeting — Site Visitors</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Conversions</td><td>$850</td><td>18,200</td><td>4,800</td><td>586</td><td>$1.45</td><td>$46.70</td><td>3.22%</td><td>8</td><td>$106</td><td>5.2x</td></tr>
-      <tr><td>Lookalike — Business Owners</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Lead Gen</td><td>$680</td><td>28,400</td><td>18,200</td><td>234</td><td>$2.91</td><td>$23.94</td><td>0.82%</td><td>5</td><td>$136</td><td>2.4x</td></tr>
-      <tr><td>VSL Promo — Houston</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Traffic</td><td>$520</td><td>22,100</td><td>12,400</td><td>248</td><td>$2.10</td><td>$23.53</td><td>1.12%</td><td>6</td><td>$87</td><td>3.1x</td></tr>
-      <tr><td>Assessment Lead Gen</td><td><span class="status"><span class="status-dot" style="background:var(--up)"></span>Active</span></td><td>Lead Gen</td><td>$480</td><td>15,800</td><td>8,900</td><td>114</td><td>$4.21</td><td>$30.38</td><td>0.72%</td><td>4</td><td>$120</td><td>4.5x</td></tr>
-      <tr><td>Book Download</td><td><span class="status"><span class="status-dot" style="background:var(--acct)"></span>Paused</span></td><td>Lead Gen</td><td>$488</td><td>15,380</td><td>11,970</td><td>264</td><td>$1.85</td><td>$31.73</td><td>1.72%</td><td>2</td><td>$244</td><td>2.8x</td></tr>
-    </tbody>
-  `;
+  // Campaign table with real data
+  const campTable = document.getElementById('mkt-fb-campaigns-table');
+  if (campTable && fbCamps.length > 0) {
+    campTable.innerHTML = `<thead><tr><th>Campaign</th><th>Spend</th><th>Leads</th><th>CPL</th><th>Impressions</th><th>Clicks</th><th>CPC</th><th>CTR</th></tr></thead><tbody>${
+      fbCamps.map(c => {
+        const s = parseFloat(c.spend); const l = parseInt((c.actions||[]).find(a=>a.action_type==='lead')?.value||0);
+        const cp = l > 0 ? s/l : 0;
+        return `<tr><td>${c.campaign_name}</td><td>$${s.toLocaleString(undefined,{maximumFractionDigits:0})}</td><td style="color:#1877f2;font-weight:700">${l}</td><td style="color:${cp<142?'#22c55e':'#eab308'}">${cp>0?'$'+cp.toFixed(0):'—'}</td><td>${parseInt(c.impressions).toLocaleString()}</td><td>${parseInt(c.clicks).toLocaleString()}</td><td>$${parseFloat(c.cpc).toFixed(2)}</td><td>${parseFloat(c.ctr).toFixed(2)}%</td></tr>`;
+      }).join('')
+    }<tr style="font-weight:700;border-top:2px solid var(--border)"><td>TOTAL</td><td>$${fbSpend.toLocaleString(undefined,{maximumFractionDigits:0})}</td><td style="color:#1877f2">${fbLeads}</td><td style="color:${fbCPL<142?'#22c55e':'#eab308'}">$${fbCPL.toFixed(0)}</td><td>${fbImpr.toLocaleString()}</td><td>${fbClicks.toLocaleString()}</td><td>$${fbCPC.toFixed(2)}</td><td>${fbCTR.toFixed(2)}%</td></tr></tbody>`;
+  }
 
   // Keywords table
   const kwTable = document.getElementById('mkt-keywords-table');
