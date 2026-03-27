@@ -1796,15 +1796,10 @@
   </div>
 
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <button class="fb-range" data-r="7d">7D</button>
-    <button class="fb-range active" data-r="30d">30D</button>
-    <button class="fb-range" data-r="90d">90D</button>
-    <button class="fb-range" data-r="ytd">YTD</button>
-    <span style="color:var(--text-dim);font-size:10px;margin:0 4px">|</span>
-    <input type="date" id="fb-from" style="padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px">
-    <span style="color:var(--text-dim);font-size:10px">to</span>
-    <input type="date" id="fb-to" style="padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px">
-    <button id="fb-refresh" style="padding:4px 12px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:10px;cursor:pointer;font-weight:700">↻ Refresh</button>
+    <input type="date" id="fb-from" style="padding:5px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:11px">
+    <span style="color:var(--text-dim);font-size:11px">to</span>
+    <input type="date" id="fb-to" style="padding:5px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:11px">
+    <button id="fb-refresh" style="padding:5px 14px;border-radius:4px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:11px;cursor:pointer;font-weight:700">↻ Refresh</button>
     <span id="fb-last-up" style="font-size:9px;color:var(--text-dim);margin-left:auto"></span>
   </div>
 
@@ -2150,7 +2145,7 @@
     try {
       let from = document.getElementById('fb-from')?.value;
       let to = document.getElementById('fb-to')?.value;
-      if (!from||!to) { const d=fbDateRange(fbAdsRange); from=d.from; to=d.to; }
+      if (!from||!to) { const now=new Date();to=now.toISOString().split('T')[0];from=new Date(now-30*864e5).toISOString().split('T')[0];const fEl=document.getElementById('fb-from');const tEl=document.getElementById('fb-to');if(fEl)fEl.value=from;if(tEl)tEl.value=to; }
       const p = new URLSearchParams({access_token:FB_ADS_TOKEN,...params});
       if (!skipTR) p.set('time_range', JSON.stringify({since:from,until:to}));
       const r = await fetch(`${FB_GRAPH_URL}/${FB_AD_ACCT}${ep}?${p}`);
@@ -2286,17 +2281,7 @@
   }
 
   // FB Ads event listeners
-  document.querySelectorAll('.fb-range').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    fbAdsRange = b.dataset.r;
-    const dr = fbDateRange(fbAdsRange);
-    const fromEl = document.getElementById('fb-from');
-    const toEl = document.getElementById('fb-to');
-    if (fromEl) fromEl.value = dr.from;
-    if (toEl) toEl.value = dr.to;
-    loadFBAds();
-  }));
+  // Calendar-driven date changes
   document.getElementById('fb-refresh')?.addEventListener('click', loadFBAds);
   document.getElementById('fb-from')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
   document.getElementById('fb-to')?.addEventListener('change', ()=>{document.querySelectorAll('.fb-range').forEach(x=>x.classList.remove('active'));loadFBAds()});
