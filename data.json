@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-27T02:10:46.958947+00:00",
-  "updated_local": "2026-03-26 09:10 PM",
+  "updated": "2026-03-27T02:25:58.993161+00:00",
+  "updated_local": "2026-03-26 09:25 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,20 +88,20 @@
     "week": {
       "users": 138,
       "sessions": 170,
-      "pageviews": 288,
+      "pageviews": 289,
       "avg_duration": 157.7,
       "conversions": 0
     },
     "month": {
       "users": 138,
       "sessions": 170,
-      "pageviews": 288,
+      "pageviews": 289,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 143,
+        "views": 144,
         "users": 88
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 125,
-        "users": 113
+        "sessions": 126,
+        "users": 114
       },
       {
         "source": "vivianashford.github.io",
@@ -250,7 +250,7 @@
     },
     "funnel": {
       "/": {
-        "views": 143,
+        "views": 144,
         "users": 88,
         "avg_duration": 101.1
       },
@@ -330,7 +330,7 @@
         "date": "2026-03-26",
         "users": 13,
         "sessions": 14,
-        "pageviews": 12
+        "pageviews": 13
       }
     ],
     "devices": [
@@ -420,11 +420,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 288
+        "count": 289
       },
       {
         "event": "session_start",
-        "count": 166
+        "count": 167
       },
       {
         "event": "scroll",
@@ -436,7 +436,7 @@
       },
       {
         "event": "first_visit",
-        "count": 135
+        "count": 136
       },
       {
         "event": "scroll_depth",
@@ -477,8 +477,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 113,
-        "sessions": 125
+        "users": 114,
+        "sessions": 126
       },
       {
         "campaign": "(referral)",
