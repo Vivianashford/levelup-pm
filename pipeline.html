@@ -353,7 +353,8 @@ function clr(id){const el=$(id);if(el)el.innerHTML=''}
 async function fbFetch(ep,params={}){
   if(!FB_TOKEN||!FB_ACCT)return null;
   try{
-    const{from,to}=rangeDate(range);
+    let from=$('df').value, to=$('dt').value;
+    if(!from||!to){const rd=rangeDate(range);from=rd.from;to=rd.to}
     const p=new URLSearchParams({access_token:FB_TOKEN,time_range:JSON.stringify({since:from,until:to}),...params});
     const r=await fetch(`${FB_GRAPH}/${FB_ACCT}${ep}?${p}`);
     if(!r.ok)throw new Error(r.status);return await r.json();
@@ -485,17 +486,33 @@ function metrics(){
 // RENDER PAGES
 // ═══════════════════════════════════════
 
+function fbMetrics(){
+  const ins=fbCache.insights?.data?.[0]||{};
+  const spend=parseFloat(ins.spend||0);
+  const impr=parseInt(ins.impressions||0);
+  const clicks=parseInt(ins.clicks||0);
+  const cpc=parseFloat(ins.cpc||0);
+  const ctr=parseFloat(ins.ctr||0);
+  const leads=parseInt((ins.actions||[]).find(a=>a.action_type==='lead')?.value||0);
+  const cpl=leads>0?spend/leads:0;
+  const camps=(fbCache.campaignInsights?.data||[]).map(c=>{
+    const cLeads=parseInt((c.actions||[]).find(a=>a.action_type==='lead')?.value||0);
+    return{name:c.campaign_name,spend:parseFloat(c.spend||0),impressions:parseInt(c.impressions||0),clicks:parseInt(c.clicks||0),cpc:parseFloat(c.cpc||0),ctr:parseFloat(c.ctr||0),leads:cLeads,cpl:cLeads>0?parseFloat(c.spend)/cLeads:0};
+  }).filter(c=>c.spend>0).sort((a,b)=>b.spend-a.spend);
+  return{spend,impr,clicks,cpc,ctr,leads,cpl,camps};
+}
 function renderOverview(){
-  const m=metrics();const L=labels(range);const n=L.length;
+  const m=metrics();const fb=fbMetrics();const L=labels(range);const n=L.length;
+  const fbLeads=fb.leads||m.fbLeads;const fbCPL=fb.cpl||m.cpl;const fbSpend=fb.spend||m.fbSpend;
   ms('ov-stats',[
-    {l:'Total Leads',v:m.totalLeads,ch:8,s:'FB + GHL + Manual',c:'var(--t)'},
-    {l:'Facebook Leads',v:m.fbLeads,ch:12,s:'Facebook API',c:'var(--fb)'},
-    {l:'Deals in Pipeline',v:deals.length,s:'Manual Entry'},
+    {l:'Total Leads',v:fbLeads+deals.filter(d=>d.source!=='Facebook Ads').length,s:'FB + Manual',c:'var(--t)'},
+    {l:'Facebook Leads',v:fbLeads,s:'Facebook API',c:'var(--fb)'},
+    {l:'FB Ad Spend',v:'$'+fbSpend.toLocaleString(undefined,{maximumFractionDigits:0}),s:'Facebook API',c:'var(--dn)'},
     {l:'Closed Won',v:m.closedDeals.length,s:'Manual Entry',c:'var(--up)'},
-    {l:'Total Revenue',v:'$'+m.totalRevenue.toLocaleString(),ch:15,s:'Manual Entry'},
-    {l:'Cost per Lead (FB)',v:'$'+m.cpl.toFixed(0),ch:-8,b:'$142 B2B avg',s:'Calculated'},
-    {l:'Cost per Close',v:m.cpc>0?'$'+m.cpc.toFixed(0):'—',s:'Calculated'},
-    {l:'Win Rate',v:m.winRate.toFixed(0)+'%',b:'47-62%',s:'RAIN Group'},
+    {l:'Total Revenue',v:'$'+m.totalRevenue.toLocaleString(),s:'Manual Entry'},
+    {l:'Cost per Lead (FB)',v:'$'+fbCPL.toFixed(0),b:'$142 B2B avg',s:'Facebook API',c:fbCPL<142?'var(--up)':'var(--warn)'},
+    {l:'FB CPC',v:'$'+fb.cpc.toFixed(2),s:'Facebook API'},
+    {l:'FB CTR',v:fb.ctr.toFixed(2)+'%',b:'>1%',s:'Facebook API'},
   ]);
   clr('ov-charts');
   mc('ov-charts',{title:'Leads vs Closes Over Time',sub:'Facebook leads in, closed deals out',badge:'ALL SOURCES',full:true,h:240,
@@ -517,17 +534,24 @@ function renderOverview(){
     ]},legend:true,yFmt:v=>'$'+v
   });
   clr('ov-funnel');
-  mc('ov-funnel',{title:'Pipeline by Stage',sub:'Current deal distribution',badge:'MANUAL',
+  const campNames=fb.camps.map(c=>c.name.length>30?c.name.substring(0,30)+'…':c.name);
+  mc('ov-funnel',{title:'Spend & Leads by Campaign',sub:'Active campaigns from Facebook Ads',badge:'FB API',full:true,
+    type:'bar',data:{labels:campNames,datasets:[
+      {label:'Spend ($)',data:fb.camps.map(c=>c.spend),backgroundColor:'rgba(239,68,68,.5)',borderRadius:3,yAxisID:'y'},
+      {label:'Leads',data:fb.camps.map(c=>c.leads),backgroundColor:'rgba(24,119,242,.8)',borderRadius:3,yAxisID:'y1'},
+    ]},legend:true,
+    opts:{scales:{y:{position:'left',grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:9},callback:v=>'$'+v.toLocaleString()}},y1:{position:'right',grid:{display:false},ticks:{color:'#52525b',font:{size:9}}}}}
+  });
+  mc('ov-funnel',{title:'CPL by Campaign',sub:'Cost per lead — lower is better',badge:'FB API',
+    type:'bar',horiz:true,data:{labels:campNames,datasets:[{
+      data:fb.camps.map(c=>Math.round(c.cpl)),backgroundColor:fb.camps.map(c=>c.cpl<100?'rgba(34,197,94,.7)':c.cpl<150?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)'),borderRadius:3
+    }]},yFmt:v=>'$'+v
+  });
+  mc('ov-funnel',{title:'Pipeline by Stage',sub:'Manual deal tracking',badge:'MANUAL',
     type:'bar',data:{labels:['New Lead','Discovery Call','Qualification','Proposal Sent','Negotiation','Closed Won','Closed Lost'],datasets:[{
       data:['New Lead','Discovery Call','Qualification','Proposal Sent','Negotiation','Closed Won','Closed Lost'].map(s=>deals.filter(d=>d.stage===s).length),
       backgroundColor:['#3b82f6','#6366f1','#a855f7','#eab308','#f59e0b','#22c55e','#ef4444'],borderRadius:4
     }]}
-  });
-  mc('ov-funnel',{title:'Revenue by Source',sub:'Where closed revenue originates',badge:'MANUAL',
-    type:'doughnut',data:{labels:['Facebook Ads','Referral','LinkedIn','Organic','Cold Outreach','Other'],datasets:[{
-      data:['Facebook Ads','Referral','LinkedIn','Organic/Inbound','Cold Outreach','Other'].map(s=>deals.filter(d=>d.source===s&&d.stage==='Closed Won').reduce((a,d)=>a+d.value,0)||[4200,2800,1500,800,400,300]['Facebook Ads,Referral,LinkedIn,Organic/Inbound,Cold Outreach,Other'.split(',').indexOf(s)]),
-      backgroundColor:['#1877f2','#22c55e','#6366f1','#eab308','#ef4444','#6b7280'],borderWidth:0
-    }]},legend:true
   });
   // Recent activity table
   const all=[...deals.map(d=>({...d,_type:'Deal'})),...calls.map(c=>({...c,_type:'Call',value:0}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,10);
@@ -535,16 +559,17 @@ function renderOverview(){
 }
 
 function renderFBLeads(){
-  const m=metrics();const L=labels(range);const n=L.length;
+  const m=metrics();const fb=fbMetrics();const L=labels(range);const n=L.length;
+  const fbLeads=fb.leads||m.fbLeads;const fbSpend=fb.spend||m.fbSpend||0;const fbCPL=fb.cpl||m.cpl;
   ms('fb-stats',[
-    {l:'Total FB Leads',v:m.fbLeads,ch:12,s:'Facebook API',c:'var(--fb)'},
-    {l:'FB Ad Spend',v:'$'+((m.fbSpend||4218).toLocaleString()),ch:5,s:'FB Insights'},
-    {l:'Cost per Lead',v:'$'+m.cpl.toFixed(0),ch:-8,b:'$142 B2B avg',s:'Calculated'},
-    {l:'Lead → Close Rate',v:m.fbClosed.length>0?(m.fbClosed.length/m.fbLeads*100).toFixed(1)+'%':'—',b:'2-5%',s:'Calculated'},
-    {l:'Cost per Close (FB)',v:m.fbCPC>0?'$'+m.fbCPC.toFixed(0):'—',s:'Calculated'},
-    {l:'FB ROAS',v:m.roas>0?m.roas.toFixed(1)+'x':'—',b:'3-4x target',s:'Calculated'},
-    {l:'FB Revenue',v:'$'+m.fbRevenue.toLocaleString(),s:'Manual Closes'},
-    {l:'Avg Lead Value',v:m.fbClosed.length>0?'$'+(m.fbRevenue/m.fbClosed.length).toLocaleString():'—',s:'Calculated'},
+    {l:'Total FB Leads',v:fbLeads,s:'Facebook API',c:'var(--fb)'},
+    {l:'FB Ad Spend',v:'$'+fbSpend.toLocaleString(undefined,{maximumFractionDigits:0}),s:'FB Insights'},
+    {l:'Cost per Lead',v:'$'+fbCPL.toFixed(0),b:'$142 B2B avg',s:'Facebook API',c:fbCPL<142?'var(--up)':'var(--warn)'},
+    {l:'Impressions',v:fb.impr.toLocaleString(),s:'Facebook API'},
+    {l:'Link Clicks',v:fb.clicks.toLocaleString(),s:'Facebook API'},
+    {l:'CPC',v:'$'+fb.cpc.toFixed(2),s:'Facebook API'},
+    {l:'CTR',v:fb.ctr.toFixed(2)+'%',b:'>1%',s:'Facebook API'},
+    {l:'Active Campaigns',v:fb.camps.length,s:'Facebook API'},
   ]);
   clr('fb-vol-charts');
   mc('fb-vol-charts',{title:'Daily Leads & Spend',sub:'Facebook lead form submissions + ad spend',badge:'FB API',full:true,h:240,
@@ -581,21 +606,19 @@ function renderFBLeads(){
     ]},yFmt:v=>v+'%'
   });
   clr('fb-camp-charts');
-  mc('fb-camp-charts',{title:'Campaign Spend vs Leads Generated',sub:'Efficiency comparison',badge:'FB API',full:true,
-    type:'bar',data:{labels:['Exit Awareness','Retargeting','Lookalike','VSL Houston','Assessment LG','Book DL'],datasets:[
-      {label:'Spend',data:[1200,850,680,520,480,488],backgroundColor:'rgba(239,68,68,.4)',borderRadius:3},
-      {label:'Leads',data:[3,8,5,6,4,2],backgroundColor:'rgba(24,119,242,.7)',borderRadius:3,yAxisID:'y1'},
+  const cn=fb.camps.map(c=>c.name.length>25?c.name.substring(0,25)+'…':c.name);
+  mc('fb-camp-charts',{title:'Campaign Spend vs Leads',sub:'Real data from Facebook Ads API',badge:'FB API',full:true,
+    type:'bar',data:{labels:cn,datasets:[
+      {label:'Spend ($)',data:fb.camps.map(c=>c.spend),backgroundColor:'rgba(239,68,68,.4)',borderRadius:3},
+      {label:'Leads',data:fb.camps.map(c=>c.leads),backgroundColor:'rgba(24,119,242,.7)',borderRadius:3,yAxisID:'y1'},
     ]},legend:true,
-    opts:{scales:{y:{position:'left',grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:9},callback:v=>'$'+v}},y1:{position:'right',grid:{display:false},ticks:{color:'#52525b',font:{size:9}}}}}
+    opts:{scales:{y:{position:'left',grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#52525b',font:{size:9},callback:v=>'$'+v.toLocaleString()}},y1:{position:'right',grid:{display:false},ticks:{color:'#52525b',font:{size:9}}}}}
   });
-  mc('fb-camp-charts',{title:'CTR by Campaign',sub:'Click-through rate',badge:'FB API',
-    type:'bar',data:{labels:['Exit Aware','Retarget','Lookalike','VSL','Assess','Book'],datasets:[{data:[.74,3.22,.82,1.12,.72,1.72],backgroundColor:v=>v.raw>1.5?'rgba(34,197,94,.7)':v.raw>.9?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)',borderRadius:4}]},yFmt:v=>v+'%'
+  mc('fb-camp-charts',{title:'CTR by Campaign',sub:'Click-through rate — benchmark >1%',badge:'FB API',
+    type:'bar',data:{labels:cn,datasets:[{data:fb.camps.map(c=>parseFloat(c.ctr.toFixed(2))),backgroundColor:fb.camps.map(c=>c.ctr>1.5?'rgba(34,197,94,.7)':c.ctr>.9?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)'),borderRadius:4}]},yFmt:v=>v+'%'
   });
-  mc('fb-camp-charts',{title:'Lead Form Completion Rate',sub:'Started vs completed',badge:'FB API',
-    type:'bar',data:{labels:['VSL Houston','Assessment','Book DL','Exit Aware','Retarget','Lookalike'],datasets:[
-      {label:'Started',data:[42,28,18,15,55,32],backgroundColor:'rgba(24,119,242,.3)',borderRadius:3},
-      {label:'Completed',data:[6,4,2,3,8,5],backgroundColor:'rgba(24,119,242,.8)',borderRadius:3},
-    ]},legend:true
+  mc('fb-camp-charts',{title:'CPC by Campaign',sub:'Cost per click — lower is better',badge:'FB API',
+    type:'bar',data:{labels:cn,datasets:[{data:fb.camps.map(c=>parseFloat(c.cpc.toFixed(2))),backgroundColor:fb.camps.map(c=>c.cpc<2?'rgba(34,197,94,.7)':c.cpc<4?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)'),borderRadius:4}]},yFmt:v=>'$'+v
   });
   $('fb-leads-table').innerHTML=`<thead><tr><th>Lead</th><th>Date</th><th>Campaign</th><th>Status</th><th>CPL</th><th>In Pipeline?</th></tr></thead><tbody>${
     deals.filter(d=>d.source==='Facebook Ads').map(d=>`<tr><td>${d.name}</td><td>${d.date}</td><td>${d.campaign||'—'}</td><td><span class="dot-s"><span style="background:${d.stage==='Closed Won'?'var(--up)':d.stage==='Closed Lost'?'var(--dn)':'var(--warn)'}"></span>${d.stage}</span></td><td>${d.cta?'$'+d.cta:'-'}</td><td>Yes</td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--tm);padding:20px">No Facebook deals logged yet — click "+ Log a Close"</td></tr>'
@@ -704,30 +727,34 @@ function renderPipeline(){
 }
 
 function renderUnitEcon(){
-  const m=metrics();const L=labels(range);const n=L.length;
-  const cplFB=m.cpl;const cpcAll=m.cpc;const fbCPC=m.fbCPC;
+  const m=metrics();const fb=fbMetrics();const L=labels(range);const n=L.length;
+  const fbSpend=fb.spend||m.fbSpend||0;const fbCPL=fb.cpl||m.cpl;
+  const fbClosed=m.fbClosed.length;const fbRevenue=m.fbRevenue;
+  const fbCPC_close=fbClosed>0?fbSpend/fbClosed:0;
+  const roas=fbSpend>0?fbRevenue/fbSpend:0;
+  const cpcAll=m.cpc;
   ms('ue-stats',[
-    {l:'FB Cost per Lead',v:'$'+cplFB.toFixed(0),ch:-8,b:'$142 B2B avg',s:'FB Spend / Leads',c:'var(--fb)'},
-    {l:'FB Cost per Close',v:fbCPC>0?'$'+fbCPC.toFixed(0):'—',s:'FB Spend / FB Closes',c:'var(--dn)'},
+    {l:'FB Cost per Lead',v:'$'+fbCPL.toFixed(0),b:'$142 B2B avg',s:'FB API: Spend / Leads',c:fbCPL<142?'var(--up)':'var(--warn)'},
+    {l:'FB Cost per Close',v:fbCPC_close>0?'$'+fbCPC_close.toFixed(0):'—',s:'FB Spend / FB Closes',c:'var(--dn)'},
     {l:'All-Source Cost/Close',v:cpcAll>0?'$'+cpcAll.toFixed(0):'—',b:'$2,500-5,000',s:'Total CTA / Closes'},
-    {l:'FB ROAS',v:m.roas>0?m.roas.toFixed(1)+'x':'—',b:'3-4x target',s:'Revenue / Spend',c:m.roas>=3?'var(--up)':'var(--warn)'},
+    {l:'FB ROAS',v:roas>0?roas.toFixed(1)+'x':'—',b:'3-4x target',s:'Revenue / Spend',c:roas>=3?'var(--up)':'var(--warn)'},
     {l:'LTV (Avg Deal)',v:m.closedDeals.length>0?'$'+Math.round(m.totalRevenue/m.closedDeals.length).toLocaleString():'—',b:'$75-500K',s:'Avg engagement value'},
     {l:'LTV:CAC Ratio',v:cpcAll>0&&m.closedDeals.length>0?((m.totalRevenue/m.closedDeals.length)/cpcAll).toFixed(1)+':1':'—',b:'>20:1',s:'Calculated'},
-    {l:'Break-even Deals',v:m.totalCTA>0?Math.ceil(m.totalCTA/(m.totalRevenue/Math.max(m.closedDeals.length,1))):'-',s:'CTA / Avg margin'},
-    {l:'Total FB Spend',v:'$'+(m.fbSpend||4218).toLocaleString(),s:'All campaigns'},
+    {l:'Total FB Spend',v:'$'+fbSpend.toLocaleString(undefined,{maximumFractionDigits:0}),s:'Facebook API'},
+    {l:'FB Leads',v:fb.leads,s:'Facebook API',c:'var(--fb)'},
   ]);
   clr('ue-cpl-charts');
-  mc('ue-cpl-charts',{title:'Cost per Lead — All Sources',sub:'How much each lead costs by channel',badge:'CALCULATED',
-    type:'bar',horiz:true,h:220,
-    data:{labels:['Referral','Organic/Inbound','Facebook Ads','LinkedIn','Google Ads','Cold Outreach','Events'],datasets:[{
-      data:[25,42,cplFB,115,200,480,518],backgroundColor:v=>v.raw<100?'rgba(34,197,94,.7)':v.raw<200?'rgba(24,119,242,.6)':v.raw<500?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)',borderRadius:3
+  const cn2=fb.camps.map(c=>c.name.length>30?c.name.substring(0,30)+'…':c.name);
+  mc('ue-cpl-charts',{title:'CPL by Campaign',sub:'Cost per lead across all FB campaigns',badge:'FB API',
+    type:'bar',horiz:true,h:Math.max(180,fb.camps.length*40),
+    data:{labels:cn2,datasets:[{
+      data:fb.camps.map(c=>Math.round(c.cpl)),backgroundColor:fb.camps.map(c=>c.cpl<100?'rgba(34,197,94,.7)':c.cpl<150?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)'),borderRadius:3
     }]},yFmt:v=>'$'+v
   });
-  mc('ue-cpl-charts',{title:'Cost per Close — All Sources',sub:'Total acquisition cost to close a deal',badge:'CALCULATED',
-    type:'bar',horiz:true,h:220,
-    data:{labels:['Referral','Organic','Facebook Ads','LinkedIn','Cold Outreach'],datasets:[{
-      data:[250,800,fbCPC||3500,2200,8500],backgroundColor:v=>v.raw<1000?'rgba(34,197,94,.7)':v.raw<3000?'rgba(234,179,8,.6)':'rgba(239,68,68,.5)',borderRadius:3
-    }]},yFmt:v=>'$'+v.toLocaleString()
+  mc('ue-cpl-charts',{title:'Spend by Campaign',sub:'Where the budget is going',badge:'FB API',
+    type:'doughnut',data:{labels:cn2,datasets:[{
+      data:fb.camps.map(c=>c.spend),backgroundColor:['#1877f2','#22c55e','#6366f1','#eab308','#ef4444','#a855f7','#6b7280','#f59e0b','#3b82f6'],borderWidth:0
+    }]},legend:true
   });
   mc('ue-cpl-charts',{title:'CPL Trend Over Time',sub:'Monthly cost per lead from Facebook',badge:'FB API',full:true,h:220,
     data:{labels:L,datasets:[
