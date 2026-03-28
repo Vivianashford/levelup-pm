@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T06:12:46.127036+00:00",
-  "updated_local": "2026-03-28 01:12 AM",
+  "updated": "2026-03-28T06:27:44.620630+00:00",
+  "updated_local": "2026-03-28 01:27 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
-      "users": 166,
-      "sessions": 201,
-      "pageviews": 350,
-      "avg_duration": 188.5,
+      "users": 167,
+      "sessions": 202,
+      "pageviews": 351,
+      "avg_duration": 187.6,
       "conversions": 0
     },
     "month": {
-      "users": 166,
-      "sessions": 201,
-      "pageviews": 350,
+      "users": 167,
+      "sessions": 202,
+      "pageviews": 351,
       "conversions": 0
     },
     "top_pages": [
@@ -111,8 +111,8 @@
       },
       {
         "page": "/automation-edge/",
-        "views": 22,
-        "users": 9
+        "views": 23,
+        "users": 10
       },
       {
         "page": "/book.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 152,
-        "users": 139
+        "sessions": 153,
+        "users": 140
       },
       {
         "source": "vivianashford.github.io",
@@ -364,16 +364,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 26,
-        "sessions": 28,
-        "pageviews": 56
+        "users": 27,
+        "sessions": 29,
+        "pageviews": 57
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 183,
-        "users": 150
+        "sessions": 184,
+        "users": 151
       },
       {
         "device": "Mobile",
@@ -384,8 +384,8 @@
     "locations": [
       {
         "city": "",
-        "users": 10,
-        "sessions": 11
+        "users": 11,
+        "sessions": 12
       },
       {
         "city": "Wheaton",
@@ -456,11 +456,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 350
+        "count": 351
       },
       {
         "event": "session_start",
-        "count": 199
+        "count": 200
       },
       {
         "event": "scroll",
@@ -472,7 +472,7 @@
       },
       {
         "event": "first_visit",
-        "count": 165
+        "count": 166
       },
       {
         "event": "scroll_depth",
@@ -513,8 +513,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 139,
-        "sessions": 152
+        "users": 140,
+        "sessions": 153
       },
       {
         "campaign": "(referral)",
@@ -589,6 +589,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 75.6
+    "bounce_rate": 75.7
   }
 }
