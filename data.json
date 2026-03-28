@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T18:13:24.806661+00:00",
-  "updated_local": "2026-03-28 01:13 PM",
+  "updated": "2026-03-28T18:28:29.141838+00:00",
+  "updated_local": "2026-03-28 01:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,30 +84,30 @@
     }
   ],
   "analytics": {
-    "realtime_users": 4,
+    "realtime_users": 2,
     "week": {
-      "users": 243,
-      "sessions": 285,
-      "pageviews": 447,
-      "avg_duration": 157.4,
+      "users": 244,
+      "sessions": 287,
+      "pageviews": 455,
+      "avg_duration": 145.2,
       "conversions": 0
     },
     "month": {
-      "users": 243,
-      "sessions": 285,
-      "pageviews": 447,
+      "users": 244,
+      "sessions": 287,
+      "pageviews": 455,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 167,
+        "views": 170,
         "users": 105
       },
       {
         "page": "/automation-edge/",
-        "views": 31,
-        "users": 16
+        "views": 34,
+        "users": 17
       },
       {
         "page": "/blog/",
@@ -120,23 +120,23 @@
         "users": 2
       },
       {
+        "page": "/contact",
+        "views": 17,
+        "users": 9
+      },
+      {
         "page": "/satellite-valuation/",
         "views": 17,
         "users": 12
       },
       {
-        "page": "/contact",
-        "views": 16,
-        "users": 9
+        "page": "/about",
+        "views": 15,
+        "users": 11
       },
       {
         "page": "/calculator.html",
         "views": 15,
-        "users": 10
-      },
-      {
-        "page": "/about",
-        "views": 14,
         "users": 10
       },
       {
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 228,
-        "users": 211
+        "sessions": 229,
+        "users": 212
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 35,
-        "users": 27
+        "sessions": 26,
+        "users": 22
       },
       {
         "source": "vivianashford.github.io",
@@ -204,6 +204,12 @@
         "medium": "referral",
         "sessions": 2,
         "users": 2
+      },
+      {
+        "source": "barchart.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
       },
       {
         "source": "ig",
@@ -250,7 +256,7 @@
           "page": "/blog/the-90-percent-haircut.html",
           "views": 3,
           "users": 1,
-          "avg_duration": 1681.6
+          "avg_duration": 1667.7
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -262,7 +268,7 @@
           "page": "/blog:",
           "views": 2,
           "users": 1,
-          "avg_duration": 7.9
+          "avg_duration": 2.2
         },
         {
           "page": "/blog/mckinsey-5-trillion-boomer-business-transfer.html",
@@ -274,26 +280,26 @@
           "page": "/blog/pe-firms-coming-for-your-industry.html",
           "views": 1,
           "users": 1,
-          "avg_duration": 2118.6
+          "avg_duration": 1123.8
         },
         {
           "page": "/blog/stop-selling-a-business-start-selling-a-foundation.html",
           "views": 1,
           "users": 1,
-          "avg_duration": 139.0
+          "avg_duration": 0.0
         }
       ]
     },
     "funnel": {
       "/": {
-        "views": 167,
+        "views": 170,
         "users": 105,
-        "avg_duration": 102.8
+        "avg_duration": 100.0
       },
       "/book.html": {
         "views": 18,
         "users": 2,
-        "avg_duration": 1107.3
+        "avg_duration": 1108.0
       },
       "/calculator.html": {
         "views": 15,
@@ -303,7 +309,7 @@
       "/watch.html": {
         "views": 14,
         "users": 2,
-        "avg_duration": 88.9
+        "avg_duration": 88.0
       },
       "/assessment.html": {
         "views": 8,
@@ -328,7 +334,7 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 4,
+        "count": 5,
         "users": 3
       },
       "optin_submit": {
@@ -370,22 +376,22 @@
       },
       {
         "date": "2026-03-27",
-        "users": 32,
-        "sessions": 34,
-        "pageviews": 63
+        "users": 33,
+        "sessions": 35,
+        "pageviews": 71
       },
       {
         "date": "2026-03-28",
-        "users": 74,
-        "sessions": 78,
+        "users": 75,
+        "sessions": 79,
         "pageviews": 90
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 249,
-        "users": 215
+        "sessions": 251,
+        "users": 216
       },
       {
         "device": "Mobile",
@@ -396,8 +402,8 @@
     "locations": [
       {
         "city": "",
-        "users": 39,
-        "sessions": 40
+        "users": 27,
+        "sessions": 27
       },
       {
         "city": "Council Bluffs",
@@ -452,7 +458,7 @@
       {
         "city": "Houston",
         "users": 5,
-        "sessions": 24
+        "sessions": 25
       },
       {
         "city": "Istres",
@@ -468,38 +474,38 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 447
+        "count": 455
       },
       {
         "event": "session_start",
-        "count": 276
+        "count": 278
       },
       {
         "event": "first_visit",
-        "count": 237
+        "count": 239
       },
       {
         "event": "user_engagement",
-        "count": 214
+        "count": 216
       },
       {
         "event": "scroll",
-        "count": 210
+        "count": 213
       },
       {
         "event": "scroll_depth",
-        "count": 99
+        "count": 101
       },
       {
         "event": "click",
         "count": 8
       },
       {
-        "event": "assessment_start",
-        "count": 4
+        "event": "vsl_play",
+        "count": 5
       },
       {
-        "event": "vsl_play",
+        "event": "assessment_start",
         "count": 4
       },
       {
@@ -529,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 211,
-        "sessions": 228
+        "users": 212,
+        "sessions": 229
       },
       {
         "campaign": "(referral)",
@@ -574,6 +580,14 @@
       },
       {
         "campaign": "(referral)",
+        "source": "barchart.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "campaign": "(referral)",
         "source": "ig",
         "medium": "social",
         "content": "link_in_bio",
@@ -613,6 +627,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.8
+    "bounce_rate": 79.4
   }
 }
