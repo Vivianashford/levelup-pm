@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T10:13:23.435441+00:00",
-  "updated_local": "2026-03-28 05:13 AM",
+  "updated": "2026-03-28T10:28:24.652133+00:00",
+  "updated_local": "2026-03-28 05:28 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,15 +86,15 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 175,
-      "sessions": 210,
+      "users": 176,
+      "sessions": 211,
       "pageviews": 360,
-      "avg_duration": 180.6,
+      "avg_duration": 179.7,
       "conversions": 0
     },
     "month": {
-      "users": 175,
-      "sessions": 210,
+      "users": 176,
+      "sessions": 211,
       "pageviews": 360,
       "conversions": 0
     },
@@ -107,7 +107,7 @@
       {
         "page": "/automation-edge/",
         "views": 26,
-        "users": 14
+        "users": 15
       },
       {
         "page": "/blog/",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 11,
-        "users": 9
+        "sessions": 12,
+        "users": 10
       },
       {
         "source": "m.facebook.com",
@@ -370,8 +370,8 @@
       },
       {
         "date": "2026-03-28",
-        "users": 3,
-        "sessions": 3,
+        "users": 4,
+        "sessions": 4,
         "pageviews": 3
       }
     ],
@@ -383,15 +383,15 @@
       },
       {
         "device": "Mobile",
-        "sessions": 21,
-        "users": 19
+        "sessions": 22,
+        "users": 20
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 13,
-        "sessions": 14
+        "users": 14,
+        "sessions": 15
       },
       {
         "city": "Hounslow",
@@ -474,7 +474,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 177
+        "count": 178
       },
       {
         "event": "first_visit",
@@ -595,6 +595,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 76.7
+    "bounce_rate": 76.8
   }
 }
