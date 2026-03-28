@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T17:58:24.370924+00:00",
-  "updated_local": "2026-03-28 12:58 PM",
+  "updated": "2026-03-28T18:13:24.806661+00:00",
+  "updated_local": "2026-03-28 01:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 4,
     "week": {
-      "users": 242,
-      "sessions": 284,
-      "pageviews": 446,
-      "avg_duration": 157.9,
+      "users": 243,
+      "sessions": 285,
+      "pageviews": 447,
+      "avg_duration": 157.4,
       "conversions": 0
     },
     "month": {
-      "users": 242,
-      "sessions": 284,
-      "pageviews": 446,
+      "users": 243,
+      "sessions": 285,
+      "pageviews": 447,
       "conversions": 0
     },
     "top_pages": [
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 227,
-        "users": 210
+        "sessions": 228,
+        "users": 211
       },
       {
         "source": "(not set)",
@@ -376,16 +376,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 73,
-        "sessions": 77,
-        "pageviews": 89
+        "users": 74,
+        "sessions": 78,
+        "pageviews": 90
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 248,
-        "users": 214
+        "sessions": 249,
+        "users": 215
       },
       {
         "device": "Mobile",
@@ -396,8 +396,8 @@
     "locations": [
       {
         "city": "",
-        "users": 38,
-        "sessions": 39
+        "users": 39,
+        "sessions": 40
       },
       {
         "city": "Council Bluffs",
@@ -468,15 +468,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 446
+        "count": 447
       },
       {
         "event": "session_start",
-        "count": 275
+        "count": 276
       },
       {
         "event": "first_visit",
-        "count": 236
+        "count": 237
       },
       {
         "event": "user_engagement",
@@ -529,8 +529,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 210,
-        "sessions": 227
+        "users": 211,
+        "sessions": 228
       },
       {
         "campaign": "(referral)",
@@ -613,6 +613,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.7
+    "bounce_rate": 82.8
   }
 }
