@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T17:00:14.113486+00:00",
-  "updated_local": "2026-03-28 12:00 PM",
+  "updated": "2026-03-28T17:13:34.613986+00:00",
+  "updated_local": "2026-03-28 12:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 5,
     "week": {
-      "users": 235,
-      "sessions": 276,
-      "pageviews": 437,
-      "avg_duration": 162.4,
+      "users": 237,
+      "sessions": 278,
+      "pageviews": 440,
+      "avg_duration": 161.3,
       "conversions": 0
     },
     "month": {
-      "users": 235,
-      "sessions": 276,
-      "pageviews": 437,
+      "users": 237,
+      "sessions": 278,
+      "pageviews": 440,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 165,
-        "users": 104
+        "views": 167,
+        "users": 105
       },
       {
         "page": "/automation-edge/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 219,
-        "users": 204
+        "sessions": 221,
+        "users": 205
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 33,
-        "users": 25
+        "sessions": 34,
+        "users": 27
       },
       {
         "source": "vivianashford.github.io",
@@ -286,9 +286,9 @@
     },
     "funnel": {
       "/": {
-        "views": 165,
-        "users": 104,
-        "avg_duration": 104.3
+        "views": 167,
+        "users": 105,
+        "avg_duration": 102.8
       },
       "/book.html": {
         "views": 18,
@@ -376,28 +376,28 @@
       },
       {
         "date": "2026-03-28",
-        "users": 66,
-        "sessions": 69,
-        "pageviews": 80
+        "users": 68,
+        "sessions": 71,
+        "pageviews": 83
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 242,
-        "users": 207
+        "sessions": 243,
+        "users": 209
       },
       {
         "device": "Mobile",
-        "sessions": 36,
+        "sessions": 37,
         "users": 30
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 34,
-        "sessions": 35
+        "users": 35,
+        "sessions": 36
       },
       {
         "city": "Council Bluffs",
@@ -455,32 +455,32 @@
         "sessions": 24
       },
       {
-        "city": "Dallas",
-        "users": 4,
-        "sessions": 7
+        "city": "Istres",
+        "users": 5,
+        "sessions": 5
       },
       {
-        "city": "Istres",
+        "city": "Dallas",
         "users": 4,
-        "sessions": 4
+        "sessions": 8
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 437
+        "count": 440
       },
       {
         "event": "session_start",
-        "count": 267
+        "count": 269
       },
       {
         "event": "first_visit",
-        "count": 230
+        "count": 231
       },
       {
         "event": "user_engagement",
-        "count": 210
+        "count": 212
       },
       {
         "event": "scroll",
@@ -525,8 +525,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 204,
-        "sessions": 219
+        "users": 205,
+        "sessions": 221
       },
       {
         "campaign": "(referral)",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.2
+    "bounce_rate": 82.4
   }
 }
