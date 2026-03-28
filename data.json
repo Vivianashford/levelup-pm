@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T21:43:27.468471+00:00",
-  "updated_local": "2026-03-28 04:43 PM",
+  "updated": "2026-03-28T21:58:25.155683+00:00",
+  "updated_local": "2026-03-28 04:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 38,
+    "realtime_users": 19,
     "week": {
-      "users": 250,
-      "sessions": 294,
-      "pageviews": 468,
-      "avg_duration": 143.6,
+      "users": 266,
+      "sessions": 310,
+      "pageviews": 503,
+      "avg_duration": 136.8,
       "conversions": 0
     },
     "month": {
-      "users": 250,
-      "sessions": 294,
-      "pageviews": 468,
+      "users": 266,
+      "sessions": 310,
+      "pageviews": 503,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 177,
-        "users": 105
+        "views": 212,
+        "users": 121
       },
       {
         "page": "/automation-edge/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 235,
-        "users": 218
+        "sessions": 249,
+        "users": 232
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 30,
-        "users": 25
+        "sessions": 34,
+        "users": 29
       },
       {
         "source": "vivianashford.github.io",
@@ -292,9 +292,9 @@
     },
     "funnel": {
       "/": {
-        "views": 177,
-        "users": 105,
-        "avg_duration": 103.3
+        "views": 212,
+        "users": 121,
+        "avg_duration": 93.6
       },
       "/book.html": {
         "views": 18,
@@ -382,28 +382,33 @@
       },
       {
         "date": "2026-03-28",
-        "users": 81,
-        "sessions": 86,
-        "pageviews": 103
+        "users": 97,
+        "sessions": 102,
+        "pageviews": 138
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 257,
-        "users": 221
+        "sessions": 263,
+        "users": 227
       },
       {
         "device": "Mobile",
-        "sessions": 39,
-        "users": 31
+        "sessions": 49,
+        "users": 41
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 27,
-        "sessions": 27
+        "users": 28,
+        "sessions": 28
+      },
+      {
+        "city": "Council Bluffs",
+        "users": 14,
+        "sessions": 14
       },
       {
         "city": "San Jose",
@@ -411,7 +416,7 @@
         "sessions": 14
       },
       {
-        "city": "Council Bluffs",
+        "city": "Ashburn",
         "users": 13,
         "sessions": 13
       },
@@ -431,12 +436,12 @@
         "sessions": 10
       },
       {
-        "city": "Ashburn",
-        "users": 8,
-        "sessions": 8
+        "city": "Aulnay-sous-Bois",
+        "users": 7,
+        "sessions": 7
       },
       {
-        "city": "Aulnay-sous-Bois",
+        "city": "Boardman",
         "users": 7,
         "sessions": 7
       },
@@ -446,14 +451,14 @@
         "sessions": 7
       },
       {
+        "city": "New York",
+        "users": 7,
+        "sessions": 7
+      },
+      {
         "city": "London",
         "users": 6,
         "sessions": 6
-      },
-      {
-        "city": "Boardman",
-        "users": 5,
-        "sessions": 5
       },
       {
         "city": "Houston",
@@ -464,29 +469,24 @@
         "city": "Istres",
         "users": 5,
         "sessions": 5
-      },
-      {
-        "city": "Dallas",
-        "users": 4,
-        "sessions": 9
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 468
+        "count": 503
       },
       {
         "event": "session_start",
-        "count": 286
+        "count": 300
       },
       {
         "event": "first_visit",
-        "count": 245
+        "count": 259
       },
       {
         "event": "user_engagement",
-        "count": 225
+        "count": 242
       },
       {
         "event": "scroll",
@@ -535,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 218,
-        "sessions": 235
+        "users": 232,
+        "sessions": 249
       },
       {
         "campaign": "(referral)",
@@ -627,6 +627,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 79.9
+    "bounce_rate": 81.0
   }
 }
