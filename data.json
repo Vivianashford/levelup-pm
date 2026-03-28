@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T01:57:43.863085+00:00",
-  "updated_local": "2026-03-27 08:57 PM",
+  "updated": "2026-03-28T02:12:44.220566+00:00",
+  "updated_local": "2026-03-27 09:12 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 324,
-      "avg_duration": 175.9,
+      "pageviews": 325,
+      "avg_duration": 176.6,
       "conversions": 0
     },
     "month": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 324,
+      "pageviews": 325,
       "conversions": 0
     },
     "top_pages": [
@@ -225,8 +225,8 @@
       }
     ],
     "blog": {
-      "total_views": 35,
-      "total_users": 22,
+      "total_views": 36,
+      "total_users": 23,
       "articles": [
         {
           "page": "/blog/",
@@ -269,6 +269,12 @@
           "views": 1,
           "users": 1,
           "avg_duration": 2118.6
+        },
+        {
+          "page": "/blog/stop-selling-a-business-start-selling-a-foundation.html",
+          "views": 1,
+          "users": 1,
+          "avg_duration": 139.0
         }
       ]
     },
@@ -360,7 +366,7 @@
         "date": "2026-03-27",
         "users": 16,
         "sessions": 16,
-        "pageviews": 30
+        "pageviews": 31
       }
     ],
     "devices": [
@@ -450,7 +456,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 324
+        "count": 325
       },
       {
         "event": "session_start",
