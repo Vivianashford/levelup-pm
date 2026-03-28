@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T04:57:45.349632+00:00",
-  "updated_local": "2026-03-27 11:57 PM",
+  "updated": "2026-03-28T05:12:47.322031+00:00",
+  "updated_local": "2026-03-28 12:12 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 1,
     "week": {
       "users": 164,
       "sessions": 197,
-      "pageviews": 338,
-      "avg_duration": 177.4,
+      "pageviews": 339,
+      "avg_duration": 179.0,
       "conversions": 0
     },
     "month": {
       "users": 164,
       "sessions": 197,
-      "pageviews": 338,
+      "pageviews": 339,
       "conversions": 0
     },
     "top_pages": [
@@ -136,7 +136,7 @@
       },
       {
         "page": "/automation-edge/",
-        "views": 12,
+        "views": 13,
         "users": 7
       },
       {
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 9,
-        "users": 7
+        "sessions": 10,
+        "users": 8
       },
       {
         "source": "m.facebook.com",
@@ -366,7 +366,7 @@
         "date": "2026-03-27",
         "users": 24,
         "sessions": 24,
-        "pageviews": 44
+        "pageviews": 45
       }
     ],
     "devices": [
@@ -383,14 +383,14 @@
     ],
     "locations": [
       {
-        "city": "Wheaton",
+        "city": "",
         "users": 10,
         "sessions": 10
       },
       {
-        "city": "",
-        "users": 9,
-        "sessions": 9
+        "city": "Wheaton",
+        "users": 10,
+        "sessions": 10
       },
       {
         "city": "Amsterdam",
@@ -456,7 +456,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 338
+        "count": 339
       },
       {
         "event": "session_start",
@@ -464,11 +464,11 @@
       },
       {
         "event": "scroll",
-        "count": 177
+        "count": 179
       },
       {
         "event": "user_engagement",
-        "count": 167
+        "count": 169
       },
       {
         "event": "first_visit",
