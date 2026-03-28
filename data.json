@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T17:13:34.613986+00:00",
-  "updated_local": "2026-03-28 12:13 PM",
+  "updated": "2026-03-28T17:28:23.907089+00:00",
+  "updated_local": "2026-03-28 12:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 6,
     "week": {
       "users": 237,
-      "sessions": 278,
+      "sessions": 279,
       "pageviews": 440,
-      "avg_duration": 161.3,
+      "avg_duration": 160.7,
       "conversions": 0
     },
     "month": {
       "users": 237,
-      "sessions": 278,
+      "sessions": 279,
       "pageviews": 440,
       "conversions": 0
     },
@@ -160,7 +160,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 34,
+        "sessions": 35,
         "users": 27
       },
       {
@@ -377,7 +377,7 @@
       {
         "date": "2026-03-28",
         "users": 68,
-        "sessions": 71,
+        "sessions": 72,
         "pageviews": 83
       }
     ],
@@ -389,7 +389,7 @@
       },
       {
         "device": "Mobile",
-        "sessions": 37,
+        "sessions": 38,
         "users": 30
       }
     ],
@@ -462,7 +462,7 @@
       {
         "city": "Dallas",
         "users": 4,
-        "sessions": 8
+        "sessions": 9
       }
     ],
     "all_events": [
@@ -480,7 +480,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 212
+        "count": 213
       },
       {
         "event": "scroll",
@@ -512,6 +512,10 @@
       },
       {
         "event": "optin_submit",
+        "count": 1
+      },
+      {
+        "event": "scorecard_started",
         "count": 1
       },
       {
