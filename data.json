@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T23:43:24.747589+00:00",
-  "updated_local": "2026-03-28 06:43 PM",
+  "updated": "2026-03-28T23:58:23.555686+00:00",
+  "updated_local": "2026-03-28 06:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 13,
     "week": {
-      "users": 317,
-      "sessions": 363,
-      "pageviews": 600,
-      "avg_duration": 118.2,
+      "users": 324,
+      "sessions": 370,
+      "pageviews": 609,
+      "avg_duration": 116.0,
       "conversions": 0
     },
     "month": {
-      "users": 317,
-      "sessions": 363,
-      "pageviews": 600,
+      "users": 324,
+      "sessions": 370,
+      "pageviews": 609,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 309,
-        "users": 172
+        "views": 318,
+        "users": 179
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 299,
-        "users": 282
+        "sessions": 304,
+        "users": 287
       },
       {
         "source": "(not set)",
@@ -188,6 +188,12 @@
         "users": 4
       },
       {
+        "source": "bing",
+        "medium": "organic",
+        "sessions": 3,
+        "users": 3
+      },
+      {
         "source": "google",
         "medium": "organic",
         "sessions": 3,
@@ -208,12 +214,6 @@
       {
         "source": "barchart.com",
         "medium": "referral",
-        "sessions": 1,
-        "users": 1
-      },
-      {
-        "source": "bing",
-        "medium": "organic",
         "sessions": 1,
         "users": 1
       },
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 309,
-        "users": 172,
-        "avg_duration": 72.0
+        "views": 318,
+        "users": 179,
+        "avg_duration": 69.6
       },
       "/book.html": {
         "views": 18,
@@ -388,16 +388,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 148,
-        "sessions": 154,
-        "pageviews": 235
+        "users": 155,
+        "sessions": 161,
+        "pageviews": 244
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 298,
-        "users": 261
+        "sessions": 305,
+        "users": 268
       },
       {
         "device": "Mobile",
@@ -413,8 +413,8 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 22,
-        "sessions": 22
+        "users": 25,
+        "sessions": 25
       },
       {
         "city": "Ashburn",
@@ -480,19 +480,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 600
+        "count": 609
       },
       {
         "event": "session_start",
-        "count": 351
+        "count": 359
       },
       {
         "event": "first_visit",
-        "count": 310
+        "count": 318
       },
       {
         "event": "user_engagement",
-        "count": 286
+        "count": 287
       },
       {
         "event": "scroll",
@@ -541,8 +541,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 282,
-        "sessions": 299
+        "users": 287,
+        "sessions": 304
       },
       {
         "campaign": "(referral)",
@@ -633,6 +633,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 83.5
+    "bounce_rate": 83.8
   }
 }
