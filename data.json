@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T16:28:23.670188+00:00",
-  "updated_local": "2026-03-28 11:28 AM",
+  "updated": "2026-03-28T16:43:25.133544+00:00",
+  "updated_local": "2026-03-28 11:43 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 2,
     "week": {
-      "users": 224,
-      "sessions": 264,
-      "pageviews": 425,
-      "avg_duration": 169.7,
+      "users": 226,
+      "sessions": 267,
+      "pageviews": 427,
+      "avg_duration": 167.8,
       "conversions": 0
     },
     "month": {
-      "users": 224,
-      "sessions": 264,
-      "pageviews": 425,
+      "users": 226,
+      "sessions": 267,
+      "pageviews": 427,
       "conversions": 0
     },
     "top_pages": [
@@ -154,13 +154,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 208,
-        "users": 193
+        "sessions": 210,
+        "users": 195
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 30,
+        "sessions": 31,
         "users": 23
       },
       {
@@ -376,21 +376,21 @@
       },
       {
         "date": "2026-03-28",
-        "users": 55,
-        "sessions": 57,
-        "pageviews": 68
+        "users": 57,
+        "sessions": 60,
+        "pageviews": 70
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 231,
-        "users": 197
+        "sessions": 233,
+        "users": 198
       },
       {
         "device": "Mobile",
-        "sessions": 35,
-        "users": 29
+        "sessions": 36,
+        "users": 30
       }
     ],
     "locations": [
@@ -468,19 +468,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 425
+        "count": 427
       },
       {
         "event": "session_start",
-        "count": 256
+        "count": 258
       },
       {
         "event": "first_visit",
-        "count": 219
+        "count": 221
       },
       {
         "event": "scroll",
-        "count": 208
+        "count": 209
       },
       {
         "event": "user_engagement",
@@ -525,8 +525,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 193,
-        "sessions": 208
+        "users": 195,
+        "sessions": 210
       },
       {
         "campaign": "(referral)",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 81.4
+    "bounce_rate": 81.6
   }
 }
