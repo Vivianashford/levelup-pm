@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T18:28:29.141838+00:00",
-  "updated_local": "2026-03-28 01:28 PM",
+  "updated": "2026-03-28T18:43:24.899648+00:00",
+  "updated_local": "2026-03-28 01:43 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
       "users": 244,
       "sessions": 287,
-      "pageviews": 455,
-      "avg_duration": 145.2,
+      "pageviews": 457,
+      "avg_duration": 145.6,
       "conversions": 0
     },
     "month": {
       "users": 244,
       "sessions": 287,
-      "pageviews": 455,
+      "pageviews": 457,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 170,
+        "views": 172,
         "users": 105
       },
       {
@@ -292,9 +292,9 @@
     },
     "funnel": {
       "/": {
-        "views": 170,
+        "views": 172,
         "users": 105,
-        "avg_duration": 100.0
+        "avg_duration": 100.8
       },
       "/book.html": {
         "views": 18,
@@ -384,7 +384,7 @@
         "date": "2026-03-28",
         "users": 75,
         "sessions": 79,
-        "pageviews": 90
+        "pageviews": 92
       }
     ],
     "devices": [
@@ -474,7 +474,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 455
+        "count": 457
       },
       {
         "event": "session_start",
@@ -494,7 +494,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 101
+        "count": 108
       },
       {
         "event": "click",
