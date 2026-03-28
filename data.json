@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T04:42:44.623368+00:00",
-  "updated_local": "2026-03-27 11:42 PM",
+  "updated": "2026-03-28T04:57:45.349632+00:00",
+  "updated_local": "2026-03-27 11:57 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 3,
     "week": {
-      "users": 157,
-      "sessions": 190,
-      "pageviews": 326,
-      "avg_duration": 175.7,
+      "users": 164,
+      "sessions": 197,
+      "pageviews": 338,
+      "avg_duration": 177.4,
       "conversions": 0
     },
     "month": {
-      "users": 157,
-      "sessions": 190,
-      "pageviews": 326,
+      "users": 164,
+      "sessions": 197,
+      "pageviews": 338,
       "conversions": 0
     },
     "top_pages": [
@@ -135,6 +135,11 @@
         "users": 9
       },
       {
+        "page": "/automation-edge/",
+        "views": 12,
+        "users": 7
+      },
+      {
         "page": "/services",
         "views": 10,
         "users": 6
@@ -143,19 +148,14 @@
         "page": "/assessment.html",
         "views": 8,
         "users": 5
-      },
-      {
-        "page": "/privacy",
-        "views": 7,
-        "users": 7
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 142,
-        "users": 130
+        "sessions": 149,
+        "users": 137
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 7,
-        "users": 5
+        "sessions": 9,
+        "users": 7
       },
       {
         "source": "m.facebook.com",
@@ -364,21 +364,21 @@
       },
       {
         "date": "2026-03-27",
-        "users": 17,
-        "sessions": 17,
-        "pageviews": 32
+        "users": 24,
+        "sessions": 24,
+        "pageviews": 44
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 176,
-        "users": 144
+        "sessions": 181,
+        "users": 149
       },
       {
         "device": "Mobile",
-        "sessions": 15,
-        "users": 14
+        "sessions": 18,
+        "users": 17
       }
     ],
     "locations": [
@@ -386,6 +386,11 @@
         "city": "Wheaton",
         "users": 10,
         "sessions": 10
+      },
+      {
+        "city": "",
+        "users": 9,
+        "sessions": 9
       },
       {
         "city": "Amsterdam",
@@ -401,11 +406,6 @@
         "city": "East Los Angeles",
         "users": 7,
         "sessions": 7
-      },
-      {
-        "city": "",
-        "users": 6,
-        "sessions": 6
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -456,23 +456,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 326
+        "count": 338
       },
       {
         "event": "session_start",
-        "count": 188
+        "count": 195
       },
       {
         "event": "scroll",
-        "count": 173
+        "count": 177
       },
       {
         "event": "user_engagement",
-        "count": 160
+        "count": 167
       },
       {
         "event": "first_visit",
-        "count": 156
+        "count": 163
       },
       {
         "event": "scroll_depth",
@@ -513,8 +513,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 130,
-        "sessions": 142
+        "users": 137,
+        "sessions": 149
       },
       {
         "campaign": "(referral)",
@@ -589,6 +589,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 74.7
+    "bounce_rate": 75.1
   }
 }
