@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T01:27:45.560678+00:00",
-  "updated_local": "2026-03-27 08:27 PM",
+  "updated": "2026-03-28T01:42:43.976224+00:00",
+  "updated_local": "2026-03-27 08:42 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 321,
-      "avg_duration": 161.0,
+      "pageviews": 322,
+      "avg_duration": 172.2,
       "conversions": 0
     },
     "month": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 321,
+      "pageviews": 322,
       "conversions": 0
     },
     "top_pages": [
@@ -225,8 +225,8 @@
       }
     ],
     "blog": {
-      "total_views": 32,
-      "total_users": 21,
+      "total_views": 33,
+      "total_users": 22,
       "articles": [
         {
           "page": "/blog/",
@@ -257,6 +257,12 @@
           "views": 1,
           "users": 1,
           "avg_duration": 1338.6
+        },
+        {
+          "page": "/blog/pe-firms-coming-for-your-industry.html",
+          "views": 1,
+          "users": 1,
+          "avg_duration": 2118.6
         },
         {
           "page": "/blog/the-90-percent-haircut.html",
@@ -354,7 +360,7 @@
         "date": "2026-03-27",
         "users": 16,
         "sessions": 16,
-        "pageviews": 27
+        "pageviews": 28
       }
     ],
     "devices": [
@@ -444,7 +450,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 321
+        "count": 322
       },
       {
         "event": "session_start",
