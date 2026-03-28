@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T18:43:24.899648+00:00",
-  "updated_local": "2026-03-28 01:43 PM",
+  "updated": "2026-03-28T18:58:28.061768+00:00",
+  "updated_local": "2026-03-28 01:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,22 +86,22 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 244,
-      "sessions": 287,
-      "pageviews": 457,
-      "avg_duration": 145.6,
+      "users": 246,
+      "sessions": 289,
+      "pageviews": 460,
+      "avg_duration": 144.9,
       "conversions": 0
     },
     "month": {
-      "users": 244,
-      "sessions": 287,
-      "pageviews": 457,
+      "users": 246,
+      "sessions": 289,
+      "pageviews": 460,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 172,
+        "views": 173,
         "users": 105
       },
       {
@@ -154,19 +154,19 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 229,
-        "users": 212
+        "sessions": 231,
+        "users": 214
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 26,
-        "users": 22
+        "sessions": 27,
+        "users": 23
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 18,
+        "sessions": 19,
         "users": 5
       },
       {
@@ -292,9 +292,9 @@
     },
     "funnel": {
       "/": {
-        "views": 172,
+        "views": 173,
         "users": 105,
-        "avg_duration": 100.8
+        "avg_duration": 101.6
       },
       "/book.html": {
         "views": 18,
@@ -382,16 +382,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 75,
-        "sessions": 79,
-        "pageviews": 92
+        "users": 77,
+        "sessions": 81,
+        "pageviews": 95
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 251,
-        "users": 216
+        "sessions": 253,
+        "users": 218
       },
       {
         "device": "Mobile",
@@ -412,8 +412,8 @@
       },
       {
         "city": "San Jose",
-        "users": 11,
-        "sessions": 11
+        "users": 12,
+        "sessions": 12
       },
       {
         "city": "Amsterdam",
@@ -474,27 +474,27 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 457
+        "count": 460
       },
       {
         "event": "session_start",
-        "count": 278
+        "count": 281
       },
       {
         "event": "first_visit",
-        "count": 239
+        "count": 241
       },
       {
         "event": "user_engagement",
-        "count": 216
+        "count": 219
       },
       {
         "event": "scroll",
-        "count": 213
+        "count": 214
       },
       {
         "event": "scroll_depth",
-        "count": 108
+        "count": 112
       },
       {
         "event": "click",
@@ -535,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 212,
-        "sessions": 229
+        "users": 214,
+        "sessions": 231
       },
       {
         "campaign": "(referral)",
@@ -560,7 +560,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 18
+        "sessions": 19
       },
       {
         "campaign": "(referral)",
@@ -627,6 +627,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 79.4
+    "bounce_rate": 79.6
   }
 }
