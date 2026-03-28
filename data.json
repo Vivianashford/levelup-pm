@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T15:13:35.565393+00:00",
-  "updated_local": "2026-03-28 10:13 AM",
+  "updated": "2026-03-28T15:28:23.217688+00:00",
+  "updated_local": "2026-03-28 10:28 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 29,
+    "realtime_users": 13,
     "week": {
       "users": 192,
-      "sessions": 232,
+      "sessions": 233,
       "pageviews": 390,
-      "avg_duration": 183.2,
+      "avg_duration": 182.4,
       "conversions": 0
     },
     "month": {
       "users": 192,
-      "sessions": 232,
+      "sessions": 233,
       "pageviews": 390,
       "conversions": 0
     },
@@ -160,7 +160,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 22,
+        "sessions": 23,
         "users": 16
       },
       {
@@ -377,14 +377,14 @@
       {
         "date": "2026-03-28",
         "users": 23,
-        "sessions": 25,
+        "sessions": 26,
         "pageviews": 33
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 205,
+        "sessions": 206,
         "users": 171
       },
       {
@@ -397,7 +397,7 @@
       {
         "city": "",
         "users": 18,
-        "sessions": 19
+        "sessions": 20
       },
       {
         "city": "Amsterdam",
@@ -476,7 +476,7 @@
       },
       {
         "event": "scroll",
-        "count": 200
+        "count": 201
       },
       {
         "event": "user_engagement",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 78.9
+    "bounce_rate": 79.0
   }
 }
