@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<title>Arena Cold Email Outreach — Dashboard</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #252525;
+    --border-light: #333;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --text-muted: #555;
+    --accent-blue: #4a9eff;
+    --accent-green: #4aff8b;
+    --accent-orange: #ff6b4a;
+    --accent-yellow: #ffd74a;
+    --accent-purple: #c084fc;
+    --accent-blue-dim: rgba(74,158,255,0.08);
+    --accent-green-dim: rgba(74,255,139,0.08);
+    --accent-orange-dim: rgba(255,107,74,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .header {
+    padding: 40px 60px 30px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
+  .header h1 span { color: var(--text-muted); font-weight: 400; }
+  .header-meta { font-size: 12px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+  .nav-tabs {
+    display: flex; gap: 0; padding: 0 60px; border-bottom: 1px solid var(--border);
+  }
+  .nav-tab {
+    padding: 14px 24px; font-size: 13px; font-weight: 500; color: var(--text-dim);
+    cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--text); border-bottom-color: var(--accent-blue); }
+  .view { display: none; padding: 40px 60px; }
+  .view.active { display: block; }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; text-align: center;
+  }
+  .kpi-card .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .kpi-card .value { font-size: 32px; font-weight: 700; }
+  .kpi-card .sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .kpi-card.blue .value { color: var(--accent-blue); }
+  .kpi-card.green .value { color: var(--accent-green); }
+  .kpi-card.orange .value { color: var(--accent-orange); }
+  .kpi-card.yellow .value { color: var(--accent-yellow); }
+  .kpi-card.purple .value { color: var(--accent-purple); }
+
+  /* Charts */
+  .chart-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+  }
+  .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Pipeline */
+  .pipeline { display: flex; gap: 0; margin-bottom: 32px; }
+  .pipeline-stage {
+    flex: 1; text-align: center; padding: 20px 12px; position: relative;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .pipeline-stage:first-child { border-radius: 12px 0 0 12px; }
+  .pipeline-stage:last-child { border-radius: 0 12px 12px 0; }
+  .pipeline-stage .stage-name { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .pipeline-stage .stage-count { font-size: 28px; font-weight: 700; }
+  .pipeline-stage .stage-rate { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .pipeline-stage::after {
+    content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; color: var(--text-muted); z-index: 1;
+  }
+  .pipeline-stage:last-child::after { display: none; }
+  .pipeline-stage:nth-child(1) .stage-count { color: var(--text-dim); }
+  .pipeline-stage:nth-child(2) .stage-count { color: var(--accent-blue); }
+  .pipeline-stage:nth-child(3) .stage-count { color: var(--accent-yellow); }
+  .pipeline-stage:nth-child(4) .stage-count { color: var(--accent-orange); }
+  .pipeline-stage:nth-child(5) .stage-count { color: var(--accent-green); }
+
+  /* Tables */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    text-align: left; padding: 12px 16px; font-size: 11px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border);
+  }
+  .data-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .data-table tr:hover { background: var(--surface2); }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 11px; font-weight: 600;
+  }
+  .badge.blue { background: rgba(74,158,255,0.15); color: var(--accent-blue); }
+  .badge.green { background: rgba(74,255,139,0.15); color: var(--accent-green); }
+  .badge.orange { background: rgba(255,107,74,0.15); color: var(--accent-orange); }
+  .badge.yellow { background: rgba(255,215,74,0.15); color: var(--accent-yellow); }
+  .badge.purple { background: rgba(192,132,252,0.15); color: var(--accent-purple); }
+
+  /* Sequence Comparison */
+  .seq-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+  .seq-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+  }
+  .seq-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .seq-card .seq-label { color: var(--accent-blue); }
+  .seq-card:nth-child(2) .seq-label { color: var(--accent-purple); }
+  .seq-stat { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .seq-stat:last-child { border-bottom: none; }
+  .seq-stat .stat-label { font-size: 13px; color: var(--text-dim); }
+  .seq-stat .stat-value { font-size: 13px; font-weight: 600; }
+
+  .bar-fill {
+    height: 6px; border-radius: 3px; background: var(--border); margin-top: 8px; overflow: hidden;
+  }
+  .bar-fill .fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+
+  /* Prospect list */
+  .prospect-status { display: flex; align-items: center; gap: 8px; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .status-dot.researched { background: var(--text-dim); }
+  .status-dot.emailed { background: var(--accent-blue); }
+  .status-dot.opened { background: var(--accent-yellow); }
+  .status-dot.replied { background: var(--accent-orange); }
+  .status-dot.booked { background: var(--accent-green); }
+
+  @media (max-width: 1200px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .chart-row, .seq-compare { grid-template-columns: 1fr; }
+    .header, .nav-tabs, .view { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Arena Cold Email Outreach <span>/ Dashboard</span></h1>
+  <div class="header-meta">Updated: <span id="lastUpdate"></span></div>
+</div>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showView('overview')">Overview</div>
+  <div class="nav-tab" onclick="showView('pipeline')">Pipeline</div>
+  <div class="nav-tab" onclick="showView('sequences')">Sequences</div>
+  <div class="nav-tab" onclick="showView('prospects')">Prospects</div>
+  <div class="nav-tab" onclick="showView('subjects')">Subject Lines</div>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="view active">
+  <div class="kpi-grid">
+    <div class="kpi-card blue">
+      <div class="label">Emails Sent</div>
+      <div class="value" id="kpi-sent">0</div>
+      <div class="sub">this week</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="label">Opened</div>
+      <div class="value" id="kpi-opened">0</div>
+      <div class="sub" id="kpi-open-rate">0% open rate</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="label">Replied</div>
+      <div class="value" id="kpi-replied">0</div>
+      <div class="sub" id="kpi-reply-rate">0% reply rate</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="label">Calls Booked</div>
+      <div class="value" id="kpi-booked">0</div>
+      <div class="sub" id="kpi-book-rate">0% book rate</div>
+    </div>
+    <div class="kpi-card purple">
+      <div class="label">Active Sequences</div>
+      <div class="value" id="kpi-active">0</div>
+      <div class="sub">in progress</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Bounced</div>
+      <div class="value" id="kpi-bounced" style="color:#ff4444">0</div>
+      <div class="sub" id="kpi-bounce-rate">0% bounce</div>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-box">
+      <h3>Daily Send Volume (Last 30 Days)</h3>
+      <canvas id="dailyChart" height="80"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Funnel Conversion</h3>
+      <canvas id="funnelChart" height="160"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- PIPELINE -->
+<div id="pipeline" class="view">
+  <h2 style="font-size:18px;margin-bottom:24px;">Prospect Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipeline-stage">
+      <div class="stage-name">Researched</div>
+      <div class="stage-count" id="pipe-researched">0</div>
+      <div class="stage-rate">prospects</div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-name">Emailed</div>
+      <div class="stage-count" id="pipe-emailed">0</div>
+      <div class="stage-rate" id="pipe-email-rate">—</div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-name">Opened</div>
+      <div class="stage-count" id="pipe-opened">0</div>
+      <div class="stage-rate" id="pipe-open-rate">—</div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-name">Replied</div>
+      <div class="stage-count" id="pipe-replied">0</div>
+      <div class="stage-rate" id="pipe-reply-rate">—</div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-name">Booked</div>
+      <div class="stage-count" id="pipe-booked">0</div>
+      <div class="stage-rate" id="pipe-book-rate">—</div>
+    </div>
+  </div>
+
+  <div class="chart-box" style="margin-top:24px;">
+    <h3>Pipeline Over Time</h3>
+    <canvas id="pipelineChart" height="80"></canvas>
+  </div>
+</div>
+
+<!-- SEQUENCES -->
+<div id="sequences" class="view">
+  <h2 style="font-size:18px;margin-bottom:24px;">Sequence A vs. Sequence B</h2>
+  <div class="seq-compare">
+    <div class="seq-card">
+      <h3><span class="seq-label">Sequence A</span> — Direct to Owner</h3>
+      <div class="seq-stat"><span class="stat-label">Emails Sent</span><span class="stat-value" id="seqa-sent">0</span></div>
+      <div class="seq-stat"><span class="stat-label">Open Rate</span><span class="stat-value" id="seqa-open">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqa-open-bar" style="width:0%;background:var(--accent-blue)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Reply Rate</span><span class="stat-value" id="seqa-reply">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqa-reply-bar" style="width:0%;background:var(--accent-orange)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Book Rate</span><span class="stat-value" id="seqa-book">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqa-book-bar" style="width:0%;background:var(--accent-green)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Best Performing Email</span><span class="stat-value" id="seqa-best">—</span></div>
+    </div>
+    <div class="seq-card">
+      <h3><span class="seq-label">Sequence B</span> — Referral Partners</h3>
+      <div class="seq-stat"><span class="stat-label">Emails Sent</span><span class="stat-value" id="seqb-sent">0</span></div>
+      <div class="seq-stat"><span class="stat-label">Open Rate</span><span class="stat-value" id="seqb-open">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqb-open-bar" style="width:0%;background:var(--accent-purple)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Reply Rate</span><span class="stat-value" id="seqb-reply">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqb-reply-bar" style="width:0%;background:var(--accent-orange)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Book Rate</span><span class="stat-value" id="seqb-book">0%</span></div>
+      <div class="bar-fill"><div class="fill" id="seqb-book-bar" style="width:0%;background:var(--accent-green)"></div></div>
+      <div class="seq-stat"><span class="stat-label">Best Performing Email</span><span class="stat-value" id="seqb-best">—</span></div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h3>Email Performance by Sequence Step</h3>
+    <canvas id="stepChart" height="80"></canvas>
+  </div>
+</div>
+
+<!-- PROSPECTS -->
+<div id="prospects" class="view">
+  <h2 style="font-size:18px;margin-bottom:24px;">Recent Prospects</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Owner</th>
+        <th>Industry</th>
+        <th>City</th>
+        <th>Sequence</th>
+        <th>Score</th>
+        <th>Status</th>
+        <th>Last Activity</th>
+      </tr>
+    </thead>
+    <tbody id="prospect-table">
+      <!-- Populated by JS -->
+    </tbody>
+  </table>
+</div>
+
+<!-- SUBJECT LINES -->
+<div id="subjects" class="view">
+  <h2 style="font-size:18px;margin-bottom:24px;">Top Performing Subject Lines</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Subject Line</th>
+        <th>Sent</th>
+        <th>Opens</th>
+        <th>Open Rate</th>
+        <th>Replies</th>
+        <th>Reply Rate</th>
+      </tr>
+    </thead>
+    <tbody id="subject-table">
+      <!-- Populated by JS -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+// ---- Navigation ----
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---- Demo Data ----
+// In production, this would fetch from cold-email-sender.py dashboard endpoint
+const DEMO = {
+  sent: 347, opened: 162, replied: 19, booked: 7, bounced: 8, active: 42,
+  pipeline: { researched: 156, emailed: 98, opened: 62, replied: 19, booked: 7 },
+  seqA: { sent: 215, openRate: 48.2, replyRate: 5.8, bookRate: 2.3, best: "Email 1" },
+  seqB: { sent: 132, openRate: 44.7, replyRate: 4.5, bookRate: 1.5, best: "Email 3" },
+  daily: [],
+  subjects: [
+    { subject: "abc plumbing + houston plumbing", sent: 1, opens: 1, openRate: 100, replies: 1, replyRate: 100 },
+    { subject: "2-minute scorecard", sent: 52, opens: 31, openRate: 59.6, replies: 4, replyRate: 7.7 },
+    { subject: "hvac multiples", sent: 38, opens: 21, openRate: 55.3, replies: 3, replyRate: 7.9 },
+    { subject: "your trade clients", sent: 45, opens: 23, openRate: 51.1, replies: 2, replyRate: 4.4 },
+    { subject: "roofing owner — 40% more", sent: 28, opens: 14, openRate: 50.0, replies: 2, replyRate: 7.1 },
+    { subject: "guide for your clients", sent: 40, opens: 19, openRate: 47.5, replies: 2, replyRate: 5.0 },
+    { subject: "plumbing multiples", sent: 35, opens: 16, openRate: 45.7, replies: 1, replyRate: 2.9 },
+    { subject: "referral arrangement", sent: 32, opens: 14, openRate: 43.8, replies: 2, replyRate: 6.3 },
+    { subject: "last note", sent: 41, opens: 15, openRate: 36.6, replies: 1, replyRate: 2.4 },
+    { subject: "electrical owner — 40% more", sent: 35, opens: 9, openRate: 25.7, replies: 1, replyRate: 2.9 },
+  ],
+  prospects: [
+    { company: "Abacus Plumbing", owner: "TBD", industry: "Plumbing", city: "Houston", seq: "A", score: 8, status: "opened", lastActivity: "2026-03-27" },
+    { company: "John Moore Services", owner: "TBD", industry: "HVAC/Plumbing", city: "Houston", seq: "A", score: 9, status: "replied", lastActivity: "2026-03-26" },
+    { company: "Smith & Associates CPA", owner: "R. Smith", industry: "Accounting", city: "Houston", seq: "B", score: 7, status: "emailed", lastActivity: "2026-03-25" },
+    { company: "Nick's Plumbing", owner: "TBD", industry: "Plumbing", city: "Houston", seq: "A", score: 7, status: "opened", lastActivity: "2026-03-25" },
+    { company: "Harris Wealth Advisors", owner: "M. Harris", industry: "Financial", city: "Houston", seq: "B", score: 6, status: "opened", lastActivity: "2026-03-24" },
+    { company: "Village Plumbing & Air", owner: "TBD", industry: "Plumbing/HVAC", city: "Houston", seq: "A", score: 8, status: "booked", lastActivity: "2026-03-24" },
+    { company: "Cooper Electrical", owner: "TBD", industry: "Electrical", city: "Houston", seq: "A", score: 6, status: "emailed", lastActivity: "2026-03-23" },
+    { company: "Thompson Law PLLC", owner: "J. Thompson", industry: "Legal", city: "Houston", seq: "B", score: 7, status: "replied", lastActivity: "2026-03-23" },
+  ],
+};
+
+// Generate 30 days of demo data
+for (let i = 29; i >= 0; i--) {
+  const d = new Date(); d.setDate(d.getDate() - i);
+  const day = d.getDay();
+  const base = (day >= 2 && day <= 4) ? Math.floor(Math.random()*30)+20 : Math.floor(Math.random()*10)+2;
+  DEMO.daily.push({
+    date: d.toISOString().split('T')[0],
+    sent: base,
+    opened: Math.floor(base * (0.35 + Math.random()*0.2)),
+    replied: Math.floor(base * Math.random() * 0.08),
+  });
+}
+
+// ---- Populate KPIs ----
+document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+document.getElementById('kpi-sent').textContent = DEMO.sent;
+document.getElementById('kpi-opened').textContent = DEMO.opened;
+document.getElementById('kpi-open-rate').textContent = (100*DEMO.opened/DEMO.sent).toFixed(1) + '% open rate';
+document.getElementById('kpi-replied').textContent = DEMO.replied;
+document.getElementById('kpi-reply-rate').textContent = (100*DEMO.replied/DEMO.sent).toFixed(1) + '% reply rate';
+document.getElementById('kpi-booked').textContent = DEMO.booked;
+document.getElementById('kpi-book-rate').textContent = (100*DEMO.booked/DEMO.sent).toFixed(1) + '% book rate';
+document.getElementById('kpi-active').textContent = DEMO.active;
+document.getElementById('kpi-bounced').textContent = DEMO.bounced;
+document.getElementById('kpi-bounce-rate').textContent = (100*DEMO.bounced/DEMO.sent).toFixed(1) + '% bounce';
+
+// ---- Pipeline ----
+document.getElementById('pipe-researched').textContent = DEMO.pipeline.researched;
+document.getElementById('pipe-emailed').textContent = DEMO.pipeline.emailed;
+document.getElementById('pipe-opened').textContent = DEMO.pipeline.opened;
+document.getElementById('pipe-replied').textContent = DEMO.pipeline.replied;
+document.getElementById('pipe-booked').textContent = DEMO.pipeline.booked;
+
+// ---- Sequences ----
+document.getElementById('seqa-sent').textContent = DEMO.seqA.sent;
+document.getElementById('seqa-open').textContent = DEMO.seqA.openRate + '%';
+document.getElementById('seqa-open-bar').style.width = DEMO.seqA.openRate + '%';
+document.getElementById('seqa-reply').textContent = DEMO.seqA.replyRate + '%';
+document.getElementById('seqa-reply-bar').style.width = (DEMO.seqA.replyRate * 10) + '%';
+document.getElementById('seqa-book').textContent = DEMO.seqA.bookRate + '%';
+document.getElementById('seqa-book-bar').style.width = (DEMO.seqA.bookRate * 10) + '%';
+document.getElementById('seqa-best').textContent = DEMO.seqA.best;
+
+document.getElementById('seqb-sent').textContent = DEMO.seqB.sent;
+document.getElementById('seqb-open').textContent = DEMO.seqB.openRate + '%';
+document.getElementById('seqb-open-bar').style.width = DEMO.seqB.openRate + '%';
+document.getElementById('seqb-reply').textContent = DEMO.seqB.replyRate + '%';
+document.getElementById('seqb-reply-bar').style.width = (DEMO.seqB.replyRate * 10) + '%';
+document.getElementById('seqb-book').textContent = DEMO.seqB.bookRate + '%';
+document.getElementById('seqb-book-bar').style.width = (DEMO.seqB.bookRate * 10) + '%';
+document.getElementById('seqb-best').textContent = DEMO.seqB.best;
+
+// ---- Prospect Table ----
+const ptbody = document.getElementById('prospect-table');
+DEMO.prospects.forEach(p => {
+  const tr = document.createElement('tr');
+  const seqBadge = p.seq === 'A' ? 'blue' : 'purple';
+  const statusColors = { researched:'', emailed:'blue', opened:'yellow', replied:'orange', booked:'green' };
+  tr.innerHTML = `
+    <td><strong>${p.company}</strong></td>
+    <td>${p.owner}</td>
+    <td>${p.industry}</td>
+    <td>${p.city}</td>
+    <td><span class="badge ${seqBadge}">Seq ${p.seq}</span></td>
+    <td>${p.score}/10</td>
+    <td><div class="prospect-status"><div class="status-dot ${p.status}"></div>${p.status}</div></td>
+    <td style="color:var(--text-dim)">${p.lastActivity}</td>
+  `;
+  ptbody.appendChild(tr);
+});
+
+// ---- Subject Line Table ----
+const stbody = document.getElementById('subject-table');
+DEMO.subjects.forEach(s => {
+  const tr = document.createElement('tr');
+  const orColor = s.openRate >= 50 ? 'var(--accent-green)' : s.openRate >= 35 ? 'var(--accent-yellow)' : 'var(--accent-orange)';
+  tr.innerHTML = `
+    <td><strong>${s.subject}</strong></td>
+    <td>${s.sent}</td>
+    <td>${s.opens}</td>
+    <td style="color:${orColor};font-weight:600">${s.openRate}%</td>
+    <td>${s.replies}</td>
+    <td style="font-weight:600">${s.replyRate}%</td>
+  `;
+  stbody.appendChild(tr);
+});
+
+// ---- Charts ----
+const chartDefaults = { responsive: true, plugins: { legend: { display: false } } };
+
+// Daily send chart
+new Chart(document.getElementById('dailyChart'), {
+  type: 'bar',
+  data: {
+    labels: DEMO.daily.map(d => d.date.slice(5)),
+    datasets: [
+      { label: 'Sent', data: DEMO.daily.map(d => d.sent), backgroundColor: 'rgba(74,158,255,0.6)', borderRadius: 4 },
+      { label: 'Opened', data: DEMO.daily.map(d => d.opened), backgroundColor: 'rgba(255,215,74,0.6)', borderRadius: 4 },
+      { label: 'Replied', data: DEMO.daily.map(d => d.replied), backgroundColor: 'rgba(255,107,74,0.8)', borderRadius: 4 },
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    plugins: { legend: { display: true, labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#555', font: { size: 10 } }, grid: { color: '#1a1a1a' } },
+      y: { ticks: { color: '#555' }, grid: { color: '#1a1a1a' } },
+    }
+  }
+});
+
+// Funnel chart
+new Chart(document.getElementById('funnelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Sent', 'Opened', 'Replied', 'Booked'],
+    datasets: [{
+      data: [DEMO.sent, DEMO.opened, DEMO.replied, DEMO.booked],
+      backgroundColor: ['rgba(74,158,255,0.7)', 'rgba(255,215,74,0.7)', 'rgba(255,107,74,0.7)', 'rgba(74,255,139,0.7)'],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    indexAxis: 'y',
+    scales: {
+      x: { ticks: { color: '#555' }, grid: { color: '#1a1a1a' } },
+      y: { ticks: { color: '#aaa', font: { size: 13 } }, grid: { display: false } },
+    }
+  }
+});
+
+// Step performance chart
+new Chart(document.getElementById('stepChart'), {
+  type: 'line',
+  data: {
+    labels: ['Email 1', 'Email 2', 'Email 3', 'Email 4', 'Email 5'],
+    datasets: [
+      {
+        label: 'Seq A Open Rate',
+        data: [52, 48, 59, 44, 36],
+        borderColor: 'rgba(74,158,255,0.8)', backgroundColor: 'rgba(74,158,255,0.1)',
+        fill: true, tension: 0.3,
+      },
+      {
+        label: 'Seq B Open Rate',
+        data: [46, 51, 43, 47, 38],
+        borderColor: 'rgba(192,132,252,0.8)', backgroundColor: 'rgba(192,132,252,0.1)',
+        fill: true, tension: 0.3,
+      },
+      {
+        label: 'Seq A Reply Rate',
+        data: [6.2, 4.1, 7.8, 5.5, 2.4],
+        borderColor: 'rgba(255,107,74,0.8)', borderDash: [5,5], tension: 0.3,
+      },
+      {
+        label: 'Seq B Reply Rate',
+        data: [3.8, 5.0, 6.3, 4.2, 1.8],
+        borderColor: 'rgba(255,215,74,0.8)', borderDash: [5,5], tension: 0.3,
+      },
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    plugins: { legend: { display: true, labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#888' }, grid: { color: '#1a1a1a' } },
+      y: { ticks: { color: '#555', callback: v => v + '%' }, grid: { color: '#1a1a1a' } },
+    }
+  }
+});
+
+// Pipeline over time chart
+const pipeLabels = DEMO.daily.slice(-14).map(d => d.date.slice(5));
+new Chart(document.getElementById('pipelineChart'), {
+  type: 'line',
+  data: {
+    labels: pipeLabels,
+    datasets: [
+      { label: 'Emailed', data: pipeLabels.map((_,i) => 40 + i*4 + Math.floor(Math.random()*8)), borderColor: 'rgba(74,158,255,0.8)', tension: 0.3 },
+      { label: 'Opened', data: pipeLabels.map((_,i) => 20 + i*3 + Math.floor(Math.random()*5)), borderColor: 'rgba(255,215,74,0.8)', tension: 0.3 },
+      { label: 'Replied', data: pipeLabels.map((_,i) => 5 + Math.floor(i*1.2) + Math.floor(Math.random()*3)), borderColor: 'rgba(255,107,74,0.8)', tension: 0.3 },
+      { label: 'Booked', data: pipeLabels.map((_,i) => 1 + Math.floor(i*0.5) + Math.floor(Math.random()*2)), borderColor: 'rgba(74,255,139,0.8)', tension: 0.3 },
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    plugins: { legend: { display: true, labels: { color: '#888', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#555' }, grid: { color: '#1a1a1a' } },
+      y: { ticks: { color: '#555' }, grid: { color: '#1a1a1a' } },
+    }
+  }
+});
+</script>
+</body>
+</html>
