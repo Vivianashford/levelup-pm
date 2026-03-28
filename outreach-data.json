@@ -1,0 +1,25 @@
+{
+  "lastUpdated": "2026-03-28T16:05:00.000Z",
+  "summary": {
+    "totalProspects": 0,
+    "contacted": 0,
+    "replied": 0,
+    "meetingsBooked": 0,
+    "activeSequences": 0,
+    "replyRate": 0,
+    "meetingRate": 0
+  },
+  "byPartnerType": {
+    "CPA": { "contacted": 0, "replied": 0, "meetings": 0 },
+    "Attorney": { "contacted": 0, "replied": 0, "meetings": 0 },
+    "WealthAdvisor": { "contacted": 0, "replied": 0, "meetings": 0 }
+  },
+  "recentActivity": [],
+  "sequencePerformance": {
+    "email1": { "sent": 0, "opened": 0, "replied": 0 },
+    "email2": { "sent": 0, "opened": 0, "replied": 0 },
+    "email3": { "sent": 0, "opened": 0, "replied": 0 },
+    "email4": { "sent": 0, "opened": 0, "replied": 0 },
+    "email5": { "sent": 0, "opened": 0, "replied": 0 }
+  }
+}
