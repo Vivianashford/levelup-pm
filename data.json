@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T01:42:43.976224+00:00",
-  "updated_local": "2026-03-27 08:42 PM",
+  "updated": "2026-03-28T01:57:43.863085+00:00",
+  "updated_local": "2026-03-27 08:57 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -88,14 +88,14 @@
     "week": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 322,
-      "avg_duration": 172.2,
+      "pageviews": 324,
+      "avg_duration": 175.9,
       "conversions": 0
     },
     "month": {
       "users": 156,
       "sessions": 189,
-      "pageviews": 322,
+      "pageviews": 324,
       "conversions": 0
     },
     "top_pages": [
@@ -225,7 +225,7 @@
       }
     ],
     "blog": {
-      "total_views": 33,
+      "total_views": 35,
       "total_users": 22,
       "articles": [
         {
@@ -239,6 +239,12 @@
           "views": 3,
           "users": 3,
           "avg_duration": 48.6
+        },
+        {
+          "page": "/blog/the-90-percent-haircut.html",
+          "views": 3,
+          "users": 1,
+          "avg_duration": 1681.6
         },
         {
           "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
@@ -263,12 +269,6 @@
           "views": 1,
           "users": 1,
           "avg_duration": 2118.6
-        },
-        {
-          "page": "/blog/the-90-percent-haircut.html",
-          "views": 1,
-          "users": 1,
-          "avg_duration": 989.1
         }
       ]
     },
@@ -360,7 +360,7 @@
         "date": "2026-03-27",
         "users": 16,
         "sessions": 16,
-        "pageviews": 28
+        "pageviews": 30
       }
     ],
     "devices": [
@@ -450,7 +450,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 322
+        "count": 324
       },
       {
         "event": "session_start",
@@ -462,7 +462,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 158
+        "count": 160
       },
       {
         "event": "first_visit",
