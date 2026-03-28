@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T15:28:23.217688+00:00",
-  "updated_local": "2026-03-28 10:28 AM",
+  "updated": "2026-03-28T15:43:23.558626+00:00",
+  "updated_local": "2026-03-28 10:43 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 13,
+    "realtime_users": 1,
     "week": {
-      "users": 192,
-      "sessions": 233,
-      "pageviews": 390,
-      "avg_duration": 182.4,
+      "users": 197,
+      "sessions": 237,
+      "pageviews": 398,
+      "avg_duration": 188.9,
       "conversions": 0
     },
     "month": {
-      "users": 192,
-      "sessions": 233,
-      "pageviews": 390,
+      "users": 197,
+      "sessions": 237,
+      "pageviews": 398,
       "conversions": 0
     },
     "top_pages": [
@@ -130,6 +130,11 @@
         "users": 10
       },
       {
+        "page": "/satellite-valuation/",
+        "views": 15,
+        "users": 10
+      },
+      {
         "page": "/about",
         "views": 14,
         "users": 10
@@ -138,11 +143,6 @@
         "page": "/watch.html",
         "views": 14,
         "users": 2
-      },
-      {
-        "page": "/satellite-valuation/",
-        "views": 13,
-        "users": 10
       },
       {
         "page": "/services",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 178,
-        "users": 163
+        "sessions": 183,
+        "users": 168
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 23,
-        "users": 16
+        "sessions": 24,
+        "users": 17
       },
       {
         "source": "vivianashford.github.io",
@@ -376,28 +376,28 @@
       },
       {
         "date": "2026-03-28",
-        "users": 23,
-        "sessions": 26,
-        "pageviews": 33
+        "users": 28,
+        "sessions": 30,
+        "pageviews": 41
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 206,
-        "users": 171
+        "sessions": 208,
+        "users": 174
       },
       {
         "device": "Mobile",
-        "sessions": 29,
-        "users": 23
+        "sessions": 31,
+        "users": 25
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 18,
-        "sessions": 20
+        "users": 21,
+        "sessions": 22
       },
       {
         "city": "Amsterdam",
@@ -468,23 +468,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 390
+        "count": 398
       },
       {
         "event": "session_start",
-        "count": 226
+        "count": 230
       },
       {
         "event": "scroll",
-        "count": 201
+        "count": 205
       },
       {
         "event": "user_engagement",
-        "count": 193
+        "count": 196
       },
       {
         "event": "first_visit",
-        "count": 189
+        "count": 193
       },
       {
         "event": "scroll_depth",
@@ -525,8 +525,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 163,
-        "sessions": 178
+        "users": 168,
+        "sessions": 183
       },
       {
         "campaign": "(referral)",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 79.0
+    "bounce_rate": 79.3
   }
 }
