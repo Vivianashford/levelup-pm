@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T17:43:24.561192+00:00",
-  "updated_local": "2026-03-28 12:43 PM",
+  "updated": "2026-03-28T17:58:24.370924+00:00",
+  "updated_local": "2026-03-28 12:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 5,
     "week": {
-      "users": 237,
-      "sessions": 279,
-      "pageviews": 441,
-      "avg_duration": 160.8,
+      "users": 242,
+      "sessions": 284,
+      "pageviews": 446,
+      "avg_duration": 157.9,
       "conversions": 0
     },
     "month": {
-      "users": 237,
-      "sessions": 279,
-      "pageviews": 441,
+      "users": 242,
+      "sessions": 284,
+      "pageviews": 446,
       "conversions": 0
     },
     "top_pages": [
@@ -145,17 +145,17 @@
         "users": 2
       },
       {
-        "page": "/satellite-plumbing/",
+        "page": "/satellite-landscaping/",
         "views": 11,
-        "users": 8
+        "users": 10
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 222,
-        "users": 205
+        "sessions": 227,
+        "users": 210
       },
       {
         "source": "(not set)",
@@ -376,16 +376,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 68,
-        "sessions": 72,
-        "pageviews": 84
+        "users": 73,
+        "sessions": 77,
+        "pageviews": 89
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 243,
-        "users": 209
+        "sessions": 248,
+        "users": 214
       },
       {
         "device": "Mobile",
@@ -396,13 +396,13 @@
     "locations": [
       {
         "city": "",
-        "users": 35,
-        "sessions": 36
+        "users": 38,
+        "sessions": 39
       },
       {
         "city": "Council Bluffs",
-        "users": 12,
-        "sessions": 12
+        "users": 13,
+        "sessions": 13
       },
       {
         "city": "San Jose",
@@ -426,8 +426,8 @@
       },
       {
         "city": "Ashburn",
-        "users": 7,
-        "sessions": 7
+        "users": 8,
+        "sessions": 8
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -468,15 +468,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 441
+        "count": 446
       },
       {
         "event": "session_start",
-        "count": 270
+        "count": 275
       },
       {
         "event": "first_visit",
-        "count": 231
+        "count": 236
       },
       {
         "event": "user_engagement",
@@ -484,7 +484,7 @@
       },
       {
         "event": "scroll",
-        "count": 209
+        "count": 210
       },
       {
         "event": "scroll_depth",
@@ -529,8 +529,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 205,
-        "sessions": 222
+        "users": 210,
+        "sessions": 227
       },
       {
         "campaign": "(referral)",
@@ -613,6 +613,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 82.4
+    "bounce_rate": 82.7
   }
 }
