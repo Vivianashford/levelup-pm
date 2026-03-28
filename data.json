@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T16:43:25.133544+00:00",
-  "updated_local": "2026-03-28 11:43 AM",
+  "updated": "2026-03-28T17:00:14.113486+00:00",
+  "updated_local": "2026-03-28 12:00 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
-      "users": 226,
-      "sessions": 267,
-      "pageviews": 427,
-      "avg_duration": 167.8,
+      "users": 235,
+      "sessions": 276,
+      "pageviews": 437,
+      "avg_duration": 162.4,
       "conversions": 0
     },
     "month": {
-      "users": 226,
-      "sessions": 267,
-      "pageviews": 427,
+      "users": 235,
+      "sessions": 276,
+      "pageviews": 437,
       "conversions": 0
     },
     "top_pages": [
@@ -145,23 +145,23 @@
         "users": 2
       },
       {
-        "page": "/services",
+        "page": "/satellite-plumbing/",
         "views": 11,
-        "users": 7
+        "users": 8
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 210,
-        "users": 195
+        "sessions": 219,
+        "users": 204
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 31,
-        "users": 23
+        "sessions": 33,
+        "users": 25
       },
       {
         "source": "vivianashford.github.io",
@@ -376,16 +376,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 57,
-        "sessions": 60,
-        "pageviews": 70
+        "users": 66,
+        "sessions": 69,
+        "pageviews": 80
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 233,
-        "users": 198
+        "sessions": 242,
+        "users": 207
       },
       {
         "device": "Mobile",
@@ -400,12 +400,17 @@
         "sessions": 35
       },
       {
-        "city": "Amsterdam",
-        "users": 10,
-        "sessions": 10
+        "city": "Council Bluffs",
+        "users": 12,
+        "sessions": 12
       },
       {
-        "city": "Council Bluffs",
+        "city": "San Jose",
+        "users": 11,
+        "sessions": 11
+      },
+      {
+        "city": "Amsterdam",
         "users": 10,
         "sessions": 10
       },
@@ -420,9 +425,9 @@
         "sessions": 10
       },
       {
-        "city": "San Jose",
-        "users": 9,
-        "sessions": 9
+        "city": "Ashburn",
+        "users": 7,
+        "sessions": 7
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -450,11 +455,6 @@
         "sessions": 24
       },
       {
-        "city": "Ashburn",
-        "users": 4,
-        "sessions": 4
-      },
-      {
         "city": "Dallas",
         "users": 4,
         "sessions": 7
@@ -468,23 +468,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 427
+        "count": 437
       },
       {
         "event": "session_start",
-        "count": 258
+        "count": 267
       },
       {
         "event": "first_visit",
-        "count": 221
+        "count": 230
+      },
+      {
+        "event": "user_engagement",
+        "count": 210
       },
       {
         "event": "scroll",
         "count": 209
-      },
-      {
-        "event": "user_engagement",
-        "count": 208
       },
       {
         "event": "scroll_depth",
@@ -525,8 +525,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 195,
-        "sessions": 210
+        "users": 204,
+        "sessions": 219
       },
       {
         "campaign": "(referral)",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 81.6
+    "bounce_rate": 82.2
   }
 }
