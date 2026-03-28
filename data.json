@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T18:58:28.061768+00:00",
-  "updated_local": "2026-03-28 01:58 PM",
+  "updated": "2026-03-28T19:13:24.833974+00:00",
+  "updated_local": "2026-03-28 02:13 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 246,
-      "sessions": 289,
-      "pageviews": 460,
-      "avg_duration": 144.9,
+      "users": 249,
+      "sessions": 292,
+      "pageviews": 462,
+      "avg_duration": 143.5,
       "conversions": 0
     },
     "month": {
-      "users": 246,
-      "sessions": 289,
-      "pageviews": 460,
+      "users": 249,
+      "sessions": 292,
+      "pageviews": 462,
       "conversions": 0
     },
     "top_pages": [
@@ -145,23 +145,23 @@
         "users": 2
       },
       {
-        "page": "/satellite-landscaping/",
-        "views": 11,
-        "users": 10
+        "page": "/satellite-plumbing/",
+        "views": 12,
+        "users": 9
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 231,
-        "users": 214
+        "sessions": 233,
+        "users": 216
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 27,
-        "users": 23
+        "sessions": 29,
+        "users": 25
       },
       {
         "source": "vivianashford.github.io",
@@ -294,7 +294,7 @@
       "/": {
         "views": 173,
         "users": 105,
-        "avg_duration": 101.6
+        "avg_duration": 101.8
       },
       "/book.html": {
         "views": 18,
@@ -382,21 +382,21 @@
       },
       {
         "date": "2026-03-28",
-        "users": 77,
-        "sessions": 81,
-        "pageviews": 95
+        "users": 80,
+        "sessions": 84,
+        "pageviews": 97
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 253,
-        "users": 218
+        "sessions": 255,
+        "users": 220
       },
       {
         "device": "Mobile",
-        "sessions": 38,
-        "users": 30
+        "sessions": 39,
+        "users": 31
       }
     ],
     "locations": [
@@ -412,13 +412,13 @@
       },
       {
         "city": "San Jose",
-        "users": 12,
-        "sessions": 12
+        "users": 13,
+        "sessions": 13
       },
       {
         "city": "Amsterdam",
-        "users": 10,
-        "sessions": 10
+        "users": 11,
+        "sessions": 11
       },
       {
         "city": "Hounslow",
@@ -474,19 +474,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 460
+        "count": 462
       },
       {
         "event": "session_start",
-        "count": 281
+        "count": 283
       },
       {
         "event": "first_visit",
-        "count": 241
+        "count": 243
       },
       {
         "event": "user_engagement",
-        "count": 219
+        "count": 222
       },
       {
         "event": "scroll",
@@ -494,7 +494,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 112
+        "count": 113
       },
       {
         "event": "click",
@@ -535,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 214,
-        "sessions": 231
+        "users": 216,
+        "sessions": 233
       },
       {
         "campaign": "(referral)",
@@ -627,6 +627,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 79.6
+    "bounce_rate": 79.8
   }
 }
