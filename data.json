@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T12:43:22.323250+00:00",
-  "updated_local": "2026-03-28 07:43 AM",
+  "updated": "2026-03-28T12:58:23.594677+00:00",
+  "updated_local": "2026-03-28 07:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 4,
     "week": {
-      "users": 176,
-      "sessions": 213,
-      "pageviews": 364,
-      "avg_duration": 185.3,
+      "users": 181,
+      "sessions": 218,
+      "pageviews": 369,
+      "avg_duration": 185.7,
       "conversions": 0
     },
     "month": {
-      "users": 176,
-      "sessions": 213,
-      "pageviews": 364,
+      "users": 181,
+      "sessions": 218,
+      "pageviews": 369,
       "conversions": 0
     },
     "top_pages": [
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 163,
-        "users": 148
+        "sessions": 167,
+        "users": 152
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 14,
-        "users": 10
+        "sessions": 16,
+        "users": 12
       },
       {
         "source": "m.facebook.com",
@@ -370,16 +370,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 6,
-        "sessions": 6,
-        "pageviews": 7
+        "users": 11,
+        "sessions": 11,
+        "pageviews": 12
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 191,
-        "users": 158
+        "sessions": 196,
+        "users": 163
       },
       {
         "device": "Mobile",
@@ -454,7 +454,7 @@
         "sessions": 4
       },
       {
-        "city": "Boulogne-Billancourt",
+        "city": "Ashburn",
         "users": 3,
         "sessions": 3
       }
@@ -462,23 +462,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 364
+        "count": 369
       },
       {
         "event": "session_start",
-        "count": 210
+        "count": 214
       },
       {
         "event": "scroll",
-        "count": 194
+        "count": 197
       },
       {
         "event": "user_engagement",
-        "count": 179
+        "count": 181
       },
       {
         "event": "first_visit",
-        "count": 174
+        "count": 178
       },
       {
         "event": "scroll_depth",
@@ -519,8 +519,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 148,
-        "sessions": 163
+        "users": 152,
+        "sessions": 167
       },
       {
         "campaign": "(referral)",
@@ -595,6 +595,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 77.0
+    "bounce_rate": 77.5
   }
 }
