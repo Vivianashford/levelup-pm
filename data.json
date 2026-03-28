@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T14:43:25.003598+00:00",
-  "updated_local": "2026-03-28 09:43 AM",
+  "updated": "2026-03-28T14:58:23.757597+00:00",
+  "updated_local": "2026-03-28 09:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,30 +84,30 @@
     }
   ],
   "analytics": {
-    "realtime_users": 8,
+    "realtime_users": 18,
     "week": {
-      "users": 188,
-      "sessions": 226,
-      "pageviews": 379,
-      "avg_duration": 184.3,
+      "users": 191,
+      "sessions": 231,
+      "pageviews": 388,
+      "avg_duration": 183.9,
       "conversions": 0
     },
     "month": {
-      "users": 188,
-      "sessions": 226,
-      "pageviews": 379,
+      "users": 191,
+      "sessions": 231,
+      "pageviews": 388,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 163,
-        "users": 103
+        "views": 165,
+        "users": 104
       },
       {
         "page": "/automation-edge/",
-        "views": 28,
-        "users": 15
+        "views": 31,
+        "users": 16
       },
       {
         "page": "/blog/",
@@ -141,8 +141,8 @@
       },
       {
         "page": "/satellite-valuation/",
-        "views": 11,
-        "users": 9
+        "views": 13,
+        "users": 10
       },
       {
         "page": "/services",
@@ -154,13 +154,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 174,
-        "users": 159
+        "sessions": 177,
+        "users": 162
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 19,
+        "sessions": 21,
         "users": 15
       },
       {
@@ -286,9 +286,9 @@
     },
     "funnel": {
       "/": {
-        "views": 163,
-        "users": 103,
-        "avg_duration": 101.5
+        "views": 165,
+        "users": 104,
+        "avg_duration": 104.3
       },
       "/book.html": {
         "views": 18,
@@ -376,28 +376,33 @@
       },
       {
         "date": "2026-03-28",
-        "users": 19,
-        "sessions": 19,
-        "pageviews": 22
+        "users": 22,
+        "sessions": 24,
+        "pageviews": 31
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 203,
-        "users": 169
+        "sessions": 204,
+        "users": 170
       },
       {
         "device": "Mobile",
-        "sessions": 25,
-        "users": 21
+        "sessions": 29,
+        "users": 23
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 16,
-        "sessions": 17
+        "users": 18,
+        "sessions": 19
+      },
+      {
+        "city": "Amsterdam",
+        "users": 10,
+        "sessions": 10
       },
       {
         "city": "Hounslow",
@@ -408,11 +413,6 @@
         "city": "Wheaton",
         "users": 10,
         "sessions": 10
-      },
-      {
-        "city": "Amsterdam",
-        "users": 9,
-        "sessions": 9
       },
       {
         "city": "Council Bluffs",
@@ -445,22 +445,22 @@
         "sessions": 5
       },
       {
+        "city": "Houston",
+        "users": 5,
+        "sessions": 24
+      },
+      {
         "city": "Ashburn",
         "users": 4,
         "sessions": 4
       },
       {
-        "city": "Houston",
+        "city": "Dallas",
         "users": 4,
-        "sessions": 23
+        "sessions": 7
       },
       {
         "city": "Istres",
-        "users": 4,
-        "sessions": 4
-      },
-      {
-        "city": "Miami",
         "users": 4,
         "sessions": 4
       }
@@ -468,27 +468,27 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 379
+        "count": 388
       },
       {
         "event": "session_start",
-        "count": 222
+        "count": 225
       },
       {
         "event": "scroll",
-        "count": 198
+        "count": 200
       },
       {
         "event": "user_engagement",
-        "count": 186
+        "count": 192
       },
       {
         "event": "first_visit",
-        "count": 185
+        "count": 188
       },
       {
         "event": "scroll_depth",
-        "count": 95
+        "count": 99
       },
       {
         "event": "click",
@@ -525,8 +525,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 159,
-        "sessions": 174
+        "users": 162,
+        "sessions": 177
       },
       {
         "campaign": "(referral)",
@@ -609,6 +609,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 78.3
+    "bounce_rate": 78.8
   }
 }
