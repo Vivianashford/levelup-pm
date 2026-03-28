@@ -1,0 +1,81 @@
+{
+  "posts": [
+    {
+      "id": "post-2026-03-27-01",
+      "title": "58% of Founders Say Their Business Cant Run Without Them",
+      "text_preview": "58% of founders say their business cant run without them...",
+      "topic": "owner-dependency",
+      "hook_type": "stat",
+      "format": "data-driven",
+      "platform_ids": {
+        "linkedin": "urn:li:share:7443373330126258176",
+        "facebook": "103908865130039_1248041834141553"
+      },
+      "posted_at": "2026-03-27T13:50:00-05:00",
+      "posted_hour": 13,
+      "metrics": {},
+      "score": 0,
+      "tags": [
+        "owner-dependency",
+        "freedom",
+        "systems",
+        "EY-data"
+      ],
+      "created": "2026-03-28T00:20:38.564463+00:00"
+    },
+    {
+      "id": "post-2026-03-27-02",
+      "title": "Xero + AI Due Diligence - The Future of Business Valuation",
+      "text_preview": "Xero just launched AI-powered financial health scores...",
+      "topic": "technology-exits",
+      "hook_type": "news",
+      "format": "data-driven",
+      "platform_ids": {
+        "linkedin": "urn:li:share:7443412892303159296",
+        "facebook": "103908865130039_1248122540800149"
+      },
+      "posted_at": "2026-03-27T16:30:00-05:00",
+      "posted_hour": 16,
+      "metrics": {},
+      "score": 0,
+      "tags": [
+        "AI",
+        "due-diligence",
+        "Xero",
+        "technology",
+        "valuation"
+      ],
+      "created": "2026-03-28T00:20:38.645880+00:00"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-silver-tsunami",
+      "title": "Silver Tsunami: Service Business Exit Planning",
+      "slug": "silver-tsunami-service-business-exit-planning",
+      "url": "https://thearenapartners.com/blog/silver-tsunami-service-business-exit-planning.html",
+      "topic": "demographics",
+      "hook_type": "stat",
+      "word_count": 2000,
+      "published_at": "2026-03-15T00:00:00-05:00",
+      "metrics": {
+        "pageviews": 0,
+        "avg_time_on_page": 0,
+        "bounce_rate": 0,
+        "assessment_clicks": 0,
+        "booking_clicks": 0
+      },
+      "score": 0,
+      "tags": [
+        "silver-tsunami",
+        "demographics",
+        "exit-planning"
+      ],
+      "content_ideas_generated": [],
+      "created": "2026-03-28T00:20:38.724473+00:00"
+    }
+  ],
+  "patterns": [],
+  "topPerformers": [],
+  "lastUpdated": "2026-03-28T00:20:38.724478+00:00"
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Performance | Arena Operations</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+  
+  .header { background: #111; border-bottom: 1px solid #222; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 22px; color: #fff; }
+  .header .refresh { background: #1a7f37; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .header .refresh:hover { background: #2ea043; }
+  
+  .nav { background: #111; border-bottom: 1px solid #222; padding: 10px 30px; display: flex; gap: 20px; }
+  .nav a { color: #888; text-decoration: none; font-size: 13px; padding: 6px 12px; border-radius: 4px; }
+  .nav a:hover, .nav a.active { color: #fff; background: #222; }
+  
+  .container { max-width: 1400px; margin: 0 auto; padding: 30px; }
+  
+  /* Summary Cards */
+  .summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 30px; }
+  .stat-card { background: #151515; border: 1px solid #222; border-radius: 8px; padding: 20px; }
+  .stat-card .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; color: #fff; margin-top: 4px; }
+  .stat-card .delta { font-size: 13px; margin-top: 4px; }
+  .stat-card .delta.up { color: #3fb950; }
+  .stat-card .delta.down { color: #f85149; }
+  
+  /* Content Table */
+  .section { background: #151515; border: 1px solid #222; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+  .section-header { padding: 16px 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: 16px; color: #fff; }
+  .section-header .badge { background: #1a7f37; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+  
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 10px 16px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; }
+  td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid #1a1a1a; }
+  tr:hover { background: #1a1a1a; }
+  
+  .score { display: inline-block; width: 40px; height: 40px; border-radius: 50%; text-align: center; line-height: 40px; font-weight: 700; font-size: 14px; }
+  .score.high { background: #1a7f37; color: #fff; }
+  .score.mid { background: #9e6a03; color: #fff; }
+  .score.low { background: #6e1919; color: #fff; }
+  
+  .platform-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+  .platform-badge.li { background: #0a66c2; color: #fff; }
+  .platform-badge.fb { background: #1877f2; color: #fff; }
+  .platform-badge.x { background: #333; color: #fff; }
+  .platform-badge.tg { background: #0088cc; color: #fff; }
+  .platform-badge.blog { background: #1a7f37; color: #fff; }
+  
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; background: #222; color: #aaa; margin-right: 4px; }
+  
+  /* Patterns */
+  .pattern-card { background: #0d1117; border: 1px solid #1a7f37; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .pattern-card .icon { font-size: 20px; margin-right: 8px; }
+  .pattern-card .insight { font-size: 14px; color: #e0e0e0; }
+  .pattern-card .action { font-size: 12px; color: #3fb950; margin-top: 6px; }
+  
+  /* Ideas Queue */
+  .idea { background: #151515; border-left: 3px solid #9e6a03; padding: 16px 20px; margin-bottom: 8px; border-radius: 0 8px 8px 0; }
+  .idea .title { font-size: 14px; font-weight: 600; color: #fff; }
+  .idea .angle { font-size: 12px; color: #aaa; margin-top: 4px; }
+  .idea .meta { font-size: 11px; color: #666; margin-top: 8px; }
+  .idea .status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+  .idea .status.writing { background: #9e6a03; color: #fff; }
+  .idea .status.ready { background: #1a7f37; color: #fff; }
+  .idea .status.published { background: #0a66c2; color: #fff; }
+  
+  .empty-state { text-align: center; padding: 60px; color: #666; }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  
+  @media (max-width: 768px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Content Performance</h1>
+  <button class="refresh" onclick="loadData()">↻ Refresh</button>
+</div>
+
+<div class="nav">
+  <a href="todo.html">Today</a>
+  <a href="tasks.html">Tasks</a>
+  <a href="content-performance.html" class="active">Content</a>
+  <a href="clients.html">Clients</a>
+  <a href="linkedin-queue.html">LinkedIn Queue</a>
+  <a href="map.html">Map</a>
+</div>
+
+<div class="container">
+  
+  <!-- Summary Stats -->
+  <div class="summary" id="summary">
+    <div class="stat-card">
+      <div class="label">Total Posts</div>
+      <div class="value" id="totalPosts">-</div>
+      <div class="delta up" id="postsWeek">this week</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Total Blogs</div>
+      <div class="value" id="totalBlogs">-</div>
+      <div class="delta up" id="blogsWeek">this week</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Avg Score</div>
+      <div class="value" id="avgScore">-</div>
+      <div class="delta" id="scoreTrend">-</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Best Topic</div>
+      <div class="value" id="bestTopic" style="font-size:18px">-</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Best Hook</div>
+      <div class="value" id="bestHook" style="font-size:18px">-</div>
+    </div>
+  </div>
+
+  <!-- Top Performers -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🏆 Top Performers</h2>
+      <span class="badge" id="topCount">0</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Score</th>
+          <th>Content</th>
+          <th>Topic</th>
+          <th>Hook</th>
+          <th>Platforms</th>
+          <th>Posted</th>
+        </tr>
+      </thead>
+      <tbody id="topTable"></tbody>
+    </table>
+  </div>
+
+  <!-- All Content -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📝 All Content</h2>
+      <span class="badge" id="allCount">0</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Score</th>
+          <th>Content</th>
+          <th>Topic</th>
+          <th>Hook</th>
+          <th>Format</th>
+          <th>Tags</th>
+          <th>Posted</th>
+        </tr>
+      </thead>
+      <tbody id="allTable"></tbody>
+    </table>
+  </div>
+
+  <!-- Patterns -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🔍 Patterns (What's Working & Why)</h2>
+    </div>
+    <div style="padding: 16px;" id="patterns">
+      <div class="empty-state">
+        <div class="icon">📈</div>
+        <p>Patterns emerge after 10+ posts with engagement data</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Ideas Queue -->
+  <div class="section">
+    <div class="section-header">
+      <h2>💡 Content Ideas Queue</h2>
+      <span class="badge" id="ideasCount">0</span>
+    </div>
+    <div style="padding: 16px;" id="ideasQueue"></div>
+  </div>
+
+</div>
+
+<script>
+const PERF_URL = 'content-performance.json';
+const IDEAS_URL = '../scripts/content-ideas-queue.json';
+
+function scoreClass(s) {
+  if (s >= 60) return 'high';
+  if (s >= 30) return 'mid';
+  return 'low';
+}
+
+function platformBadges(pids) {
+  let html = '';
+  if (pids.linkedin) html += '<span class="platform-badge li">LI</span>';
+  if (pids.facebook) html += '<span class="platform-badge fb">FB</span>';
+  if (pids.x) html += '<span class="platform-badge x">X</span>';
+  if (pids.telegraph) html += '<span class="platform-badge tg">TG</span>';
+  if (pids.blog) html += '<span class="platform-badge blog">Blog</span>';
+  return html || '<span style="color:#666">-</span>';
+}
+
+function timeAgo(dateStr) {
+  if (!dateStr) return '-';
+  const d = new Date(dateStr);
+  const hrs = Math.floor((Date.now() - d) / 3600000);
+  if (hrs < 1) return 'just now';
+  if (hrs < 24) return hrs + 'h ago';
+  return Math.floor(hrs / 24) + 'd ago';
+}
+
+async function loadData() {
+  try {
+    // Performance data
+    const perfResp = await fetch(PERF_URL);
+    const perf = perfResp.ok ? await perfResp.json() : { posts: [], blogs: [], patterns: [], topPerformers: [] };
+    
+    // Ideas queue
+    let ideas = { queue: [] };
+    try {
+      const ideasResp = await fetch(IDEAS_URL);
+      if (ideasResp.ok) ideas = await ideasResp.json();
+    } catch(e) {}
+    
+    render(perf, ideas);
+  } catch(e) {
+    console.error('Load failed:', e);
+  }
+}
+
+function render(perf, ideas) {
+  const allContent = [...(perf.posts || []), ...(perf.blogs || [])];
+  const sorted = allContent.sort((a, b) => (b.score || 0) - (a.score || 0));
+  
+  // Summary
+  document.getElementById('totalPosts').textContent = (perf.posts || []).length;
+  document.getElementById('totalBlogs').textContent = (perf.blogs || []).length;
+  
+  const scores = allContent.map(c => c.score || 0).filter(s => s > 0);
+  const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+  document.getElementById('avgScore').textContent = avg || '-';
+  
+  // Patterns
+  const patterns = perf.patterns || [];
+  const bestTopic = patterns.find(p => p.type === 'winning_topics');
+  const bestHook = patterns.find(p => p.type === 'winning_hooks');
+  document.getElementById('bestTopic').textContent = bestTopic ? bestTopic.data[0] : 'TBD';
+  document.getElementById('bestHook').textContent = bestHook ? bestHook.data[0] : 'TBD';
+  
+  // Top Performers
+  const top = (perf.topPerformers || []).slice(0, 5);
+  document.getElementById('topCount').textContent = top.length;
+  document.getElementById('topTable').innerHTML = top.length ? top.map(p => `
+    <tr>
+      <td><span class="score ${scoreClass(p.score || 0)}">${p.score || 0}</span></td>
+      <td>${(p.title || p.text_preview || '').substring(0, 60)}</td>
+      <td><span class="tag">${p.topic || '-'}</span></td>
+      <td>${p.hook_type || '-'}</td>
+      <td>${platformBadges(p.platform_ids || {})}</td>
+      <td>${timeAgo(p.posted_at || p.published_at)}</td>
+    </tr>
+  `).join('') : '<tr><td colspan="6" style="text-align:center;color:#666;padding:30px">No data yet. Posts will appear after the first waterfall publish.</td></tr>';
+  
+  // All Content
+  document.getElementById('allCount').textContent = allContent.length;
+  document.getElementById('allTable').innerHTML = sorted.length ? sorted.map(p => `
+    <tr>
+      <td><span class="score ${scoreClass(p.score || 0)}">${p.score || 0}</span></td>
+      <td>${(p.title || p.text_preview || '').substring(0, 60)}</td>
+      <td><span class="tag">${p.topic || '-'}</span></td>
+      <td>${p.hook_type || '-'}</td>
+      <td>${p.format || '-'}</td>
+      <td>${(p.tags || []).map(t => '<span class="tag">' + t + '</span>').join('')}</td>
+      <td>${timeAgo(p.posted_at || p.published_at)}</td>
+    </tr>
+  `).join('') : '<tr><td colspan="7" style="text-align:center;color:#666;padding:30px">No content tracked yet</td></tr>';
+  
+  // Patterns
+  const patternsEl = document.getElementById('patterns');
+  if (patterns.length) {
+    const icons = { winning_topics: '🎯', winning_formats: '📐', winning_hooks: '🪝', best_time: '⏰' };
+    patternsEl.innerHTML = patterns.map(p => `
+      <div class="pattern-card">
+        <span class="icon">${icons[p.type] || '📊'}</span>
+        <span class="insight">${p.insight}</span>
+        <div class="action">→ Double down on this pattern</div>
+      </div>
+    `).join('');
+  }
+  
+  // Ideas Queue
+  const queue = ideas.queue || [];
+  document.getElementById('ideasCount').textContent = queue.length;
+  document.getElementById('ideasQueue').innerHTML = queue.length ? queue.map(idea => `
+    <div class="idea">
+      <span class="status ${idea.status}">${idea.status}</span>
+      <div class="title">${idea.title}</div>
+      <div class="angle">${idea.angle}</div>
+      <div class="meta">Source: ${idea.source} | Topic: ${idea.topic} | Hook: ${idea.hook_type} | Format: ${idea.format}</div>
+    </div>
+  `).join('') : '<div class="empty-state"><div class="icon">💡</div><p>No ideas in queue. M&A digest will populate this.</p></div>';
+}
+
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>
