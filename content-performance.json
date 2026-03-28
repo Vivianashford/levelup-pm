@@ -13,7 +13,17 @@
       },
       "posted_at": "2026-03-27T13:50:00-05:00",
       "posted_hour": 13,
-      "metrics": {},
+      "metrics": {
+        "linkedin": {
+          "likes": 0,
+          "comments": 0,
+          "shares": 0,
+          "impressions": 0,
+          "clicks": 0,
+          "engagement": 0
+        },
+        "last_checked": "2026-03-28T01:01:01.755043+00:00"
+      },
       "score": 0,
       "tags": [
         "owner-dependency",
@@ -36,7 +46,17 @@
       },
       "posted_at": "2026-03-27T16:30:00-05:00",
       "posted_hour": 16,
-      "metrics": {},
+      "metrics": {
+        "linkedin": {
+          "likes": 0,
+          "comments": 0,
+          "shares": 0,
+          "impressions": 0,
+          "clicks": 0,
+          "engagement": 0
+        },
+        "last_checked": "2026-03-28T01:01:01.755043+00:00"
+      },
       "score": 0,
       "tags": [
         "AI",
@@ -77,5 +97,5 @@
   ],
   "patterns": [],
   "topPerformers": [],
-  "lastUpdated": "2026-03-28T00:20:38.724478+00:00"
+  "lastUpdated": "2026-03-28T01:01:01.755043+00:00"
 }
