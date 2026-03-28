@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T09:13:24.107802+00:00",
-  "updated_local": "2026-03-28 04:13 AM",
+  "updated": "2026-03-28T09:28:24.563697+00:00",
+  "updated_local": "2026-03-28 04:28 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 4,
     "week": {
-      "users": 172,
-      "sessions": 207,
-      "pageviews": 357,
-      "avg_duration": 183.2,
+      "users": 173,
+      "sessions": 208,
+      "pageviews": 358,
+      "avg_duration": 182.3,
       "conversions": 0
     },
     "month": {
-      "users": 172,
-      "sessions": 207,
-      "pageviews": 357,
+      "users": 173,
+      "sessions": 208,
+      "pageviews": 358,
       "conversions": 0
     },
     "top_pages": [
@@ -141,8 +141,8 @@
       },
       {
         "page": "/services",
-        "views": 10,
-        "users": 6
+        "views": 11,
+        "users": 7
       },
       {
         "page": "/assessment.html",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 158,
-        "users": 145
+        "sessions": 159,
+        "users": 146
       },
       {
         "source": "vivianashford.github.io",
@@ -367,13 +367,19 @@
         "users": 32,
         "sessions": 34,
         "pageviews": 63
+      },
+      {
+        "date": "2026-03-28",
+        "users": 1,
+        "sessions": 1,
+        "pageviews": 1
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 189,
-        "users": 156
+        "sessions": 190,
+        "users": 157
       },
       {
         "device": "Mobile",
@@ -388,17 +394,17 @@
         "sessions": 13
       },
       {
+        "city": "Hounslow",
+        "users": 10,
+        "sessions": 10
+      },
+      {
         "city": "Wheaton",
         "users": 10,
         "sessions": 10
       },
       {
         "city": "Amsterdam",
-        "users": 9,
-        "sessions": 9
-      },
-      {
-        "city": "Hounslow",
         "users": 9,
         "sessions": 9
       },
@@ -456,15 +462,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 357
+        "count": 358
       },
       {
         "event": "session_start",
-        "count": 205
+        "count": 206
       },
       {
         "event": "scroll",
-        "count": 187
+        "count": 188
       },
       {
         "event": "user_engagement",
@@ -472,7 +478,7 @@
       },
       {
         "event": "first_visit",
-        "count": 171
+        "count": 172
       },
       {
         "event": "scroll_depth",
@@ -513,8 +519,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 145,
-        "sessions": 158
+        "users": 146,
+        "sessions": 159
       },
       {
         "campaign": "(referral)",
@@ -589,6 +595,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 76.3
+    "bounce_rate": 76.4
   }
 }
