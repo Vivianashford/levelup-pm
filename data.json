@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T13:58:34.760387+00:00",
-  "updated_local": "2026-03-28 08:58 AM",
+  "updated": "2026-03-28T14:13:24.415447+00:00",
+  "updated_local": "2026-03-28 09:13 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 3,
     "week": {
       "users": 188,
       "sessions": 226,
-      "pageviews": 378,
+      "pageviews": 379,
       "avg_duration": 184.3,
       "conversions": 0
     },
     "month": {
       "users": 188,
       "sessions": 226,
-      "pageviews": 378,
+      "pageviews": 379,
       "conversions": 0
     },
     "top_pages": [
@@ -140,14 +140,14 @@
         "users": 2
       },
       {
+        "page": "/satellite-valuation/",
+        "views": 11,
+        "users": 9
+      },
+      {
         "page": "/services",
         "views": 11,
         "users": 7
-      },
-      {
-        "page": "/satellite-valuation/",
-        "views": 10,
-        "users": 9
       }
     ],
     "traffic_sources": [
@@ -378,7 +378,7 @@
         "date": "2026-03-28",
         "users": 19,
         "sessions": 19,
-        "pageviews": 21
+        "pageviews": 22
       }
     ],
     "devices": [
@@ -468,7 +468,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 378
+        "count": 379
       },
       {
         "event": "session_start",
