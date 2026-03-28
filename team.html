@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Team — Mission Control</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: #252525;
+    --border-light: #333;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --text-muted: #555;
+    --accent-mkt: #4a9eff;
+    --accent-sales: #ff6b4a;
+    --accent-delivery: #4aff8b;
+    --accent-accounting: #ffd74a;
+    --accent-legal: #c084fc;
+    --gold: #C9A84C;
+    --cat-pipeline: #4a9eff;
+    --cat-strategy: #c084fc;
+    --cat-revenue: #4aff8b;
+    --cat-client: #ff6b4a;
+    --cat-marketing: #2dd4bf;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .header {
+    padding: 40px 60px 30px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+  .header h1 span { color: var(--text-muted); font-weight: 400; }
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-tab {
+    padding: 14px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--text); border-bottom-color: var(--text); }
+  .content { padding: 40px 60px; }
+  .section-header { margin-bottom: 20px; }
+  .section-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .section-desc { font-size: 12px; color: var(--text-dim); }
+
+  @media (max-width: 900px) {
+    .header, .nav-tabs, .content { padding-left: 24px; padding-right: 24px; }
+  }
+  @media (max-width: 600px) {
+    .header { padding: 20px 16px 16px; flex-direction: column; align-items: flex-start; gap: 4px; }
+    .header h1 { font-size: 17px; }
+    .nav-tabs { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab { padding: 10px 14px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+    .content { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Arena Operating System <span>v2</span></h1>
+  <div class="header-meta">Agent Team</div>
+</div>
+
+<div class="nav-tabs">
+  <a class="nav-tab" href="system.html">System</a>
+  <a class="nav-tab active" href="team.html">Team</a>
+  <a class="nav-tab" href="todo.html">Todo</a>
+  <a class="nav-tab" href="tasks.html">Tasks</a>
+  <a class="nav-tab" href="clients.html">Clients</a>
+</div>
+
+<div class="content">
+
+  <!-- Section 1: Build Pipeline Visualization -->
+  <div style="margin-bottom:36px;">
+    <div class="section-header">
+      <div class="section-title">Build Pipeline</div>
+      <div class="section-desc">Every site goes through all three agents before shipping</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;">
+        <div style="background:var(--surface2);border:2px solid var(--cat-pipeline);border-radius:12px;padding:20px 32px;text-align:center;min-width:180px;">
+          <div style="font-size:28px;margin-bottom:6px;">🎨</div>
+          <div style="font-size:16px;font-weight:700;color:var(--cat-pipeline);">UX Director</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">(Design)</div>
+        </div>
+        <div style="color:var(--text-muted);font-size:24px;padding:0 16px;">→</div>
+        <div style="background:var(--surface2);border:2px solid var(--cat-pipeline);border-radius:12px;padding:20px 32px;text-align:center;min-width:180px;">
+          <div style="font-size:28px;margin-bottom:6px;">📊</div>
+          <div style="font-size:16px;font-weight:700;color:var(--cat-pipeline);">CRO Director</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">(Conversion)</div>
+        </div>
+        <div style="color:var(--text-muted);font-size:24px;padding:0 16px;">→</div>
+        <div style="background:var(--surface2);border:2px solid var(--cat-pipeline);border-radius:12px;padding:20px 32px;text-align:center;min-width:180px;">
+          <div style="font-size:28px;margin-bottom:6px;">🔍</div>
+          <div style="font-size:16px;font-weight:700;color:var(--cat-pipeline);">SEO Director</div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">(Rankings)</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+        <span style="font-size:14px;font-weight:600;color:var(--gold);">Score gate: 75+ on each before shipping.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Agent Cards Grid -->
+  <div style="margin-bottom:36px;">
+    <div class="section-header">
+      <div class="section-title">Agent Roster</div>
+      <div class="section-desc">15 specialized AI agents powering every department</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;">
+
+      <!-- 1. UX Director -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-pipeline);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🎨 UX Director</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,158,255,0.1);color:var(--cat-pipeline);font-weight:700;text-transform:uppercase;">Build Pipeline</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Design system (Rynzhuk/Tarka/Salomon)</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 0 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 2. CRO Director -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-pipeline);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📊 CRO Director</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,158,255,0.1);color:var(--cat-pipeline);font-weight:700;text-transform:uppercase;">Build Pipeline</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Conversion optimization (5 experts)</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 0 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 3. SEO Director -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-pipeline);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🔍 SEO Director</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,158,255,0.1);color:var(--cat-pipeline);font-weight:700;text-transform:uppercase;">Build Pipeline</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">6 minds + GEO optimization</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 25 refs</span><span>⚙️ 6 scripts</span>
+        </div>
+      </div>
+
+      <!-- 4. CMO Advisor -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-strategy);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📣 CMO Advisor</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(192,132,252,0.1);color:var(--cat-strategy);font-weight:700;text-transform:uppercase;">Strategy</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Brand positioning, growth model, budget</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 3 refs</span><span>⚙️ 2 scripts</span>
+        </div>
+      </div>
+
+      <!-- 5. CRO Revenue Advisor -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-strategy);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">💰 CRO Revenue Advisor</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(192,132,252,0.1);color:var(--cat-strategy);font-weight:700;text-transform:uppercase;">Strategy</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Revenue forecasting, pricing, NRR</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 3 refs</span><span>⚙️ 2 scripts</span>
+        </div>
+      </div>
+
+      <!-- 6. Competitive Intel -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-strategy);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🕵️ Competitive Intel</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(192,132,252,0.1);color:var(--cat-strategy);font-weight:700;text-transform:uppercase;">Strategy</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Competitor tracking, battlecards</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 1 ref</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 7. M&A Playbook -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-strategy);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🤝 M&A Playbook</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(192,132,252,0.1);color:var(--cat-strategy);font-weight:700;text-transform:uppercase;">Strategy</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Due diligence, valuation, integration</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 2 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 8. Founder Coach -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-strategy);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🧭 Founder Coach</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(192,132,252,0.1);color:var(--cat-strategy);font-weight:700;text-transform:uppercase;">Strategy</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Client coaching framework</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 2 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 9. Revenue Ops -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-revenue);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">⚙️ Revenue Ops</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,255,139,0.1);color:var(--cat-revenue);font-weight:700;text-transform:uppercase;">Revenue</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Pipeline, quota, territory</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 3 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 10. Sales Engineer -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-revenue);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🔧 Sales Engineer</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,255,139,0.1);color:var(--cat-revenue);font-weight:700;text-transform:uppercase;">Revenue</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Technical sales support</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 3 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 11. Sales Outreach -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-revenue);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📧 Sales Outreach</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,255,139,0.1);color:var(--cat-revenue);font-weight:700;text-transform:uppercase;">Revenue</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Lead research → qualification → outreach</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 0 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 12. LinkedIn Outreach -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-revenue);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📧 LinkedIn Outreach</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,255,139,0.1);color:var(--cat-revenue);font-weight:700;text-transform:uppercase;">Revenue</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">OpenOutreach automation</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 0 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 13. Contract Writer -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-revenue);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📝 Contract Writer</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(74,255,139,0.1);color:var(--cat-revenue);font-weight:700;text-transform:uppercase;">Revenue</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Engagement agreements, proposals</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 0 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 14. Customer Success -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-client);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">🎯 Customer Success</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(255,107,74,0.1);color:var(--cat-client);font-weight:700;text-transform:uppercase;">Client</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">Retention, health scoring</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 3 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+      <!-- 15. Marketing Skills -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;border-left:3px solid var(--cat-marketing);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div style="font-size:15px;font-weight:600;">📢 Marketing Skills</div>
+          <span style="font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(45,212,191,0.1);color:var(--cat-marketing);font-weight:700;text-transform:uppercase;">Marketing</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px;">14 sub-skills (copywriting, cold email, etc.)</div>
+        <div style="display:flex;gap:12px;font-size:11px;color:var(--text-muted);">
+          <span>📄 14 refs</span><span>⚙️ 0 scripts</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Section 3: Summary Stats -->
+  <div style="margin-bottom:36px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:32px;font-weight:700;color:var(--gold);">15</div>
+        <div style="font-size:12px;color:var(--text-dim);">Agents</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:32px;font-weight:700;color:var(--gold);">59</div>
+        <div style="font-size:12px;color:var(--text-dim);">Reference Docs</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:32px;font-weight:700;color:var(--gold);">10</div>
+        <div style="font-size:12px;color:var(--text-dim);">Python Scripts</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:32px;font-weight:700;color:var(--gold);">5</div>
+        <div style="font-size:12px;color:var(--text-dim);">Source Repos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Source Repos -->
+  <div style="margin-bottom:36px;">
+    <div class="section-header">
+      <div class="section-title">Source Repos</div>
+      <div class="section-desc">Open-source foundations powering the agent system</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;">
+      <a href="https://github.com/alirezarezvani/claude-skills" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+        <div style="font-size:13px;font-weight:600;">alirezarezvani/claude-skills</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">⭐ 7.6K — C-suite advisors, M&A, business growth</div>
+      </a>
+      <a href="https://github.com/coreyhaines31/marketingskills" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+        <div style="font-size:13px;font-weight:600;">coreyhaines31/marketingskills</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">⭐ 17K — 34 marketing skills</div>
+      </a>
+      <a href="https://github.com/zubair-trabzada/geo-seo-claude" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+        <div style="font-size:13px;font-weight:600;">zubair-trabzada/geo-seo-claude</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">⭐ 4.2K — GEO/AI SEO</div>
+      </a>
+      <a href="https://github.com/goenning/google-indexing-script" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+        <div style="font-size:13px;font-weight:600;">goenning/google-indexing-script</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">⭐ 7.6K — Fast indexing</div>
+      </a>
+      <a href="https://github.com/eracle/OpenOutreach" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+        <div style="font-size:13px;font-weight:600;">eracle/OpenOutreach</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">⭐ 1.2K — LinkedIn automation</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section 5: SEO Status Dashboard -->
+  <div style="margin-bottom:36px;">
+    <div class="section-header">
+      <div class="section-title">SEO Status Dashboard</div>
+      <div class="section-desc">Ecosystem optimization progress — March 2026</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;">
+      <!-- Ecosystem Score -->
+      <div style="margin-bottom:20px;">
+        <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Ecosystem Score</div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <span style="font-size:28px;font-weight:700;color:var(--accent-sales);">57</span>
+          <span style="font-size:18px;color:var(--text-muted);">→</span>
+          <span style="font-size:28px;font-weight:700;color:var(--accent-delivery);">85+</span>
+        </div>
+        <div style="background:var(--surface2);border-radius:6px;height:10px;overflow:hidden;">
+          <div style="background:linear-gradient(90deg,var(--accent-sales),var(--accent-delivery));width:67%;height:100%;border-radius:6px;"></div>
+        </div>
+      </div>
+      <!-- Status Items -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Hub</div>
+          <div style="font-size:13px;color:var(--accent-delivery);">✅ All fixes deployed</div>
+        </div>
+        <div style="padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Satellites (7)</div>
+          <div style="font-size:13px;color:var(--accent-delivery);">✅ All 21 pages optimized</div>
+        </div>
+        <div style="padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Blog</div>
+          <div style="font-size:13px;color:var(--accent-delivery);">✅ 29 posts with FAQ schema + email capture</div>
+        </div>
+        <div style="padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Automation Edge</div>
+          <div style="font-size:13px;color:var(--accent-delivery);">✅ Full SEO treatment</div>
+        </div>
+        <div style="padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;grid-column:1/-1;">
+          <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Search Console</div>
+          <div style="font-size:13px;color:var(--accent-delivery);">✅ thearenapartners.com verified, sitemap submitted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Market Intelligence -->
+  <div style="margin-bottom:36px;">
+    <div class="section-header">
+      <div class="section-title">Market Intelligence Engine</div>
+      <div class="section-desc">Automated market research running on schedule</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div>
+          <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Schedule</div>
+          <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:12px;">Runs 3x daily — 6 AM, 12 PM, 6 PM</div>
+          <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Sources</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:11px;padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text-dim);">Google Autocomplete</span>
+            <span style="font-size:11px;padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text-dim);">Reddit</span>
+            <span style="font-size:11px;padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text-dim);">Google Trends</span>
+            <span style="font-size:11px;padding:4px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text-dim);">NewsAPI</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Key Finding</div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:13px;color:var(--text-dim);line-height:1.6;border-left:3px solid var(--accent-accounting);">
+            Avatar searches <strong style="color:var(--accent-accounting);">"calculator"</strong> and <strong style="color:var(--accent-accounting);">"retirement"</strong> — not "exit strategy". Language alignment is critical for SEO and ad copy.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
