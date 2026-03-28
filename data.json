@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T22:13:27.950580+00:00",
-  "updated_local": "2026-03-28 05:13 PM",
+  "updated": "2026-03-28T22:28:33.859709+00:00",
+  "updated_local": "2026-03-28 05:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 11,
+    "realtime_users": 14,
     "week": {
-      "users": 276,
-      "sessions": 320,
-      "pageviews": 518,
-      "avg_duration": 132.7,
+      "users": 277,
+      "sessions": 321,
+      "pageviews": 527,
+      "avg_duration": 132.4,
       "conversions": 0
     },
     "month": {
-      "users": 276,
-      "sessions": 320,
-      "pageviews": 518,
+      "users": 277,
+      "sessions": 321,
+      "pageviews": 527,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 227,
-        "users": 131
+        "views": 236,
+        "users": 132
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 256,
-        "users": 239
+        "sessions": 258,
+        "users": 241
       },
       {
         "source": "(not set)",
@@ -292,9 +292,9 @@
     },
     "funnel": {
       "/": {
-        "views": 227,
-        "users": 131,
-        "avg_duration": 88.0
+        "views": 236,
+        "users": 132,
+        "avg_duration": 87.8
       },
       "/book.html": {
         "views": 18,
@@ -382,16 +382,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 107,
-        "sessions": 112,
-        "pageviews": 153
+        "users": 108,
+        "sessions": 113,
+        "pageviews": 162
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 266,
-        "users": 230
+        "sessions": 267,
+        "users": 231
       },
       {
         "device": "Mobile",
@@ -441,12 +441,12 @@
         "sessions": 9
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 7,
-        "sessions": 7
+        "city": "Boardman",
+        "users": 8,
+        "sessions": 8
       },
       {
-        "city": "Boardman",
+        "city": "Aulnay-sous-Bois",
         "users": 7,
         "sessions": 7
       },
@@ -474,19 +474,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 518
+        "count": 527
       },
       {
         "event": "session_start",
-        "count": 307
+        "count": 309
       },
       {
         "event": "first_visit",
-        "count": 266
+        "count": 268
       },
       {
         "event": "user_engagement",
-        "count": 251
+        "count": 254
       },
       {
         "event": "scroll",
@@ -535,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 239,
-        "sessions": 256
+        "users": 241,
+        "sessions": 258
       },
       {
         "campaign": "(referral)",
