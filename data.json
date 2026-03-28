@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T23:13:25.701295+00:00",
-  "updated_local": "2026-03-28 06:13 PM",
+  "updated": "2026-03-28T23:28:25.032932+00:00",
+  "updated_local": "2026-03-28 06:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 1,
     "week": {
-      "users": 313,
-      "sessions": 358,
-      "pageviews": 595,
-      "avg_duration": 119.6,
+      "users": 315,
+      "sessions": 360,
+      "pageviews": 598,
+      "avg_duration": 119.2,
       "conversions": 0
     },
     "month": {
-      "users": 313,
-      "sessions": 358,
-      "pageviews": 595,
+      "users": 315,
+      "sessions": 360,
+      "pageviews": 598,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 304,
-        "users": 168
+        "views": 307,
+        "users": 170
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 295,
-        "users": 278
+        "sessions": 297,
+        "users": 280
       },
       {
         "source": "(not set)",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 304,
-        "users": 168,
-        "avg_duration": 72.9
+        "views": 307,
+        "users": 170,
+        "avg_duration": 72.7
       },
       "/book.html": {
         "views": 18,
@@ -388,16 +388,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 144,
-        "sessions": 150,
-        "pageviews": 230
+        "users": 146,
+        "sessions": 152,
+        "pageviews": 233
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 294,
-        "users": 257
+        "sessions": 296,
+        "users": 259
       },
       {
         "device": "Mobile",
@@ -418,8 +418,8 @@
       },
       {
         "city": "Ashburn",
-        "users": 16,
-        "sessions": 16
+        "users": 17,
+        "sessions": 17
       },
       {
         "city": "San Jose",
@@ -480,19 +480,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 595
+        "count": 598
       },
       {
         "event": "session_start",
-        "count": 347
+        "count": 349
       },
       {
         "event": "first_visit",
-        "count": 306
+        "count": 308
       },
       {
         "event": "user_engagement",
-        "count": 285
+        "count": 286
       },
       {
         "event": "scroll",
@@ -541,8 +541,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 278,
-        "sessions": 295
+        "users": 280,
+        "sessions": 297
       },
       {
         "campaign": "(referral)",
@@ -633,6 +633,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 83.2
+    "bounce_rate": 83.3
   }
 }
