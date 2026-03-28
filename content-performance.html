@@ -166,6 +166,54 @@
     </table>
   </div>
 
+  
+  <!-- Email / Newsletter Metrics -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📬 Newsletter & Email</h2>
+      <span class="badge" id="subCount">0 subscribers</span>
+    </div>
+    <div style="padding: 16px;">
+      <div class="summary" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px;">
+        <div class="stat-card">
+          <div class="label">Subscribers</div>
+          <div class="value" id="emailSubs">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Open Rate</div>
+          <div class="value" id="openRate">-</div>
+          <div class="delta" id="openTrend">track via Substack dashboard</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Click Rate</div>
+          <div class="value" id="clickRate">-</div>
+          <div class="delta" id="clickTrend">track via Substack dashboard</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Newsletters Sent</div>
+          <div class="value" id="nlSent">-</div>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Newsletter</th>
+            <th>❤️ Reactions</th>
+            <th>💬 Comments</th>
+            <th>Published</th>
+          </tr>
+        </thead>
+        <tbody id="nlTable">
+          <tr><td colspan="4" style="text-align:center;color:#666;padding:20px">Loading Substack data...</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px; padding: 12px; background: #0d1117; border: 1px solid #1a7f37; border-radius: 8px;">
+        <span style="color: #3fb950; font-size: 13px;">💡 For open rates & click rates: <a href="https://thearenapartners.substack.com/publish/posts" target="_blank" style="color: #3fb950;">Open Substack Dashboard →</a></span>
+      </div>
+    </div>
+  </div>
+
+
   <!-- Patterns -->
   <div class="section">
     <div class="section-header">
@@ -310,6 +358,41 @@ function render(perf, ideas) {
     </div>
   `).join('') : '<div class="empty-state"><div class="icon">💡</div><p>No ideas in queue. M&A digest will populate this.</p></div>';
 }
+
+
+// Load Substack data
+async function loadSubstack() {
+  try {
+    const resp = await fetch('https://thearenapartners.substack.com/api/v1/archive?sort=new&limit=25');
+    if (resp.ok) {
+      const posts = await resp.json();
+      document.getElementById('nlSent').textContent = posts.length;
+      
+      let totalReactions = 0;
+      let totalComments = 0;
+      
+      const rows = posts.map(p => {
+        const reactions = (p.reactions && p.reactions['\u2764']) || 0;
+        const comments = p.comment_count || 0;
+        totalReactions += reactions;
+        totalComments += comments;
+        const date = p.post_date ? new Date(p.post_date).toLocaleDateString() : '-';
+        return `<tr>
+          <td><a href="https://thearenapartners.substack.com/p/${p.slug}" target="_blank" style="color:#3fb950">${p.title || 'Untitled'}</a></td>
+          <td>${reactions}</td>
+          <td>${comments}</td>
+          <td>${date}</td>
+        </tr>`;
+      });
+      
+      document.getElementById('nlTable').innerHTML = rows.join('') || '<tr><td colspan="4" style="text-align:center;color:#666">No newsletters yet</td></tr>';
+    }
+  } catch(e) {
+    console.log('Substack fetch failed:', e);
+  }
+}
+
+loadSubstack();
 
 loadData();
 setInterval(loadData, 60000);
