@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T12:58:23.594677+00:00",
-  "updated_local": "2026-03-28 07:58 AM",
+  "updated": "2026-03-28T13:13:24.163246+00:00",
+  "updated_local": "2026-03-28 08:13 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 4,
     "week": {
-      "users": 181,
-      "sessions": 218,
-      "pageviews": 369,
-      "avg_duration": 185.7,
+      "users": 183,
+      "sessions": 220,
+      "pageviews": 372,
+      "avg_duration": 189.3,
       "conversions": 0
     },
     "month": {
-      "users": 181,
-      "sessions": 218,
-      "pageviews": 369,
+      "users": 183,
+      "sessions": 220,
+      "pageviews": 372,
       "conversions": 0
     },
     "top_pages": [
@@ -145,17 +145,17 @@
         "users": 7
       },
       {
-        "page": "/assessment.html",
-        "views": 8,
-        "users": 5
+        "page": "/satellite-valuation/",
+        "views": 9,
+        "users": 8
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 167,
-        "users": 152
+        "sessions": 169,
+        "users": 154
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 16,
-        "users": 12
+        "sessions": 17,
+        "users": 13
       },
       {
         "source": "m.facebook.com",
@@ -370,28 +370,28 @@
       },
       {
         "date": "2026-03-28",
-        "users": 11,
-        "sessions": 11,
-        "pageviews": 12
+        "users": 13,
+        "sessions": 13,
+        "pageviews": 15
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 196,
-        "users": 163
+        "sessions": 197,
+        "users": 164
       },
       {
         "device": "Mobile",
-        "sessions": 24,
-        "users": 20
+        "sessions": 25,
+        "users": 21
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 14,
-        "sessions": 15
+        "users": 15,
+        "sessions": 16
       },
       {
         "city": "Hounslow",
@@ -414,6 +414,11 @@
         "sessions": 7
       },
       {
+        "city": "Council Bluffs",
+        "users": 7,
+        "sessions": 7
+      },
+      {
         "city": "East Los Angeles",
         "users": 7,
         "sessions": 7
@@ -422,11 +427,6 @@
         "city": "San Jose",
         "users": 7,
         "sessions": 7
-      },
-      {
-        "city": "Council Bluffs",
-        "users": 6,
-        "sessions": 6
       },
       {
         "city": "London",
@@ -462,23 +462,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 369
+        "count": 372
       },
       {
         "event": "session_start",
-        "count": 214
+        "count": 216
       },
       {
         "event": "scroll",
-        "count": 197
+        "count": 198
       },
       {
         "event": "user_engagement",
-        "count": 181
+        "count": 184
       },
       {
         "event": "first_visit",
-        "count": 178
+        "count": 180
       },
       {
         "event": "scroll_depth",
@@ -519,8 +519,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 152,
-        "sessions": 167
+        "users": 154,
+        "sessions": 169
       },
       {
         "campaign": "(referral)",
@@ -595,6 +595,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 77.5
+    "bounce_rate": 77.7
   }
 }
