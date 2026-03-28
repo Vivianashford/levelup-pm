@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T06:58:22.783653+00:00",
-  "updated_local": "2026-03-28 01:58 AM",
+  "updated": "2026-03-28T07:13:23.552104+00:00",
+  "updated_local": "2026-03-28 02:13 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 4,
     "week": {
-      "users": 167,
-      "sessions": 202,
-      "pageviews": 351,
-      "avg_duration": 187.6,
+      "users": 168,
+      "sessions": 203,
+      "pageviews": 352,
+      "avg_duration": 186.7,
       "conversions": 0
     },
     "month": {
-      "users": 167,
-      "sessions": 202,
-      "pageviews": 351,
+      "users": 168,
+      "sessions": 203,
+      "pageviews": 352,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 161,
-        "users": 102
+        "views": 162,
+        "users": 103
       },
       {
         "page": "/blog/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 153,
-        "users": 140
+        "sessions": 154,
+        "users": 141
       },
       {
         "source": "vivianashford.github.io",
@@ -280,9 +280,9 @@
     },
     "funnel": {
       "/": {
-        "views": 161,
-        "users": 102,
-        "avg_duration": 103.0
+        "views": 162,
+        "users": 103,
+        "avg_duration": 102.2
       },
       "/book.html": {
         "views": 18,
@@ -364,16 +364,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 27,
-        "sessions": 29,
-        "pageviews": 57
+        "users": 28,
+        "sessions": 30,
+        "pageviews": 58
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 184,
-        "users": 151
+        "sessions": 185,
+        "users": 152
       },
       {
         "device": "Mobile",
@@ -403,14 +403,14 @@
         "sessions": 9
       },
       {
-        "city": "East Los Angeles",
+        "city": "Aulnay-sous-Bois",
         "users": 7,
         "sessions": 7
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 6,
-        "sessions": 6
+        "city": "East Los Angeles",
+        "users": 7,
+        "sessions": 7
       },
       {
         "city": "Council Bluffs",
@@ -456,15 +456,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 351
+        "count": 352
       },
       {
         "event": "session_start",
-        "count": 200
+        "count": 201
       },
       {
         "event": "scroll",
-        "count": 185
+        "count": 186
       },
       {
         "event": "user_engagement",
@@ -472,7 +472,7 @@
       },
       {
         "event": "first_visit",
-        "count": 166
+        "count": 167
       },
       {
         "event": "scroll_depth",
@@ -513,8 +513,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 140,
-        "sessions": 153
+        "users": 141,
+        "sessions": 154
       },
       {
         "campaign": "(referral)",
@@ -589,6 +589,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 75.7
+    "bounce_rate": 75.9
   }
 }
