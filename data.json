@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T05:27:44.640538+00:00",
-  "updated_local": "2026-03-28 12:27 AM",
+  "updated": "2026-03-28T05:42:44.347329+00:00",
+  "updated_local": "2026-03-28 12:42 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 1,
     "week": {
-      "users": 164,
-      "sessions": 197,
-      "pageviews": 344,
-      "avg_duration": 188.0,
+      "users": 166,
+      "sessions": 201,
+      "pageviews": 350,
+      "avg_duration": 188.5,
       "conversions": 0
     },
     "month": {
-      "users": 164,
-      "sessions": 197,
-      "pageviews": 344,
+      "users": 166,
+      "sessions": 201,
+      "pageviews": 350,
       "conversions": 0
     },
     "top_pages": [
@@ -106,13 +106,13 @@
       },
       {
         "page": "/blog/",
-        "views": 23,
+        "views": 25,
         "users": 13
       },
       {
         "page": "/automation-edge/",
-        "views": 18,
-        "users": 7
+        "views": 22,
+        "users": 9
       },
       {
         "page": "/book.html",
@@ -154,13 +154,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 149,
-        "users": 137
+        "sessions": 152,
+        "users": 139
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 17,
+        "sessions": 18,
         "users": 5
       },
       {
@@ -225,14 +225,14 @@
       }
     ],
     "blog": {
-      "total_views": 36,
+      "total_views": 38,
       "total_users": 23,
       "articles": [
         {
           "page": "/blog/",
-          "views": 23,
+          "views": 25,
           "users": 13,
-          "avg_duration": 125.2
+          "avg_duration": 112.7
         },
         {
           "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
@@ -364,28 +364,28 @@
       },
       {
         "date": "2026-03-27",
-        "users": 24,
-        "sessions": 24,
-        "pageviews": 50
+        "users": 26,
+        "sessions": 28,
+        "pageviews": 56
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 181,
-        "users": 149
+        "sessions": 183,
+        "users": 150
       },
       {
         "device": "Mobile",
-        "sessions": 18,
-        "users": 17
+        "sessions": 20,
+        "users": 18
       }
     ],
     "locations": [
       {
         "city": "",
         "users": 10,
-        "sessions": 10
+        "sessions": 11
       },
       {
         "city": "Wheaton",
@@ -413,6 +413,11 @@
         "sessions": 6
       },
       {
+        "city": "Council Bluffs",
+        "users": 6,
+        "sessions": 6
+      },
+      {
         "city": "London",
         "users": 6,
         "sessions": 6
@@ -423,9 +428,9 @@
         "sessions": 5
       },
       {
-        "city": "Council Bluffs",
-        "users": 5,
-        "sessions": 5
+        "city": "Houston",
+        "users": 4,
+        "sessions": 23
       },
       {
         "city": "Miami",
@@ -446,33 +451,28 @@
         "city": "Burnaby",
         "users": 3,
         "sessions": 3
-      },
-      {
-        "city": "Des Moines",
-        "users": 3,
-        "sessions": 3
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 344
+        "count": 350
       },
       {
         "event": "session_start",
-        "count": 195
+        "count": 199
       },
       {
         "event": "scroll",
-        "count": 183
+        "count": 185
       },
       {
         "event": "user_engagement",
-        "count": 173
+        "count": 175
       },
       {
         "event": "first_visit",
-        "count": 163
+        "count": 165
       },
       {
         "event": "scroll_depth",
@@ -513,8 +513,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 137,
-        "sessions": 149
+        "users": 139,
+        "sessions": 152
       },
       {
         "campaign": "(referral)",
@@ -538,7 +538,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 17
+        "sessions": 18
       },
       {
         "campaign": "(referral)",
@@ -589,6 +589,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 75.1
+    "bounce_rate": 75.6
   }
 }
