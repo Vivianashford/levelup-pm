@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T11:58:23.472351+00:00",
-  "updated_local": "2026-03-28 06:58 AM",
+  "updated": "2026-03-28T12:13:23.714550+00:00",
+  "updated_local": "2026-03-28 07:13 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 9,
     "week": {
       "users": 176,
-      "sessions": 211,
+      "sessions": 212,
       "pageviews": 360,
-      "avg_duration": 179.7,
+      "avg_duration": 178.9,
       "conversions": 0
     },
     "month": {
       "users": 176,
-      "sessions": 211,
+      "sessions": 212,
       "pageviews": 360,
       "conversions": 0
     },
@@ -166,7 +166,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 12,
+        "sessions": 13,
         "users": 10
       },
       {
@@ -370,8 +370,8 @@
       },
       {
         "date": "2026-03-28",
-        "users": 4,
-        "sessions": 4,
+        "users": 5,
+        "sessions": 5,
         "pageviews": 3
       }
     ],
@@ -383,7 +383,7 @@
       },
       {
         "device": "Mobile",
-        "sessions": 22,
+        "sessions": 23,
         "users": 20
       }
     ],
@@ -470,7 +470,7 @@
       },
       {
         "event": "scroll",
-        "count": 189
+        "count": 190
       },
       {
         "event": "user_engagement",
@@ -595,6 +595,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 76.8
+    "bounce_rate": 76.9
   }
 }
