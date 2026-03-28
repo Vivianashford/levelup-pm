@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T02:57:43.847475+00:00",
-  "updated_local": "2026-03-27 09:57 PM",
+  "updated": "2026-03-28T03:12:44.693659+00:00",
+  "updated_local": "2026-03-27 10:12 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,16 +86,16 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 156,
-      "sessions": 189,
-      "pageviews": 325,
-      "avg_duration": 176.6,
+      "users": 157,
+      "sessions": 190,
+      "pageviews": 326,
+      "avg_duration": 175.7,
       "conversions": 0
     },
     "month": {
-      "users": 156,
-      "sessions": 189,
-      "pageviews": 325,
+      "users": 157,
+      "sessions": 190,
+      "pageviews": 326,
       "conversions": 0
     },
     "top_pages": [
@@ -146,16 +146,16 @@
       },
       {
         "page": "/privacy",
-        "views": 6,
-        "users": 6
+        "views": 7,
+        "users": 7
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 141,
-        "users": 129
+        "sessions": 142,
+        "users": 130
       },
       {
         "source": "vivianashford.github.io",
@@ -364,16 +364,16 @@
       },
       {
         "date": "2026-03-27",
-        "users": 16,
-        "sessions": 16,
-        "pageviews": 31
+        "users": 17,
+        "sessions": 17,
+        "pageviews": 32
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 175,
-        "users": 143
+        "sessions": 176,
+        "users": 144
       },
       {
         "device": "Mobile",
@@ -403,6 +403,11 @@
         "sessions": 7
       },
       {
+        "city": "",
+        "users": 6,
+        "sessions": 6
+      },
+      {
         "city": "Aulnay-sous-Bois",
         "users": 6,
         "sessions": 6
@@ -411,11 +416,6 @@
         "city": "London",
         "users": 6,
         "sessions": 6
-      },
-      {
-        "city": "",
-        "users": 5,
-        "sessions": 5
       },
       {
         "city": "Boardman",
@@ -456,11 +456,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 325
+        "count": 326
       },
       {
         "event": "session_start",
-        "count": 187
+        "count": 188
       },
       {
         "event": "scroll",
@@ -472,7 +472,7 @@
       },
       {
         "event": "first_visit",
-        "count": 155
+        "count": 156
       },
       {
         "event": "scroll_depth",
@@ -513,8 +513,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 129,
-        "sessions": 141
+        "users": 130,
+        "sessions": 142
       },
       {
         "campaign": "(referral)",
@@ -589,6 +589,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 74.6
+    "bounce_rate": 74.7
   }
 }
