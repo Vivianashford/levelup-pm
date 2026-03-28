@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-28T19:13:24.833974+00:00",
-  "updated_local": "2026-03-28 02:13 PM",
+  "updated": "2026-03-28T19:28:26.052823+00:00",
+  "updated_local": "2026-03-28 02:28 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,18 +84,18 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
       "users": 249,
       "sessions": 292,
-      "pageviews": 462,
+      "pageviews": 463,
       "avg_duration": 143.5,
       "conversions": 0
     },
     "month": {
       "users": 249,
       "sessions": 292,
-      "pageviews": 462,
+      "pageviews": 463,
       "conversions": 0
     },
     "top_pages": [
@@ -145,17 +145,17 @@
         "users": 2
       },
       {
-        "page": "/satellite-plumbing/",
+        "page": "/satellite-landscaping/",
         "views": 12,
-        "users": 9
+        "users": 11
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 233,
-        "users": 216
+        "sessions": 234,
+        "users": 217
       },
       {
         "source": "(not set)",
@@ -384,7 +384,7 @@
         "date": "2026-03-28",
         "users": 80,
         "sessions": 84,
-        "pageviews": 97
+        "pageviews": 98
       }
     ],
     "devices": [
@@ -474,15 +474,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 462
+        "count": 463
       },
       {
         "event": "session_start",
-        "count": 283
+        "count": 284
       },
       {
         "event": "first_visit",
-        "count": 243
+        "count": 244
       },
       {
         "event": "user_engagement",
@@ -535,8 +535,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 216,
-        "sessions": 233
+        "users": 217,
+        "sessions": 234
       },
       {
         "campaign": "(referral)",
