@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T01:43:25.709428+00:00",
-  "updated_local": "2026-03-28 08:43 PM",
+  "updated": "2026-03-29T01:58:26.287877+00:00",
+  "updated_local": "2026-03-28 08:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 346,
-      "sessions": 393,
-      "pageviews": 635,
-      "avg_duration": 109.3,
+      "users": 347,
+      "sessions": 394,
+      "pageviews": 637,
+      "avg_duration": 109.0,
       "conversions": 0
     },
     "month": {
       "users": 346,
       "sessions": 393,
-      "pageviews": 635,
+      "pageviews": 636,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 341,
-        "users": 201
+        "views": 342,
+        "users": 202
       },
       {
         "page": "/automation-edge/",
@@ -166,7 +166,7 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 20,
+        "sessions": 21,
         "users": 5
       },
       {
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 341,
-        "users": 201,
-        "avg_duration": 63.1
+        "views": 342,
+        "users": 202,
+        "avg_duration": 62.9
       },
       "/book.html": {
         "views": 18,
@@ -390,7 +390,7 @@
         "date": "2026-03-28",
         "users": 178,
         "sessions": 184,
-        "pageviews": 270
+        "pageviews": 271
       }
     ],
     "devices": [
@@ -480,11 +480,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 635
+        "count": 636
       },
       {
         "event": "session_start",
-        "count": 381
+        "count": 382
       },
       {
         "event": "first_visit",
@@ -492,7 +492,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 300
+        "count": 302
       },
       {
         "event": "scroll",
@@ -566,7 +566,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 20
+        "sessions": 21
       },
       {
         "campaign": "(referral)",
