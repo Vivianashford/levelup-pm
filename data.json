@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T09:43:25.518101+00:00",
-  "updated_local": "2026-03-29 04:43 AM",
+  "updated": "2026-03-29T09:58:25.657447+00:00",
+  "updated_local": "2026-03-29 04:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 8,
+    "realtime_users": 2,
     "week": {
       "users": 412,
       "sessions": 460,
-      "pageviews": 698,
+      "pageviews": 699,
       "avg_duration": 93.4,
       "conversions": 0
     },
     "month": {
       "users": 412,
       "sessions": 460,
-      "pageviews": 698,
+      "pageviews": 699,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 398,
+        "views": 399,
         "users": 261
       },
       {
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 385,
-        "users": 365
+        "sessions": 386,
+        "users": 366
       },
       {
         "source": "(not set)",
@@ -298,7 +298,7 @@
     },
     "funnel": {
       "/": {
-        "views": 398,
+        "views": 399,
         "users": 261,
         "avg_duration": 50.2
       },
@@ -396,7 +396,7 @@
         "date": "2026-03-29",
         "users": 23,
         "sessions": 23,
-        "pageviews": 20
+        "pageviews": 21
       }
     ],
     "devices": [
@@ -491,15 +491,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 698
+        "count": 699
       },
       {
         "event": "session_start",
-        "count": 443
+        "count": 444
       },
       {
         "event": "first_visit",
-        "count": 399
+        "count": 400
       },
       {
         "event": "user_engagement",
@@ -552,8 +552,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 365,
-        "sessions": 385
+        "users": 366,
+        "sessions": 386
       },
       {
         "campaign": "(referral)",
