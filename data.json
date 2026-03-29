@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T06:43:25.039508+00:00",
-  "updated_local": "2026-03-29 01:43 AM",
+  "updated": "2026-03-29T06:58:24.520248+00:00",
+  "updated_local": "2026-03-29 01:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 2,
     "week": {
-      "users": 380,
-      "sessions": 428,
-      "pageviews": 671,
-      "avg_duration": 100.4,
+      "users": 383,
+      "sessions": 431,
+      "pageviews": 672,
+      "avg_duration": 99.7,
       "conversions": 0
     },
     "month": {
-      "users": 380,
-      "sessions": 428,
-      "pageviews": 671,
+      "users": 383,
+      "sessions": 431,
+      "pageviews": 672,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 375,
-        "users": 235
+        "views": 376,
+        "users": 238
       },
       {
         "page": "/automation-edge/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 357,
-        "users": 338
+        "sessions": 358,
+        "users": 339
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 61,
-        "users": 54
+        "sessions": 63,
+        "users": 56
       },
       {
         "source": "vivianashford.github.io",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 375,
-        "users": 235,
-        "avg_duration": 55.1
+        "views": 376,
+        "users": 238,
+        "avg_duration": 54.5
       },
       "/book.html": {
         "views": 18,
@@ -388,16 +388,16 @@
       },
       {
         "date": "2026-03-28",
-        "users": 212,
-        "sessions": 219,
-        "pageviews": 306
+        "users": 215,
+        "sessions": 222,
+        "pageviews": 307
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 343,
-        "users": 306
+        "sessions": 346,
+        "users": 309
       },
       {
         "device": "Mobile",
@@ -408,8 +408,8 @@
     "locations": [
       {
         "city": "",
-        "users": 49,
-        "sessions": 49
+        "users": 51,
+        "sessions": 51
       },
       {
         "city": "Boardman",
@@ -480,19 +480,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 671
+        "count": 672
       },
       {
         "event": "session_start",
-        "count": 416
+        "count": 417
       },
       {
         "event": "first_visit",
-        "count": 372
+        "count": 373
       },
       {
         "event": "user_engagement",
-        "count": 308
+        "count": 310
       },
       {
         "event": "scroll",
@@ -541,8 +541,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 338,
-        "sessions": 357
+        "users": 339,
+        "sessions": 358
       },
       {
         "campaign": "(referral)",
@@ -633,6 +633,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 86.0
+    "bounce_rate": 86.1
   }
 }
