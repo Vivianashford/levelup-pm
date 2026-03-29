@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T08:43:25.368278+00:00",
-  "updated_local": "2026-03-29 03:43 AM",
+  "updated": "2026-03-29T08:58:26.911073+00:00",
+  "updated_local": "2026-03-29 03:58 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 3,
     "week": {
-      "users": 393,
-      "sessions": 441,
-      "pageviews": 682,
-      "avg_duration": 97.5,
+      "users": 402,
+      "sessions": 450,
+      "pageviews": 688,
+      "avg_duration": 95.5,
       "conversions": 0
     },
     "month": {
-      "users": 393,
-      "sessions": 441,
-      "pageviews": 682,
+      "users": 402,
+      "sessions": 450,
+      "pageviews": 688,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 386,
-        "users": 248
+        "views": 390,
+        "users": 253
       },
       {
         "page": "/automation-edge/",
@@ -122,7 +122,7 @@
       {
         "page": "/contact",
         "views": 17,
-        "users": 9
+        "users": 10
       },
       {
         "page": "/satellite-valuation/",
@@ -154,14 +154,14 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 369,
-        "users": 349
+        "sessions": 375,
+        "users": 355
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 67,
-        "users": 60
+        "sessions": 70,
+        "users": 63
       },
       {
         "source": "vivianashford.github.io",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 386,
-        "users": 248,
-        "avg_duration": 52.6
+        "views": 390,
+        "users": 253,
+        "avg_duration": 51.6
       },
       "/book.html": {
         "views": 18,
@@ -394,16 +394,16 @@
       },
       {
         "date": "2026-03-29",
-        "users": 4,
-        "sessions": 4,
-        "pageviews": 4
+        "users": 13,
+        "sessions": 13,
+        "pageviews": 10
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 349,
-        "users": 312
+        "sessions": 355,
+        "users": 318
       },
       {
         "device": "Mobile",
@@ -412,15 +412,15 @@
       },
       {
         "device": "Tablet",
-        "sessions": 5,
-        "users": 5
+        "sessions": 8,
+        "users": 8
       }
     ],
     "locations": [
       {
         "city": "",
-        "users": 52,
-        "sessions": 52
+        "users": 54,
+        "sessions": 54
       },
       {
         "city": "Boardman",
@@ -448,6 +448,11 @@
         "sessions": 14
       },
       {
+        "city": "Wheaton",
+        "users": 14,
+        "sessions": 14
+      },
+      {
         "city": "New York",
         "users": 11,
         "sessions": 11
@@ -458,9 +463,9 @@
         "sessions": 10
       },
       {
-        "city": "Wheaton",
-        "users": 10,
-        "sessions": 10
+        "city": "Anyang-si",
+        "users": 8,
+        "sessions": 8
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -481,25 +486,20 @@
         "city": "Houston",
         "users": 6,
         "sessions": 28
-      },
-      {
-        "city": "Moses Lake",
-        "users": 6,
-        "sessions": 6
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 682
+        "count": 688
       },
       {
         "event": "session_start",
-        "count": 427
+        "count": 433
       },
       {
         "event": "first_visit",
-        "count": 383
+        "count": 389
       },
       {
         "event": "user_engagement",
@@ -507,7 +507,7 @@
       },
       {
         "event": "scroll",
-        "count": 246
+        "count": 251
       },
       {
         "event": "scroll_depth",
@@ -552,8 +552,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 349,
-        "sessions": 369
+        "users": 355,
+        "sessions": 375
       },
       {
         "campaign": "(referral)",
@@ -644,6 +644,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 86.4
+    "bounce_rate": 86.7
   }
 }
