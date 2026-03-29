@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T10:13:26.714827+00:00",
-  "updated_local": "2026-03-29 05:13 AM",
+  "updated": "2026-03-29T10:28:27.453983+00:00",
+  "updated_local": "2026-03-29 05:28 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 0,
     "week": {
-      "users": 412,
-      "sessions": 460,
-      "pageviews": 699,
-      "avg_duration": 93.4,
+      "users": 421,
+      "sessions": 469,
+      "pageviews": 708,
+      "avg_duration": 91.7,
       "conversions": 0
     },
     "month": {
-      "users": 412,
-      "sessions": 460,
-      "pageviews": 699,
+      "users": 421,
+      "sessions": 469,
+      "pageviews": 708,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 399,
-        "users": 261
+        "views": 408,
+        "users": 270
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 386,
-        "users": 366
+        "sessions": 395,
+        "users": 375
       },
       {
         "source": "(not set)",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 399,
-        "users": 261,
-        "avg_duration": 50.2
+        "views": 408,
+        "users": 270,
+        "avg_duration": 48.7
       },
       "/book.html": {
         "views": 18,
@@ -394,21 +394,21 @@
       },
       {
         "date": "2026-03-29",
-        "users": 23,
-        "sessions": 23,
-        "pageviews": 21
+        "users": 32,
+        "sessions": 32,
+        "pageviews": 30
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 360,
-        "users": 323
+        "sessions": 368,
+        "users": 330
       },
       {
         "device": "Mobile",
-        "sessions": 90,
-        "users": 80
+        "sessions": 92,
+        "users": 82
       },
       {
         "device": "Tablet",
@@ -429,18 +429,18 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 26,
-        "sessions": 26
+        "users": 29,
+        "sessions": 29
+      },
+      {
+        "city": "Ashburn",
+        "users": 19,
+        "sessions": 19
       },
       {
         "city": "San Jose",
         "users": 18,
         "sessions": 18
-      },
-      {
-        "city": "Ashburn",
-        "users": 17,
-        "sessions": 17
       },
       {
         "city": "Amsterdam",
@@ -453,14 +453,14 @@
         "sessions": 14
       },
       {
+        "city": "New York",
+        "users": 13,
+        "sessions": 13
+      },
+      {
         "city": "Anyang-si",
         "users": 12,
         "sessions": 12
-      },
-      {
-        "city": "New York",
-        "users": 11,
-        "sessions": 11
       },
       {
         "city": "Hounslow",
@@ -491,15 +491,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 699
+        "count": 708
       },
       {
         "event": "session_start",
-        "count": 444
+        "count": 453
       },
       {
         "event": "first_visit",
-        "count": 400
+        "count": 409
       },
       {
         "event": "user_engagement",
@@ -552,8 +552,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 366,
-        "sessions": 386
+        "users": 375,
+        "sessions": 395
       },
       {
         "campaign": "(referral)",
@@ -644,6 +644,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 87.0
+    "bounce_rate": 87.2
   }
 }
