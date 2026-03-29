@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T09:28:28.463327+00:00",
-  "updated_local": "2026-03-29 04:28 AM",
+  "updated": "2026-03-29T09:43:25.518101+00:00",
+  "updated_local": "2026-03-29 04:43 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,17 +84,17 @@
     }
   ],
   "analytics": {
-    "realtime_users": 7,
+    "realtime_users": 8,
     "week": {
-      "users": 411,
-      "sessions": 459,
+      "users": 412,
+      "sessions": 460,
       "pageviews": 698,
-      "avg_duration": 93.7,
+      "avg_duration": 93.4,
       "conversions": 0
     },
     "month": {
-      "users": 411,
-      "sessions": 459,
+      "users": 412,
+      "sessions": 460,
       "pageviews": 698,
       "conversions": 0
     },
@@ -102,7 +102,7 @@
       {
         "page": "/",
         "views": 398,
-        "users": 260
+        "users": 261
       },
       {
         "page": "/automation-edge/",
@@ -160,8 +160,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 70,
-        "users": 63
+        "sessions": 71,
+        "users": 64
       },
       {
         "source": "vivianashford.github.io",
@@ -299,8 +299,8 @@
     "funnel": {
       "/": {
         "views": 398,
-        "users": 260,
-        "avg_duration": 50.4
+        "users": 261,
+        "avg_duration": 50.2
       },
       "/book.html": {
         "views": 18,
@@ -394,16 +394,16 @@
       },
       {
         "date": "2026-03-29",
-        "users": 22,
-        "sessions": 22,
+        "users": 23,
+        "sessions": 23,
         "pageviews": 20
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 359,
-        "users": 322
+        "sessions": 360,
+        "users": 323
       },
       {
         "device": "Mobile",
@@ -503,7 +503,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 310
+        "count": 311
       },
       {
         "event": "scroll",
@@ -644,6 +644,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 86.9
+    "bounce_rate": 87.0
   }
 }
