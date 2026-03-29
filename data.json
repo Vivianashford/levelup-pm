@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-29T04:43:25.084070+00:00",
-  "updated_local": "2026-03-28 11:43 PM",
+  "updated": "2026-03-29T04:58:44.120222+00:00",
+  "updated_local": "2026-03-28 11:58 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -36,8 +36,8 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 21,
-    "real": 14
+    "total": 27,
+    "real": 20
   },
   "appointments": {
     "upcoming": 0
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 5,
     "week": {
-      "users": 354,
-      "sessions": 402,
-      "pageviews": 644,
-      "avg_duration": 106.9,
+      "users": 355,
+      "sessions": 403,
+      "pageviews": 647,
+      "avg_duration": 106.6,
       "conversions": 0
     },
     "month": {
-      "users": 354,
-      "sessions": 402,
-      "pageviews": 644,
+      "users": 355,
+      "sessions": 403,
+      "pageviews": 647,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 348,
-        "users": 209
+        "views": 351,
+        "users": 210
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 330,
-        "users": 311
+        "sessions": 333,
+        "users": 314
       },
       {
         "source": "(not set)",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 348,
-        "users": 209,
-        "avg_duration": 61.0
+        "views": 351,
+        "users": 210,
+        "avg_duration": 60.8
       },
       "/book.html": {
         "views": 18,
@@ -388,9 +388,9 @@
       },
       {
         "date": "2026-03-28",
-        "users": 186,
-        "sessions": 193,
-        "pageviews": 279
+        "users": 187,
+        "sessions": 194,
+        "pageviews": 282
       }
     ],
     "devices": [
@@ -401,8 +401,8 @@
       },
       {
         "device": "Mobile",
-        "sessions": 74,
-        "users": 64
+        "sessions": 75,
+        "users": 65
       }
     ],
     "locations": [
@@ -428,8 +428,8 @@
       },
       {
         "city": "Boardman",
-        "users": 15,
-        "sessions": 15
+        "users": 16,
+        "sessions": 16
       },
       {
         "city": "Amsterdam",
@@ -480,15 +480,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 644
+        "count": 647
       },
       {
         "event": "session_start",
-        "count": 389
+        "count": 392
       },
       {
         "event": "first_visit",
-        "count": 345
+        "count": 348
       },
       {
         "event": "user_engagement",
@@ -541,8 +541,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 311,
-        "sessions": 330
+        "users": 314,
+        "sessions": 333
       },
       {
         "campaign": "(referral)",
