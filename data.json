@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-30T19:24:21.838286+00:00",
-  "updated_local": "2026-03-30 02:24 PM",
+  "updated": "2026-03-30T19:39:20.341207+00:00",
+  "updated_local": "2026-03-30 02:39 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,24 +84,24 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 9,
     "week": {
       "users": 554,
-      "sessions": 602,
-      "pageviews": 886,
-      "avg_duration": 72.2,
+      "sessions": 603,
+      "pageviews": 887,
+      "avg_duration": 72.0,
       "conversions": 0
     },
     "month": {
       "users": 554,
-      "sessions": 606,
-      "pageviews": 890,
+      "sessions": 607,
+      "pageviews": 891,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 542,
+        "views": 543,
         "users": 372
       },
       {
@@ -166,7 +166,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 10,
+        "sessions": 11,
         "users": 10
       },
       {
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 542,
+        "views": 543,
         "users": 372,
-        "avg_duration": 38.2
+        "avg_duration": 38.1
       },
       "/book.html": {
         "views": 18,
@@ -401,14 +401,14 @@
       {
         "date": "2026-03-30",
         "users": 35,
-        "sessions": 35,
-        "pageviews": 51
+        "sessions": 36,
+        "pageviews": 52
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 474,
+        "sessions": 475,
         "users": 438
       },
       {
@@ -497,7 +497,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 886
+        "count": 887
       },
       {
         "event": "session_start",
@@ -509,7 +509,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 356
+        "count": 357
       },
       {
         "event": "scroll",
@@ -517,7 +517,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 112
+        "count": 113
       },
       {
         "event": "vsl_play",
