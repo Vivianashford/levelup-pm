@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-30T20:09:54.196049+00:00",
-  "updated_local": "2026-03-30 03:09 PM",
+  "updated": "2026-03-30T20:27:16.561580+00:00",
+  "updated_local": "2026-03-30 03:27 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 1,
     "week": {
-      "users": 555,
-      "sessions": 604,
-      "pageviews": 891,
-      "avg_duration": 74.6,
+      "users": 565,
+      "sessions": 614,
+      "pageviews": 902,
+      "avg_duration": 74.0,
       "conversions": 0
     },
     "month": {
-      "users": 555,
-      "sessions": 608,
-      "pageviews": 895,
+      "users": 565,
+      "sessions": 618,
+      "pageviews": 906,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 546,
-        "users": 373
+        "views": 556,
+        "users": 383
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 535,
-        "users": 513
+        "sessions": 543,
+        "users": 521
       },
       {
         "source": "vivianashford.github.io",
@@ -166,8 +166,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 11,
-        "users": 10
+        "sessions": 14,
+        "users": 13
       },
       {
         "source": "m.facebook.com",
@@ -298,8 +298,8 @@
     },
     "funnel": {
       "/": {
-        "views": 546,
-        "users": 373,
+        "views": 556,
+        "users": 383,
         "avg_duration": 39.6
       },
       "/book.html": {
@@ -340,11 +340,11 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 8,
+        "count": 9,
         "users": 5
       },
       "optin_submit": {
-        "count": 1,
+        "count": 2,
         "users": 1
       }
     },
@@ -400,16 +400,16 @@
       },
       {
         "date": "2026-03-30",
-        "users": 36,
-        "sessions": 37,
-        "pageviews": 56
+        "users": 46,
+        "sessions": 47,
+        "pageviews": 67
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 476,
-        "users": 439
+        "sessions": 486,
+        "users": 449
       },
       {
         "device": "Mobile",
@@ -425,8 +425,8 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 53,
-        "sessions": 53
+        "users": 61,
+        "sessions": 61
       },
       {
         "city": "Council Bluffs",
@@ -475,8 +475,8 @@
       },
       {
         "city": "Burnaby",
-        "users": 9,
-        "sessions": 9
+        "users": 10,
+        "sessions": 10
       },
       {
         "city": "Aulnay-sous-Bois",
@@ -497,31 +497,31 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 891
+        "count": 902
       },
       {
         "event": "session_start",
-        "count": 599
+        "count": 607
       },
       {
         "event": "first_visit",
-        "count": 550
+        "count": 558
       },
       {
         "event": "user_engagement",
-        "count": 359
+        "count": 366
       },
       {
         "event": "scroll",
-        "count": 290
+        "count": 292
       },
       {
         "event": "scroll_depth",
-        "count": 119
+        "count": 125
       },
       {
         "event": "vsl_play",
-        "count": 8
+        "count": 9
       },
       {
         "event": "click",
@@ -532,19 +532,19 @@
         "count": 3
       },
       {
+        "event": "optin_submit",
+        "count": 2
+      },
+      {
+        "event": "scorecard_started",
+        "count": 2
+      },
+      {
         "event": "assessment_complete",
         "count": 1
       },
       {
         "event": "calculator_submit",
-        "count": 1
-      },
-      {
-        "event": "optin_submit",
-        "count": 1
-      },
-      {
-        "event": "scorecard_started",
         "count": 1
       },
       {
@@ -558,8 +558,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 513,
-        "sessions": 535
+        "users": 521,
+        "sessions": 543
       },
       {
         "campaign": "(referral)",
@@ -650,6 +650,6 @@
         "sessions": 3
       }
     ],
-    "bounce_rate": 85.9
+    "bounce_rate": 86.2
   }
 }
