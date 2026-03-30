@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-30T20:42:17.172724+00:00",
-  "updated_local": "2026-03-30 03:42 PM",
+  "updated": "2026-03-30T20:57:16.369599+00:00",
+  "updated_local": "2026-03-30 03:57 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -86,23 +86,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 566,
-      "sessions": 615,
-      "pageviews": 904,
-      "avg_duration": 73.9,
+      "users": 567,
+      "sessions": 616,
+      "pageviews": 905,
+      "avg_duration": 73.8,
       "conversions": 0
     },
     "month": {
-      "users": 566,
-      "sessions": 619,
-      "pageviews": 908,
+      "users": 567,
+      "sessions": 620,
+      "pageviews": 909,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 558,
-        "users": 384
+        "views": 559,
+        "users": 385
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 545,
-        "users": 523
+        "sessions": 546,
+        "users": 524
       },
       {
         "source": "vivianashford.github.io",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 558,
-        "users": 384,
-        "avg_duration": 39.5
+        "views": 559,
+        "users": 385,
+        "avg_duration": 39.4
       },
       "/book.html": {
         "views": 18,
@@ -400,16 +400,16 @@
       },
       {
         "date": "2026-03-30",
-        "users": 47,
-        "sessions": 48,
-        "pageviews": 69
+        "users": 48,
+        "sessions": 49,
+        "pageviews": 70
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 486,
-        "users": 449
+        "sessions": 487,
+        "users": 450
       },
       {
         "device": "Mobile",
@@ -430,8 +430,8 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 31,
-        "sessions": 31
+        "users": 32,
+        "sessions": 32
       },
       {
         "city": "Ashburn",
@@ -497,19 +497,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 904
+        "count": 905
       },
       {
         "event": "session_start",
-        "count": 609
+        "count": 610
       },
       {
         "event": "first_visit",
-        "count": 560
+        "count": 561
       },
       {
         "event": "user_engagement",
-        "count": 366
+        "count": 367
       },
       {
         "event": "scroll",
@@ -558,8 +558,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 523,
-        "sessions": 545
+        "users": 524,
+        "sessions": 546
       },
       {
         "campaign": "(referral)",
