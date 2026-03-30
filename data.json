@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-30T19:54:21.258931+00:00",
-  "updated_local": "2026-03-30 02:54 PM",
+  "updated": "2026-03-30T20:09:54.196049+00:00",
+  "updated_local": "2026-03-30 03:09 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 1,
     "week": {
-      "users": 554,
-      "sessions": 603,
-      "pageviews": 888,
-      "avg_duration": 72.0,
+      "users": 555,
+      "sessions": 604,
+      "pageviews": 891,
+      "avg_duration": 74.6,
       "conversions": 0
     },
     "month": {
-      "users": 554,
-      "sessions": 607,
-      "pageviews": 892,
+      "users": 555,
+      "sessions": 608,
+      "pageviews": 895,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 544,
-        "users": 372
+        "views": 546,
+        "users": 373
       },
       {
         "page": "/automation-edge/",
@@ -154,8 +154,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 534,
-        "users": 512
+        "sessions": 535,
+        "users": 513
       },
       {
         "source": "vivianashford.github.io",
@@ -298,9 +298,9 @@
     },
     "funnel": {
       "/": {
-        "views": 544,
-        "users": 372,
-        "avg_duration": 38.1
+        "views": 546,
+        "users": 373,
+        "avg_duration": 39.6
       },
       "/book.html": {
         "views": 18,
@@ -313,9 +313,9 @@
         "avg_duration": 15.8
       },
       "/watch.html": {
-        "views": 13,
+        "views": 14,
         "users": 2,
-        "avg_duration": 97.0
+        "avg_duration": 272.4
       },
       "/assessment.html": {
         "views": 7,
@@ -400,16 +400,16 @@
       },
       {
         "date": "2026-03-30",
-        "users": 35,
-        "sessions": 36,
-        "pageviews": 53
+        "users": 36,
+        "sessions": 37,
+        "pageviews": 56
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 475,
-        "users": 438
+        "sessions": 476,
+        "users": 439
       },
       {
         "device": "Mobile",
@@ -474,12 +474,12 @@
         "sessions": 12
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 8,
-        "sessions": 8
+        "city": "Burnaby",
+        "users": 9,
+        "sessions": 9
       },
       {
-        "city": "Burnaby",
+        "city": "Aulnay-sous-Bois",
         "users": 8,
         "sessions": 8
       },
@@ -497,27 +497,27 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 888
+        "count": 891
       },
       {
         "event": "session_start",
-        "count": 598
+        "count": 599
       },
       {
         "event": "first_visit",
-        "count": 549
+        "count": 550
       },
       {
         "event": "user_engagement",
-        "count": 357
+        "count": 359
       },
       {
         "event": "scroll",
-        "count": 289
+        "count": 290
       },
       {
         "event": "scroll_depth",
-        "count": 113
+        "count": 119
       },
       {
         "event": "vsl_play",
@@ -558,8 +558,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 512,
-        "sessions": 534
+        "users": 513,
+        "sessions": 535
       },
       {
         "campaign": "(referral)",
