@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-30T20:57:16.369599+00:00",
-  "updated_local": "2026-03-30 03:57 PM",
+  "updated": "2026-03-31T13:44:42.553024+00:00",
+  "updated_local": "2026-03-31 08:44 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 3,
     "week": {
-      "users": 567,
-      "sessions": 616,
-      "pageviews": 905,
-      "avg_duration": 73.8,
+      "users": 562,
+      "sessions": 597,
+      "pageviews": 786,
+      "avg_duration": 43.7,
       "conversions": 0
     },
     "month": {
-      "users": 567,
-      "sessions": 620,
-      "pageviews": 909,
+      "users": 613,
+      "sessions": 668,
+      "pageviews": 955,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 559,
-        "users": 385
+        "views": 534,
+        "users": 397
       },
       {
         "page": "/automation-edge/",
@@ -110,70 +110,64 @@
         "users": 18
       },
       {
-        "page": "/blog/",
-        "views": 27,
-        "users": 15
-      },
-      {
-        "page": "/contact",
-        "views": 21,
-        "users": 13
-      },
-      {
-        "page": "/about",
-        "views": 20,
-        "users": 16
-      },
-      {
         "page": "/satellite-valuation/",
         "views": 19,
         "users": 12
       },
       {
-        "page": "/services",
-        "views": 19,
-        "users": 15
-      },
-      {
-        "page": "/book.html",
-        "views": 18,
-        "users": 2
-      },
-      {
         "page": "/calculator.html",
-        "views": 18,
-        "users": 13
+        "views": 15,
+        "users": 14
       },
       {
         "page": "/satellite-plumbing/",
         "views": 15,
         "users": 10
+      },
+      {
+        "page": "/contact",
+        "views": 13,
+        "users": 9
+      },
+      {
+        "page": "/satellite-landscaping/",
+        "views": 12,
+        "users": 11
+      },
+      {
+        "page": "/satellite-roofing/",
+        "views": 12,
+        "users": 12
+      },
+      {
+        "page": "/about",
+        "views": 11,
+        "users": 11
+      },
+      {
+        "page": "/satellite-electrical/",
+        "views": 11,
+        "users": 11
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 546,
-        "users": 524
+        "sessions": 543,
+        "users": 525
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 24,
-        "users": 5
+        "sessions": 18,
+        "users": 4
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 14,
-        "users": 13
-      },
-      {
-        "source": "m.facebook.com",
-        "medium": "referral",
-        "sessions": 7,
-        "users": 7
+        "sessions": 17,
+        "users": 16
       },
       {
         "source": "facebook.com",
@@ -194,10 +188,10 @@
         "users": 5
       },
       {
-        "source": "linkedin.com",
+        "source": "m.facebook.com",
         "medium": "referral",
         "sessions": 5,
-        "users": 4
+        "users": 5
       },
       {
         "source": "bing",
@@ -206,25 +200,13 @@
         "users": 4
       },
       {
-        "source": "telegra.ph",
-        "medium": "referral",
-        "sessions": 3,
-        "users": 1
-      },
-      {
-        "source": "thearenapartners.com",
+        "source": "linkedin.com",
         "medium": "referral",
         "sessions": 2,
-        "users": 2
+        "users": 1
       },
       {
         "source": "barchart.com",
-        "medium": "referral",
-        "sessions": 1,
-        "users": 1
-      },
-      {
-        "source": "l.facebook.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -240,23 +222,23 @@
         "medium": "referral",
         "sessions": 1,
         "users": 1
+      },
+      {
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
       }
     ],
     "blog": {
-      "total_views": 40,
-      "total_users": 25,
+      "total_views": 17,
+      "total_users": 12,
       "articles": [
         {
           "page": "/blog/",
-          "views": 27,
-          "users": 15,
-          "avg_duration": 102.9
-        },
-        {
-          "page": "/blog/how-to-value-an-electrical-business-for-sale.html",
-          "views": 3,
-          "users": 3,
-          "avg_duration": 48.6
+          "views": 10,
+          "users": 7,
+          "avg_duration": 9.5
         },
         {
           "page": "/blog/the-90-percent-haircut.html",
@@ -265,22 +247,10 @@
           "avg_duration": 1667.7
         },
         {
-          "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
-          "views": 2,
-          "users": 2,
-          "avg_duration": 6.3
-        },
-        {
           "page": "/blog:",
           "views": 2,
           "users": 1,
           "avg_duration": 2.2
-        },
-        {
-          "page": "/blog/mckinsey-5-trillion-boomer-business-transfer.html",
-          "views": 1,
-          "users": 1,
-          "avg_duration": 1338.6
         },
         {
           "page": "/blog/pe-firms-coming-for-your-industry.html",
@@ -293,44 +263,45 @@
           "views": 1,
           "users": 1,
           "avg_duration": 0.0
+        },
+        {
+          "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
+          "views": 0,
+          "users": 1,
+          "avg_duration": 1.8
         }
       ]
     },
     "funnel": {
       "/": {
-        "views": 559,
-        "users": 385,
-        "avg_duration": 39.4
-      },
-      "/book.html": {
-        "views": 18,
-        "users": 2,
-        "avg_duration": 1108.0
+        "views": 534,
+        "users": 397,
+        "avg_duration": 19.0
       },
       "/calculator.html": {
-        "views": 18,
-        "users": 13,
-        "avg_duration": 15.8
+        "views": 15,
+        "users": 14,
+        "avg_duration": 5.8
       },
-      "/watch.html": {
-        "views": 14,
+      "/book.html": {
+        "views": 4,
         "users": 2,
-        "avg_duration": 272.4
-      },
-      "/assessment.html": {
-        "views": 7,
-        "users": 4,
-        "avg_duration": 176.0
+        "avg_duration": 734.1
       },
       "/nda.html": {
-        "views": 5,
+        "views": 3,
         "users": 1,
-        "avg_duration": 40.0
+        "avg_duration": 39.6
       },
-      "/upload.html": {
+      "/assessment.html": {
+        "views": 2,
+        "users": 1,
+        "avg_duration": 1130.6
+      },
+      "/watch.html": {
         "views": 2,
         "users": 2,
-        "avg_duration": 272.0
+        "avg_duration": 488.0
       },
       "/company-info.html": {
         "views": 1,
@@ -340,11 +311,11 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 9,
+        "count": 8,
         "users": 5
       },
       "optin_submit": {
-        "count": 2,
+        "count": 1,
         "users": 1
       }
     },
@@ -400,21 +371,27 @@
       },
       {
         "date": "2026-03-30",
-        "users": 48,
-        "sessions": 49,
-        "pageviews": 70
+        "users": 85,
+        "sessions": 87,
+        "pageviews": 107
+      },
+      {
+        "date": "2026-03-31",
+        "users": 9,
+        "sessions": 9,
+        "pageviews": 9
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 487,
-        "users": 450
+        "sessions": 467,
+        "users": 443
       },
       {
         "device": "Mobile",
-        "sessions": 118,
-        "users": 106
+        "sessions": 119,
+        "users": 108
       },
       {
         "device": "Tablet",
@@ -425,13 +402,13 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 61,
-        "sessions": 61
+        "users": 65,
+        "sessions": 65
       },
       {
         "city": "Council Bluffs",
-        "users": 32,
-        "sessions": 32
+        "users": 39,
+        "sessions": 39
       },
       {
         "city": "Ashburn",
@@ -440,13 +417,8 @@
       },
       {
         "city": "New York",
-        "users": 21,
-        "sessions": 21
-      },
-      {
-        "city": "Amsterdam",
-        "users": 19,
-        "sessions": 19
+        "users": 20,
+        "sessions": 20
       },
       {
         "city": "San Jose",
@@ -454,24 +426,24 @@
         "sessions": 19
       },
       {
+        "city": "Amsterdam",
+        "users": 16,
+        "sessions": 16
+      },
+      {
         "city": "Anyang-si",
         "users": 14,
         "sessions": 14
       },
       {
-        "city": "Wheaton",
+        "city": "Warsaw",
         "users": 14,
         "sessions": 14
       },
       {
-        "city": "Warsaw",
+        "city": "Aspen",
         "users": 13,
         "sessions": 13
-      },
-      {
-        "city": "Hounslow",
-        "users": 12,
-        "sessions": 12
       },
       {
         "city": "Burnaby",
@@ -479,60 +451,57 @@
         "sessions": 10
       },
       {
-        "city": "Aulnay-sous-Bois",
-        "users": 8,
-        "sessions": 8
+        "city": "",
+        "users": 9,
+        "sessions": 9
       },
       {
-        "city": "Cardiff",
-        "users": 8,
-        "sessions": 8
+        "city": "Hounslow",
+        "users": 9,
+        "sessions": 9
       },
       {
-        "city": "Cheyenne",
-        "users": 8,
-        "sessions": 8
+        "city": "London",
+        "users": 9,
+        "sessions": 9
+      },
+      {
+        "city": "Paris",
+        "users": 9,
+        "sessions": 9
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 905
+        "count": 786
       },
       {
         "event": "session_start",
-        "count": 610
+        "count": 591
       },
       {
         "event": "first_visit",
-        "count": 561
+        "count": 552
       },
       {
         "event": "user_engagement",
-        "count": 367
+        "count": 278
       },
       {
         "event": "scroll",
-        "count": 292
+        "count": 207
       },
       {
         "event": "scroll_depth",
-        "count": 125
+        "count": 66
       },
       {
         "event": "vsl_play",
-        "count": 9
+        "count": 8
       },
       {
         "event": "click",
-        "count": 7
-      },
-      {
-        "event": "assessment_start",
-        "count": 3
-      },
-      {
-        "event": "optin_submit",
         "count": 2
       },
       {
@@ -540,11 +509,7 @@
         "count": 2
       },
       {
-        "event": "assessment_complete",
-        "count": 1
-      },
-      {
-        "event": "calculator_submit",
+        "event": "optin_submit",
         "count": 1
       },
       {
@@ -558,16 +523,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 524,
-        "sessions": 546
-      },
-      {
-        "campaign": "(referral)",
-        "source": "m.facebook.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 7,
-        "sessions": 7
+        "users": 525,
+        "sessions": 543
       },
       {
         "campaign": "(referral)",
@@ -587,27 +544,19 @@
       },
       {
         "campaign": "(referral)",
-        "source": "vivianashford.github.io",
+        "source": "m.facebook.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 24
-      },
-      {
-        "campaign": "(referral)",
-        "source": "linkedin.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 4,
         "sessions": 5
       },
       {
         "campaign": "(referral)",
-        "source": "thearenapartners.com",
+        "source": "vivianashford.github.io",
         "medium": "referral",
         "content": "(not set)",
-        "users": 2,
-        "sessions": 2
+        "users": 4,
+        "sessions": 18
       },
       {
         "campaign": "(referral)",
@@ -619,11 +568,11 @@
       },
       {
         "campaign": "(referral)",
-        "source": "l.facebook.com",
+        "source": "linkedin.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
-        "sessions": 1
+        "sessions": 2
       },
       {
         "campaign": "(referral)",
@@ -643,13 +592,13 @@
       },
       {
         "campaign": "(referral)",
-        "source": "telegra.ph",
+        "source": "thearenapartners.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
-        "sessions": 3
+        "sessions": 1
       }
     ],
-    "bounce_rate": 86.2
+    "bounce_rate": 89.4
   }
 }
