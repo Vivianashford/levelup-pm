@@ -1,6 +1,6 @@
 {
-  "updated": "2026-03-31T13:59:40.258489+00:00",
-  "updated_local": "2026-03-31 08:59 AM",
+  "updated": "2026-03-31T18:08:11.574945+00:00",
+  "updated_local": "2026-03-31 01:08 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -36,8 +36,8 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 27,
-    "real": 20
+    "total": 31,
+    "real": 24
   },
   "appointments": {
     "upcoming": 0
@@ -84,25 +84,25 @@
     }
   ],
   "analytics": {
-    "realtime_users": 6,
+    "realtime_users": 0,
     "week": {
-      "users": 562,
-      "sessions": 597,
-      "pageviews": 786,
-      "avg_duration": 43.7,
+      "users": 572,
+      "sessions": 607,
+      "pageviews": 797,
+      "avg_duration": 46.9,
       "conversions": 0
     },
     "month": {
-      "users": 613,
-      "sessions": 668,
-      "pageviews": 955,
+      "users": 623,
+      "sessions": 678,
+      "pageviews": 966,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 534,
-        "users": 397
+        "views": 542,
+        "users": 407
       },
       {
         "page": "/automation-edge/",
@@ -126,8 +126,13 @@
       },
       {
         "page": "/contact",
-        "views": 13,
-        "users": 9
+        "views": 14,
+        "users": 10
+      },
+      {
+        "page": "/about",
+        "views": 12,
+        "users": 12
       },
       {
         "page": "/satellite-landscaping/",
@@ -140,34 +145,29 @@
         "users": 12
       },
       {
-        "page": "/about",
-        "views": 11,
-        "users": 11
-      },
-      {
-        "page": "/satellite-electrical/",
-        "views": 11,
-        "users": 11
+        "page": "/services",
+        "views": 12,
+        "users": 12
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 543,
-        "users": 525
+        "sessions": 550,
+        "users": 532
+      },
+      {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 20,
+        "users": 19
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
         "sessions": 18,
         "users": 4
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 17,
-        "users": 16
       },
       {
         "source": "facebook.com",
@@ -178,8 +178,8 @@
       {
         "source": "google",
         "medium": "organic",
-        "sessions": 5,
-        "users": 5
+        "sessions": 6,
+        "users": 6
       },
       {
         "source": "ig",
@@ -203,6 +203,12 @@
         "source": "linkedin.com",
         "medium": "referral",
         "sessions": 2,
+        "users": 1
+      },
+      {
+        "source": "aisearchindex.space",
+        "medium": "referral",
+        "sessions": 1,
         "users": 1
       },
       {
@@ -274,9 +280,9 @@
     },
     "funnel": {
       "/": {
-        "views": 534,
-        "users": 397,
-        "avg_duration": 19.0
+        "views": 542,
+        "users": 407,
+        "avg_duration": 20.9
       },
       "/calculator.html": {
         "views": 15,
@@ -377,16 +383,16 @@
       },
       {
         "date": "2026-03-31",
-        "users": 9,
-        "sessions": 9,
-        "pageviews": 9
+        "users": 19,
+        "sessions": 19,
+        "pageviews": 20
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 467,
-        "users": 443
+        "sessions": 477,
+        "users": 453
       },
       {
         "device": "Mobile",
@@ -402,8 +408,8 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 65,
-        "sessions": 65
+        "users": 66,
+        "sessions": 66
       },
       {
         "city": "Council Bluffs",
@@ -431,6 +437,11 @@
         "sessions": 16
       },
       {
+        "city": "",
+        "users": 14,
+        "sessions": 14
+      },
+      {
         "city": "Anyang-si",
         "users": 14,
         "sessions": 14
@@ -451,11 +462,6 @@
         "sessions": 10
       },
       {
-        "city": "",
-        "users": 9,
-        "sessions": 9
-      },
-      {
         "city": "Hounslow",
         "users": 9,
         "sessions": 9
@@ -474,23 +480,23 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 786
+        "count": 797
       },
       {
         "event": "session_start",
-        "count": 591
+        "count": 600
       },
       {
         "event": "first_visit",
-        "count": 552
+        "count": 561
       },
       {
         "event": "user_engagement",
-        "count": 278
+        "count": 282
       },
       {
         "event": "scroll",
-        "count": 207
+        "count": 208
       },
       {
         "event": "scroll_depth",
@@ -502,7 +508,7 @@
       },
       {
         "event": "click",
-        "count": 2
+        "count": 4
       },
       {
         "event": "scorecard_started",
@@ -523,8 +529,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 525,
-        "sessions": 543
+        "users": 532,
+        "sessions": 550
       },
       {
         "campaign": "(referral)",
@@ -557,6 +563,14 @@
         "content": "(not set)",
         "users": 4,
         "sessions": 18
+      },
+      {
+        "campaign": "(referral)",
+        "source": "aisearchindex.space",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
       },
       {
         "campaign": "(referral)",
@@ -599,6 +613,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 89.4
+    "bounce_rate": 89.6
   }
 }
