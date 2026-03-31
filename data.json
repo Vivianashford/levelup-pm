@@ -1,10 +1,10 @@
 {
-  "updated": "2026-03-31T18:08:11.574945+00:00",
-  "updated_local": "2026-03-31 01:08 PM",
+  "updated": "2026-03-31T22:23:55.238360+00:00",
+  "updated_local": "2026-03-31 05:23 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
-    "pipeline": 4,
+    "pipeline": 0,
     "revenue": 0
   },
   "arena_pipeline": {
@@ -14,8 +14,8 @@
     "closed": 0,
     "no_show": 0,
     "nurture": 0,
-    "total": 4,
-    "total_value": 0.0
+    "total": 0,
+    "total_value": 0
   },
   "book_pipeline": {
     "opt_in": 0,
@@ -36,73 +36,33 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 31,
-    "real": 24
+    "total": 32,
+    "real": 25
   },
   "appointments": {
     "upcoming": 0
   },
-  "clients": [
-    {
-      "id": "kecRgU8lgVSMh3swHUUi",
-      "name": "Rick Brennan",
-      "company": "Brennan Plumbing & Mechanical",
-      "email": "rick.brennan@brennanplumbing.com",
-      "phone": "+17135551234",
-      "stage": "call_complete",
-      "status": "open",
-      "value": 0.0,
-      "completed": [
-        "nda",
-        "company-info",
-        "vsl-100"
-      ],
-      "missing": [],
-      "tags": [
-        "vsl-lead",
-        "vsl-watched-100",
-        "vsl-booked",
-        "nda-signed",
-        "company-info-submitted"
-      ],
-      "watchPct": 100,
-      "maxWatchPct": 25,
-      "videoSegment": "0-25%",
-      "leadScore": "",
-      "exitRiskScore": 62,
-      "exitRiskLevel": "High Risk (62/100)",
-      "exitTimeline": 4,
-      "financialClean": 6,
-      "sopScore": 14,
-      "ebitdaScore": 8,
-      "ownerDependency": 18,
-      "customerConcentration": 12,
-      "successionScore": 10,
-      "lastUpdate": "2026-03-22T04:17:29.655Z",
-      "dateAdded": "2026-03-22T04:17:29.655Z",
-      "opportunityId": "kZp1gioVBEJvrlsnd44w"
-    }
-  ],
+  "clients": [],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 1,
     "week": {
-      "users": 572,
-      "sessions": 607,
-      "pageviews": 797,
-      "avg_duration": 46.9,
+      "users": 581,
+      "sessions": 622,
+      "pageviews": 818,
+      "avg_duration": 48.7,
       "conversions": 0
     },
     "month": {
-      "users": 623,
-      "sessions": 678,
-      "pageviews": 966,
+      "users": 632,
+      "sessions": 693,
+      "pageviews": 987,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 542,
-        "users": 407
+        "views": 557,
+        "users": 416
       },
       {
         "page": "/automation-edge/",
@@ -116,7 +76,7 @@
       },
       {
         "page": "/calculator.html",
-        "views": 15,
+        "views": 16,
         "users": 14
       },
       {
@@ -154,30 +114,30 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 550,
-        "users": 532
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 20,
-        "users": 19
+        "sessions": 559,
+        "users": 542
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 18,
+        "sessions": 21,
         "users": 4
       },
       {
-        "source": "facebook.com",
-        "medium": "referral",
-        "sessions": 6,
-        "users": 6
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 10,
+        "users": 9
       },
       {
         "source": "google",
         "medium": "organic",
+        "sessions": 8,
+        "users": 6
+      },
+      {
+        "source": "facebook.com",
+        "medium": "referral",
         "sessions": 6,
         "users": 6
       },
@@ -206,7 +166,19 @@
         "users": 1
       },
       {
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "sessions": 2,
+        "users": 2
+      },
+      {
         "source": "aisearchindex.space",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 1
+      },
+      {
+        "source": "api.leadconnectorhq.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -228,12 +200,6 @@
         "medium": "referral",
         "sessions": 1,
         "users": 1
-      },
-      {
-        "source": "thearenapartners.com",
-        "medium": "referral",
-        "sessions": 1,
-        "users": 1
       }
     ],
     "blog": {
@@ -244,7 +210,7 @@
           "page": "/blog/",
           "views": 10,
           "users": 7,
-          "avg_duration": 9.5
+          "avg_duration": 9.6
         },
         {
           "page": "/blog/the-90-percent-haircut.html",
@@ -280,34 +246,34 @@
     },
     "funnel": {
       "/": {
-        "views": 542,
-        "users": 407,
-        "avg_duration": 20.9
+        "views": 557,
+        "users": 416,
+        "avg_duration": 22.7
       },
       "/calculator.html": {
-        "views": 15,
+        "views": 16,
         "users": 14,
-        "avg_duration": 5.8
+        "avg_duration": 5.5
+      },
+      "/nda.html": {
+        "views": 5,
+        "users": 1,
+        "avg_duration": 528.8
       },
       "/book.html": {
         "views": 4,
         "users": 2,
         "avg_duration": 734.1
       },
-      "/nda.html": {
+      "/watch.html": {
         "views": 3,
-        "users": 1,
-        "avg_duration": 39.6
+        "users": 2,
+        "avg_duration": 6.4
       },
       "/assessment.html": {
         "views": 2,
         "users": 1,
         "avg_duration": 1130.6
-      },
-      "/watch.html": {
-        "views": 2,
-        "users": 2,
-        "avg_duration": 488.0
       },
       "/company-info.html": {
         "views": 1,
@@ -317,8 +283,8 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 8,
-        "users": 5
+        "count": 9,
+        "users": 6
       },
       "optin_submit": {
         "count": 1,
@@ -377,26 +343,26 @@
       },
       {
         "date": "2026-03-30",
-        "users": 85,
-        "sessions": 87,
-        "pageviews": 107
+        "users": 92,
+        "sessions": 94,
+        "pageviews": 118
       },
       {
         "date": "2026-03-31",
-        "users": 19,
-        "sessions": 19,
-        "pageviews": 20
+        "users": 23,
+        "sessions": 28,
+        "pageviews": 30
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 477,
-        "users": 453
+        "sessions": 491,
+        "users": 462
       },
       {
         "device": "Mobile",
-        "sessions": 119,
+        "sessions": 120,
         "users": 108
       },
       {
@@ -408,8 +374,8 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 66,
-        "sessions": 66
+        "users": 67,
+        "sessions": 67
       },
       {
         "city": "Council Bluffs",
@@ -418,8 +384,8 @@
       },
       {
         "city": "Ashburn",
-        "users": 26,
-        "sessions": 26
+        "users": 28,
+        "sessions": 28
       },
       {
         "city": "New York",
@@ -437,12 +403,12 @@
         "sessions": 16
       },
       {
-        "city": "",
+        "city": "Anyang-si",
         "users": 14,
         "sessions": 14
       },
       {
-        "city": "Anyang-si",
+        "city": "Aspen",
         "users": 14,
         "sessions": 14
       },
@@ -452,9 +418,9 @@
         "sessions": 14
       },
       {
-        "city": "Aspen",
-        "users": 13,
-        "sessions": 13
+        "city": "Paris",
+        "users": 11,
+        "sessions": 11
       },
       {
         "city": "Burnaby",
@@ -472,50 +438,62 @@
         "sessions": 9
       },
       {
-        "city": "Paris",
-        "users": 9,
-        "sessions": 9
+        "city": "Aulnay-sous-Bois",
+        "users": 8,
+        "sessions": 8
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 797
+        "count": 818
       },
       {
         "event": "session_start",
-        "count": 600
+        "count": 617
       },
       {
         "event": "first_visit",
-        "count": 561
+        "count": 572
       },
       {
         "event": "user_engagement",
-        "count": 282
+        "count": 297
       },
       {
         "event": "scroll",
-        "count": 208
+        "count": 218
       },
       {
         "event": "scroll_depth",
-        "count": 66
+        "count": 80
       },
       {
         "event": "vsl_play",
-        "count": 8
+        "count": 9
       },
       {
         "event": "click",
-        "count": 4
+        "count": 6
       },
       {
         "event": "scorecard_started",
         "count": 2
       },
       {
+        "event": "view_nda",
+        "count": 2
+      },
+      {
+        "event": "booking_confirmed",
+        "count": 1
+      },
+      {
         "event": "optin_submit",
+        "count": 1
+      },
+      {
+        "event": "outbound_click",
         "count": 1
       },
       {
@@ -529,8 +507,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 532,
-        "sessions": 550
+        "users": 542,
+        "sessions": 559
       },
       {
         "campaign": "(referral)",
@@ -562,11 +540,27 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 4,
-        "sessions": 18
+        "sessions": 21
+      },
+      {
+        "campaign": "(referral)",
+        "source": "thearenapartners.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 2,
+        "sessions": 2
       },
       {
         "campaign": "(referral)",
         "source": "aisearchindex.space",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 1,
+        "sessions": 1
+      },
+      {
+        "campaign": "(referral)",
+        "source": "api.leadconnectorhq.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
@@ -603,16 +597,8 @@
         "content": "(not set)",
         "users": 1,
         "sessions": 1
-      },
-      {
-        "campaign": "(referral)",
-        "source": "thearenapartners.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 1,
-        "sessions": 1
       }
     ],
-    "bounce_rate": 89.6
+    "bounce_rate": 89.1
   }
 }
