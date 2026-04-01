@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T13:09:28.557030+00:00",
-  "updated_local": "2026-04-01 08:09 AM",
+  "updated": "2026-04-01T13:23:49.132276+00:00",
+  "updated_local": "2026-04-01 08:23 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 8,
+    "realtime_users": 7,
     "week": {
-      "users": 554,
-      "sessions": 590,
-      "pageviews": 785,
-      "avg_duration": 51.3,
+      "users": 556,
+      "sessions": 592,
+      "pageviews": 786,
+      "avg_duration": 51.1,
       "conversions": 0
     },
     "month": {
-      "users": 661,
-      "sessions": 724,
-      "pageviews": 1024,
+      "users": 663,
+      "sessions": 726,
+      "pageviews": 1025,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
         "views": 544,
-        "users": 407
+        "users": 408
       },
       {
         "page": "/automation-edge/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 538,
-        "users": 525
+        "sessions": 539,
+        "users": 526
       },
       {
         "source": "vivianashford.github.io",
@@ -126,8 +126,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 15,
-        "users": 13
+        "sessions": 16,
+        "users": 14
       },
       {
         "source": "google",
@@ -191,14 +191,14 @@
       }
     ],
     "blog": {
-      "total_views": 13,
-      "total_users": 8,
+      "total_views": 14,
+      "total_users": 9,
       "articles": [
         {
           "page": "/blog/",
-          "views": 6,
-          "users": 4,
-          "avg_duration": 2.8
+          "views": 7,
+          "users": 5,
+          "avg_duration": 2.5
         },
         {
           "page": "/blog/the-90-percent-haircut.html",
@@ -229,8 +229,8 @@
     "funnel": {
       "/": {
         "views": 544,
-        "users": 407,
-        "avg_duration": 17.9
+        "users": 408,
+        "avg_duration": 17.8
       },
       "/calculator.html": {
         "views": 8,
@@ -342,21 +342,21 @@
       },
       {
         "date": "2026-04-01",
-        "users": 3,
-        "sessions": 3,
-        "pageviews": 4
+        "users": 5,
+        "sessions": 5,
+        "pageviews": 5
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 463,
-        "users": 438
+        "sessions": 464,
+        "users": 439
       },
       {
         "device": "Mobile",
-        "sessions": 115,
-        "users": 104
+        "sessions": 116,
+        "users": 105
       },
       {
         "device": "Tablet",
@@ -387,8 +387,8 @@
       },
       {
         "city": "New York",
-        "users": 19,
-        "sessions": 19
+        "users": 20,
+        "sessions": 20
       },
       {
         "city": "Warsaw",
@@ -439,15 +439,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 785
+        "count": 786
       },
       {
         "event": "session_start",
-        "count": 586
+        "count": 587
       },
       {
         "event": "first_visit",
-        "count": 546
+        "count": 547
       },
       {
         "event": "user_engagement",
@@ -455,7 +455,7 @@
       },
       {
         "event": "scroll",
-        "count": 186
+        "count": 188
       },
       {
         "event": "scroll_depth",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 525,
-        "sessions": 538
+        "users": 526,
+        "sessions": 539
       },
       {
         "campaign": "(referral)",
