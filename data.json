@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T19:10:56.435097+00:00",
-  "updated_local": "2026-04-01 02:10 PM",
+  "updated": "2026-04-01T19:25:56.132604+00:00",
+  "updated_local": "2026-04-01 02:25 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -10,12 +10,12 @@
   "arena_pipeline": {
     "new_lead": 0,
     "contacted": 0,
-    "proposal": 0,
+    "proposal": 1,
     "closed": 0,
     "no_show": 0,
     "nurture": 0,
     "total": 2,
-    "total_value": 36000.0
+    "total_value": 180000.0
   },
   "book_pipeline": {
     "opt_in": 0,
@@ -46,23 +46,23 @@
   "analytics": {
     "realtime_users": 4,
     "week": {
-      "users": 581,
-      "sessions": 620,
-      "pageviews": 823,
-      "avg_duration": 49.5,
+      "users": 583,
+      "sessions": 623,
+      "pageviews": 826,
+      "avg_duration": 49.2,
       "conversions": 0
     },
     "month": {
-      "users": 688,
-      "sessions": 754,
-      "pageviews": 1062,
+      "users": 689,
+      "sessions": 757,
+      "pageviews": 1065,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 572,
-        "users": 430
+        "views": 573,
+        "users": 431
       },
       {
         "page": "/automation-edge/",
@@ -114,26 +114,26 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 567,
-        "users": 553
+        "sessions": 568,
+        "users": 554
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 24,
+        "sessions": 25,
         "users": 5
+      },
+      {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 8,
+        "users": 8
       },
       {
         "source": "google",
         "medium": "organic",
         "sessions": 8,
         "users": 5
-      },
-      {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 7,
-        "users": 7
       },
       {
         "source": "ig",
@@ -228,9 +228,9 @@
     },
     "funnel": {
       "/": {
-        "views": 572,
-        "users": 430,
-        "avg_duration": 20.0
+        "views": 573,
+        "users": 431,
+        "avg_duration": 19.9
       },
       "/calculator.html": {
         "views": 8,
@@ -270,7 +270,7 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 9,
+        "count": 10,
         "users": 6
       },
       "optin_submit": {
@@ -342,16 +342,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 28,
-        "sessions": 29,
-        "pageviews": 34
+        "users": 30,
+        "sessions": 32,
+        "pageviews": 37
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 478,
-        "users": 451
+        "sessions": 481,
+        "users": 453
       },
       {
         "device": "Mobile",
@@ -422,8 +422,8 @@
       },
       {
         "city": "Burnaby",
-        "users": 8,
-        "sessions": 8
+        "users": 9,
+        "sessions": 9
       },
       {
         "city": "Cardiff",
@@ -439,15 +439,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 823
+        "count": 826
       },
       {
         "event": "session_start",
-        "count": 620
+        "count": 623
       },
       {
         "event": "first_visit",
-        "count": 576
+        "count": 578
       },
       {
         "event": "user_engagement",
@@ -463,7 +463,7 @@
       },
       {
         "event": "vsl_play",
-        "count": 9
+        "count": 10
       },
       {
         "event": "click",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 553,
-        "sessions": 567
+        "users": 554,
+        "sessions": 568
       },
       {
         "campaign": "(referral)",
@@ -517,7 +517,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 24
+        "sessions": 25
       },
       {
         "campaign": "(referral)",
@@ -576,6 +576,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 89.8
+    "bounce_rate": 89.9
   }
 }
