@@ -1,10 +1,10 @@
 {
-  "updated": "2026-04-01T18:41:08.726009+00:00",
-  "updated_local": "2026-04-01 01:41 PM",
+  "updated": "2026-04-01T18:55:55.527100+00:00",
+  "updated_local": "2026-04-01 01:55 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
-    "pipeline": 0,
+    "pipeline": 2,
     "revenue": 0
   },
   "arena_pipeline": {
@@ -14,8 +14,8 @@
     "closed": 0,
     "no_show": 0,
     "nurture": 0,
-    "total": 0,
-    "total_value": 0
+    "total": 2,
+    "total_value": 36000.0
   },
   "book_pipeline": {
     "opt_in": 0,
@@ -36,15 +36,15 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 35,
-    "real": 28
+    "total": 36,
+    "real": 29
   },
   "appointments": {
     "upcoming": 0
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 4,
     "week": {
       "users": 580,
       "sessions": 618,
