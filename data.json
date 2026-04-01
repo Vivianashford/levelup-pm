@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T22:25:56.385853+00:00",
-  "updated_local": "2026-04-01 05:25 PM",
+  "updated": "2026-04-01T22:40:56.108219+00:00",
+  "updated_local": "2026-04-01 05:40 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -48,14 +48,14 @@
     "week": {
       "users": 590,
       "sessions": 633,
-      "pageviews": 849,
+      "pageviews": 850,
       "avg_duration": 61.2,
       "conversions": 0
     },
     "month": {
       "users": 696,
       "sessions": 766,
-      "pageviews": 1088,
+      "pageviews": 1089,
       "conversions": 0
     },
     "top_pages": [
@@ -80,6 +80,11 @@
         "users": 10
       },
       {
+        "page": "/about",
+        "views": 12,
+        "users": 11
+      },
+      {
         "page": "/contact",
         "views": 12,
         "users": 10
@@ -97,11 +102,6 @@
       {
         "page": "/services",
         "views": 12,
-        "users": 11
-      },
-      {
-        "page": "/about",
-        "views": 11,
         "users": 11
       },
       {
@@ -187,7 +187,7 @@
         "source": "l.facebook.com",
         "medium": "referral",
         "sessions": 1,
-        "users": 0
+        "users": 1
       },
       {
         "source": "streetinsider.com",
@@ -350,7 +350,7 @@
         "date": "2026-04-01",
         "users": 37,
         "sessions": 41,
-        "pageviews": 60
+        "pageviews": 61
       }
     ],
     "devices": [
@@ -445,7 +445,7 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 849
+        "count": 850
       },
       {
         "event": "session_start",
@@ -457,7 +457,7 @@
       },
       {
         "event": "user_engagement",
-        "count": 288
+        "count": 289
       },
       {
         "event": "scroll",
@@ -465,7 +465,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 80
+        "count": 81
       },
       {
         "event": "vsl_play",
@@ -575,7 +575,7 @@
       },
       {
         "campaign": "(referral)",
-        "source": "streetinsider.com",
+        "source": "l.facebook.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
@@ -583,10 +583,10 @@
       },
       {
         "campaign": "(referral)",
-        "source": "l.facebook.com",
+        "source": "streetinsider.com",
         "medium": "referral",
         "content": "(not set)",
-        "users": 0,
+        "users": 1,
         "sessions": 1
       }
     ],
