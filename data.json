@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T23:40:55.703277+00:00",
-  "updated_local": "2026-04-01 06:40 PM",
+  "updated": "2026-04-01T23:55:55.209375+00:00",
+  "updated_local": "2026-04-01 06:55 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -47,21 +47,21 @@
     "realtime_users": 0,
     "week": {
       "users": 590,
-      "sessions": 637,
-      "pageviews": 858,
-      "avg_duration": 65.0,
+      "sessions": 638,
+      "pageviews": 861,
+      "avg_duration": 69.0,
       "conversions": 0
     },
     "month": {
       "users": 696,
-      "sessions": 770,
-      "pageviews": 1097,
+      "sessions": 771,
+      "pageviews": 1100,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 590,
+        "views": 591,
         "users": 438
       },
       {
@@ -120,13 +120,13 @@
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 27,
+        "sessions": 28,
         "users": 5
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 13,
+        "sessions": 14,
         "users": 11
       },
       {
@@ -234,7 +234,7 @@
     },
     "funnel": {
       "/": {
-        "views": 590,
+        "views": 591,
         "users": 438,
         "avg_duration": 24.6
       },
@@ -245,8 +245,8 @@
       },
       "/calculator.html": {
         "views": 9,
-        "users": 7,
-        "avg_duration": 290.5
+        "users": 8,
+        "avg_duration": 261.5
       },
       "/book.html": {
         "views": 7,
@@ -256,12 +256,12 @@
       "/watch.html": {
         "views": 7,
         "users": 3,
-        "avg_duration": 289.6
+        "avg_duration": 242.4
       },
       "/assessment.html": {
-        "views": 2,
+        "views": 3,
         "users": 2,
-        "avg_duration": 1154.5
+        "avg_duration": 1895.0
       },
       "/upload.html": {
         "views": 2,
@@ -349,14 +349,14 @@
       {
         "date": "2026-04-01",
         "users": 38,
-        "sessions": 45,
-        "pageviews": 69
+        "sessions": 46,
+        "pageviews": 72
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 494,
+        "sessions": 495,
         "users": 460
       },
       {
@@ -445,11 +445,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 858
+        "count": 861
       },
       {
         "event": "session_start",
-        "count": 637
+        "count": 638
       },
       {
         "event": "first_visit",
@@ -457,15 +457,15 @@
       },
       {
         "event": "user_engagement",
-        "count": 292
+        "count": 294
       },
       {
         "event": "scroll",
-        "count": 204
+        "count": 208
       },
       {
         "event": "scroll_depth",
-        "count": 89
+        "count": 91
       },
       {
         "event": "vsl_play",
@@ -523,7 +523,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 27
+        "sessions": 28
       },
       {
         "campaign": "(referral)",
