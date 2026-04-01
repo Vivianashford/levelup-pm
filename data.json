@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T21:41:10.715388+00:00",
-  "updated_local": "2026-04-01 04:41 PM",
+  "updated": "2026-04-01T21:55:56.020127+00:00",
+  "updated_local": "2026-04-01 04:55 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -46,23 +46,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 587,
-      "sessions": 629,
-      "pageviews": 842,
-      "avg_duration": 60.9,
+      "users": 589,
+      "sessions": 632,
+      "pageviews": 845,
+      "avg_duration": 60.7,
       "conversions": 0
     },
     "month": {
-      "users": 693,
-      "sessions": 762,
-      "pageviews": 1081,
+      "users": 695,
+      "sessions": 765,
+      "pageviews": 1084,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 580,
-        "users": 435
+        "views": 583,
+        "users": 437
       },
       {
         "page": "/automation-edge/",
@@ -102,7 +102,7 @@
       {
         "page": "/about",
         "views": 11,
-        "users": 10
+        "users": 11
       },
       {
         "page": "/satellite-electrical/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 572,
-        "users": 558
+        "sessions": 574,
+        "users": 560
       },
       {
         "source": "vivianashford.github.io",
@@ -126,8 +126,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 9,
-        "users": 8
+        "sessions": 10,
+        "users": 9
       },
       {
         "source": "google",
@@ -234,9 +234,9 @@
     },
     "funnel": {
       "/": {
-        "views": 580,
-        "users": 435,
-        "avg_duration": 22.0
+        "views": 583,
+        "users": 437,
+        "avg_duration": 21.9
       },
       "/calculator.html": {
         "views": 9,
@@ -348,16 +348,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 34,
-        "sessions": 37,
-        "pageviews": 53
+        "users": 36,
+        "sessions": 40,
+        "pageviews": 56
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 486,
-        "users": 457
+        "sessions": 489,
+        "users": 459
       },
       {
         "device": "Mobile",
@@ -422,14 +422,14 @@
         "sessions": 12
       },
       {
-        "city": "Paris",
+        "city": "Burnaby",
         "users": 10,
         "sessions": 10
       },
       {
-        "city": "Burnaby",
-        "users": 9,
-        "sessions": 9
+        "city": "Paris",
+        "users": 10,
+        "sessions": 10
       },
       {
         "city": "Cardiff",
@@ -437,27 +437,27 @@
         "sessions": 8
       },
       {
-        "city": "Singapore",
+        "city": "Houston",
         "users": 8,
-        "sessions": 8
+        "sessions": 31
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 842
+        "count": 845
       },
       {
         "event": "session_start",
-        "count": 629
+        "count": 631
       },
       {
         "event": "first_visit",
-        "count": 582
+        "count": 584
       },
       {
         "event": "user_engagement",
-        "count": 286
+        "count": 287
       },
       {
         "event": "scroll",
@@ -506,8 +506,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 558,
-        "sessions": 572
+        "users": 560,
+        "sessions": 574
       },
       {
         "campaign": "(referral)",
