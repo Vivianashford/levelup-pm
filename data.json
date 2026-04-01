@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T18:11:18.470735+00:00",
-  "updated_local": "2026-04-01 01:11 PM",
+  "updated": "2026-04-01T18:26:34.338190+00:00",
+  "updated_local": "2026-04-01 01:26 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -46,23 +46,23 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 576,
-      "sessions": 614,
-      "pageviews": 812,
-      "avg_duration": 51.9,
+      "users": 580,
+      "sessions": 618,
+      "pageviews": 820,
+      "avg_duration": 49.6,
       "conversions": 0
     },
     "month": {
-      "users": 683,
-      "sessions": 748,
-      "pageviews": 1051,
+      "users": 687,
+      "sessions": 752,
+      "pageviews": 1059,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 564,
-        "users": 426
+        "views": 571,
+        "users": 430
       },
       {
         "page": "/automation-edge/",
@@ -90,6 +90,11 @@
         "users": 12
       },
       {
+        "page": "/services",
+        "views": 12,
+        "users": 11
+      },
+      {
         "page": "/contact",
         "views": 11,
         "users": 9
@@ -103,19 +108,14 @@
         "page": "/satellite-pest-control/",
         "views": 11,
         "users": 11
-      },
-      {
-        "page": "/services",
-        "views": 11,
-        "users": 11
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 561,
-        "users": 547
+        "sessions": 566,
+        "users": 552
       },
       {
         "source": "vivianashford.github.io",
@@ -124,16 +124,16 @@
         "users": 5
       },
       {
-        "source": "(not set)",
-        "medium": "(not set)",
-        "sessions": 19,
-        "users": 16
-      },
-      {
         "source": "google",
         "medium": "organic",
-        "sessions": 7,
+        "sessions": 8,
         "users": 5
+      },
+      {
+        "source": "(not set)",
+        "medium": "(not set)",
+        "sessions": 7,
+        "users": 7
       },
       {
         "source": "ig",
@@ -228,29 +228,29 @@
     },
     "funnel": {
       "/": {
-        "views": 564,
-        "users": 426,
-        "avg_duration": 17.2
+        "views": 571,
+        "users": 430,
+        "avg_duration": 20.0
       },
       "/calculator.html": {
         "views": 8,
         "users": 7,
-        "avg_duration": 2.3
+        "avg_duration": 2.6
       },
       "/nda.html": {
         "views": 8,
         "users": 2,
-        "avg_duration": 782.2
+        "avg_duration": 781.3
       },
       "/book.html": {
         "views": 5,
         "users": 3,
-        "avg_duration": 1083.3
+        "avg_duration": 558.5
       },
       "/watch.html": {
         "views": 5,
         "users": 3,
-        "avg_duration": 94.2
+        "avg_duration": 274.9
       },
       "/assessment.html": {
         "views": 2,
@@ -336,9 +336,9 @@
       },
       {
         "date": "2026-03-31",
-        "users": 49,
-        "sessions": 56,
-        "pageviews": 63
+        "users": 53,
+        "sessions": 60,
+        "pageviews": 71
       },
       {
         "date": "2026-04-01",
@@ -350,8 +350,8 @@
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 473,
-        "users": 447
+        "sessions": 477,
+        "users": 451
       },
       {
         "device": "Mobile",
@@ -372,8 +372,8 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 43,
-        "sessions": 43
+        "users": 44,
+        "sessions": 44
       },
       {
         "city": "Ashburn",
@@ -411,11 +411,6 @@
         "sessions": 14
       },
       {
-        "city": "",
-        "users": 12,
-        "sessions": 12
-      },
-      {
         "city": "Cheyenne",
         "users": 12,
         "sessions": 12
@@ -434,32 +429,37 @@
         "city": "Cardiff",
         "users": 8,
         "sessions": 8
+      },
+      {
+        "city": "Singapore",
+        "users": 8,
+        "sessions": 8
       }
     ],
     "all_events": [
       {
         "event": "page_view",
-        "count": 812
+        "count": 820
       },
       {
         "event": "session_start",
-        "count": 611
+        "count": 617
       },
       {
         "event": "first_visit",
-        "count": 569
+        "count": 574
       },
       {
         "event": "user_engagement",
-        "count": 279
+        "count": 280
       },
       {
         "event": "scroll",
-        "count": 192
+        "count": 193
       },
       {
         "event": "scroll_depth",
-        "count": 68
+        "count": 70
       },
       {
         "event": "vsl_play",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 547,
-        "sessions": 561
+        "users": 552,
+        "sessions": 566
       },
       {
         "campaign": "(referral)",
@@ -576,6 +576,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 91.4
+    "bounce_rate": 89.8
   }
 }
