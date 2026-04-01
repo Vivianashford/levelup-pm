@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T21:25:55.888867+00:00",
-  "updated_local": "2026-04-01 04:25 PM",
+  "updated": "2026-04-01T21:41:10.715388+00:00",
+  "updated_local": "2026-04-01 04:41 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
-      "users": 586,
-      "sessions": 627,
-      "pageviews": 840,
-      "avg_duration": 61.0,
+      "users": 587,
+      "sessions": 629,
+      "pageviews": 842,
+      "avg_duration": 60.9,
       "conversions": 0
     },
     "month": {
-      "users": 692,
-      "sessions": 761,
-      "pageviews": 1079,
+      "users": 693,
+      "sessions": 762,
+      "pageviews": 1081,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 578,
-        "users": 434
+        "views": 580,
+        "users": 435
       },
       {
         "page": "/automation-edge/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 571,
-        "users": 557
+        "sessions": 572,
+        "users": 558
       },
       {
         "source": "vivianashford.github.io",
@@ -184,6 +184,12 @@
         "users": 1
       },
       {
+        "source": "l.facebook.com",
+        "medium": "referral",
+        "sessions": 1,
+        "users": 0
+      },
+      {
         "source": "streetinsider.com",
         "medium": "referral",
         "sessions": 1,
@@ -228,9 +234,9 @@
     },
     "funnel": {
       "/": {
-        "views": 578,
-        "users": 434,
-        "avg_duration": 21.9
+        "views": 580,
+        "users": 435,
+        "avg_duration": 22.0
       },
       "/calculator.html": {
         "views": 9,
@@ -342,16 +348,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 33,
-        "sessions": 36,
-        "pageviews": 51
+        "users": 34,
+        "sessions": 37,
+        "pageviews": 53
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 485,
-        "users": 456
+        "sessions": 486,
+        "users": 457
       },
       {
         "device": "Mobile",
@@ -439,15 +445,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 840
+        "count": 842
       },
       {
         "event": "session_start",
-        "count": 627
+        "count": 629
       },
       {
         "event": "first_visit",
-        "count": 581
+        "count": 582
       },
       {
         "event": "user_engagement",
@@ -455,7 +461,7 @@
       },
       {
         "event": "scroll",
-        "count": 199
+        "count": 200
       },
       {
         "event": "scroll_depth",
@@ -500,8 +506,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 557,
-        "sessions": 571
+        "users": 558,
+        "sessions": 572
       },
       {
         "campaign": "(referral)",
@@ -573,6 +579,14 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
+        "sessions": 1
+      },
+      {
+        "campaign": "(referral)",
+        "source": "l.facebook.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 0,
         "sessions": 1
       }
     ],
