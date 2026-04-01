@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T06:53:54.076497+00:00",
-  "updated_local": "2026-04-01 01:53 AM",
+  "updated": "2026-04-01T07:08:49.321458+00:00",
+  "updated_local": "2026-04-01 02:08 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -46,10 +46,10 @@
   "analytics": {
     "realtime_users": 0,
     "week": {
-      "users": 607,
-      "sessions": 651,
-      "pageviews": 851,
-      "avg_duration": 50.4,
+      "users": 551,
+      "sessions": 587,
+      "pageviews": 781,
+      "avg_duration": 51.6,
       "conversions": 0
     },
     "month": {
@@ -61,8 +61,8 @@
     "top_pages": [
       {
         "page": "/",
-        "views": 586,
-        "users": 442
+        "views": 540,
+        "users": 404
       },
       {
         "page": "/automation-edge/",
@@ -75,24 +75,9 @@
         "users": 12
       },
       {
-        "page": "/calculator.html",
-        "views": 16,
-        "users": 14
-      },
-      {
         "page": "/satellite-plumbing/",
         "views": 15,
         "users": 10
-      },
-      {
-        "page": "/contact",
-        "views": 14,
-        "users": 10
-      },
-      {
-        "page": "/about",
-        "views": 12,
-        "users": 12
       },
       {
         "page": "/satellite-landscaping/",
@@ -105,23 +90,38 @@
         "users": 12
       },
       {
+        "page": "/contact",
+        "views": 11,
+        "users": 9
+      },
+      {
+        "page": "/satellite-electrical/",
+        "views": 11,
+        "users": 11
+      },
+      {
+        "page": "/satellite-pest-control/",
+        "views": 11,
+        "users": 11
+      },
+      {
         "page": "/services",
-        "views": 12,
-        "users": 12
+        "views": 11,
+        "users": 11
       }
     ],
     "traffic_sources": [
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 583,
-        "users": 566
+        "sessions": 535,
+        "users": 522
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 26,
-        "users": 6
+        "sessions": 22,
+        "users": 5
       },
       {
         "source": "(not set)",
@@ -132,24 +132,12 @@
       {
         "source": "google",
         "medium": "organic",
-        "sessions": 8,
-        "users": 6
-      },
-      {
-        "source": "facebook.com",
-        "medium": "referral",
-        "sessions": 6,
-        "users": 6
+        "sessions": 7,
+        "users": 5
       },
       {
         "source": "ig",
         "medium": "social",
-        "sessions": 5,
-        "users": 5
-      },
-      {
-        "source": "m.facebook.com",
-        "medium": "referral",
         "sessions": 5,
         "users": 5
       },
@@ -160,10 +148,10 @@
         "users": 4
       },
       {
-        "source": "linkedin.com",
+        "source": "m.facebook.com",
         "medium": "referral",
         "sessions": 2,
-        "users": 1
+        "users": 2
       },
       {
         "source": "thearenapartners.com",
@@ -190,7 +178,7 @@
         "users": 1
       },
       {
-        "source": "oneadmin.internal.us1.twilio.com",
+        "source": "facebook.com",
         "medium": "referral",
         "sessions": 1,
         "users": 1
@@ -203,14 +191,14 @@
       }
     ],
     "blog": {
-      "total_views": 17,
-      "total_users": 12,
+      "total_views": 13,
+      "total_users": 8,
       "articles": [
         {
           "page": "/blog/",
-          "views": 10,
-          "users": 7,
-          "avg_duration": 9.6
+          "views": 6,
+          "users": 4,
+          "avg_duration": 2.8
         },
         {
           "page": "/blog/the-90-percent-haircut.html",
@@ -235,25 +223,19 @@
           "views": 1,
           "users": 1,
           "avg_duration": 0.0
-        },
-        {
-          "page": "/blog/hvac-business-exit-mistakes-that-cost-owners-millions.html",
-          "views": 0,
-          "users": 1,
-          "avg_duration": 1.8
         }
       ]
     },
     "funnel": {
       "/": {
-        "views": 586,
-        "users": 442,
-        "avg_duration": 21.4
+        "views": 540,
+        "users": 404,
+        "avg_duration": 18.0
       },
       "/calculator.html": {
-        "views": 16,
-        "users": 14,
-        "avg_duration": 5.5
+        "views": 8,
+        "users": 7,
+        "avg_duration": 2.3
       },
       "/book.html": {
         "views": 5,
@@ -288,8 +270,8 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 10,
-        "users": 7
+        "count": 9,
+        "users": 6
       },
       "optin_submit": {
         "count": 2,
@@ -362,13 +344,13 @@
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 517,
-        "users": 486
+        "sessions": 460,
+        "users": 435
       },
       {
         "device": "Mobile",
-        "sessions": 122,
-        "users": 110
+        "sessions": 115,
+        "users": 104
       },
       {
         "device": "Tablet",
@@ -379,18 +361,18 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 68,
-        "sessions": 68
+        "users": 66,
+        "sessions": 66
       },
       {
         "city": "Council Bluffs",
-        "users": 45,
-        "sessions": 45
+        "users": 43,
+        "sessions": 43
       },
       {
         "city": "Ashburn",
-        "users": 28,
-        "sessions": 28
+        "users": 27,
+        "sessions": 27
       },
       {
         "city": "Aspen",
@@ -399,23 +381,23 @@
       },
       {
         "city": "New York",
-        "users": 20,
-        "sessions": 20
-      },
-      {
-        "city": "San Jose",
         "users": 19,
         "sessions": 19
-      },
-      {
-        "city": "Amsterdam",
-        "users": 16,
-        "sessions": 16
       },
       {
         "city": "Warsaw",
         "users": 16,
         "sessions": 16
+      },
+      {
+        "city": "San Jose",
+        "users": 15,
+        "sessions": 15
+      },
+      {
+        "city": "Amsterdam",
+        "users": 14,
+        "sessions": 14
       },
       {
         "city": "Anyang-si",
@@ -424,26 +406,26 @@
       },
       {
         "city": "Paris",
-        "users": 11,
-        "sessions": 11
-      },
-      {
-        "city": "Burnaby",
         "users": 10,
         "sessions": 10
-      },
-      {
-        "city": "Hounslow",
-        "users": 10,
-        "sessions": 10
-      },
-      {
-        "city": "London",
-        "users": 9,
-        "sessions": 9
       },
       {
         "city": "",
+        "users": 8,
+        "sessions": 8
+      },
+      {
+        "city": "Burnaby",
+        "users": 8,
+        "sessions": 8
+      },
+      {
+        "city": "Cardiff",
+        "users": 8,
+        "sessions": 8
+      },
+      {
+        "city": "Cheyenne",
         "users": 8,
         "sessions": 8
       }
@@ -451,31 +433,31 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 851
+        "count": 781
       },
       {
         "event": "session_start",
-        "count": 646
+        "count": 582
       },
       {
         "event": "first_visit",
-        "count": 598
+        "count": 542
       },
       {
         "event": "user_engagement",
-        "count": 304
+        "count": 276
       },
       {
         "event": "scroll",
-        "count": 224
+        "count": 186
       },
       {
         "event": "scroll_depth",
-        "count": 84
+        "count": 68
       },
       {
         "event": "vsl_play",
-        "count": 10
+        "count": 9
       },
       {
         "event": "click",
@@ -512,24 +494,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 566,
-        "sessions": 583
-      },
-      {
-        "campaign": "(referral)",
-        "source": "facebook.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 6,
-        "sessions": 6
-      },
-      {
-        "campaign": "(referral)",
-        "source": "vivianashford.github.io",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 6,
-        "sessions": 26
+        "users": 522,
+        "sessions": 535
       },
       {
         "campaign": "(referral)",
@@ -541,11 +507,19 @@
       },
       {
         "campaign": "(referral)",
-        "source": "m.facebook.com",
+        "source": "vivianashford.github.io",
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 5
+        "sessions": 22
+      },
+      {
+        "campaign": "(referral)",
+        "source": "m.facebook.com",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 2,
+        "sessions": 2
       },
       {
         "campaign": "(referral)",
@@ -581,15 +555,7 @@
       },
       {
         "campaign": "(referral)",
-        "source": "linkedin.com",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 1,
-        "sessions": 2
-      },
-      {
-        "campaign": "(referral)",
-        "source": "oneadmin.internal.us1.twilio.com",
+        "source": "facebook.com",
         "medium": "referral",
         "content": "(not set)",
         "users": 1,
@@ -604,6 +570,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 89.6
+    "bounce_rate": 91.0
   }
 }
