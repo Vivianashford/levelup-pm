@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T19:40:57.066469+00:00",
-  "updated_local": "2026-04-01 02:40 PM",
+  "updated": "2026-04-01T19:56:07.581920+00:00",
+  "updated_local": "2026-04-01 02:56 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,17 +44,17 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 4,
+    "realtime_users": 3,
     "week": {
       "users": 583,
-      "sessions": 623,
+      "sessions": 624,
       "pageviews": 826,
       "avg_duration": 49.2,
       "conversions": 0
     },
     "month": {
       "users": 689,
-      "sessions": 757,
+      "sessions": 758,
       "pageviews": 1065,
       "conversions": 0
     },
@@ -126,7 +126,7 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 8,
+        "sessions": 9,
         "users": 8
       },
       {
@@ -343,14 +343,14 @@
       {
         "date": "2026-04-01",
         "users": 30,
-        "sessions": 32,
+        "sessions": 33,
         "pageviews": 37
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 481,
+        "sessions": 482,
         "users": 453
       },
       {
@@ -459,7 +459,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 74
+        "count": 78
       },
       {
         "event": "vsl_play",
