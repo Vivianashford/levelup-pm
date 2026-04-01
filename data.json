@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T04:08:51.357022+00:00",
-  "updated_local": "2026-03-31 11:08 PM",
+  "updated": "2026-04-01T04:23:49.114349+00:00",
+  "updated_local": "2026-03-31 11:23 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
-      "users": 602,
-      "sessions": 646,
-      "pageviews": 845,
-      "avg_duration": 50.8,
+      "users": 603,
+      "sessions": 647,
+      "pageviews": 846,
+      "avg_duration": 50.7,
       "conversions": 0
     },
     "month": {
-      "users": 653,
-      "sessions": 716,
-      "pageviews": 1014,
+      "users": 654,
+      "sessions": 717,
+      "pageviews": 1015,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 580,
-        "users": 437
+        "views": 581,
+        "users": 438
       },
       {
         "page": "/automation-edge/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 578,
-        "users": 561
+        "sessions": 579,
+        "users": 562
       },
       {
         "source": "vivianashford.github.io",
@@ -246,8 +246,8 @@
     },
     "funnel": {
       "/": {
-        "views": 580,
-        "users": 437,
+        "views": 581,
+        "users": 438,
         "avg_duration": 21.6
       },
       "/calculator.html": {
@@ -354,16 +354,16 @@
       },
       {
         "date": "2026-03-31",
-        "users": 44,
-        "sessions": 51,
-        "pageviews": 57
+        "users": 45,
+        "sessions": 52,
+        "pageviews": 58
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 514,
-        "users": 483
+        "sessions": 515,
+        "users": 484
       },
       {
         "device": "Mobile",
@@ -379,8 +379,8 @@
     "locations": [
       {
         "city": "Boardman",
-        "users": 67,
-        "sessions": 67
+        "users": 68,
+        "sessions": 68
       },
       {
         "city": "Council Bluffs",
@@ -451,19 +451,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 845
+        "count": 846
       },
       {
         "event": "session_start",
-        "count": 641
+        "count": 642
       },
       {
         "event": "first_visit",
-        "count": 593
+        "count": 594
       },
       {
         "event": "user_engagement",
-        "count": 302
+        "count": 303
       },
       {
         "event": "scroll",
@@ -512,8 +512,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 561,
-        "sessions": 578
+        "users": 562,
+        "sessions": 579
       },
       {
         "campaign": "(referral)",
