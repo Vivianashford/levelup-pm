@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T19:25:56.132604+00:00",
-  "updated_local": "2026-04-01 02:25 PM",
+  "updated": "2026-04-01T19:40:57.066469+00:00",
+  "updated_local": "2026-04-01 02:40 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -62,7 +62,7 @@
       {
         "page": "/",
         "views": 573,
-        "users": 431
+        "users": 432
       },
       {
         "page": "/automation-edge/",
@@ -229,7 +229,7 @@
     "funnel": {
       "/": {
         "views": 573,
-        "users": 431,
+        "users": 432,
         "avg_duration": 19.9
       },
       "/calculator.html": {
@@ -455,7 +455,7 @@
       },
       {
         "event": "scroll",
-        "count": 194
+        "count": 195
       },
       {
         "event": "scroll_depth",
