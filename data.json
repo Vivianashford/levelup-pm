@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T14:40:56.719506+00:00",
-  "updated_local": "2026-04-01 09:40 AM",
+  "updated": "2026-04-01T14:55:52.770697+00:00",
+  "updated_local": "2026-04-01 09:55 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,17 +44,17 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 4,
     "week": {
       "users": 569,
-      "sessions": 606,
+      "sessions": 607,
       "pageviews": 801,
-      "avg_duration": 50.0,
+      "avg_duration": 49.9,
       "conversions": 0
     },
     "month": {
       "users": 676,
-      "sessions": 740,
+      "sessions": 741,
       "pageviews": 1040,
       "conversions": 0
     },
@@ -114,7 +114,7 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 553,
+        "sessions": 554,
         "users": 540
       },
       {
@@ -244,8 +244,8 @@
       },
       "/nda.html": {
         "views": 5,
-        "users": 1,
-        "avg_duration": 528.8
+        "users": 2,
+        "avg_duration": 402.2
       },
       "/watch.html": {
         "views": 5,
@@ -342,8 +342,8 @@
       },
       {
         "date": "2026-04-01",
-        "users": 19,
-        "sessions": 19,
+        "users": 20,
+        "sessions": 20,
         "pageviews": 20
       }
     ],
@@ -355,7 +355,7 @@
       },
       {
         "device": "Mobile",
-        "sessions": 126,
+        "sessions": 127,
         "users": 115
       },
       {
@@ -455,7 +455,7 @@
       },
       {
         "event": "scroll",
-        "count": 189
+        "count": 190
       },
       {
         "event": "scroll_depth",
@@ -470,15 +470,15 @@
         "count": 6
       },
       {
+        "event": "view_nda",
+        "count": 3
+      },
+      {
         "event": "optin_submit",
         "count": 2
       },
       {
         "event": "scorecard_started",
-        "count": 2
-      },
-      {
-        "event": "view_nda",
         "count": 2
       },
       {
@@ -501,7 +501,7 @@
         "medium": "(none)",
         "content": "(not set)",
         "users": 540,
-        "sessions": 553
+        "sessions": 554
       },
       {
         "campaign": "(referral)",
