@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T22:10:56.837319+00:00",
-  "updated_local": "2026-04-01 05:10 PM",
+  "updated": "2026-04-01T22:25:56.385853+00:00",
+  "updated_local": "2026-04-01 05:25 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,24 +44,24 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 3,
     "week": {
       "users": 590,
       "sessions": 633,
-      "pageviews": 847,
-      "avg_duration": 60.6,
+      "pageviews": 849,
+      "avg_duration": 61.2,
       "conversions": 0
     },
     "month": {
       "users": 696,
       "sessions": 766,
-      "pageviews": 1086,
+      "pageviews": 1088,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 584,
+        "views": 585,
         "users": 438
       },
       {
@@ -234,29 +234,29 @@
     },
     "funnel": {
       "/": {
-        "views": 584,
+        "views": 585,
         "users": 438,
-        "avg_duration": 21.8
+        "avg_duration": 21.9
       },
       "/calculator.html": {
         "views": 9,
         "users": 7,
-        "avg_duration": 254.3
+        "avg_duration": 290.5
       },
       "/nda.html": {
         "views": 9,
         "users": 2,
         "avg_duration": 647.2
       },
+      "/watch.html": {
+        "views": 7,
+        "users": 3,
+        "avg_duration": 289.6
+      },
       "/book.html": {
         "views": 6,
         "users": 3,
         "avg_duration": 831.1
-      },
-      "/watch.html": {
-        "views": 6,
-        "users": 3,
-        "avg_duration": 288.5
       },
       "/assessment.html": {
         "views": 2,
@@ -350,7 +350,7 @@
         "date": "2026-04-01",
         "users": 37,
         "sessions": 41,
-        "pageviews": 58
+        "pageviews": 60
       }
     ],
     "devices": [
@@ -445,27 +445,27 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 847
+        "count": 849
       },
       {
         "event": "session_start",
-        "count": 632
+        "count": 633
       },
       {
         "event": "first_visit",
-        "count": 585
+        "count": 586
       },
       {
         "event": "user_engagement",
-        "count": 287
+        "count": 288
       },
       {
         "event": "scroll",
-        "count": 200
+        "count": 201
       },
       {
         "event": "scroll_depth",
-        "count": 79
+        "count": 80
       },
       {
         "event": "vsl_play",
