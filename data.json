@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T01:47:24.729873+00:00",
-  "updated_local": "2026-03-31 08:47 PM",
+  "updated": "2026-04-01T04:08:51.357022+00:00",
+  "updated_local": "2026-03-31 11:08 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 5,
+    "realtime_users": 2,
     "week": {
-      "users": 587,
-      "sessions": 629,
-      "pageviews": 825,
-      "avg_duration": 48.2,
+      "users": 602,
+      "sessions": 646,
+      "pageviews": 845,
+      "avg_duration": 50.8,
       "conversions": 0
     },
     "month": {
-      "users": 638,
-      "sessions": 699,
-      "pageviews": 994,
+      "users": 653,
+      "sessions": 716,
+      "pageviews": 1014,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 564,
-        "users": 422
+        "views": 580,
+        "users": 437
       },
       {
         "page": "/automation-edge/",
@@ -114,20 +114,20 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 565,
-        "users": 548
+        "sessions": 578,
+        "users": 561
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 22,
-        "users": 4
+        "sessions": 26,
+        "users": 6
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 12,
-        "users": 10
+        "sessions": 14,
+        "users": 12
       },
       {
         "source": "google",
@@ -246,29 +246,29 @@
     },
     "funnel": {
       "/": {
-        "views": 564,
-        "users": 422,
-        "avg_duration": 22.4
+        "views": 580,
+        "users": 437,
+        "avg_duration": 21.6
       },
       "/calculator.html": {
         "views": 16,
         "users": 14,
         "avg_duration": 5.5
       },
+      "/book.html": {
+        "views": 5,
+        "users": 3,
+        "avg_duration": 1083.3
+      },
       "/nda.html": {
         "views": 5,
         "users": 1,
         "avg_duration": 528.8
       },
-      "/book.html": {
-        "views": 4,
-        "users": 2,
-        "avg_duration": 734.1
-      },
       "/watch.html": {
-        "views": 3,
-        "users": 2,
-        "avg_duration": 6.4
+        "views": 5,
+        "users": 3,
+        "avg_duration": 94.2
       },
       "/assessment.html": {
         "views": 2,
@@ -279,16 +279,21 @@
         "views": 1,
         "users": 1,
         "avg_duration": 257.4
+      },
+      "/upload.html": {
+        "views": 1,
+        "users": 1,
+        "avg_duration": 5.0
       }
     },
     "video_events": {
       "vsl_play": {
-        "count": 9,
-        "users": 6
+        "count": 10,
+        "users": 7
       },
       "optin_submit": {
-        "count": 1,
-        "users": 1
+        "count": 2,
+        "users": 2
       }
     },
     "video_progress": {},
@@ -349,16 +354,16 @@
       },
       {
         "date": "2026-03-31",
-        "users": 29,
-        "sessions": 34,
-        "pageviews": 37
+        "users": 44,
+        "sessions": 51,
+        "pageviews": 57
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 497,
-        "users": 468
+        "sessions": 514,
+        "users": 483
       },
       {
         "device": "Mobile",
@@ -379,13 +384,18 @@
       },
       {
         "city": "Council Bluffs",
-        "users": 42,
-        "sessions": 42
+        "users": 45,
+        "sessions": 45
       },
       {
         "city": "Ashburn",
         "users": 28,
         "sessions": 28
+      },
+      {
+        "city": "Aspen",
+        "users": 21,
+        "sessions": 21
       },
       {
         "city": "New York",
@@ -413,11 +423,6 @@
         "sessions": 14
       },
       {
-        "city": "Aspen",
-        "users": 14,
-        "sessions": 14
-      },
-      {
         "city": "Paris",
         "users": 11,
         "sessions": 11
@@ -429,8 +434,8 @@
       },
       {
         "city": "Hounslow",
-        "users": 9,
-        "sessions": 9
+        "users": 10,
+        "sessions": 10
       },
       {
         "city": "London",
@@ -438,7 +443,7 @@
         "sessions": 9
       },
       {
-        "city": "Aulnay-sous-Bois",
+        "city": "",
         "users": 8,
         "sessions": 8
       }
@@ -446,35 +451,39 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 825
+        "count": 845
       },
       {
         "event": "session_start",
-        "count": 624
+        "count": 641
       },
       {
         "event": "first_visit",
-        "count": 578
+        "count": 593
       },
       {
         "event": "user_engagement",
-        "count": 299
+        "count": 302
       },
       {
         "event": "scroll",
-        "count": 219
+        "count": 223
       },
       {
         "event": "scroll_depth",
-        "count": 80
+        "count": 84
       },
       {
         "event": "vsl_play",
-        "count": 9
+        "count": 10
       },
       {
         "event": "click",
         "count": 6
+      },
+      {
+        "event": "optin_submit",
+        "count": 2
       },
       {
         "event": "scorecard_started",
@@ -486,10 +495,6 @@
       },
       {
         "event": "booking_confirmed",
-        "count": 1
-      },
-      {
-        "event": "optin_submit",
         "count": 1
       },
       {
@@ -507,8 +512,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 548,
-        "sessions": 565
+        "users": 561,
+        "sessions": 578
       },
       {
         "campaign": "(referral)",
@@ -517,6 +522,14 @@
         "content": "(not set)",
         "users": 6,
         "sessions": 6
+      },
+      {
+        "campaign": "(referral)",
+        "source": "vivianashford.github.io",
+        "medium": "referral",
+        "content": "(not set)",
+        "users": 6,
+        "sessions": 26
       },
       {
         "campaign": "(referral)",
@@ -533,14 +546,6 @@
         "content": "(not set)",
         "users": 5,
         "sessions": 5
-      },
-      {
-        "campaign": "(referral)",
-        "source": "vivianashford.github.io",
-        "medium": "referral",
-        "content": "(not set)",
-        "users": 4,
-        "sessions": 22
       },
       {
         "campaign": "(referral)",
@@ -599,6 +604,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 89.2
+    "bounce_rate": 89.5
   }
 }
