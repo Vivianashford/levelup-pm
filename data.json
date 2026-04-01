@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T13:38:48.712184+00:00",
-  "updated_local": "2026-04-01 08:38 AM",
+  "updated": "2026-04-01T13:53:55.417881+00:00",
+  "updated_local": "2026-04-01 08:53 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 3,
+    "realtime_users": 2,
     "week": {
-      "users": 562,
-      "sessions": 598,
-      "pageviews": 793,
-      "avg_duration": 50.6,
+      "users": 564,
+      "sessions": 600,
+      "pageviews": 795,
+      "avg_duration": 50.5,
       "conversions": 0
     },
     "month": {
-      "users": 669,
-      "sessions": 732,
-      "pageviews": 1032,
+      "users": 671,
+      "sessions": 734,
+      "pageviews": 1034,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 551,
-        "users": 414
+        "views": 553,
+        "users": 416
       },
       {
         "page": "/automation-edge/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 546,
-        "users": 533
+        "sessions": 548,
+        "users": 535
       },
       {
         "source": "vivianashford.github.io",
@@ -228,9 +228,9 @@
     },
     "funnel": {
       "/": {
-        "views": 551,
-        "users": 414,
-        "avg_duration": 17.6
+        "views": 553,
+        "users": 416,
+        "avg_duration": 17.5
       },
       "/calculator.html": {
         "views": 8,
@@ -342,9 +342,9 @@
       },
       {
         "date": "2026-04-01",
-        "users": 11,
-        "sessions": 11,
-        "pageviews": 12
+        "users": 13,
+        "sessions": 13,
+        "pageviews": 14
       }
     ],
     "devices": [
@@ -355,8 +355,8 @@
       },
       {
         "device": "Mobile",
-        "sessions": 122,
-        "users": 111
+        "sessions": 124,
+        "users": 113
       },
       {
         "device": "Tablet",
@@ -381,12 +381,12 @@
         "sessions": 27
       },
       {
-        "city": "Aspen",
-        "users": 21,
-        "sessions": 21
+        "city": "New York",
+        "users": 22,
+        "sessions": 22
       },
       {
-        "city": "New York",
+        "city": "Aspen",
         "users": 21,
         "sessions": 21
       },
@@ -411,12 +411,12 @@
         "sessions": 14
       },
       {
-        "city": "",
-        "users": 10,
-        "sessions": 10
+        "city": "Cheyenne",
+        "users": 11,
+        "sessions": 11
       },
       {
-        "city": "Cheyenne",
+        "city": "",
         "users": 10,
         "sessions": 10
       },
@@ -439,15 +439,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 793
+        "count": 795
       },
       {
         "event": "session_start",
-        "count": 594
+        "count": 596
       },
       {
         "event": "first_visit",
-        "count": 554
+        "count": 556
       },
       {
         "event": "user_engagement",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 533,
-        "sessions": 546
+        "users": 535,
+        "sessions": 548
       },
       {
         "campaign": "(referral)",
@@ -576,6 +576,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 91.1
+    "bounce_rate": 91.2
   }
 }
