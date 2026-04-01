@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T14:25:57.137443+00:00",
-  "updated_local": "2026-04-01 09:25 AM",
+  "updated": "2026-04-01T14:40:56.719506+00:00",
+  "updated_local": "2026-04-01 09:40 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 5,
     "week": {
-      "users": 568,
-      "sessions": 605,
-      "pageviews": 799,
+      "users": 569,
+      "sessions": 606,
+      "pageviews": 801,
       "avg_duration": 50.0,
       "conversions": 0
     },
     "month": {
-      "users": 675,
-      "sessions": 739,
-      "pageviews": 1038,
+      "users": 676,
+      "sessions": 740,
+      "pageviews": 1040,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 556,
-        "users": 419
+        "views": 557,
+        "users": 420
       },
       {
         "page": "/automation-edge/",
@@ -114,13 +114,13 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 552,
-        "users": 539
+        "sessions": 553,
+        "users": 540
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 22,
+        "sessions": 23,
         "users": 5
       },
       {
@@ -228,9 +228,9 @@
     },
     "funnel": {
       "/": {
-        "views": 556,
-        "users": 419,
-        "avg_duration": 17.4
+        "views": 557,
+        "users": 420,
+        "avg_duration": 17.3
       },
       "/calculator.html": {
         "views": 8,
@@ -257,15 +257,15 @@
         "users": 1,
         "avg_duration": 1130.6
       },
+      "/upload.html": {
+        "views": 2,
+        "users": 1,
+        "avg_duration": 2.5
+      },
       "/company-info.html": {
         "views": 1,
         "users": 1,
         "avg_duration": 257.4
-      },
-      "/upload.html": {
-        "views": 1,
-        "users": 1,
-        "avg_duration": 2.5
       }
     },
     "video_events": {
@@ -342,16 +342,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 18,
-        "sessions": 18,
-        "pageviews": 18
+        "users": 19,
+        "sessions": 19,
+        "pageviews": 20
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 467,
-        "users": 441
+        "sessions": 468,
+        "users": 442
       },
       {
         "device": "Mobile",
@@ -411,14 +411,14 @@
         "sessions": 14
       },
       {
-        "city": "Cheyenne",
+        "city": "",
         "users": 12,
         "sessions": 12
       },
       {
-        "city": "",
-        "users": 11,
-        "sessions": 11
+        "city": "Cheyenne",
+        "users": 12,
+        "sessions": 12
       },
       {
         "city": "Paris",
@@ -439,15 +439,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 799
+        "count": 801
       },
       {
         "event": "session_start",
-        "count": 600
+        "count": 602
       },
       {
         "event": "first_visit",
-        "count": 560
+        "count": 561
       },
       {
         "event": "user_engagement",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 539,
-        "sessions": 552
+        "users": 540,
+        "sessions": 553
       },
       {
         "campaign": "(referral)",
@@ -517,7 +517,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 22
+        "sessions": 23
       },
       {
         "campaign": "(referral)",
@@ -576,6 +576,6 @@
         "sessions": 1
       }
     ],
-    "bounce_rate": 91.2
+    "bounce_rate": 91.3
   }
 }
