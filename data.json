@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T20:25:57.014105+00:00",
-  "updated_local": "2026-04-01 03:25 PM",
+  "updated": "2026-04-01T20:40:55.434525+00:00",
+  "updated_local": "2026-04-01 03:40 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,18 +44,18 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 2,
     "week": {
-      "users": 584,
-      "sessions": 625,
-      "pageviews": 831,
+      "users": 585,
+      "sessions": 626,
+      "pageviews": 833,
       "avg_duration": 56.4,
       "conversions": 0
     },
     "month": {
-      "users": 690,
-      "sessions": 759,
-      "pageviews": 1070,
+      "users": 691,
+      "sessions": 760,
+      "pageviews": 1072,
       "conversions": 0
     },
     "top_pages": [
@@ -80,6 +80,11 @@
         "users": 10
       },
       {
+        "page": "/contact",
+        "views": 12,
+        "users": 10
+      },
+      {
         "page": "/satellite-landscaping/",
         "views": 12,
         "users": 11
@@ -93,11 +98,6 @@
         "page": "/services",
         "views": 12,
         "users": 11
-      },
-      {
-        "page": "/contact",
-        "views": 11,
-        "users": 9
       },
       {
         "page": "/satellite-electrical/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 569,
-        "users": 555
+        "sessions": 570,
+        "users": 556
       },
       {
         "source": "vivianashford.github.io",
@@ -342,16 +342,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 31,
-        "sessions": 34,
-        "pageviews": 42
+        "users": 32,
+        "sessions": 35,
+        "pageviews": 44
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 483,
-        "users": 454
+        "sessions": 484,
+        "users": 455
       },
       {
         "device": "Mobile",
@@ -439,15 +439,15 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 831
+        "count": 833
       },
       {
         "event": "session_start",
-        "count": 624
+        "count": 625
       },
       {
         "event": "first_visit",
-        "count": 579
+        "count": 580
       },
       {
         "event": "user_engagement",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 555,
-        "sessions": 569
+        "users": 556,
+        "sessions": 570
       },
       {
         "campaign": "(referral)",
