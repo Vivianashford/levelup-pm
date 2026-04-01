@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T18:26:34.338190+00:00",
-  "updated_local": "2026-04-01 01:26 PM",
+  "updated": "2026-04-01T18:41:08.726009+00:00",
+  "updated_local": "2026-04-01 01:41 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -36,15 +36,15 @@
     "company-info-submitted": 1
   },
   "contacts": {
-    "total": 34,
-    "real": 27
+    "total": 35,
+    "real": 28
   },
   "appointments": {
     "upcoming": 0
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 0,
+    "realtime_users": 2,
     "week": {
       "users": 580,
       "sessions": 618,
