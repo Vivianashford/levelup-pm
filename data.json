@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T23:10:57.832333+00:00",
-  "updated_local": "2026-04-01 06:10 PM",
+  "updated": "2026-04-01T23:25:55.166837+00:00",
+  "updated_local": "2026-04-01 06:25 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,24 +44,24 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 1,
+    "realtime_users": 0,
     "week": {
       "users": 590,
       "sessions": 637,
-      "pageviews": 857,
-      "avg_duration": 63.1,
+      "pageviews": 858,
+      "avg_duration": 65.0,
       "conversions": 0
     },
     "month": {
       "users": 696,
       "sessions": 770,
-      "pageviews": 1096,
+      "pageviews": 1097,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 589,
+        "views": 590,
         "users": 438
       },
       {
@@ -234,7 +234,7 @@
     },
     "funnel": {
       "/": {
-        "views": 589,
+        "views": 590,
         "users": 438,
         "avg_duration": 24.6
       },
@@ -260,8 +260,8 @@
       },
       "/assessment.html": {
         "views": 2,
-        "users": 1,
-        "avg_duration": 1130.6
+        "users": 2,
+        "avg_duration": 1154.5
       },
       "/upload.html": {
         "views": 2,
@@ -350,7 +350,7 @@
         "date": "2026-04-01",
         "users": 38,
         "sessions": 45,
-        "pageviews": 68
+        "pageviews": 69
       }
     ],
     "devices": [
@@ -445,11 +445,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 857
+        "count": 858
       },
       {
         "event": "session_start",
-        "count": 636
+        "count": 637
       },
       {
         "event": "first_visit",
@@ -465,7 +465,7 @@
       },
       {
         "event": "scroll_depth",
-        "count": 85
+        "count": 89
       },
       {
         "event": "vsl_play",
