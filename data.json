@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T22:55:58.751017+00:00",
-  "updated_local": "2026-04-01 05:55 PM",
+  "updated": "2026-04-01T23:10:57.832333+00:00",
+  "updated_local": "2026-04-01 06:10 PM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,24 +44,24 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 1,
     "week": {
       "users": 590,
-      "sessions": 635,
-      "pageviews": 853,
-      "avg_duration": 61.0,
+      "sessions": 637,
+      "pageviews": 857,
+      "avg_duration": 63.1,
       "conversions": 0
     },
     "month": {
       "users": 696,
-      "sessions": 768,
-      "pageviews": 1092,
+      "sessions": 770,
+      "pageviews": 1096,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 587,
+        "views": 589,
         "users": 438
       },
       {
@@ -114,20 +114,20 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 576,
+        "sessions": 577,
         "users": 561
       },
       {
         "source": "vivianashford.github.io",
         "medium": "referral",
-        "sessions": 26,
+        "sessions": 27,
         "users": 5
       },
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 12,
-        "users": 10
+        "sessions": 13,
+        "users": 11
       },
       {
         "source": "google",
@@ -234,29 +234,29 @@
     },
     "funnel": {
       "/": {
-        "views": 587,
+        "views": 589,
         "users": 438,
-        "avg_duration": 21.8
+        "avg_duration": 24.6
+      },
+      "/nda.html": {
+        "views": 10,
+        "users": 2,
+        "avg_duration": 562.5
       },
       "/calculator.html": {
         "views": 9,
         "users": 7,
         "avg_duration": 290.5
       },
-      "/nda.html": {
-        "views": 9,
-        "users": 2,
-        "avg_duration": 647.2
+      "/book.html": {
+        "views": 7,
+        "users": 3,
+        "avg_duration": 692.6
       },
       "/watch.html": {
         "views": 7,
         "users": 3,
         "avg_duration": 289.6
-      },
-      "/book.html": {
-        "views": 6,
-        "users": 3,
-        "avg_duration": 831.1
       },
       "/assessment.html": {
         "views": 2,
@@ -276,7 +276,7 @@
     },
     "video_events": {
       "vsl_play": {
-        "count": 11,
+        "count": 12,
         "users": 6
       },
       "optin_submit": {
@@ -348,15 +348,15 @@
       },
       {
         "date": "2026-04-01",
-        "users": 37,
-        "sessions": 43,
-        "pageviews": 64
+        "users": 38,
+        "sessions": 45,
+        "pageviews": 68
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 492,
+        "sessions": 494,
         "users": 460
       },
       {
@@ -445,11 +445,11 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 853
+        "count": 857
       },
       {
         "event": "session_start",
-        "count": 634
+        "count": 636
       },
       {
         "event": "first_visit",
@@ -457,11 +457,11 @@
       },
       {
         "event": "user_engagement",
-        "count": 291
+        "count": 292
       },
       {
         "event": "scroll",
-        "count": 202
+        "count": 204
       },
       {
         "event": "scroll_depth",
@@ -469,14 +469,14 @@
       },
       {
         "event": "vsl_play",
-        "count": 11
-      },
-      {
-        "event": "click",
-        "count": 6
+        "count": 12
       },
       {
         "event": "view_nda",
+        "count": 7
+      },
+      {
+        "event": "click",
         "count": 6
       },
       {
@@ -507,7 +507,7 @@
         "medium": "(none)",
         "content": "(not set)",
         "users": 561,
-        "sessions": 576
+        "sessions": 577
       },
       {
         "campaign": "(referral)",
@@ -523,7 +523,7 @@
         "medium": "referral",
         "content": "(not set)",
         "users": 5,
-        "sessions": 26
+        "sessions": 27
       },
       {
         "campaign": "(referral)",
