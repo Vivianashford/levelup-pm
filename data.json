@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-01T15:40:51.144570+00:00",
-  "updated_local": "2026-04-01 10:40 AM",
+  "updated": "2026-04-01T15:55:52.020783+00:00",
+  "updated_local": "2026-04-01 10:55 AM",
   "scoreboard": {
     "conversations": 0,
     "calls_booked": 0,
@@ -44,25 +44,25 @@
   },
   "clients": [],
   "analytics": {
-    "realtime_users": 2,
+    "realtime_users": 0,
     "week": {
-      "users": 573,
-      "sessions": 611,
-      "pageviews": 808,
-      "avg_duration": 52.1,
+      "users": 574,
+      "sessions": 612,
+      "pageviews": 809,
+      "avg_duration": 52.0,
       "conversions": 0
     },
     "month": {
-      "users": 680,
-      "sessions": 745,
-      "pageviews": 1047,
+      "users": 681,
+      "sessions": 746,
+      "pageviews": 1048,
       "conversions": 0
     },
     "top_pages": [
       {
         "page": "/",
-        "views": 561,
-        "users": 424
+        "views": 562,
+        "users": 425
       },
       {
         "page": "/automation-edge/",
@@ -114,8 +114,8 @@
       {
         "source": "(direct)",
         "medium": "(none)",
-        "sessions": 558,
-        "users": 544
+        "sessions": 559,
+        "users": 545
       },
       {
         "source": "vivianashford.github.io",
@@ -126,8 +126,8 @@
       {
         "source": "(not set)",
         "medium": "(not set)",
-        "sessions": 18,
-        "users": 15
+        "sessions": 19,
+        "users": 16
       },
       {
         "source": "google",
@@ -228,9 +228,9 @@
     },
     "funnel": {
       "/": {
-        "views": 561,
-        "users": 424,
-        "avg_duration": 17.2
+        "views": 562,
+        "users": 425,
+        "avg_duration": 17.1
       },
       "/calculator.html": {
         "views": 8,
@@ -342,16 +342,16 @@
       },
       {
         "date": "2026-04-01",
-        "users": 24,
-        "sessions": 24,
-        "pageviews": 27
+        "users": 25,
+        "sessions": 25,
+        "pageviews": 28
       }
     ],
     "devices": [
       {
         "device": "Desktop",
-        "sessions": 470,
-        "users": 444
+        "sessions": 471,
+        "users": 445
       },
       {
         "device": "Mobile",
@@ -439,19 +439,19 @@
     "all_events": [
       {
         "event": "page_view",
-        "count": 808
+        "count": 809
       },
       {
         "event": "session_start",
-        "count": 607
+        "count": 608
       },
       {
         "event": "first_visit",
-        "count": 565
+        "count": 566
       },
       {
         "event": "user_engagement",
-        "count": 278
+        "count": 279
       },
       {
         "event": "scroll",
@@ -500,8 +500,8 @@
         "source": "(direct)",
         "medium": "(none)",
         "content": "(not set)",
-        "users": 544,
-        "sessions": 558
+        "users": 545,
+        "sessions": 559
       },
       {
         "campaign": "(referral)",
