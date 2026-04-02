@@ -1,25 +1,32 @@
 {
-  "lastUpdated": "2026-03-28T16:05:00.000Z",
-  "summary": {
-    "totalProspects": 0,
-    "contacted": 0,
-    "replied": 0,
-    "meetingsBooked": 0,
-    "activeSequences": 0,
-    "replyRate": 0,
-    "meetingRate": 0
+  "lastUpdated": "2026-04-02T16:52:04.774632+00:00",
+  "campaigns": [],
+  "accounts": [],
+  "metrics": {
+    "totalSent": 0,
+    "totalOpened": 0,
+    "totalReplied": 0,
+    "openRate": 0.0,
+    "replyRate": 0.0,
+    "bounceRate": 0.0,
+    "_note": "Open/reply/bounce metrics will populate once campaign is active and analytics endpoint becomes available"
   },
-  "byPartnerType": {
-    "CPA": { "contacted": 0, "replied": 0, "meetings": 0 },
-    "Attorney": { "contacted": 0, "replied": 0, "meetings": 0 },
-    "WealthAdvisor": { "contacted": 0, "replied": 0, "meetings": 0 }
-  },
-  "recentActivity": [],
-  "sequencePerformance": {
-    "email1": { "sent": 0, "opened": 0, "replied": 0 },
-    "email2": { "sent": 0, "opened": 0, "replied": 0 },
-    "email3": { "sent": 0, "opened": 0, "replied": 0 },
-    "email4": { "sent": 0, "opened": 0, "replied": 0 },
-    "email5": { "sent": 0, "opened": 0, "replied": 0 }
+  "history": [
+    {
+      "date": "2026-04-02",
+      "sent": 0,
+      "opened": 0,
+      "replied": 0
+    }
+  ],
+  "_meta": {
+    "source": "Instantly.ai API v2",
+    "tracker": "instantly-tracker.py",
+    "limitations": [
+      "Campaign leads count not available via v2 API",
+      "Open/reply/bounce analytics not available via current endpoints",
+      "Email send counts derived from /emails endpoint pagination",
+      "Metrics will auto-populate when Instantly adds analytics to v2"
+    ]
   }
 }
