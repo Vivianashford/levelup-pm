@@ -1,65 +1,7 @@
 {
-  "lastUpdated": "2026-04-02T23:53:22.379735+00:00",
-  "campaigns": [
-    {
-      "id": "1a6fef63-bd2f-442f-91a7-15b8e7befd08",
-      "name": "Arena Referral Partners - Tier 1",
-      "status": "draft",
-      "leads": 0,
-      "sent": 0,
-      "opened": 0,
-      "replied": 0,
-      "bounced": 0,
-      "_note": "Opens/replies/bounces will populate once campaign sends and analytics endpoint is available"
-    }
-  ],
-  "accounts": [
-    {
-      "email": "alan@momentousstream.org",
-      "warmupScore": 100,
-      "status": "warming",
-      "firstName": "Alan",
-      "lastName": "Wright",
-      "trackingDomain": "inst.momentousstream.org",
-      "trackingStatus": "CTD_ACTIVE"
-    },
-    {
-      "email": "aria@momentousstream.org",
-      "warmupScore": 100,
-      "status": "warming",
-      "firstName": "Aria",
-      "lastName": "Wilson",
-      "trackingDomain": "inst.momentousstream.org",
-      "trackingStatus": "CTD_ACTIVE"
-    },
-    {
-      "email": "carl@momentousstream.org",
-      "warmupScore": 100,
-      "status": "warming",
-      "firstName": "Carl",
-      "lastName": "Davis",
-      "trackingDomain": "inst.momentousstream.org",
-      "trackingStatus": "CTD_ACTIVE"
-    },
-    {
-      "email": "nathan@momentousstream.org",
-      "warmupScore": 100,
-      "status": "warming",
-      "firstName": "Nathan",
-      "lastName": "Rodriguez",
-      "trackingDomain": "inst.momentousstream.org",
-      "trackingStatus": "CTD_ACTIVE"
-    },
-    {
-      "email": "zachary@momentousstream.org",
-      "warmupScore": 100,
-      "status": "warming",
-      "firstName": "Zachary",
-      "lastName": "Taylor",
-      "trackingDomain": "inst.momentousstream.org",
-      "trackingStatus": "CTD_ACTIVE"
-    }
-  ],
+  "lastUpdated": "2026-04-03T00:53:24.249871+00:00",
+  "campaigns": [],
+  "accounts": [],
   "metrics": {
     "totalSent": 0,
     "totalOpened": 0,
@@ -72,6 +14,12 @@
   "history": [
     {
       "date": "2026-04-02",
+      "sent": 0,
+      "opened": 0,
+      "replied": 0
+    },
+    {
+      "date": "2026-04-03",
       "sent": 0,
       "opened": 0,
       "replied": 0
