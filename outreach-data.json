@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-03T23:54:19.792559+00:00",
+  "lastUpdated": "2026-04-04T00:54:21.789169+00:00",
   "campaigns": [],
   "accounts": [],
   "metrics": {
@@ -20,6 +20,12 @@
     },
     {
       "date": "2026-04-03",
+      "sent": 0,
+      "opened": 0,
+      "replied": 0
+    },
+    {
+      "date": "2026-04-04",
       "sent": 0,
       "opened": 0,
       "replied": 0
