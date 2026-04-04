@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-04-03T10:00:02.552206+00:00",
+  "lastUpdated": "2026-04-04T10:00:00.455682+00:00",
   "searchEngine": "duckduckgo",
   "rankings": {
-    "lastUpdated": "2026-04-03T10:00:02.552206+00:00",
+    "lastUpdated": "2026-04-04T10:00:00.455682+00:00",
     "keywords": [
       {
         "keyword": "business exit planning",
@@ -15,6 +15,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -32,6 +36,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -47,6 +55,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -64,6 +76,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -79,6 +95,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -96,6 +116,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -112,6 +136,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -119,7 +147,9 @@
       {
         "keyword": "sell HVAC business",
         "volume": 390,
-        "rankings": {},
+        "rankings": {
+          "sunbeltnetwork.com": 7
+        },
         "history": [
           {
             "date": "2026-04-02",
@@ -127,6 +157,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -144,6 +178,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -159,6 +197,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -176,6 +218,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -191,6 +237,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -208,6 +258,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -224,6 +278,10 @@
           {
             "date": "2026-04-03",
             "position": null
+          },
+          {
+            "date": "2026-04-04",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -239,6 +297,10 @@
           },
           {
             "date": "2026-04-03",
+            "position": null
+          },
+          {
+            "date": "2026-04-04",
             "position": null
           }
         ],
@@ -262,9 +324,14 @@
         "topKeywords": []
       },
       "sunbeltnetwork.com": {
-        "keywordsTracked": 0,
-        "avgPosition": null,
-        "topKeywords": []
+        "keywordsTracked": 1,
+        "avgPosition": 7.0,
+        "topKeywords": [
+          {
+            "keyword": "sell HVAC business",
+            "position": 7
+          }
+        ]
       },
       "transworldma.com": {
         "keywordsTracked": 0,
@@ -274,7 +341,7 @@
     }
   },
   "competitorMonitor": {
-    "lastUpdated": "2026-04-03T10:00:02.552206+00:00",
+    "lastUpdated": "2026-04-04T10:00:00.455682+00:00",
     "changes": [
       {
         "date": "2026-04-02T16:22:54.761927+00:00",
