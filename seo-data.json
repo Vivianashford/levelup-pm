@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-04-04T10:00:02.916886+00:00",
+  "lastUpdated": "2026-04-05T10:00:00.851245+00:00",
   "searchEngine": "duckduckgo",
   "rankings": {
-    "lastUpdated": "2026-04-04T10:00:02.916886+00:00",
+    "lastUpdated": "2026-04-05T10:00:00.851245+00:00",
     "keywords": [
       {
         "keyword": "business exit planning",
@@ -19,6 +19,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -40,6 +44,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -59,6 +67,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -80,6 +92,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -87,7 +103,9 @@
       {
         "keyword": "how to increase business valuation",
         "volume": 720,
-        "rankings": {},
+        "rankings": {
+          "sunbeltnetwork.com": 10
+        },
         "history": [
           {
             "date": "2026-04-02",
@@ -99,6 +117,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -120,6 +142,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -139,6 +165,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -160,6 +190,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -179,6 +213,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -200,6 +238,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -219,6 +261,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -240,6 +286,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -259,6 +309,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -280,6 +334,10 @@
           {
             "date": "2026-04-04",
             "position": null
+          },
+          {
+            "date": "2026-04-05",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -299,6 +357,10 @@
           },
           {
             "date": "2026-04-04",
+            "position": null
+          },
+          {
+            "date": "2026-04-05",
             "position": null
           }
         ],
@@ -322,9 +384,14 @@
         "topKeywords": []
       },
       "sunbeltnetwork.com": {
-        "keywordsTracked": 0,
-        "avgPosition": null,
-        "topKeywords": []
+        "keywordsTracked": 1,
+        "avgPosition": 10.0,
+        "topKeywords": [
+          {
+            "keyword": "how to increase business valuation",
+            "position": 10
+          }
+        ]
       },
       "transworldma.com": {
         "keywordsTracked": 0,
@@ -334,7 +401,7 @@
     }
   },
   "competitorMonitor": {
-    "lastUpdated": "2026-04-04T10:00:02.916886+00:00",
+    "lastUpdated": "2026-04-05T10:00:00.851245+00:00",
     "changes": [
       {
         "date": "2026-04-02T16:22:54.761927+00:00",
