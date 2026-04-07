@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
+  "lastUpdated": "2026-04-07T10:00:03.815687+00:00",
   "searchEngine": "duckduckgo",
   "rankings": {
-    "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
+    "lastUpdated": "2026-04-07T10:00:03.815687+00:00",
     "keywords": [
       {
         "keyword": "business exit planning",
@@ -135,9 +135,7 @@
       {
         "keyword": "how to increase business valuation",
         "volume": 720,
-        "rankings": {
-          "sunbeltnetwork.com": 10
-        },
+        "rankings": {},
         "history": [
           {
             "date": "2026-04-02",
@@ -458,7 +456,7 @@
         "keyword": "electrical business for sale valuation",
         "volume": 110,
         "rankings": {
-          "businessexitvalue.com": 4
+          "businessexitvalue.com": 5
         },
         "history": [
           {
@@ -506,14 +504,9 @@
         "topKeywords": []
       },
       "sunbeltnetwork.com": {
-        "keywordsTracked": 1,
-        "avgPosition": 10.0,
-        "topKeywords": [
-          {
-            "keyword": "how to increase business valuation",
-            "position": 10
-          }
-        ]
+        "keywordsTracked": 0,
+        "avgPosition": null,
+        "topKeywords": []
       },
       "transworldma.com": {
         "keywordsTracked": 0,
@@ -523,7 +516,7 @@
     }
   },
   "competitorMonitor": {
-    "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
+    "lastUpdated": "2026-04-07T10:00:03.815687+00:00",
     "changes": [
       {
         "date": "2026-04-02T16:22:54.761927+00:00",
