@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-04-06T10:00:04.540484+00:00",
+  "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
   "searchEngine": "duckduckgo",
   "rankings": {
-    "lastUpdated": "2026-04-06T10:00:04.540484+00:00",
+    "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
     "keywords": [
       {
         "keyword": "business exit planning",
@@ -27,6 +27,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -56,6 +60,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -83,6 +91,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -112,6 +124,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -120,7 +136,7 @@
         "keyword": "how to increase business valuation",
         "volume": 720,
         "rankings": {
-          "sunbeltnetwork.com": 8
+          "sunbeltnetwork.com": 10
         },
         "history": [
           {
@@ -141,6 +157,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -170,6 +190,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -197,6 +221,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -226,6 +254,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -253,6 +285,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -282,6 +318,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -309,6 +349,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -338,6 +382,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -365,6 +413,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -394,6 +446,10 @@
           {
             "date": "2026-04-06",
             "position": null
+          },
+          {
+            "date": "2026-04-07",
+            "position": null
           }
         ],
         "source": "duckduckgo"
@@ -401,7 +457,9 @@
       {
         "keyword": "electrical business for sale valuation",
         "volume": 110,
-        "rankings": {},
+        "rankings": {
+          "businessexitvalue.com": 4
+        },
         "history": [
           {
             "date": "2026-04-02",
@@ -421,6 +479,10 @@
           },
           {
             "date": "2026-04-06",
+            "position": null
+          },
+          {
+            "date": "2026-04-07",
             "position": null
           }
         ],
@@ -445,11 +507,11 @@
       },
       "sunbeltnetwork.com": {
         "keywordsTracked": 1,
-        "avgPosition": 8.0,
+        "avgPosition": 10.0,
         "topKeywords": [
           {
             "keyword": "how to increase business valuation",
-            "position": 8
+            "position": 10
           }
         ]
       },
@@ -461,7 +523,7 @@
     }
   },
   "competitorMonitor": {
-    "lastUpdated": "2026-04-06T10:00:04.540484+00:00",
+    "lastUpdated": "2026-04-07T10:00:00.801732+00:00",
     "changes": [
       {
         "date": "2026-04-02T16:22:54.761927+00:00",
